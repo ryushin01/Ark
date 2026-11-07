@@ -67,6 +67,9 @@ test("작품 이미지를 추가하면 목록에 바로 나오고, 지우면 사
 test("4MB를 넘는 파일은 보내기 전에 막습니다", async ({ page }) => {
   await loginAsAdmin(page);
   await page.goto("/admin/exhibits/new");
+  // 브라우저 쪽 확인은 하이드레이션 뒤에 붙으므로, 페이지가 준비된 뒤 파일을 고릅니다.
+  // (그 전에 고른 파일은 서버가 다시 검사합니다)
+  await page.waitForLoadState("networkidle");
   await page.getByLabel(/^이미지/).setInputFiles({
     name: "big.jpg",
     mimeType: "image/jpeg",

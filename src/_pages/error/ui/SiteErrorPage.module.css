@@ -1,0 +1,43 @@
+.page {
+    display: grid;
+    align-content: center;
+    gap: 1.25rem;
+    min-height: 100svh;
+    padding-block: calc(var(--header-height) + 2rem) 4rem;
+}
+
+.title {
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.digest {
+    font-size: var(--text-sm);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.button {
+    min-height: 44px;
+    padding: 0 1.25rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}

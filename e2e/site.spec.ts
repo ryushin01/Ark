@@ -104,3 +104,22 @@ test("영향 아카이브는 기능 플래그가 꺼져 있으면 404이고 메�
   ).toBeVisible();
   await expect(page.getByRole("link", { name: "아카이브" })).toHaveCount(0);
 });
+
+test("보안 헤더가 있고, CSP가 화면의 리소스를 막지 않습니다", async ({ page }) => {
+  const violations: string[] = [];
+  page.on("console", (message) => {
+    if (/Content Security Policy|Refused to/i.test(message.text())) violations.push(message.text());
+  });
+  const response = await page.goto("/figures/odin");
+  const headers = response?.headers() ?? {};
+  expect(headers["content-security-policy"]).toContain("frame-ancestors 'none'");
+  expect(headers["x-frame-options"]).toBe("DENY");
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+
+  // 이미지를 끝까지 내려 모두 불러오게 한 뒤 확인합니다.
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForLoadState("networkidle");
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(violations).toEqual([]);
+});

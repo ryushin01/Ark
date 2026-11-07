@@ -99,9 +99,30 @@
 | `ADMIN_SESSION_SECRET`        | 운영      | 세션 서명 키. 운영 환경에서 없으면 로그인을 막습니다. 개발 환경은 기본값을 씁니다. |
 | `NEXT_PUBLIC_FEATURE_ARCHIVE` | 선택      | 아래 기능 플래그                                                                   |
 
+## 오류 화면과 보안 헤더
+
+| 파일                                                         | 감싸는 범위                                                          |
+| ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `src/app/(site)/error.tsx`                                   | 공개 사이트. "다시 시도"(`retry`)와 처음 화면 링크                   |
+| `src/app/admin/error.tsx`, `src/app/admin/(panel)/error.tsx` | 어드민 로그인과 관리 화면 (Radix Themes)                             |
+| `src/app/global-error.tsx`                                   | 루트 레이아웃까지 실패했을 때. 전역 스타일 없이 인라인 스타일로 그림 |
+
+오류 내용은 화면에 보이지 않고, 서버 기록과 맞춰 볼 수 있는 식별자(`error.digest`)만 보입니다. 공개 데이터는 캐시되어 있어 데이터베이스가 잠시 멈춰도 공개 화면은 대부분 그대로 나옵니다.
+
+`next.config.ts`의 `headers()`로 모든 응답에 CSP, `X-Frame-Options: DENY`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`를 붙입니다. CSP는 nonce를 쓰면 모든 페이지를 요청마다 그려야 하므로 nonce 없는 방식을 쓰고, Next.js의 인라인 스크립트 때문에 `'unsafe-inline'`을 허용합니다. 외부 스크립트, 다른 사이트의 프레임 삽입, 다른 주소로의 폼 전송은 막습니다. E2E가 헤더와 CSP 위반(콘솔)을 검사합니다.
+
 ## SEO
 
 `src/_app/seo/`의 `sitemap`(계열·신 주소), `robots`(어드민·API 제외)를 `src/app/sitemap.ts`, `robots.ts`가 내보냅니다. 기본 공유 이미지는 `src/app/opengraph-image.jpg`이고, 계열·신 화면은 대표 자료 이미지를 공유 이미지로 씁니다. 운영 주소는 `shared/config/site.ts`의 `SITE.url`입니다.
+
+## CI와 의존성
+
+GitHub Actions(`.github/workflows/ci.yml`)는 두 작업을 나란히 돌립니다.
+
+- `check`: 린트, 서식, 타입, 단위, 스토리, 빌드, E2E (목업 저장소)
+- `upload`: 로컬 Supabase를 띄우고 업로드 E2E
+
+Dependabot(`.github/dependabot.yml`)이 같은 메이저 안의 패치·마이너 업데이트를 주 1회(npm), 월 1회(Actions) PR로 올립니다. 출시 후 14일이 지난 버전만 제안합니다.
 
 ## 하지 않기로 한 것
 
@@ -126,7 +147,7 @@
 
 KWCAG 2.2 33개 항목은 직접 점검했습니다(0.5.0). 이미지 위의 큰 글자 대비, 영문 이름의 `lang`, 어드민 화면별 제목, 세션 24시간, 링크 밑줄, 랜드마크 이름을 이때 고쳤습니다. HTML 검사(html-validate)에서 남는 항목은 프레임워크·라이브러리 출력이라 그대로 둡니다. React Server Action 폼의 `action=""`, 이미지 미리 불러오기 `<link>`(표준상 `imagesrcset`이 있으면 `href`를 생략할 수 있음), Radix 체크박스 그룹의 숨은 input이 여기에 해당합니다.
 
-axe 검사는 스토리 테스트와 E2E에서 실행합니다. axe를 통과해도 KWCAG 준수는 아니므로, 새 화면은 검사 항목을 직접 점검합니다.
+axe 검사는 스토리 테스트와 E2E에서 실행합니다. 스토리 테스트의 Storybook 설정은 `@storybook/addon-vitest`가 자동으로 적용합니다(별도 setup 파일 없음). axe를 통과해도 KWCAG 준수는 아니므로, 새 화면은 검사 항목을 직접 점검합니다.
 
 ## 테스트
 

@@ -1,5 +1,13 @@
 # 버전 기록
 
+## 0.6.0 (2026-11-07)
+
+- 오류 화면: 공개 사이트, 어드민, 최상위(global-error). 오류 식별자만 보여 주고 "다시 시도" 제공
+- 보안 헤더: CSP(nonce 없는 방식), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+- CI에 로컬 Supabase 업로드 E2E 작업 추가
+- Dependabot 설정
+- Storybook 스토리 테스트 setup 파일 정리 (addon-vitest가 자동 적용)
+
 ## 0.5.0 (2026-11-07)
 
 - 어드민: 신화 계열 만들기·삭제, 자료 라이선스 주소, 로그인 뒤 원래 보던 화면으로 돌아가기

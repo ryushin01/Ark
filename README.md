@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.5.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.6.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 그리스, 북유럽, 이집트, 메소포타미아, 인도, 일본 신화의 신과 영웅을 조각상, 회화, 유물 자료로 살펴보는 세계 신화 도서관입니다.
@@ -67,7 +67,7 @@ pnpm db:start                # 로컬 Supabase (Docker 필요, 마이그레이�
 pnpm dev                     # http://localhost:3000, 어드민은 /admin
 ```
 
-`pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다.
+`pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다. `.env.local`에 로컬 Supabase를 적었다면 `pnpm build` 전에도 `pnpm db:start`가 필요합니다.
 
 | 명령                                     | 설명                                                          |
 | ---------------------------------------- | ------------------------------------------------------------- |

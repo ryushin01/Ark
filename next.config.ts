@@ -3,7 +3,42 @@ import type { NextConfig } from "next";
 /** 로컬 Supabase(pnpm db:start)를 쓰는지. 이때만 로컬 주소의 이미지를 최적화합니다. */
 const usesLocalSupabase = process.env.SUPABASE_URL?.startsWith("http://127.0.0.1") ?? false;
 
+const isDev = process.env.NODE_ENV === "development";
+
+/**
+ * 보안 헤더
+ * - CSP: nonce를 쓰면 모든 페이지를 요청마다 그려야 하므로, 정적 페이지를 지키는 nonce 없는 방식을 씁니다.
+ *   Next.js의 인라인 스크립트·스타일 때문에 'unsafe-inline'이 필요합니다. 외부 스크립트는 막습니다.
+ * - 이미지는 Next.js 이미지 최적화(/_next/image, 같은 출처)를 거치므로 img-src는 같은 출처와 data:만 엽니다.
+ * - frame-ancestors 'none', X-Frame-Options: 다른 사이트가 어드민을 프레임으로 끼워 넣지 못하게 합니다.
+ * - upgrade-insecure-requests는 Vercel 배포에서만 씁니다. (로컬 http 서버의 요청을 https로 바꾸지 않도록)
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' blob: data:",
+  "font-src 'self'",
+  `connect-src 'self'${isDev ? " ws:" : ""}`,
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  ...(process.env.VERCEL ? ["upgrade-insecure-requests"] : []),
+].join("; ");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+];
+
 const nextConfig: NextConfig = {
+  async headers() {
+    return [{ source: "/(.*)", headers: securityHeaders }];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   images: {

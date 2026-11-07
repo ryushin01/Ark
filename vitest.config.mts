@@ -26,6 +26,7 @@ export default defineConfig({
       /*
        * 스토리 테스트 (pnpm test:storybook)
        * 모든 스토리를 실제 브라우저(Chromium)에서 렌더링하고, play 함수와 접근성 검사(axe)를 실행합니다.
+       * Storybook 설정(.storybook/preview.tsx, 애드온)은 addon-vitest가 자동으로 적용합니다.
        */
       {
         plugins: [storybookTest({ configDir: ".storybook" })],
@@ -37,7 +38,6 @@ export default defineConfig({
             provider: playwright(),
             instances: [{ browser: "chromium" }],
           },
-          setupFiles: ["./.storybook/vitest.setup.ts"],
         },
       },
     ],

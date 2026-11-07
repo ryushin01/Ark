@@ -43,3 +43,38 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
+
+  upload:
+    name: Upload E2E (local Supabase)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - run: pnpm install --frozen-lockfile
+      # 로컬 Supabase(DB·Storage)를 띄우고, 접속 정보를 다음 단계의 환경 변수로 넘깁니다.
+      - run: supabase start
+      - name: Export local Supabase env
+        run: |
+          supabase status -o env > /tmp/supabase.env
+          echo "SUPABASE_URL=$(grep '^API_URL=' /tmp/supabase.env | cut -d= -f2- | tr -d '\"')" >> "$GITHUB_ENV"
+          echo "SUPABASE_SECRET_KEY=$(grep '^SECRET_KEY=' /tmp/supabase.env | cut -d= -f2- | tr -d '\"')" >> "$GITHUB_ENV"
+      # 로컬 Supabase 주소로 빌드해야 업로드한 이미지(127.0.0.1)를 최적화할 수 있습니다.
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e:local-db
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report-upload
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
