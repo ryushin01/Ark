@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { Card, Container, Flex, Heading, Link as RadixLink, Text } from "@radix-ui/themes";
 
@@ -20,7 +21,10 @@ export function AdminLoginPage() {
             </Text>
           </Flex>
           <Card size="3">
-            <LoginForm />
+            {/* 주소의 next 값을 읽으므로 Suspense 안에서 그립니다. */}
+            <Suspense>
+              <LoginForm />
+            </Suspense>
           </Card>
           <RadixLink asChild size="2">
             <Link href="/">← 사이트로 돌아가기</Link>

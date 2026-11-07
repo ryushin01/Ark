@@ -28,6 +28,7 @@ const FIELDS = [
   "alt",
   "artist",
   "license",
+  "licenseUrl",
   "sourceUrl",
 ] as const;
 

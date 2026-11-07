@@ -39,8 +39,10 @@
     font-size: var(--text-sm);
 }
 
-.credit a:hover {
+/* 링크는 색이 아니라 밑줄로도 구분합니다. (KWCAG 5.4.1) */
+.credit a {
     text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 
 .placeholder {

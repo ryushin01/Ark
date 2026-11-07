@@ -5,32 +5,46 @@ import Link from "next/link";
 import { Button, Flex, Grid } from "@radix-ui/themes";
 
 import { INITIAL_FORM_STATE } from "@/shared/lib";
-import { FormStatus, SelectInput, TextAreaInput, TextInput } from "@/shared/ui/admin";
+import {
+  ConfirmDeleteButton,
+  FormStatus,
+  SelectInput,
+  TextAreaInput,
+  TextInput,
+} from "@/shared/ui/admin";
 
-import { savePantheonAction } from "../api/actions";
+import { deletePantheonAction, savePantheonAction } from "../api/actions";
 
 import type { Pantheon } from "@/entities/pantheon";
 
 type PantheonFormProps = {
-  pantheon: Pantheon;
+  /** 고칠 계열. 없으면 새로 만듭니다. */
+  pantheon?: Pantheon;
   /** 대표 자료로 고를 수 있는 자료 */
   exhibits: { id: string; title: string }[];
 };
 
-/** 신화 계열 고치기 폼 */
+/** 신화 계열 만들기·고치기 폼 */
 export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
   const [state, action, isPending] = useActionState(
-    savePantheonAction.bind(null, pantheon.slug),
+    savePantheonAction.bind(null, pantheon?.slug ?? null),
     INITIAL_FORM_STATE,
   );
-  const values = state.values ?? {
-    ...pantheon,
-    eraYear: String(pantheon.eraYear),
-    description: pantheon.description.join("\n\n"),
+  const values: Record<string, string | string[]> = state.values ?? {
+    slug: pantheon?.slug ?? "",
+    name: pantheon?.name ?? "",
+    nameEn: pantheon?.nameEn ?? "",
+    region: pantheon?.region ?? "",
+    earliestSource: pantheon?.earliestSource ?? "",
+    eraLabel: pantheon?.eraLabel ?? "",
+    eraYear: pantheon ? String(pantheon.eraYear) : "",
+    summary: pantheon?.summary ?? "",
+    description: pantheon?.description.join("\n\n") ?? "",
+    coverExhibitId: pantheon?.coverExhibitId ?? "",
   };
   const field = (name: string) => ({
     name,
-    defaultValue: String(values[name as keyof typeof values] ?? ""),
+    defaultValue: String(values[name] ?? ""),
     error: state.fieldErrors?.[name]?.[0],
   });
 
@@ -42,6 +56,15 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">
             <TextInput {...field("name")} label="이름" required />
             <TextInput {...field("nameEn")} label="영문 이름" required lang="en" />
+            {!pantheon && (
+              <TextInput
+                {...field("slug")}
+                label="주소 이름"
+                required
+                autoComplete="off"
+                hint="영문 소문자, 숫자, 하이픈(-). 예) celtic → /pantheons/celtic. 만든 뒤에는 바꿀 수 없습니다."
+              />
+            )}
             <TextInput {...field("region")} label="지역" required />
             <TextInput {...field("earliestSource")} label="가장 이른 문헌" required />
             <TextInput
@@ -76,7 +99,7 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
           />
           <Flex gap="3" align="center" wrap="wrap">
             <Button type="submit" size="3" disabled={isPending}>
-              {isPending ? "저장하는 중…" : "저장"}
+              {isPending ? "저장하는 중…" : pantheon ? "저장" : "만들기"}
             </Button>
             <Button asChild variant="soft" color="gray" size="3">
               <Link href="/admin/pantheons">취소</Link>
@@ -84,6 +107,12 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
           </Flex>
         </Flex>
       </form>
+      {pantheon && (
+        <ConfirmDeleteButton
+          name={pantheon.name}
+          onDelete={deletePantheonAction.bind(null, pantheon.slug)}
+        />
+      )}
     </Flex>
   );
 }

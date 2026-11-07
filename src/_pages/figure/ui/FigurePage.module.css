@@ -26,8 +26,10 @@
     min-height: 44px;
 }
 
-.breadcrumb a:hover {
+/* 링크를 색이 아니라 밑줄로도 구분합니다. (KWCAG 5.4.1) */
+.breadcrumb a {
     text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
 
 .breadcrumb li[aria-current] {

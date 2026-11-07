@@ -42,6 +42,7 @@ export function ExhibitForm({ exhibit, figures, canUpload }: ExhibitFormProps) {
     alt: exhibit?.image.alt ?? "",
     artist: exhibit?.image.credit.artist ?? "",
     license: exhibit?.image.credit.license ?? "",
+    licenseUrl: exhibit?.image.credit.licenseUrl ?? "",
     sourceUrl: exhibit?.image.credit.sourceUrl ?? "",
   };
   const field = (name: string) => ({
@@ -125,6 +126,12 @@ export function ExhibitForm({ exhibit, figures, canUpload }: ExhibitFormProps) {
             />
             <TextInput {...field("sourceUrl")} label="원본 주소" required type="url" />
           </Grid>
+          <TextInput
+            {...field("licenseUrl")}
+            label="라이선스 주소"
+            type="url"
+            hint="CC 라이선스라면 라이선스 전문 주소를 적습니다. 예) https://creativecommons.org/licenses/by/4.0/"
+          />
           <Flex gap="3" align="center" wrap="wrap">
             <Button type="submit" size="3" disabled={isPending}>
               {isPending ? "저장하는 중…" : exhibit ? "저장" : "만들기"}

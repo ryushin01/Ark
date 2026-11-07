@@ -22,7 +22,7 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
-      testIgnore: [/screenshots/, /admin\.spec/],
+      testIgnore: [/screenshots/, /admin\.spec/, /upload\.spec/],
     },
     // 어드민은 메모리 저장소의 데이터를 바꾸므로, 공개 사이트 검사가 끝난 뒤 따로 실행합니다.
     {
@@ -30,6 +30,12 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
       testMatch: /admin\.spec/,
       dependencies: ["chromium"],
+    },
+    // 이미지 업로드 (pnpm test:e2e:local-db). 실제 Storage가 필요해 로컬 Supabase에서만 돌립니다.
+    {
+      name: "local-db",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: /upload\.spec/,
     },
     // README 스크린샷 촬영 (pnpm screenshots). 검사가 아니라서 평소 E2E에는 넣지 않습니다.
     {
@@ -49,7 +55,8 @@ export default defineConfig({
       ...(process.env.E2E_USE_LOCAL_SUPABASE ? {} : { SUPABASE_URL: "", SUPABASE_SECRET_KEY: "" }),
     },
     url: `http://localhost:${PORT}`,
-    reuseExistingServer: !process.env.CI,
+    // 로컬 Supabase 모드는 환경 변수가 달라 늘 새 서버를 띄웁니다.
+    reuseExistingServer: !process.env.CI && !process.env.E2E_USE_LOCAL_SUPABASE,
     timeout: 60_000,
   },
 });

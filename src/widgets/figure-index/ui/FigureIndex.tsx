@@ -68,7 +68,9 @@ export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
                     onPointerLeave={() => setPreview(null)}
                   >
                     <span className={styles.name}>{figure.name}</span>
-                    <span className={styles.nameEn}>{figure.nameEn}</span>
+                    <span className={styles.nameEn} lang="en">
+                      {figure.nameEn}
+                    </span>
                     <span className={styles.epithet}>{figure.epithet}</span>
                   </Link>
                 </li>

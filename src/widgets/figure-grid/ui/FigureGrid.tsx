@@ -39,7 +39,7 @@ export function FigureGrid({ figures }: { figures: FigureCard[] }) {
             </span>
             <span className={styles.name}>{figure.name}</span>
             <span className={styles.meta}>
-              {figure.nameEn} · {figure.epithet}
+              <span lang="en">{figure.nameEn}</span> · {figure.epithet}
             </span>
             <span className={styles.count}>자료 {figure.exhibitCount}점</span>
           </Link>

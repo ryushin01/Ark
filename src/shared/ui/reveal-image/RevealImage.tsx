@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-import { type ArchiveImage, formatCredit, useInView } from "@/shared/lib";
+import { type ArchiveImage, useInView } from "@/shared/lib";
 
-import { VisuallyHidden } from "../visually-hidden";
+import { CreditLine } from "../credit-line";
 import styles from "./RevealImage.module.css";
 
 type RevealImageProps = {
@@ -74,10 +74,7 @@ export function RevealImage({
       )}
       {!hideCredit && (
         <figcaption className={styles.credit}>
-          <a href={image.credit.sourceUrl} className={styles.creditLink}>
-            {formatCredit(image.credit)}
-            <VisuallyHidden> — 원본 파일 정보 (Wikimedia Commons)</VisuallyHidden>
-          </a>
+          <CreditLine credit={image.credit} linkClassName={styles.creditLink} />
         </figcaption>
       )}
     </figure>

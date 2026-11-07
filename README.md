@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.4.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.5.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 그리스, 북유럽, 이집트, 메소포타미아, 인도, 일본 신화의 신과 영웅을 조각상, 회화, 유물 자료로 살펴보는 세계 신화 도서관입니다.
@@ -77,6 +77,7 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 | `pnpm test`                              | 단위 테스트                                                   |
 | `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                              |
 | `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)            |
+| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                        |
 | `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                  |
 | `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기 |
 

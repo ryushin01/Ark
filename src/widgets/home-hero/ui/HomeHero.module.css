@@ -43,7 +43,11 @@
 
 .image {
     object-fit: cover;
-    filter: grayscale(1) brightness(calc(0.85 - var(--progress) * 0.35));
+    /*
+     * 큰 글자(모래색)가 흰 대리석 사진 위에 놓여도 3:1을 넘도록 이미지를 어둡게 합니다.
+     * 가장 밝은 흰색이 밝기 0.45에서 상대 휘도 약 0.17이 되어, 모래색 글자와 대비가 3.5:1 이상입니다.
+     */
+    filter: grayscale(1) brightness(calc(0.45 - var(--progress) * 0.15));
 }
 
 /* 큰 글자가 이미지 위에서도 읽히도록 가장자리를 어둡게 합니다. */
@@ -77,8 +81,11 @@
     gap: 1.5rem;
 }
 
+/* 작은 글자는 4.5:1이 필요해 어두운 띠를 깝니다. */
 .caption {
     align-self: flex-start;
+    padding: 0.35em 0.6em;
+    background-color: rgb(0 0 0 / 0.7);
     font-size: var(--text-sm);
     font-weight: 500;
     line-height: 1.3;

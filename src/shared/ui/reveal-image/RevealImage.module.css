@@ -65,11 +65,12 @@
 }
 
 .creditLink {
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 
 .creditLink:hover {
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

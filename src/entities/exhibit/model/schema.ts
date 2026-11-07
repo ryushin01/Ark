@@ -25,6 +25,11 @@ export const exhibitInputSchema = z.object({
   artist: optionalText,
   license: z.string().trim().min(1, "라이선스를 입력해 주세요. 예) Public domain, CC BY 4.0"),
   sourceUrl: z.url("원본 주소를 https://로 시작하는 주소로 입력해 주세요."),
+  licenseUrl: z
+    .string()
+    .trim()
+    .transform((value) => value || null)
+    .pipe(z.url("라이선스 주소를 https://로 시작하는 주소로 입력해 주세요.").nullable()),
 });
 
 export type ExhibitInput = z.infer<typeof exhibitInputSchema>;

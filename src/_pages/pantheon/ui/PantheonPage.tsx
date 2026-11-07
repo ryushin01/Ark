@@ -65,7 +65,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
         <div className="grid-default">
           <div className={styles.titleCol}>
             <p className={styles.eyebrow}>
-              {pantheon.nameEn} Mythology · {pantheon.region}
+              <span lang="en">{pantheon.nameEn} Mythology</span> · {pantheon.region}
             </p>
             <RevealText as="h1" mode="words" text={pantheon.name} className={styles.title} />
           </div>

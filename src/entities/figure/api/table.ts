@@ -7,7 +7,7 @@ import type { Figure } from "../model/types";
 import "server-only";
 
 /** 신·인물 저장소 (Supabase `figures` 또는 메모리 목업) */
-export const figureRepository = createRepository<Figure>({
+export const figureRepository = createRepository<"figures", Figure>({
   table: "figures",
   keyColumn: "slug",
   keyOf: (figure) => figure.slug,
@@ -24,14 +24,14 @@ export const figureRepository = createRepository<Figure>({
     sort_order: figure.order,
   }),
   fromRow: (row) => ({
-    slug: String(row.slug),
-    pantheonSlug: String(row.pantheon_slug),
-    name: String(row.name),
-    nameEn: String(row.name_en),
-    epithet: String(row.epithet),
-    domains: row.domains as string[],
-    summary: String(row.summary),
-    description: row.description as string[],
-    order: Number(row.sort_order),
+    slug: row.slug,
+    pantheonSlug: row.pantheon_slug,
+    name: row.name,
+    nameEn: row.name_en,
+    epithet: row.epithet,
+    domains: row.domains,
+    summary: row.summary,
+    description: row.description,
+    order: row.sort_order,
   }),
 });

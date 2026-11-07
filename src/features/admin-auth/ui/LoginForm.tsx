@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button, Callout, Flex, Separator, Text, TextField } from "@radix-ui/themes";
 
 import { INITIAL_FORM_STATE } from "@/shared/lib";
@@ -15,6 +16,8 @@ import { loginAction } from "../api/actions";
 export function LoginForm() {
   const [state, action, isPending] = useActionState(loginAction, INITIAL_FORM_STATE);
   const passwordError = state.fieldErrors?.password?.[0];
+  // 로그인 화면으로 오기 전에 보던 어드민 화면 (서버에서 다시 검사합니다)
+  const next = useSearchParams().get("next") ?? "";
 
   return (
     <Flex direction="column" gap="5">
@@ -26,6 +29,7 @@ export function LoginForm() {
 
       <form action={action}>
         <input type="hidden" name="mode" value="password" />
+        <input type="hidden" name="next" value={next} />
         <Flex direction="column" gap="3">
           <Text as="label" htmlFor="admin-password" size="2" weight="medium">
             관리자 비밀번호
@@ -60,6 +64,7 @@ export function LoginForm() {
 
       <form action={action}>
         <input type="hidden" name="mode" value="demo" />
+        <input type="hidden" name="next" value={next} />
         <Flex direction="column" gap="2">
           <Button
             type="submit"

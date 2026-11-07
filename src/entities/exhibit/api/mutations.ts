@@ -6,7 +6,7 @@ import type { ArchiveImage } from "@/shared/lib";
 
 import "server-only";
 
-type ExhibitFields = Omit<ExhibitInput, "alt" | "artist" | "license" | "sourceUrl">;
+type ExhibitFields = Omit<ExhibitInput, "alt" | "artist" | "license" | "licenseUrl" | "sourceUrl">;
 
 /** 입력값과 이미지 파일 정보로 자료를 만듭니다. */
 export async function createExhibit(
@@ -14,11 +14,11 @@ export async function createExhibit(
   input: ExhibitInput,
   file: Pick<ArchiveImage, "src" | "width" | "height">,
 ): Promise<Exhibit | "duplicate"> {
-  const { alt, artist, license, sourceUrl, ...fields } = input;
+  const { alt, artist, license, licenseUrl, sourceUrl, ...fields } = input;
   return exhibitRepository.insert({
     id,
     ...(fields as ExhibitFields),
-    image: { ...file, alt, credit: { artist, license, licenseUrl: null, sourceUrl } },
+    image: { ...file, alt, credit: { artist, license, licenseUrl, sourceUrl } },
   });
 }
 
@@ -30,7 +30,7 @@ export async function updateExhibit(
 ): Promise<Exhibit | null> {
   const current = await exhibitRepository.find(id);
   if (!current) return null;
-  const { alt, artist, license, sourceUrl, ...rest } = input;
+  const { alt, artist, license, licenseUrl, sourceUrl, ...rest } = input;
   return exhibitRepository.update(id, {
     ...current,
     ...rest,
@@ -38,7 +38,7 @@ export async function updateExhibit(
       ...current.image,
       ...file,
       alt,
-      credit: { ...current.image.credit, artist, license, sourceUrl },
+      credit: { ...current.image.credit, artist, license, licenseUrl, sourceUrl },
     },
   });
 }

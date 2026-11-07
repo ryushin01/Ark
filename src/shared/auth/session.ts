@@ -4,7 +4,8 @@
  * Web Crypto만 써서 proxy와 Server Action 양쪽에서 같은 코드로 검사합니다.
  */
 export const SESSION_COOKIE = "ark_admin";
-export const SESSION_MAX_AGE = 60 * 60 * 8;
+/** 세션 24시간. 20시간 이상이면 시간 제한 안내가 필요 없습니다. (KWCAG 6.2.1, WCAG 2.2.1 예외) */
+export const SESSION_MAX_AGE = 60 * 60 * 24;
 
 /** admin: 저장 가능 / demo: 둘러보기만 가능 */
 export type AdminRole = "admin" | "demo";

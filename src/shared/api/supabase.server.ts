@@ -1,8 +1,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
+import type { Database } from "./database.types";
+
 import "server-only";
 
-let client: SupabaseClient | null | undefined;
+let client: SupabaseClient<Database> | null | undefined;
 
 /**
  * 서버 전용 Supabase 클라이언트 (secret key, RLS를 거치지 않음)
@@ -13,7 +15,8 @@ export function getSupabase() {
   if (client !== undefined) return client;
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SECRET_KEY;
-  client = url && key ? createClient(url, key, { auth: { persistSession: false } }) : null;
+  client =
+    url && key ? createClient<Database>(url, key, { auth: { persistSession: false } }) : null;
   return client;
 }
 

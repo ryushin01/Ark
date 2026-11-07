@@ -6,15 +6,18 @@ vi.mock("server-only", () => ({}));
 const { createRepository } = await import("./repository.server");
 
 type Item = { slug: string; name: string };
+type Row = { slug: string; name: string };
 
 /** 환경 변수가 없으면 메모리 목업으로 동작합니다. */
-const repository = createRepository<Item>({
-  table: "repository-test",
+const repository = createRepository<"pantheons", Item>({
+  table: "pantheons",
+  mockKey: "repository-test",
   keyColumn: "slug",
   keyOf: (item) => item.slug,
   seed: [{ slug: "zeus", name: "제우스" }],
-  toRow: (item) => item,
-  fromRow: (row) => row as Item,
+  // 목업만 쓰는 테스트라 행 변환은 그대로 넘깁니다.
+  toRow: (item) => item as never,
+  fromRow: (row) => row as unknown as Row,
 });
 
 describe("createRepository (목업)", () => {

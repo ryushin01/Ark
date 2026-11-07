@@ -9,13 +9,21 @@ import { PantheonForm } from "@/features/edit-pantheon";
 import { Notice, PageHeader } from "@/shared/ui/admin";
 
 /** 신화 계열 목록 */
-export async function AdminPantheonsPage({ saved }: { saved?: string }) {
+export async function AdminPantheonsPage({ saved, deleted }: { saved?: string; deleted?: string }) {
   const [pantheons, figures] = await Promise.all([getPantheons(), getFigures()]);
 
   return (
     <>
-      <PageHeader title="신화 계열" description="연대기는 정렬용 연도 순서로 보입니다." />
-      <Notice saved={saved} />
+      <PageHeader
+        title="신화 계열"
+        description="연대기는 정렬용 연도 순서로 보입니다."
+        actions={
+          <Button asChild>
+            <Link href="/admin/pantheons/new">새 계열 추가</Link>
+          </Button>
+        }
+      />
+      <Notice saved={saved} deleted={deleted} />
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
@@ -59,19 +67,26 @@ export async function AdminPantheonsPage({ saved }: { saved?: string }) {
   );
 }
 
-/** 신화 계열 고치기 */
-export async function AdminPantheonEditPage({ slug }: { slug: string }) {
-  const [pantheon, exhibits] = await Promise.all([getPantheon(slug), getExhibits()]);
-  if (!pantheon) notFound();
+/** 신화 계열 만들기(slug 없음)·고치기 */
+export async function AdminPantheonEditPage({ slug }: { slug?: string }) {
+  const [pantheon, exhibits] = await Promise.all([
+    slug ? getPantheon(slug) : Promise.resolve(null),
+    getExhibits(),
+  ]);
+  if (slug && !pantheon) notFound();
 
   return (
     <>
       <PageHeader
-        title={`${pantheon.name} 고치기`}
-        description={`주소: /pantheons/${pantheon.slug}`}
+        title={pantheon ? `${pantheon.name} 고치기` : "새 계열 추가"}
+        description={
+          pantheon
+            ? `주소: /pantheons/${pantheon.slug}`
+            : "대표 자료는 지금 있는 자료에서 고르고, 신과 자료를 추가한 뒤 바꿀 수 있습니다."
+        }
       />
       <PantheonForm
-        pantheon={pantheon}
+        pantheon={pantheon ?? undefined}
         exhibits={exhibits.map(({ id, title }) => ({ id, title }))}
       />
     </>

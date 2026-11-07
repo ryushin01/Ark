@@ -72,7 +72,9 @@ export async function FigurePage({ slug }: { slug: string }) {
         )}
         <div className="grid-default">
           <div className={styles.titleCol}>
-            <p className={styles.eyebrow}>{figure.nameEn}</p>
+            <p className={styles.eyebrow} lang="en">
+              {figure.nameEn}
+            </p>
             <RevealText as="h1" mode="words" text={figure.name} className={styles.title} />
             <p className={styles.epithet}>{figure.epithet}</p>
           </div>

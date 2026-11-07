@@ -52,10 +52,12 @@
 | 데모   | 버튼 하나                 | 모든 화면 보기. 저장은 서버에서 막습니다. 배포본에서 방문자가 공개 데이터를 바꾸지 못하게 하려는 것입니다. |
 
 - 비밀번호 로그인은 같은 곳에서 15분 안에 5번 틀리면 잠깁니다. 실패 기록은 `admin_login_attempts` 테이블(IP는 SHA-256 해시만)에 남고, 성공하면 지웁니다. 하루 지난 기록은 크론이 지웁니다. 데모 로그인은 제한하지 않습니다.
-- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 8시간)입니다. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
+- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
 - 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
 - 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
 - 저장하면 `updateTag`로 캐시를 갱신합니다. 미리 그린 공개 페이지는 저장 뒤 첫 요청에 이전 내용을 보여 주고, 곧바로 새 내용으로 다시 그립니다.
+- 로그인하지 않고 어드민 주소로 오면, 로그인한 뒤 그 화면으로 돌아갑니다. 돌아갈 주소는 `/admin` 아래 경로만 받습니다.
+- 계열은 만들고 고치고 지울 수 있습니다. 신이 속한 계열은 지울 수 없습니다.
 - 다른 데이터가 가리키는 항목은 지우지 않습니다. 자료나 작품이 연결된 신, 계열의 대표 자료로 쓰는 자료가 그렇습니다.
 - Radix Themes 기본 색 중 명도 대비가 모자란 조합은 `shared/ui/admin/admin-theme.css`에서 보정합니다(진한 바탕 버튼, Select 자리표시). 주황 배지·안내는 `highContrast`를 씁니다.
 
@@ -70,6 +72,10 @@
 | Storage        | 공개 버킷 `images`. 업로드는 sharp로 긴 변 1600px JPEG로 줄여 `exhibits/`, `works/`에 올립니다. 4MB까지 받습니다(Vercel 함수 본문 한도 4.5MB). 자료를 지우거나 이미지를 바꾸면 이전 파일도 지웁니다. |
 | 시드           | `pnpm db:seed:generate`가 목업 데이터로 `supabase/seed.sql`을 만들고, `supabase db push --remote --include-seed`로 넣습니다. 시드 이미지는 앱의 `/images/exhibits/`에 있습니다.                      |
 | 일시 정지 방지 | 무료 프로젝트는 7일 동안 요청이 없으면 멈춥니다. Vercel Cron(`vercel.json`)이 매일 `/api/keep-alive`를 부릅니다.                                                                                     |
+
+### DB 타입
+
+`pnpm db:types`가 로컬 DB 스키마로 `src/shared/api/database.types.ts`를 만듭니다. 각 엔티티의 `api/table.ts`는 이 타입으로 행↔모델 변환(`toRow`, `fromRow`)을 검사하므로, 컬럼 이름이 틀리거나 필수 컬럼을 빠뜨리면 타입 검사에서 걸립니다. 마이그레이션을 바꾸면 `pnpm db:types`를 다시 실행합니다.
 
 ### 로컬과 운영 분리
 
@@ -97,6 +103,11 @@
 
 `src/_app/seo/`의 `sitemap`(계열·신 주소), `robots`(어드민·API 제외)를 `src/app/sitemap.ts`, `robots.ts`가 내보냅니다. 기본 공유 이미지는 `src/app/opengraph-image.jpg`이고, 계열·신 화면은 대표 자료 이미지를 공유 이미지로 씁니다. 운영 주소는 `shared/config/site.ts`의 `SITE.url`입니다.
 
+## 하지 않기로 한 것
+
+- **시드 이미지를 Storage로 옮기기:** 저장소의 `public/images/exhibits/`(4.6MB)에 둡니다. 옮기면 CI와 E2E가 운영 Storage에 네트워크로 의존하게 됩니다.
+- **저장 직후 첫 요청의 이전 페이지:** 공개 페이지는 미리 그린 페이지라, 저장 뒤 첫 요청은 이전 내용이고 다음 요청부터 새 내용입니다. 없애려면 요청마다 그려야 해 정적 페이지의 속도 이점을 잃습니다.
+
 ## 기능 플래그
 
 | 환경 변수                     | 기본값 | 내용                                                                                                                    |
@@ -112,6 +123,8 @@
 - 스와이프 갤러리는 터치 밀기 외에 이전·다음 버튼과 쪽 번호(`aria-live`)를 둡니다.
 - 터치 대상은 44px 이상, 키보드 초점은 항상 보입니다.
 - 장식 이미지(첫 화면, 미리보기)는 대체 텍스트를 비우고, 자료 이미지는 내용을 설명합니다.
+
+KWCAG 2.2 33개 항목은 직접 점검했습니다(0.5.0). 이미지 위의 큰 글자 대비, 영문 이름의 `lang`, 어드민 화면별 제목, 세션 24시간, 링크 밑줄, 랜드마크 이름을 이때 고쳤습니다. HTML 검사(html-validate)에서 남는 항목은 프레임워크·라이브러리 출력이라 그대로 둡니다. React Server Action 폼의 `action=""`, 이미지 미리 불러오기 `<link>`(표준상 `imagesrcset`이 있으면 `href`를 생략할 수 있음), Radix 체크박스 그룹의 숨은 input이 여기에 해당합니다.
 
 axe 검사는 스토리 테스트와 E2E에서 실행합니다. axe를 통과해도 KWCAG 준수는 아니므로, 새 화면은 검사 항목을 직접 점검합니다.
 

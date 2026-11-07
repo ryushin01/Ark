@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { splitParagraphs } from "@/shared/lib";
 
-/** 어드민에서 계열을 고칠 때의 입력값. slug는 바꾸지 않습니다. */
+/** 어드민에서 계열을 고칠 때의 입력값. slug는 만든 뒤 바꾸지 않습니다. */
 export const pantheonInputSchema = z.object({
   name: z.string().trim().min(1, "이름을 입력해 주세요."),
   nameEn: z.string().trim().min(1, "영문 이름을 입력해 주세요."),
@@ -21,3 +21,16 @@ export const pantheonInputSchema = z.object({
 });
 
 export type PantheonInput = z.infer<typeof pantheonInputSchema>;
+
+/** 새 계열을 만들 때는 주소 이름(slug)도 받습니다. */
+export const newPantheonInputSchema = pantheonInputSchema.extend({
+  slug: z
+    .string()
+    .trim()
+    .regex(
+      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      "주소 이름은 영문 소문자, 숫자, 하이픈(-)으로 입력해 주세요. 예) celtic",
+    ),
+});
+
+export type NewPantheonInput = z.infer<typeof newPantheonInputSchema>;

@@ -61,7 +61,10 @@ test("신 상세: 모든 자료 이미지에 대체 텍스트와 출처 링크�
   await expect(figures).toHaveCount(3);
   for (const figure of await figures.all()) {
     await expect(figure.locator("img")).toHaveAttribute("alt", /.+/);
-    await expect(figure.getByRole("link")).toHaveAttribute("href", /commons\.wikimedia\.org/);
+    await expect(figure.getByRole("link", { name: "원본 출처" })).toHaveAttribute(
+      "href",
+      /commons\.wikimedia\.org/,
+    );
   }
 });
 

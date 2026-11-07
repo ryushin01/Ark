@@ -7,7 +7,7 @@ import type { Pantheon } from "../model/types";
 import "server-only";
 
 /** 신화 계열 저장소 (Supabase `pantheons` 또는 메모리 목업) */
-export const pantheonRepository = createRepository<Pantheon>({
+export const pantheonRepository = createRepository<"pantheons", Pantheon>({
   table: "pantheons",
   keyColumn: "slug",
   keyOf: (pantheon) => pantheon.slug,
@@ -25,15 +25,15 @@ export const pantheonRepository = createRepository<Pantheon>({
     cover_exhibit_id: pantheon.coverExhibitId,
   }),
   fromRow: (row) => ({
-    slug: String(row.slug),
-    name: String(row.name),
-    nameEn: String(row.name_en),
-    region: String(row.region),
-    earliestSource: String(row.earliest_source),
-    eraLabel: String(row.era_label),
-    eraYear: Number(row.era_year),
-    summary: String(row.summary),
-    description: row.description as string[],
-    coverExhibitId: String(row.cover_exhibit_id),
+    slug: row.slug,
+    name: row.name,
+    nameEn: row.name_en,
+    region: row.region,
+    earliestSource: row.earliest_source,
+    eraLabel: row.era_label,
+    eraYear: row.era_year,
+    summary: row.summary,
+    description: row.description,
+    coverExhibitId: row.cover_exhibit_id,
   }),
 });

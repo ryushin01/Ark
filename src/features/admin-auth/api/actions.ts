@@ -22,6 +22,14 @@ import {
 
 import type { FormState } from "@/shared/lib";
 
+/** 로그인 뒤 돌아갈 주소. 어드민 안의 경로만 받아, 다른 사이트로 보내는 데 쓰이지 않게 합니다. */
+export async function safeNextPath(value: FormDataEntryValue | null) {
+  const path = typeof value === "string" ? value : "";
+  return /^\/admin(\/[\w\-/?=&%.]*)?$/.test(path) && !path.startsWith("/admin/login")
+    ? path
+    : "/admin";
+}
+
 async function startSession(role: AdminRole, secret: string) {
   (await cookies()).set(SESSION_COOKIE, await createSessionToken(role, secret), {
     httpOnly: true,
@@ -44,7 +52,7 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
 
   if (formData.get("mode") === "demo") {
     await startSession("demo", secret);
-    redirect("/admin");
+    redirect(await safeNextPath(formData.get("next")));
   }
 
   const password = String(formData.get("password") ?? "");
@@ -77,7 +85,7 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
   }
   await clearFailures(clientKey);
   await startSession("admin", secret);
-  redirect("/admin");
+  redirect(await safeNextPath(formData.get("next")));
 }
 
 export async function logoutAction() {

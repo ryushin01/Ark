@@ -81,7 +81,8 @@ export function SiteHeader() {
               닫기
             </button>
           </div>
-          <nav aria-label="주 메뉴">
+          {/* 데스크톱 메뉴와 랜드마크 이름이 겹치지 않게 따로 이름을 붙입니다. */}
+          <nav aria-label="전체 화면 메뉴">
             <ul className={styles.dialogList}>
               <li>
                 <Link href="/" className={styles.dialogLink}>

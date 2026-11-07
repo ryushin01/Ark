@@ -1,4 +1,4 @@
-import { createRepository } from "@/shared/api/index.server";
+import { createRepository, type Json } from "@/shared/api/index.server";
 
 import { MOCK_WORKS } from "./mock-data";
 
@@ -7,10 +7,8 @@ import type { ArchiveImage } from "@/shared/lib";
 
 import "server-only";
 
-const textOrNull = (value: unknown) => (value == null ? null : String(value));
-
 /** 영향받은 작품 저장소 (Supabase `works` 또는 메모리 목업) */
-export const workRepository = createRepository<Work>({
+export const workRepository = createRepository<"works", Work>({
   table: "works",
   keyColumn: "slug",
   keyOf: (work) => work.slug,
@@ -24,19 +22,19 @@ export const workRepository = createRepository<Work>({
     creator: work.creator,
     summary: work.summary,
     figure_slugs: work.figureSlugs,
-    images: work.images,
+    images: work.images as unknown as NonNullable<Json>,
     status: work.status,
   }),
   fromRow: (row) => ({
-    slug: String(row.slug),
-    title: String(row.title),
-    titleOriginal: String(row.title_original),
+    slug: row.slug,
+    title: row.title,
+    titleOriginal: row.title_original,
     medium: row.medium as WorkMedium,
-    year: row.year == null ? null : Number(row.year),
-    creator: textOrNull(row.creator),
-    summary: textOrNull(row.summary),
-    figureSlugs: row.figure_slugs as string[],
-    images: row.images as ArchiveImage[],
+    year: row.year,
+    creator: row.creator,
+    summary: row.summary,
+    figureSlugs: row.figure_slugs,
+    images: row.images as unknown as ArchiveImage[],
     status: row.status as Work["status"],
   }),
 });

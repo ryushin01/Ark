@@ -1,3 +1,4 @@
+export type { Json } from "./database.types";
 export {
   checkImageFile,
   IMAGE_BUCKET,
@@ -7,5 +8,10 @@ export {
   uploadImage,
 } from "./image-storage.server";
 export { pingDatabase } from "./keep-alive.server";
-export { createRepository, type Repository } from "./repository.server";
+export {
+  createRepository,
+  type Repository,
+  type TableName,
+  type TableRow,
+} from "./repository.server";
 export { getSupabase, isSupabaseEnabled } from "./supabase.server";

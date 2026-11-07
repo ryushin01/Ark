@@ -97,6 +97,49 @@ test("관리자는 신을 만들고, 공개 사이트에서 확인한 뒤 지울
   }).toPass();
 });
 
+test("로그인하면 원래 보려던 어드민 화면으로 돌아갑니다", async ({ page }) => {
+  await page.goto("/admin/works?saved=x");
+  await expect(page).toHaveURL(/\/admin\/login\?next=/);
+  await page.getByRole("button", { name: "데모 계정으로 둘러보기" }).click();
+  await expect(page).toHaveURL("/admin/works?saved=x");
+  await expect(page.getByRole("heading", { level: 1, name: "영향 작품" })).toBeVisible();
+});
+
+test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 있는 계열은 지울 수 없습니다", async ({
+  page,
+}) => {
+  await login(page, "admin");
+  await page.goto("/admin/pantheons/new");
+  await page.getByLabel(/^이름/).fill("켈트 신화");
+  await page.getByLabel(/^영문 이름/).fill("Celtic");
+  await page.getByLabel(/^주소 이름/).fill("celtic-e2e");
+  await page.getByLabel(/^지역/).fill("아일랜드·브리튼");
+  await page.getByLabel(/^가장 이른 문헌/).fill("「쿨리의 소 습격」");
+  await page.getByLabel(/^시기 표기/).fill("12세기");
+  await page.getByLabel(/^정렬용 연도/).fill("1100");
+  await page.getByRole("combobox", { name: /대표 자료/ }).click();
+  await page.getByRole("option", { name: "가네샤" }).click();
+  await page.getByLabel(/^한 줄 소개/).fill("영웅 쿠훌린의 이야기가 전하는 신화입니다.");
+  await page.getByLabel(/^소개/).fill("켈트 신화는 아일랜드의 중세 필사본으로 전합니다.");
+  await page.getByRole("button", { name: "만들기" }).click();
+  await expect(page).toHaveURL(/\/admin\/pantheons\?saved=celtic-e2e/);
+
+  await expect(async () => {
+    await page.goto("/");
+    await expect(page.locator("#pantheons ol > li")).toHaveCount(7, { timeout: 1000 });
+  }).toPass();
+
+  await page.goto("/admin/pantheons/celtic-e2e");
+  await page.getByRole("button", { name: "삭제" }).click();
+  await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
+  await expect(page).toHaveURL(/\/admin\/pantheons\?deleted=celtic-e2e/);
+
+  await page.goto("/admin/pantheons/greek");
+  await page.getByRole("button", { name: "삭제" }).click();
+  await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
+  await expect(page.getByRole("alert").filter({ hasText: "신 5명이 있어" })).toBeVisible();
+});
+
 test("자료가 연결된 신은 지울 수 없습니다", async ({ page }) => {
   await login(page, "admin");
   await page.goto("/admin/figures/odin");

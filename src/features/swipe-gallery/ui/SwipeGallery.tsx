@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-import { type ArchiveImage, formatCredit } from "@/shared/lib";
+import { CreditLine } from "@/shared/ui";
 
 import styles from "./SwipeGallery.module.css";
+
+import type { ArchiveImage } from "@/shared/lib";
 
 type SwipeGalleryProps = {
   /** 갤러리 이름. 화면 낭독기가 "○○ 이미지, 캐러셀"로 읽습니다. */
@@ -76,7 +78,7 @@ export function SwipeGallery({ label, images }: SwipeGalleryProps) {
                   />
                 </div>
                 <figcaption className={styles.credit}>
-                  <a href={image.credit.sourceUrl}>{formatCredit(image.credit)}</a>
+                  <CreditLine credit={image.credit} />
                 </figcaption>
               </figure>
             </li>
