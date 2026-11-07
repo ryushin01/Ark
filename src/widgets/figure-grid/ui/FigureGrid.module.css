@@ -32,7 +32,10 @@
     scale: 1.04;
 }
 
+/* 자리표시 위의 글자는 바탕색 띠를 깔아 명도 대비를 지킵니다. */
 .empty {
+    padding: 0.25em 0.6em;
+    background-color: var(--page-bg);
     font-size: var(--text-sm);
 }
 

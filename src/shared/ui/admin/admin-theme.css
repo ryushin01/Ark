@@ -1,0 +1,25 @@
+/* 공개 사이트의 전역 스타일(배경색, 글자 간격) 대신 Radix Themes 기본값을 씁니다. */
+.ark-admin {
+    --default-font-family: var(--font-pretendard), "Pretendard", system-ui, sans-serif;
+    min-height: 100dvh;
+    letter-spacing: normal;
+}
+
+body:has(.ark-admin) {
+    background-color: var(--color-background);
+    color: var(--gray-12);
+}
+
+/*
+ * 명도 대비 보정 (KWCAG 5.4.3, 4.5:1 이상)
+ * - Radix brown 9단계(#ad7f58) 위 흰 글자는 3.5:1이라, 진한 바탕(solid)은 11·12단계로 바꿉니다. (5.9:1)
+ * - Select 자리표시 글자(gray-a10, 3.9:1)는 gray-11로 진하게 합니다.
+ */
+.ark-admin {
+    --accent-9: var(--brown-11);
+    --accent-10: var(--brown-12);
+}
+
+.ark-admin .rt-SelectTrigger[data-placeholder] .rt-SelectTriggerInner {
+    color: var(--gray-11);
+}

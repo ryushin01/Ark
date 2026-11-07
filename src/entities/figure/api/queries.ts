@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 
-import { MOCK_FIGURES } from "./mock-data";
+import { figureTable } from "./table";
 
 import type { Figure } from "../model/types";
 
@@ -10,7 +10,7 @@ export async function getFigures(): Promise<Figure[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(FIGURE_TAG);
-  return [...MOCK_FIGURES];
+  return figureTable.list();
 }
 
 /** 한 계열에 속한 신·인물을 정해 둔 순서대로 돌려줍니다. */

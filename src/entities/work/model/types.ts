@@ -1,6 +1,13 @@
 import type { ArchiveImage } from "@/shared/lib";
 
-export type WorkMedium = "game" | "anime" | "novel" | "visual-novel";
+export const WORK_MEDIUMS = ["game", "anime", "novel", "visual-novel"] as const;
+
+export type WorkMedium = (typeof WORK_MEDIUMS)[number];
+
+export const WORK_STATUS_LABEL = {
+  draft: "비공개 (확인 중)",
+  published: "공개",
+} as const;
 
 export const WORK_MEDIUM_LABEL: Record<WorkMedium, string> = {
   game: "게임",

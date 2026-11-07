@@ -48,6 +48,20 @@ test.describe("데스크톱", () => {
   });
 });
 
+test.describe("어드민", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("대시보드와 편집", async ({ page }) => {
+    await page.goto("/admin/login");
+    await page.getByRole("button", { name: "데모 계정으로 둘러보기" }).click();
+    await page.getByRole("heading", { level: 1, name: "대시보드" }).waitFor();
+    await shoot(page, "admin-dashboard");
+    await page.goto("/admin/figures/odin");
+    await page.getByRole("heading", { level: 1 }).waitFor();
+    await shoot(page, "admin-figure");
+  });
+});
+
 test.describe("모바일", () => {
   test.use({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
 

@@ -1,0 +1,23 @@
+.header {
+    border-bottom: 1px solid var(--gray-a5);
+    background-color: var(--color-panel-solid);
+}
+
+.main:focus {
+    outline: none;
+}
+
+.skipLink {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background-color: var(--gray-12);
+    color: var(--gray-1);
+    transform: translateY(-200%);
+}
+
+.skipLink:focus {
+    transform: none;
+}

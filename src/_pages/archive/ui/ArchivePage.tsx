@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getFigures } from "@/entities/figure";
-import { getPublishedWorks, WORK_MEDIUM_LABEL } from "@/entities/work";
+import { getFigures } from "@/entities/figure/index.server";
+import { WORK_MEDIUM_LABEL } from "@/entities/work";
+import { getPublishedWorks } from "@/entities/work/index.server";
 import { SwipeGallery } from "@/features/swipe-gallery";
 import { features } from "@/shared/config";
 import { Divider, RevealText } from "@/shared/ui";

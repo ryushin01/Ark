@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 
-import { MOCK_PANTHEONS } from "./mock-data";
+import { pantheonTable } from "./table";
 
 import type { Pantheon } from "../model/types";
 
@@ -11,7 +11,7 @@ export async function getPantheons(): Promise<Pantheon[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(PANTHEON_TAG);
-  return [...MOCK_PANTHEONS].sort((a, b) => a.eraYear - b.eraYear);
+  return pantheonTable.list().sort((a, b) => a.eraYear - b.eraYear);
 }
 
 export async function getPantheon(slug: string): Promise<Pantheon | null> {

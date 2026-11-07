@@ -23,8 +23,14 @@ const layerRules = LAYERS.map((layer, index) => ({
             message: `${layer} 계층은 위 계층(${upper})을 가져올 수 없습니다.`,
           })),
           {
-            group: ["@/_pages/*/**", "@/widgets/*/**", "@/features/*/**", "@/entities/*/**"],
-            message: "슬라이스는 공개 API(index.ts)로만 가져옵니다.",
+            group: [
+              "@/_pages/*/**",
+              "@/widgets/*/**",
+              "@/features/*/**",
+              "@/entities/*/**",
+              "!@/*/*/index.server",
+            ],
+            message: "슬라이스는 공개 API(index.ts, 서버 전용은 index.server.ts)로만 가져옵니다.",
           },
         ],
       },

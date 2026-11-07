@@ -19,7 +19,18 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] }, testIgnore: /screenshots/ },
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+      testIgnore: [/screenshots/, /admin\.spec/],
+    },
+    // 어드민은 메모리 저장소의 데이터를 바꾸므로, 공개 사이트 검사가 끝난 뒤 따로 실행합니다.
+    {
+      name: "admin",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: /admin\.spec/,
+      dependencies: ["chromium"],
+    },
     // README 스크린샷 촬영 (pnpm screenshots). 검사가 아니라서 평소 E2E에는 넣지 않습니다.
     {
       name: "screenshots",
@@ -29,6 +40,8 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm exec next start -p ${PORT}`,
+    // E2E 전용 관리자 비밀번호와 세션 키 (실제 배포 값과 무관)
+    env: { ADMIN_PASSWORD: "e2e-password", ADMIN_SESSION_SECRET: "e2e-session-secret" },
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,

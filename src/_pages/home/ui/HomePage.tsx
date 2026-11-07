@@ -1,6 +1,6 @@
-import { type Exhibit, getExhibits } from "@/entities/exhibit";
-import { getFigures } from "@/entities/figure";
-import { getPantheons } from "@/entities/pantheon";
+import { getExhibits } from "@/entities/exhibit/index.server";
+import { getFigures } from "@/entities/figure/index.server";
+import { getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { FigureIndex, type FigureIndexGroup } from "@/widgets/figure-index";
 import { HomeHero } from "@/widgets/home-hero";
@@ -8,6 +8,8 @@ import { PantheonTimeline, type TimelineItem } from "@/widgets/pantheon-timeline
 import { SiteFooter } from "@/widgets/site-footer";
 
 import styles from "./HomePage.module.css";
+
+import type { Exhibit } from "@/entities/exhibit";
 
 /** 첫 화면 이미지. 저작자 표기가 필요 없는 퍼블릭 도메인·CC0 자료만 씁니다. */
 const HERO_EXHIBIT_IDS = [

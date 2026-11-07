@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getExhibits } from "@/entities/exhibit";
-import { getFiguresByPantheon } from "@/entities/figure";
-import { getPantheon, getPantheons } from "@/entities/pantheon";
+import { getExhibits } from "@/entities/exhibit/index.server";
+import { getFiguresByPantheon } from "@/entities/figure/index.server";
+import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";

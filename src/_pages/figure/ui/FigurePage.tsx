@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getExhibits } from "@/entities/exhibit";
-import { getFigure, getFigures } from "@/entities/figure";
-import { getPantheon } from "@/entities/pantheon";
-import { getWorksByFigure, WORK_MEDIUM_LABEL } from "@/entities/work";
+import { getExhibits } from "@/entities/exhibit/index.server";
+import { getFigure, getFigures } from "@/entities/figure/index.server";
+import { getPantheon } from "@/entities/pantheon/index.server";
+import { WORK_MEDIUM_LABEL } from "@/entities/work";
+import { getWorksByFigure } from "@/entities/work/index.server";
 import { features } from "@/shared/config";
 import { Divider, RevealText } from "@/shared/ui";
 import { ExhibitGallery } from "@/widgets/exhibit-gallery";

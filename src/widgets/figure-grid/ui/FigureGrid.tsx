@@ -31,7 +31,10 @@ export function FigureGrid({ figures }: { figures: FigureCard[] }) {
                   className={styles.image}
                 />
               ) : (
-                <span className={styles.empty}>자료 준비 중</span>
+                // "자료 0점"과 같은 내용이라 화면 낭독기에는 숨깁니다. (링크 이름이 신 이름으로 시작하게)
+                <span className={styles.empty} aria-hidden="true">
+                  자료 준비 중
+                </span>
               )}
             </span>
             <span className={styles.name}>{figure.name}</span>

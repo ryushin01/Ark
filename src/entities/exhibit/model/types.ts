@@ -1,7 +1,15 @@
 import type { ArchiveImage } from "@/shared/lib";
 
-export type ExhibitKind =
-  "sculpture" | "painting" | "print" | "relief" | "manuscript" | "photograph";
+export const EXHIBIT_KINDS = [
+  "sculpture",
+  "painting",
+  "print",
+  "relief",
+  "manuscript",
+  "photograph",
+] as const;
+
+export type ExhibitKind = (typeof EXHIBIT_KINDS)[number];
 
 export const EXHIBIT_KIND_LABEL: Record<ExhibitKind, string> = {
   sculpture: "조각",

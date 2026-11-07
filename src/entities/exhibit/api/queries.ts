@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 
-import { MOCK_EXHIBITS } from "./mock-data";
+import { exhibitTable } from "./table";
 
 import type { Exhibit } from "../model/types";
 
@@ -10,7 +10,7 @@ export async function getExhibits(): Promise<Exhibit[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(EXHIBIT_TAG);
-  return [...MOCK_EXHIBITS];
+  return exhibitTable.list();
 }
 
 export async function getExhibitsByFigure(figureSlug: string): Promise<Exhibit[]> {
