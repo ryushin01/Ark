@@ -1,0 +1,62 @@
+.grid {
+    display: grid;
+    gap: 3rem var(--grid-gap);
+}
+
+.card {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    background-color: var(--image-placeholder);
+}
+
+.image {
+    object-fit: cover;
+    filter: grayscale(1);
+    transition:
+        filter 0.7s var(--ease-magic),
+        scale 1.2s var(--ease-magic);
+}
+
+.card:hover .image,
+.card:focus-visible .image {
+    filter: none;
+    scale: 1.04;
+}
+
+.empty {
+    font-size: var(--text-sm);
+}
+
+.name {
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.card:hover .name,
+.card:focus-visible .name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+}
+
+.meta,
+.count {
+    font-size: var(--text-sm);
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

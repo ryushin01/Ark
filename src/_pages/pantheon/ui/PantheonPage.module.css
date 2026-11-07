@@ -1,0 +1,137 @@
+.header {
+    padding-block: calc(var(--header-height) + 4rem) 4rem;
+}
+
+.titleCol {
+    grid-column: 1 / -1;
+}
+
+.eyebrow {
+    margin-bottom: 1rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.title {
+    font-size: 3.75rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.era {
+    grid-column: 1 / -1;
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.cover {
+    height: 80svh;
+    margin-bottom: 1.5rem;
+}
+
+.about {
+    padding-block: 2rem 8rem;
+    row-gap: 2.5rem;
+}
+
+.summary {
+    grid-column: 1 / -1;
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.description {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 1rem;
+    line-height: 1.35;
+}
+
+.source {
+    font-size: var(--text-sm);
+}
+
+.figures {
+    padding-bottom: 8rem;
+}
+
+.sectionTitle {
+    margin-block: 1.5rem 4rem;
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.next {
+    padding-bottom: 4rem;
+}
+
+.nextLink {
+    display: grid;
+    gap: 1rem;
+    padding-top: 1.5rem;
+}
+
+.nextLabel {
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.nextName {
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    transition: translate 0.7s var(--ease-magic);
+}
+
+.nextLink:hover .nextName,
+.nextLink:focus-visible .nextName {
+    translate: 1rem 0;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .titleCol {
+        grid-column: 1 / span 8;
+    }
+
+    .title {
+        font-size: 6rem;
+    }
+
+    .era {
+        grid-column: 9 / span 4;
+        align-self: end;
+        justify-self: end;
+        font-size: var(--text-display);
+    }
+
+    .summary {
+        grid-column: 1 / span 6;
+        font-size: 2rem;
+    }
+
+    .description {
+        grid-column: 10 / span 3;
+    }
+
+    .sectionTitle,
+    .nextName {
+        font-size: var(--text-display);
+    }
+}

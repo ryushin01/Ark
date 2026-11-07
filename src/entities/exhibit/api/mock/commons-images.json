@@ -1,0 +1,227 @@
+{
+  "zeus-otricoli": {
+    "src": "/images/exhibits/zeus-otricoli.jpg",
+    "width": 1051,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zeus_Otricoli_Pio-Clementino_Inv257.jpg"
+  },
+  "athena-giustiniani": {
+    "src": "/images/exhibits/athena-giustiniani.jpg",
+    "width": 1006,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Athena_Giustiniani_-_Braccio_Nuovo,_Museo_Chiaramonti_-_Vatican_Museums_-_DSC00910.jpg"
+  },
+  "apollo-belvedere": {
+    "src": "/images/exhibits/apollo-belvedere.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "artist": "Marie-Lan Nguyen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Belvedere_Apollo_Pio-Clementino_Inv1015_n3.jpg"
+  },
+  "venus-de-milo": {
+    "src": "/images/exhibits/venus-de-milo.jpg",
+    "width": 953,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Venus_de_Milo_Louvre_Ma399_n4.jpg"
+  },
+  "artemision-bronze": {
+    "src": "/images/exhibits/artemision-bronze.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd from Xinzheng, China",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ancient_Greece_Bronze_statue_of_Zeus_or_Poseidon;_from_the_sea_near_Cape_Artemision,_Northern_Euboea;_c._460_BC.jpg"
+  },
+  "odin-wanderer": {
+    "src": "/images/exhibits/odin-wanderer.jpg",
+    "width": 500,
+    "height": 733,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Georg von Rosen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Georg_von_Rosen_-_Oden_som_vandringsman,_1886_(Odin,_the_Wanderer).jpg"
+  },
+  "odin-sleipnir": {
+    "src": "/images/exhibits/odin-sleipnir.jpg",
+    "width": 686,
+    "height": 934,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Lorenz Frølich",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Odin_holding_Gungnir_atop_Sleipnir_by_Fr%C3%B8lich.jpg"
+  },
+  "fenrir-odin": {
+    "src": "/images/exhibits/fenrir-odin.jpg",
+    "width": 1048,
+    "height": 627,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Lorenz Frølich",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fenrir_and_Odin_by_Fr%C3%B8lich.jpg"
+  },
+  "thor-jotnar": {
+    "src": "/images/exhibits/thor-jotnar.jpg",
+    "width": 1081,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Mårten Eskil Winge",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thor%27s_Battle_Against_the_J%C3%B6tnar_(1872)_by_M%C3%A5rten_Eskil_Winge.jpg"
+  },
+  "freyja-brisingamen": {
+    "src": "/images/exhibits/freyja-brisingamen.jpg",
+    "width": 1176,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Nils Jakob Blommér",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nils_Jakob_Blomm%C3%A9r_-_Heimdall_returns_Brisingamen_to_Freyja_-_Google_Art_Project.jpg"
+  },
+  "osiris-bronze": {
+    "src": "/images/exhibits/osiris-bronze.jpg",
+    "width": 1102,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osiris_statuette,_bronze_-_Museo_Egizio,_Turin_S_17631_p01.jpg"
+  },
+  "isis-horus": {
+    "src": "/images/exhibits/isis-horus.jpg",
+    "width": 866,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Isis_nursing_Horus_MET_17.190.1641_front.jpg"
+  },
+  "anubis-shrine": {
+    "src": "/images/exhibits/anubis-shrine.jpg",
+    "width": 1180,
+    "height": 1466,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Harry Burton",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anubis-shrine_(cropped).jpg"
+  },
+  "weighing-heart": {
+    "src": "/images/exhibits/weighing-heart.jpg",
+    "width": 1280,
+    "height": 659,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Photographed by the British Museum; original artist unknown",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BD_Weighing_of_the_Heart.jpg"
+  },
+  "hero-lion": {
+    "src": "/images/exhibits/hero-lion.jpg",
+    "width": 686,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hero_lion_Dur-Sharrukin_Louvre_AO19862.jpg"
+  },
+  "queen-of-night": {
+    "src": "/images/exhibits/queen-of-night.jpg",
+    "width": 1203,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:British_Museum_Queen_of_the_Night.jpg"
+  },
+  "ishtar-gate-lion": {
+    "src": "/images/exhibits/ishtar-gate-lion.jpg",
+    "width": 1280,
+    "height": 854,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Marie-Lan Nguyen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lion_Ishtar_gate_IAM_inv88.143.jpg"
+  },
+  "marduk-seal": {
+    "src": "/images/exhibits/marduk-seal.jpg",
+    "width": 778,
+    "height": 1274,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Franz Heinrich Weißbach",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marduk_and_pet.jpg"
+  },
+  "shiva-nataraja": {
+    "src": "/images/exhibits/shiva-nataraja.jpg",
+    "width": 1140,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shiva_Nataraja,_AK-MAK-187.jpg"
+  },
+  "ganesha-rijks": {
+    "src": "/images/exhibits/ganesha-rijks.jpg",
+    "width": 1132,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ganesha,_AK-MAK-237.jpg"
+  },
+  "vishnu-anantashayana": {
+    "src": "/images/exhibits/vishnu-anantashayana.jpg",
+    "width": 1280,
+    "height": 1189,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Rainer Halama",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mattancherry_Palace-16-17th_Century_mural_paintings-Vishnu_Anantashayana-WUS09329.jpg"
+  },
+  "amaterasu-iwato": {
+    "src": "/images/exhibits/amaterasu-iwato.jpg",
+    "width": 1280,
+    "height": 611,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Toyokuni III",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Origin_of_Iwato_Kagura_Dance_Amaterasu_by_Toyokuni_III_(Kunisada)_1856.png"
+  },
+  "susanoo-orochi": {
+    "src": "/images/exhibits/susanoo-orochi.jpg",
+    "width": 1280,
+    "height": 633,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Yoshitoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Susanoo-no-Mikoto-slays-Yamata-no-Orochi-in-Izumo-By-Tsukioka-Yoshitoshi_repaired.png"
+  },
+  "izanagi-izanami": {
+    "src": "/images/exhibits/izanagi-izanami.jpg",
+    "width": 1280,
+    "height": 847,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kobayashi Eitaku",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kobayashi_Eitaku_-_Izanami_and_Izanagi_creating_the_Japanese_Islands_alternate_version_HD.jpg"
+  },
+  "raijin-hokusai": {
+    "src": "/images/exhibits/raijin-hokusai.jpg",
+    "width": 590,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Katsushika Hokusai",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Katsushika_Hokusai_-_Thunder_God_-_Google_Art_Project.jpg"
+  }
+}

@@ -1,0 +1,20 @@
+/* 본문 바로가기 (KWCAG 6.4.1). 키보드 초점을 받으면 화면 위쪽에 나타납니다. */
+.skipLink {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background-color: var(--black);
+    color: var(--off-white);
+    font-weight: 500;
+    transform: translateY(-200%);
+}
+
+.skipLink:focus {
+    transform: none;
+}
+
+.main:focus {
+    outline: none;
+}

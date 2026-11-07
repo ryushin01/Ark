@@ -1,0 +1,47 @@
+.root {
+    margin: 0;
+}
+
+.mask {
+    display: inline-block;
+    overflow: hidden;
+    /* 받침·영문 디센더가 잘리지 않게 아래로 여유를 둡니다. */
+    padding-block-end: 0.08em;
+    margin-block-end: -0.08em;
+    vertical-align: top;
+}
+
+.word {
+    display: inline-block;
+}
+
+.inView .word {
+    transition: transform 1.6s var(--ease-out-expo);
+    transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+.inView.block {
+    transition:
+        opacity 1.4s var(--ease-magic),
+        translate 1.4s var(--ease-magic);
+}
+
+:global(html.js) .words:not(.inView) .word {
+    transform: translateY(110%);
+}
+
+:global(html.js) .block:not(.inView) {
+    opacity: 0;
+    translate: 0 1em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :global(html.js) .words:not(.inView) .word {
+        transform: none;
+    }
+
+    :global(html.js) .block:not(.inView) {
+        opacity: 1;
+        translate: none;
+    }
+}

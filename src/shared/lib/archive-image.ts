@@ -1,0 +1,23 @@
+/** 자료 이미지의 출처 정보. 퍼블릭 도메인이 아니면 저작자와 라이선스를 반드시 표기합니다. */
+export type ImageCredit = {
+  artist: string | null;
+  license: string;
+  licenseUrl: string | null;
+  sourceUrl: string;
+};
+
+/** 화면에 보여 줄 이미지 한 장 */
+export type ArchiveImage = {
+  src: string;
+  width: number;
+  height: number;
+  /** 이미지가 무엇을 보여 주는지 설명하는 대체 텍스트 */
+  alt: string;
+  credit: ImageCredit;
+};
+
+/** 출처 표기 문구. 예) "Marie-Lan Nguyen · CC BY 2.5" */
+export function formatCredit({ artist, license }: ImageCredit) {
+  const isUnknown = !artist || /^unknown/i.test(artist);
+  return isUnknown ? license : `${artist} · ${license}`;
+}

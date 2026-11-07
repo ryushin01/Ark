@@ -1,0 +1,138 @@
+.section {
+    position: relative;
+    padding-block: 6rem;
+}
+
+.title {
+    margin-bottom: 4rem;
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.groups {
+    display: grid;
+    gap: 3rem;
+}
+
+.groupTitle {
+    padding-bottom: 0.75rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.groupTitle a:hover {
+    text-decoration: underline;
+}
+
+.list {
+    border-top: 1px solid currentColor;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    padding-block: 0.75rem 1rem;
+    border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+    transition:
+        opacity 0.5s var(--ease-magic),
+        padding 0.5s var(--ease-magic);
+}
+
+.name {
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.nameEn {
+    font-size: var(--text-sm);
+}
+
+.epithet {
+    grid-column: 1 / -1;
+    font-size: var(--text-sm);
+}
+
+/* 한 줄에 마우스를 올리면 나머지 줄은 흐려집니다. */
+@media (hover: hover) {
+    .list:has(.row:hover) .row:not(:hover) {
+        opacity: 0.6;
+    }
+
+    .row:hover {
+        padding-inline-start: 1rem;
+    }
+}
+
+.row:focus-visible {
+    padding-inline-start: 1rem;
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    pointer-events: none;
+    display: none;
+}
+
+@media (hover: hover) and (min-width: 768px) {
+    .preview {
+        display: block;
+    }
+}
+
+.previewFrame {
+    position: relative;
+    width: 15rem;
+    overflow: hidden;
+    translate: 1.5rem -50%;
+    animation: preview-in 0.6s var(--ease-quart) both;
+}
+
+.previewImage {
+    object-fit: cover;
+    filter: grayscale(1);
+}
+
+@keyframes preview-in {
+    from {
+        clip-path: inset(100% 0 0 0);
+    }
+    to {
+        clip-path: inset(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: var(--text-display);
+        margin-bottom: 6rem;
+    }
+
+    .groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4rem var(--grid-gap);
+    }
+
+    .row {
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 1.5rem;
+    }
+
+    .epithet {
+        grid-column: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .previewFrame {
+        animation: none;
+    }
+}

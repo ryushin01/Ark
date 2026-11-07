@@ -1,0 +1,91 @@
+.list {
+    display: grid;
+    gap: 6rem;
+}
+
+.item {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.body {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+}
+
+.number {
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.facts {
+    display: grid;
+    border-top: 1px solid currentColor;
+    font-size: var(--text-sm);
+}
+
+.facts > div {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+    padding-block: 0.5rem;
+    border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+}
+
+.facts dt {
+    font-weight: 500;
+}
+
+.note {
+    line-height: 1.4;
+}
+
+.empty {
+    font-size: var(--text-lg);
+}
+
+@media (min-width: 768px) {
+    .item {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: var(--grid-gap);
+        align-items: end;
+    }
+
+    .image {
+        grid-column: 1 / span 7;
+    }
+
+    .body {
+        grid-column: 9 / span 4;
+    }
+
+    .item[data-side="right"] .image {
+        grid-column: 6 / span 7;
+        grid-row: 1;
+    }
+
+    .item[data-side="right"] .body {
+        grid-column: 1 / span 4;
+        grid-row: 1;
+    }
+}
+
+/* 세로로 아주 긴 족자 같은 자료도 한 화면 안에 들어오게 합니다. */
+.image {
+    width: fit-content;
+    max-width: 100%;
+}
+
+.image :global(img) {
+    width: auto;
+    max-width: 100%;
+    max-height: 85svh;
+}

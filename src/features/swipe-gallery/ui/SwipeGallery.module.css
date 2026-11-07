@@ -1,0 +1,88 @@
+.gallery {
+    display: grid;
+    gap: 1rem;
+}
+
+.track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
+
+.figure {
+    position: relative;
+}
+
+.media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background-color: var(--image-placeholder);
+}
+
+.image {
+    object-fit: contain;
+}
+
+.credit {
+    margin-top: 0.5rem;
+    font-size: var(--text-sm);
+}
+
+.credit a:hover {
+    text-decoration: underline;
+}
+
+.placeholder {
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+    aspect-ratio: 16 / 10;
+    padding: 1rem;
+    border: 1px dashed currentColor;
+    text-align: center;
+    font-size: var(--text-2xl);
+    font-weight: 500;
+}
+
+.placeholderNote {
+    font-size: var(--text-sm);
+    font-weight: 400;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.button {
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.counter {
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
