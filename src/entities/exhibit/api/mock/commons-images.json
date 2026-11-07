@@ -374,7 +374,7 @@
     "height": 1600,
     "license": "Public domain",
     "licenseUrl": null,
-    "artist": "anonymous",
+    "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anonymous-Fuxi_and_N%C3%BCwa.jpg"
   },
   "xiwangmu-kano": {
@@ -392,7 +392,7 @@
     "height": 1600,
     "license": "Public domain",
     "licenseUrl": null,
-    "artist": "Unknown artist, after Tang Yin",
+    "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Moon_Goddess_Chang_E_-_Unidentified_artist,_after_Tang_Yin.jpg"
   },
   "cernunnos-gundestrup": {
@@ -446,7 +446,7 @@
     "height": 1280,
     "license": "Public domain",
     "licenseUrl": null,
-    "artist": "Unknown author",
+    "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Codex_Borgia_page_17.jpg"
   },
   "huitzilopochtli-wdl": {
@@ -464,7 +464,223 @@
     "height": 601,
     "license": "Public domain",
     "licenseUrl": null,
-    "artist": "Unknown author",
+    "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tlaloc_Codex_Borgia.jpg"
+  },
+  "dangun-portrait": {
+    "src": "/images/exhibits/dangun-portrait.jpg",
+    "width": 887,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Chae Yong-sin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Dangun.jpg"
+  },
+  "bari-lacma": {
+    "src": "/images/exhibits/bari-lacma.jpg",
+    "width": 1178,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spirit_of_a_Noble_Woman_(Probably_Princess_Pari)_and_Attendant_LACMA_M.2000.15.11.jpg"
+  },
+  "sansin-honolulu": {
+    "src": "/images/exhibits/sansin-honolulu.jpg",
+    "width": 1111,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mountain_Spirit_Seated_on_Tiger,_Joseon_dynasty,_Honolulu_Museum_of_Art.jpg"
+  },
+  "jeseok-yongsan": {
+    "src": "/images/exhibits/jeseok-yongsan.jpg",
+    "width": 456,
+    "height": 735,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Painting_of_Jeseok_at_Yongsan-gu_Nam_I_shrine.jpg"
+  },
+  "vainamoinen-boat": {
+    "src": "/images/exhibits/vainamoinen-boat.jpg",
+    "width": 1148,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_The_Departure_of_V%C3%A4in%C3%A4m%C3%B6inen_-_A_III_2145_-_Finnish_National_Gallery.jpg"
+  },
+  "ilmarinen-sampo": {
+    "src": "/images/exhibits/ilmarinen-sampo.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Sammon_taonta_-_A_I_513_-_Finnish_National_Gallery.jpg"
+  },
+  "louhi-sampo": {
+    "src": "/images/exhibits/louhi-sampo.jpg",
+    "width": 1280,
+    "height": 1259,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sammon_puolustus.jpg"
+  },
+  "lemminkainen-mother": {
+    "src": "/images/exhibits/lemminkainen-mother.jpg",
+    "width": 1280,
+    "height": 1007,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Lemmink%C3%A4inen%27s_Mother_-_Google_Art_Project.jpg"
+  },
+  "itzamna-dresden": {
+    "src": "/images/exhibits/itzamna-dresden.jpg",
+    "width": 1280,
+    "height": 489,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Lacambalam",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Codex_dresdensis_lacambalam_itzamn%C3%A1.jpg"
+  },
+  "chaac-dresden": {
+    "src": "/images/exhibits/chaac-dresden.jpg",
+    "width": 599,
+    "height": 803,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Un scribe maya précolombien non identifié avant 1500.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_dieu_Chaac,_image_12_du_codex_de_Dresde.jpg"
+  },
+  "kukulkan-castillo": {
+    "src": "/images/exhibits/kukulkan-castillo.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "Arian Zwegers from Brussels, Belgium",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chichen_Itza,_El_Castillo_(14180679857).jpg"
+  },
+  "maize-god-copan": {
+    "src": "/images/exhibits/maize-god-copan.jpg",
+    "width": 901,
+    "height": 1600,
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "BabelStone",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maya_maize_god_statue.jpg"
+  },
+  "dionysus-caravaggio": {
+    "src": "/images/exhibits/dionysus-caravaggio.jpg",
+    "width": 1280,
+    "height": 1456,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Caravaggio",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bacchus_(by_Michelangelo_Merisi_da_Caravaggio)_%E2%80%93_Galleria_degli_Uffizi,_Florence.jpg"
+  },
+  "hephaestus-velazquez": {
+    "src": "/images/exhibits/hephaestus-velazquez.jpg",
+    "width": 1280,
+    "height": 994,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Diego Velázquez",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_La_Fragua_de_Vulcano_(Museo_del_Prado,_1630).jpg"
+  },
+  "heracles-farnese": {
+    "src": "/images/exhibits/heracles-farnese.jpg",
+    "width": 1159,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giorgio_Sommer_(Italian,_1834-1914)_-_Farnese_Hercules,_Museum_of_Naples,_Italy_-_2018.436_-_Cleveland_Museum_of_Art.jpg"
+  },
+  "medusa-caravaggio": {
+    "src": "/images/exhibits/medusa-caravaggio.jpg",
+    "width": 1280,
+    "height": 1312,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Caravaggio",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Medusa_-_Google_Art_Project.jpg"
+  },
+  "set-ramesses": {
+    "src": "/images/exhibits/set-ramesses.jpg",
+    "width": 1280,
+    "height": 1190,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "A. Parrot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Horus_and_Seth_crowning_Ramesses_III,_detail_of_Seth.JPG"
+  },
+  "hathor-capital": {
+    "src": "/images/exhibits/hathor-capital.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Rama",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Capital_depicting_Hathor-MAHG_027868-P6130434-white.jpg"
+  },
+  "bastet-met": {
+    "src": "/images/exhibits/bastet-met.jpg",
+    "width": 1069,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bastet_MET_DP310891.jpg"
+  },
+  "lakshmi-varma": {
+    "src": "/images/exhibits/lakshmi-varma.jpg",
+    "width": 1057,
+    "height": 1496,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma,_Goddess_Lakshmi,_1896.jpg"
+  },
+  "hanuman-cleveland": {
+    "src": "/images/exhibits/hanuman-cleveland.jpg",
+    "width": 1147,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clevelandart_1980.26.jpg"
+  },
+  "durga-dallas": {
+    "src": "/images/exhibits/durga-dallas.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Durga_Mahishasuramardini_slaying_the_Buffalo_Demon,_Bengal,_India,_or_Bangladesh,_Pala_dynasty,_1100s_AD,_phyllite_-_Dallas_Museum_of_Art_-_DSC05056.jpg"
+  },
+  "frigg-doepler": {
+    "src": "/images/exhibits/frigg-doepler.jpg",
+    "width": 835,
+    "height": 1006,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Carl Emil Doepler",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frigg_by_Doepler.jpg"
+  },
+  "tyr-bauer": {
+    "src": "/images/exhibits/tyr-bauer.jpg",
+    "width": 733,
+    "height": 855,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Bauer",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tyr_and_Fenrir-John_Bauer.jpg"
   }
 }
