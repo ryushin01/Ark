@@ -1,11 +1,20 @@
 [
-  { "id": "zeus-otricoli", "file": "Zeus Otricoli Pio-Clementino Inv257.jpg" },
+  {
+    "id": "zeus-otricoli",
+    "file": "Zeus Otricoli Pio-Clementino Inv257.jpg"
+  },
   {
     "id": "athena-giustiniani",
     "file": "Athena Giustiniani - Braccio Nuovo, Museo Chiaramonti - Vatican Museums - DSC00910.jpg"
   },
-  { "id": "apollo-belvedere", "file": "Belvedere Apollo Pio-Clementino Inv1015 n3.jpg" },
-  { "id": "venus-de-milo", "file": "Venus de Milo Louvre Ma399 n4.jpg" },
+  {
+    "id": "apollo-belvedere",
+    "file": "Belvedere Apollo Pio-Clementino Inv1015 n3.jpg"
+  },
+  {
+    "id": "venus-de-milo",
+    "file": "Venus de Milo Louvre Ma399 n4.jpg"
+  },
   {
     "id": "artemision-bronze",
     "file": "Ancient Greece Bronze statue of Zeus or Poseidon; from the sea near Cape Artemision, Northern Euboea; c. 460 BC.jpg"
@@ -14,8 +23,14 @@
     "id": "odin-wanderer",
     "file": "Georg von Rosen - Oden som vandringsman, 1886 (Odin, the Wanderer).jpg"
   },
-  { "id": "odin-sleipnir", "file": "Odin holding Gungnir atop Sleipnir by Frølich.jpg" },
-  { "id": "fenrir-odin", "file": "Fenrir and Odin by Frølich.jpg" },
+  {
+    "id": "odin-sleipnir",
+    "file": "Odin holding Gungnir atop Sleipnir by Frølich.jpg"
+  },
+  {
+    "id": "fenrir-odin",
+    "file": "Fenrir and Odin by Frølich.jpg"
+  },
   {
     "id": "thor-jotnar",
     "file": "Thor's Battle Against the Jötnar (1872) by Mårten Eskil Winge.jpg"
@@ -28,15 +43,42 @@
     "id": "osiris-bronze",
     "file": "Osiris statuette, bronze - Museo Egizio, Turin S 17631 p01.jpg"
   },
-  { "id": "isis-horus", "file": "Isis nursing Horus MET 17.190.1641 front.jpg" },
-  { "id": "anubis-shrine", "file": "Anubis-shrine (cropped).jpg" },
-  { "id": "weighing-heart", "file": "BD Weighing of the Heart.jpg" },
-  { "id": "hero-lion", "file": "Hero lion Dur-Sharrukin Louvre AO19862.jpg" },
-  { "id": "queen-of-night", "file": "British Museum Queen of the Night.jpg" },
-  { "id": "ishtar-gate-lion", "file": "Lion Ishtar gate IAM inv88.143.jpg" },
-  { "id": "marduk-seal", "file": "Marduk and pet.jpg" },
-  { "id": "shiva-nataraja", "file": "Shiva Nataraja, AK-MAK-187.jpg" },
-  { "id": "ganesha-rijks", "file": "Ganesha, AK-MAK-237.jpg" },
+  {
+    "id": "isis-horus",
+    "file": "Isis nursing Horus MET 17.190.1641 front.jpg"
+  },
+  {
+    "id": "anubis-shrine",
+    "file": "Anubis-shrine (cropped).jpg"
+  },
+  {
+    "id": "weighing-heart",
+    "file": "BD Weighing of the Heart.jpg"
+  },
+  {
+    "id": "hero-lion",
+    "file": "Hero lion Dur-Sharrukin Louvre AO19862.jpg"
+  },
+  {
+    "id": "queen-of-night",
+    "file": "British Museum Queen of the Night.jpg"
+  },
+  {
+    "id": "ishtar-gate-lion",
+    "file": "Lion Ishtar gate IAM inv88.143.jpg"
+  },
+  {
+    "id": "marduk-seal",
+    "file": "Marduk and pet.jpg"
+  },
+  {
+    "id": "shiva-nataraja",
+    "file": "Shiva Nataraja, AK-MAK-187.jpg"
+  },
+  {
+    "id": "ganesha-rijks",
+    "file": "Ganesha, AK-MAK-237.jpg"
+  },
   {
     "id": "vishnu-anantashayana",
     "file": "Mattancherry Palace-16-17th Century mural paintings-Vishnu Anantashayana-WUS09329.jpg"
@@ -53,5 +95,116 @@
     "id": "izanagi-izanami",
     "file": "Kobayashi Eitaku - Izanami and Izanagi creating the Japanese Islands alternate version HD.jpg"
   },
-  { "id": "raijin-hokusai", "file": "Katsushika Hokusai - Thunder God - Google Art Project.jpg" }
+  {
+    "id": "raijin-hokusai",
+    "file": "Katsushika Hokusai - Thunder God - Google Art Project.jpg"
+  },
+  {
+    "id": "hera-barberini",
+    "file": "Hera Barberini Chiaramonti Inv1210.jpg"
+  },
+  {
+    "id": "artemis-versailles",
+    "file": "Diane de Versailles - Musée du Louvre AGER Ma 589.jpg"
+  },
+  {
+    "id": "hermes-ingenui",
+    "file": "Hermes Ingenui Pio-Clementino Inv544.jpg"
+  },
+  {
+    "id": "hades-locri-pinax",
+    "file": "Pinax with Persephone and Hades Enthroned, 500-450 BC, Greek, Locri Epizephirii, Mannella district, Sanctuary of Persephone, terracotta - Cleveland Museum of Art - DSC08242.JPG"
+  },
+  {
+    "id": "baldr-eckersberg",
+    "file": "Baldr dead by Eckersberg.jpg"
+  },
+  {
+    "id": "heimdall-doepler",
+    "file": "Heimdall an der Himmelsbrücke.jpg"
+  },
+  {
+    "id": "ra-horakhty-stela",
+    "file": "Re-Horakhty Stela.jpg"
+  },
+  {
+    "id": "horus-edfu",
+    "file": "Temple of Edfu, Statue of Horus, Egypt.jpg"
+  },
+  {
+    "id": "thoth-ibis",
+    "file": "Ibis couché, le dieu Thot (Louvre, E 17380).jpg"
+  },
+  {
+    "id": "enki-adda-seal",
+    "file": "Ea (Babilonian) - EnKi (Sumerian).jpg"
+  },
+  {
+    "id": "tiamat-nimrud",
+    "file": "Chaos Monster and Sun God.png"
+  },
+  {
+    "id": "brahma-rijks",
+    "file": "Brahma en Shiva Brahma, AK-MAK-249.jpg"
+  },
+  {
+    "id": "krishna-govardhan",
+    "file": "Krishna Holds Up Mount Govardhan to Shelter the Villagers of Braj, ca.1590–95, The Met.jpg"
+  },
+  {
+    "id": "fujin-sotatsu",
+    "file": "Tawaraya Sōtatsu - The Gods of Wind and Thunder (right screen).jpg"
+  },
+  {
+    "id": "inari-foxfires",
+    "file": "Hiroshige, New Year's Eve foxfires at the changing tree, Oji, 1857.jpg"
+  },
+  {
+    "id": "pangu",
+    "file": "Pangu.jpg"
+  },
+  {
+    "id": "fuxi-nuwa",
+    "file": "Anonymous-Fuxi and Nüwa.jpg"
+  },
+  {
+    "id": "xiwangmu-kano",
+    "file": "西王母図-Queen Mother of the West MET DP333861.jpg"
+  },
+  {
+    "id": "change-moon",
+    "file": "The Moon Goddess Chang E - Unidentified artist, after Tang Yin.jpg"
+  },
+  {
+    "id": "cernunnos-gundestrup",
+    "file": "Gundestrupkedlen- 00054 (cropped).jpg"
+  },
+  {
+    "id": "cuchulainn-leyendecker",
+    "file": "Cuchulain in Battle.jpg"
+  },
+  {
+    "id": "brigid-duncan",
+    "file": "John Duncan (1913) Saint Bride.jpg"
+  },
+  {
+    "id": "morrigan",
+    "file": "Morrigan.jpg"
+  },
+  {
+    "id": "quetzalcoatl-borbonicus",
+    "file": "Quetzalcoatl and Tezcatlipoca.jpg"
+  },
+  {
+    "id": "tezcatlipoca-borgia",
+    "file": "Codex Borgia page 17.jpg"
+  },
+  {
+    "id": "huitzilopochtli-wdl",
+    "file": "Huitzilopochtli, the Principal Aztec God WDL6725.png"
+  },
+  {
+    "id": "tlaloc-borgia",
+    "file": "Tlaloc Codex Borgia.jpg"
+  }
 ]

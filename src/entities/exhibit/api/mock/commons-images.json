@@ -223,5 +223,248 @@
     "licenseUrl": null,
     "artist": "Katsushika Hokusai",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Katsushika_Hokusai_-_Thunder_God_-_Google_Art_Project.jpg"
+  },
+  "hera-barberini": {
+    "src": "/images/exhibits/hera-barberini.jpg",
+    "width": 1059,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hera_Barberini_Chiaramonti_Inv1210.jpg"
+  },
+  "artemis-versailles": {
+    "src": "/images/exhibits/artemis-versailles.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shonagon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Diane_de_Versailles_-_Mus%C3%A9e_du_Louvre_AGER_Ma_589.jpg"
+  },
+  "hermes-ingenui": {
+    "src": "/images/exhibits/hermes-ingenui.jpg",
+    "width": 731,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hermes_Ingenui_Pio-Clementino_Inv544.jpg"
+  },
+  "hades-locri-pinax": {
+    "src": "/images/exhibits/hades-locri-pinax.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pinax_with_Persephone_and_Hades_Enthroned,_500-450_BC,_Greek,_Locri_Epizephirii,_Mannella_district,_Sanctuary_of_Persephone,_terracotta_-_Cleveland_Museum_of_Art_-_DSC08242.JPG"
+  },
+  "baldr-eckersberg": {
+    "src": "/images/exhibits/baldr-eckersberg.jpg",
+    "width": 1280,
+    "height": 1014,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Christoffer Wilhelm Eckersberg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baldr_dead_by_Eckersberg.jpg"
+  },
+  "heimdall-doepler": {
+    "src": "/images/exhibits/heimdall-doepler.jpg",
+    "width": 752,
+    "height": 684,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Emil Doepler",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heimdall_an_der_Himmelsbr%C3%BCcke.jpg"
+  },
+  "ra-horakhty-stela": {
+    "src": "/images/exhibits/ra-horakhty-stela.jpg",
+    "width": 1280,
+    "height": 1525,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Photograph by Oriental Institute, the University of Chicago; painter unknown",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Re-Horakhty_Stela.jpg"
+  },
+  "horus-edfu": {
+    "src": "/images/exhibits/horus-edfu.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "Vyacheslav Argenberg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Temple_of_Edfu,_Statue_of_Horus,_Egypt.jpg"
+  },
+  "thoth-ibis": {
+    "src": "/images/exhibits/thoth-ibis.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tangopaso",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ibis_couch%C3%A9,_le_dieu_Thot_(Louvre,_E_17380).jpg"
+  },
+  "enki-adda-seal": {
+    "src": "/images/exhibits/enki-adda-seal.jpg",
+    "width": 962,
+    "height": 611,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ea_(Babilonian)_-_EnKi_(Sumerian).jpg"
+  },
+  "tiamat-nimrud": {
+    "src": "/images/exhibits/tiamat-nimrud.jpg",
+    "width": 1280,
+    "height": 944,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "editor Austen Henry Layard , drawing by L. Gruner",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chaos_Monster_and_Sun_God.png"
+  },
+  "brahma-rijks": {
+    "src": "/images/exhibits/brahma-rijks.jpg",
+    "width": 986,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brahma_en_Shiva_Brahma,_AK-MAK-249.jpg"
+  },
+  "krishna-govardhan": {
+    "src": "/images/exhibits/krishna-govardhan.jpg",
+    "width": 1116,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Miskin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Krishna_Holds_Up_Mount_Govardhan_to_Shelter_the_Villagers_of_Braj,_ca.1590%E2%80%9395,_The_Met.jpg"
+  },
+  "fujin-sotatsu": {
+    "src": "/images/exhibits/fujin-sotatsu.jpg",
+    "width": 1280,
+    "height": 1136,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tawara Sōtatsu",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tawaraya_S%C5%8Dtatsu_-_The_Gods_of_Wind_and_Thunder_(right_screen).jpg"
+  },
+  "inari-foxfires": {
+    "src": "/images/exhibits/inari-foxfires.jpg",
+    "width": 1049,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Utagawa Hiroshige",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hiroshige,_New_Year%27s_Eve_foxfires_at_the_changing_tree,_Oji,_1857.jpg"
+  },
+  "pangu": {
+    "src": "/images/exhibits/pangu.jpg",
+    "width": 1014,
+    "height": 1546,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Wang Qi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pangu.jpg"
+  },
+  "fuxi-nuwa": {
+    "src": "/images/exhibits/fuxi-nuwa.jpg",
+    "width": 766,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "anonymous",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anonymous-Fuxi_and_N%C3%BCwa.jpg"
+  },
+  "xiwangmu-kano": {
+    "src": "/images/exhibits/xiwangmu-kano.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Kano Osanobu",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E8%A5%BF%E7%8E%8B%E6%AF%8D%E5%9B%B3-Queen_Mother_of_the_West_MET_DP333861.jpg"
+  },
+  "change-moon": {
+    "src": "/images/exhibits/change-moon.jpg",
+    "width": 841,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist, after Tang Yin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Moon_Goddess_Chang_E_-_Unidentified_artist,_after_Tang_Yin.jpg"
+  },
+  "cernunnos-gundestrup": {
+    "src": "/images/exhibits/cernunnos-gundestrup.jpg",
+    "width": 1280,
+    "height": 871,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Nationalmuseet, Roberto Fortuna og Kira Ursem",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gundestrupkedlen-_00054_(cropped).jpg"
+  },
+  "cuchulainn-leyendecker": {
+    "src": "/images/exhibits/cuchulainn-leyendecker.jpg",
+    "width": 1079,
+    "height": 1553,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Joseph Christian Leyendecker",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuchulain_in_Battle.jpg"
+  },
+  "brigid-duncan": {
+    "src": "/images/exhibits/brigid-duncan.jpg",
+    "width": 1280,
+    "height": 1081,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Duncan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Duncan_(1913)_Saint_Bride.jpg"
+  },
+  "morrigan": {
+    "src": "/images/exhibits/morrigan.jpg",
+    "width": 500,
+    "height": 648,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Joseph Christian Leyendecker",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Morrigan.jpg"
+  },
+  "quetzalcoatl-borbonicus": {
+    "src": "/images/exhibits/quetzalcoatl-borbonicus.jpg",
+    "width": 550,
+    "height": 496,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quetzalcoatl_and_Tezcatlipoca.jpg"
+  },
+  "tezcatlipoca-borgia": {
+    "src": "/images/exhibits/tezcatlipoca-borgia.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown author",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Codex_Borgia_page_17.jpg"
+  },
+  "huitzilopochtli-wdl": {
+    "src": "/images/exhibits/huitzilopochtli-wdl.jpg",
+    "width": 1280,
+    "height": 963,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tovar, Juan de, circa 1546-circa 1626",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Huitzilopochtli,_the_Principal_Aztec_God_WDL6725.png"
+  },
+  "tlaloc-borgia": {
+    "src": "/images/exhibits/tlaloc-borgia.jpg",
+    "width": 1280,
+    "height": 601,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown author",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tlaloc_Codex_Borgia.jpg"
   }
 }

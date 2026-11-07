@@ -1,6 +1,6 @@
 {
   "name": "ark",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,7 +26,8 @@
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
     "db:types": "supabase gen types typescript --local --schema public > src/shared/api/database.types.ts && prettier --write src/shared/api/database.types.ts",
-    "test:e2e:local-db": "supabase db reset && E2E_USE_LOCAL_SUPABASE=1 playwright test --project=local-db"
+    "test:e2e:local-db": "supabase db reset && E2E_USE_LOCAL_SUPABASE=1 playwright test --project=local-db",
+    "db:seed:prod": "supabase db query --remote --file supabase/seed.sql"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.3.0",

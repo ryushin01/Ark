@@ -42,7 +42,7 @@ export function PantheonTimeline({ items }: { items: TimelineItem[] }) {
           className={styles.title}
         />
         <p className={styles.lead}>
-          가장 오래된 기록이 남은 순서대로 여섯 계열의 신화를 모았습니다.
+          가장 오래된 기록이 남은 순서대로 {items.length}개 계열의 신화를 모았습니다.
         </p>
       </div>
 
