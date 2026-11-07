@@ -96,4 +96,52 @@ export const MOCK_PANTHEONS: Pantheon[] = [
     ],
     coverExhibitId: "thor-jotnar",
   },
+  {
+    slug: "chinese",
+    name: "중국 신화",
+    nameEn: "Chinese",
+    region: "황허·창장 유역",
+    earliestSource: "「산해경」·「초사」",
+    eraLabel: "기원전 4세기경",
+    eraYear: -350,
+    summary:
+      "하늘과 땅을 가른 거인 반고, 사람을 빚은 여와, 불사의 복숭아를 기르는 서왕모의 이야기가 여러 책에 흩어져 전하는 신화입니다.",
+    description: [
+      "중국 신화는 한 권의 경전이 아니라 「산해경」, 「초사」, 「회남자」 같은 여러 책에 조각조각 흩어져 전합니다.",
+      "천지를 연 반고 이야기는 3세기 삼국 시대 오나라의 기록에 처음 보이는 등, 오래된 이야기와 후대에 덧붙은 이야기가 섞여 있습니다. 많은 신이 도교 신앙 속에서 오늘날까지 섬겨집니다.",
+    ],
+    coverExhibitId: "fuxi-nuwa",
+  },
+  {
+    slug: "celtic",
+    name: "켈트 신화",
+    nameEn: "Celtic",
+    region: "아일랜드·브리튼·갈리아",
+    earliestSource: "「둔 카우의 서」 (아일랜드 필사본)",
+    eraLabel: "12세기",
+    eraYear: 1100,
+    summary:
+      "사슴뿔을 단 신, 까마귀로 날아다니는 전쟁의 여신, 아일랜드의 영웅 쿠 훌린이 등장하는 서유럽 켈트족의 신화입니다.",
+    description: [
+      "갈리아 등 대륙 켈트족의 신화는 로마에 정복된 뒤 대부분 사라지고, 유물과 로마인의 기록으로만 일부 전합니다.",
+      "오늘날 알려진 이야기는 대부분 중세 아일랜드와 웨일스의 수도원에서 기록한 필사본에서 나왔습니다. 12세기 초에 만든 「둔 카우의 서」에는 쿠 훌린이 활약하는 얼스터 이야기가 실려 있습니다.",
+    ],
+    coverExhibitId: "cernunnos-gundestrup",
+  },
+  {
+    slug: "aztec",
+    name: "아즈텍 신화",
+    nameEn: "Aztec",
+    region: "멕시코 중앙 고원",
+    earliestSource: "그림 문서(코덱스)",
+    eraLabel: "15~16세기",
+    eraYear: 1500,
+    summary:
+      "네 번 무너진 세상 뒤의 다섯 번째 태양 아래에서, 깃털 달린 뱀과 연기 나는 거울의 신이 맞서는 신화입니다.",
+    description: [
+      "아즈텍 사람들은 세상이 이미 네 번 멸망했고 지금은 다섯 번째 태양의 시대라고 믿었습니다. 테스카틀리포카, 케찰코아틀, 틀랄록이 앞선 시대의 태양이었다고 전합니다.",
+      "신들의 모습은 그림 문서인 코덱스에 남아 있습니다. 스페인 정복 이전에 만든 「보르자 코덱스」와 정복 무렵의 「보르보니쿠스 코덱스」가 대표적입니다.",
+    ],
+    coverExhibitId: "tezcatlipoca-borgia",
+  },
 ];

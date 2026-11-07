@@ -7,7 +7,9 @@
  * - Wikimedia 원본을 화면마다 직접 불러오면 요청 제한(429)에 걸리므로, 축소본을 한 번만 받아
  *   긴 변 1600px 이하의 JPEG로 다시 압축해 둡니다.
  */
+import { existsSync } from "node:fs";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 const UA = "Ark/0.1 (portfolio mythology library; https://github.com/ryushin01/Ark)";
@@ -31,13 +33,15 @@ const stripHtml = (value = "") =>
 const cleanArtist = (value) => {
   const name = stripHtml(value)
     .split(/ [–(]| Details on /)[0]
+    .replace(/^(Creator:|Artist )/, "")
     .trim();
   const half = name.slice(0, Math.floor(name.length / 2)).trim();
   return (name === `${half} ${half}` ? half : name) || null;
 };
 
 const imageDir = new URL("public/images/exhibits/", root);
-await rm(imageDir, { recursive: true, force: true });
+// 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 --fresh를 붙입니다.
+if (process.argv.includes("--fresh")) await rm(imageDir, { recursive: true, force: true });
 await mkdir(imageDir, { recursive: true });
 
 const result = {};
@@ -59,20 +63,26 @@ for (const { id, file } of sources) {
   const meta = info.extmetadata ?? {};
   const license = stripHtml(meta.LicenseShortName?.value);
   if (!ALLOWED.test(license)) throw new Error(`허용하지 않는 라이선스(${license}): ${file}`);
-  const remote = (info.width > THUMB_WIDTH ? info.thumburl : info.url).split("?")[0];
-  const imageResponse = await fetch(remote, { headers: { "User-Agent": UA } });
-  if (!imageResponse.ok) {
-    throw new Error(`이미지를 받지 못했습니다(${imageResponse.status}): ${remote}`);
+  const target = new URL(`${id}.jpg`, imageDir);
+  let output;
+  if (existsSync(target)) {
+    output = { info: await sharp(fileURLToPath(target)).metadata() };
+  } else {
+    const remote = (info.width > THUMB_WIDTH ? info.thumburl : info.url).split("?")[0];
+    const imageResponse = await fetch(remote, { headers: { "User-Agent": UA } });
+    if (!imageResponse.ok) {
+      throw new Error(`이미지를 받지 못했습니다(${imageResponse.status}): ${remote}`);
+    }
+    output = await sharp(Buffer.from(await imageResponse.arrayBuffer()))
+      .resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true })
+      .jpeg({ quality: 78, mozjpeg: true })
+      .toBuffer({ resolveWithObject: true });
+    await writeFile(target, output.data);
   }
-  const { data, info: output } = await sharp(Buffer.from(await imageResponse.arrayBuffer()))
-    .resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true })
-    .jpeg({ quality: 78, mozjpeg: true })
-    .toBuffer({ resolveWithObject: true });
-  await writeFile(new URL(`${id}.jpg`, imageDir), data);
   result[id] = {
     src: `/images/exhibits/${id}.jpg`,
-    width: output.width,
-    height: output.height,
+    width: output.info.width,
+    height: output.info.height,
     license,
     licenseUrl: meta.LicenseUrl?.value ?? null,
     artist: cleanArtist(meta.Artist?.value),

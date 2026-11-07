@@ -41,6 +41,13 @@
 - 이미지는 긴 변 1600px 이하 JPEG로 `public/images/exhibits/`에 저장합니다. Wikimedia 원본을 화면에서 직접 불러오면 요청 제한(429)에 걸리기 때문입니다.
 - 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장되고, 화면의 이미지마다 표기됩니다.
 - 대체 텍스트는 실제 이미지를 보고 `exhibit/api/mock-data.ts`에 직접 씁니다.
+- 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 `pnpm images:resolve --fresh`를 씁니다.
+
+### 소개 글의 출처
+
+신·계열 소개는 나무위키 등 여러 자료로 사실을 확인한 뒤 직접 쓴 글입니다. 나무위키 문장은 옮기지 않습니다. 나무위키는 CC BY-NC-SA 2.0 KR이라 옮기면 같은 라이선스를 따라야 하고, 검증되지 않은 서술이 있을 수 있기 때문입니다. 해석이 갈리는 자료는 자료의 `note`에 다른 견해를 함께 적습니다. 예를 들어 버니 부조, 님루드 부조, 사자를 제압하는 영웅이 그렇습니다.
+
+목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`, 운영은 `pnpm db:seed:prod`로 넣습니다. Supabase CLI는 이미 한 번 넣은 시드 파일을 `db push --include-seed`로 다시 실행하지 않으므로, 운영에는 SQL을 직접 실행합니다. 시드는 이미 있는 행을 건너뛰므로(`on conflict do nothing`) 어드민에서 고친 내용은 그대로 남습니다.
 
 ## 어드민
 
