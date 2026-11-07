@@ -2,12 +2,13 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { Button, Flex, Grid } from "@radix-ui/themes";
+import { Button, Callout, Flex, Grid } from "@radix-ui/themes";
 
 import { type Exhibit, EXHIBIT_KIND_LABEL, EXHIBIT_KINDS } from "@/entities/exhibit";
 import { INITIAL_FORM_STATE } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
+  FileInput,
   FormStatus,
   SelectInput,
   TextAreaInput,
@@ -17,27 +18,31 @@ import {
 import { deleteExhibitAction, saveExhibitAction } from "../api/actions";
 
 type ExhibitFormProps = {
-  exhibit: Exhibit;
+  /** 고칠 자료. 없으면 새로 만듭니다. */
+  exhibit?: Exhibit;
   figures: { slug: string; name: string }[];
+  /** 이미지 업로드를 쓸 수 있는지 (Supabase 연결 여부) */
+  canUpload: boolean;
 };
 
-/** 자료의 설명·출처 고치기 폼. 이미지 파일은 Supabase Storage를 연결한 뒤 바꿀 수 있습니다. */
-export function ExhibitForm({ exhibit, figures }: ExhibitFormProps) {
+/** 자료 만들기·고치기 폼. 새 자료는 이미지가 꼭 필요하고, 고칠 때는 이미지를 고른 경우에만 바꿉니다. */
+export function ExhibitForm({ exhibit, figures, canUpload }: ExhibitFormProps) {
   const [state, action, isPending] = useActionState(
-    saveExhibitAction.bind(null, exhibit.id),
+    saveExhibitAction.bind(null, exhibit?.id ?? null),
     INITIAL_FORM_STATE,
   );
   const values: Record<string, string | string[]> = state.values ?? {
-    figureSlug: exhibit.figureSlug,
-    title: exhibit.title,
-    kind: exhibit.kind,
-    dateLabel: exhibit.dateLabel ?? "",
-    holder: exhibit.holder ?? "",
-    note: exhibit.note ?? "",
-    alt: exhibit.image.alt,
-    artist: exhibit.image.credit.artist ?? "",
-    license: exhibit.image.credit.license,
-    sourceUrl: exhibit.image.credit.sourceUrl,
+    id: exhibit?.id ?? "",
+    figureSlug: exhibit?.figureSlug ?? "",
+    title: exhibit?.title ?? "",
+    kind: exhibit?.kind ?? "",
+    dateLabel: exhibit?.dateLabel ?? "",
+    holder: exhibit?.holder ?? "",
+    note: exhibit?.note ?? "",
+    alt: exhibit?.image.alt ?? "",
+    artist: exhibit?.image.credit.artist ?? "",
+    license: exhibit?.image.credit.license ?? "",
+    sourceUrl: exhibit?.image.credit.sourceUrl ?? "",
   };
   const field = (name: string) => ({
     name,
@@ -47,11 +52,38 @@ export function ExhibitForm({ exhibit, figures }: ExhibitFormProps) {
 
   return (
     <Flex direction="column" gap="5">
+      {!canUpload && (
+        <Callout.Root color="gray">
+          <Callout.Text>
+            이미지 업로드는 Supabase를 연결해야 쓸 수 있습니다. 지금은 설명과 출처만 고칠 수
+            있습니다.
+          </Callout.Text>
+        </Callout.Root>
+      )}
       <FormStatus state={state} />
       <form action={action} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
+          <FileInput
+            name="image"
+            label={exhibit ? "이미지 바꾸기" : "이미지"}
+            required={!exhibit}
+            disabled={!canUpload}
+            error={state.fieldErrors?.image?.[0]}
+            hint={`JPG·PNG·WebP, 4MB 이하. 긴 변 1600px로 줄여 저장합니다.${
+              exhibit ? " 고르지 않으면 지금 이미지를 그대로 둡니다." : ""
+            } 오류가 나면 파일을 다시 골라 주세요.`}
+          />
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">
             <TextInput {...field("title")} label="자료 이름" required />
+            {!exhibit && (
+              <TextInput
+                {...field("id")}
+                label="자료 id"
+                required
+                autoComplete="off"
+                hint="영문 소문자, 숫자, 하이픈(-). 만든 뒤에는 바꿀 수 없습니다."
+              />
+            )}
             <SelectInput
               {...field("figureSlug")}
               label="신·인물"
@@ -95,7 +127,7 @@ export function ExhibitForm({ exhibit, figures }: ExhibitFormProps) {
           </Grid>
           <Flex gap="3" align="center" wrap="wrap">
             <Button type="submit" size="3" disabled={isPending}>
-              {isPending ? "저장하는 중…" : "저장"}
+              {isPending ? "저장하는 중…" : exhibit ? "저장" : "만들기"}
             </Button>
             <Button asChild variant="soft" color="gray" size="3">
               <Link href="/admin/exhibits">취소</Link>
@@ -103,10 +135,12 @@ export function ExhibitForm({ exhibit, figures }: ExhibitFormProps) {
           </Flex>
         </Flex>
       </form>
-      <ConfirmDeleteButton
-        name={exhibit.title}
-        onDelete={deleteExhibitAction.bind(null, exhibit.id)}
-      />
+      {exhibit && (
+        <ConfirmDeleteButton
+          name={exhibit.title}
+          onDelete={deleteExhibitAction.bind(null, exhibit.id)}
+        />
+      )}
     </Flex>
   );
 }

@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 
-import { exhibitTable } from "./table";
+import { exhibitRepository } from "./table";
 
 import type { Exhibit } from "../model/types";
 
@@ -10,7 +10,7 @@ export async function getExhibits(): Promise<Exhibit[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(EXHIBIT_TAG);
-  return exhibitTable.list();
+  return await exhibitRepository.list();
 }
 
 export async function getExhibitsByFigure(figureSlug: string): Promise<Exhibit[]> {

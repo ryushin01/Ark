@@ -9,7 +9,7 @@ const optionalText = z
 
 /**
  * 어드민에서 자료 정보를 고칠 때의 입력값
- * 이미지 파일 자체는 Supabase Storage를 연결한 뒤 올립니다. 지금은 설명과 출처만 고칩니다.
+ * 이미지 파일은 폼의 파일 칸으로 따로 받습니다. (Server Action에서 Storage에 올림)
  */
 export const exhibitInputSchema = z.object({
   figureSlug: z.string().trim().min(1, "어느 신의 자료인지 골라 주세요."),

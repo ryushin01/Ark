@@ -53,11 +53,26 @@
 
 - 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 8시간)입니다. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
 - 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
+- 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
 - 저장하면 `updateTag`로 캐시를 갱신합니다. 미리 그린 공개 페이지는 저장 뒤 첫 요청에 이전 내용을 보여 주고, 곧바로 새 내용으로 다시 그립니다.
 - 다른 데이터가 가리키는 항목은 지우지 않습니다. 자료나 작품이 연결된 신, 계열의 대표 자료로 쓰는 자료가 그렇습니다.
 - Radix Themes 기본 색 중 명도 대비가 모자란 조합은 `shared/ui/admin/admin-theme.css`에서 보정합니다(진한 바탕 버튼, Select 자리표시). 주황 배지·안내는 `highContrast`를 씁니다.
 
-목업 저장소의 한계: 데이터는 서버 메모리에 있어 재시작하면 시드로 돌아가지만, 다시 그린 공개 페이지는 디스크 캐시에 남습니다. Supabase를 연결하면 각 엔티티의 `api/table.ts` 구현만 바꿉니다.
+## 데이터: Supabase
+
+각 엔티티의 `api/table.ts`는 `createRepository`(`shared/api`)로 저장소를 만듭니다. `SUPABASE_URL`과 `SUPABASE_SECRET_KEY`가 있으면 Supabase 테이블을, 없으면 메모리 목업 테이블을 씁니다. 목업은 서버를 다시 시작하면 시드로 돌아갑니다.
+
+| 항목           | 내용                                                                                                                                                                                                 |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 스키마         | `supabase/migrations/`. `pantheons`, `figures`, `exhibits`, `works`. 계열의 대표 자료는 지연 외래 키입니다.                                                                                          |
+| RLS            | 누구나 읽기(작품은 공개 상태만). 쓰기 정책이 없으므로 공개 키로는 쓸 수 없습니다. 서버는 secret key로 쓰고, 그 전에 앱의 어드민 세션을 확인합니다.                                                   |
+| Storage        | 공개 버킷 `images`. 업로드는 sharp로 긴 변 1600px JPEG로 줄여 `exhibits/`, `works/`에 올립니다. 4MB까지 받습니다(Vercel 함수 본문 한도 4.5MB). 자료를 지우거나 이미지를 바꾸면 이전 파일도 지웁니다. |
+| 시드           | `pnpm db:seed:generate`가 목업 데이터로 `supabase/seed.sql`을 만들고, `supabase db push --remote --include-seed`로 넣습니다. 시드 이미지는 앱의 `/images/exhibits/`에 있습니다.                      |
+| 일시 정지 방지 | 무료 프로젝트는 7일 동안 요청이 없으면 멈춥니다. Vercel Cron(`vercel.json`)이 매일 `/api/keep-alive`를 부릅니다.                                                                                     |
+
+마이그레이션은 `supabase link --project-ref <ref>`로 연결한 뒤 `pnpm db:push`로 적용합니다. DB 비밀번호는 `.env.local`의 `SUPABASE_DB_PASSWORD`에 둡니다.
+
+단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써, `.env.local`이 있어도 실제 데이터베이스 대신 목업을 씁니다.
 
 ## 환경 변수
 

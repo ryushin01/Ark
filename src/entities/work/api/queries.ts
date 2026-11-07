@@ -1,6 +1,6 @@
 import { cacheLife, cacheTag } from "next/cache";
 
-import { workTable } from "./table";
+import { workRepository } from "./table";
 
 import type { Work } from "../model/types";
 
@@ -11,7 +11,7 @@ export async function getWorks(): Promise<Work[]> {
   "use cache";
   cacheLife("hours");
   cacheTag(WORK_TAG);
-  return workTable.list();
+  return await workRepository.list();
 }
 
 /** 공개 화면에 보여 줄 작품만 돌려줍니다. (draft 제외) */

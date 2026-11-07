@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Badge, Button, Callout, Flex, Table, Text } from "@radix-ui/themes";
+import { Badge, Box, Button, Callout, Flex, Table, Text } from "@radix-ui/themes";
 
 import { getFigures } from "@/entities/figure/index.server";
 import { WORK_MEDIUM_LABEL, WORK_STATUS_LABEL } from "@/entities/work";
 import { getWork, getWorks } from "@/entities/work/index.server";
-import { WorkForm } from "@/features/edit-work";
+import { WorkForm, WorkImages } from "@/features/edit-work";
+import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
 import { Notice, PageHeader } from "@/shared/ui/admin";
 
@@ -90,12 +91,22 @@ export async function AdminWorkEditPage({ slug }: { slug?: string }) {
     <>
       <PageHeader
         title={work ? `${work.title} 고치기` : "새 작품 추가"}
-        description="작품 이미지는 저작권을 확인한 뒤, Supabase Storage를 연결해 출처와 함께 올립니다."
+        description="작품 이미지는 저장한 뒤 아래에서 출처와 함께 올립니다."
       />
       <WorkForm
         work={work ?? undefined}
         figures={figures.map(({ slug: value, name }) => ({ slug: value, name }))}
       />
+      {work && (
+        <Box mt="8">
+          <WorkImages
+            slug={work.slug}
+            title={work.title}
+            images={work.images}
+            canUpload={isSupabaseEnabled()}
+          />
+        </Box>
+      )}
     </>
   );
 }

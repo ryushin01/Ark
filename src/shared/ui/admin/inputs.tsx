@@ -100,3 +100,30 @@ export function SelectInput({
     </FormField>
   );
 }
+
+/** 이미지 파일 고르기. 오류가 나면 파일은 다시 골라야 합니다. (브라우저가 파일 칸을 다시 채우지 못함) */
+export function FileInput({
+  name,
+  label,
+  hint,
+  error,
+  required,
+  disabled,
+}: Omit<BaseProps, "defaultValue"> & { disabled?: boolean }) {
+  return (
+    <FormField id={name} label={label} hint={hint} error={error} required={required}>
+      {(describedBy, invalid) => (
+        <input
+          id={name}
+          name={name}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          disabled={disabled}
+          aria-describedby={describedBy}
+          aria-invalid={invalid || undefined}
+          className="ark-file-input"
+        />
+      )}
+    </FormField>
+  );
+}

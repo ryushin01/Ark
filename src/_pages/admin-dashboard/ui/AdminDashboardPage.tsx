@@ -5,6 +5,7 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { getWorks } from "@/entities/work/index.server";
+import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
 import { PageHeader } from "@/shared/ui/admin";
 
@@ -50,10 +51,11 @@ export async function AdminDashboardPage() {
     <>
       <PageHeader title="대시보드" description="도서관에 등록된 항목을 한눈에 봅니다." />
       <Flex direction="column" gap="3" mb="6">
-        <Callout.Root color="gray">
+        <Callout.Root color={isSupabaseEnabled() ? "green" : "gray"}>
           <Callout.Text>
-            지금은 목업 저장소로 동작합니다. 저장한 내용은 서버가 다시 시작되면 처음 데이터로
-            돌아갑니다. Supabase를 연결하면 실제 데이터베이스에 저장됩니다.
+            {isSupabaseEnabled()
+              ? "Supabase 데이터베이스에 저장하고, 이미지는 Supabase Storage에 올립니다."
+              : "지금은 목업 저장소로 동작합니다. 저장한 내용은 서버가 다시 시작되면 처음 데이터로 돌아가고, 이미지 업로드는 쓸 수 없습니다."}
           </Callout.Text>
         </Callout.Root>
         {!features.archive && (
@@ -90,7 +92,6 @@ export async function AdminDashboardPage() {
         </ul>
       </Grid>
       <Text as="p" size="2" color="gray" mt="6">
-        새 자료(이미지)는 Supabase Storage를 연결한 뒤 올릴 수 있습니다.{" "}
         <RadixLink asChild>
           <Link href="/">공개 사이트에서 확인하기</Link>
         </RadixLink>

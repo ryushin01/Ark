@@ -7,6 +7,7 @@ import { EXHIBIT_KIND_LABEL } from "@/entities/exhibit";
 import { getExhibit, getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { ExhibitForm } from "@/features/edit-exhibit";
+import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { Notice, PageHeader } from "@/shared/ui/admin";
 
 /** 소장 자료 목록 */
@@ -76,10 +77,29 @@ export async function AdminExhibitsPage({ saved, deleted }: { saved?: string; de
   );
 }
 
-/** 자료 고치기 */
-export async function AdminExhibitEditPage({ id }: { id: string }) {
-  const [exhibit, figures] = await Promise.all([getExhibit(id), getFigures()]);
-  if (!exhibit) notFound();
+/** 자료 만들기(id 없음)·고치기 */
+export async function AdminExhibitEditPage({ id }: { id?: string }) {
+  const [exhibit, figures] = await Promise.all([
+    id ? getExhibit(id) : Promise.resolve(null),
+    getFigures(),
+  ]);
+  if (id && !exhibit) notFound();
+  const form = (
+    <ExhibitForm
+      exhibit={exhibit ?? undefined}
+      figures={figures.map(({ slug, name }) => ({ slug, name }))}
+      canUpload={isSupabaseEnabled()}
+    />
+  );
+
+  if (!exhibit) {
+    return (
+      <>
+        <PageHeader title="새 자료 추가" description="* 표시는 꼭 입력해야 하는 칸입니다." />
+        {form}
+      </>
+    );
+  }
 
   return (
     <>
@@ -95,15 +115,10 @@ export async function AdminExhibitEditPage({ id }: { id: string }) {
             style={{ width: 240, height: "auto" }}
           />
           <Text as="p" size="1" color="gray" mt="2">
-            이미지 파일은 Supabase Storage를 연결한 뒤 바꿀 수 있습니다.
+            지금 이미지
           </Text>
         </figure>
-        <div style={{ flex: 1, minWidth: 0, width: "100%" }}>
-          <ExhibitForm
-            exhibit={exhibit}
-            figures={figures.map(({ slug, name }) => ({ slug, name }))}
-          />
-        </div>
+        <div style={{ flex: 1, minWidth: 0, width: "100%" }}>{form}</div>
       </Flex>
     </>
   );

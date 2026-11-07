@@ -28,7 +28,7 @@ type WorkFormProps = {
   figures: { slug: string; name: string }[];
 };
 
-/** 영향받은 작품 만들기·고치기 폼. 작품 이미지는 Supabase Storage를 연결한 뒤 올립니다. */
+/** 영향받은 작품 만들기·고치기 폼. 작품 이미지는 저장한 뒤 WorkImages에서 올립니다. */
 export function WorkForm({ work, figures }: WorkFormProps) {
   const [state, action, isPending] = useActionState(
     saveWorkAction.bind(null, work?.slug ?? null),
