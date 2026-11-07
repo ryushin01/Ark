@@ -27,7 +27,7 @@ test("비밀번호가 틀리면 칸 옆에 오류를 알려 줍니다", async ({
   await page.getByLabel("관리자 비밀번호").fill("wrong");
   await page.getByRole("button", { name: "로그인" }).click();
   await expect(
-    page.getByRole("alert").filter({ hasText: "비밀번호가 맞지 않습니다" }),
+    page.getByRole("alert").filter({ hasText: "4번 더 틀리면 15분 동안 잠깁니다" }),
   ).toBeVisible();
   await expect(page.getByLabel("관리자 비밀번호")).toHaveAttribute("aria-invalid", "true");
 });
@@ -129,5 +129,24 @@ test("로그아웃하면 다시 로그인해야 합니다", async ({ page }) => 
   await page.getByRole("button", { name: "로그아웃" }).click();
   await expect(page).toHaveURL("/admin/login");
   await page.goto("/admin");
+  await expect(page).toHaveURL(/\/admin\/login/);
+});
+
+// 같은 곳의 로그인을 잠그므로 반드시 마지막에 둡니다.
+test("비밀번호를 5번 틀리면 맞는 비밀번호로도 15분 동안 로그인할 수 없습니다", async ({ page }) => {
+  await page.goto("/admin/login");
+  const password = page.getByLabel("관리자 비밀번호");
+  // 제출이 끝나면 폼이 비워지므로, 매번 남은 횟수 안내가 바뀐 것을 확인한 뒤 다음 값을 입력합니다.
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    await password.fill(`wrong-${attempt}`);
+    await page.getByRole("button", { name: "로그인", exact: true }).click();
+    const notice = attempt < 5 ? `${5 - attempt}번 더 틀리면` : "5번 틀려 15분 동안";
+    await expect(page.getByRole("alert").filter({ hasText: notice })).toBeVisible();
+  }
+  await password.fill("e2e-password");
+  await page.getByRole("button", { name: "로그인", exact: true }).click();
+  await expect(
+    page.getByRole("alert").filter({ hasText: "15분 동안 로그인할 수 없습니다" }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/\/admin\/login/);
 });

@@ -51,7 +51,7 @@ export async function AdminDashboardPage() {
     <>
       <PageHeader title="대시보드" description="도서관에 등록된 항목을 한눈에 봅니다." />
       <Flex direction="column" gap="3" mb="6">
-        <Callout.Root color={isSupabaseEnabled() ? "green" : "gray"}>
+        <Callout.Root color={isSupabaseEnabled() ? "green" : "gray"} highContrast>
           <Callout.Text>
             {isSupabaseEnabled()
               ? "Supabase 데이터베이스에 저장하고, 이미지는 Supabase Storage에 올립니다."

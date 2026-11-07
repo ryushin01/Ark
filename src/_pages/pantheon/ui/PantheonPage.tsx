@@ -15,9 +15,22 @@ export async function generatePantheonParams() {
   return pantheons.map((pantheon) => ({ slug: pantheon.slug }));
 }
 
+/** 제목·설명과, 계열의 대표 자료 이미지를 공유 이미지로 씁니다. */
 export async function generatePantheonMetadata(slug: string) {
-  const pantheon = await getPantheon(slug);
-  return pantheon ? { title: pantheon.name, description: pantheon.summary } : {};
+  const [pantheon, exhibits] = await Promise.all([getPantheon(slug), getExhibits()]);
+  if (!pantheon) return {};
+  const image = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId)?.image;
+  return {
+    title: pantheon.name,
+    description: pantheon.summary,
+    openGraph: {
+      title: pantheon.name,
+      description: pantheon.summary,
+      ...(image && {
+        images: [{ url: image.src, width: image.width, height: image.height, alt: image.alt }],
+      }),
+    },
+  };
 }
 
 /** 신화 계열 상세: 소개, 대표 자료, 속한 신·인물, 앞뒤 계열 */

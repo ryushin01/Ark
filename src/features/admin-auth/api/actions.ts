@@ -11,6 +11,14 @@ import {
   SESSION_COOKIE,
   SESSION_MAX_AGE,
 } from "@/shared/auth";
+import {
+  clearFailures,
+  countRecentFailures,
+  getClientKey,
+  MAX_FAILURES,
+  recordFailure,
+  WINDOW_MINUTES,
+} from "@/shared/auth/index.server";
 
 import type { FormState } from "@/shared/lib";
 
@@ -47,13 +55,27 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
       fieldErrors: { password: ["비밀번호를 입력해 주세요."] },
     };
   }
-  if (!(await isPasswordCorrect(password, process.env.ADMIN_PASSWORD, secret))) {
+  // 무작위 대입을 막기 위해 같은 곳에서 15분 안에 5번 틀리면 잠급니다. (데모 로그인은 제한하지 않음)
+  const clientKey = await getClientKey();
+  if ((await countRecentFailures(clientKey)) >= MAX_FAILURES) {
     return {
       status: "error",
-      message: "비밀번호가 맞지 않습니다. 저장 권한이 없다면 데모 계정으로 둘러볼 수 있습니다.",
+      message: `비밀번호를 ${MAX_FAILURES}번 틀려 ${WINDOW_MINUTES}분 동안 로그인할 수 없습니다. 잠시 뒤 다시 시도하거나 데모 계정으로 둘러보세요.`,
+    };
+  }
+  if (!(await isPasswordCorrect(password, process.env.ADMIN_PASSWORD, secret))) {
+    await recordFailure(clientKey);
+    const left = MAX_FAILURES - (await countRecentFailures(clientKey));
+    return {
+      status: "error",
+      message:
+        left > 0
+          ? `비밀번호가 맞지 않습니다. ${left}번 더 틀리면 ${WINDOW_MINUTES}분 동안 잠깁니다.`
+          : `비밀번호를 ${MAX_FAILURES}번 틀려 ${WINDOW_MINUTES}분 동안 로그인할 수 없습니다.`,
       fieldErrors: { password: ["비밀번호가 맞지 않습니다."] },
     };
   }
+  await clearFailures(clientKey);
   await startSession("admin", secret);
   redirect("/admin");
 }

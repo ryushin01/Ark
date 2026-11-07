@@ -1,4 +1,5 @@
 import { pingDatabase } from "@/shared/api/index.server";
+import { pruneLoginAttempts } from "@/shared/auth/index.server";
 
 /**
  * Vercel Cron(vercel.json)이 하루 한 번 부릅니다.
@@ -10,5 +11,6 @@ export async function GET(request: Request) {
     return Response.json({ ok: false }, { status: 401 });
   }
   const result = await pingDatabase();
+  if (result.ok) await pruneLoginAttempts();
   return Response.json(result, { status: result.ok ? 200 : 500 });
 }

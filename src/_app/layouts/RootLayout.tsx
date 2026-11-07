@@ -8,8 +8,11 @@ import type { ReactNode } from "react";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: { default: SITE.title, template: `%s — ${SITE.name}` },
   description: SITE.description,
+  openGraph: { siteName: SITE.name, locale: "ko_KR", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 /**

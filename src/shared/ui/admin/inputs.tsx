@@ -1,10 +1,11 @@
 "use client";
 
+import { type ComponentProps, useState } from "react";
 import { Select, TextArea, TextField } from "@radix-ui/themes";
 
-import { FormField } from "./FormField";
+import { describeUploadProblem, UPLOAD } from "@/shared/config";
 
-import type { ComponentProps } from "react";
+import { FormField } from "./FormField";
 
 type BaseProps = {
   name: string;
@@ -101,7 +102,11 @@ export function SelectInput({
   );
 }
 
-/** 이미지 파일 고르기. 오류가 나면 파일은 다시 골라야 합니다. (브라우저가 파일 칸을 다시 채우지 못함) */
+/**
+ * 이미지 파일 고르기
+ * 고르는 즉시 형식과 크기(4MB)를 확인해, 서버로 보내기 전에 알려 줍니다. 문제가 있는 파일은 칸에서 비웁니다.
+ * 서버 오류가 나면 파일은 다시 골라야 합니다. (브라우저가 파일 칸을 다시 채우지 못함)
+ */
 export function FileInput({
   name,
   label,
@@ -110,18 +115,26 @@ export function FileInput({
   required,
   disabled,
 }: Omit<BaseProps, "defaultValue"> & { disabled?: boolean }) {
+  const [clientError, setClientError] = useState<string | null>(null);
+
   return (
-    <FormField id={name} label={label} hint={hint} error={error} required={required}>
+    <FormField id={name} label={label} hint={hint} error={clientError ?? error} required={required}>
       {(describedBy, invalid) => (
         <input
           id={name}
           name={name}
           type="file"
-          accept="image/jpeg,image/png,image/webp"
+          accept={UPLOAD.types.join(",")}
           disabled={disabled}
           aria-describedby={describedBy}
           aria-invalid={invalid || undefined}
           className="ark-file-input"
+          onChange={(event) => {
+            const file = event.currentTarget.files?.[0];
+            const problem = file ? describeUploadProblem(file) : null;
+            setClientError(problem);
+            if (problem) event.currentTarget.value = "";
+          }}
         />
       )}
     </FormField>

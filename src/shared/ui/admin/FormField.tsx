@@ -41,7 +41,7 @@ export function FormField({ id, label, hint, error, required, children }: FormFi
         </Text>
       )}
       {error && (
-        <Text id={errorId ?? undefined} size="2" color="red">
+        <Text id={errorId ?? undefined} size="2" color="red" aria-live="polite">
           {error}
         </Text>
       )}

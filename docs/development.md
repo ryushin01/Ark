@@ -51,6 +51,7 @@
 | 관리자 | `ADMIN_PASSWORD` 비밀번호 | 계열 고치기, 신·작품 만들기·고치기·삭제, 자료 설명·출처 고치기·삭제                                        |
 | 데모   | 버튼 하나                 | 모든 화면 보기. 저장은 서버에서 막습니다. 배포본에서 방문자가 공개 데이터를 바꾸지 못하게 하려는 것입니다. |
 
+- 비밀번호 로그인은 같은 곳에서 15분 안에 5번 틀리면 잠깁니다. 실패 기록은 `admin_login_attempts` 테이블(IP는 SHA-256 해시만)에 남고, 성공하면 지웁니다. 하루 지난 기록은 크론이 지웁니다. 데모 로그인은 제한하지 않습니다.
 - 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 8시간)입니다. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
 - 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
 - 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
@@ -70,9 +71,19 @@
 | 시드           | `pnpm db:seed:generate`가 목업 데이터로 `supabase/seed.sql`을 만들고, `supabase db push --remote --include-seed`로 넣습니다. 시드 이미지는 앱의 `/images/exhibits/`에 있습니다.                      |
 | 일시 정지 방지 | 무료 프로젝트는 7일 동안 요청이 없으면 멈춥니다. Vercel Cron(`vercel.json`)이 매일 `/api/keep-alive`를 부릅니다.                                                                                     |
 
-마이그레이션은 `supabase link --project-ref <ref>`로 연결한 뒤 `pnpm db:push`로 적용합니다. DB 비밀번호는 `.env.local`의 `SUPABASE_DB_PASSWORD`에 둡니다.
+### 로컬과 운영 분리
 
-단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써, `.env.local`이 있어도 실제 데이터베이스 대신 목업을 씁니다.
+| 환경                | 데이터베이스                            | 설정 파일                                          |
+| ------------------- | --------------------------------------- | -------------------------------------------------- |
+| 로컬 개발·로컬 빌드 | 로컬 Supabase (`pnpm db:start`, Docker) | `.env.local` (로컬 주소와 로컬 기본 키)            |
+| 운영 (Vercel)       | Supabase 프로젝트 `ark`                 | Vercel 환경 변수                                   |
+| 운영 마이그레이션   | Supabase 프로젝트 `ark`                 | `.env.prod-secrets` (Next.js가 자동으로 읽지 않음) |
+
+로컬에서 저장하거나 업로드해도 운영 데이터는 바뀌지 않습니다. 운영 비밀 값은 Next.js가 읽지 않는 `.env.prod-secrets`에만 두고, `pnpm db:push`만 이 파일을 읽습니다. 두 파일 모두 커밋하지 않습니다.
+
+마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 `pnpm db:push`로 적용합니다. 새 테이블을 쓰는 코드를 배포하기 전에 운영 마이그레이션을 먼저 적용합니다.
+
+단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써 목업을 씁니다. README 스크린샷(`pnpm screenshots`)만 로컬 Supabase를 씁니다.
 
 ## 환경 변수
 
@@ -81,6 +92,10 @@
 | `ADMIN_PASSWORD`              | 저장할 때 | 관리자 비밀번호. 없으면 데모 로그인만 됩니다.                                      |
 | `ADMIN_SESSION_SECRET`        | 운영      | 세션 서명 키. 운영 환경에서 없으면 로그인을 막습니다. 개발 환경은 기본값을 씁니다. |
 | `NEXT_PUBLIC_FEATURE_ARCHIVE` | 선택      | 아래 기능 플래그                                                                   |
+
+## SEO
+
+`src/_app/seo/`의 `sitemap`(계열·신 주소), `robots`(어드민·API 제외)를 `src/app/sitemap.ts`, `robots.ts`가 내보냅니다. 기본 공유 이미지는 `src/app/opengraph-image.jpg`이고, 계열·신 화면은 대표 자료 이미지를 공유 이미지로 씁니다. 운영 주소는 `shared/config/site.ts`의 `SITE.url`입니다.
 
 ## 기능 플래그
 

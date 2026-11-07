@@ -1,6 +1,6 @@
 {
   "name": "ark",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,13 +15,16 @@
     "test:watch": "vitest --project unit",
     "test:storybook": "vitest run --project storybook",
     "test:e2e": "playwright test --project=chromium --project=admin",
-    "screenshots": "playwright test --project=screenshots",
+    "screenshots": "E2E_USE_LOCAL_SUPABASE=1 playwright test --project=screenshots",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "images:resolve": "node scripts/resolve-commons.mjs",
     "prepare": "husky || true",
     "db:seed:generate": "tsx scripts/generate-seed.mts",
-    "db:push": "supabase db push --remote"
+    "db:push": "sh -c 'set -a && . ./.env.prod-secrets && supabase db push --remote -p \"$SUPABASE_DB_PASSWORD\" \"$@\"' db-push",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.3.0",

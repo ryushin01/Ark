@@ -1,13 +1,12 @@
 import sharp, { type OutputInfo } from "sharp";
 
+import { describeUploadProblem, UPLOAD } from "../config";
 import { getSupabase } from "./supabase.server";
 
 import "server-only";
 
 export const IMAGE_BUCKET = "images";
-/** Vercel 함수의 요청 본문 한도(4.5MB) 안에 들어오도록 4MB로 제한합니다. */
-export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
-const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+export const MAX_IMAGE_BYTES = UPLOAD.maxBytes;
 
 export type StoredImage = { src: string; width: number; height: number };
 
@@ -15,10 +14,7 @@ export type UploadResult = { ok: true; image: StoredImage } | { ok: false; messa
 
 /** 폼에서 받은 파일이 올릴 수 있는 이미지인지 확인합니다. 문제가 없으면 null */
 export function checkImageFile(file: unknown): string | null {
-  if (!(file instanceof File) || file.size === 0) return "이미지 파일을 골라 주세요.";
-  if (!ACCEPTED_TYPES.includes(file.type)) return "JPG, PNG, WebP 이미지만 올릴 수 있습니다.";
-  if (file.size > MAX_IMAGE_BYTES) return "이미지는 4MB 이하로 올려 주세요.";
-  return null;
+  return describeUploadProblem(file instanceof File ? file : null);
 }
 
 /**

@@ -1,7 +1,7 @@
 import { Theme } from "@radix-ui/themes";
-import { expect, within } from "storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 
-import { SelectInput, TextAreaInput, TextInput } from "./inputs";
+import { FileInput, SelectInput, TextAreaInput, TextInput } from "./inputs";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
@@ -62,4 +62,18 @@ export const Select: Story = {
       ]}
     />
   ),
+};
+
+/** 4MB를 넘는 파일을 고르면 보내기 전에 바로 알려 주고 칸을 비웁니다. */
+export const FileTooLarge: Story = {
+  render: () => <FileInput name="image" label="이미지" required hint="JPG·PNG·WebP, 4MB 이하" />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByLabelText(/^이미지/) as HTMLInputElement;
+    const big = new File([new Uint8Array(4 * 1024 * 1024 + 1)], "big.jpg", { type: "image/jpeg" });
+    await userEvent.upload(input, big);
+    await expect(await canvas.findByText(/4MB 이하로 올려 주세요/)).toBeInTheDocument();
+    await expect(input).toHaveAttribute("aria-invalid", "true");
+    await expect(input.value).toBe("");
+  },
 };

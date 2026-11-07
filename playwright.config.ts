@@ -42,11 +42,11 @@ export default defineConfig({
     command: `pnpm exec next start -p ${PORT}`,
     // E2E 전용 관리자 비밀번호와 세션 키 (실제 배포 값과 무관)
     // Supabase 접속 정보는 비워, 어드민 테스트가 실제 데이터베이스 대신 메모리 목업을 바꾸게 합니다.
+    // README 스크린샷(pnpm screenshots)은 .env.local의 로컬 Supabase(pnpm db:start)를 그대로 씁니다.
     env: {
       ADMIN_PASSWORD: "e2e-password",
       ADMIN_SESSION_SECRET: "e2e-session-secret",
-      SUPABASE_URL: "",
-      SUPABASE_SECRET_KEY: "",
+      ...(process.env.E2E_USE_LOCAL_SUPABASE ? {} : { SUPABASE_URL: "", SUPABASE_SECRET_KEY: "" }),
     },
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,

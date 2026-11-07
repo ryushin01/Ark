@@ -18,9 +18,22 @@ export async function generateFigureParams() {
   return figures.map((figure) => ({ slug: figure.slug }));
 }
 
+/** 제목·설명과, 대표 자료 이미지를 공유 이미지로 씁니다. */
 export async function generateFigureMetadata(slug: string) {
-  const figure = await getFigure(slug);
-  return figure ? { title: figure.name, description: figure.summary } : {};
+  const [figure, exhibits] = await Promise.all([getFigure(slug), getExhibits()]);
+  if (!figure) return {};
+  const image = exhibits.find((exhibit) => exhibit.figureSlug === slug)?.image;
+  return {
+    title: figure.name,
+    description: figure.summary,
+    openGraph: {
+      title: `${figure.name} — ${figure.epithet}`,
+      description: figure.summary,
+      ...(image && {
+        images: [{ url: image.src, width: image.width, height: image.height, alt: image.alt }],
+      }),
+    },
+  };
 }
 
 /** 신·인물 상세: 소개, 소장 자료, (아카이브가 켜져 있으면) 영향을 받은 작품, 같은 계열의 다른 신 */

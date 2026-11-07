@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.3.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.4.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 그리스, 북유럽, 이집트, 메소포타미아, 인도, 일본 신화의 신과 영웅을 조각상, 회화, 유물 자료로 살펴보는 세계 신화 도서관입니다.
@@ -62,10 +62,12 @@ Node.js 22(`.nvmrc`)와 pnpm이 필요합니다.
 nvm use
 corepack enable pnpm
 pnpm install
-pnpm dev    # http://localhost:3000, 어드민은 /admin
+cp .env.example .env.local   # 로컬 Supabase 값으로 채웁니다 (아래)
+pnpm db:start                # 로컬 Supabase (Docker 필요, 마이그레이션·시드 자동 적용)
+pnpm dev                     # http://localhost:3000, 어드민은 /admin
 ```
 
-어드민은 로그인 화면에서 **데모 계정으로 둘러보기**를 누르면 됩니다. 저장하려면 `.env.local`에 `ADMIN_PASSWORD`를, 실제 데이터베이스를 쓰려면 `SUPABASE_URL`과 `SUPABASE_SECRET_KEY`를 정합니다(`.env.example` 참고).
+`pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다.
 
 | 명령                                     | 설명                                                          |
 | ---------------------------------------- | ------------------------------------------------------------- |

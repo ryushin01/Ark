@@ -1,6 +1,6 @@
 "use server";
 
-import { updateTag } from "next/cache";
+import { refresh, updateTag } from "next/cache";
 import { z } from "zod";
 
 import { getWork, setWorkImages, WORK_TAG } from "@/entities/work/index.server";
@@ -70,6 +70,8 @@ export async function addWorkImageAction(
     { ...uploaded.image, alt, credit: { artist, license, licenseUrl: null, sourceUrl } },
   ]);
   updateTag(WORK_TAG);
+  // 같은 화면에 머무르므로, 이미지 목록이 새 데이터로 다시 그려지게 합니다.
+  refresh();
   return { status: "success", message: "이미지를 추가했습니다.", submittedAt: Date.now() };
 }
 
@@ -85,5 +87,6 @@ export async function removeWorkImageAction(slug: string, src: string): Promise<
   );
   await removeStoredImage(src);
   updateTag(WORK_TAG);
+  refresh();
   return { status: "success", message: "이미지를 삭제했습니다." };
 }
