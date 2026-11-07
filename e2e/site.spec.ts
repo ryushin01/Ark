@@ -35,9 +35,9 @@ test("홈: 신화 계열을 오래된 문헌 순서로 보여 줍니다", async 
     page.getByRole("heading", { level: 1, name: "Ark — 세계 신화 도서관" }),
   ).toBeAttached();
   const timeline = page.locator("#pantheons ol > li");
-  await expect(timeline).toHaveCount(9);
+  await expect(timeline).toHaveCount(12);
   await expect(timeline.first()).toContainText("이집트 신화");
-  await expect(timeline.last()).toContainText("아즈텍 신화");
+  await expect(timeline.last()).toContainText("핀란드 신화");
 });
 
 test("홈 → 계열 → 신: 링크를 따라 상세 화면으로 이동합니다", async ({ page }) => {
