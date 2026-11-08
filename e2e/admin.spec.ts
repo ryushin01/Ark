@@ -114,6 +114,8 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
   await page.getByLabel(/^영문 이름/).fill("Celtic");
   await page.getByLabel(/^주소 이름/).fill("celtic-e2e");
   await page.getByLabel(/^지역/).fill("아일랜드·브리튼");
+  await page.getByRole("combobox", { name: /^대륙/ }).click();
+  await page.getByRole("option", { name: "유럽" }).click();
   await page.getByLabel(/^가장 이른 문헌/).fill("「쿨리의 소 습격」");
   await page.getByLabel(/^시기 표기/).fill("12세기");
   await page.getByLabel(/^정렬용 연도/).fill("1100");
@@ -126,7 +128,7 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
 
   await expect(async () => {
     await page.goto("/");
-    await expect(page.locator("#pantheons ol > li")).toHaveCount(13, { timeout: 1000 });
+    await expect(page.locator("#pantheons ol > li")).toHaveCount(42, { timeout: 1000 });
   }).toPass();
 
   await page.goto("/admin/pantheons/celtic-e2e");

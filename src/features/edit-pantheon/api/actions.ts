@@ -21,6 +21,7 @@ const FIELDS = [
   "name",
   "nameEn",
   "region",
+  "continent",
   "earliestSource",
   "eraLabel",
   "eraYear",

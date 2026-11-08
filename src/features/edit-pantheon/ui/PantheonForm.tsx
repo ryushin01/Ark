@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Button, Flex, Grid } from "@radix-ui/themes";
 
+import { CONTINENT_LABEL, CONTINENTS, type Pantheon } from "@/entities/pantheon";
 import { INITIAL_FORM_STATE } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
@@ -14,8 +15,6 @@ import {
 } from "@/shared/ui/admin";
 
 import { deletePantheonAction, savePantheonAction } from "../api/actions";
-
-import type { Pantheon } from "@/entities/pantheon";
 
 type PantheonFormProps = {
   /** 고칠 계열. 없으면 새로 만듭니다. */
@@ -35,6 +34,7 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
     name: pantheon?.name ?? "",
     nameEn: pantheon?.nameEn ?? "",
     region: pantheon?.region ?? "",
+    continent: pantheon?.continent ?? "",
     earliestSource: pantheon?.earliestSource ?? "",
     eraLabel: pantheon?.eraLabel ?? "",
     eraYear: pantheon ? String(pantheon.eraYear) : "",
@@ -66,6 +66,13 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
               />
             )}
             <TextInput {...field("region")} label="지역" required />
+            <SelectInput
+              {...field("continent")}
+              label="대륙"
+              required
+              hint="홈 연대기에서 대륙별로 거를 때 씁니다."
+              options={CONTINENTS.map((value) => ({ value, label: CONTINENT_LABEL[value] }))}
+            />
             <TextInput {...field("earliestSource")} label="가장 이른 문헌" required />
             <TextInput
               {...field("eraLabel")}

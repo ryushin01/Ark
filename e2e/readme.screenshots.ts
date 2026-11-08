@@ -30,7 +30,8 @@ test.describe("데스크톱", () => {
     await page.waitForTimeout(2000);
     await shoot(page, "home-hero");
     await scrollTo(page, "#pantheons", -40);
-    await scrollTo(page, "#pantheons ol > li:nth-child(4)", -300);
+    await page.getByRole("button", { name: /^아시아/ }).click();
+    await scrollTo(page, "#pantheons", 80);
     await shoot(page, "home-timeline");
     await scrollTo(page, "#figures", -40);
     await page.getByRole("link", { name: /^오딘/ }).hover();

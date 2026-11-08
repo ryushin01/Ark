@@ -1,1 +1,1 @@
-export type { Pantheon } from "./model/types";
+export { type Continent, CONTINENT_LABEL, CONTINENTS, type Pantheon } from "./model/types";

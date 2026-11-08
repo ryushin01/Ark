@@ -2,7 +2,7 @@ import { createRepository } from "@/shared/api/index.server";
 
 import { MOCK_PANTHEONS } from "./mock-data";
 
-import type { Pantheon } from "../model/types";
+import type { Continent, Pantheon } from "../model/types";
 
 import "server-only";
 
@@ -17,6 +17,7 @@ export const pantheonRepository = createRepository<"pantheons", Pantheon>({
     name: pantheon.name,
     name_en: pantheon.nameEn,
     region: pantheon.region,
+    continent: pantheon.continent,
     earliest_source: pantheon.earliestSource,
     era_label: pantheon.eraLabel,
     era_year: pantheon.eraYear,
@@ -29,6 +30,7 @@ export const pantheonRepository = createRepository<"pantheons", Pantheon>({
     name: row.name,
     nameEn: row.name_en,
     region: row.region,
+    continent: row.continent as Continent,
     earliestSource: row.earliest_source,
     eraLabel: row.era_label,
     eraYear: row.era_year,

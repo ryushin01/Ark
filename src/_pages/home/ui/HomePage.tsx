@@ -43,6 +43,7 @@ export async function HomePage() {
     name: pantheon.name,
     nameEn: pantheon.nameEn,
     eraLabel: pantheon.eraLabel,
+    continent: pantheon.continent,
     earliestSource: pantheon.earliestSource,
     summary: pantheon.summary,
     figureCount: figures.filter((figure) => figure.pantheonSlug === pantheon.slug).length,

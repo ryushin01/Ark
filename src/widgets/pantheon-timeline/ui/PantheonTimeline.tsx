@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
 import { useScrollProgress } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 
@@ -16,6 +17,7 @@ export type TimelineItem = {
   name: string;
   nameEn: string;
   eraLabel: string;
+  continent: Continent;
   earliestSource: string;
   summary: string;
   figureCount: number;
@@ -30,6 +32,16 @@ export type TimelineItem = {
 export function PantheonTimeline({ items }: { items: TimelineItem[] }) {
   const ref = useRef<HTMLDivElement>(null);
   useScrollProgress(ref, { mode: "enter" });
+  const [continent, setContinent] = useState<Continent | "all">("all");
+  const shown = continent === "all" ? items : items.filter((item) => item.continent === continent);
+  const filters = [
+    { value: "all" as const, label: "전체", count: items.length },
+    ...CONTINENTS.map((value) => ({
+      value,
+      label: CONTINENT_LABEL[value],
+      count: items.filter((item) => item.continent === value).length,
+    })).filter((filter) => filter.count > 0),
+  ];
 
   return (
     <section id="pantheons" className="px-global" aria-labelledby="pantheons-title">
@@ -46,6 +58,24 @@ export function PantheonTimeline({ items }: { items: TimelineItem[] }) {
         </p>
       </div>
 
+      {/* 대륙으로 거르기. 누른 버튼은 aria-pressed로 알리고, 결과 개수는 화면 낭독기가 읽습니다. */}
+      <div role="group" aria-label="대륙으로 거르기" className={styles.filters}>
+        {filters.map((filter) => (
+          <button
+            key={filter.value}
+            type="button"
+            className={styles.filter}
+            aria-pressed={continent === filter.value}
+            onClick={() => setContinent(filter.value)}
+          >
+            {filter.label} <span className={styles.filterCount}>{filter.count}</span>
+          </button>
+        ))}
+      </div>
+      <p className={styles.srOnly} aria-live="polite">
+        {continent === "all" ? "전체" : CONTINENT_LABEL[continent]} {shown.length}개 계열
+      </p>
+
       <div ref={ref} className={styles.timeline}>
         <div className={styles.track} aria-hidden="true" />
         <div className={styles.progress} aria-hidden="true">
@@ -53,7 +83,7 @@ export function PantheonTimeline({ items }: { items: TimelineItem[] }) {
         </div>
 
         <ol className={styles.list}>
-          {items.map((item, index) => (
+          {shown.map((item, index) => (
             <li key={item.slug} className={styles.item} data-side={index % 2 ? "right" : "left"}>
               <p className={styles.era}>{item.eraLabel}</p>
               <Link href={`/pantheons/${item.slug}`} className={styles.card}>
