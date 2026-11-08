@@ -28,10 +28,10 @@ test.describe("데스크톱", () => {
   test("홈", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
     await page.waitForTimeout(2000);
+    await page.evaluate(() => window.scrollTo(0, window.innerHeight * 2.2));
+    await page.waitForTimeout(2000);
     await shoot(page, "home-hero");
-    await scrollTo(page, "#pantheons", -40);
-    await page.getByRole("button", { name: /^아시아/ }).click();
-    await scrollTo(page, "#pantheons", 80);
+    await scrollTo(page, "#pantheons", 330);
     await shoot(page, "home-timeline");
     await scrollTo(page, "#figures", -40);
     await page.getByRole("link", { name: /^오딘/ }).hover();

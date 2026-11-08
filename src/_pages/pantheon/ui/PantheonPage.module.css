@@ -1,30 +1,26 @@
 .header {
-    padding-block: calc(var(--header-height) + 4rem) 4rem;
+    padding-block: calc(var(--header-height) + 5rem) 3rem;
 }
 
 .titleCol {
     grid-column: 1 / -1;
+    text-align: center;
 }
 
 .eyebrow {
     margin-bottom: 1rem;
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .title {
-    font-size: 3.75rem;
-    font-weight: 500;
+    font-size: clamp(3.75rem, 13vw, 11rem);
     line-height: 1;
     letter-spacing: -0.05em;
 }
 
 .era {
     grid-column: 1 / -1;
-    font-size: var(--text-5xl);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.05em;
+    text-align: center;
 }
 
 .cover {
@@ -39,17 +35,16 @@
 
 .summary {
     grid-column: 1 / -1;
-    font-size: var(--text-2xl);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
 }
 
 .description {
-    grid-column: 1 / -1;
     display: grid;
+    grid-column: 1 / -1;
     gap: 1rem;
-    line-height: 1.35;
 }
 
 .source {
@@ -61,39 +56,40 @@
 }
 
 .sectionTitle {
-    margin-block: 1.5rem 4rem;
-    font-size: var(--text-5xl);
-    font-weight: 500;
+    padding-block: 3rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
     line-height: 1;
     letter-spacing: -0.05em;
+    text-align: center;
 }
 
 .next {
-    padding-bottom: 4rem;
+    padding-bottom: 6rem;
 }
 
 .nextLink {
     display: grid;
-    gap: 1rem;
-    padding-top: 1.5rem;
+    gap: 0.5rem;
+    justify-items: center;
+    padding-block: 4rem;
+    text-align: center;
 }
 
 .nextLabel {
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .nextName {
-    font-size: var(--text-5xl);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 8rem);
     line-height: 1;
     letter-spacing: -0.05em;
-    transition: translate 0.7s var(--ease-magic);
 }
 
-.nextLink:hover .nextName,
-.nextLink:focus-visible .nextName {
-    translate: 1rem 0;
+.nextLink:hover .nextName {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.1em;
 }
 
 .srOnly {
@@ -106,32 +102,11 @@
 }
 
 @media (min-width: 768px) {
-    .titleCol {
-        grid-column: 1 / span 8;
-    }
-
-    .title {
-        font-size: 6rem;
-    }
-
-    .era {
-        grid-column: 9 / span 4;
-        align-self: end;
-        justify-self: end;
-        font-size: var(--text-display);
-    }
-
     .summary {
-        grid-column: 1 / span 6;
-        font-size: 2rem;
+        grid-column: 1 / span 5;
     }
 
     .description {
-        grid-column: 10 / span 3;
-    }
-
-    .sectionTitle,
-    .nextName {
-        font-size: var(--text-display);
+        grid-column: 7 / -1;
     }
 }

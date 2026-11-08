@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 
 import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
+import { FilterGroup } from "@/shared/ui";
 import { FigureGrid } from "@/widgets/figure-grid";
 
 import { matches, type SearchItem } from "../model/search";
@@ -51,19 +52,12 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
             예: 천둥, 바다, 지혜, Odin, 그리스
           </p>
         </form>
-        <div role="group" aria-label="대륙으로 거르기" className={styles.filters}>
-          {filters.map((filter) => (
-            <button
-              key={filter.value}
-              type="button"
-              className={styles.filter}
-              aria-pressed={continent === filter.value}
-              onClick={() => setContinent(filter.value)}
-            >
-              {filter.label} <span className={styles.filterCount}>{filter.count}</span>
-            </button>
-          ))}
-        </div>
+        <FilterGroup
+          label="대륙으로 거르기"
+          options={filters}
+          value={continent}
+          onChange={setContinent}
+        />
       </search>
 
       <p className={styles.count} aria-live="polite">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { type CSSProperties, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,7 +54,11 @@ export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
 
       <div className={styles.groups}>
         {groups.map((group) => (
-          <section key={group.pantheonSlug} aria-labelledby={`index-${group.pantheonSlug}`}>
+          <section
+            key={group.pantheonSlug}
+            aria-labelledby={`index-${group.pantheonSlug}`}
+            style={{ "--rows": group.figures.length } as CSSProperties}
+          >
             <h3 id={`index-${group.pantheonSlug}`} className={styles.groupTitle}>
               <Link href={`/pantheons/${group.pantheonSlug}`}>{group.pantheonName}</Link>
             </h3>

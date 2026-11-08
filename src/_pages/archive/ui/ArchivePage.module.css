@@ -6,12 +6,10 @@
 
 .eyebrow {
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .title {
     font-size: 3.75rem;
-    font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
 }
@@ -46,7 +44,6 @@
 
 .workTitle {
     font-size: var(--text-3xl);
-    font-weight: 500;
     line-height: 1.05;
     letter-spacing: -0.04em;
 }
@@ -69,7 +66,6 @@
 }
 
 .facts dt {
-    font-weight: 500;
 }
 
 .summary {
