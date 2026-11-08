@@ -120,6 +120,7 @@ export type Database = {
       };
       pantheons: {
         Row: {
+          continent: string;
           cover_exhibit_id: string;
           description: string[];
           earliest_source: string;
@@ -134,6 +135,7 @@ export type Database = {
         };
         ComputedFields: never;
         Insert: {
+          continent?: string;
           cover_exhibit_id: string;
           description?: string[];
           earliest_source: string;
@@ -147,6 +149,7 @@ export type Database = {
           updated_at?: string;
         };
         Update: {
+          continent?: string;
           cover_exhibit_id?: string;
           description?: string[];
           earliest_source?: string;

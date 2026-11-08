@@ -36,7 +36,7 @@ const cleanArtist = (value) => {
     .replace(/^(Creator:|Artist )/, "")
     .trim();
   // 작자 미상 표기는 하나로 맞춥니다. (화면에서는 숨기고 라이선스만 보여 줌)
-  if (/^(unknown|anonymous)/i.test(name)) return "Unknown artist";
+  if (/^(unknown|anonymous|credited in file title)/i.test(name)) return "Unknown artist";
   const half = name.slice(0, Math.floor(name.length / 2)).trim();
   return (name === `${half} ${half}` ? half : name) || null;
 };

@@ -682,5 +682,473 @@
     "licenseUrl": null,
     "artist": "John Bauer",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tyr_and_Fenrir-John_Bauer.jpg"
+  },
+  "ahura-mazda-faravahar": {
+    "src": "/images/exhibits/ahura-mazda-faravahar.jpg",
+    "width": 422,
+    "height": 1024,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Eugène Flandin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Persepolis_Bas-relief_Flandin.jpg"
+  },
+  "mithra-taq-bostan": {
+    "src": "/images/exhibits/mithra-taq-bostan.jpg",
+    "width": 1024,
+    "height": 920,
+    "license": "CC BY 2.5",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+    "artist": "Philippe Chavin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taq-e_Bostan_-_High-relief_of_Ardeshir_II_investiture.jpg"
+  },
+  "anahita-taq-bostan": {
+    "src": "/images/exhibits/anahita-taq-bostan.jpg",
+    "width": 1280,
+    "height": 908,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Scan by NYPL",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tak-i_Bostan._Figures_comprises_dans_la_vo%C3%BBte_no._1_(NYPL_b12482496-1542715)_(cropped).jpg"
+  },
+  "baal-ugarit": {
+    "src": "/images/exhibits/baal-ugarit.jpg",
+    "width": 688,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jastrow",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baal_thunderbolt_Louvre_AO15775.jpg"
+  },
+  "astarte-throne": {
+    "src": "/images/exhibits/astarte-throne.jpg",
+    "width": 1156,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Faustyna E.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PhoenicianGoddess(Astarte_)onThrone_ViennaKunsthistorischesMuseum_cropped_FaustynaE.jpg"
+  },
+  "teshub-yazilikaya": {
+    "src": "/images/exhibits/teshub-yazilikaya.jpg",
+    "width": 1064,
+    "height": 1600,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Dosseman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yaz%C4%B1l%C4%B1kaya_room_A_Teshub,_Hebat_and_others_3496.jpg"
+  },
+  "illuyanka-malatya": {
+    "src": "/images/exhibits/illuyanka-malatya.jpg",
+    "width": 1280,
+    "height": 767,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Dosseman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anatolian_Civilizations_Museum_slaying_of_the_serpent_Illuyanka_by_the_Storm_God_in_2011_03.jpg"
+  },
+  "allat-palmyra": {
+    "src": "/images/exhibits/allat-palmyra.jpg",
+    "width": 1280,
+    "height": 852,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Dosseman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palmyra_Temple_of_Allat_0066.jpg"
+  },
+  "dushara-nabataean": {
+    "src": "/images/exhibits/dushara-nabataean.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dhushara.JPG"
+  },
+  "perun-slavic": {
+    "src": "/images/exhibits/perun-slavic.jpg",
+    "width": 877,
+    "height": 1122,
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Andrey Shishkin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perun_Gromoverzhecz_by_Andrey_Shishkin.jpg"
+  },
+  "svetovid-zbruch": {
+    "src": "/images/exhibits/svetovid-zbruch.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Svetovid_%E2%80%93_Zbruch_Idol_(MAK-63).jpg"
+  },
+  "baba-yaga-bilibin": {
+    "src": "/images/exhibits/baba-yaga-bilibin.jpg",
+    "width": 1249,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ivan Bilibin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bilibin._Baba_Yaga.jpg"
+  },
+  "perkunas-baltic": {
+    "src": "/images/exhibits/perkunas-baltic.jpg",
+    "width": 1143,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Society for the Protection of Monuments and Local History of the Lithuanian SSR",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perkunas_of_Kernav%C4%97s.jpg"
+  },
+  "kalevipoeg-raud": {
+    "src": "/images/exhibits/kalevipoeg-raud.jpg",
+    "width": 1280,
+    "height": 1016,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kristjan Raud",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:TKM_2797B_Kristjan_Raud_-_Kalevipoeg_ja_Vanapagan.jpg"
+  },
+  "tinia-etruscan": {
+    "src": "/images/exhibits/tinia-etruscan.jpg",
+    "width": 1280,
+    "height": 1554,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Etruscan_mirror_with_Tinia_Uni_Hercle_Menrva_Turan_Mean.jpg"
+  },
+  "charun-etruscan": {
+    "src": "/images/exhibits/charun-etruscan.jpg",
+    "width": 1280,
+    "height": 637,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Askelladd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Achilles%27_Sacrifice_of_Trojan_Prisoners.jpg"
+  },
+  "menrva-etruscan": {
+    "src": "/images/exhibits/menrva-etruscan.jpg",
+    "width": 1280,
+    "height": 1513,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Etruscan_mirror_with_Hercle_Menrva_Apulu.jpg"
+  },
+  "snake-goddess-minoan": {
+    "src": "/images/exhibits/snake-goddess-minoan.jpg",
+    "width": 1008,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Jebulon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Snake_goddess_archmus_Heraklion.jpg"
+  },
+  "mistress-animals-minoan": {
+    "src": "/images/exhibits/mistress-animals-minoan.jpg",
+    "width": 865,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:P1010631_CROP_crop.jpg"
+  },
+  "anahit-satala": {
+    "src": "/images/exhibits/anahit-satala.jpg",
+    "width": 1245,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Thomas Eyre Macklin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:T.E._Macklin_Aphrodite_bronze_mask.jpg"
+  },
+  "turul-hungarian": {
+    "src": "/images/exhibits/turul-hungarian.jpg",
+    "width": 1024,
+    "height": 576,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Gyula Donáth",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turul_-_B%C3%A1nhida_(Tatab%C3%A1nya)_-_2.jpg"
+  },
+  "weland-franks-casket": {
+    "src": "/images/exhibits/weland-franks-casket.jpg",
+    "width": 1280,
+    "height": 894,
+    "license": "No restrictions",
+    "licenseUrl": "https://www.flickr.com/commons/usage/",
+    "artist": "Internet Archive Book Images",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Contributions_to_Old_English_literature_(1901)_(14597378649).jpg"
+  },
+  "thracian-horseman": {
+    "src": "/images/exhibits/thracian-horseman.jpg",
+    "width": 1280,
+    "height": 746,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Yair-haklai",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Relief_of_a_Thracian_horseman,_Marble,_early_1st_Century_CE_Thessaloniki.jpg"
+  },
+  "shango-yoruba": {
+    "src": "/images/exhibits/shango-yoruba.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Rept0n1x",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shango_staff,_oshe_Shango,_World_Museum_Liverpool.JPG"
+  },
+  "eshu-yoruba": {
+    "src": "/images/exhibits/eshu-yoruba.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure_of_deity_Eshu,_Yoruba,_Nigeria,_end_of_19th_century_-_Staatliches_Museum_f%C3%BCr_V%C3%B6lkerkunde_M%C3%BCnchen_-_DSC08551.JPG"
+  },
+  "orunmila-ifa": {
+    "src": "/images/exhibits/orunmila-ifa.jpg",
+    "width": 1236,
+    "height": 1536,
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_75.147.1_Divination_Tray_Opon_Ifa.jpg"
+  },
+  "nommo-dogon": {
+    "src": "/images/exhibits/nommo-dogon.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "CC BY-SA 3.0 fr",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en",
+    "artist": "Rama",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dogon_sculpture-73.1977.6.1-DSC00255-58-black.jpg"
+  },
+  "gu-fon": {
+    "src": "/images/exhibits/gu-fon.jpg",
+    "width": 535,
+    "height": 1600,
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "artist": "Sailko",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Benin,_fon,_il_dio_gou_protettore_del_ferro_battuto_e_della_guerra,_ante_1858,_artista_akati_ekpl%C3%A9kendo,_01.JPG"
+  },
+  "viracocha-tiwanaku": {
+    "src": "/images/exhibits/viracocha-tiwanaku.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Bgabel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bol-tihuanaco-sonnentor.jpg"
+  },
+  "pachamama-inca": {
+    "src": "/images/exhibits/pachamama-inca.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Dan Lundberg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20170808_Bolivia_1411_Potos%C3%AD_sRGB_(26204035019).jpg"
+  },
+  "raven-haida": {
+    "src": "/images/exhibits/raven-haida.jpg",
+    "width": 699,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Hiart",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Totemic_raven_carving_(fragment)_in_the_Visitor_Center,_Sitka_National_Historical_Park,.jpg"
+  },
+  "were-jaguar-olmec": {
+    "src": "/images/exhibits/were-jaguar-olmec.jpg",
+    "width": 1280,
+    "height": 1032,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Olmec_-_Carved_Bowl_with_Jaguar_Dragon_Motif_-_Walters_482797.jpg"
+  },
+  "cocijo-zapotec": {
+    "src": "/images/exhibits/cocijo-zapotec.jpg",
+    "width": 1280,
+    "height": 1491,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zapotec_-_Effigy_Urn_of_Cocijo_-_Walters_482788.jpg"
+  },
+  "zouche-nuttall-75": {
+    "src": "/images/exhibits/zouche-nuttall-75.jpg",
+    "width": 1280,
+    "height": 1008,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Zelia Nuttall",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Codex_Zouche-Nuttall_Page_75.png"
+  },
+  "tangaroa-rurutu": {
+    "src": "/images/exhibits/tangaroa-rurutu.jpg",
+    "width": 1152,
+    "height": 1600,
+    "license": "No restrictions",
+    "licenseUrl": "https://www.flickr.com/commons/usage/",
+    "artist": "Internet Archive Book Images",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Handbook_to_the_ethnographical_collections_(1910)_(14596837587).jpg"
+  },
+  "ku-hawaii": {
+    "src": "/images/exhibits/ku-hawaii.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "artist": "Lebrac",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuka%27ilimoku.jpg"
+  },
+  "makemake-rapanui": {
+    "src": "/images/exhibits/makemake-rapanui.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "artist": "Dennis G. Jarvis",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chile-03609_-_Make-make_(49072531058).jpg"
+  },
+  "moai-rapanui": {
+    "src": "/images/exhibits/moai-rapanui.jpg",
+    "width": 1280,
+    "height": 851,
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "artist": "Rivi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ahu_Tongariki_cropped.jpg"
+  },
+  "kim-un-kamuy-ainu": {
+    "src": "/images/exhibits/kim-un-kamuy-ainu.jpg",
+    "width": 1280,
+    "height": 730,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Hirasawa Byōzan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ainu-iomante-bear-spirit-sending-ceremony-by-Hirasawa-Byozan-1875.png"
+  },
+  "gesar-tibet": {
+    "src": "/images/exhibits/gesar-tibet.jpg",
+    "width": 876,
+    "height": 1600,
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gesar_of_Ling_riding_a_deer._Distemper_painting._Wellcome_L0040371.jpg"
+  },
+  "palden-lhamo-tibet": {
+    "src": "/images/exhibits/palden-lhamo-tibet.jpg",
+    "width": 1153,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shri_(Palden_Lhamo)_1750-1850_LACMA.jpg"
+  },
+  "thanh-giong-vietnam": {
+    "src": "/images/exhibits/thanh-giong-vietnam.jpg",
+    "width": 1280,
+    "height": 967,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Vietnamese artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tranh_%C4%90%C3%B4ng_H%E1%BB%93_v%E1%BA%BD_Ph%C3%B9_%C4%90%E1%BB%95ng_Thi%C3%AAn_V%C6%B0%C6%A1ng.jpg"
+  },
+  "tosakanth-thai": {
+    "src": "/images/exhibits/tosakanth-thai.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Prof Ranga Sai",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ramakien_00.jpg"
+  },
+  "mae-phosop-thai": {
+    "src": "/images/exhibits/mae-phosop-thai.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Iudexvivorum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siam_Society_-_Bangkok_-_2017-07-25_(059).jpg"
+  },
+  "thagyamin-myanmar": {
+    "src": "/images/exhibits/thagyamin-myanmar.jpg",
+    "width": 1280,
+    "height": 477,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Temple, Richard Carnac, Sir",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thuriya_(Suriya),_Agni,_Thagyamin_(Indra),_Byamma_(Brahma)_and_Thukanda_(Skanda).jpg"
+  },
+  "mahagiri-myanmar": {
+    "src": "/images/exhibits/mahagiri-myanmar.jpg",
+    "width": 537,
+    "height": 913,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Sir Richard Carnac Temple",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mahagiri_Nat.jpg"
+  },
+  "rangda-bali": {
+    "src": "/images/exhibits/rangda-bali.jpg",
+    "width": 1012,
+    "height": 1600,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Silar",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:02021_0109_(1)_Rangda_mask.jpg"
+  },
+  "dewi-sri-java": {
+    "src": "/images/exhibits/dewi-sri-java.jpg",
+    "width": 844,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_Dewi_Sri,_Wanita_di_Indonesia_p4_(Lichtbeelden_Institute).jpg"
+  },
+  "maui-polynesian": {
+    "src": "/images/exhibits/maui-polynesian.jpg",
+    "width": 1189,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Hiart",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maui_Snaring_the_Sun_by_Arman_Tateos_Manookian,_c._1927,_drawing,_Honolulu_Museum_of_Art.jpg"
+  },
+  "inti-inca": {
+    "src": "/images/exhibits/inti-inca.jpg",
+    "width": 1189,
+    "height": 1600,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Pierre André Leclercq",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuzco.-_Temple_Koricancha_cosmologie_Inca,_(2).jpg"
+  },
+  "barong-bali": {
+    "src": "/images/exhibits/barong-bali.jpg",
+    "width": 1280,
+    "height": 1247,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barong_Ket,_Bali,_undated_-_Spurlock_Museum,_UIUC_-_DSC05997.jpg"
+  },
+  "beowulf-anglo-saxon": {
+    "src": "/images/exhibits/beowulf-anglo-saxon.jpg",
+    "width": 1055,
+    "height": 1356,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Joseph Ratcliffe Skelton",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_grendel.jpg"
   }
 }

@@ -17,6 +17,45 @@
     line-height: 1.2;
 }
 
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 4rem;
+}
+
+.filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.filter[aria-pressed="true"] {
+    background-color: var(--page-fg);
+    color: var(--page-bg);
+}
+
+.filterCount {
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 .timeline {
     --progress: 0;
     position: relative;

@@ -35,9 +35,22 @@ test("홈: 신화 계열을 오래된 문헌 순서로 보여 줍니다", async 
     page.getByRole("heading", { level: 1, name: "Ark — 세계 신화 도서관" }),
   ).toBeAttached();
   const timeline = page.locator("#pantheons ol > li");
-  await expect(timeline).toHaveCount(12);
+  await expect(timeline).toHaveCount(41);
   await expect(timeline.first()).toContainText("이집트 신화");
-  await expect(timeline.last()).toContainText("핀란드 신화");
+  await expect(timeline.last()).toContainText("도곤 신화");
+});
+
+test("홈: 대륙 버튼으로 신화 계열을 거릅니다", async ({ page }) => {
+  await page.goto("/");
+  const filters = page.getByRole("group", { name: "대륙으로 거르기" });
+  const africa = filters.getByRole("button", { name: /^아프리카/ });
+  await africa.click();
+  await expect(africa).toHaveAttribute("aria-pressed", "true");
+  const timeline = page.locator("#pantheons ol > li");
+  await expect(timeline).toHaveCount(4);
+  await expect(timeline.first()).toContainText("이집트 신화");
+  await filters.getByRole("button", { name: /^전체/ }).click();
+  await expect(timeline).toHaveCount(41);
 });
 
 test("홈 → 계열 → 신: 링크를 따라 상세 화면으로 이동합니다", async ({ page }) => {

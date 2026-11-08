@@ -16,6 +16,7 @@ const rows = {
     name: pantheon.name,
     name_en: pantheon.nameEn,
     region: pantheon.region,
+    continent: pantheon.continent,
     earliest_source: pantheon.earliestSource,
     era_label: pantheon.eraLabel,
     era_year: pantheon.eraYear,

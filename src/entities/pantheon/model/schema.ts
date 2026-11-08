@@ -2,11 +2,14 @@ import { z } from "zod";
 
 import { splitParagraphs } from "@/shared/lib";
 
+import { CONTINENTS } from "./types";
+
 /** 어드민에서 계열을 고칠 때의 입력값. slug는 만든 뒤 바꾸지 않습니다. */
 export const pantheonInputSchema = z.object({
   name: z.string().trim().min(1, "이름을 입력해 주세요."),
   nameEn: z.string().trim().min(1, "영문 이름을 입력해 주세요."),
   region: z.string().trim().min(1, "지역을 입력해 주세요."),
+  continent: z.enum(CONTINENTS, "대륙을 골라 주세요."),
   earliestSource: z.string().trim().min(1, "가장 이른 문헌을 입력해 주세요."),
   eraLabel: z.string().trim().min(1, "시기 표기를 입력해 주세요. 예) 기원전 8세기경"),
   eraYear: z.coerce
