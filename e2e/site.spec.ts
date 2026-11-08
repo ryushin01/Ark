@@ -1,6 +1,8 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
+import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+
 const PAGES = ["/", "/figures", "/pantheons/greek", "/figures/odin", "/figures/loki"];
 const WIDTHS = [375, 768, 1440];
 
@@ -61,7 +63,7 @@ test("신 찾기: 영역으로 찾고 대륙으로 거른 뒤 신 화면으로 �
 
   // 앞 화면(홈)의 신 색인은 Next.js가 숨긴 채 남겨 두므로 보이는 링크만 셉니다.
   const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
-  await expect(cards).toHaveCount(133);
+  await expect(cards).toHaveCount(MOCK_FIGURES.length);
   await page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" }).fill("천둥");
   await expect(page.getByText(/^신과 인물 \d+명$/)).toBeVisible();
   await page.getByRole("button", { name: /^아프리카/ }).click();

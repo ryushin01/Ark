@@ -99,8 +99,8 @@ supabase/          마이그레이션(스키마·RLS·Storage), 시드
 src/
 ├─ app/            Next.js 라우트 (_pages를 다시 내보내기만 함)
 ├─ _app/           루트·사이트·어드민 레이아웃, 전역 스타일
-├─ _pages/         홈(연대기·신 색인), 계열, 신, 아카이브, 404, 어드민 화면(편집 폼)
-├─ widgets/        머리글·바닥글, 어드민 틀
+├─ _pages/         홈(연대기·신 색인), 계열, 신, 신 찾기, 아카이브, 404, 어드민 화면(편집 폼)
+├─ widgets/        머리글·바닥글, 신 카드 목록, 어드민 틀
 ├─ features/       어드민 로그인
 ├─ entities/       계열(pantheon), 신(figure), 자료(exhibit), 작품(work)
 ├─ shared/         등장 애니메이션 UI, 어드민 입력 부품, 세션, 저장소(Supabase·목업)
