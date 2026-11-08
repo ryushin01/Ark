@@ -16,19 +16,17 @@
 
 .number {
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .title {
     font-size: var(--text-2xl);
-    font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.03em;
 }
 
 .facts {
     display: grid;
-    border-top: 1px solid currentColor;
+    border-top: 1px solid var(--rule);
     font-size: var(--text-sm);
 }
 
@@ -37,11 +35,10 @@
     grid-template-columns: 4rem 1fr;
     gap: 1rem;
     padding-block: 0.5rem;
-    border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+    border-bottom: 1px solid var(--rule);
 }
 
 .facts dt {
-    font-weight: 500;
 }
 
 .note {

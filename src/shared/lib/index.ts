@@ -12,4 +12,5 @@ export {
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";
+export { useMotionOff } from "./use-motion-off";
 export { useScrollProgress } from "./use-scroll-progress";

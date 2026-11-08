@@ -57,7 +57,8 @@ test("홈: 대륙 버튼으로 신화 계열을 거릅니다", async ({ page }) 
 
 test("신 찾기: 영역으로 찾고 대륙으로 거른 뒤 신 화면으로 이동합니다", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("banner").getByRole("link", { name: "찾기" }).click();
+  await page.getByRole("button", { name: "메뉴" }).click();
+  await page.getByRole("dialog", { name: "메뉴" }).getByRole("link", { name: "찾기" }).click();
   await expect(page).toHaveURL(/\/figures$/);
   await expect(page.getByRole("heading", { level: 1, name: "신 찾기" })).toBeVisible();
 
@@ -126,6 +127,45 @@ test("작은 화면 메뉴: 열고 Esc로 닫으면 초점이 메뉴 버튼으�
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(menuButton).toBeFocused();
+});
+
+test("화면 설정: 주석과 움직임을 끄면 다시 들어와도 유지됩니다", async ({ page }) => {
+  await page.goto("/figures/zeus");
+  const annotations = page.getByRole("button", { name: "주석" });
+  await expect(annotations).toHaveAttribute("aria-pressed", "true");
+  await annotations.click();
+  await expect(annotations).toHaveAttribute("aria-pressed", "false");
+  await expect(page.locator("html")).toHaveAttribute("data-annotations", "off");
+  await page.getByRole("button", { name: "움직임" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "off");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-annotations", "off");
+  await expect(page.locator("html")).toHaveAttribute("data-motion", "off");
+  await expect(page.getByRole("button", { name: "주석" })).toHaveAttribute("aria-pressed", "false");
+});
+
+test.describe("악보 무대", () => {
+  test.use({ reducedMotion: "no-preference" });
+
+  test("스크롤하면 재생선의 계열이 바뀝니다", async ({ page }) => {
+    await page.goto("/");
+    const link = page.getByRole("link", { name: /계열 보기$/ });
+    await expect(link).toHaveAttribute("href", "/pantheons/egyptian");
+    await page.evaluate(() => {
+      const section = document.querySelector("section")!;
+      window.scrollTo(0, section.offsetHeight - window.innerHeight);
+    });
+    await expect(link).toHaveAttribute("href", "/pantheons/dogon");
+  });
+
+  test("키보드로 필름의 링크에 들어오면 그 계열까지 스크롤합니다", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("link", { name: "인도 신화" }).first().focus();
+    await expect(page.getByRole("link", { name: /계열 보기$/ })).toHaveAttribute(
+      "href",
+      "/pantheons/hindu",
+    );
+  });
 });
 
 test("영향 아카이브는 기능 플래그가 꺼져 있으면 404이고 메뉴에도 없습니다", async ({ page }) => {

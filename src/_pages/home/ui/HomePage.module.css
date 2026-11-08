@@ -1,78 +1,23 @@
-.page {
-    background-color: var(--page-bg);
-    color: var(--page-fg);
-}
-
-/* 히어로가 끝나기 전에 본문이 위로 덮어 올라옵니다. */
-.content {
-    position: relative;
-    margin-top: -100lvh;
-    padding-top: 1.5rem;
-    background-color: var(--page-bg);
+.intro {
+    display: grid;
+    gap: 2rem;
+    padding-block: 8rem 2rem;
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 32rem;
 }
 
 .statement {
-    margin-top: 2rem;
-    font-size: 1.75rem;
-    line-height: 1.05;
+    max-width: 22em;
+    margin-inline: auto;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4.25rem);
+    line-height: 1.12;
     letter-spacing: -0.04em;
-}
-
-.introRow {
-    padding-top: 8rem;
+    text-align: center;
 }
 
 .introNote {
-    grid-column: 1 / -1;
-    font-size: var(--text-lg);
-    line-height: 1.15;
-}
-
-.introImages {
-    margin-block: 1.25rem 1.5rem;
-    /* 작은 화면에서는 가로로 밀어 넘기는 목록이 됩니다. */
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    margin-inline: calc(var(--gutter) * -1);
-    padding-inline: var(--gutter);
-    scroll-padding-inline: var(--gutter);
-}
-
-.introImage {
-    flex: 0 0 80%;
-    aspect-ratio: 4 / 5;
-    scroll-snap-align: start;
-}
-
-@media (min-width: 768px) {
-    .statement {
-        font-size: var(--text-5xl);
-        max-width: 30ch;
-    }
-
-    .introNote {
-        grid-column: 9 / span 4;
-    }
-
-    .introImages {
-        display: grid;
-        overflow: visible;
-        margin-inline: 0;
-        padding-inline: 0;
-    }
-
-    .introImage {
-        grid-column: span 4;
-    }
-}
-
-.srOnly {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    max-width: 34em;
+    margin-inline: auto;
+    text-align: center;
 }

@@ -6,7 +6,6 @@
 .title {
     margin-bottom: 4rem;
     font-size: var(--text-5xl);
-    font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
 }
@@ -16,10 +15,15 @@
     gap: 3rem;
 }
 
+/* 화면 가까이 온 계열만 그립니다. 첫 화면에서 쓰지 않는 한글 글꼴 조각을 받지 않습니다. */
+.groups > section {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto calc(var(--rows) * 4.25rem + 3rem);
+}
+
 .groupTitle {
     padding-bottom: 0.75rem;
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .groupTitle a:hover {
@@ -43,8 +47,8 @@
 }
 
 .name {
+    font-family: var(--font-display);
     font-size: var(--text-3xl);
-    font-weight: 500;
     line-height: 1;
     letter-spacing: -0.04em;
 }

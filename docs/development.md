@@ -10,28 +10,40 @@
 - Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
 - 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                                    |
-| `_pages`   | `home`(첫 화면, 연대기, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
-| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                  |
-| `features` | `admin-auth`                                                                                                                                                                                 |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                                        |
-| `shared`   | `ui`(Divider, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                     |
+| 계층       | 슬라이스                                                                                                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                                         |
+| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                       |
+| `features` | `admin-auth`                                                                                                                                                                                      |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                                             |
+| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                |
 
 ## 디자인
 
-참고 사이트(eladiodieste.com)의 디자인 언어를 신화 도서관에 맞게 옮겼습니다. 상용 글꼴은 쓰지 않고 Pretendard 가변 글꼴로 대신합니다. 글꼴은 글자 묶음별 조각 파일로 나뉜 동적 서브셋(`pretendardvariable-dynamic-subset.css`)을 `globals.css`에서 가져와, 화면에 쓰인 글자가 든 조각만 받습니다. 통째 파일(2MB)을 쓰던 때보다 홈의 전송량이 2.9MB에서 1.5MB로 줄었습니다.
+공개 사이트는 mariavasilyeva.com의 악보 모티프를 참고해 신화 도서관에 맞게 옮겼습니다. 이미지, 문구, 글꼴은 가져오지 않았습니다. 어드민은 Radix Themes 그대로입니다.
 
-| 토큰                                              | 값                    | 쓰임                       |
-| ------------------------------------------------- | --------------------- | -------------------------- |
-| `--black` / `--off-white`                         | `#000` / `#f1ece8`    | 홈(어두운 화면)            |
-| `--sand` / `--brick`                              | `#eadfd2` / `#8a4a1f` | 상세 화면. 명도 대비 5.2:1 |
-| `--ease-magic`, `--ease-out-expo`, `--ease-quart` | cubic-bezier          | 등장·전환 애니메이션       |
+| 요소        | 내용                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------ |
+| 세로 띠     | 넓은 화면 양옆의 검은 띠(`widgets/site-header`). 작은 화면에서는 위쪽 띠. 메뉴는 전체 화면 `dialog`입니다.   |
+| 악보 무대   | 홈 첫 화면(`_pages/home/ui/ScoreStage`). 스크롤하면 자료 필름이 흐르고 재생선 위 계열이 콜라주로 펼쳐집니다. |
+| 오선        | `.staff` 전역 클래스와 `--rule` 줄                                                                           |
+| 손글씨 주석 | `shared/ui/hand`. 장식이라 `aria-hidden`이고 세로 띠의 주석 설정으로 끕니다.                                 |
 
-- 화면 안에 `.theme-dark`가 있으면 `:root:has(.theme-dark)`로 머리글과 `body`까지 어두운 색을 씁니다.
-- 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스를 붙입니다.
-- `prefers-reduced-motion: reduce`이면 등장 애니메이션, 스크롤 연출, Lenis를 모두 끕니다.
+| 토큰                                              | 값                    | 쓰임                  |
+| ------------------------------------------------- | --------------------- | --------------------- |
+| `--paper` / `--ink`                               | `#f9f9f9` / `#131313` | 종이와 잉크           |
+| `--rule`                                          | 잉크 14%              | 오선, 구분선          |
+| `--rail`                                          | `2.75rem`             | 세로 띠 폭(터치 44px) |
+| `--ease-magic`, `--ease-out-expo`, `--ease-quart` | cubic-bezier          | 등장·전환 애니메이션  |
+
+글꼴은 모두 SIL OFL입니다. 제목은 Instrument Serif와 Song Myung, 본문과 표기는 Courier Prime과 Gowun Batang을 씁니다. `@fontsource`의 글자 묶음별 조각이라 화면에 쓰인 글자가 든 조각만 받습니다.
+
+- 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
+- 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
+- 필름과 콜라주의 작은 이미지에는 저작자를 표기할 자리가 없어 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 쓰되 무대 아래쪽에 출처를 표기합니다.
+- 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스와 저장된 설정(`data-annotations`, `data-motion`)을 붙입니다.
+- `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis를 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
 - 지연 로딩 이미지는 `clip-path`로 완전히 잘라 두면 브라우저가 불러오지 않습니다. 시작 상태는 `opacity`로만 숨깁니다.
 
 ## 데이터와 이미지

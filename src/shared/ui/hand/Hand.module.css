@@ -1,0 +1,20 @@
+.note {
+    font-family: var(--font-hand);
+    font-size: 1.75rem;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+:global(html[data-annotations="off"]) .note {
+    display: none;
+}
+
+.mark {
+    display: block;
+    overflow: visible;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}

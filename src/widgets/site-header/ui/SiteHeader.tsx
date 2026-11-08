@@ -1,107 +1,98 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { SITE } from "@/shared/config";
+import { HandNote, HandScribble } from "@/shared/ui";
 
 import { getNavItems } from "../model/nav";
+import { PreferenceToggle } from "./PreferenceToggle";
 import styles from "./SiteHeader.module.css";
 
 /**
  * 사이트 머리글
- * - 아래로 스크롤하면 숨고, 위로 스크롤하면 다시 나타납니다. 키보드 초점이 들어오면 항상 보입니다.
- * - 작은 화면에서는 메뉴 버튼이 전체 화면 메뉴(모달 dialog)를 엽니다. dialog가 초점 가두기와 Esc 닫기를 처리합니다.
+ * - 넓은 화면: 양옆의 검은 세로 띠. 왼쪽은 사이트 이름, 오른쪽은 메뉴와 화면 설정입니다.
+ * - 작은 화면: 위쪽의 검은 띠
+ * - 메뉴 버튼은 전체 화면 메뉴(모달 dialog)를 엽니다. dialog가 초점 가두기와 Esc 닫기를 처리합니다.
  */
 export function SiteHeader() {
   const items = getNavItems();
   const pathname = usePathname();
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [isHidden, setIsHidden] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setIsScrolled(y > 8);
-      setIsHidden(y > lastY && y > 120);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const open = () => dialogRef.current?.showModal();
+  const close = () => dialogRef.current?.close();
 
   useEffect(() => {
     dialogRef.current?.close();
   }, [pathname]);
 
   return (
-    <header
-      className={styles.header}
-      data-hidden={isHidden || undefined}
-      data-scrolled={isScrolled || undefined}
-    >
-      <div className={`${styles.bar} px-global`}>
-        <Link href="/" className={styles.logo}>
+    <header>
+      <div className={styles.topBar}>
+        <Link href="/" className={styles.topBrand}>
+          <span aria-hidden="true">▸ </span>
           {SITE.name}
-          <span className={styles.logoSub}>세계 신화 도서관</span>
         </Link>
-        <nav aria-label="주 메뉴" className={styles.desktopNav}>
-          <ul className={styles.list}>
-            {items.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={styles.link}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <button
-          type="button"
-          className={styles.menuButton}
-          aria-haspopup="dialog"
-          onClick={() => dialogRef.current?.showModal()}
-        >
+        <button type="button" className={styles.menuButton} aria-haspopup="dialog" onClick={open}>
           메뉴
         </button>
       </div>
 
-      <dialog ref={dialogRef} className={styles.dialog} aria-label="메뉴">
+      <div className={`${styles.rail} ${styles.left}`}>
+        <Link href="/" className={`${styles.vertical} ${styles.flip} ${styles.railLink}`}>
+          <span aria-hidden="true">▸ </span>
+          {SITE.name}
+        </Link>
+        <p className={`${styles.vertical} ${styles.flip}`}>세계 신화 도서관</p>
+      </div>
+
+      <div className={`${styles.rail} ${styles.right}`}>
+        <button
+          type="button"
+          className={`${styles.vertical} ${styles.railLink}`}
+          aria-haspopup="dialog"
+          onClick={open}
+        >
+          메뉴
+        </button>
+        <div className={styles.settings}>
+          <PreferenceToggle name="motion" label="움직임" />
+          <PreferenceToggle name="annotations" label="주석" />
+        </div>
+      </div>
+
+      <dialog ref={dialogRef} className={`${styles.dialog} theme-dark`} aria-label="메뉴">
         <div className={styles.dialogInner}>
           <div className={styles.dialogTop}>
-            <span aria-hidden="true">{SITE.name}</span>
-            <button
-              type="button"
-              className={styles.closeButton}
-              onClick={() => dialogRef.current?.close()}
-            >
+            <Link href="/" className={styles.dialogHome} onClick={close}>
+              처음으로
+            </Link>
+            <button type="button" className={styles.closeButton} onClick={close}>
               닫기
             </button>
           </div>
-          {/* 데스크톱 메뉴와 랜드마크 이름이 겹치지 않게 따로 이름을 붙입니다. */}
           <nav aria-label="전체 화면 메뉴">
-            <ul className={styles.dialogList}>
-              <li>
-                <Link href="/" className={styles.dialogLink}>
-                  처음으로
-                </Link>
-              </li>
-              {items.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={styles.dialogLink}
-                    onClick={() => dialogRef.current?.close()}
-                  >
+            <ol className={styles.dialogList}>
+              {items.map((item, index) => (
+                <li key={item.href} className={styles.dialogItem}>
+                  <Link href={item.href} className={styles.dialogLink} onClick={close}>
+                    <span className={styles.dialogNumber} aria-hidden="true">
+                      ({String(index + 1).padStart(2, "0")})
+                    </span>
                     {item.label}
+                    <HandScribble className={styles.scribble} />
                   </Link>
+                  <HandNote className={styles.dialogNote}>{item.note}</HandNote>
                 </li>
               ))}
-            </ul>
+            </ol>
           </nav>
+          <div className={styles.dialogSettings}>
+            <PreferenceToggle name="motion" label="움직임" />
+            <PreferenceToggle name="annotations" label="주석" />
+          </div>
         </div>
       </dialog>
     </header>

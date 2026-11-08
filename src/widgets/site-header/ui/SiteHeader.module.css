@@ -1,135 +1,263 @@
-.header {
+/* 작은 화면: 위쪽의 검은 띠 */
+.topBar {
     position: fixed;
     inset: 0 0 auto;
     z-index: 50;
-    color: var(--page-fg);
-    transition:
-        transform 0.6s var(--ease-magic),
-        background-color 0.4s;
-}
-
-.header[data-scrolled] {
-    background-color: color-mix(in oklab, var(--page-bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-}
-
-.header[data-hidden]:not(:focus-within) {
-    transform: translateY(-100%);
-}
-
-.bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
     min-height: var(--header-height);
-    font-weight: 500;
+    padding-inline: 1rem;
+    background-color: var(--ink);
+    color: var(--paper);
 }
 
-.logo {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.6em;
-    font-size: var(--text-lg);
-    letter-spacing: -0.03em;
-}
-
-.logoSub {
-    font-size: var(--text-sm);
-}
-
-.desktopNav {
-    display: none;
-}
-
-.list {
-    display: flex;
-    gap: 2rem;
-}
-
-/* 링크 앞의 동그란 점. 마우스를 올리면 커집니다. */
-.link {
+.topBrand,
+.menuButton {
     display: inline-flex;
     align-items: center;
-    gap: 0.5em;
-    /* 터치 대상 크기 확보 (KWCAG 6.1.3) */
     min-height: 44px;
-}
-
-.link::before {
-    content: "";
-    display: block;
-    width: 0.625em;
-    height: 0.625em;
-    border-radius: 50%;
-    background-color: currentColor;
-    transform: scale(0.6);
-    transition: transform 0.5s var(--ease-magic);
-}
-
-.link:hover::before,
-.link:focus-visible::before {
-    transform: scale(1);
-}
-
-.menuButton,
-.closeButton {
-    min-height: 44px;
-    padding: 0 0.25rem;
     border: 0;
     background: none;
-    font-weight: 500;
+    color: inherit;
     cursor: pointer;
 }
 
-@media (min-width: 768px) {
-    .desktopNav {
-        display: block;
-    }
-
-    .menuButton {
-        display: none;
-    }
+/* 넓은 화면: 양옆의 검은 세로 띠 */
+.rail {
+    position: fixed;
+    inset-block: var(--rail-inset);
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--rail);
+    padding-block: 1rem;
+    background-color: var(--ink);
+    color: var(--paper);
+    font-size: var(--text-sm);
 }
 
+.left {
+    left: var(--rail-inset);
+}
+
+.right {
+    right: var(--rail-inset);
+}
+
+.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    white-space: nowrap;
+}
+
+.flip {
+    transform: rotate(180deg);
+}
+
+.railLink {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.25rem 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.railLink:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.toggle {
+    display: inline-flex;
+    gap: 0.75rem;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+}
+
+.toggleStates {
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+.toggleState {
+    position: relative;
+    padding: 0.35em 0.15em;
+}
+
+.toggleCircle {
+    position: absolute;
+    inset: -0.1em -0.25em;
+    width: calc(100% + 0.5em);
+    height: calc(100% + 0.2em);
+}
+
+/* 전체 화면 메뉴 */
 .dialog {
-    width: 100%;
+    width: 100vw;
     max-width: none;
     height: 100dvh;
     max-height: none;
     margin: 0;
-    padding: var(--gutter);
+    padding: 0;
     border: 0;
-    background-color: var(--black);
-    color: var(--off-white);
-}
-
-.dialog::backdrop {
-    background: transparent;
+    background-color: var(--page-bg);
+    color: var(--page-fg);
 }
 
 .dialogInner {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    height: 100%;
-    border-top: 1px solid currentColor;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: 1rem var(--gutter);
 }
 
 .dialogTop {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding-top: 0.5rem;
-    font-size: var(--text-lg);
-    font-weight: 500;
+}
+
+.dialogHome,
+.closeButton {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.dialogHome:hover,
+.closeButton:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+}
+
+.dialogInner nav {
+    margin-block: auto;
+}
+
+.dialogList {
+    display: grid;
+    justify-items: center;
+}
+
+.dialogItem {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    border-bottom: 1px solid var(--rule);
+}
+
+.dialogItem:first-child {
+    border-top: 1px solid var(--rule);
 }
 
 .dialogLink {
-    display: block;
-    padding: 1rem 0 1.25rem;
-    border-top: 1px solid currentColor;
-    font-size: 3.5rem;
-    line-height: 1;
+    position: relative;
+    display: inline-block;
+    padding-inline: 0.25em;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 11vw, 7.5rem);
+    line-height: 1.1;
     letter-spacing: -0.04em;
+}
+
+.dialogNumber {
+    position: absolute;
+    top: 0.5em;
+    right: 100%;
+    font-size: 0.25em;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.scribble {
+    position: absolute;
+    top: 45%;
+    left: -8%;
+    width: 116%;
+    height: 0.4em;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.8s var(--ease-quart);
+}
+
+.dialogLink:hover .scribble,
+.dialogLink:focus-visible .scribble {
+    stroke-dashoffset: 0;
+}
+
+.dialogNote {
+    position: absolute;
+    top: 0.25rem;
+    right: 0;
+    font-size: 1.375rem;
+    rotate: -5deg;
+}
+
+.dialogSettings {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.dialogSettings .toggle {
+    writing-mode: horizontal-tb;
+    transform: none;
+}
+
+:global(html[data-motion="off"]) .scribble {
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scribble {
+        transition: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .topBar {
+        display: none;
+    }
+
+    .rail {
+        display: flex;
+    }
+
+    .dialogSettings {
+        display: none;
+    }
+
+    .dialogNote {
+        right: calc(50% - 15rem);
+        font-size: 1.75rem;
+    }
+
+    .dialogInner {
+        padding-block: 1.5rem 3rem;
+    }
 }

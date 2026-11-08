@@ -7,7 +7,6 @@
 .label {
     display: block;
     margin-bottom: 0.75rem;
-    font-weight: 500;
 }
 
 .input {
@@ -15,12 +14,14 @@
     max-width: 40rem;
     min-height: 3.5rem;
     padding: 0 1rem;
-    border: 1px solid currentColor;
+    border: 0;
+    border-bottom: 1px solid currentColor;
     border-radius: 0;
     background: none;
     color: inherit;
     font: inherit;
-    font-size: var(--text-2xl);
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
     letter-spacing: -0.02em;
 }
 
@@ -45,38 +46,6 @@
     font-size: var(--text-sm);
 }
 
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.filter {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
-    min-height: 44px;
-    padding: 0 1rem;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    background: none;
-    color: inherit;
-    font: inherit;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.filter[aria-pressed="true"] {
-    background-color: var(--page-fg);
-    color: var(--page-bg);
-}
-
-.filterCount {
-    font-size: var(--text-sm);
-    font-variant-numeric: tabular-nums;
-}
-
 .count {
     margin-bottom: 2rem;
-    font-weight: 500;
 }

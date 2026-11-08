@@ -1,0 +1,34 @@
+.group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+}
+
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 44px;
+    padding: 0 1rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.circle {
+    position: absolute;
+    inset: 0.2rem 0;
+    width: 100%;
+    height: calc(100% - 0.4rem);
+}
+
+.count {
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
