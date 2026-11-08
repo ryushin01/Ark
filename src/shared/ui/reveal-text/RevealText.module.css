@@ -45,3 +45,13 @@
         translate: none;
     }
 }
+
+/* 움직임 끔(세로 띠의 설정) */
+:global(html.js[data-motion="off"]) .words:not(.inView) .word {
+    transform: none;
+}
+
+:global(html.js[data-motion="off"]) .block:not(.inView) {
+    opacity: 1;
+    translate: none;
+}

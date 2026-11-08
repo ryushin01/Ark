@@ -1,0 +1,112 @@
+.head {
+    position: relative;
+    padding-block: 7rem 2rem;
+    text-align: center;
+}
+
+.note {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    rotate: -3deg;
+}
+
+.title {
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.lead {
+    margin-top: 1.5rem;
+}
+
+.list {
+    margin-top: 3rem;
+    border-top: 1px solid var(--rule);
+}
+
+/* 화면 가까이 온 줄만 그립니다. 첫 화면에서 쓰지 않는 한글 글꼴 조각을 받지 않습니다. */
+.list > li {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 8rem;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 0.75rem;
+    align-items: start;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.number {
+    font-size: var(--text-sm);
+    line-height: 1.8;
+}
+
+.text {
+    display: grid;
+    gap: 0.1rem;
+}
+
+.name {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.row:hover .name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+}
+
+.meta {
+    font-size: var(--text-sm);
+    line-height: 1.35;
+}
+
+.film {
+    display: flex;
+    grid-column: 1 / -1;
+    height: 3.5rem;
+    overflow: hidden;
+}
+
+.thumb {
+    position: relative;
+    display: block;
+    flex: none;
+    height: 100%;
+    background-color: var(--image-placeholder);
+}
+
+.image {
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .list > li {
+        contain-intrinsic-block-size: auto 5.5rem;
+    }
+
+    .head {
+        padding-block: 10rem 3rem;
+    }
+
+    .row {
+        grid-template-columns: 3.25rem minmax(14rem, 22%) 1fr;
+        align-items: center;
+        min-height: 5.5rem;
+        padding-block: 0;
+    }
+
+    .film {
+        grid-column: auto;
+        height: 5.5rem;
+        /* 오래된 계열은 왼쪽, 최근 기록은 오른쪽으로 놓습니다. */
+        padding-inline-start: calc(var(--offset) * 42%);
+    }
+}

@@ -8,14 +8,12 @@
 
 .code {
     font-size: 30vw;
-    font-weight: 500;
     line-height: 0.8;
     letter-spacing: -0.075em;
 }
 
 .title {
     font-size: var(--text-3xl);
-    font-weight: 500;
     letter-spacing: -0.04em;
 }
 

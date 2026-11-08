@@ -5,8 +5,8 @@
     left: 0.5rem;
     z-index: 100;
     padding: 0.75rem 1rem;
-    background-color: var(--black);
-    color: var(--off-white);
+    background-color: var(--ink);
+    color: var(--paper);
     font-weight: 500;
     transform: translateY(-200%);
 }
@@ -17,4 +17,15 @@
 
 .main:focus {
     outline: none;
+}
+
+/* 작은 화면의 위쪽 띠만큼 본문을 내립니다. */
+.main {
+    padding-block-start: var(--header-height);
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-block-start: 0;
+    }
 }

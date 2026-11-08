@@ -54,7 +54,6 @@
     border: 1px dashed currentColor;
     text-align: center;
     font-size: var(--text-2xl);
-    font-weight: 500;
 }
 
 .placeholderNote {
@@ -75,7 +74,6 @@
     border: 1px solid currentColor;
     border-radius: 999px;
     background: none;
-    font-weight: 500;
     cursor: pointer;
 }
 

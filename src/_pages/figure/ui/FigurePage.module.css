@@ -1,80 +1,72 @@
 .header {
-    padding-block: calc(var(--header-height) + 2rem) 4rem;
+    padding-block: calc(var(--header-height) + 1.5rem) 4rem;
 }
 
 .breadcrumb {
     margin-bottom: 4rem;
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .breadcrumb ol {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.25rem 0.75rem;
 }
 
-.breadcrumb li:not(:last-child)::after {
+.breadcrumb li + li::before {
+    margin-inline-end: 0.75rem;
     content: "/";
-    margin-left: 0.5rem;
-    opacity: 0.6;
 }
 
 .breadcrumb a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-}
-
-/* 링크를 색이 아니라 밑줄로도 구분합니다. (KWCAG 5.4.1) */
-.breadcrumb a {
+    min-height: 24px;
     text-decoration: underline;
     text-underline-offset: 0.2em;
 }
 
-.breadcrumb li[aria-current] {
-    display: inline-flex;
-    align-items: center;
-}
-
 .titleCol {
     grid-column: 1 / -1;
+    text-align: center;
 }
 
 .eyebrow {
     margin-bottom: 1rem;
     font-size: var(--text-sm);
-    font-weight: 500;
 }
 
 .title {
-    font-size: 3.75rem;
-    font-weight: 500;
+    font-size: clamp(3.75rem, 13vw, 11rem);
     line-height: 1;
     letter-spacing: -0.05em;
 }
 
 .epithet {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
+    font-family: var(--font-display);
     font-size: var(--text-2xl);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
 .domains {
     grid-column: 1 / -1;
-    font-size: var(--text-sm);
+    margin-top: 2rem;
+    text-align: center;
 }
 
 .domainsTitle {
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid currentColor;
-    font-size: inherit;
-    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    letter-spacing: 0;
 }
 
-.domains li {
-    padding-block: 0.4rem;
-    border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+.domains ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    justify-content: center;
 }
 
 .about {
@@ -84,17 +76,16 @@
 
 .summary {
     grid-column: 1 / -1;
-    font-size: var(--text-2xl);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
 }
 
 .description {
-    grid-column: 1 / -1;
     display: grid;
+    grid-column: 1 / -1;
     gap: 1rem;
-    line-height: 1.35;
 }
 
 .section {
@@ -102,42 +93,36 @@
 }
 
 .sectionTitle {
-    margin-block: 1.5rem 4rem;
-    font-size: var(--text-5xl);
-    font-weight: 500;
+    padding-block: 3rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
     line-height: 1;
     letter-spacing: -0.05em;
+    text-align: center;
 }
 
 .count {
-    font-size: 0.4em;
-    letter-spacing: -0.02em;
-    vertical-align: top;
+    font-size: 0.3em;
+    letter-spacing: 0;
+    vertical-align: super;
 }
 
-.works,
-.siblings {
-    border-top: 1px solid currentColor;
+.works {
+    border-top: 1px solid var(--rule);
 }
 
 .workLink {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
     justify-content: space-between;
-    gap: 0.5rem 1rem;
+    gap: 1rem;
+    align-items: baseline;
     padding-block: 1rem;
-    border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+    border-bottom: 1px solid var(--rule);
 }
 
 .workTitle {
-    font-size: var(--text-2xl);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
     letter-spacing: -0.03em;
-}
-
-.workLink:hover .workTitle {
-    text-decoration: underline;
 }
 
 .workMeta {
@@ -145,31 +130,31 @@
 }
 
 .siblingsTitle {
-    margin-block: 1.5rem 2rem;
-    font-size: var(--text-sm);
-    font-weight: 500;
+    padding-block: 2rem 1.5rem;
+    font-size: var(--text-3xl);
+    text-align: center;
 }
 
 .siblings {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 2rem;
-    padding-top: 1rem;
-    border-top: 0;
+    gap: 0 1.5rem;
+    justify-content: center;
 }
 
 .siblingLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-display);
     font-size: var(--text-3xl);
-    font-weight: 500;
-    letter-spacing: -0.04em;
-    line-height: 1.3;
+    letter-spacing: -0.03em;
 }
 
-.siblingLink:hover,
-.siblingLink:focus-visible {
+.siblingLink:hover {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: 0.15em;
+    text-underline-offset: 0.12em;
 }
 
 .srOnly {
@@ -182,29 +167,11 @@
 }
 
 @media (min-width: 768px) {
-    .titleCol {
-        grid-column: 1 / span 8;
-    }
-
-    .title {
-        font-size: 6rem;
-    }
-
-    .domains {
-        grid-column: 10 / span 3;
-        align-self: end;
-    }
-
     .summary {
-        grid-column: 1 / span 6;
-        font-size: 2rem;
+        grid-column: 1 / span 5;
     }
 
     .description {
-        grid-column: 10 / span 3;
-    }
-
-    .sectionTitle {
-        font-size: var(--text-display);
+        grid-column: 7 / -1;
     }
 }

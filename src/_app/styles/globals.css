@@ -1,50 +1,73 @@
 /*
- * 글꼴: Pretendard 가변 글꼴의 동적 서브셋
- * 글자 묶음별 조각 파일(unicode-range)로 나뉘어, 화면에 쓰인 글자가 든 조각만 받습니다.
- * 통째 파일(2MB)을 쓰면 모바일 첫 화면이 몇 초 늦어집니다.
+ * 글꼴 (모두 SIL OFL, 글자 묶음별 조각 파일이라 화면에 쓰인 글자가 든 조각만 받습니다)
+ * - 제목: Instrument Serif(영문), Song Myung(한글)
+ * - 본문·표기: Courier Prime(영문·숫자), Gowun Batang(한글)
+ * - 손글씨 주석: Nanum Pen Script. 주석에 쓰는 글자만 담은 작은 파일입니다.
+ *   주석 문구에 새 글자가 들어가면 파일을 다시 만듭니다. (docs/development.md)
  */
-@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/song-myung/400.css";
+@import "@fontsource/courier-prime/400.css";
+@import "@fontsource/gowun-batang/400.css";
+
+@font-face {
+    font-family: "Nanum Pen Notes";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./fonts/nanum-pen-notes.woff2") format("woff2");
+}
 
 /*
  * 디자인 토큰
- * 색: 홈은 검정 바탕에 오프화이트, 상세 화면은 모래색 바탕에 벽돌색 글자를 씁니다.
- * 벽돌색 글자(#8a4a1f)는 모래색 바탕에서 명도 대비 5.2:1로, 본문 기준(4.5:1)을 넘깁니다.
+ * 악보를 모티프로 합니다. 흰 종이에 검은 잉크, 가로 오선, 양옆의 검은 세로 띠.
  */
 :root {
-    --black: #000;
-    --off-white: #f1ece8;
-    --sand: #eadfd2;
-    --brick: #8a4a1f;
-    --brick-light: #a55f2d;
+    --paper: #f9f9f9;
+    --ink: #131313;
+    --rule: rgb(19 19 19 / 0.14);
 
-    --page-bg: var(--sand);
-    --page-fg: var(--brick);
-    --image-placeholder: color-mix(in oklab, var(--page-fg) 15%, transparent);
+    --page-bg: var(--paper);
+    --page-fg: var(--ink);
+    --image-placeholder: rgb(19 19 19 / 0.06);
 
     --ease-magic: cubic-bezier(0.33, 0, 0, 1);
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
     --ease-quart: cubic-bezier(0.41, 0.35, 0.2, 1);
+
+    /* 세로 띠: 터치 대상 44px을 지키는 폭과 화면 가장자리 여백 */
+    --rail: 2.75rem;
+    --rail-inset: 0.625rem;
 
     --gutter: 1rem;
     --grid-gap: 1.25rem;
     --header-height: 3.25rem;
 
     --text-sm: 0.875rem;
-    --text-base: 1.0625rem;
+    --text-base: 1rem;
     --text-lg: 1.125rem;
     --text-2xl: 1.5rem;
     --text-3xl: 1.875rem;
     --text-5xl: 3rem;
     --text-display: 7rem;
 
-    --font-sans: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+    --font-display: "Instrument Serif", "Song Myung", serif;
+    --font-sans: "Courier Prime", "Gowun Batang", serif;
+    --font-hand: "Nanum Pen Notes", cursive;
 }
 
-/* 홈처럼 어두운 화면. 화면 안에 .theme-dark가 있으면 머리글과 body까지 어두운 색을 씁니다. */
-:root:has(.theme-dark),
+@media (min-width: 768px) {
+    :root {
+        --gutter: calc(var(--rail) + var(--rail-inset) + 1rem);
+        --header-height: 0.5rem;
+    }
+}
+
+/* 메뉴 등 어두운 면 */
 .theme-dark {
-    --page-bg: var(--black);
-    --page-fg: var(--off-white);
+    --page-bg: var(--ink);
+    --page-fg: var(--paper);
+    --rule: rgb(249 249 249 / 0.16);
     --image-placeholder: rgb(255 255 255 / 0.1);
 }
 
@@ -75,9 +98,11 @@ body {
     color: var(--page-fg);
     font-family: var(--font-sans);
     font-size: var(--text-base);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    line-height: 1.55;
+    letter-spacing: 0;
     word-break: keep-all;
+    /* 굵기가 하나뿐인 글꼴을 브라우저가 억지로 굵게 그리지 않게 합니다. */
+    font-synthesis: none;
     overflow-wrap: anywhere;
 }
 
@@ -115,6 +140,14 @@ button {
     color: inherit;
 }
 
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+}
+
 /* 키보드 초점은 항상 보이게 합니다. (KWCAG 6.1.2) */
 :focus-visible {
     outline: 2px solid currentColor;
@@ -144,6 +177,13 @@ html.lenis body {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: var(--grid-gap);
+}
+
+/* 오선: 가로줄 일곱 개를 깝니다. 장식이라 내용과 상관없습니다. */
+.staff {
+    background-image: linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
+    background-size: 100% calc(100% / 8);
+    background-position: 0 calc(100% / 8);
 }
 
 /* 화면에는 보이지 않고 화면 낭독기만 읽는 글 */

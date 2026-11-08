@@ -40,8 +40,8 @@
 }
 
 .name {
+    font-family: var(--font-display);
     font-size: var(--text-3xl);
-    font-weight: 500;
     line-height: 1;
     letter-spacing: -0.04em;
 }
