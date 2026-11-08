@@ -5,8 +5,9 @@ import { Button, Link as RadixLink, Table } from "@radix-ui/themes";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
-import { PantheonForm } from "@/features/edit-pantheon";
 import { Notice, PageHeader } from "@/shared/ui/admin";
+
+import { PantheonForm } from "./PantheonForm";
 
 /** 신화 계열 목록 */
 export async function AdminPantheonsPage({ saved, deleted }: { saved?: string; deleted?: string }) {

@@ -5,10 +5,12 @@ import { Badge, Box, Button, Callout, Flex, Table, Text } from "@radix-ui/themes
 import { getFigures } from "@/entities/figure/index.server";
 import { WORK_MEDIUM_LABEL, WORK_STATUS_LABEL } from "@/entities/work";
 import { getWork, getWorks } from "@/entities/work/index.server";
-import { WorkForm, WorkImages } from "@/features/edit-work";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
 import { Notice, PageHeader } from "@/shared/ui/admin";
+
+import { WorkForm } from "./WorkForm";
+import { WorkImages } from "./WorkImages";
 
 /** 영향 작품 목록 */
 export async function AdminWorksPage({ saved, deleted }: { saved?: string; deleted?: string }) {

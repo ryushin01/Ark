@@ -8,9 +8,9 @@ import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
 import { features } from "@/shared/config";
 import { Divider, RevealText } from "@/shared/ui";
-import { ExhibitGallery } from "@/widgets/exhibit-gallery";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { ExhibitGallery } from "./ExhibitGallery";
 import styles from "./FigurePage.module.css";
 
 export async function generateFigureParams() {

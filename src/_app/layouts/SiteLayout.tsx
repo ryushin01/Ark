@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/widgets/site-header";
 
-import { SmoothScroll } from "../providers/SmoothScroll";
+import { SmoothScroll } from "../scroll/SmoothScroll";
 import styles from "./SiteLayout.module.css";
 
 import type { ReactNode } from "react";

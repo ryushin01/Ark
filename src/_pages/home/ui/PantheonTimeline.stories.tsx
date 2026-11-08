@@ -10,7 +10,7 @@ const credit = {
 };
 
 const meta = {
-  title: "Widgets/PantheonTimeline",
+  title: "Pages/Home/PantheonTimeline",
   component: PantheonTimeline,
   parameters: { theme: "dark", layout: "fullscreen" },
   args: {

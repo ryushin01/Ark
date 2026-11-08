@@ -2,19 +2,21 @@
 
 ## 구조: Feature-Sliced Design v2.1
 
-계층은 위에서 아래로 `_app → _pages → widgets → features → entities → shared` 순서입니다. 슬라이스는 자기보다 아래 계층만 가져오고, 다른 슬라이스는 공개 API(`index.ts`)로만 가져옵니다. 두 규칙은 `eslint.config.mjs`의 `no-restricted-imports`가 검사합니다.
+계층은 위에서 아래로 `_app → _pages → widgets → features → entities → shared` 순서입니다. 슬라이스는 자기보다 아래 계층만 가져오고, 다른 슬라이스는 공개 API(`index.ts`)로만 가져옵니다. 두 규칙은 `eslint.config.mjs`의 `no-restricted-imports`가 검사하고, 슬라이스 구성은 Steiger(`pnpm lint:fsd`, `steiger.config.mjs`)가 검사합니다.
 
 - Next.js의 `src/app/`에 있는 라우트 파일은 `_pages`를 다시 내보내기만 합니다. 동적 라우트는 `params`를 풀어 넘기는 정도만 둡니다.
 - 서버 전용 코드(조회·저장, 스키마)가 있는 슬라이스는 `index.server.ts`로 따로 내보냅니다. 클라이언트 컴포넌트는 `index.ts`(타입, 상수, UI)만 가져옵니다.
-- Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다.
+- Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
+- 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                         |
-| ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| `_pages`   | `home`, `pantheon`, `figure`, `archive`, `not-found`                                                             |
-| `widgets`  | `site-header`, `site-footer`, `home-hero`, `pantheon-timeline`, `figure-index`, `figure-grid`, `exhibit-gallery` |
-| `features` | `swipe-gallery`                                                                                                  |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                            |
-| `shared`   | `ui`(Divider, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                         |
+| 계층       | 슬라이스                                                                                                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                   |
+| `_pages`   | `home`(첫 화면, 연대기, 신 색인), `pantheon`(신 목록), `figure`(자료 목록), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `admin-shell`                                                                                                                                 |
+| `features` | `admin-auth`                                                                                                                                                                |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                       |
+| `shared`   | `ui`(Divider, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                    |
 
 ## 디자인
 
