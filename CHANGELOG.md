@@ -1,5 +1,15 @@
 # 버전 기록
 
+## 0.10.0 (2026-11-08)
+
+- 신 찾기 화면(`/figures`): 이름·별칭·관장 영역·계열 이름으로 찾고 대륙으로 거르기, 결과 개수 낭독. 머리글 메뉴와 sitemap에 추가
+- 모바일 첫 화면 속도: Pretendard를 동적 서브셋으로 바꾸고(글꼴 2MB → 화면에 쓰인 조각만), 공개 화면에서 어드민용 Radix Themes CSS를 뺌. 홈 전송량 2.9MB → 1.5MB
+- `_app` 공개 API를 공개 사이트용 `index.ts`와 어드민용 `index.admin.ts`로 나눔
+- 이미지 `priority`(Next.js 16에서 deprecated)를 `loading="eager"`·`fetchPriority`로 바꿈
+- 모든 계열·신 화면(174개)의 axe와 가로 넘침 E2E
+- 의존성: TypeScript 6.0, Vitest 5, Storybook 10.6.6. `vite-tsconfig-paths`를 Vite 기본 기능으로 대체
+- 신 카드 목록을 계열 상세와 신 찾기에서 함께 쓰도록 `widgets/figure-grid`로 올림
+
 ## 0.9.1 (2026-11-08)
 
 - Steiger(`pnpm lint:fsd`)로 FSD 구조 검사를 추가하고 CI에서 실행

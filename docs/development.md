@@ -6,21 +6,22 @@
 
 - Next.js의 `src/app/`에 있는 라우트 파일은 `_pages`를 다시 내보내기만 합니다. 동적 라우트는 `params`를 풀어 넘기는 정도만 둡니다.
 - 서버 전용 코드(조회·저장, 스키마)가 있는 슬라이스는 `index.server.ts`로 따로 내보냅니다. 클라이언트 컴포넌트는 `index.ts`(타입, 상수, UI)만 가져옵니다.
+- `_app`은 공개 사이트용 `index.ts`와 어드민용 `index.admin.ts`로 나눕니다. 어드민 레이아웃이 Radix Themes CSS(압축 전 약 680KB)를 가져오므로, 한 파일로 내보내면 공개 사이트도 이 CSS를 받게 됩니다.
 - Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
 - 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                                                                                    |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                   |
-| `_pages`   | `home`(첫 화면, 연대기, 신 색인), `pantheon`(신 목록), `figure`(자료 목록), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
-| `widgets`  | `site-header`, `site-footer`, `admin-shell`                                                                                                                                 |
-| `features` | `admin-auth`                                                                                                                                                                |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                       |
-| `shared`   | `ui`(Divider, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                    |
+| 계층       | 슬라이스                                                                                                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                                    |
+| `_pages`   | `home`(첫 화면, 연대기, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                  |
+| `features` | `admin-auth`                                                                                                                                                                                 |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                                        |
+| `shared`   | `ui`(Divider, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                     |
 
 ## 디자인
 
-참고 사이트(eladiodieste.com)의 디자인 언어를 신화 도서관에 맞게 옮겼습니다. 상용 글꼴은 쓰지 않고 Pretendard 가변 글꼴로 대신합니다.
+참고 사이트(eladiodieste.com)의 디자인 언어를 신화 도서관에 맞게 옮겼습니다. 상용 글꼴은 쓰지 않고 Pretendard 가변 글꼴로 대신합니다. 글꼴은 글자 묶음별 조각 파일로 나뉜 동적 서브셋(`pretendardvariable-dynamic-subset.css`)을 `globals.css`에서 가져와, 화면에 쓰인 글자가 든 조각만 받습니다. 통째 파일(2MB)을 쓰던 때보다 홈의 전송량이 2.9MB에서 1.5MB로 줄었습니다.
 
 | 토큰                                              | 값                    | 쓰임                       |
 | ------------------------------------------------- | --------------------- | -------------------------- |
@@ -136,14 +137,20 @@
 
 GitHub Actions(`.github/workflows/ci.yml`)는 두 작업을 나란히 돌립니다.
 
-- `check`: 린트, 서식, 타입, 단위, 스토리, 빌드, E2E (목업 저장소)
+- `check`: 린트, FSD 구조(Steiger), 서식, 타입, 단위, 스토리, 빌드, E2E (목업 저장소. 모든 계열·신 화면의 axe와 가로 넘침 포함)
 - `upload`: 로컬 Supabase를 띄우고 업로드 E2E
 
 Dependabot(`.github/dependabot.yml`)이 같은 메이저 안의 패치·마이너 업데이트를 주 1회(npm), 월 1회(Actions) PR로 올립니다. 출시 후 14일이 지난 버전만 제안합니다.
 
+메이저 업데이트는 직접 합니다. 2026-11-08 기준으로 다음은 올리지 않았습니다.
+
+- **TypeScript 7:** typescript-eslint가 TypeScript 6.1 미만만 지원합니다. 지원하는 6.0까지 올렸습니다. (Next.js 빌드는 7을 지원)
+- **ESLint 10:** `eslint-config-next`가 쓰는 import·jsx-a11y·react 플러그인이 ESLint 9까지만 지원합니다.
+- **`@types/node` 26:** 실행 환경이 Node.js 22(`.nvmrc`)라 타입도 22에 맞춥니다.
+
 ## 하지 않기로 한 것
 
-- **시드 이미지를 Storage로 옮기기:** 저장소의 `public/images/exhibits/`(4.6MB)에 둡니다. 옮기면 CI와 E2E가 운영 Storage에 네트워크로 의존하게 됩니다.
+- **시드 이미지를 Storage로 옮기기:** 저장소의 `public/images/exhibits/`(26MB)에 둡니다. 옮기면 CI와 E2E가 운영 Storage에 네트워크로 의존하게 됩니다.
 - **저장 직후 첫 요청의 이전 페이지:** 공개 페이지는 미리 그린 페이지라, 저장 뒤 첫 요청은 이전 내용이고 다음 요청부터 새 내용입니다. 없애려면 요청마다 그려야 해 정적 페이지의 속도 이점을 잃습니다.
 
 ## 기능 플래그
