@@ -10,7 +10,7 @@ const credit = {
 };
 
 const meta = {
-  title: "Widgets/FigureGrid",
+  title: "Pages/Pantheon/FigureGrid",
   component: FigureGrid,
   args: {
     figures: [

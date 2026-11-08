@@ -6,9 +6,10 @@ import { Button, Flex, Table, Text } from "@radix-ui/themes";
 import { EXHIBIT_KIND_LABEL } from "@/entities/exhibit";
 import { getExhibit, getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
-import { ExhibitForm } from "@/features/edit-exhibit";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { Notice, PageHeader } from "@/shared/ui/admin";
+
+import { ExhibitForm } from "./ExhibitForm";
 
 /** 소장 자료 목록 */
 export async function AdminExhibitsPage({ saved, deleted }: { saved?: string; deleted?: string }) {

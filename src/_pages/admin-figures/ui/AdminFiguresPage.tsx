@@ -5,8 +5,9 @@ import { Button, Flex, Link as RadixLink, Table, Text } from "@radix-ui/themes";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
-import { FigureForm } from "@/features/edit-figure";
 import { Notice, PageHeader } from "@/shared/ui/admin";
+
+import { FigureForm } from "./FigureForm";
 
 type ListProps = { pantheon?: string; saved?: string; deleted?: string };
 

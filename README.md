@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.9.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.9.1-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 41개 신화 계열의 신과 영웅 133명을 조각상, 회화, 유물 자료 128점으로 살펴보는 세계 신화 도서관입니다.
@@ -44,15 +44,15 @@
 
 ![React, Next.js, TypeScript, CSS, pnpm, Vitest](https://skillicons.dev/icons?i=react,nextjs,ts,css,pnpm,vitest)
 
-| 구분        | 사용 기술                                                                                                                                            |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                      |
-| 구조        | Feature-Sliced Design v2.1                                                                                                                           |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), Pretendard                                                                                                      |
-| 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                              |
-| 품질        | ESLint(import 정렬, FSD 계층 규칙), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
-| 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                 |
-| 문서        | Storybook 10 (`@storybook/nextjs-vite`)                                                                                                              |
+| 구분        | 사용 기술                                                                                                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                         |
+| 구조        | Feature-Sliced Design v2.1                                                                                                                                              |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), Pretendard                                                                                                                         |
+| 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                 |
+| 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
+| 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                    |
+| 문서        | Storybook 10 (`@storybook/nextjs-vite`)                                                                                                                                 |
 
 ## 시작하기
 
@@ -73,7 +73,8 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 | ---------------------------------------- | ------------------------------------------------------------- |
 | `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                          |
 | `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                 |
-| `pnpm lint` / `pnpm typecheck`           | ESLint / 타입 검사                                            |
+| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                               |
+| `pnpm typecheck`                         | 타입 검사                                                     |
 | `pnpm test`                              | 단위 테스트                                                   |
 | `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                              |
 | `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)            |
@@ -93,9 +94,9 @@ supabase/          마이그레이션(스키마·RLS·Storage), 시드
 src/
 ├─ app/            Next.js 라우트 (_pages를 다시 내보내기만 함)
 ├─ _app/           루트·사이트·어드민 레이아웃, 전역 스타일
-├─ _pages/         홈, 계열, 신, 아카이브, 404, 어드민 화면
-├─ widgets/        머리글·바닥글, 첫 화면, 연대기, 신 색인, 자료 목록, 어드민 틀
-├─ features/       스와이프 갤러리, 어드민 로그인, 계열·신·자료·작품 편집
+├─ _pages/         홈(연대기·신 색인), 계열, 신, 아카이브, 404, 어드민 화면(편집 폼)
+├─ widgets/        머리글·바닥글, 어드민 틀
+├─ features/       어드민 로그인
 ├─ entities/       계열(pantheon), 신(figure), 자료(exhibit), 작품(work)
 ├─ shared/         등장 애니메이션 UI, 어드민 입력 부품, 세션, 저장소(Supabase·목업)
 └─ proxy.ts        /admin 접근 제어

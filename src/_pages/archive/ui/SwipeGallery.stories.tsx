@@ -12,7 +12,7 @@ const credit = {
 };
 
 const meta = {
-  title: "Features/SwipeGallery",
+  title: "Pages/Archive/SwipeGallery",
   component: SwipeGallery,
   args: {
     label: "북유럽 신화",

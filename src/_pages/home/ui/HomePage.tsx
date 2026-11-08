@@ -2,12 +2,12 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
-import { FigureIndex, type FigureIndexGroup } from "@/widgets/figure-index";
-import { HomeHero } from "@/widgets/home-hero";
-import { PantheonTimeline, type TimelineItem } from "@/widgets/pantheon-timeline";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { FigureIndex, type FigureIndexGroup } from "./FigureIndex";
+import { HomeHero } from "./HomeHero";
 import styles from "./HomePage.module.css";
+import { PantheonTimeline, type TimelineItem } from "./PantheonTimeline";
 
 import type { Exhibit } from "@/entities/exhibit";
 

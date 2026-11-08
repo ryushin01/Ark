@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { getFigures } from "@/entities/figure/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getPublishedWorks } from "@/entities/work/index.server";
-import { SwipeGallery } from "@/features/swipe-gallery";
 import { features } from "@/shared/config";
 import { Divider, RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
 import styles from "./ArchivePage.module.css";
+import { SwipeGallery } from "./SwipeGallery";
 
 /** 원제의 언어. 화면 낭독기가 올바른 발음으로 읽도록 lang을 지정합니다. (KWCAG 7.1.1) */
 function guessLang(text: string) {

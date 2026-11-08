@@ -3,7 +3,7 @@ import { ExhibitGallery } from "./ExhibitGallery";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  title: "Widgets/ExhibitGallery",
+  title: "Pages/Figure/ExhibitGallery",
   component: ExhibitGallery,
   args: {
     exhibits: [
