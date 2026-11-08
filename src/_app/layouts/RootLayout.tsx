@@ -1,7 +1,5 @@
 import { SITE } from "@/shared/config";
 
-import { pretendard } from "../styles/fonts";
-
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -22,7 +20,7 @@ export const metadata: Metadata = {
  */
 export function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko" className={pretendard.variable} suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
