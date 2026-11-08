@@ -40,12 +40,14 @@ export async function HomePage() {
     return [...(cover ? [cover.image] : []), ...others];
   };
 
+  const imagesBySlug = new Map(pantheons.map((pantheon) => [pantheon.slug, imagesOf(pantheon)]));
+
   const movements: ScoreMovement[] = pantheons.map((pantheon) => ({
     slug: pantheon.slug,
     name: pantheon.name,
     nameEn: pantheon.nameEn,
     eraLabel: pantheon.eraLabel,
-    images: imagesOf(pantheon),
+    images: imagesBySlug.get(pantheon.slug) ?? [],
   }));
 
   const rows: ScoreRow[] = pantheons.map((pantheon) => ({
@@ -56,7 +58,7 @@ export async function HomePage() {
     continent: pantheon.continent,
     earliestSource: pantheon.earliestSource,
     figureCount: figures.filter((figure) => figure.pantheonSlug === pantheon.slug).length,
-    images: imagesOf(pantheon).slice(0, 5),
+    images: imagesBySlug.get(pantheon.slug)?.slice(0, 5) ?? [],
   }));
 
   const indexGroups: FigureIndexGroup[] = pantheons.map((pantheon) => ({
