@@ -17,8 +17,11 @@ type RevealImageProps = {
    * cover: 부모(className으로 크기 지정)를 가득 채웁니다.
    */
   fit?: "natural" | "cover";
-  /** 첫 화면에 보이는 이미지면 true (LCP) */
-  priority?: boolean;
+  /**
+   * 첫 화면에 보이는 이미지면 true (LCP 후보)
+   * 지연 로딩을 끄고 먼저 받습니다. (Next.js 16에서 priority는 deprecated)
+   */
+  eager?: boolean;
   /** 출처 표기를 숨길지. 같은 이미지를 바로 옆에서 이미 표기했을 때만 씁니다. */
   hideCredit?: boolean;
   className?: string;
@@ -32,7 +35,7 @@ export function RevealImage({
   image,
   sizes,
   fit = "natural",
-  priority = false,
+  eager = false,
   hideCredit = false,
   className,
 }: RevealImageProps) {
@@ -54,7 +57,8 @@ export function RevealImage({
           alt={image.alt}
           fill
           sizes={sizes}
-          priority={priority}
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
           className={styles.image}
           onLoad={() => setIsLoaded(true)}
           onError={() => setIsLoaded(true)}
@@ -66,7 +70,8 @@ export function RevealImage({
           width={image.width}
           height={image.height}
           sizes={sizes}
-          priority={priority}
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
           className={styles.image}
           onLoad={() => setIsLoaded(true)}
           onError={() => setIsLoaded(true)}

@@ -19,6 +19,7 @@ export function ExhibitGallery({ exhibits }: { exhibits: Exhibit[] }) {
           <RevealImage
             image={exhibit.image}
             sizes="(min-width: 768px) 58vw, 100vw"
+            eager={index === 0}
             className={styles.image}
           />
           <div className={styles.body}>

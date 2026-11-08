@@ -5,9 +5,9 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
+import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
 
-import { type FigureCard, FigureGrid } from "./FigureGrid";
 import styles from "./PantheonPage.module.css";
 
 export async function generatePantheonParams() {
@@ -78,7 +78,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
 
       {cover && (
         <div className={`${styles.cover} px-global`}>
-          <RevealImage image={cover.image} fit="cover" sizes="100vw" priority />
+          <RevealImage image={cover.image} fit="cover" sizes="100vw" eager />
         </div>
       )}
 
