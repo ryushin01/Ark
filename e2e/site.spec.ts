@@ -1,7 +1,9 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
-const PAGES = ["/", "/pantheons/greek", "/figures/odin", "/figures/loki"];
+import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+
+const PAGES = ["/", "/figures", "/pantheons/greek", "/figures/odin", "/figures/loki"];
 const WIDTHS = [375, 768, 1440];
 
 /** 등장 애니메이션을 끄고 검사합니다. (사용자가 동작 줄이기를 켠 상태와 같습니다) */
@@ -51,6 +53,23 @@ test("홈: 대륙 버튼으로 신화 계열을 거릅니다", async ({ page }) 
   await expect(timeline.first()).toContainText("이집트 신화");
   await filters.getByRole("button", { name: /^전체/ }).click();
   await expect(timeline).toHaveCount(41);
+});
+
+test("신 찾기: 영역으로 찾고 대륙으로 거른 뒤 신 화면으로 이동합니다", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("banner").getByRole("link", { name: "찾기" }).click();
+  await expect(page).toHaveURL(/\/figures$/);
+  await expect(page.getByRole("heading", { level: 1, name: "신 찾기" })).toBeVisible();
+
+  // 앞 화면(홈)의 신 색인은 Next.js가 숨긴 채 남겨 두므로 보이는 링크만 셉니다.
+  const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
+  await expect(cards).toHaveCount(MOCK_FIGURES.length);
+  await page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" }).fill("천둥");
+  await expect(page.getByText(/^신과 인물 \d+명$/)).toBeVisible();
+  await page.getByRole("button", { name: /^아프리카/ }).click();
+  await expect(cards).toHaveCount(1);
+  await cards.first().click();
+  await expect(page).toHaveURL(/\/figures\/shango$/);
 });
 
 test("홈 → 계열 → 신: 링크를 따라 상세 화면으로 이동합니다", async ({ page }) => {

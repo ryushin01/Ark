@@ -1,4 +1,11 @@
 /*
+ * 글꼴: Pretendard 가변 글꼴의 동적 서브셋
+ * 글자 묶음별 조각 파일(unicode-range)로 나뉘어, 화면에 쓰인 글자가 든 조각만 받습니다.
+ * 통째 파일(2MB)을 쓰면 모바일 첫 화면이 몇 초 늦어집니다.
+ */
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+/*
  * 디자인 토큰
  * 색: 홈은 검정 바탕에 오프화이트, 상세 화면은 모래색 바탕에 벽돌색 글자를 씁니다.
  * 벽돌색 글자(#8a4a1f)는 모래색 바탕에서 명도 대비 5.2:1로, 본문 기준(4.5:1)을 넘깁니다.
@@ -30,7 +37,7 @@
     --text-5xl: 3rem;
     --text-display: 7rem;
 
-    --font-sans: var(--font-pretendard), "Pretendard", system-ui, sans-serif;
+    --font-sans: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
 }
 
 /* 홈처럼 어두운 화면. 화면 안에 .theme-dark가 있으면 머리글과 body까지 어두운 색을 씁니다. */

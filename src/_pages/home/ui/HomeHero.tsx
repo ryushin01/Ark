@@ -60,7 +60,7 @@ export function HomeHero({ images }: HomeHeroProps) {
                   alt=""
                   fill
                   sizes="(min-width: 768px) 20vw, 40vw"
-                  priority={index < 4}
+                  loading={index < 4 ? "eager" : "lazy"}
                   className={styles.image}
                 />
               </div>

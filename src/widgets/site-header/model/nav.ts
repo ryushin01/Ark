@@ -7,6 +7,7 @@ export function getNavItems(): NavItem[] {
   return [
     { href: "/#pantheons", label: "계열" },
     { href: "/#figures", label: "신들" },
+    { href: "/figures", label: "찾기" },
     ...(features.archive ? [{ href: "/archive", label: "아카이브" }] : []),
   ];
 }

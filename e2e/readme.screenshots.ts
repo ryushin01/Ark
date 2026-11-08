@@ -46,6 +46,10 @@ test.describe("데스크톱", () => {
     await page.goto("/figures/thor", { waitUntil: "networkidle" });
     await scrollTo(page, "#exhibits-title", -40);
     await shoot(page, "figure");
+    await page.goto("/figures", { waitUntil: "networkidle" });
+    await page.getByRole("searchbox").fill("바다");
+    await page.waitForTimeout(1500);
+    await shoot(page, "search");
   });
 });
 

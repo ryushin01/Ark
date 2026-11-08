@@ -1,6 +1,6 @@
 /* 공개 사이트의 전역 스타일(배경색, 글자 간격) 대신 Radix Themes 기본값을 씁니다. */
 .ark-admin {
-    --default-font-family: var(--font-pretendard), "Pretendard", system-ui, sans-serif;
+    --default-font-family: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
     min-height: 100dvh;
     letter-spacing: normal;
 }

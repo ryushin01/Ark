@@ -1,7 +1,6 @@
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import react from "@vitejs/plugin-react";
 import { playwright } from "@vitest/browser-playwright";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -12,7 +11,9 @@ export default defineConfig({
        * 기본은 브라우저 환경(jsdom)입니다. 서버 코드는 파일 맨 위에 `// @vitest-environment node`를 적습니다.
        */
       {
-        plugins: [tsconfigPaths(), react()],
+        // tsconfig의 경로 별칭(@/…)은 Vite 기본 기능으로 풉니다.
+        resolve: { tsconfigPaths: true },
+        plugins: [react()],
         test: {
           name: "unit",
           environment: "jsdom",

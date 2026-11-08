@@ -1,0 +1,26 @@
+.header {
+    padding-block: calc(var(--header-height) + 4rem) 3rem;
+}
+
+.eyebrow {
+    margin-bottom: 1rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.title {
+    font-size: 3.75rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.results {
+    padding-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 6rem;
+    }
+}

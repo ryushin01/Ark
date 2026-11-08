@@ -10,6 +10,7 @@ export async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = (path: string) => new URL(path, SITE.url).toString();
   return [
     { url: url("/"), changeFrequency: "weekly", priority: 1 },
+    { url: url("/figures"), changeFrequency: "weekly", priority: 0.7 },
     ...pantheons.map((pantheon) => ({
       url: url(`/pantheons/${pantheon.slug}`),
       changeFrequency: "monthly" as const,
