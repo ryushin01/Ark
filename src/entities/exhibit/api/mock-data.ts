@@ -1460,7 +1460,7 @@ const SEEDS: ExhibitSeed[] = [
     kind: "print",
     dateLabel: "1988년",
     holder: null,
-    note: null,
+    note: "우즈베크 서사시 「알파미시」를 그린 우표입니다. 알타이의 「알립마나시」와 줄거리가 같은 갈래의 이야기라 함께 둡니다.",
     alt: "말을 탄 용사 알파미시가 연인을 함께 태우고 달리는 모습을 그린 1988년 소련 우표",
   },
   {

@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.13.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.14.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 49개 신화·전설 계열의 신과 영웅 300명을 조각상, 회화, 유물 자료 145점으로 살펴보는 세계 신화 도서관입니다.
