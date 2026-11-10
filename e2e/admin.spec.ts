@@ -128,7 +128,7 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
 
   await expect(async () => {
     await page.goto("/");
-    await expect(page.locator("#pantheons ol > li")).toHaveCount(42, { timeout: 1000 });
+    await expect(page.locator("#pantheons ol > li")).toHaveCount(50, { timeout: 1000 });
   }).toPass();
 
   await page.goto("/admin/pantheons/celtic-e2e");
@@ -139,7 +139,7 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
   await page.goto("/admin/pantheons/greek");
   await page.getByRole("button", { name: "삭제" }).click();
   await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "신 21명이 있어" })).toBeVisible();
+  await expect(page.getByRole("alert").filter({ hasText: "신 55명이 있어" })).toBeVisible();
 });
 
 test("자료가 연결된 신은 지울 수 없습니다", async ({ page }) => {

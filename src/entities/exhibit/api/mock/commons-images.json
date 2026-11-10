@@ -1232,6 +1232,78 @@
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chi_You.gif"
   },
+  "king-arthur-butler": {
+    "src": "/images/exhibits/king-arthur-butler.jpg",
+    "width": 931,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Charles Ernest Butler",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charles_Ernest_Butler_-_King_Arthur.jpg"
+  },
+  "roland-roncevaux-dore": {
+    "src": "/images/exhibits/roland-roncevaux-dore.jpg",
+    "width": 1280,
+    "height": 905,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Gustave Doré",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Roland_%C3%A0_Roncevaux.jpg"
+  },
+  "siegfried-forge-hauschild": {
+    "src": "/images/exhibits/siegfried-forge-hauschild.jpg",
+    "width": 1097,
+    "height": 1051,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Wilhelm Ernst Ferdinand Franz Hauschild",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Siegfried_dans_la_forge_de_Regin.jpg"
+  },
+  "romulus-remus-rubens": {
+    "src": "/images/exhibits/romulus-remus-rubens.jpg",
+    "width": 1280,
+    "height": 1293,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Peter Paul Rubens",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Romulus_and_Remus_-_Google_Art_Project.jpg"
+  },
+  "saint-george-uccello": {
+    "src": "/images/exhibits/saint-george-uccello.jpg",
+    "width": 1171,
+    "height": 900,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Paolo Uccello",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint_George_and_the_Dragon_by_Paolo_Uccello_(London)_01.jpg"
+  },
+  "paul-bunyan-bemidji": {
+    "src": "/images/exhibits/paul-bunyan-bemidji.jpg",
+    "width": 749,
+    "height": 549,
+    "license": "Copyrighted free use",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paul_Bunyan_and_Babe_statues_Bemidji_Minnesota_crop.JPG"
+  },
+  "alpamysh-stamp": {
+    "src": "/images/exhibits/alpamysh-stamp.jpg",
+    "width": 720,
+    "height": 1005,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "USSR Post",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Soviet_Union_1988_CPA_5990_stamp_(Alpamysh,_Uzbek_epic_poem._R._Khalilov).jpg"
+  },
+  "scheherazade-anderson": {
+    "src": "/images/exhibits/scheherazade-anderson.jpg",
+    "width": 1200,
+    "height": 1521,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Sophie Gengembre Anderson",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sophie_Gengembre_Anderson_-_Scheherazade.jpg"
+  },
   "cerberus-louvre": {
     "src": "/images/exhibits/cerberus-louvre.jpg",
     "width": 1280,
