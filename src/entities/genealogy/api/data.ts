@@ -1,4 +1,4 @@
-import type { Genealogy, GenealogyNode } from "../model/genealogy";
+import type { Genealogy, GenealogyNode } from "../model/types";
 
 /** 사람: 이름, 영문 이름, Ark 신·인물 주소(있을 때), 메모 */
 const p = (name: string, nameEn: string, slug?: string, note?: string): GenealogyNode => ({
@@ -502,8 +502,3 @@ export const GENEALOGIES: Genealogy[] = [
     ],
   },
 ];
-
-/** 계열의 계보. 정리하지 않은 계열이면 null */
-export function getGenealogy(pantheonSlug: string) {
-  return GENEALOGIES.find((genealogy) => genealogy.pantheonSlug === pantheonSlug) ?? null;
-}

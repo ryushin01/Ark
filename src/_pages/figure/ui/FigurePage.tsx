@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
+import { getRelatives } from "@/entities/genealogy";
 import { getPantheon } from "@/entities/pantheon/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
@@ -12,6 +13,7 @@ import { Divider, RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
 import { ExhibitGallery } from "./ExhibitGallery";
+import { FamilySection } from "./FamilySection";
 import styles from "./FigurePage.module.css";
 
 export async function generateFigureParams() {
@@ -104,6 +106,8 @@ export async function FigurePage({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      <FamilySection relatives={getRelatives(slug)} pantheonSlug={figure.pantheonSlug} />
 
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />

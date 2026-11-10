@@ -119,6 +119,21 @@ test("분류: 신 상세에 분류를 보여 주고, 신 찾기에서 분류로 
   await expect(cards.filter({ hasText: "유화" })).toHaveCount(1);
 });
 
+test("신 찾기: 검색 상태를 주소로 공유하고 다시 엽니다", async ({ page }) => {
+  await page.goto("/figures?q=%EC%B2%9C%EB%91%A5&continent=africa");
+  await expect(page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" })).toHaveValue(
+    "천둥",
+  );
+  const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
+  await expect(cards).toHaveCount(1);
+  await page
+    .getByRole("group", { name: "분류로 거르기" })
+    .getByRole("button", { name: /^신/ })
+    .click();
+  await expect(page).toHaveURL(/[?&]kind=god/);
+  await expect(page).toHaveURL(/[?&]continent=africa/);
+});
+
 test("자료가 없는 신은 안내 문구를 보여 줍니다", async ({ page }) => {
   await page.goto("/figures/loki");
   await expect(page.getByText("아직 등록된 자료가 없습니다.")).toBeVisible();

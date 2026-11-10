@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 
-import { GENEALOGIES } from "../src/_pages/pantheon/api/genealogy-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+import { GENEALOGIES } from "../src/entities/genealogy/api/data";
 import { MOCK_PANTHEONS } from "../src/entities/pantheon/api/mock-data";
 
-import type { GenealogyNode } from "../src/_pages/pantheon/model/genealogy";
+import type { GenealogyNode } from "../src/entities/genealogy/model/types";
 
 /** 계보 속 모든 사람 (배우자와 자식까지) */
 function people(nodes: GenealogyNode[]): GenealogyNode[] {
@@ -37,4 +37,12 @@ test("계보: 계열 화면에서 계보를 보고 신 화면으로 이동합니
   await expect(section).toBeVisible();
   await section.getByRole("link", { name: "케르베로스" }).click();
   await expect(page).toHaveURL(/\/figures\/cerberus$/);
+});
+
+test("가족: 신 상세에서 부모와 형제를 보고 이동합니다", async ({ page }) => {
+  await page.goto("/figures/fenrir");
+  const family = page.getByRole("region", { name: "가족" });
+  await expect(family.getByText("형제자매")).toBeVisible();
+  await family.getByRole("link", { name: "로키" }).click();
+  await expect(page).toHaveURL(/\/figures\/loki$/);
 });

@@ -4,7 +4,7 @@ import { Divider } from "@/shared/ui";
 
 import styles from "./GenealogyTree.module.css";
 
-import type { Genealogy, GenealogyNode } from "../model/genealogy";
+import type { Genealogy, GenealogyNode } from "@/entities/genealogy";
 
 /** 이름. Ark에 있는 신·인물이면 그 화면으로 가는 링크입니다. */
 function Person({ node }: { node: GenealogyNode }) {

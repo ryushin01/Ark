@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
+import { getGenealogy } from "@/entities/genealogy";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
 
-import { getGenealogy } from "../api/genealogy-data";
 import { GenealogyTree } from "./GenealogyTree";
 import styles from "./PantheonPage.module.css";
 

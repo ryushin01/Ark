@@ -109,7 +109,6 @@
 
 .previewImage {
     object-fit: cover;
-    filter: grayscale(1);
 }
 
 @keyframes preview-in {
