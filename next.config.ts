@@ -35,9 +35,33 @@ const securityHeaders = [
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
 ];
 
+const storybookHeaders = securityHeaders.map((header) => {
+  if (header.key === "X-Frame-Options") return { ...header, value: "SAMEORIGIN" };
+  if (header.key === "Content-Security-Policy")
+    // Storybook UI는 내장 글꼴을 data: 주소로 불러옵니다.
+    return {
+      ...header,
+      value: header.value
+        .replace("frame-ancestors 'none'", "frame-ancestors 'self'")
+        .replace("font-src 'self'", "font-src 'self' data:"),
+    };
+  return header;
+});
+
 const nextConfig: NextConfig = {
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      { source: "/((?!storybook/).*)", headers: securityHeaders },
+      // Storybook은 미리보기를 같은 출처의 iframe으로 띄우므로 같은 출처 프레임만 허용합니다.
+      { source: "/storybook/:path*", headers: storybookHeaders },
+    ];
+  },
+  async redirects() {
+    return [
+      // 빌드 결과물(public/storybook)은 정적 파일이라 폴더 주소로는 열리지 않아 index.html로 보냅니다.
+      // (rewrite로 연결하면 주소가 /storybook에 남아 상대 경로 파일을 찾지 못합니다.)
+      { source: "/storybook", destination: "/storybook/index.html", permanent: false },
+    ];
   },
   cacheComponents: true,
   partialPrefetching: true,
