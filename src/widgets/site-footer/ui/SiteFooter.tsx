@@ -3,6 +3,9 @@ import { HandNote, RevealText } from "@/shared/ui";
 import styles from "./SiteFooter.module.css";
 
 const GITHUB_URL = "https://github.com/ryushin01/Ark";
+/** 앱과 함께 배포하는 Storybook(디자인 시스템). 개발 서버에는 빌드 결과물이 없어 Storybook 개발 서버로 보냅니다. */
+const STORYBOOK_URL =
+  process.env.NODE_ENV === "development" ? "http://localhost:6006" : "/storybook/index.html";
 
 /** 바닥글. 신화에 관한 인용을 오선 위에 크게 적어 사이트를 마무리합니다. */
 export function SiteFooter() {
@@ -28,6 +31,9 @@ export function SiteFooter() {
         </p>
         <p className={styles.center}>© 2026 Ark · 포트폴리오 프로젝트</p>
         <p className={styles.end}>
+          <a href={STORYBOOK_URL} className={styles.link}>
+            디자인 시스템(Storybook)
+          </a>
           <a href={GITHUB_URL} className={styles.link}>
             GitHub 저장소
           </a>

@@ -6,6 +6,10 @@ const config: StorybookConfig = {
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-vitest"],
   framework: { name: "@storybook/nextjs-vite", options: {} },
   core: { disableTelemetry: true },
+  // 앱과 함께 배포할 때(STORYBOOK_IN_APP=1)는 public 폴더를 복사하지 않습니다.
+  // 같은 주소에서 열리므로 /images 같은 정적 파일은 앱의 것을 그대로 씁니다.
+  viteFinal: (viteConfig) =>
+    process.env.STORYBOOK_IN_APP ? { ...viteConfig, publicDir: false } : viteConfig,
 };
 
 export default config;
