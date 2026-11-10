@@ -19,7 +19,8 @@ const meta = {
   beforeEach: () => {
     const params = new URLSearchParams(window.location.search);
     ["q", "continent", "kind"].forEach((key) => params.delete(key));
-    window.history.replaceState(null, "", `${window.location.pathname}?${params}`);
+    const query = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
   },
   args: {
     items: [
