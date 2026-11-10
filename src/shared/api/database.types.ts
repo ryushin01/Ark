@@ -75,6 +75,7 @@ export type Database = {
           description: string[];
           domains: string[];
           epithet: string;
+          kind: string;
           name: string;
           name_en: string;
           pantheon_slug: string;
@@ -88,6 +89,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet: string;
+          kind?: string;
           name: string;
           name_en: string;
           pantheon_slug: string;
@@ -100,6 +102,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet?: string;
+          kind?: string;
           name?: string;
           name_en?: string;
           pantheon_slug?: string;

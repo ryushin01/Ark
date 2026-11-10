@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Button, Flex, Grid } from "@radix-ui/themes";
 
+import { type Figure, FIGURE_KIND_LABEL, FIGURE_KINDS } from "@/entities/figure";
 import { type FormState, INITIAL_FORM_STATE } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
@@ -14,8 +15,6 @@ import {
 } from "@/shared/ui/admin";
 
 import { deleteFigureAction, saveFigureAction } from "../api/actions";
-
-import type { Figure } from "@/entities/figure";
 
 type FigureFormProps = {
   /** 고칠 신. 없으면 새로 만듭니다. */
@@ -29,6 +28,7 @@ const toValues = (figure?: Figure): NonNullable<FormState["values"]> => ({
   name: figure?.name ?? "",
   nameEn: figure?.nameEn ?? "",
   epithet: figure?.epithet ?? "",
+  kind: figure?.kind ?? "god",
   domains: figure?.domains.join(", ") ?? "",
   summary: figure?.summary ?? "",
   description: figure?.description.join("\n\n") ?? "",
@@ -75,6 +75,15 @@ export function FigureForm({ figure, pantheons }: FigureFormProps) {
               required
               placeholder="계열을 고르세요"
               options={pantheons.map(({ slug, name }) => ({ value: slug, label: name }))}
+            />
+            <SelectInput
+              {...field("kind")}
+              label="분류"
+              required
+              options={FIGURE_KINDS.map((kind) => ({
+                value: kind,
+                label: FIGURE_KIND_LABEL[kind],
+              }))}
             />
             <TextInput {...field("epithet")} label="별칭" required hint="예) 하늘과 번개의 신" />
             <TextInput
