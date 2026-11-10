@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 
+import { FIGURE_KIND_LABEL, FIGURE_KINDS, type FigureKind } from "@/entities/figure";
 import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
 import { FilterGroup } from "@/shared/ui";
 import { FigureGrid } from "@/widgets/figure-grid";
@@ -20,15 +21,29 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
   const [query, setQuery] = useState("");
   const [continent, setContinent] = useState<Continent | "all">("all");
 
+  const [kind, setKind] = useState<FigureKind | "all">("all");
+
   const byQuery = items.filter((item) => matches(item, query));
-  const shown =
-    continent === "all" ? byQuery : byQuery.filter((item) => item.continent === continent);
-  const filters = [
-    { value: "all" as const, label: "전체", count: byQuery.length },
+  const inContinent = (item: SearchItem) => continent === "all" || item.continent === continent;
+  const ofKind = (item: SearchItem) => kind === "all" || item.kind === kind;
+  const shown = byQuery.filter((item) => inContinent(item) && ofKind(item));
+  // 각 버튼의 개수는 다른 거르기를 적용한 상태에서 셉니다.
+  const byKind = byQuery.filter(ofKind);
+  const byContinent = byQuery.filter(inContinent);
+  const continentOptions = [
+    { value: "all" as const, label: "전체", count: byKind.length },
     ...CONTINENTS.map((value) => ({
       value,
       label: CONTINENT_LABEL[value],
-      count: byQuery.filter((item) => item.continent === value).length,
+      count: byKind.filter((item) => item.continent === value).length,
+    })),
+  ];
+  const kindOptions = [
+    { value: "all" as const, label: "전체", count: byContinent.length },
+    ...FIGURE_KINDS.map((value) => ({
+      value,
+      label: FIGURE_KIND_LABEL[value],
+      count: byContinent.filter((item) => item.kind === value).length,
     })),
   ];
 
@@ -49,15 +64,16 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
             className={styles.input}
           />
           <p id={hintId} className={styles.hint}>
-            예: 천둥, 바다, 지혜, Odin, 그리스
+            예: 천둥, 바다, 지혜, Odin, 그리스, 영웅
           </p>
         </form>
         <FilterGroup
           label="대륙으로 거르기"
-          options={filters}
+          options={continentOptions}
           value={continent}
           onChange={setContinent}
         />
+        <FilterGroup label="분류로 거르기" options={kindOptions} value={kind} onChange={setKind} />
       </search>
 
       <p className={styles.count} aria-live="polite">

@@ -1,4 +1,5 @@
 import { getExhibits } from "@/entities/exhibit/index.server";
+import { FIGURE_KIND_LABEL } from "@/entities/figure";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { RevealText } from "@/shared/ui";
@@ -12,7 +13,7 @@ import type { Metadata } from "next";
 
 export const figureSearchMetadata: Metadata = {
   title: "신 찾기",
-  description: "세계 신화의 신과 영웅을 이름, 별칭, 관장 영역, 대륙으로 찾습니다.",
+  description: "세계 신화의 신과 영웅을 이름, 별칭, 관장 영역, 대륙, 분류로 찾습니다.",
 };
 
 /** 모든 신·인물을 이름·영역·대륙으로 찾는 화면. 순서는 계열 연대기 순서를 따릅니다. */
@@ -33,6 +34,8 @@ export async function FigureSearchPage() {
           name: figure.name,
           nameEn: figure.nameEn,
           epithet: figure.epithet,
+          kind: figure.kind,
+          kindLabel: FIGURE_KIND_LABEL[figure.kind],
           image: own[0]?.image ?? null,
           exhibitCount: own.length,
           domains: figure.domains,

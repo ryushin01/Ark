@@ -6,6 +6,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "zeus",
     pantheonSlug: "greek",
+    kind: "god",
     name: "제우스",
     nameEn: "Zeus",
     epithet: "하늘과 번개의 신",
@@ -20,6 +21,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "athena",
     pantheonSlug: "greek",
+    kind: "god",
     name: "아테나",
     nameEn: "Athena",
     epithet: "지혜와 전략의 여신",
@@ -34,6 +36,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "apollo",
     pantheonSlug: "greek",
+    kind: "god",
     name: "아폴론",
     nameEn: "Apollo",
     epithet: "빛과 예언, 음악의 신",
@@ -48,6 +51,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "aphrodite",
     pantheonSlug: "greek",
+    kind: "god",
     name: "아프로디테",
     nameEn: "Aphrodite",
     epithet: "사랑과 아름다움의 여신",
@@ -62,6 +66,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "poseidon",
     pantheonSlug: "greek",
+    kind: "god",
     name: "포세이돈",
     nameEn: "Poseidon",
     epithet: "바다와 지진의 신",
@@ -77,6 +82,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "odin",
     pantheonSlug: "norse",
+    kind: "god",
     name: "오딘",
     nameEn: "Odin",
     epithet: "지혜와 죽음, 전쟁의 신",
@@ -91,6 +97,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thor",
     pantheonSlug: "norse",
+    kind: "god",
     name: "토르",
     nameEn: "Thor",
     epithet: "천둥의 신",
@@ -105,6 +112,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "freyja",
     pantheonSlug: "norse",
+    kind: "god",
     name: "프레이야",
     nameEn: "Freyja",
     epithet: "사랑과 풍요, 마법의 여신",
@@ -120,6 +128,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "loki",
     pantheonSlug: "norse",
+    kind: "god",
     name: "로키",
     nameEn: "Loki",
     epithet: "꾀와 변신의 신",
@@ -135,6 +144,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "osiris",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "오시리스",
     nameEn: "Osiris",
     epithet: "저승과 부활의 신",
@@ -149,6 +159,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "isis",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "이시스",
     nameEn: "Isis",
     epithet: "마법과 모성의 여신",
@@ -163,6 +174,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "anubis",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "아누비스",
     nameEn: "Anubis",
     epithet: "미라와 무덤의 신",
@@ -179,6 +191,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "gilgamesh",
     pantheonSlug: "mesopotamian",
+    kind: "hero",
     name: "길가메시",
     nameEn: "Gilgamesh",
     epithet: "우루크의 왕",
@@ -193,6 +206,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ishtar",
     pantheonSlug: "mesopotamian",
+    kind: "god",
     name: "이슈타르",
     nameEn: "Ishtar",
     epithet: "사랑과 전쟁의 여신",
@@ -207,6 +221,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "marduk",
     pantheonSlug: "mesopotamian",
+    kind: "god",
     name: "마르두크",
     nameEn: "Marduk",
     epithet: "바빌론의 수호신",
@@ -222,6 +237,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "vishnu",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "비슈누",
     nameEn: "Vishnu",
     epithet: "세계를 유지하는 신",
@@ -236,6 +252,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "shiva",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "시바",
     nameEn: "Shiva",
     epithet: "파괴와 재생의 신",
@@ -250,6 +267,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ganesha",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "가네샤",
     nameEn: "Ganesha",
     epithet: "지혜와 시작의 신",
@@ -265,6 +283,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "izanagi-izanami",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "이자나기와 이자나미",
     nameEn: "Izanagi & Izanami",
     epithet: "국토를 낳은 부부 신",
@@ -279,6 +298,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "amaterasu",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "아마테라스",
     nameEn: "Amaterasu",
     epithet: "태양의 여신",
@@ -293,6 +313,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "susanoo",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "스사노오",
     nameEn: "Susanoo",
     epithet: "폭풍과 바다의 신",
@@ -308,6 +329,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "raijin",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "라이진",
     nameEn: "Raijin",
     epithet: "번개와 천둥의 신",
@@ -323,6 +345,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hera",
     pantheonSlug: "greek",
+    kind: "god",
     name: "헤라",
     nameEn: "Hera",
     epithet: "신들의 여왕",
@@ -337,6 +360,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "artemis",
     pantheonSlug: "greek",
+    kind: "god",
     name: "아르테미스",
     nameEn: "Artemis",
     epithet: "사냥과 달의 여신",
@@ -351,6 +375,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hermes",
     pantheonSlug: "greek",
+    kind: "god",
     name: "헤르메스",
     nameEn: "Hermes",
     epithet: "신들의 전령",
@@ -365,6 +390,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hades",
     pantheonSlug: "greek",
+    kind: "god",
     name: "하데스",
     nameEn: "Hades",
     epithet: "저승의 왕",
@@ -380,6 +406,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "baldr",
     pantheonSlug: "norse",
+    kind: "god",
     name: "발드르",
     nameEn: "Baldr",
     epithet: "빛과 순수의 신",
@@ -394,6 +421,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "heimdall",
     pantheonSlug: "norse",
+    kind: "god",
     name: "헤임달",
     nameEn: "Heimdall",
     epithet: "신들의 파수꾼",
@@ -409,6 +437,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ra",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "라",
     nameEn: "Ra",
     epithet: "태양신",
@@ -423,6 +452,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "horus",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "호루스",
     nameEn: "Horus",
     epithet: "하늘과 왕권의 신",
@@ -438,6 +468,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thoth",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "토트",
     nameEn: "Thoth",
     epithet: "지혜와 문자의 신",
@@ -452,6 +483,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "enki",
     pantheonSlug: "mesopotamian",
+    kind: "god",
     name: "엔키",
     nameEn: "Enki",
     epithet: "물과 지혜의 신",
@@ -466,6 +498,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tiamat",
     pantheonSlug: "mesopotamian",
+    kind: "god",
     name: "티아마트",
     nameEn: "Tiamat",
     epithet: "원초의 바다",
@@ -481,6 +514,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "brahma",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "브라흐마",
     nameEn: "Brahma",
     epithet: "창조의 신",
@@ -496,6 +530,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "krishna",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "크리슈나",
     nameEn: "Krishna",
     epithet: "비슈누의 여덟 번째 화신",
@@ -511,6 +546,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "fujin",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "후진",
     nameEn: "Fujin",
     epithet: "바람의 신",
@@ -525,6 +561,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "inari",
     pantheonSlug: "japanese",
+    kind: "god",
     name: "이나리",
     nameEn: "Inari",
     epithet: "벼와 풍요의 신",
@@ -539,6 +576,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "pangu",
     pantheonSlug: "chinese",
+    kind: "god",
     name: "반고",
     nameEn: "Pangu",
     epithet: "천지를 연 거인",
@@ -553,6 +591,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "nuwa",
     pantheonSlug: "chinese",
+    kind: "god",
     name: "여와",
     nameEn: "Nüwa",
     epithet: "사람을 빚은 여신",
@@ -567,6 +606,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "xiwangmu",
     pantheonSlug: "chinese",
+    kind: "god",
     name: "서왕모",
     nameEn: "Xiwangmu",
     epithet: "곤륜산의 여신",
@@ -581,6 +621,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "change",
     pantheonSlug: "chinese",
+    kind: "god",
     name: "항아",
     nameEn: "Chang'e",
     epithet: "달의 여신",
@@ -595,6 +636,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "cernunnos",
     pantheonSlug: "celtic",
+    kind: "god",
     name: "케르눈노스",
     nameEn: "Cernunnos",
     epithet: "뿔 달린 신",
@@ -610,6 +652,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "cuchulainn",
     pantheonSlug: "celtic",
+    kind: "hero",
     name: "쿠 훌린",
     nameEn: "Cú Chulainn",
     epithet: "얼스터의 영웅",
@@ -624,6 +667,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "brigid",
     pantheonSlug: "celtic",
+    kind: "god",
     name: "브리지트",
     nameEn: "Brigid",
     epithet: "불과 시, 치유의 여신",
@@ -639,6 +683,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "morrigan",
     pantheonSlug: "celtic",
+    kind: "god",
     name: "모리안",
     nameEn: "The Morrígan",
     epithet: "전쟁과 운명의 여신",
@@ -653,6 +698,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "quetzalcoatl",
     pantheonSlug: "aztec",
+    kind: "god",
     name: "케찰코아틀",
     nameEn: "Quetzalcoatl",
     epithet: "깃털 달린 뱀",
@@ -667,6 +713,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tezcatlipoca",
     pantheonSlug: "aztec",
+    kind: "god",
     name: "테스카틀리포카",
     nameEn: "Tezcatlipoca",
     epithet: "연기 나는 거울",
@@ -681,6 +728,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "huitzilopochtli",
     pantheonSlug: "aztec",
+    kind: "god",
     name: "우이칠로포치틀리",
     nameEn: "Huitzilopochtli",
     epithet: "태양과 전쟁의 신",
@@ -695,6 +743,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tlaloc",
     pantheonSlug: "aztec",
+    kind: "god",
     name: "틀랄록",
     nameEn: "Tlaloc",
     epithet: "비와 번개의 신",
@@ -709,6 +758,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "dangun",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "단군",
     nameEn: "Dangun",
     epithet: "고조선을 세운 시조",
@@ -724,6 +774,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "bari",
     pantheonSlug: "korean",
+    kind: "god",
     name: "바리공주",
     nameEn: "Princess Bari",
     epithet: "무당의 조상신",
@@ -739,6 +790,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "sansin",
     pantheonSlug: "korean",
+    kind: "god",
     name: "산신",
     nameEn: "Sansin",
     epithet: "산을 다스리는 신",
@@ -753,6 +805,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "jeseok",
     pantheonSlug: "korean",
+    kind: "god",
     name: "제석",
     nameEn: "Jeseok",
     epithet: "자손과 수명의 신",
@@ -768,6 +821,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "vainamoinen",
     pantheonSlug: "finnish",
+    kind: "hero",
     name: "베이네뫼이넨",
     nameEn: "Väinämöinen",
     epithet: "노래하는 현자",
@@ -783,6 +837,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ilmarinen",
     pantheonSlug: "finnish",
+    kind: "hero",
     name: "일마리넨",
     nameEn: "Ilmarinen",
     epithet: "하늘을 두드린 대장장이",
@@ -798,6 +853,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "louhi",
     pantheonSlug: "finnish",
+    kind: "other",
     name: "로우히",
     nameEn: "Louhi",
     epithet: "포흐욜라의 여주인",
@@ -813,6 +869,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "lemminkainen",
     pantheonSlug: "finnish",
+    kind: "hero",
     name: "레민케이넨",
     nameEn: "Lemminkäinen",
     epithet: "무모한 영웅",
@@ -827,6 +884,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "itzamna",
     pantheonSlug: "maya",
+    kind: "god",
     name: "이참나",
     nameEn: "Itzamna",
     epithet: "하늘과 지혜의 늙은 신",
@@ -842,6 +900,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "kukulkan",
     pantheonSlug: "maya",
+    kind: "god",
     name: "쿠쿨칸",
     nameEn: "Kukulkan",
     epithet: "깃털 달린 뱀",
@@ -856,6 +915,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "chaac",
     pantheonSlug: "maya",
+    kind: "god",
     name: "차크",
     nameEn: "Chaac",
     epithet: "비의 신",
@@ -870,6 +930,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "maize-god",
     pantheonSlug: "maya",
+    kind: "god",
     name: "옥수수 신",
     nameEn: "Maize God",
     epithet: "옥수수와 다시 태어남의 신",
@@ -885,6 +946,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "dionysus",
     pantheonSlug: "greek",
+    kind: "god",
     name: "디오니소스",
     nameEn: "Dionysus",
     epithet: "포도주와 축제의 신",
@@ -899,6 +961,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hephaestus",
     pantheonSlug: "greek",
+    kind: "god",
     name: "헤파이스토스",
     nameEn: "Hephaestus",
     epithet: "불과 대장장이의 신",
@@ -913,6 +976,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "heracles",
     pantheonSlug: "greek",
+    kind: "hero",
     name: "헤라클레스",
     nameEn: "Heracles",
     epithet: "열두 과업의 영웅",
@@ -927,6 +991,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "medusa",
     pantheonSlug: "greek",
+    kind: "beast",
     name: "메두사",
     nameEn: "Medusa",
     epithet: "고르곤 세 자매의 막내",
@@ -941,6 +1006,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "set",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "세트",
     nameEn: "Set",
     epithet: "사막과 폭풍의 신",
@@ -956,6 +1022,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hathor",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "하토르",
     nameEn: "Hathor",
     epithet: "사랑과 음악의 여신",
@@ -970,6 +1037,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "bastet",
     pantheonSlug: "egyptian",
+    kind: "god",
     name: "바스테트",
     nameEn: "Bastet",
     epithet: "고양이의 여신",
@@ -985,6 +1053,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "lakshmi",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "락슈미",
     nameEn: "Lakshmi",
     epithet: "부와 행운의 여신",
@@ -1000,6 +1069,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hanuman",
     pantheonSlug: "hindu",
+    kind: "hero",
     name: "하누만",
     nameEn: "Hanuman",
     epithet: "원숭이 영웅",
@@ -1015,6 +1085,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "durga",
     pantheonSlug: "hindu",
+    kind: "god",
     name: "두르가",
     nameEn: "Durga",
     epithet: "악을 무찌르는 여신",
@@ -1029,6 +1100,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "frigg",
     pantheonSlug: "norse",
+    kind: "god",
     name: "프리그",
     nameEn: "Frigg",
     epithet: "신들의 여왕",
@@ -1043,6 +1115,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tyr",
     pantheonSlug: "norse",
+    kind: "god",
     name: "티르",
     nameEn: "Tyr",
     epithet: "전쟁과 맹세의 신",
@@ -1057,6 +1130,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ahura-mazda",
     pantheonSlug: "iranian",
+    kind: "god",
     name: "아후라 마즈다",
     nameEn: "Ahura Mazda",
     epithet: "지혜의 주",
@@ -1071,6 +1145,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "mithra",
     pantheonSlug: "iranian",
+    kind: "god",
     name: "미트라",
     nameEn: "Mithra",
     epithet: "계약과 빛의 신",
@@ -1085,6 +1160,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "anahita",
     pantheonSlug: "iranian",
+    kind: "god",
     name: "아나히타",
     nameEn: "Anahita",
     epithet: "물과 생명의 여신",
@@ -1100,6 +1176,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "baal",
     pantheonSlug: "canaanite",
+    kind: "god",
     name: "바알",
     nameEn: "Baal",
     epithet: "폭풍과 비의 신",
@@ -1114,6 +1191,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "astarte",
     pantheonSlug: "canaanite",
+    kind: "god",
     name: "아스타르테",
     nameEn: "Astarte",
     epithet: "사랑과 전쟁의 여신",
@@ -1128,6 +1206,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "teshub",
     pantheonSlug: "hittite",
+    kind: "god",
     name: "테슈브",
     nameEn: "Teshub",
     epithet: "폭풍의 신",
@@ -1142,6 +1221,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "illuyanka",
     pantheonSlug: "hittite",
+    kind: "beast",
     name: "일루얀카",
     nameEn: "Illuyanka",
     epithet: "폭풍의 신과 싸운 뱀",
@@ -1156,6 +1236,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "allat",
     pantheonSlug: "arabian",
+    kind: "god",
     name: "알라트",
     nameEn: "Allat",
     epithet: "여신",
@@ -1171,6 +1252,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "dushara",
     pantheonSlug: "arabian",
+    kind: "god",
     name: "두샤라",
     nameEn: "Dushara",
     epithet: "나바테아의 주신",
@@ -1185,6 +1267,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "perun",
     pantheonSlug: "slavic",
+    kind: "god",
     name: "페룬",
     nameEn: "Perun",
     epithet: "천둥의 신",
@@ -1199,6 +1282,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "svetovid",
     pantheonSlug: "slavic",
+    kind: "god",
     name: "스뱌토비트",
     nameEn: "Svetovid",
     epithet: "네 얼굴의 신",
@@ -1214,6 +1298,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "baba-yaga",
     pantheonSlug: "slavic",
+    kind: "other",
     name: "바바 야가",
     nameEn: "Baba Yaga",
     epithet: "숲속의 마녀",
@@ -1228,6 +1313,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "perkunas",
     pantheonSlug: "baltic",
+    kind: "god",
     name: "페르쿠나스",
     nameEn: "Perkūnas",
     epithet: "천둥의 신",
@@ -1242,6 +1328,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "laima",
     pantheonSlug: "baltic",
+    kind: "god",
     name: "라이마",
     nameEn: "Laima",
     epithet: "운명의 여신",
@@ -1256,6 +1343,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "kalevipoeg",
     pantheonSlug: "estonian",
+    kind: "hero",
     name: "칼레비포에그",
     nameEn: "Kalevipoeg",
     epithet: "칼레브의 아들",
@@ -1271,6 +1359,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "vanapagan",
     pantheonSlug: "estonian",
+    kind: "other",
     name: "바나파간",
     nameEn: "Vanapagan",
     epithet: "옛 이교도",
@@ -1285,6 +1374,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tinia",
     pantheonSlug: "etruscan",
+    kind: "god",
     name: "티니아",
     nameEn: "Tinia",
     epithet: "하늘의 신",
@@ -1300,6 +1390,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "charun",
     pantheonSlug: "etruscan",
+    kind: "other",
     name: "카룬",
     nameEn: "Charun",
     epithet: "저승의 안내자",
@@ -1315,6 +1406,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "menrva",
     pantheonSlug: "etruscan",
+    kind: "god",
     name: "멘르바",
     nameEn: "Menrva",
     epithet: "지혜와 전쟁의 여신",
@@ -1329,6 +1421,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "snake-goddess",
     pantheonSlug: "minoan",
+    kind: "god",
     name: "뱀의 여신",
     nameEn: "Minoan Snake Goddess",
     epithet: "뱀을 든 여신",
@@ -1343,6 +1436,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "mistress-of-animals",
     pantheonSlug: "minoan",
+    kind: "god",
     name: "동물의 여주인",
     nameEn: "Mistress of Animals",
     epithet: "짐승을 거느린 여신",
@@ -1358,6 +1452,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "anahit",
     pantheonSlug: "armenian",
+    kind: "god",
     name: "아나히트",
     nameEn: "Anahit",
     epithet: "어머니 여신",
@@ -1373,6 +1468,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "vahagn",
     pantheonSlug: "armenian",
+    kind: "god",
     name: "바하근",
     nameEn: "Vahagn",
     epithet: "용을 물리친 신",
@@ -1387,6 +1483,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "turul",
     pantheonSlug: "hungarian",
+    kind: "beast",
     name: "투룰",
     nameEn: "Turul",
     epithet: "신성한 새",
@@ -1402,6 +1499,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "emese",
     pantheonSlug: "hungarian",
+    kind: "hero",
     name: "에메세",
     nameEn: "Emese",
     epithet: "왕가의 어머니",
@@ -1416,6 +1514,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "weland",
     pantheonSlug: "anglo-saxon",
+    kind: "hero",
     name: "웨일랜드",
     nameEn: "Weland",
     epithet: "대장장이",
@@ -1431,6 +1530,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "beowulf",
     pantheonSlug: "anglo-saxon",
+    kind: "hero",
     name: "베오울프",
     nameEn: "Beowulf",
     epithet: "괴물을 물리친 영웅",
@@ -1445,6 +1545,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thracian-heros",
     pantheonSlug: "thracian",
+    kind: "hero",
     name: "트라키아의 기수",
     nameEn: "Thracian Heros",
     epithet: "말을 탄 영웅신",
@@ -1460,6 +1561,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "zalmoxis",
     pantheonSlug: "thracian",
+    kind: "god",
     name: "잘목시스",
     nameEn: "Zalmoxis",
     epithet: "게타이족의 신",
@@ -1474,6 +1576,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "shango",
     pantheonSlug: "yoruba",
+    kind: "god",
     name: "샹고",
     nameEn: "Shango",
     epithet: "천둥과 번개의 오리샤",
@@ -1488,6 +1591,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "eshu",
     pantheonSlug: "yoruba",
+    kind: "god",
     name: "에슈",
     nameEn: "Eshu",
     epithet: "길과 전언의 오리샤",
@@ -1503,6 +1607,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "orunmila",
     pantheonSlug: "yoruba",
+    kind: "god",
     name: "오룬밀라",
     nameEn: "Orunmila",
     epithet: "지혜와 점술의 오리샤",
@@ -1517,6 +1622,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "nommo",
     pantheonSlug: "dogon",
+    kind: "other",
     name: "놈모",
     nameEn: "Nommo",
     epithet: "물의 정령",
@@ -1532,6 +1638,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "amma",
     pantheonSlug: "dogon",
+    kind: "god",
     name: "암마",
     nameEn: "Amma",
     epithet: "창조신",
@@ -1546,6 +1653,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "gu",
     pantheonSlug: "fon",
+    kind: "god",
     name: "구",
     nameEn: "Gu",
     epithet: "쇠와 전쟁의 신",
@@ -1560,6 +1668,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "mawu-lisa",
     pantheonSlug: "fon",
+    kind: "god",
     name: "마우-리사",
     nameEn: "Mawu-Lisa",
     epithet: "달과 해의 창조신",
@@ -1574,6 +1683,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "inti",
     pantheonSlug: "inca",
+    kind: "god",
     name: "인티",
     nameEn: "Inti",
     epithet: "태양신",
@@ -1588,6 +1698,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "viracocha",
     pantheonSlug: "inca",
+    kind: "god",
     name: "비라코차",
     nameEn: "Viracocha",
     epithet: "창조신",
@@ -1603,6 +1714,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "pachamama",
     pantheonSlug: "inca",
+    kind: "god",
     name: "파차마마",
     nameEn: "Pachamama",
     epithet: "대지의 어머니",
@@ -1618,6 +1730,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "raven",
     pantheonSlug: "haida",
+    kind: "god",
     name: "까마귀",
     nameEn: "Raven",
     epithet: "장난꾸러기 창조자",
@@ -1633,6 +1746,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "were-jaguar",
     pantheonSlug: "olmec",
+    kind: "beast",
     name: "재규어 인간",
     nameEn: "Olmec Were-Jaguar",
     epithet: "재규어와 사람이 섞인 존재",
@@ -1648,6 +1762,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "cocijo",
     pantheonSlug: "zapotec",
+    kind: "god",
     name: "코시호",
     nameEn: "Cocijo",
     epithet: "비와 번개의 신",
@@ -1662,6 +1777,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "eight-deer",
     pantheonSlug: "mixtec",
+    kind: "hero",
     name: "8 사슴 재규어 발톱",
     nameEn: "Eight Deer Jaguar Claw",
     epithet: "전설적인 정복 왕",
@@ -1677,6 +1793,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "maui",
     pantheonSlug: "polynesian",
+    kind: "hero",
     name: "마우이",
     nameEn: "Māui",
     epithet: "꾀 많은 반신",
@@ -1692,6 +1809,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "tangaroa",
     pantheonSlug: "polynesian",
+    kind: "god",
     name: "탕가로아",
     nameEn: "Tangaroa",
     epithet: "바다의 신",
@@ -1706,6 +1824,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ku",
     pantheonSlug: "polynesian",
+    kind: "god",
     name: "쿠",
     nameEn: "Kū",
     epithet: "전쟁의 신",
@@ -1721,6 +1840,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "makemake",
     pantheonSlug: "rapa-nui",
+    kind: "god",
     name: "마케마케",
     nameEn: "Makemake",
     epithet: "창조신",
@@ -1735,6 +1855,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "moai",
     pantheonSlug: "rapa-nui",
+    kind: "other",
     name: "모아이",
     nameEn: "Moai",
     epithet: "신이 된 조상",
@@ -1749,6 +1870,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "kimun-kamuy",
     pantheonSlug: "ainu",
+    kind: "god",
     name: "키무은 카무이",
     nameEn: "Kimun Kamuy",
     epithet: "산의 신 (곰)",
@@ -1763,6 +1885,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "gesar",
     pantheonSlug: "tibetan",
+    kind: "hero",
     name: "게사르 왕",
     nameEn: "King Gesar",
     epithet: "링 왕국의 영웅 왕",
@@ -1777,6 +1900,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "palden-lhamo",
     pantheonSlug: "tibetan",
+    kind: "god",
     name: "팔덴 라모",
     nameEn: "Palden Lhamo",
     epithet: "티베트의 수호 여신",
@@ -1792,6 +1916,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thanh-giong",
     pantheonSlug: "vietnamese",
+    kind: "hero",
     name: "타인지옹",
     nameEn: "Thánh Gióng",
     epithet: "하늘로 올라간 소년 영웅",
@@ -1807,6 +1932,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "lac-long-quan",
     pantheonSlug: "vietnamese",
+    kind: "hero",
     name: "락롱꾸언",
     nameEn: "Lạc Long Quân",
     epithet: "용의 군주",
@@ -1822,6 +1948,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thotsakan",
     pantheonSlug: "thai",
+    kind: "other",
     name: "톳사깐",
     nameEn: "Thotsakan",
     epithet: "열 머리의 마왕",
@@ -1837,6 +1964,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "mae-phosop",
     pantheonSlug: "thai",
+    kind: "god",
     name: "매포솝",
     nameEn: "Mae Phosop",
     epithet: "벼의 여신",
@@ -1851,6 +1979,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "mahagiri",
     pantheonSlug: "burmese",
+    kind: "god",
     name: "마하기리",
     nameEn: "Mahagiri",
     epithet: "집의 수호 낫",
@@ -1865,6 +1994,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "thagyamin",
     pantheonSlug: "burmese",
+    kind: "god",
     name: "따자민",
     nameEn: "Thagyamin",
     epithet: "낫들의 왕",
@@ -1879,6 +2009,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "barong",
     pantheonSlug: "indonesian",
+    kind: "beast",
     name: "바롱",
     nameEn: "Barong",
     epithet: "선한 수호자",
@@ -1894,6 +2025,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "rangda",
     pantheonSlug: "indonesian",
+    kind: "other",
     name: "랑다",
     nameEn: "Rangda",
     epithet: "마녀의 여왕",
@@ -1908,6 +2040,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "dewi-sri",
     pantheonSlug: "indonesian",
+    kind: "god",
     name: "데위 스리",
     nameEn: "Dewi Sri",
     epithet: "벼의 여신",
@@ -1922,6 +2055,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hwanin",
     pantheonSlug: "korean",
+    kind: "god",
     name: "환인",
     nameEn: "Hwanin",
     epithet: "하늘의 임금",
@@ -1936,6 +2070,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hwanung",
     pantheonSlug: "korean",
+    kind: "god",
     name: "환웅",
     nameEn: "Hwanung",
     epithet: "신시를 연 하늘의 아들",
@@ -1951,6 +2086,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ungnyeo",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "웅녀",
     nameEn: "Ungnyeo",
     epithet: "곰에서 사람이 된 여인",
@@ -1965,6 +2101,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "haemosu",
     pantheonSlug: "korean",
+    kind: "god",
     name: "해모수",
     nameEn: "Haemosu",
     epithet: "하늘에서 내려온 해의 아들",
@@ -1979,12 +2116,13 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "yuhwa",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "유화",
     nameEn: "Yuhwa",
-    epithet: "물의 신의 딸, 고구려의 어머니 신",
+    epithet: "고구려 건국 신화의 어머니 영웅",
     domains: ["물", "곡식", "어머니"],
     summary:
-      "물의 신 하백의 딸로, 알을 낳아 주몽을 기른 어머니입니다. 고구려에서는 ‘부여신’으로 모셨습니다.",
+      "물의 신 하백의 딸로, 알을 낳아 주몽을 기른 고구려 건국 신화의 영웅입니다. 고구려에서는 뒤에 ‘부여신’으로 모셨습니다.",
     description: [
       "유화는 해모수와 정을 맺은 일로 아버지에게 쫓겨났고, 동부여의 금와왕이 그를 거두었습니다. 햇빛이 몸을 따라 비춘 뒤 큰 알을 낳았고, 그 알에서 주몽이 태어났습니다.",
       "주몽이 부여를 떠날 때 다섯 가지 곡식의 씨앗을 싸 주었다고 전해 곡식의 신으로도 봅니다. 중국 역사서는 고구려가 나무로 깎은 부인상을 ‘부여신’이라 부르며 섬겼다고 적었습니다.",
@@ -1994,11 +2132,13 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "dongmyeong",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "동명성왕",
     nameEn: "King Dongmyeong (Jumong)",
-    epithet: "고구려를 세운 활의 명수",
+    epithet: "고구려를 세운 건국 영웅",
     domains: ["건국", "활쏘기"],
-    summary: "알에서 태어나 활을 잘 쏘아 ‘주몽’이라 불렸고, 부여를 떠나 고구려를 세운 왕입니다.",
+    summary:
+      "알에서 태어나 활을 잘 쏘아 ‘주몽’이라 불렸고, 부여를 떠나 고구려를 세운 건국 영웅입니다.",
     description: [
       "주몽은 금와왕의 아들들이 시기해 목숨을 노리자 부여를 떠났습니다. 큰 강에 가로막히자 ‘나는 천제의 아들이자 하백의 외손자’라고 외쳤고, 물고기와 자라가 떠올라 다리를 놓아 주었다고 전합니다.",
       "414년에 세운 광개토왕릉비는 첫머리에서 시조 추모왕(주몽)을 ‘천제의 아들이자 하백의 딸의 아들’로 기록해, 한국 건국 신화를 전하는 가장 이른 글로 꼽힙니다.",
@@ -2008,11 +2148,12 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "hyeokgeose",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "박혁거세",
     nameEn: "Bak Hyeokgeose",
-    epithet: "알에서 태어난 신라의 시조",
+    epithet: "신라를 세운 건국 영웅",
     domains: ["건국", "빛"],
-    summary: "나정 옆 자줏빛 알에서 태어나 몸에서 빛을 냈다는, 신라를 세운 첫 임금입니다.",
+    summary: "나정 옆 자줏빛 알에서 태어나 몸에서 빛을 냈다는, 신라를 세운 건국 영웅입니다.",
     description: [
       "여섯 마을의 우두머리들이 임금을 모시자고 의논할 때, 나정이라는 우물 옆에서 흰 말이 절하는 곳에 자줏빛 알이 있었고 그 알에서 사내아이가 태어났다고 「삼국유사」는 전합니다.",
       "예순한 해를 다스린 뒤 하늘로 올라갔다가 이레 뒤 몸이 흩어져 땅에 떨어졌습니다. 사람들이 합쳐 묻으려 하자 큰 뱀이 막아 다섯 곳에 따로 묻었다는 이야기가 경주 오릉의 내력으로 전합니다.",
@@ -2022,12 +2163,13 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "suro",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "수로왕",
     nameEn: "King Suro",
-    epithet: "하늘이 내린 황금 알의 왕",
+    epithet: "가락국을 세운 건국 영웅",
     domains: ["건국", "하늘"],
     summary:
-      "구지봉에서 사람들이 노래하며 춤추자 하늘에서 내려온 황금 알에서 태어나 가락국을 세운 왕입니다.",
+      "구지봉에서 사람들이 노래하며 춤추자 하늘에서 내려온 황금 알에서 태어나 가락국을 세운 건국 영웅입니다.",
     description: [
       "「삼국유사」에 실린 「가락국기」에 따르면, 하늘의 소리를 따라 아홉 우두머리와 백성이 ‘거북아 거북아 머리를 내어라’ 하는 노래를 부르자 자줏빛 줄에 매달린 금빛 상자가 내려왔고, 그 안의 황금 알 여섯에서 여섯 가야의 왕이 태어났습니다.",
       "가장 먼저 나온 수로는 가락국(금관가야)의 왕이 되었고, 바다 건너 아유타국에서 온 허황옥을 왕비로 맞았다고 전합니다.",
@@ -2037,6 +2179,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "seolmundae",
     pantheonSlug: "korean",
+    kind: "god",
     name: "설문대할망",
     nameEn: "Seolmundae Halmang",
     epithet: "제주를 만든 거인 여신",
@@ -2051,6 +2194,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "samsin",
     pantheonSlug: "korean",
+    kind: "god",
     name: "삼신할미",
     nameEn: "Samsin Halmi",
     epithet: "아기를 점지하는 여신",
@@ -2065,6 +2209,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "jacheongbi",
     pantheonSlug: "korean",
+    kind: "god",
     name: "자청비",
     nameEn: "Jacheongbi",
     epithet: "농사의 여신",
@@ -2080,6 +2225,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "gangnim",
     pantheonSlug: "korean",
+    kind: "hero",
     name: "강림도령",
     nameEn: "Gangnim Doryeong",
     epithet: "저승에서 염라대왕을 잡아 온 차사",
@@ -2095,6 +2241,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "siwang",
     pantheonSlug: "korean",
+    kind: "god",
     name: "시왕",
     nameEn: "Ten Kings of the Underworld",
     epithet: "저승의 열 대왕",
@@ -2109,6 +2256,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "cheoyong",
     pantheonSlug: "korean",
+    kind: "god",
     name: "처용",
     nameEn: "Cheoyong",
     epithet: "역신을 물리친 용의 아들",
@@ -2124,6 +2272,7 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "ilwol",
     pantheonSlug: "korean",
+    kind: "god",
     name: "일월성신",
     nameEn: "Sun and Moon Gods",
     epithet: "해와 달, 별의 신",
@@ -2139,21 +2288,23 @@ export const MOCK_FIGURES: Figure[] = [
   {
     slug: "choeyeong",
     pantheonSlug: "korean",
-    name: "최영 장군신",
-    nameEn: "General Choe Yeong",
-    epithet: "무속의 장군신",
-    domains: ["수호", "재물", "정의"],
+    kind: "hero",
+    name: "최영",
+    nameEn: "Choe Yeong",
+    epithet: "왜구를 물리친 고려의 영웅",
+    domains: ["장수", "청렴", "수호"],
     summary:
-      "억울하게 죽은 고려 말의 장군 최영이 신이 된 것으로, 무속에서 가장 널리 모시는 장군신입니다.",
+      "왜구와 홍건적을 물리친 고려 말의 명장으로, 억울하게 죽은 뒤 무속에서 장군으로 모셔진 영웅입니다.",
     description: [
       "최영(1316~1388)은 왜구와 홍건적을 물리친 고려 말의 명장으로, ‘황금 보기를 돌같이 하라’는 아버지의 말을 지킨 청렴함으로 유명합니다. 위화도 회군 뒤 이성계 세력에게 죽임을 당했습니다.",
-      "억울한 죽음은 그를 신으로 섬기게 했고, 무당들은 장군당에 최영 장군을 모시며 집안과 마을을 지켜 주기를 빌었습니다. 그의 무덤에는 원한 때문에 풀이 나지 않는다는 전설이 있습니다.",
+      "억울한 죽음 때문에 무당들은 장군당에 그를 모시고 집안과 마을을 지켜 주기를 빌었습니다. 그의 무덤에는 원한 때문에 풀이 나지 않는다는 전설이 있습니다.",
     ],
     order: 20,
   },
   {
     slug: "jangseung",
     pantheonSlug: "korean",
+    kind: "other",
     name: "장승",
     nameEn: "Jangseung",
     epithet: "마을 어귀의 수호신",
@@ -2168,17 +2319,18 @@ export const MOCK_FIGURES: Figure[] = [
   },
   {
     slug: "chiyou",
-    pantheonSlug: "chinese",
+    pantheonSlug: "korean",
+    kind: "god",
     name: "치우",
     nameEn: "Chiyou",
     epithet: "황제와 싸운 전쟁의 신",
     domains: ["전쟁", "무기", "비바람"],
     summary:
-      "구리 머리에 쇠 이마를 가졌다는 전쟁의 신으로, 황제와 탁록에서 싸웠다고 전하는 중국 신화의 인물입니다.",
+      "구리 머리에 쇠 이마를 가졌다는 전쟁의 신으로, 옛 기록에서 황제와 탁록에서 싸웠다고 전하며 한국에서는 붉은악마의 상징으로 널리 알려졌습니다.",
     description: [
       "「산해경」에 따르면 치우는 무기를 만들어 황제에게 맞섰고, 「사기」는 둘이 탁록의 들판에서 싸웠다고 적었습니다. 후대 기록은 그에게 구리 머리와 쇠 이마를 가진 형제가 여든하나 있었다고 전합니다. 바람의 신 풍백과 비의 신 우사를 불러 큰 비바람을 일으켰지만, 황제가 내려보낸 가뭄의 여신 발이 비를 그치게 해 결국 사로잡혀 죽었다고 합니다.",
-      "패한 뒤에도 전쟁의 신 ‘병주’로 제사를 받았습니다. 한국에서는 2002년 월드컵 응원단 붉은악마의 상징으로 널리 알려졌습니다. 그를 한민족의 왕으로 보는 주장은 학계가 위서로 보는 20세기 책 「환단고기」에서 나온 것입니다.",
+      "패한 뒤에도 전쟁의 신 ‘병주’로 제사를 받았습니다. 20세기에 나온 「환단고기」는 그를 배달국의 임금 ‘치우천왕’으로 그렸는데, 학계는 이 책을 위서로 봅니다. 2002년 월드컵 때 응원단 붉은악마가 그의 얼굴을 상징으로 쓰면서 한국에서 널리 알려졌습니다.",
     ],
-    order: 5,
+    order: 22,
   },
 ];

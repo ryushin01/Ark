@@ -10,6 +10,8 @@ export type FigureCard = {
   name: string;
   nameEn: string;
   epithet: string;
+  /** 분류 이름 (신, 영웅, 신수, 그 밖의 존재) */
+  kindLabel: string;
   image: ArchiveImage | null;
   exhibitCount: number;
 };
@@ -41,7 +43,9 @@ export function FigureGrid({ figures }: { figures: FigureCard[] }) {
             <span className={styles.meta}>
               <span lang="en">{figure.nameEn}</span> · {figure.epithet}
             </span>
-            <span className={styles.count}>자료 {figure.exhibitCount}점</span>
+            <span className={styles.count}>
+              {figure.kindLabel} · 자료 {figure.exhibitCount}점
+            </span>
           </Link>
         </li>
       ))}
