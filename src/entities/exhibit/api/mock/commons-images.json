@@ -1150,5 +1150,86 @@
     "licenseUrl": null,
     "artist": "Joseph Ratcliffe Skelton",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_grendel.jpg"
+  },
+  "dongmyeong-tomb": {
+    "src": "/images/exhibits/dongmyeong-tomb.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "artist": "yeowatzup",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tomb_of_King_Tongmyong,_Pyongyang,_North_Korea.jpg"
+  },
+  "hyeokgeose-oreung": {
+    "src": "/images/exhibits/hyeokgeose-oreung.jpg",
+    "width": 1280,
+    "height": 850,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "Minquddyd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EA%B2%BD%EC%A3%BC%EC%9D%98_%EC%98%A4%EB%A6%89.jpg"
+  },
+  "suro-tomb": {
+    "src": "/images/exhibits/suro-tomb.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "artist": "xiquinhosilva",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Royal_Tomb_of_King_Suro.jpg"
+  },
+  "cheoyong-akhak": {
+    "src": "/images/exhibits/cheoyong-akhak.jpg",
+    "width": 1254,
+    "height": 1296,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cheoyong_in_the_Akhak_Gwebeom.jpg"
+  },
+  "siwang-lacma": {
+    "src": "/images/exhibits/siwang-lacma.jpg",
+    "width": 1197,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Six_of_the_Ten_Kings_of_Hell_LACMA_AC1998.268.3.1-.6_(1_of_5).jpg"
+  },
+  "ilwol-seoul": {
+    "src": "/images/exhibits/ilwol-seoul.jpg",
+    "width": 454,
+    "height": 687,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Korean_sun_and_moon_gods.png"
+  },
+  "choeyeong-sasindang": {
+    "src": "/images/exhibits/choeyeong-sasindang.jpg",
+    "width": 597,
+    "height": 944,
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "artist": "서울특별시",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EC%82%AC%EC%8B%A0%EB%8B%B9_%EB%AC%B4%EC%8B%A0%EB%8F%84_%EB%B0%8F_%ED%98%84%ED%8C%90_%EC%9D%BC%EA%B4%84_-_%EC%B5%9C%EC%98%81%EC%9E%A5%EA%B5%B0%EB%8F%84.jpg"
+  },
+  "jangseung-bourdaret": {
+    "src": "/images/exhibits/jangseung-bourdaret.jpg",
+    "width": 939,
+    "height": 1258,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Émile Bourdaret",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bourdaret_-_Religion_et_Superstition_en_Cor%C3%A9e_-_p19.jpg"
+  },
+  "chiyou-han": {
+    "src": "/images/exhibits/chiyou-han.jpg",
+    "width": 400,
+    "height": 487,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chi_You.gif"
   }
 }

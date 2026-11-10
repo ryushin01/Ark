@@ -16,6 +16,8 @@ async function hasHorizontalOverflow(page: Page) {
 for (const path of PAGES) {
   test(`${path}: 접근성 위반이 없습니다 (axe, WCAG 2.2 AA)`, async ({ page }) => {
     await page.goto(path);
+    // content-visibility로 미룬 항목도 검사하도록 모두 그립니다.
+    await page.addStyleTag({ content: "* { content-visibility: visible !important; }" });
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
       .analyze();

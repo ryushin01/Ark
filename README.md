@@ -1,10 +1,10 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.11.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.12.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
-다섯 대륙 41개 신화 계열의 신과 영웅 133명을 조각상, 회화, 유물 자료 128점으로 살펴보는 세계 신화 도서관입니다.
+다섯 대륙 41개 신화 계열의 신과 영웅 151명을 조각상, 회화, 유물 자료 137점으로 살펴보는 세계 신화 도서관입니다.
 
 **[데모 바로 보기](https://ark-ryushin01.vercel.app/)** · 어드민은 [/admin](https://ark-ryushin01.vercel.app/admin)에서 **데모 계정으로 둘러보기**를 누르면 됩니다. · **[디자인 시스템(Storybook)](https://ark-ryushin01.vercel.app/storybook/index.html)**
 
@@ -22,7 +22,7 @@
 
 | 어드민 대시보드                                                                                             | 어드민 편집                                                                |
 | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ![데모 계정으로 로그인한 대시보드. 계열 41, 신 133, 자료 128, 작품 6 카드](docs/images/admin-dashboard.jpg) | ![오딘의 이름, 별칭, 영역, 소개를 고치는 폼](docs/images/admin-figure.jpg) |
+| ![데모 계정으로 로그인한 대시보드. 계열 41, 신 151, 자료 137, 작품 6 카드](docs/images/admin-dashboard.jpg) | ![오딘의 이름, 별칭, 영역, 소개를 고치는 폼](docs/images/admin-figure.jpg) |
 
 | 신 상세                                                                                   | 신 찾기                                                                        |
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |

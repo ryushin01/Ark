@@ -26,6 +26,13 @@
     font-size: var(--text-sm);
 }
 
+/* 터치 대상 최소 높이 */
+.groupTitle a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+}
+
 .groupTitle a:hover {
     text-decoration: underline;
 }
