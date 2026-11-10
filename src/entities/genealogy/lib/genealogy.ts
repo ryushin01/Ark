@@ -1,11 +1,4 @@
-import { GENEALOGIES } from "../api/data";
-
-import type { GenealogyNode } from "../model/types";
-
-/** 계열의 계보. 정리하지 않은 계열이면 null */
-export function getGenealogy(pantheonSlug: string) {
-  return GENEALOGIES.find((genealogy) => genealogy.pantheonSlug === pantheonSlug) ?? null;
-}
+import type { Genealogy, GenealogyNode } from "../model/types";
 
 export type Relatives = {
   parents: GenealogyNode[];
@@ -33,7 +26,7 @@ function unique(nodes: GenealogyNode[], self: string) {
  * 신·인물의 가족: 부모, 배우자, 자식, 형제자매
  * 계보 전체에서 그 신이 나오는 모든 자리를 모아 합칩니다. (제우스처럼 여러 번 나오는 신)
  */
-export function getRelatives(slug: string): Relatives {
+export function findRelatives(genealogies: Genealogy[], slug: string): Relatives {
   const parents: GenealogyNode[] = [];
   const spouses: GenealogyNode[] = [];
   const children: GenealogyNode[] = [];
@@ -54,7 +47,7 @@ export function getRelatives(slug: string): Relatives {
       union.children.forEach(visit);
     }
   };
-  GENEALOGIES.forEach((genealogy) => genealogy.roots.forEach(visit));
+  genealogies.forEach((genealogy) => genealogy.roots.forEach(visit));
 
   return {
     parents: unique(parents, slug),

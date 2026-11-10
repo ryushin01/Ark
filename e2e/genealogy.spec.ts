@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
-import { GENEALOGIES } from "../src/entities/genealogy/api/data";
+import { MOCK_GENEALOGIES as GENEALOGIES } from "../src/entities/genealogy/api/mock-data";
 import { MOCK_PANTHEONS } from "../src/entities/pantheon/api/mock-data";
 
 import type { GenealogyNode } from "../src/entities/genealogy/model/types";

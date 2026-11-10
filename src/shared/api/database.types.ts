@@ -124,6 +124,36 @@ export type Database = {
           },
         ];
       };
+      genealogies: {
+        Row: {
+          pantheon_slug: string;
+          roots: NonNullable<Json>;
+          source: string;
+          updated_at: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          pantheon_slug: string;
+          roots?: NonNullable<Json>;
+          source: string;
+          updated_at?: string;
+        };
+        Update: {
+          pantheon_slug?: string;
+          roots?: NonNullable<Json>;
+          source?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "genealogies_pantheon_slug_fkey";
+            columns: ["pantheon_slug"];
+            isOneToOne: true;
+            referencedRelation: "pantheons";
+            referencedColumns: ["slug"];
+          },
+        ];
+      };
       pantheons: {
         Row: {
           continent: string;

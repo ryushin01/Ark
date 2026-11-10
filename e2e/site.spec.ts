@@ -84,7 +84,10 @@ test("홈 → 계열 → 신: 링크를 따라 상세 화면으로 이동합니�
   await expect(page).toHaveURL("/pantheons/greek");
   await expect(page.getByRole("heading", { level: 1, name: "그리스 신화" })).toBeVisible();
 
-  await page.getByRole("link", { name: /^제우스/ }).click();
+  await page
+    .getByRole("region", { name: "신과 영웅" })
+    .getByRole("link", { name: /^제우스/ })
+    .click();
   await expect(page).toHaveURL("/figures/zeus");
   await expect(page.getByRole("heading", { level: 1, name: "제우스" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "현재 위치" })).toContainText("그리스 신화");

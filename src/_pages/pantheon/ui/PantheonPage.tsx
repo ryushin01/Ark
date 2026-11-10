@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
-import { getGenealogy } from "@/entities/genealogy";
+import { getGenealogy } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
@@ -38,15 +38,15 @@ export async function generatePantheonMetadata(slug: string) {
 
 /** 신화 계열 상세: 소개, 대표 자료, 속한 신·인물, 앞뒤 계열 */
 export async function PantheonPage({ slug }: { slug: string }) {
-  const [pantheon, pantheons, figures, exhibits] = await Promise.all([
+  const [pantheon, pantheons, figures, exhibits, genealogy] = await Promise.all([
     getPantheon(slug),
     getPantheons(),
     getFiguresByPantheon(slug),
     getExhibits(),
+    getGenealogy(slug),
   ]);
   if (!pantheon) notFound();
 
-  const genealogy = getGenealogy(slug);
   const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
   const index = pantheons.findIndex((item) => item.slug === slug);
   const next = pantheons[(index + 1) % pantheons.length];

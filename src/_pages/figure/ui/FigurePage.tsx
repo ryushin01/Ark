@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
-import { getRelatives } from "@/entities/genealogy";
+import { findRelatives } from "@/entities/genealogy";
+import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheon } from "@/entities/pantheon/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
@@ -48,9 +49,10 @@ export async function FigurePage({ slug }: { slug: string }) {
   ]);
   if (!figure) notFound();
 
-  const [pantheon, works] = await Promise.all([
+  const [pantheon, works, genealogies] = await Promise.all([
     getPantheon(figure.pantheonSlug),
     features.archive ? getWorksByFigure(slug) : Promise.resolve([]),
+    getGenealogies(),
   ]);
   const own = exhibits.filter((exhibit) => exhibit.figureSlug === slug);
   const siblings = figures
@@ -107,7 +109,10 @@ export async function FigurePage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <FamilySection relatives={getRelatives(slug)} pantheonSlug={figure.pantheonSlug} />
+      <FamilySection
+        relatives={findRelatives(genealogies, slug)}
+        pantheonSlug={figure.pantheonSlug}
+      />
 
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />

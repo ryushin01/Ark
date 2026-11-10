@@ -23,7 +23,7 @@ const u = (partner: GenealogyNode | null, children: GenealogyNode[], note?: stri
  * 대표 문헌의 전승을 따르고, 문헌마다 다르면 note에 적습니다.
  * slug는 Ark에 있는 신·인물만 적습니다. (e2e/genealogy.spec.ts가 주소를 확인합니다)
  */
-export const GENEALOGIES: Genealogy[] = [
+export const MOCK_GENEALOGIES: Genealogy[] = [
   {
     pantheonSlug: "greek",
     source: "헤시오도스 「신들의 계보」, 아폴로도로스 「비블리오테케」, 「일리아스」",

@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { getGenealogy, getRelatives } from "./genealogy";
+import { MOCK_GENEALOGIES } from "../api/mock-data";
+import { findRelatives } from "./genealogy";
+
+const getRelatives = (slug: string) => findRelatives(MOCK_GENEALOGIES, slug);
 
 const names = (nodes: { name: string }[]) => nodes.map((node) => node.name);
 
@@ -29,12 +32,5 @@ describe("getRelatives", () => {
       children: [],
       siblings: [],
     });
-  });
-});
-
-describe("getGenealogy", () => {
-  it("정리하지 않은 계열은 null", () => {
-    expect(getGenealogy("greek")?.roots.length).toBeGreaterThan(0);
-    expect(getGenealogy("no-such-pantheon")).toBeNull();
   });
 });
