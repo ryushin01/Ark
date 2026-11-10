@@ -9,6 +9,8 @@ import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { getGenealogy } from "../api/genealogy-data";
+import { GenealogyTree } from "./GenealogyTree";
 import styles from "./PantheonPage.module.css";
 
 export async function generatePantheonParams() {
@@ -44,6 +46,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
   ]);
   if (!pantheon) notFound();
 
+  const genealogy = getGenealogy(slug);
   const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
   const index = pantheons.findIndex((item) => item.slug === slug);
   const next = pantheons[(index + 1) % pantheons.length];
@@ -111,6 +114,8 @@ export async function PantheonPage({ slug }: { slug: string }) {
         />
         <FigureGrid figures={cards} />
       </section>
+
+      {genealogy && <GenealogyTree genealogy={genealogy} />}
 
       {next && next.slug !== slug && (
         <nav className={`${styles.next} px-global`} aria-label="다음 계열">
