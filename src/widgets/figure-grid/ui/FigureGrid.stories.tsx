@@ -19,6 +19,7 @@ const meta = {
         name: "제우스",
         nameEn: "Zeus",
         epithet: "하늘과 번개의 신",
+        kindLabel: "신",
         exhibitCount: 1,
         image: {
           src: "/images/exhibits/zeus-otricoli.jpg",
@@ -33,6 +34,7 @@ const meta = {
         name: "로키",
         nameEn: "Loki",
         epithet: "꾀와 변신의 신",
+        kindLabel: "신",
         exhibitCount: 0,
         image: null,
       },

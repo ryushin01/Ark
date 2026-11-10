@@ -2,7 +2,7 @@ import { createRepository } from "@/shared/api/index.server";
 
 import { MOCK_FIGURES } from "./mock-data";
 
-import type { Figure } from "../model/types";
+import type { Figure, FigureKind } from "../model/types";
 
 import "server-only";
 
@@ -15,6 +15,7 @@ export const figureRepository = createRepository<"figures", Figure>({
   toRow: (figure) => ({
     slug: figure.slug,
     pantheon_slug: figure.pantheonSlug,
+    kind: figure.kind,
     name: figure.name,
     name_en: figure.nameEn,
     epithet: figure.epithet,
@@ -26,6 +27,7 @@ export const figureRepository = createRepository<"figures", Figure>({
   fromRow: (row) => ({
     slug: row.slug,
     pantheonSlug: row.pantheon_slug,
+    kind: row.kind as FigureKind,
     name: row.name,
     nameEn: row.name_en,
     epithet: row.epithet,

@@ -2,6 +2,8 @@ import { z } from "zod";
 
 import { splitList, splitParagraphs } from "@/shared/lib";
 
+import { FIGURE_KINDS } from "./types";
+
 export const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /** 어드민에서 신·인물을 만들거나 고칠 때의 입력값 */
@@ -11,6 +13,7 @@ export const figureInputSchema = z.object({
     .trim()
     .regex(SLUG_PATTERN, "주소 이름은 영문 소문자, 숫자, 하이픈(-)으로 입력해 주세요. 예) zeus"),
   pantheonSlug: z.string().trim().min(1, "신화 계열을 골라 주세요."),
+  kind: z.enum(FIGURE_KINDS, "분류를 골라 주세요."),
   name: z.string().trim().min(1, "이름을 입력해 주세요."),
   nameEn: z.string().trim().min(1, "영문 이름을 입력해 주세요."),
   epithet: z.string().trim().min(1, "별칭을 입력해 주세요. 예) 하늘과 번개의 신"),

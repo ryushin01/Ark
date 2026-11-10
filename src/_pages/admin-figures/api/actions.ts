@@ -19,6 +19,7 @@ import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/li
 const FIELDS = [
   "slug",
   "pantheonSlug",
+  "kind",
   "name",
   "nameEn",
   "epithet",
