@@ -1447,5 +1447,41 @@
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "artist": "MihailEF",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heart_amulet.jpg"
+  },
+  "circe-waterhouse": {
+    "src": "/images/exhibits/circe-waterhouse.jpg",
+    "width": 977,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John William Waterhouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Circe_Offering_the_Cup_to_Odysseus_(2457_x_4023px_ed.).jpg"
+  },
+  "sirens-waterhouse": {
+    "src": "/images/exhibits/sirens-waterhouse.jpg",
+    "width": 1280,
+    "height": 628,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John William Waterhouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_-_Google_Art_Project.jpg"
+  },
+  "charybdis-bromley": {
+    "src": "/images/exhibits/charybdis-bromley.jpg",
+    "width": 546,
+    "height": 726,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "William Bromley / After Henry Fuseli",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:William_Bromley_-_Odysseus_Between_Scylla_and_Charybdis,_1806.jpg"
+  },
+  "scylla-bnf": {
+    "src": "/images/exhibits/scylla-bnf.jpg",
+    "width": 1280,
+    "height": 1113,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Theodoor van Thulden",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ulysse_et_les_sir%C3%A8nes._Ulysse_passe_le_d%C3%A9troit_de_Scylla_et_Charybde._-_btv1b104880665.jpg"
   }
 }

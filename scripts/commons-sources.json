@@ -642,5 +642,21 @@
   {
     "id": "bennu-amulet",
     "file": "Heart amulet.jpg"
+  },
+  {
+    "id": "circe-waterhouse",
+    "file": "Circe Offering the Cup to Odysseus (2457 x 4023px ed.).jpg"
+  },
+  {
+    "id": "sirens-waterhouse",
+    "file": "John William Waterhouse - Ulysses and the Sirens - Google Art Project.jpg"
+  },
+  {
+    "id": "charybdis-bromley",
+    "file": "William Bromley - Odysseus Between Scylla and Charybdis, 1806.jpg"
+  },
+  {
+    "id": "scylla-bnf",
+    "file": "Ulysse et les sirènes. Ulysse passe le détroit de Scylla et Charybde. - btv1b104880665.jpg"
   }
 ]

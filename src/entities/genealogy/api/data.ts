@@ -35,7 +35,10 @@ export const GENEALOGIES: Genealogy[] = [
           withUnions(
             p("히페리온", "Hyperion"),
             u(p("테이아", "Theia"), [
-              p("헬리오스", "Helios"),
+              withUnions(
+                p("헬리오스", "Helios"),
+                u(p("페르세", "Perse"), [p("키르케", "Circe", "circe")]),
+              ),
               p("셀레네", "Selene"),
               p("에오스", "Eos"),
             ]),
