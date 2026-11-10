@@ -501,4 +501,213 @@ export const GENEALOGIES: Genealogy[] = [
       ),
     ],
   },
+  {
+    pantheonSlug: "celtic",
+    source: "아일랜드의 「침략의 책」과 얼스터·핀 이야기",
+    roots: [
+      withUnions(
+        p("다그다", "The Dagda", undefined, "투어허 데 다넌의 아버지 신"),
+        u(null, [p("브리지트", "Brigid", "brigid")]),
+        u(p("보안", "Boann", undefined, "보인강의 여신"), [p("앵거스", "Aengus")]),
+      ),
+      withUnions(
+        p("루", "Lugh"),
+        u(p("데크티네", "Deichtine"), [
+          p("쿠 훌린", "Cú Chulainn", "cuchulainn", "사람인 아버지 수알탐의 아들이라고도 합니다"),
+        ]),
+      ),
+      withUnions(p("리르", "Lir"), u(null, [p("마나난 막 리르", "Manannán mac Lir", "manannan")])),
+      withUnions(
+        p("핀 막 쿨", "Fionn mac Cumhaill", "fionn"),
+        u(p("사브", "Sadhbh", undefined, "사슴으로 변한 여인"), [p("오신", "Oisín", "oisin")]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "finnish",
+    source: "「칼레발라」",
+    roots: [
+      withUnions(
+        p("일마타르", "Ilmatar", undefined, "공기의 여신"),
+        u(null, [p("베이네뫼이넨", "Väinämöinen", "vainamoinen")]),
+      ),
+      withUnions(
+        p("로우히", "Louhi", "louhi"),
+        u(null, [
+          withUnions(
+            p("포흐욜라의 처녀", "Maiden of Pohjola"),
+            u(p("일마리넨", "Ilmarinen", "ilmarinen"), [], "삼포를 벼려 바치고 맞은 아내"),
+          ),
+        ]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "chinese",
+    source: "「삼오역기」, 「회남자」 등",
+    roots: [
+      p("반고", "Pangu", "pangu", "알 같은 혼돈에서 깨어나 하늘과 땅을 갈랐습니다"),
+      withUnions(
+        p("복희", "Fuxi", undefined, "여와의 오빠"),
+        u(
+          p("여와", "Nüwa", "nuwa"),
+          [p("사람들", "humankind")],
+          "남매가 부부가 되어 사람의 조상이 되었다는 전승",
+        ),
+      ),
+      withUnions(p("후예", "Hou Yi", "hou-yi"), u(p("항아", "Chang'e", "change"), [])),
+    ],
+  },
+  {
+    pantheonSlug: "canaanite",
+    source: "우가리트 점토판",
+    roots: [
+      withUnions(
+        p("엘", "El", undefined, "신들의 아버지"),
+        u(
+          p("아세라", "Asherah"),
+          [p("얌", "Yam", undefined, "바다의 신"), p("모트", "Mot", undefined, "죽음의 신")],
+          "‘엘의 일흔 아들’이라 불린 신들",
+        ),
+      ),
+      withUnions(
+        p("다곤", "Dagan"),
+        u(null, [
+          withUnions(
+            p("바알", "Baal", "baal"),
+            u(p("아낫", "Anat", undefined, "바알의 누이이자 짝으로 그려집니다"), []),
+          ),
+        ]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "hittite",
+    source: "후르리·히타이트의 「쿠마르비 노래」",
+    roots: [
+      withUnions(
+        p("알랄루", "Alalu", undefined, "하늘의 첫 왕"),
+        u(null, [p("쿠마르비", "Kumarbi", undefined, "아누를 몰아낸 신들의 아버지")]),
+      ),
+      withUnions(
+        p("아누", "Anu"),
+        u(null, [p("테슈브", "Teshub", "teshub", "쿠마르비가 삼킨 아누의 정기에서 태어났습니다")]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "vietnamese",
+    source: "「영남척괴열전」",
+    roots: [
+      withUnions(
+        p("락롱꾸언", "Lạc Long Quân", "lac-long-quan"),
+        u(p("어우꺼", "Âu Cơ", undefined, "산의 선녀"), [
+          p("백 명의 아들", "one hundred sons", undefined, "맏아들이 첫 훙왕이 되었습니다"),
+        ]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "arthurian",
+    source: "몬머스의 제프리 「브리타니아 열왕사」, 맬러리 「아서 왕의 죽음」",
+    roots: [
+      withUnions(
+        p("이그레인", "Igraine"),
+        u(p("우서 펜드래건", "Uther Pendragon"), [
+          withUnions(p("아서 왕", "King Arthur", "king-arthur"), u(p("귀네비어", "Guinevere"), [])),
+        ]),
+        u(p("콘월 공작 고를루아", "Gorlois"), [
+          p("모르간 르 페이", "Morgan le Fay", "morgan-le-fay"),
+          withUnions(
+            p("모르고스", "Morgause"),
+            u(p("로트 왕", "King Lot"), [
+              p("가웨인", "Gawain", "gawain"),
+              p("가레스", "Gareth", "gareth"),
+            ]),
+            u(
+              p("아서 왕", "King Arthur", "king-arthur"),
+              [p("모드레드", "Mordred", "mordred")],
+              "맬러리의 전승",
+            ),
+          ),
+        ]),
+      ),
+      withUnions(
+        p("랜슬롯", "Lancelot", "lancelot"),
+        u(p("일레인", "Elaine of Corbenic"), [p("갤러해드", "Galahad", "galahad")]),
+      ),
+      withUnions(
+        p("퍼시벌", "Percival", "percival"),
+        u(null, [p("로엔그린", "Lohengrin", "lohengrin", "볼프람의 「파르치팔」")]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "germanic",
+    source: "「니벨룽겐의 노래」",
+    roots: [
+      withUnions(
+        p("지크문트", "Siegmund"),
+        u(p("지클린트", "Sieglind"), [
+          withUnions(
+            p("지크프리트", "Siegfried", "siegfried"),
+            u(p("크림힐트", "Kriemhild", "kriemhild"), []),
+          ),
+        ]),
+      ),
+      withUnions(
+        p("당크라트", "Dankrat", undefined, "부르군트의 왕"),
+        u(p("우테", "Ute"), [p("군터", "Gunther"), p("크림힐트", "Kriemhild", "kriemhild")]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "roman",
+    source: "베르길리우스 「아이네이스」, 리비우스 「로마사」",
+    roots: [
+      withUnions(
+        p("베누스", "Venus", undefined, "그리스의 아프로디테"),
+        u(p("안키세스", "Anchises"), [
+          withUnions(
+            p("아이네이아스", "Aeneas", "aeneas"),
+            u(p("크레우사", "Creusa"), [
+              p("아스카니우스", "Ascanius", undefined, "알바롱가를 세웠습니다"),
+            ]),
+          ),
+        ]),
+      ),
+      withUnions(
+        p("마르스", "Mars"),
+        u(p("레아 실비아", "Rhea Silvia", undefined, "알바롱가 왕의 딸"), [
+          p("로물루스", "Romulus", "romulus"),
+          p("레무스", "Remus"),
+        ]),
+      ),
+    ],
+  },
+  {
+    pantheonSlug: "iranian",
+    source: "페르도우시 「샤나메」",
+    roots: [
+      withUnions(
+        p("페레이둔", "Fereydun", "fereydun"),
+        u(
+          null,
+          [p("살름", "Salm"), p("투르", "Tur"), p("이라지", "Iraj")],
+          "세상을 셋으로 나누어 준 세 아들",
+        ),
+      ),
+      withUnions(
+        p("잘", "Zal"),
+        u(p("루다베", "Rudaba"), [
+          withUnions(
+            p("루스탐", "Rostam", "rostam"),
+            u(p("타흐미네", "Tahmineh"), [
+              p("소흐랍", "Sohrab", undefined, "아버지인 줄 모른 채 루스탐과 싸워 죽었습니다"),
+            ]),
+          ),
+        ]),
+      ),
+    ],
+  },
 ];
