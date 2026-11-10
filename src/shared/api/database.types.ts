@@ -75,6 +75,7 @@ export type Database = {
           description: string[];
           domains: string[];
           epithet: string;
+          grade: string | null;
           kind: string;
           name: string;
           name_en: string;
@@ -89,6 +90,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet: string;
+          grade?: string | null;
           kind?: string;
           name: string;
           name_en: string;
@@ -102,6 +104,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet?: string;
+          grade?: string | null;
           kind?: string;
           name?: string;
           name_en?: string;

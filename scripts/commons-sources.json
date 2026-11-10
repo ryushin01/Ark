@@ -546,5 +546,69 @@
   {
     "id": "chiyou-han",
     "file": "Chi You.gif"
+  },
+  {
+    "id": "cerberus-louvre",
+    "file": "Herakles Kerberos Eurystheus Louvre E701.jpg"
+  },
+  {
+    "id": "minotaur-louvre",
+    "file": "Kylix Theseus Minotauros Louvre F83.jpg"
+  },
+  {
+    "id": "hydra-pollaiuolo",
+    "file": "Antonio Pollaiuolo 002.jpg"
+  },
+  {
+    "id": "pegasus-louvre",
+    "file": "Pelike Bellerophon Louvre G535.jpg"
+  },
+  {
+    "id": "polyphemus-redon",
+    "file": "Odilon Redon - The Cyclops, c. 1914.jpg"
+  },
+  {
+    "id": "typhon-munich",
+    "file": "Typhon Staatliche Antikensammlungen 596.jpg"
+  },
+  {
+    "id": "fenrir-binding",
+    "file": "Fenrir binded.png"
+  },
+  {
+    "id": "jormungandr-fuseli",
+    "file": "Johann Heinrich Fussli-Tor and Jormundgandr.jpg"
+  },
+  {
+    "id": "sleipnir-sam66",
+    "file": "SÁM 66, 80v, Odin on Sleipnir.jpg"
+  },
+  {
+    "id": "nidhogg-yggdrasil",
+    "file": "AM 738 4to Yggdrasill.png"
+  },
+  {
+    "id": "huginn-muninn-nks",
+    "file": "NKS 1867 4to, 94r, Odin.jpg"
+  },
+  {
+    "id": "fafnir-rackham",
+    "file": "Sigurd pierced him with his sword (1901) by Arthur Rackham.jpg"
+  },
+  {
+    "id": "ammit-hunefer",
+    "file": "BD Hunefer cropped 1.jpg"
+  },
+  {
+    "id": "sphinx-giza",
+    "file": "Sphinx partially excavated2.jpg"
+  },
+  {
+    "id": "chimera-engraving",
+    "file": "Bellerophon on Pegasus kill the Chimäre.jpg"
+  },
+  {
+    "id": "bennu-amulet",
+    "file": "Heart amulet.jpg"
   }
 ]

@@ -1231,5 +1231,149 @@
     "licenseUrl": null,
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chi_You.gif"
+  },
+  "cerberus-louvre": {
+    "src": "/images/exhibits/cerberus-louvre.jpg",
+    "width": 1280,
+    "height": 972,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Eagle Painter",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herakles_Kerberos_Eurystheus_Louvre_E701.jpg"
+  },
+  "minotaur-louvre": {
+    "src": "/images/exhibits/minotaur-louvre.jpg",
+    "width": 1280,
+    "height": 1110,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kylix_Theseus_Minotauros_Louvre_F83.jpg"
+  },
+  "hydra-pollaiuolo": {
+    "src": "/images/exhibits/hydra-pollaiuolo.jpg",
+    "width": 1140,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Antonio del Pollaiuolo",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Antonio_Pollaiuolo_002.jpg"
+  },
+  "pegasus-louvre": {
+    "src": "/images/exhibits/pegasus-louvre.jpg",
+    "width": 1280,
+    "height": 1019,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Barclay Painter",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pelike_Bellerophon_Louvre_G535.jpg"
+  },
+  "polyphemus-redon": {
+    "src": "/images/exhibits/polyphemus-redon.jpg",
+    "width": 1272,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Odilon Redon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Odilon_Redon_-_The_Cyclops,_c._1914.jpg"
+  },
+  "typhon-munich": {
+    "src": "/images/exhibits/typhon-munich.jpg",
+    "width": 1280,
+    "height": 1056,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "User:Bibi Saint-Pol",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Typhon_Staatliche_Antikensammlungen_596.jpg"
+  },
+  "fenrir-binding": {
+    "src": "/images/exhibits/fenrir-binding.jpg",
+    "width": 1111,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Mabel Dorothy Hardy",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fenrir_binded.png"
+  },
+  "jormungandr-fuseli": {
+    "src": "/images/exhibits/jormungandr-fuseli.jpg",
+    "width": 1132,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Henry Fuseli",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johann_Heinrich_Fussli-Tor_and_Jormundgandr.jpg"
+  },
+  "sleipnir-sam66": {
+    "src": "/images/exhibits/sleipnir-sam66.jpg",
+    "width": 957,
+    "height": 1187,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jakob Sigurðsson [2]",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:S%C3%81M_66,_80v,_Odin_on_Sleipnir.jpg"
+  },
+  "nidhogg-yggdrasil": {
+    "src": "/images/exhibits/nidhogg-yggdrasil.jpg",
+    "width": 515,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:AM_738_4to_Yggdrasill.png"
+  },
+  "huginn-muninn-nks": {
+    "src": "/images/exhibits/huginn-muninn-nks.jpg",
+    "width": 607,
+    "height": 751,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ólafur Brynjúlfsson [2]",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NKS_1867_4to,_94r,_Odin.jpg"
+  },
+  "fafnir-rackham": {
+    "src": "/images/exhibits/fafnir-rackham.jpg",
+    "width": 1162,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Arthur Rackham",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sigurd_pierced_him_with_his_sword_(1901)_by_Arthur_Rackham.jpg"
+  },
+  "ammit-hunefer": {
+    "src": "/images/exhibits/ammit-hunefer.jpg",
+    "width": 493,
+    "height": 380,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Hunefer",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BD_Hunefer_cropped_1.jpg"
+  },
+  "sphinx-giza": {
+    "src": "/images/exhibits/sphinx-giza.jpg",
+    "width": 1280,
+    "height": 940,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Maison Bonfils",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sphinx_partially_excavated2.jpg"
+  },
+  "chimera-engraving": {
+    "src": "/images/exhibits/chimera-engraving.jpg",
+    "width": 853,
+    "height": 900,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Illustrated by Engravings on Wood.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bellerophon_on_Pegasus_kill_the_Chim%C3%A4re.jpg"
+  },
+  "bennu-amulet": {
+    "src": "/images/exhibits/bennu-amulet.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "MihailEF",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heart_amulet.jpg"
   }
 }

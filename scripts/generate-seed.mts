@@ -28,6 +28,7 @@ const rows = {
     slug: figure.slug,
     pantheon_slug: figure.pantheonSlug,
     kind: figure.kind,
+    grade: figure.grade,
     name: figure.name,
     name_en: figure.nameEn,
     epithet: figure.epithet,

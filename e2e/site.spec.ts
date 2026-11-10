@@ -106,6 +106,8 @@ test("신 상세: 모든 자료 이미지에 대체 텍스트와 출처 링크�
 test("분류: 신 상세에 분류를 보여 주고, 신 찾기에서 분류로 거릅니다", async ({ page }) => {
   await page.goto("/figures/heracles");
   await expect(page.getByText("Heracles · 영웅")).toBeVisible();
+  await page.goto("/figures/fenrir");
+  await expect(page.getByText("Fenrir · 몬스터 · 신수")).toBeVisible();
 
   await page.goto("/figures");
   const kinds = page.getByRole("group", { name: "분류로 거르기" });

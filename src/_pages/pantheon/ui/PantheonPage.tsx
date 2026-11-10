@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
-import { FIGURE_KIND_LABEL } from "@/entities/figure";
+import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
@@ -55,7 +55,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
       name: figure.name,
       nameEn: figure.nameEn,
       epithet: figure.epithet,
-      kindLabel: FIGURE_KIND_LABEL[figure.kind],
+      kindLabel: kindLabel(figure),
       image: own[0]?.image ?? null,
       exhibitCount: own.length,
     };
