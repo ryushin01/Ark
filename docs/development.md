@@ -141,6 +141,16 @@
 
 `next.config.ts`의 `headers()`로 모든 응답에 CSP, `X-Frame-Options: DENY`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`를 붙입니다. CSP는 nonce를 쓰면 모든 페이지를 요청마다 그려야 하므로 nonce 없는 방식을 쓰고, Next.js의 인라인 스크립트 때문에 `'unsafe-inline'`을 허용합니다. 외부 스크립트, 다른 사이트의 프레임 삽입, 다른 주소로의 폼 전송은 막습니다. E2E가 헤더와 CSP 위반(콘솔)을 검사합니다.
 
+`/storybook/` 아래만 미리보기 iframe을 위해 `X-Frame-Options: SAMEORIGIN`과 `frame-ancestors 'self'`를 쓰고, Storybook UI의 내장 글꼴을 위해 `font-src`에 `data:`를 더합니다.
+
+## Storybook 배포
+
+`pnpm build`는 Storybook을 먼저 `public/storybook`에 빌드한 뒤 앱을 빌드합니다. 그래서 디자인 시스템이 앱과 같은 주소의 `/storybook`에 함께 배포되고, 공개 사이트 바닥글의 **디자인 시스템(Storybook)** 링크로 들어갑니다.
+
+- 정적 파일이라 폴더 주소로는 열리지 않아 `/storybook`을 `/storybook/index.html`로 보냅니다(`next.config.ts`의 `redirects`).
+- 이때 `pnpm build-storybook`(앱 빌드가 먼저 부르는 스크립트)으로 빌드할 때는 `public` 폴더를 복사하지 않습니다. 같은 주소에서 열리므로 스토리의 `/images`는 앱의 파일을 그대로 씁니다(결과물 약 50MB → 20MB).
+- 개발 서버(`pnpm dev`)에는 빌드 결과물이 없어 바닥글 링크가 Storybook 개발 서버(`http://localhost:6006`)로 갑니다.
+
 ## SEO
 
 `src/_app/seo/`의 `sitemap`(계열·신 주소), `robots`(어드민·API 제외)를 `src/app/sitemap.ts`, `robots.ts`가 내보냅니다. 기본 공유 이미지는 `src/app/opengraph-image.jpg`이고, 계열·신 화면은 대표 자료 이미지를 공유 이미지로 씁니다. 운영 주소는 `shared/config/site.ts`의 `SITE.url`입니다.

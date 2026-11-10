@@ -43,6 +43,12 @@
     line-height: 1.4;
 }
 
+.end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+}
+
 .link {
     display: inline-flex;
     align-items: center;
@@ -61,6 +67,6 @@
     }
 
     .end {
-        text-align: end;
+        justify-content: flex-end;
     }
 }

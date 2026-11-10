@@ -2,6 +2,7 @@
 node_modules
 pnpm-lock.yaml
 storybook-static
+public/storybook
 playwright-report
 test-results
 coverage
