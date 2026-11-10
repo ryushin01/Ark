@@ -37,7 +37,7 @@
 | `--rail`                                          | `2.75rem`             | 세로 띠 폭(터치 44px) |
 | `--ease-magic`, `--ease-out-expo`, `--ease-quart` | cubic-bezier          | 등장·전환 애니메이션  |
 
-글꼴은 모두 SIL OFL입니다. 제목은 Instrument Serif와 Song Myung, 본문과 표기는 Courier Prime과 Gowun Batang을 씁니다. `@fontsource`의 글자 묶음별 조각이라 화면에 쓰인 글자가 든 조각만 받습니다.
+글꼴은 모두 SIL OFL입니다. 제목은 Instrument Serif와 Song Myung, 본문과 표기는 Courier Prime을 쓰고, 본문 한글은 운영체제의 명조 글꼴(AppleMyungjo, Noto Serif CJK KR, 바탕)을 씁니다. 한글 웹 글꼴은 글이 많은 화면에서 수백 KB를 받아 모바일 첫 화면을 늦추기 때문입니다(본문 글꼴을 빼서 홈 전송량 1,034KB → 773KB). 제목 글꼴은 `@fontsource`의 글자 묶음별 조각이라 화면에 쓰인 글자가 든 조각만 받습니다.
 
 - 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
@@ -76,7 +76,7 @@
 
 ### 신들의 계보
 
-계보는 `_pages/pantheon/api/genealogy-data.ts`에 신화별로 둡니다. 계열 화면에서만 쓰므로 페이지 슬라이스에 있습니다. 사람마다 혼인(`unions`: 배우자와 자식)을 붙이고, Ark에 있는 신·인물이면 `slug`를 적어 그 화면으로 잇습니다. 문헌마다 다른 전승은 `note`에 적습니다. `e2e/genealogy.spec.ts`가 모든 `slug`가 Ark 데이터에 있는지 확인합니다.
+계보는 `genealogies` 테이블에 계열마다 한 줄(따른 문헌과 계보 JSON)로 두고, 어드민의 ‘계보’ 메뉴에서 고칩니다. 저장할 때 JSON 형식과, 계보 속 신 주소가 Ark에 있는지 검사합니다. 처음 데이터는 `entities/genealogy/api/mock-data.ts`이며 시드로 넣습니다. 계열 화면의 ‘신들의 계보’와 신 화면의 ‘가족’(부모·배우자·자식·형제자매, `findRelatives`)이 이 데이터를 씁니다. 사람마다 혼인(`unions`: 배우자와 자식)을 붙이고, Ark에 있는 신·인물이면 `slug`를 적어 그 화면으로 잇습니다. 문헌마다 다른 전승은 `note`에 적습니다. `e2e/genealogy.spec.ts`가 모든 `slug`가 Ark 데이터에 있는지 확인합니다.
 
 ### 계열을 고르는 기준
 

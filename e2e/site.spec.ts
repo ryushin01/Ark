@@ -138,7 +138,7 @@ test("신 찾기: 검색 상태를 주소로 공유하고 다시 엽니다", asy
 });
 
 test("자료가 없는 신은 안내 문구를 보여 줍니다", async ({ page }) => {
-  await page.goto("/figures/loki");
+  await page.goto("/figures/laima");
   await expect(page.getByText("아직 등록된 자료가 없습니다.")).toBeVisible();
 });
 
