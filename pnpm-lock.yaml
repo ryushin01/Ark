@@ -181,6 +181,9 @@ importers:
       '@radix-ui/themes':
         specifier: ^3.3.0
         version: 3.3.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@ssgoi/react':
+        specifier: 7.5.0
+        version: 7.5.0(next@16.4.5(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.64.1)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@7.2.0)
       '@supabase/supabase-js':
         specifier: ^2.119.0
         version: 2.119.0
@@ -2018,6 +2021,30 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@ssgoi/core@7.5.0':
+    resolution: {integrity: sha512-H62KSHDzYath4TfLtmsoDP62OIAwEi8qaHPuQYJSWPYqpiBT1dRsj2gPA4x1PXKrtoA8OFcs1McWfJtgI8fBEw==}
+    engines: {node: '>=18.0.0'}
+
+  '@ssgoi/react@7.5.0':
+    resolution: {integrity: sha512-Jw5exRdv9HHFwsXgqHmlA62NUjATS4ipVYoLuw0sqXbAZIQeP+d8lLdhumRgIjWyQtMp+tuAgEkIHiZXoY2y4g==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@remix-run/react': '*'
+      '@tanstack/react-router': '*'
+      next: '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+      react-router: '*'
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@tanstack/react-router':
+        optional: true
+      next:
+        optional: true
+      react-router:
+        optional: true
 
   '@storybook/addon-a11y@10.6.6':
     resolution: {integrity: sha512-+LdCNVDELDqYWWbWkMX8LH9CXxDXnizfzvyJUVfkdF5CPZFRZu1xpv+jvLBFEumw/sQmizPZUXlw8zbdO1jvEQ==}
@@ -6078,6 +6105,20 @@ snapshots:
   '@rtsao/scc@1.1.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@ssgoi/core@7.5.0': {}
+
+  '@ssgoi/react@7.5.0(next@16.4.5(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.64.1)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@7.2.0)':
+    dependencies:
+      '@babel/core': 7.29.13(supports-color@7.2.0)
+      '@ssgoi/core': 7.5.0
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      unplugin: 2.3.11
+    optionalDependencies:
+      next: 16.4.5(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.64.1)(@types/node@22.20.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+    transitivePeerDependencies:
+      - supports-color
 
   '@storybook/addon-a11y@10.6.6(storybook@10.6.6(@types/react@19.3.0)(prettier@3.9.10)(react@19.3.1))':
     dependencies:

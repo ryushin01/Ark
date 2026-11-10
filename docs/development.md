@@ -12,7 +12,7 @@
 
 | 계층       | 슬라이스                                                                                                                                                                                          |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `seo`, `styles`                                                                                                                         |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `transitions`(화면 전환), `seo`, `styles`                                                                                               |
 | `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
 | `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                       |
 | `features` | `admin-auth`                                                                                                                                                                                      |
@@ -43,7 +43,11 @@
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
 - 필름과 콜라주의 작은 이미지에는 저작자를 표기할 자리가 없어 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 쓰되 무대 아래쪽에 출처를 표기합니다.
 - 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스와 저장된 설정(`data-annotations`, `data-motion`)을 붙입니다.
-- `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis를 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
+- `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis, 화면 전환을 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
+- 화면 전환은 SSGOI가 맡습니다. 규칙은 `_app/transitions/config.ts`, 제공자는 `PageTransitions`이고, 라우트 경계(`SsgoiRouteBoundary`)는 `SiteLayout`의 `main`(relative, z-index 0, overflow-x: clip) 안에 둡니다. 설정 객체는 컴포넌트 밖에 둡니다(렌더마다 새로 만들면 엔진이 다시 만들어져 스크롤 위치를 잃습니다).
+  - SSGOI는 `prefers-reduced-motion`을 스스로 읽지 않으므로 움직임을 끄면 전환이 없는 설정으로 바꿉니다.
+  - 스크롤은 Lenis가 맡으므로 SSGOI의 입력 잠금(`scrollLock`)을 끄고, 전환하는 동안 Lenis를 멈춥니다(`useSsgoiTransition`). 페이지를 옮길 때 맨 위로 보내는 일은 SSGOI가 합니다.
+  - `cacheComponents`는 이전 화면을 지우지 않고 숨겨 둡니다. 이 때문에 뒤로 갔을 때 보던 자리 복원은 보장되지 않습니다(대개 맨 위).
 - 지연 로딩 이미지는 `clip-path`로 완전히 잘라 두면 브라우저가 불러오지 않습니다. 시작 상태는 `opacity`로만 숨깁니다.
 
 ## 데이터와 이미지

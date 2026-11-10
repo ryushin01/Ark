@@ -211,3 +211,64 @@ test("보안 헤더가 있고, CSP가 화면의 리소스를 막지 않습니다
   await page.waitForLoadState("networkidle");
   expect(violations).toEqual([]);
 });
+
+test.describe("화면 전환", () => {
+  // 이 파일은 기본으로 동작 줄이기를 켜 두므로(위 test.use), 전환을 보려면 끕니다.
+  test.use({ reducedMotion: "no-preference" });
+
+  /** 겹쳐 있는 화면(라우트 경계) 수의 최댓값을 기록합니다. 전환 중에는 떠나는 화면과 들어오는 화면이 함께 있습니다. */
+  async function trackOverlap(page: Page) {
+    await page.evaluate(() => {
+      const w = window as unknown as { __maxPages: number };
+      w.__maxPages = 0;
+      const tick = () => {
+        w.__maxPages = Math.max(
+          w.__maxPages,
+          document.querySelectorAll("[data-ssgoi-transition]").length,
+        );
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
+  }
+  const maxPages = (page: Page) =>
+    page.evaluate(() => (window as unknown as { __maxPages: number }).__maxPages);
+
+  /** 신 목록에서 index번째 신을 엽니다. 누르기 전 목록의 스크롤 위치를 돌려줍니다. */
+  async function openFigure(page: Page, index = 0) {
+    await page.goto("/figures");
+    const link = page.locator('main a[href^="/figures/"]').nth(index);
+    const href = await link.getAttribute("href");
+    await link.scrollIntoViewIfNeeded();
+    const listScroll = await page.evaluate(() => window.scrollY);
+    await trackOverlap(page);
+    await link.click();
+    await expect(page).toHaveURL(href!);
+    await expect(page.locator("[data-ssgoi-transition]")).toHaveCount(1);
+    await expect(page.locator("[data-ssgoi-transition]")).toHaveAttribute(
+      "data-ssgoi-transition",
+      href!,
+    );
+    return listScroll;
+  }
+
+  test("신 목록에서 신 화면으로 들어가면 두 화면이 겹쳐 움직이고, 새 화면은 맨 위에서 시작한다", async ({
+    page,
+  }) => {
+    const listScroll = await openFigure(page, 8);
+    expect(listScroll).toBeGreaterThan(0);
+    expect(await maxPages(page)).toBe(2);
+    // 새 화면은 맨 위에서 시작합니다.
+    expect(await page.evaluate(() => window.scrollY)).toBe(0);
+    // cacheComponents가 이전 화면을 숨겨 두는 탓에 뒤로 갔을 때 보던 자리 복원은 보장되지 않습니다(docs 참고).
+    await page.goBack();
+    await expect(page).toHaveURL("/figures");
+    await expect(page.locator("[data-ssgoi-transition]")).toHaveCount(1);
+  });
+
+  test("동작 줄이기를 켜면 화면 전환 없이 바로 바뀐다", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await openFigure(page);
+    expect(await maxPages(page)).toBe(1);
+  });
+});
