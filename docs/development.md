@@ -148,7 +148,7 @@
 `pnpm build`는 Storybook을 먼저 `public/storybook`에 빌드한 뒤 앱을 빌드합니다. 그래서 디자인 시스템이 앱과 같은 주소의 `/storybook`에 함께 배포되고, 공개 사이트 바닥글의 **디자인 시스템(Storybook)** 링크로 들어갑니다.
 
 - 정적 파일이라 폴더 주소로는 열리지 않아 `/storybook`을 `/storybook/index.html`로 보냅니다(`next.config.ts`의 `redirects`).
-- 이때 `STORYBOOK_IN_APP=1`로 빌드해 `public` 폴더를 복사하지 않습니다. 같은 주소에서 열리므로 스토리의 `/images`는 앱의 파일을 그대로 씁니다(결과물 약 50MB → 20MB).
+- 이때 `pnpm build-storybook`(앱 빌드가 먼저 부르는 스크립트)으로 빌드할 때는 `public` 폴더를 복사하지 않습니다. 같은 주소에서 열리므로 스토리의 `/images`는 앱의 파일을 그대로 씁니다(결과물 약 50MB → 20MB).
 - 개발 서버(`pnpm dev`)에는 빌드 결과물이 없어 바닥글 링크가 Storybook 개발 서버(`http://localhost:6006`)로 갑니다.
 
 ## SEO
