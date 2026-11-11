@@ -1,9 +1,14 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
+import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+
 /** 메모리 저장소를 함께 쓰므로 어드민 테스트는 순서대로 실행합니다. */
 test.describe.configure({ mode: "serial" });
 test.use({ reducedMotion: "reduce" });
+
+/** 그리스 신화의 신 수. 데이터가 늘어도 테스트를 고치지 않도록 목업에서 셉니다. */
+const GREEK_FIGURES = MOCK_FIGURES.filter((figure) => figure.pantheonSlug === "greek").length;
 
 async function login(page: Page, mode: "admin" | "demo") {
   await page.goto("/admin/login");
@@ -79,7 +84,7 @@ test("관리자는 신을 만들고, 공개 사이트에서 확인한 뒤 지울
   // 공개 페이지는 미리 그려 둔 페이지라, 저장 뒤 첫 요청은 이전 내용이고 곧 새 내용으로 바뀝니다.
   await expect(async () => {
     await page.goto("/pantheons/greek");
-    await expect(page.getByRole("link", { name: /^헤르메스/ })).toBeVisible({ timeout: 1000 });
+    await expect(page.locator('a[href="/figures/hermes-e2e"]')).toBeVisible({ timeout: 1000 });
   }).toPass();
   await expect(async () => {
     await page.goto("/figures/hermes-e2e");
@@ -139,7 +144,36 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
   await page.goto("/admin/pantheons/greek");
   await page.getByRole("button", { name: "삭제" }).click();
   await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "신 47명이 있어" })).toBeVisible();
+  await expect(
+    page.getByRole("alert").filter({ hasText: `신 ${GREEK_FIGURES}명이 있어` }),
+  ).toBeVisible();
+});
+
+test("관리자는 계보를 고치고, 형식이나 주소가 틀리면 안내를 받습니다", async ({ page }) => {
+  await login(page, "admin");
+  await page.goto("/admin/genealogies/norse");
+  const roots = page.getByLabel(/^계보 \(JSON\)/);
+  const original = await roots.inputValue();
+
+  await roots.fill("[{ 잘못된 JSON");
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page.getByText(/JSON 형식이 올바르지 않습니다/)).toBeVisible();
+
+  await page
+    .getByLabel(/^계보 \(JSON\)/)
+    .fill('[{ "name": "없는 신", "nameEn": "Nobody", "slug": "no-such-god" }]');
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page.getByText("없는 주소: no-such-god")).toBeVisible();
+
+  await page.getByLabel(/^따른 문헌/).fill("E2E 문헌");
+  await page.getByLabel(/^계보 \(JSON\)/).fill(original);
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page).toHaveURL(/\/admin\/genealogies\?saved=norse/);
+
+  await expect(async () => {
+    await page.goto("/pantheons/norse");
+    await expect(page.getByText("따른 문헌: E2E 문헌")).toBeVisible({ timeout: 1000 });
+  }).toPass();
 });
 
 test("자료가 연결된 신은 지울 수 없습니다", async ({ page }) => {
@@ -156,6 +190,8 @@ for (const path of [
   "/admin/figures",
   "/admin/figures/zeus",
   "/admin/works/new",
+  "/admin/genealogies",
+  "/admin/genealogies/greek",
 ]) {
   test(`${path}: 접근성 위반이 없습니다 (axe)`, async ({ page }) => {
     if (path !== "/admin/login") await login(page, "demo");

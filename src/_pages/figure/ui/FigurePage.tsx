@@ -2,8 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
-import { FIGURE_KIND_LABEL } from "@/entities/figure";
+import { kindLabel } from "@/entities/figure";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
+import { findRelatives } from "@/entities/genealogy";
+import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheon } from "@/entities/pantheon/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
@@ -12,6 +14,7 @@ import { Divider, RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
 import { ExhibitGallery } from "./ExhibitGallery";
+import { FamilySection } from "./FamilySection";
 import styles from "./FigurePage.module.css";
 
 export async function generateFigureParams() {
@@ -46,9 +49,10 @@ export async function FigurePage({ slug }: { slug: string }) {
   ]);
   if (!figure) notFound();
 
-  const [pantheon, works] = await Promise.all([
+  const [pantheon, works, genealogies] = await Promise.all([
     getPantheon(figure.pantheonSlug),
     features.archive ? getWorksByFigure(slug) : Promise.resolve([]),
+    getGenealogies(),
   ]);
   const own = exhibits.filter((exhibit) => exhibit.figureSlug === slug);
   const siblings = figures
@@ -74,7 +78,7 @@ export async function FigurePage({ slug }: { slug: string }) {
         <div className="grid-default">
           <div className={styles.titleCol}>
             <p className={styles.eyebrow}>
-              <span lang="en">{figure.nameEn}</span> · {FIGURE_KIND_LABEL[figure.kind]}
+              <span lang="en">{figure.nameEn}</span> · {kindLabel(figure)}
             </p>
             <RevealText as="h1" mode="words" text={figure.name} className={styles.title} />
             <p className={styles.epithet}>{figure.epithet}</p>
@@ -104,6 +108,11 @@ export async function FigurePage({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      <FamilySection
+        relatives={findRelatives(genealogies, slug)}
+        pantheonSlug={figure.pantheonSlug}
+      />
 
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />

@@ -1,27 +1,52 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useSyncExternalStore } from "react";
 
-import { FIGURE_KIND_LABEL, FIGURE_KINDS, type FigureKind } from "@/entities/figure";
-import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
+import { FIGURE_KIND_LABEL, FIGURE_KINDS } from "@/entities/figure";
+import { CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
 import { FilterGroup } from "@/shared/ui";
 import { FigureGrid } from "@/widgets/figure-grid";
 
 import { matches, type SearchItem } from "../model/search";
+import { parseSearch, type SearchState, toSearch } from "../model/url-state";
 import styles from "./FigureSearch.module.css";
+
+const SEARCH_EVENT = "ark:search";
+
+/** 주소가 바뀌면 다시 그립니다. (직접 고친 주소와 뒤로·앞으로 가기) */
+function subscribe(onChange: () => void) {
+  window.addEventListener(SEARCH_EVENT, onChange);
+  window.addEventListener("popstate", onChange);
+  return () => {
+    window.removeEventListener(SEARCH_EVENT, onChange);
+    window.removeEventListener("popstate", onChange);
+  };
+}
 
 /**
  * 신·인물 찾기
  * 입력하는 대로 목록을 거르고, 결과 개수를 화면 낭독기에 알립니다.
+ * 검색어와 거르기는 주소(?q=&continent=&kind=)에 남겨, 결과를 공유하거나 뒤로 가기로 돌아올 수 있습니다.
  * 자바스크립트가 없으면 거르지 않은 전체 목록이 보입니다.
  */
 export function FigureSearch({ items }: { items: SearchItem[] }) {
   const inputId = useId();
   const hintId = useId();
-  const [query, setQuery] = useState("");
-  const [continent, setContinent] = useState<Continent | "all">("all");
-
-  const [kind, setKind] = useState<FigureKind | "all">("all");
+  const search = useSyncExternalStore(
+    subscribe,
+    () => window.location.search,
+    () => "",
+  );
+  const { query, continent, kind } = parseSearch(search);
+  const update = (patch: Partial<SearchState>) => {
+    const next = toSearch({ query, continent, kind, ...patch }, window.location.search);
+    // 기록을 쌓지 않아 뒤로 가기가 글자마다 멈추지 않습니다.
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${next}`);
+    window.dispatchEvent(new Event(SEARCH_EVENT));
+  };
+  const setQuery = (value: string) => update({ query: value });
+  const setContinent = (value: SearchState["continent"]) => update({ continent: value });
+  const setKind = (value: SearchState["kind"]) => update({ kind: value });
 
   const byQuery = items.filter((item) => matches(item, query));
   const inContinent = (item: SearchItem) => continent === "all" || item.continent === continent;

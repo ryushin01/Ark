@@ -15,6 +15,13 @@ const meta = {
   title: "Pages/FigureSearch/FigureSearch",
   component: FigureSearch,
   parameters: { layout: "padded" },
+  // 검색 상태가 주소에 남으므로, 스토리마다 검색 값을 지우고 시작합니다.
+  beforeEach: () => {
+    const params = new URLSearchParams(window.location.search);
+    ["q", "continent", "kind"].forEach((key) => params.delete(key));
+    const query = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+  },
   args: {
     items: [
       {

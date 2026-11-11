@@ -4,7 +4,13 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Button, Flex, Grid } from "@radix-ui/themes";
 
-import { type Figure, FIGURE_KIND_LABEL, FIGURE_KINDS } from "@/entities/figure";
+import {
+  type Figure,
+  FIGURE_KIND_LABEL,
+  FIGURE_KINDS,
+  MONSTER_GRADE_LABEL,
+  MONSTER_GRADES,
+} from "@/entities/figure";
 import { type FormState, INITIAL_FORM_STATE } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
@@ -29,6 +35,7 @@ const toValues = (figure?: Figure): NonNullable<FormState["values"]> => ({
   nameEn: figure?.nameEn ?? "",
   epithet: figure?.epithet ?? "",
   kind: figure?.kind ?? "god",
+  grade: figure?.grade ?? "none",
   domains: figure?.domains.join(", ") ?? "",
   summary: figure?.summary ?? "",
   description: figure?.description.join("\n\n") ?? "",
@@ -84,6 +91,19 @@ export function FigureForm({ figure, pantheons }: FigureFormProps) {
                 value: kind,
                 label: FIGURE_KIND_LABEL[kind],
               }))}
+            />
+            <SelectInput
+              {...field("grade")}
+              label="몬스터 등급"
+              required
+              hint="신수: 신에 육박하는 존재, 영수: 사람에 준하는 사고를 하거나 여러 문화권에서 추앙받는 존재, 몬스터: 그 밖의 하등한 존재"
+              options={[
+                { value: "none", label: "해당 없음 (몬스터가 아님)" },
+                ...MONSTER_GRADES.map((grade) => ({
+                  value: grade,
+                  label: MONSTER_GRADE_LABEL[grade],
+                })),
+              ]}
             />
             <TextInput {...field("epithet")} label="별칭" required hint="예) 하늘과 번개의 신" />
             <TextInput

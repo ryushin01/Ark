@@ -6,6 +6,7 @@ const valid = {
   slug: "hermes",
   pantheonSlug: "greek",
   kind: "god",
+  grade: "none",
   name: "헤르메스",
   nameEn: "Hermes",
   epithet: "전령의 신",
@@ -29,11 +30,21 @@ describe("figureInputSchema", () => {
     expect(result.error?.issues[0]?.message).toMatch(/영문 소문자/);
   });
 
-  it("분류는 신, 영웅, 신수, 그 밖의 존재 가운데 하나여야 합니다", () => {
+  it("분류는 신, 영웅, 몬스터, 그 밖의 존재 가운데 하나여야 합니다", () => {
     expect(figureInputSchema.safeParse({ ...valid, kind: "hero" }).success).toBe(true);
-    const result = figureInputSchema.safeParse({ ...valid, kind: "monster" });
+    const result = figureInputSchema.safeParse({ ...valid, kind: "beast" });
     expect(result.success).toBe(false);
     expect(result.error?.issues[0]?.message).toBe("분류를 골라 주세요.");
+  });
+
+  it("몬스터는 등급이 있어야 하고, 몬스터가 아니면 등급이 없어야 합니다", () => {
+    const monster = figureInputSchema.safeParse({ ...valid, kind: "monster", grade: "divine" });
+    expect(monster.success && monster.data.grade).toBe("divine");
+    expect(figureInputSchema.parse(valid).grade).toBeNull();
+    const noGrade = figureInputSchema.safeParse({ ...valid, kind: "monster" });
+    expect(noGrade.error?.issues[0]?.message).toBe("몬스터는 등급을 골라 주세요.");
+    const godWithGrade = figureInputSchema.safeParse({ ...valid, grade: "spirit" });
+    expect(godWithGrade.error?.issues[0]?.path).toEqual(["grade"]);
   });
 
   it("영역을 비우면 오류입니다", () => {
