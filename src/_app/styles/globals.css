@@ -51,13 +51,19 @@
     --text-5xl: 3rem;
     --text-display: 7rem;
 
+    /*
+     * 대체 글꼴: 웹 글꼴을 받기 전이나 받지 못해도 석비와 악보의 분위기가 남도록 고릅니다.
+     * - 제목 영문은 로마 대문자 계열(Trajan Pro, 없으면 Times New Roman), 한글은 운영체제 명조
+     * - 본문 영문은 타자기 글꼴(Courier New), 한글은 운영체제 명조
+     * - 손글씨 주석은 운영체제 손글씨(맥 Nanum Pen Script·Apple Chancery)
+     */
     --font-display:
-        "Cinzel", "Hahmlet", "AppleMyungjo", "Noto Serif CJK KR", "Noto Serif KR", "Batang", "바탕",
-        serif;
+        "Cinzel", "Hahmlet", "Trajan Pro", "Times New Roman", "AppleMyungjo", "Noto Serif CJK KR",
+        "Noto Serif KR", "Batang", "바탕", serif;
     --font-sans:
-        "Courier Prime", "AppleMyungjo", "Noto Serif CJK KR", "Noto Serif KR", "Batang", "바탕",
-        serif;
-    --font-hand: "Nanum Pen Notes", cursive;
+        "Courier Prime", "Courier New", "AppleMyungjo", "Noto Serif CJK KR", "Noto Serif KR",
+        "Batang", "바탕", serif;
+    --font-hand: "Nanum Pen Notes", "Nanum Pen Script", "Apple Chancery", cursive;
 }
 
 @media (min-width: 768px) {
