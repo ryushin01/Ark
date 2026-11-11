@@ -236,59 +236,110 @@ test.describe("화면 전환", () => {
   // 이 파일은 기본으로 동작 줄이기를 켜 두므로(위 test.use), 전환을 보려면 끕니다.
   test.use({ reducedMotion: "no-preference" });
 
-  /** 겹쳐 있는 화면(라우트 경계) 수의 최댓값을 기록합니다. 전환 중에는 떠나는 화면과 들어오는 화면이 함께 있습니다. */
+  /**
+   * 전환 중의 겹친 화면(라우트 경계) 수의 최댓값과, 라우트 경계에 걸린 Web Animations(SSGOI) 수를 기록합니다.
+   * 전환 중에는 떠나는 화면과 들어오는 화면이 함께 있습니다.
+   */
   async function trackOverlap(page: Page) {
     await page.evaluate(() => {
-      const w = window as unknown as { __maxPages: number };
+      const w = window as unknown as { __maxPages: number; __boundaryAnims: number };
       w.__maxPages = 0;
+      w.__boundaryAnims = 0;
+      const seen = new WeakSet<Animation>();
       const tick = () => {
         w.__maxPages = Math.max(
           w.__maxPages,
           document.querySelectorAll("[data-ssgoi-transition]").length,
         );
+        for (const animation of document.getAnimations()) {
+          const target = (animation.effect as KeyframeEffect | null)?.target;
+          if (seen.has(animation) || !target?.matches("[data-ssgoi-transition]")) continue;
+          seen.add(animation);
+          w.__boundaryAnims += 1;
+        }
         requestAnimationFrame(tick);
       };
       tick();
     });
   }
-  const maxPages = (page: Page) =>
-    page.evaluate(() => (window as unknown as { __maxPages: number }).__maxPages);
+  const tracked = (page: Page) =>
+    page.evaluate(() => {
+      const w = window as unknown as { __maxPages: number; __boundaryAnims: number };
+      return { pages: w.__maxPages, animations: w.__boundaryAnims };
+    });
+  const scrollY = (page: Page) => page.evaluate(() => Math.round(window.scrollY));
+  const boundary = (page: Page) => page.locator("[data-ssgoi-transition]");
 
-  /** 신 목록에서 index번째 신을 엽니다. 누르기 전 목록의 스크롤 위치를 돌려줍니다. */
-  async function openFigure(page: Page, index = 0) {
-    await page.goto("/figures");
-    const link = page.locator('main a[href^="/figures/"]').nth(index);
+  /** 지금 화면에서 index번째 신 링크를 눌러 그 신 화면이 자리 잡을 때까지 기다립니다. 누르기 전 스크롤 위치를 돌려줍니다. */
+  async function openFigureLink(page: Page, index: number) {
+    const link = page.locator('main a[href^="/figures/"]').filter({ visible: true }).nth(index);
     const href = await link.getAttribute("href");
     await link.scrollIntoViewIfNeeded();
-    const listScroll = await page.evaluate(() => window.scrollY);
+    const before = await scrollY(page);
     await trackOverlap(page);
     await link.click();
     await expect(page).toHaveURL(href!);
-    await expect(page.locator("[data-ssgoi-transition]")).toHaveCount(1);
-    await expect(page.locator("[data-ssgoi-transition]")).toHaveAttribute(
-      "data-ssgoi-transition",
-      href!,
-    );
-    return listScroll;
+    await expect(boundary(page)).toHaveCount(1);
+    await expect(boundary(page)).toHaveAttribute("data-ssgoi-transition", href!);
+    return before;
   }
 
-  test("신 목록에서 신 화면으로 들어가면 두 화면이 겹쳐 움직이고, 새 화면은 맨 위에서 시작한다", async ({
+  /** 뒤로 가서 그 화면의 경계와 내용이 보이고, 보던 자리로 돌아왔는지 확인합니다. */
+  async function expectBackTo(page: Page, path: string, y: number) {
+    await expect(page).toHaveURL(path);
+    await expect(boundary(page)).toHaveCount(1);
+    await expect(boundary(page)).toHaveAttribute("data-ssgoi-transition", path);
+    await expect(page.getByRole("heading", { level: 1 }).filter({ visible: true })).toBeVisible();
+    // 한 번 잰 값으로 거리만 봅니다(위아래 경계를 따로 재면 지나가는 값에 통과할 수 있음).
+    await expect.poll(async () => Math.abs((await scrollY(page)) - y)).toBeLessThan(5);
+  }
+
+  test("신 목록에서 신 화면으로 들어가면 두 화면이 겹쳐 움직이고, 새 화면은 맨 위에서 시작하며, 뒤로 가면 보던 자리로 돌아온다", async ({
     page,
   }) => {
-    const listScroll = await openFigure(page, 8);
+    await page.goto("/figures");
+    const listScroll = await openFigureLink(page, 8);
     expect(listScroll).toBeGreaterThan(0);
-    expect(await maxPages(page)).toBe(2);
+    const { pages, animations } = await tracked(page);
+    expect(pages).toBe(2);
+    expect(animations).toBeGreaterThan(0);
     // 새 화면은 맨 위에서 시작합니다.
-    expect(await page.evaluate(() => window.scrollY)).toBe(0);
-    // cacheComponents가 이전 화면을 숨겨 두는 탓에 뒤로 갔을 때 보던 자리 복원은 보장되지 않습니다(docs 참고).
+    expect(await scrollY(page)).toBe(0);
     await page.goBack();
-    await expect(page).toHaveURL("/figures");
-    await expect(page.locator("[data-ssgoi-transition]")).toHaveCount(1);
+    await expectBackTo(page, "/figures", listScroll);
+    await expect(
+      page.locator('main a[href^="/figures/"]').filter({ visible: true }).first(),
+    ).toBeVisible();
+  });
+
+  test("신 화면에서 다른 신으로 갔다가 뒤로·앞으로 가도 보던 자리로 돌아온다", async ({ page }) => {
+    await page.goto("/figures");
+    await openFigureLink(page, 0);
+    const from = new URL(page.url()).pathname;
+    // 같은 계열의 다른 신(화면 아래쪽)으로 갑니다.
+    const links = page.locator('main a[href^="/figures/"]').filter({ visible: true });
+    const detailScroll = await openFigureLink(page, (await links.count()) - 1);
+    expect(detailScroll).toBeGreaterThan(0);
+    const to = new URL(page.url()).pathname;
+    await page.goBack();
+    await expectBackTo(page, from, detailScroll);
+    await page.goForward();
+    await expectBackTo(page, to, 0);
+  });
+
+  test("새로고침한 뒤 뒤로 가도 보던 자리로 돌아온다", async ({ page }) => {
+    await page.goto("/figures");
+    const listScroll = await openFigureLink(page, 20);
+    await page.reload();
+    await page.goBack();
+    await expectBackTo(page, "/figures", listScroll);
   });
 
   test("동작 줄이기를 켜면 화면 전환 없이 바로 바뀐다", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await openFigure(page);
-    expect(await maxPages(page)).toBe(1);
+    await page.goto("/figures");
+    await openFigureLink(page, 0);
+    // 화면이 겹치지 않고, 라우트 경계에 애니메이션(투명도·이동)도 걸리지 않습니다.
+    expect(await tracked(page)).toEqual({ pages: 1, animations: 0 });
   });
 });
