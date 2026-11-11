@@ -12,7 +12,7 @@
 
 | 계층       | 슬라이스                                                                                                                                                                                          |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤), `transitions`(화면 전환), `seo`, `styles`                                                                                               |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                         |
 | `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
 | `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                       |
 | `features` | `admin-auth`                                                                                                                                                                                      |
@@ -47,7 +47,7 @@
 - 화면 전환은 SSGOI가 맡습니다. 규칙은 `_app/transitions/config.ts`, 제공자는 `PageTransitions`이고, 라우트 경계(`SsgoiRouteBoundary`)는 `SiteLayout`의 `main`(relative, z-index 0, overflow-x: clip) 안에 둡니다. 설정 객체는 컴포넌트 밖에 둡니다(렌더마다 새로 만들면 엔진이 다시 만들어져 스크롤 위치를 잃습니다).
   - SSGOI는 `prefers-reduced-motion`을 스스로 읽지 않으므로 움직임을 끄면 전환이 없는 설정으로 바꿉니다.
   - 스크롤은 Lenis가 맡으므로 SSGOI의 입력 잠금(`scrollLock`)을 끄고, 전환하는 동안 Lenis를 멈춥니다(`useSsgoiTransition`). 페이지를 옮길 때 맨 위로 보내는 일은 SSGOI가 합니다.
-  - `cacheComponents`는 이전 화면을 지우지 않고 숨겨 둡니다. 이 때문에 뒤로 갔을 때 보던 자리 복원은 보장되지 않습니다(대개 맨 위).
+  - `cacheComponents`는 이전 화면을 지우지 않고 숨겨 두었다가 다시 보여 주므로 대개 보던 자리가 남지만, 같은 경로의 다른 화면(신 → 다른 신)이나 새로고침한 뒤에는 남지 않습니다. 그래서 `_app/scroll/ScrollRestoration`이 주소(경로+검색어)별 스크롤 위치를 세션 저장소에 남기고, 뒤로·앞으로 가면(`popstate`, 또는 `back_forward`로 문서를 새로 불러오면) 화면 전환이 끝난 뒤 그 자리로 되돌립니다. 전환 중에는 저장하지 않고, 사용자가 직접 스크롤하면 되돌리기를 멈춥니다.
 - 지연 로딩 이미지는 `clip-path`로 완전히 잘라 두면 브라우저가 불러오지 않습니다. 시작 상태는 `opacity`로만 숨깁니다.
 
 ## 데이터와 이미지
