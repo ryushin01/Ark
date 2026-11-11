@@ -29,3 +29,18 @@
         padding-block-start: 0;
     }
 }
+
+/* 화면 전환(SSGOI): 떠나는 화면은 main을 기준으로 겹쳐 놓입니다(relative, z-index: 0).
+   overflow-x는 hidden이면 main이 스크롤 영역이 되어 스크롤 복원이 어긋나므로 clip을 씁니다. */
+.main {
+    position: relative;
+    z-index: 0;
+    min-height: 100dvh;
+    overflow-x: clip;
+}
+
+/* 겹쳐 움직이는 동안 뒤 화면이 비치지 않도록 화면마다 바탕을 칠합니다. */
+.page {
+    min-height: 100dvh;
+    background-color: var(--page-bg);
+}

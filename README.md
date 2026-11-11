@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.16.1-8a4a1f)
+![version](https://img.shields.io/badge/version-0.17.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 49개 신화·전설 계열의 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 271점으로 살펴보는 세계 신화 도서관입니다.
@@ -43,7 +43,7 @@
 | 어드민        | 계열·신·자료·작품·계보 관리와 이미지 업로드(Radix Themes). 관리자 비밀번호로 로그인하면 저장할 수 있고, 데모 계정은 둘러보기만 합니다. 저장하면 공개 화면에 바로 반영됩니다.     |
 | 영향 아카이브 | 신화의 영향을 받은 게임·애니메이션·소설을 스와이프 갤러리로 보여 줍니다. 작품 이미지의 저작권을 확인하기 전까지 기능 플래그로 숨겨 둡니다.                                       |
 
-모든 등장 애니메이션은 동작 줄이기를 켜거나 세로 띠의 움직임 설정을 끄면 멈추고, 자바스크립트가 없어도 내용이 보입니다.
+화면을 옮길 때는 계층을 따라 들어가면 새 화면이 옆에서 밀려 들어오고(drill), 같은 깊이는 겹쳐 바뀝니다(fade). 모든 등장 애니메이션과 화면 전환은 동작 줄이기를 켜거나 세로 띠의 움직임 설정을 끄면 멈추고, 자바스크립트가 없어도 내용이 보입니다.
 
 ## 기술 스택
 
@@ -53,7 +53,7 @@
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                         |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                              |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                                            |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                          |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                 |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
 | 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                    |
