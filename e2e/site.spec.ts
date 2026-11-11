@@ -290,8 +290,8 @@ test.describe("화면 전환", () => {
     await expect(boundary(page)).toHaveCount(1);
     await expect(boundary(page)).toHaveAttribute("data-ssgoi-transition", path);
     await expect(page.getByRole("heading", { level: 1 }).filter({ visible: true })).toBeVisible();
-    await expect.poll(() => scrollY(page)).toBeGreaterThan(y - 5);
-    await expect.poll(() => scrollY(page)).toBeLessThan(y + 5);
+    // 한 번 잰 값으로 거리만 봅니다(위아래 경계를 따로 재면 지나가는 값에 통과할 수 있음).
+    await expect.poll(async () => Math.abs((await scrollY(page)) - y)).toBeLessThan(5);
   }
 
   test("신 목록에서 신 화면으로 들어가면 두 화면이 겹쳐 움직이고, 새 화면은 맨 위에서 시작하며, 뒤로 가면 보던 자리로 돌아온다", async ({
