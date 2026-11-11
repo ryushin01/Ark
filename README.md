@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.16.0-8a4a1f)
+![version](https://img.shields.io/badge/version-0.16.1-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 49개 신화·전설 계열의 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 271점으로 살펴보는 세계 신화 도서관입니다.
@@ -53,7 +53,7 @@
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                         |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                              |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), Instrument Serif·Song Myung·Courier Prime(한글 본문은 운영체제 명조)                                                               |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                                            |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                 |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
 | 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                    |
