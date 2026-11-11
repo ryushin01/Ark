@@ -1,0 +1,58 @@
+.section {
+    padding-bottom: 6rem;
+}
+
+.title {
+    padding-block: 3rem 2rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-align: center;
+}
+
+.list {
+    max-width: 48rem;
+    margin-inline: auto;
+    border-top: 1px solid var(--rule);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.row dt {
+    font-size: var(--text-sm);
+    line-height: 2;
+}
+
+.people {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.link:hover {
+    text-decoration-thickness: 2px;
+}
+
+.more {
+    max-width: 48rem;
+    margin: 1rem auto 0;
+    font-size: var(--text-sm);
+    text-align: right;
+}

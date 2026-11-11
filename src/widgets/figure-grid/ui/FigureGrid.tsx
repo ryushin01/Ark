@@ -10,7 +10,7 @@ export type FigureCard = {
   name: string;
   nameEn: string;
   epithet: string;
-  /** 분류 이름 (신, 영웅, 신수, 그 밖의 존재) */
+  /** 분류 이름 (예: 신, 영웅, 몬스터 · 신수) */
   kindLabel: string;
   image: ArchiveImage | null;
   exhibitCount: number;

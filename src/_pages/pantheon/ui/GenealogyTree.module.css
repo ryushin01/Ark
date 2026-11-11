@@ -1,0 +1,104 @@
+.section {
+    padding-bottom: 8rem;
+}
+
+.title {
+    padding-block: 3rem 1rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-align: center;
+}
+
+.lead,
+.source {
+    max-width: 40rem;
+    margin-inline: auto;
+    font-size: var(--text-sm);
+    text-align: center;
+}
+
+.source {
+    margin-top: 0.25rem;
+    margin-bottom: 3rem;
+}
+
+.tree {
+    display: grid;
+    gap: 2rem;
+}
+
+.tree > .item {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+}
+
+.item {
+    position: relative;
+}
+
+.person {
+    line-height: 1.6;
+}
+
+.name,
+.link {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    letter-spacing: -0.02em;
+}
+
+.link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.link:hover {
+    text-decoration-thickness: 2px;
+}
+
+.en,
+.note,
+.alone {
+    font-size: var(--text-sm);
+}
+
+.unions {
+    margin-left: 0.25rem;
+}
+
+.couple {
+    margin-top: 0.25rem;
+}
+
+.mark {
+    margin-right: 0.25rem;
+}
+
+/* 자식: 왼쪽 세로선과 짧은 가로선으로 이어 그립니다. */
+.children {
+    margin: 0.25rem 0 0.5rem 0.6rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule);
+}
+
+.children > .item::before {
+    position: absolute;
+    top: 0.85em;
+    left: -1rem;
+    width: 0.75rem;
+    border-top: 1px solid var(--rule);
+    content: "";
+}
+
+@media (min-width: 768px) {
+    .children {
+        padding-left: 1.5rem;
+    }
+
+    .children > .item::before {
+        left: -1.5rem;
+        width: 1.1rem;
+    }
+}

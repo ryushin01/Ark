@@ -2,13 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
-import { FIGURE_KIND_LABEL } from "@/entities/figure";
+import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
+import { getGenealogy } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { GenealogyTree } from "./GenealogyTree";
 import styles from "./PantheonPage.module.css";
 
 export async function generatePantheonParams() {
@@ -36,11 +38,12 @@ export async function generatePantheonMetadata(slug: string) {
 
 /** 신화 계열 상세: 소개, 대표 자료, 속한 신·인물, 앞뒤 계열 */
 export async function PantheonPage({ slug }: { slug: string }) {
-  const [pantheon, pantheons, figures, exhibits] = await Promise.all([
+  const [pantheon, pantheons, figures, exhibits, genealogy] = await Promise.all([
     getPantheon(slug),
     getPantheons(),
     getFiguresByPantheon(slug),
     getExhibits(),
+    getGenealogy(slug),
   ]);
   if (!pantheon) notFound();
 
@@ -55,7 +58,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
       name: figure.name,
       nameEn: figure.nameEn,
       epithet: figure.epithet,
-      kindLabel: FIGURE_KIND_LABEL[figure.kind],
+      kindLabel: kindLabel(figure),
       image: own[0]?.image ?? null,
       exhibitCount: own.length,
     };
@@ -111,6 +114,8 @@ export async function PantheonPage({ slug }: { slug: string }) {
         />
         <FigureGrid figures={cards} />
       </section>
+
+      {genealogy && <GenealogyTree genealogy={genealogy} />}
 
       {next && next.slug !== slug && (
         <nav className={`${styles.next} px-global`} aria-label="다음 계열">
