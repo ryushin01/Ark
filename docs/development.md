@@ -52,6 +52,8 @@
 
 ## 데이터와 이미지
 
+- 탈것·동반자는 계보와 달리 DB가 아닌 코드 데이터(`entities/figure/model/bonds.ts`)입니다. ZERO가 `sync:ark`로 이 파일을 직접 읽으므로 모양(`{ rider, partner, relation: "mount" | "companion", note? }`)을 바꾸면 ZERO에도 알립니다.
+
 지금은 각 엔티티의 `api/mock-data.ts`를 씁니다. 조회 함수는 `"use cache"`와 `cacheTag`로 캐시하므로, 저장 기능을 붙일 때는 Server Action에서 `updateTag`로 갱신합니다.
 
 자료 이미지는 `scripts/commons-sources.json`에 Commons 파일 이름을 적고 `pnpm images:resolve`로 받습니다.

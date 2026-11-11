@@ -46,3 +46,17 @@ test("가족: 신 상세에서 부모와 형제를 보고 이동합니다", asyn
   await family.getByRole("link", { name: "로키" }).click();
   await expect(page).toHaveURL(/\/figures\/loki$/);
 });
+
+test("탈것·동반자: 오딘의 탈것으로 가면 슬레이프니르에서 타는 이로 돌아옵니다", async ({
+  page,
+}) => {
+  await page.goto("/figures/odin");
+  const bonds = page.getByRole("region", { name: "탈것·동반자" });
+  await expect(bonds.getByText("동반자", { exact: true })).toBeVisible();
+  await expect(bonds.getByRole("link", { name: "후긴과 무닌" })).toBeVisible();
+  await bonds.getByRole("link", { name: "슬레이프니르" }).click();
+  await expect(page).toHaveURL("/figures/sleipnir");
+  const back = page.getByRole("region", { name: "탈것·동반자" }).filter({ visible: true });
+  await expect(back.getByText("타는 이", { exact: true })).toBeVisible();
+  await expect(back.getByRole("link", { name: "오딘" })).toHaveAttribute("href", "/figures/odin");
+});
