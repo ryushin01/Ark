@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
-import { kindLabel } from "@/entities/figure";
+import { findBonds, kindLabel } from "@/entities/figure";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { findRelatives } from "@/entities/genealogy";
 import { getGenealogies } from "@/entities/genealogy/index.server";
@@ -13,6 +13,7 @@ import { features } from "@/shared/config";
 import { Divider, RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { BondSection } from "./BondSection";
 import { ExhibitGallery } from "./ExhibitGallery";
 import { FamilySection } from "./FamilySection";
 import styles from "./FigurePage.module.css";
@@ -113,6 +114,8 @@ export async function FigurePage({ slug }: { slug: string }) {
         relatives={findRelatives(genealogies, slug)}
         pantheonSlug={figure.pantheonSlug}
       />
+
+      <BondSection rows={findBonds(slug)} figures={figures} />
 
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />
