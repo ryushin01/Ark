@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/badge/version-0.19.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
-다섯 대륙 49개 신화·전설 계열의 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 293점으로 살펴보는 세계 신화 도서관입니다.
+다섯 대륙 여러 문명권의 49개 신화·전설 계열에서 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 293점으로 살펴보는 세계 신화 도서관이자 박물관입니다.
 
 **[데모 바로 보기](https://ark-ryushin01.vercel.app/)** · 어드민은 [/admin](https://ark-ryushin01.vercel.app/admin)에서 **데모 계정으로 둘러보기**를 누르면 됩니다. · **[디자인 시스템(Storybook)](https://ark-ryushin01.vercel.app/storybook/index.html)**
 
