@@ -53,7 +53,7 @@
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                         |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                              |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Instrument Serif·Song Myung·Courier Prime(한글 본문은 운영체제 명조)                                             |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                          |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                 |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
 | 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                    |
