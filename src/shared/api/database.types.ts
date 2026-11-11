@@ -75,6 +75,7 @@ export type Database = {
           description: string[];
           domains: string[];
           epithet: string;
+          grade: string | null;
           kind: string;
           name: string;
           name_en: string;
@@ -89,6 +90,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet: string;
+          grade?: string | null;
           kind?: string;
           name: string;
           name_en: string;
@@ -102,6 +104,7 @@ export type Database = {
           description?: string[];
           domains?: string[];
           epithet?: string;
+          grade?: string | null;
           kind?: string;
           name?: string;
           name_en?: string;
@@ -116,6 +119,36 @@ export type Database = {
             foreignKeyName: "figures_pantheon_slug_fkey";
             columns: ["pantheon_slug"];
             isOneToOne: false;
+            referencedRelation: "pantheons";
+            referencedColumns: ["slug"];
+          },
+        ];
+      };
+      genealogies: {
+        Row: {
+          pantheon_slug: string;
+          roots: NonNullable<Json>;
+          source: string;
+          updated_at: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          pantheon_slug: string;
+          roots?: NonNullable<Json>;
+          source: string;
+          updated_at?: string;
+        };
+        Update: {
+          pantheon_slug?: string;
+          roots?: NonNullable<Json>;
+          source?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "genealogies_pantheon_slug_fkey";
+            columns: ["pantheon_slug"];
+            isOneToOne: true;
             referencedRelation: "pantheons";
             referencedColumns: ["slug"];
           },

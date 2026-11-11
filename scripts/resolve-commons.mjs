@@ -34,9 +34,17 @@ const cleanArtist = (value) => {
   const name = stripHtml(value)
     .split(/ [–(]| Details on /)[0]
     .replace(/^(Creator:|Artist )/, "")
+    // 위키 문서의 주석 표시 (예: "Jakob Sigurðsson [2]")
+    .replace(/\s*\[\d+\]/g, "")
     .trim();
   // 작자 미상 표기는 하나로 맞춥니다. (화면에서는 숨기고 라이선스만 보여 줌)
-  if (/^(unknown|anonymous|credited in file title)/i.test(name)) return "Unknown artist";
+  // 스캔한 곳·도판 설명은 저작자가 아니므로 작자 미상으로 둡니다.
+  if (
+    /^(unknown|anonymous|credited in file title|internet archive book images|scanned by|illustrated by)/i.test(
+      name,
+    )
+  )
+    return "Unknown artist";
   const half = name.slice(0, Math.floor(name.length / 2)).trim();
   return (name === `${half} ${half}` ? half : name) || null;
 };

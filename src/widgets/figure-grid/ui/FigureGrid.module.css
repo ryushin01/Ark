@@ -20,15 +20,11 @@
 
 .image {
     object-fit: cover;
-    filter: grayscale(1);
-    transition:
-        filter 0.7s var(--ease-magic),
-        scale 1.2s var(--ease-magic);
+    transition: scale 1.2s var(--ease-magic);
 }
 
 .card:hover .image,
 .card:focus-visible .image {
-    filter: none;
     scale: 1.04;
 }
 

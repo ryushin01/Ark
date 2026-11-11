@@ -1,5 +1,5 @@
 import { getExhibits } from "@/entities/exhibit/index.server";
-import { FIGURE_KIND_LABEL } from "@/entities/figure";
+import { kindLabel } from "@/entities/figure";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { RevealText } from "@/shared/ui";
@@ -35,7 +35,7 @@ export async function FigureSearchPage() {
           nameEn: figure.nameEn,
           epithet: figure.epithet,
           kind: figure.kind,
-          kindLabel: FIGURE_KIND_LABEL[figure.kind],
+          kindLabel: kindLabel(figure),
           image: own[0]?.image ?? null,
           exhibitCount: own.length,
           domains: figure.domains,

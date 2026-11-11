@@ -20,6 +20,7 @@ const FIELDS = [
   "slug",
   "pantheonSlug",
   "kind",
+  "grade",
   "name",
   "nameEn",
   "epithet",

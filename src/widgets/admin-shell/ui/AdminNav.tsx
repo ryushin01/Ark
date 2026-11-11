@@ -8,6 +8,7 @@ const ITEMS = [
   { href: "/admin", label: "대시보드" },
   { href: "/admin/pantheons", label: "신화 계열" },
   { href: "/admin/figures", label: "신·인물" },
+  { href: "/admin/genealogies", label: "계보" },
   { href: "/admin/exhibits", label: "소장 자료" },
   { href: "/admin/works", label: "영향 작품" },
 ];
