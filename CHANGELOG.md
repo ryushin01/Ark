@@ -1,5 +1,11 @@
 # 버전 기록
 
+## 0.19.3 - 2026-11-12
+
+- 접근성 린트: eslint-plugin-jsx-a11y의 recommended 규칙을 모두 켬
+- 모니터링: `NEXT_PUBLIC_SENTRY_DSN`이 있으면 처리하지 못한 오류와 나쁜 Web Vitals를 Sentry로 보냄. 오류 내용만 보내고, Sentry(약 31 kB gzip)와 web-vitals는 첫 화면 뒤에 따로 받음
+- 성능 예산: CI에서 size-limit(전체 JS 400 kB, CSS 145 kB)과 Lighthouse CI(첫 화면·인물 목록·인물 상세·신화권이 데스크톱 기준 성능 90·접근성 100·권장 사항 95·SEO 90점, LCP 2.5초·TBT 200ms·CLS 0.1 이하)로 검사
+
 ## 0.19.2 (2026-11-12)
 
 - 제목 글꼴 굵기: h1~h3을 Cinzel·Hahmlet 600으로. 함렛 400은 큰 제목에서 획 대비가 약해 고딕처럼 보였음. 600은 제목에 쓰인 글자가 든 조각만 더 받음

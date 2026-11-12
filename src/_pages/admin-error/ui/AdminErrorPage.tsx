@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { Button, Callout, Flex, Heading, Text } from "@radix-ui/themes";
 
+import { reportError } from "@/shared/lib";
+
 type ErrorPageProps = { error: unknown; retry: () => void };
 
 /** 어드민 오류 화면 (Radix Themes). 저장 중이던 내용은 사라질 수 있음을 알립니다. */
@@ -12,6 +14,7 @@ export function AdminErrorPage({ error, retry }: ErrorPageProps) {
 
   useEffect(() => {
     console.error(error);
+    reportError(error);
   }, [error]);
 
   return (
