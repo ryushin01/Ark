@@ -54,4 +54,9 @@ it("콘솔·세션·브레드크럼 연동은 끈다", async () => {
   expect(beforeSend({ extra: { arguments: ["secret"], other: 1 } })).toEqual({
     extra: { other: 1 },
   });
+  expect(beforeSend({ request: { url: "https://example.com/login#access_token=secret" } })).toEqual(
+    {
+      request: { url: "https://example.com/login" },
+    },
+  );
 });
