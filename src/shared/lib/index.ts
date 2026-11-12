@@ -9,6 +9,7 @@ export {
   toFieldErrors,
   withValues,
 } from "./form-state";
+export { initMonitoring, reportError } from "./monitoring";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";

@@ -8,3 +8,4 @@ test-results
 coverage
 src/entities/exhibit/api/mock/commons-images.json
 supabase/seed.sql
+.lighthouseci

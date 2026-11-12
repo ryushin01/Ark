@@ -49,15 +49,16 @@
 
 ![React, Next.js, TypeScript, CSS, pnpm, Vitest](https://skillicons.dev/icons?i=react,nextjs,ts,css,pnpm,vitest)
 
-| 구분        | 사용 기술                                                                                                                                                               |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                         |
-| 구조        | Feature-Sliced Design v2.1                                                                                                                                              |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                          |
-| 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                 |
-| 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe) |
-| 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                    |
-| 문서        | Storybook 10 (`@storybook/nextjs-vite`)                                                                                                                                 |
+| 구분        | 사용 기술                                                                                                                                                                                                                  |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                                                                            |
+| 구조        | Feature-Sliced Design v2.1                                                                                                                                                                                                 |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                                                                             |
+| 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                                                                    |
+| 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe), eslint-plugin-jsx-a11y, size-limit, Lighthouse CI |
+| 모니터링    | Sentry(DSN이 있을 때만), web-vitals                                                                                                                                                                                        |
+| 데이터      | Supabase (Postgres, RLS, Storage), Vercel Cron(무료 프로젝트 깨우기)                                                                                                                                                       |
+| 문서        | Storybook 10 (`@storybook/nextjs-vite`)                                                                                                                                                                                    |
 
 ## 시작하기
 
@@ -74,18 +75,19 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 
 `pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다. `.env.local`에 로컬 Supabase를 적었다면 `pnpm build` 전에도 `pnpm db:start`가 필요합니다.
 
-| 명령                                     | 설명                                                          |
-| ---------------------------------------- | ------------------------------------------------------------- |
-| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                          |
-| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                 |
-| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                               |
-| `pnpm typecheck`                         | 타입 검사                                                     |
-| `pnpm test`                              | 단위 테스트                                                   |
-| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                              |
-| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)            |
-| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                        |
-| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                  |
-| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기 |
+| 명령                                     | 설명                                                           |
+| ---------------------------------------- | -------------------------------------------------------------- |
+| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                           |
+| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                  |
+| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                |
+| `pnpm typecheck`                         | 타입 검사                                                      |
+| `pnpm test`                              | 단위 테스트                                                    |
+| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                               |
+| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)             |
+| `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요) |
+| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                         |
+| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                   |
+| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기  |
 
 환경 변수와 전체 규칙은 [개발 가이드](docs/development.md)를 참고하세요.
 
