@@ -1,13 +1,13 @@
 # 자료 그림 출처
 
-Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
+Ark가 보여 주는 자료 그림 325점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
 
 > 이 파일은 `pnpm credits`가 자료 데이터(`src/entities/exhibit/api/mock-data.ts`와 `mock/commons-images.json`, 시드와 같은 데이터)에서 만듭니다. 직접 고치지 말고 데이터를 고친 뒤 다시 만드세요. 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
 
 | 사용 허락 | 점 |
 | --- | ---: |
-| Public domain | 242 |
-| CC0 | 44 |
+| Public domain | 246 |
+| CC0 | 45 |
 | CC BY-SA 4.0 | 11 |
 | No restrictions | 5 |
 | CC BY-SA 3.0 | 4 |
@@ -38,6 +38,7 @@ Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입
 | 베누를 새긴 심장 부적 | 베누 | MihailEF | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Heart_amulet.jpg) |
 | 아펩을 찌르는 세트 | 아펩 | An unknown workman | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Set_speared_Apep.jpg) |
 | 우제트 눈 부적 | 호루스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Wedjat_Eye_Amulet_MET_11.215.128.jpg) |
+| 책과 글의 신 토트 | 토트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:The_Sacred_Books_and_Early_Literature_of_the_East,_vol._2,_pg._416-417,_Thoth.jpg) |
 
 ## 메소포타미아 신화
 
@@ -156,6 +157,7 @@ Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입
 | 불카누스에게 들킨 마르스와 베누스 | 헤파이스토스 | Alexandre-Charles Guillemot | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Guillemot,_Alexandre_Charles_-_Mars_and_Venus_Surprised_by_Vulcan_-_Google_Art_Project.jpg) |
 | 베누스의 띠를 빌리는 유노 | 헤라 | Élisabeth Louise Vigée Le Brun | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Elisabeth_Louise_Vig%C3%A9e-Le_Brun_-_Juno_Borrowing_the_Belt_of_Venus,_1781.jpg) |
 | 오디세우스의 활을 든 페넬로페 | 오디세우스 | Robert Cromek / After Henry Fuseli | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Robert_Hartley_Cromek_-_Penelope_Holding_the_Bow_of_Odysseus,_1806.jpg) |
+| 페르세우스와 바다 님프 | 페르세우스 | Edward Burne-Jones | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Perseus_and_the_Sea_Nymphs_-_Edward_Burne-Jones,_1877.jpg) |
 
 ## 일본 신화
 
@@ -180,6 +182,7 @@ Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입
 | 복신들의 배 (다이코쿠텐과 에비스) | 다이코쿠텐 | Author unknown / publisher: Kichibei Honya. 作者不明／出版者：本屋吉兵衛 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lucky_Gods_Fishing_Boat_Arrival_Ebisu_Daikokuten_and_Rising_Sun.png) |
 | 꽃 피우는 할아버지 (일본 옛이야기 연작) | 꽃 피우는 할아버지 | Kobayashi Eitaku | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hanasaki_Jiji_(titel_op_object)_Japanse_sprookjes_reeks_(serietitel)_Japanese_fairy_tale_series_(serietitel_op_object),_RP-P-2004-503.jpg) |
 | 고가 사부로로 분한 가부키 배우 | 고가 사부로 | Katsukawa Shunshō | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E4%B9%9D%E4%BB%A3%E7%9B%AE%E5%B8%82%E6%9D%91%E7%BE%BD%E5%B7%A6%E8%A1%9B%E9%96%80%E3%83%BB%E4%B8%89%E4%BB%A3%E7%9B%AE%E5%A4%A7%E8%B0%B7%E5%BB%A3%E6%AC%A1-Kabuki_Actors_Ichimura_Uzaemon_IX_as_Ko-kakeyama_and_%C5%8Ctani_Hiroji_III_as_K%C5%8Dga_Sabur%C5%8D_MET_DP132796.jpg) |
+| 고분에서 나온 곡옥 | 아마테라스 | Saigen Jiro | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E7%9F%A2%E8%97%A4%E6%B2%BB%E5%B1%B1%E5%8F%A4%E5%A2%B3%E5%87%BA%E5%9C%9F_%E5%8B%BE%E7%8E%89.JPG) |
 
 ## 북유럽 신화
 
@@ -208,6 +211,7 @@ Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입
 | 티알피와 로스크바 | 티알피 | Constantin Hansen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Tjalfe_and_Roskva._Study_for_%E2%80%9CThors_rejse_til_Jotunheim%E2%80%9D.jpg) |
 | 발드르의 장례 | 발드르 | Louis Moe | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Balders_B%C3%A5lf%C3%A6rd_-_Louis_Moe_(17005-1)_-_cropped.png) |
 | 오딘과 군로드 | 오딘 | Lorenz Frølich | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Odin_and_Gunnl%C3%B6%C3%B0_by_Fr%C3%B8lich.jpg) |
+| 파리로 변한 로키와 드베르그의 대장간 | 로키 | Arthur Rackham | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Once_again_the_buzzing_fly_came_in_at_the_window_(1901)_by_Arthur_Rackham.jpg) |
 
 ## 중국 신화
 
@@ -225,6 +229,7 @@ Ark가 보여 주는 자료 그림 320점의 저작자·사용 허락·원본입
 | 황제 초상 | 황제 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Portraits_of_Famous_Men_-_Yellow_Emperor_(Huangdi).jpg) |
 | 태공망 | 강태공 | Soga Shōhaku | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Soga_Sh%C5%8Dhaku_-_Taigong_Wang_(center_of_a_triptych_of_Taigong_Wang,_Dragon,_and_Carp)_-_2017.145.7.2_-_Minneapolis_Institute_of_Art.jpg) |
 | 돌을 녹여 하늘을 깁는 여와 | 여와 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E5%A5%B3%E5%AA%A7%E6%B0%8F%E7%85%89%E7%9F%B3%E8%A3%9C%E5%A4%A9.jpg) |
+| 서왕모의 반도 | 서왕모 | Kumashiro Yūhi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Kumashiro_Yuuhi,_Xi_Wangmu%27s_Peaches_of_Immortality.jpg) |
 
 ## 켈트 신화
 
