@@ -2635,5 +2635,113 @@
     "licenseUrl": null,
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portraits_of_Famous_Men_-_Yellow_Emperor_(Huangdi).jpg"
+  },
+  "athena-aegis": {
+    "src": "/images/exhibits/athena-aegis.jpg",
+    "width": 848,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Giovanni Jacopo Caraglio / After Rosso Fiorentino",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plate_20-_Pallas_Athena_holding_a_shield_with_Medusa%27s_head_in_her_right_hand_and_a_lance_in_her_left_hand,_from_a_series_of_mythological_gods_and_goddesses_MET_DP830882.jpg"
+  },
+  "poseidon-trident": {
+    "src": "/images/exhibits/poseidon-trident.jpg",
+    "width": 732,
+    "height": 1411,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poseidon_MKL1888.png"
+  },
+  "hermes-caduceus": {
+    "src": "/images/exhibits/hermes-caduceus.jpg",
+    "width": 853,
+    "height": 843,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Medallion_from_the_atrium_of_the_House_of_the_Greek_Epigrams_Pompeii_depicting_Hermes_(Mercury)_with_petasus_and_caduceus_1877.jpg"
+  },
+  "perseus-cellini": {
+    "src": "/images/exhibits/perseus-cellini.jpg",
+    "width": 1280,
+    "height": 1593,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jrousso at English Wikipedia",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perseo_Perseus_%CE%A0%CE%B5%CF%81%CF%83%CE%B5%CE%B1%CF%82.jpg"
+  },
+  "jason-fleece": {
+    "src": "/images/exhibits/jason-fleece.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jason_with_the_Golden_Fleece_-_Thorvaldsens_Museum_-_DSC08681.JPG"
+  },
+  "achilles-shield": {
+    "src": "/images/exhibits/achilles-shield.jpg",
+    "width": 1280,
+    "height": 1294,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shield_of_Achilles_by_John_Flaxman,_made_by_Rundell,_Bridge,_and_Rundell,_London,_1821,_silver-gilt_-_Huntington_Art_Museum_-_San_Marino,_CA_-_DSC01883.jpg"
+  },
+  "theseus-thread": {
+    "src": "/images/exhibits/theseus-thread.jpg",
+    "width": 876,
+    "height": 1024,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Johann Heinrich Tischbein",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johann_Heinrich_Tischbein_-_Ariadne_Helping_Theseus_by_Giving_him_a_Ball_of_Thread,_1779.jpg"
+  },
+  "horus-wedjat": {
+    "src": "/images/exhibits/horus-wedjat.jpg",
+    "width": 1280,
+    "height": 1049,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wedjat_Eye_Amulet_MET_11.215.128.jpg"
+  },
+  "indra-vajra": {
+    "src": "/images/exhibits/indra-vajra.jpg",
+    "width": 750,
+    "height": 998,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "company school",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Indra_with_thunder_olt.jpg"
+  },
+  "vishnu-chakra": {
+    "src": "/images/exhibits/vishnu-chakra.jpg",
+    "width": 404,
+    "height": 565,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Hindu_God_Vishnu_LACMA_M.70.5.1_Chakra_(cropped).jpg"
+  },
+  "shiva-trishula": {
+    "src": "/images/exhibits/shiva-trishula.jpg",
+    "width": 1280,
+    "height": 1423,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kalantaka_-_Shiva_killed_Kala.jpg"
+  },
+  "vainamoinen-kantele": {
+    "src": "/images/exhibits/vainamoinen-kantele.jpg",
+    "width": 1267,
+    "height": 1578,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Anders Ekman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anders_Ekman_-_V%C3%A4in%C3%A4m%C3%B6inen_stringing_his_kantele_-_A_II_985-138_-_Finnish_National_Gallery.jpg"
   }
 }

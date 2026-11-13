@@ -32,6 +32,8 @@ const stripHtml = (value = "") =>
 /** "Unknown artist Unknown artist"처럼 겹친 표기와 생몰년·설명 꼬리를 정리합니다. */
 const cleanArtist = (value) => {
   const name = stripHtml(value)
+    .replace(/^.*?:\s*(?=\S+ \S+ derivative work)/, "")
+    .replace(/ derivative work:.*$/, "")
     .split(/ [–(]| Details on /)[0]
     .replace(/^(Creator:|Artist )/, "")
     // 위키 문서의 주석 표시 (예: "Jakob Sigurðsson [2]")
@@ -47,6 +49,16 @@ const cleanArtist = (value) => {
     return "Unknown artist";
   const half = name.slice(0, Math.floor(name.length / 2)).trim();
   return (name === `${half} ${half}` ? half : name) || null;
+};
+
+/**
+ * Commons 메타데이터의 저작자 칸이 맞지 않는 항목 (스캔 기관·파생 작업자·본문 저자가 적혀 있음).
+ * 다시 받을 때 손으로 고친 값이 되돌아가지 않게 여기서 고정합니다.
+ */
+const ARTIST_OVERRIDES = {
+  "euryale-commons": "Arthur Rackham",
+  "fereydun-commons": "Unknown artist",
+  "hermes-caduceus": "Unknown artist",
 };
 
 const imageDir = new URL("public/images/exhibits/", root);
@@ -95,7 +107,7 @@ for (const { id, file } of sources) {
     height: output.info.height,
     license,
     licenseUrl: meta.LicenseUrl?.value ?? null,
-    artist: cleanArtist(meta.Artist?.value),
+    artist: ARTIST_OVERRIDES[id] ?? cleanArtist(meta.Artist?.value),
     sourceUrl: info.descriptionurl,
   };
   console.log(`${id}: ${license} · ${result[id].artist ?? "-"}`);

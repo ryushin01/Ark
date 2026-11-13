@@ -149,6 +149,28 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
   ).toBeVisible();
 });
 
+test("관리자는 유물을 고치고, 지닌 이를 비우면 안내를 받습니다", async ({ page }) => {
+  await login(page, "admin");
+  await page.goto("/admin/relics/gram");
+
+  const sigurd = page.getByRole("checkbox", { name: "시구르드" });
+  await expect(sigurd).toBeChecked();
+  await sigurd.uncheck();
+  await expect(page.getByRole("checkbox", { checked: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page.getByText("지닌 이나 관련 인물을 하나 이상 골라 주세요.")).toBeVisible();
+
+  await page.getByRole("checkbox", { name: "시구르드" }).check();
+  await page.getByLabel(/^힘/).fill("E2E: 모루를 둘로 가른 칼");
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page).toHaveURL(/\/admin\/relics\?saved=gram/);
+
+  await expect(async () => {
+    await page.goto("/vault/gram");
+    await expect(page.getByText("E2E: 모루를 둘로 가른 칼")).toBeVisible({ timeout: 1000 });
+  }).toPass();
+});
+
 test("관리자는 계보를 고치고, 형식이나 주소가 틀리면 안내를 받습니다", async ({ page }) => {
   await login(page, "admin");
   await page.goto("/admin/genealogies/norse");
@@ -192,6 +214,8 @@ for (const path of [
   "/admin/works/new",
   "/admin/genealogies",
   "/admin/genealogies/greek",
+  "/admin/relics",
+  "/admin/relics/mjolnir",
 ]) {
   test(`${path}: 접근성 위반이 없습니다 (axe)`, async ({ page }) => {
     if (path !== "/admin/login") await login(page, "demo");

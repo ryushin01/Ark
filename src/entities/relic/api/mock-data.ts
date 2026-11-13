@@ -1,0 +1,493 @@
+import type { Relic } from "../model/types";
+
+type RelicSeed = Omit<Relic, "order">;
+
+/**
+ * 신화 속 유물. 문헌마다 전승이 다르면 널리 알려진 쪽을 적고, 다른 전승은 덧붙입니다.
+ * 그림(exhibitId)은 퍼블릭 도메인·CC0 소장 자료만 씁니다.
+ */
+const SEEDS: RelicSeed[] = [
+  // 북유럽
+  {
+    slug: "mjolnir",
+    name: "묠니르",
+    nameEn: "Mjölnir",
+    kind: "weapon",
+    figureSlugs: ["thor", "loki"],
+    origin:
+      "로키가 드베르그 형제 브로크와 에이트리(신드리)에게 내기를 걸어 만들게 한 망치입니다. 로키가 파리로 변해 브로크의 눈꺼풀을 무는 바람에 손잡이가 짧게 나왔습니다.",
+    power: "던지면 반드시 맞히고 토르의 손으로 돌아오며, 거인들의 머리를 부숩니다.",
+    price:
+      "거인 스림이 망치를 훔쳐 프레이야를 신부로 요구하자, 토르는 신부 옷을 입고 거인의 집에 들어가 되찾아야 했습니다.",
+    source: "「스노리 에다」, 「스림의 노래」",
+    exhibitId: "thor-jotnar",
+  },
+  {
+    slug: "gungnir",
+    name: "궁니르",
+    nameEn: "Gungnir",
+    kind: "weapon",
+    figureSlugs: ["odin", "loki"],
+    origin: "로키의 부탁으로 이발디의 아들들인 드베르그들이 만든 창입니다.",
+    power:
+      "던지면 빗나가지 않습니다. 오딘이 이 창을 바니르 쪽으로 던지며 세상의 첫 전쟁이 시작되었다고 합니다.",
+    price:
+      "「높은 이의 말」에서 오딘은 창에 찔린 채 아흐레 밤을 세계수에 매달려 스스로를 바친 끝에 룬을 얻습니다.",
+    source: "「스노리 에다」, 「무녀의 예언」, 「높은 이의 말」",
+    exhibitId: "odin-sleipnir",
+  },
+  {
+    slug: "draupnir",
+    name: "드라우프니르",
+    nameEn: "Draupnir",
+    kind: "ornament",
+    figureSlugs: ["odin", "baldr"],
+    origin: "묠니르와 같은 내기에서 브로크와 에이트리가 만들어 오딘에게 바친 금반지입니다.",
+    power: "아홉째 밤마다 같은 무게의 금반지 여덟 개를 떨어뜨립니다.",
+    price:
+      "오딘은 죽은 아들 발드르의 화장 장작에 이 반지를 함께 올렸고, 발드르는 저승에서 반지를 아버지에게 돌려보냈습니다.",
+    source: "「스노리 에다」",
+    exhibitId: null,
+  },
+  {
+    slug: "brisingamen",
+    name: "브리싱가멘",
+    nameEn: "Brísingamen",
+    kind: "ornament",
+    figureSlugs: ["freyja", "heimdall", "loki"],
+    origin:
+      "네 드베르그가 만든 목걸이로, 프레이야가 그들과 하룻밤씩 지내는 값을 치르고 얻었다고 합니다.",
+    power: "프레이야를 상징하는 보물로, 토르가 프레이야로 꾸밀 때도 이 목걸이를 걸었습니다.",
+    price: "로키가 목걸이를 훔치자 헤임달이 바다표범으로 변해 로키와 싸운 끝에 되찾았습니다.",
+    source: "「소를리 이야기」, 「스림의 노래」, 「후스드라파」",
+    exhibitId: "freyja-brisingamen",
+  },
+  {
+    slug: "gjallarhorn",
+    name: "걀라르호른",
+    nameEn: "Gjallarhorn",
+    kind: "tool",
+    figureSlugs: ["heimdall"],
+    origin: "신들의 파수꾼 헤임달이 지닌 뿔피리입니다.",
+    power: "온 세상에 울려 퍼지는 소리로 신들을 부릅니다.",
+    price:
+      "헤임달이 이 뿔피리를 크게 부는 날이 라그나로크, 곧 신들의 마지막 싸움이 시작되는 날입니다.",
+    source: "「무녀의 예언」, 「스노리 에다」",
+    exhibitId: "heimdall-doepler",
+  },
+  {
+    slug: "gleipnir",
+    name: "글레이프니르",
+    nameEn: "Gleipnir",
+    kind: "tool",
+    figureSlugs: ["tyr", "fenrir"],
+    origin:
+      "고양이 발소리, 여자의 수염, 산의 뿌리, 곰의 힘줄, 물고기의 숨, 새의 침이라는 여섯 가지로 드베르그들이 만든 끈입니다.",
+    power: "비단처럼 가늘고 부드럽지만, 어떤 쇠사슬도 끊던 늑대 펜리르를 묶어 둡니다.",
+    price:
+      "펜리르가 의심하자 티르가 오른손을 늑대의 입에 넣어 보증했고, 끈이 풀리지 않자 그 손을 잃었습니다.",
+    source: "「스노리 에다」",
+    exhibitId: "fenrir-binding",
+  },
+  {
+    slug: "gram",
+    name: "그람",
+    nameEn: "Gram",
+    kind: "weapon",
+    figureSlugs: ["sigurd"],
+    origin:
+      "오딘이 나무에 꽂아 둔 칼을 시그문드가 뽑았고, 부러진 조각을 대장장이 레긴이 다시 벼려 시구르드에게 주었습니다.",
+    power:
+      "시험 삼아 내리치자 모루가 둘로 갈라졌고, 시구르드는 이 칼로 용 파프니르를 찔러 죽였습니다.",
+    price: "파프니르가 지키던 저주받은 황금을 얻은 뒤 시구르드도 결국 배신 속에 죽습니다.",
+    source: "「뵐숭 일족의 사가」",
+    exhibitId: "sigurd-commons",
+  },
+  // 그리스
+  {
+    slug: "aegis",
+    name: "아이기스",
+    nameEn: "Aegis",
+    kind: "armor",
+    figureSlugs: ["zeus", "athena", "perseus"],
+    origin:
+      "제우스가 지닌 방패(또는 염소 가죽 흉갑)로, 아테나가 함께 씁니다. 페르세우스가 바친 메두사의 머리가 한가운데 달렸습니다.",
+    power: "흔들면 폭풍이 일고, 맞선 이들을 공포로 무너뜨립니다.",
+    price: "그 한가운데 달린 것은 페르세우스가 목을 벤 메두사의 머리입니다.",
+    source: "「일리아스」, 아폴로도로스 「비블리오테케」",
+    exhibitId: "athena-aegis",
+  },
+  {
+    slug: "trident",
+    name: "트리아이나",
+    nameEn: "Trident of Poseidon",
+    kind: "weapon",
+    figureSlugs: ["poseidon"],
+    origin: "티탄과의 전쟁 때 키클롭스들이 포세이돈에게 만들어 준 삼지창입니다.",
+    power: "땅을 흔들고 바다에 폭풍을 일으키며, 바위를 내리쳐 샘을 솟게 합니다.",
+    price:
+      "아테네를 두고 아테나와 겨룰 때 이 창으로 아크로폴리스에 짠물 샘을 냈지만, 올리브를 준 아테나에게 도시를 내주었습니다.",
+    source: "아폴로도로스 「비블리오테케」, 헤로도토스 「역사」",
+    exhibitId: "poseidon-trident",
+  },
+  {
+    slug: "helm-of-darkness",
+    name: "하데스의 투구",
+    nameEn: "Helm of Darkness",
+    kind: "armor",
+    figureSlugs: ["hades", "perseus", "athena"],
+    origin: "티탄과의 전쟁 때 키클롭스들이 하데스에게 만들어 준 투구입니다.",
+    power:
+      "쓰면 모습이 보이지 않습니다. 페르세우스는 이 투구를 빌려 메두사의 자매들에게서 달아났고, 「일리아스」에서는 아테나가 쓰고 아레스에게 다가갑니다.",
+    price: null,
+    source: "아폴로도로스 「비블리오테케」, 「일리아스」",
+    exhibitId: null,
+  },
+  {
+    slug: "caduceus",
+    name: "케리케이온",
+    nameEn: "Caduceus",
+    kind: "tool",
+    figureSlugs: ["hermes", "apollo"],
+    origin:
+      "아기 헤르메스가 아폴론의 소를 훔친 뒤 리라를 주고 화해하자, 아폴론이 답례로 건넨 황금 지팡이라고 합니다.",
+    power:
+      "잠들게 하고 깨우며, 죽은 이의 혼을 저승으로 이끄는 전령의 지팡이입니다. 뒤에는 뱀 두 마리가 감긴 모습으로 그려졌습니다.",
+    price: null,
+    source: "「헤르메스 찬가」, 히기누스 「천문」",
+    exhibitId: "hermes-caduceus",
+  },
+  {
+    slug: "harpe",
+    name: "하르페",
+    nameEn: "Harpe",
+    kind: "weapon",
+    figureSlugs: ["perseus", "hermes"],
+    origin: "헤르메스가 페르세우스에게 건넨 굽은 칼입니다.",
+    power: "단단한 금강석 칼날로 메두사의 목을 단번에 베었습니다.",
+    price:
+      "메두사의 머리는 보는 이를 돌로 만들었고, 페르세우스는 방패에 비친 모습만 보고 다가가야 했습니다.",
+    source: "아폴로도로스 「비블리오테케」",
+    exhibitId: "perseus-cellini",
+  },
+  {
+    slug: "golden-fleece",
+    name: "황금 양털",
+    nameEn: "Golden Fleece",
+    kind: "treasure",
+    figureSlugs: ["jason", "medea"],
+    origin:
+      "프릭소스를 태우고 콜키스로 날아간 황금 숫양의 털가죽으로, 아레스의 숲에서 잠들지 않는 용이 지켰습니다.",
+    power: "왕권의 증표로, 이아손은 이것을 가져와야 빼앗긴 왕위를 돌려받을 수 있었습니다.",
+    price:
+      "메데이아의 도움으로 양털을 얻었지만, 달아나는 길에 메데이아는 동생 압시르토스를 죽였고 두 사람의 끝도 비극이었습니다.",
+    source: "아폴로니오스 「아르고나우티카」",
+    exhibitId: "jason-fleece",
+  },
+  {
+    slug: "shield-of-achilles",
+    name: "아킬레우스의 방패",
+    nameEn: "Shield of Achilles",
+    kind: "armor",
+    figureSlugs: ["achilles", "hephaestus"],
+    origin:
+      "파트로클로스가 아킬레우스의 갑옷을 입고 싸우다 죽자, 테티스의 부탁으로 헤파이스토스가 하룻밤 사이에 새로 벼린 방패입니다.",
+    power:
+      "하늘과 땅, 평화로운 도시와 전쟁하는 도시, 결혼과 재판, 추수까지 온 세상이 새겨져 있습니다.",
+    price:
+      "아킬레우스가 죽은 뒤 이 무구를 두고 아이아스와 오디세우스가 다투었고, 진 아이아스는 스스로 목숨을 끊었습니다.",
+    source: "「일리아스」 18권, 소포클레스 「아이아스」",
+    exhibitId: "achilles-shield",
+  },
+  {
+    slug: "lyre",
+    name: "리라",
+    nameEn: "Lyre",
+    kind: "tool",
+    figureSlugs: ["hermes", "apollo", "orpheus"],
+    origin: "태어난 날 헤르메스가 거북 등껍질에 줄을 매어 만들고 아폴론에게 넘겨준 현악기입니다.",
+    power: "오르페우스가 타면 짐승과 나무, 바위까지 따라왔고 저승의 신들도 마음을 움직였습니다.",
+    price: "저승에서 데려 나오던 아내 에우리디케를 오르페우스가 돌아보는 바람에 영영 잃었습니다.",
+    source: "「헤르메스 찬가」, 오비디우스 「변신 이야기」",
+    exhibitId: "orpheus-commons",
+  },
+  {
+    slug: "ariadnes-thread",
+    name: "아리아드네의 실타래",
+    nameEn: "Ariadne's Thread",
+    kind: "tool",
+    figureSlugs: ["theseus"],
+    origin: "크레타의 공주 아리아드네가 미궁에 들어가는 테세우스에게 건넨 실타래입니다.",
+    power:
+      "입구에 묶고 풀며 들어가면, 미노타우로스를 죽인 뒤 실을 따라 미궁을 빠져나올 수 있습니다.",
+    price: "테세우스는 함께 떠난 아리아드네를 낙소스섬에 두고 떠났습니다.",
+    source: "플루타르코스 「테세우스 전」, 오비디우스 「변신 이야기」",
+    exhibitId: "theseus-thread",
+  },
+  {
+    slug: "nemean-lion-skin",
+    name: "네메아 사자 가죽",
+    nameEn: "Skin of the Nemean Lion",
+    kind: "armor",
+    figureSlugs: ["heracles"],
+    origin: "헤라클레스가 첫 번째 과업에서 맨손으로 목 졸라 죽인 사자의 가죽입니다.",
+    power: "어떤 칼과 화살도 뚫지 못해, 헤라클레스는 이 가죽을 갑옷처럼 둘렀습니다.",
+    price: "날붙이가 들지 않아 사자 자신의 발톱으로 가죽을 벗겨야 했습니다.",
+    source: "아폴로도로스 「비블리오테케」",
+    exhibitId: "heracles-farnese",
+  },
+  // 이집트
+  {
+    slug: "wedjat",
+    name: "우제트(호루스의 눈)",
+    nameEn: "Eye of Horus",
+    kind: "ornament",
+    figureSlugs: ["horus", "set", "thoth"],
+    origin: "왕위를 두고 세트와 싸우다 뽑힌 호루스의 눈을 토트가 되살렸다고 합니다.",
+    power: "온전함과 치유, 보호를 뜻해 산 이와 죽은 이 모두 부적으로 지녔습니다.",
+    price: "호루스는 되찾은 눈을 죽은 아버지 오시리스에게 바쳐 그를 되살렸다고 전합니다.",
+    source: "「호루스와 세트의 다툼」, 피라미드 문서",
+    exhibitId: "horus-wedjat",
+  },
+  {
+    slug: "feather-of-maat",
+    name: "마아트의 깃털",
+    nameEn: "Feather of Maat",
+    kind: "tool",
+    figureSlugs: ["anubis", "thoth", "ammit"],
+    origin: "진리와 질서의 여신 마아트를 나타내는 타조 깃털입니다.",
+    power:
+      "저승의 심판에서 죽은 이의 심장을 이 깃털과 함께 저울에 올려, 아누비스가 달고 토트가 적습니다.",
+    price: "심장이 깃털보다 무거우면 암미트가 삼켜 두 번째 죽음을 맞습니다.",
+    source: "「사자의 서」 125장",
+    exhibitId: "weighing-heart",
+  },
+  // 메소포타미아
+  {
+    slug: "tablet-of-destinies",
+    name: "운명의 서판",
+    nameEn: "Tablet of Destinies",
+    kind: "treasure",
+    figureSlugs: ["marduk", "tiamat"],
+    origin: "티아마트가 군대의 장수 킨구에게 걸어 준 점토판입니다.",
+    power: "지닌 이에게 신들 위의 권위와 운명을 정하는 힘을 줍니다.",
+    price: "마르두크는 티아마트를 쓰러뜨리고 킨구에게서 서판을 빼앗아 신들의 왕이 되었습니다.",
+    source: "「에누마 엘리시」, 「안주 이야기」",
+    exhibitId: null,
+  },
+  // 인도
+  {
+    slug: "vajra",
+    name: "바즈라",
+    nameEn: "Vajra",
+    kind: "weapon",
+    figureSlugs: ["indra", "vritra"],
+    origin: "현자 다디치가 스스로 내놓은 뼈로 장인 트바시트리가 만든 벼락 무기라고 합니다.",
+    power: "물을 가두던 뱀 브리트라를 쓰러뜨려 세상에 물을 다시 흐르게 했습니다.",
+    price: "이 무기는 다디치가 자기 목숨을 내준 대가로 만들어졌습니다.",
+    source: "「리그베다」, 「마하바라타」",
+    exhibitId: "indra-vajra",
+  },
+  {
+    slug: "sudarshana-chakra",
+    name: "수다르샤나 차크라",
+    nameEn: "Sudarshana Chakra",
+    kind: "weapon",
+    figureSlugs: ["vishnu", "krishna"],
+    origin: "비슈누가 지닌 원반으로, 장인 비슈바카르마가 태양의 빛을 깎아 만들었다고도 합니다.",
+    power:
+      "던지면 적을 베고 다시 손가락으로 돌아옵니다. 크리슈나는 이 원반으로 시슈팔라의 목을 베었습니다.",
+    price: null,
+    source: "「마하바라타」, 「비슈누 푸라나」",
+    exhibitId: "vishnu-chakra",
+  },
+  {
+    slug: "trishula",
+    name: "트리슐라",
+    nameEn: "Trishula",
+    kind: "weapon",
+    figureSlugs: ["shiva", "ganesha"],
+    origin: "시바가 늘 지니는 삼지창입니다.",
+    power: "세 갈래 날은 창조·유지·파괴, 또는 과거·현재·미래를 뜻한다고 풀이합니다.",
+    price:
+      "널리 알려진 이야기에서 시바는 문을 막아선 아이의 목을 이 창으로 베었고, 그 아이에게 코끼리 머리를 붙여 가네샤로 되살렸습니다.",
+    source: "「시바 푸라나」",
+    exhibitId: "shiva-trishula",
+  },
+  {
+    slug: "gandiva",
+    name: "간디바",
+    nameEn: "Gandiva",
+    kind: "weapon",
+    figureSlugs: ["arjuna", "krishna"],
+    origin: "카운다바 숲을 태우려는 불의 신 아그니를 돕는 대가로 아르주나가 받은 활입니다.",
+    power: "어떤 무기로도 부서지지 않고, 마르지 않는 화살통과 함께 쿠루크셰트라 전쟁을 치렀습니다.",
+    price:
+      "이 활을 얻은 날 숲의 생명들은 불길에 휩싸였고, 전쟁이 끝난 뒤 아르주나는 활을 바다의 신에게 돌려주었습니다.",
+    source: "「마하바라타」",
+    exhibitId: null,
+  },
+  {
+    slug: "kavacha-kundala",
+    name: "카르나의 갑옷과 귀걸이",
+    nameEn: "Kavacha and Kundala",
+    kind: "armor",
+    figureSlugs: ["karna", "indra"],
+    origin: "태양신 수리야의 아들 카르나가 태어날 때부터 몸에 붙어 있던 갑옷과 귀걸이입니다.",
+    power: "지니고 있는 한 카르나는 어떤 무기에도 다치지 않습니다.",
+    price:
+      "아들 아르주나를 지키려는 인드라가 사제로 꾸며 이것을 청하자, 카르나는 살을 베어 내어 주었고 끝내 전장에서 쓰러졌습니다.",
+    source: "「마하바라타」",
+    exhibitId: null,
+  },
+  {
+    slug: "parashu",
+    name: "파라슈",
+    nameEn: "Parashu",
+    kind: "weapon",
+    figureSlugs: ["parashurama", "shiva"],
+    origin:
+      "시바가 수행을 마친 라마에게 내린 도끼로, 이때부터 그는 '도끼를 든 라마', 파라슈라마로 불렸습니다.",
+    power: "왕 카르타비랴 아르주나를 쓰러뜨리고 크샤트리아를 스물한 번 쓸어 냈다고 합니다.",
+    price: null,
+    source: "「마하바라타」, 「바가바타 푸라나」",
+    exhibitId: "parashurama-commons",
+  },
+  // 일본
+  {
+    slug: "kusanagi",
+    name: "구사나기의 검",
+    nameEn: "Kusanagi no Tsurugi",
+    kind: "weapon",
+    figureSlugs: ["susanoo", "amaterasu", "yamato-takeru"],
+    origin:
+      "스사노오가 야마타노오로치를 베었을 때 꼬리에서 나온 칼로, 아마테라스에게 바쳤습니다. 처음 이름은 아메노무라쿠모였습니다.",
+    power:
+      "야마토타케루가 들판에서 불에 갇혔을 때 이 칼로 풀을 베어 살아 나왔고, 그래서 '풀을 벤 칼'이라 불립니다.",
+    price: null,
+    source: "「고사기」, 「일본서기」",
+    exhibitId: "susanoo-orochi",
+  },
+  {
+    slug: "yata-no-kagami",
+    name: "야타의 거울",
+    nameEn: "Yata no Kagami",
+    kind: "treasure",
+    figureSlugs: ["amaterasu"],
+    origin: "아마테라스가 동굴에 숨어 세상이 어두워지자, 신들이 그녀를 꾀어내려고 만든 거울입니다.",
+    power:
+      "거울에 비친 빛에 이끌려 아마테라스가 나오자 세상에 다시 빛이 돌아왔습니다. 구사나기·곡옥과 함께 세 가지 신기로 전합니다.",
+    price: null,
+    source: "「고사기」, 「일본서기」",
+    exhibitId: "amaterasu-iwato",
+  },
+  // 중국
+  {
+    slug: "ruyi-jingu-bang",
+    name: "여의금고봉",
+    nameEn: "Ruyi Jingu Bang",
+    kind: "weapon",
+    figureSlugs: ["sun-wukong"],
+    origin: "우임금이 바다의 깊이를 재던 쇠기둥으로, 손오공이 동해 용궁에서 얻었습니다.",
+    power:
+      "무게가 만삼천오백 근이고, 마음대로 늘고 줄어 평소에는 바늘만 하게 줄여 귀에 넣어 둡니다.",
+    price: null,
+    source: "「서유기」",
+    exhibitId: "sun-wukong-commons",
+  },
+  {
+    slug: "bow-of-hou-yi",
+    name: "후예의 활",
+    nameEn: "Bow of Hou Yi",
+    kind: "weapon",
+    figureSlugs: ["hou-yi"],
+    origin: "천제 제준이 후예에게 내린 붉은 활과 흰 화살입니다.",
+    power: "요임금 때 열 개의 해가 한꺼번에 떠오르자, 후예는 아홉 개를 쏘아 떨어뜨렸습니다.",
+    price: "해들은 천제의 아들이었고, 이 일로 후예는 하늘로 돌아가지 못했다고 전합니다.",
+    source: "「산해경」, 「회남자」",
+    exhibitId: "hou-yi-commons",
+  },
+  {
+    slug: "elixir-of-immortality",
+    name: "불사약",
+    nameEn: "Elixir of Immortality",
+    kind: "treasure",
+    figureSlugs: ["change", "hou-yi"],
+    origin: "후예가 곤륜산의 서왕모에게서 얻은 약입니다.",
+    power: "먹으면 죽지 않고 하늘로 오릅니다.",
+    price: "항아가 이 약을 혼자 먹고 달로 올라가, 남편과 영영 떨어져 달에서 살게 되었습니다.",
+    source: "「회남자」",
+    exhibitId: "change-moon",
+  },
+  // 한국
+  {
+    slug: "cheonbuin",
+    name: "천부인 세 개",
+    nameEn: "Three Heavenly Seals",
+    kind: "treasure",
+    figureSlugs: ["hwanin", "hwanung", "dangun"],
+    origin: "하늘의 환인이 인간 세상을 다스리려는 아들 환웅에게 내려 준 세 가지 증표입니다.",
+    power:
+      "환웅은 이것을 지니고 무리 삼천과 함께 태백산 신단수 아래로 내려왔습니다. 무엇이었는지는 전하지 않아 거울·칼·방울로 보는 견해가 있습니다.",
+    price: null,
+    source: "「삼국유사」 고조선 조",
+    exhibitId: null,
+  },
+  // 켈트
+  {
+    slug: "gae-bulg",
+    name: "게 볼그",
+    nameEn: "Gáe Bulg",
+    kind: "weapon",
+    figureSlugs: ["cuchulainn"],
+    origin: "여전사 스카타크가 제자 쿠 훌린에게만 쓰는 법을 가르친 창입니다.",
+    power: "발로 던지며, 몸에 들어가면 미늘이 펴져 빼낼 수 없습니다.",
+    price: "쿠 훌린은 이 창으로 아들 콘라와 의형제 페르디아드를 죽였습니다.",
+    source: "「쿨리의 소 습격」, 「아이페의 외아들의 죽음」",
+    exhibitId: "cuchulainn-leyendecker",
+  },
+  // 아서왕 전설
+  {
+    slug: "excalibur",
+    name: "엑스칼리버",
+    nameEn: "Excalibur",
+    kind: "weapon",
+    figureSlugs: ["king-arthur", "bedivere", "merlin", "morgan-le-fay"],
+    origin: "맬러리의 이야기에서 아서는 멀린의 안내로 호수의 여인에게서 이 칼을 받습니다.",
+    power: "칼보다 칼집이 더 귀해, 칼집을 지닌 이는 피를 흘리지 않았습니다.",
+    price:
+      "모건 르 페이가 칼집을 훔쳐 버렸고, 마지막 싸움에서 크게 다친 아서는 베디비어에게 칼을 호수로 돌려보내게 했습니다.",
+    source: "토머스 맬러리 「아서의 죽음」",
+    exhibitId: "bedivere-commons",
+  },
+  // 핀란드
+  {
+    slug: "sampo",
+    name: "삼포",
+    nameEn: "Sampo",
+    kind: "treasure",
+    figureSlugs: ["ilmarinen", "vainamoinen", "louhi"],
+    origin:
+      "대장장이 일마리넨이 북쪽 땅 포욜라의 여주인 로우히에게 딸을 얻으려고 백조 깃털, 새끼 못 낳는 소의 젖, 보리 한 알, 양털 한 올로 벼린 맷돌입니다.",
+    power: "저절로 돌아 밀가루와 소금, 금을 끝없이 쏟아 냅니다.",
+    price:
+      "영웅들이 삼포를 훔쳐 달아나다 로우히와 바다에서 싸웠고, 삼포는 부서져 조각만 바다에 흩어졌습니다.",
+    source: "「칼레발라」",
+    exhibitId: "ilmarinen-sampo",
+  },
+  {
+    slug: "kantele",
+    name: "칸텔레",
+    nameEn: "Kantele",
+    kind: "tool",
+    figureSlugs: ["vainamoinen"],
+    origin: "베이네뫼이넨이 커다란 강꼬치고기의 턱뼈로 만든 현악기입니다.",
+    power: "그가 연주하면 하늘의 새와 숲의 짐승, 바닷속 물고기까지 모여들어 들었습니다.",
+    price:
+      "삼포를 두고 싸우는 동안 바다에 잃어버려, 자작나무로 새 칸텔레를 다시 만들어야 했습니다.",
+    source: "「칼레발라」",
+    exhibitId: "vainamoinen-kantele",
+  },
+];
+
+export const MOCK_RELICS: Relic[] = SEEDS.map((seed, index) => ({ ...seed, order: index + 1 }));

@@ -7,6 +7,8 @@ import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { findRelatives } from "@/entities/genealogy";
 import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheon } from "@/entities/pantheon/index.server";
+import { relicsOf } from "@/entities/relic";
+import { getRelics } from "@/entities/relic/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
 import { features } from "@/shared/config";
@@ -17,6 +19,7 @@ import { BondSection } from "./BondSection";
 import { ExhibitGallery } from "./ExhibitGallery";
 import { FamilySection } from "./FamilySection";
 import styles from "./FigurePage.module.css";
+import { RelicSection } from "./RelicSection";
 
 export async function generateFigureParams() {
   const figures = await getFigures();
@@ -50,10 +53,11 @@ export async function FigurePage({ slug }: { slug: string }) {
   ]);
   if (!figure) notFound();
 
-  const [pantheon, works, genealogies] = await Promise.all([
+  const [pantheon, works, genealogies, relics] = await Promise.all([
     getPantheon(figure.pantheonSlug),
     features.archive ? getWorksByFigure(slug) : Promise.resolve([]),
     getGenealogies(),
+    getRelics(),
   ]);
   const own = exhibits.filter((exhibit) => exhibit.figureSlug === slug);
   const siblings = figures
@@ -116,6 +120,8 @@ export async function FigurePage({ slug }: { slug: string }) {
       />
 
       <BondSection rows={findBonds(slug)} figures={figures} />
+
+      <RelicSection relics={relicsOf(relics, slug)} />
 
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />
