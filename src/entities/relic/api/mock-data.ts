@@ -47,7 +47,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "오딘은 죽은 아들 발드르의 화장 장작에 이 반지를 함께 올렸고, 발드르는 저승에서 반지를 아버지에게 돌려보냈습니다.",
     source: "「스노리 에다」",
-    exhibitId: null,
+    exhibitId: "loki-forge",
   },
   {
     slug: "brisingamen",
@@ -196,7 +196,7 @@ const SEEDS: RelicSeed[] = [
       "쓰면 모습이 보이지 않습니다. 페르세우스는 이 투구를 빌려 메두사의 자매들에게서 달아났고, 「일리아스」에서는 아테나가 쓰고 아레스에게 다가갑니다.",
     price: null,
     source: "아폴로도로스 「비블리오테케」, 「일리아스」",
-    exhibitId: null,
+    exhibitId: "perseus-nymphs",
   },
   {
     slug: "caduceus",
@@ -438,7 +438,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "책을 찾아낸 왕자 네페르카프타는 아내와 아들을 잃고 스스로 목숨을 끊었고, 뒤에 그 무덤에서 책을 가져간 왕자 세트네도 화를 당한 끝에 책을 돌려놓았습니다.",
     source: "「세트네 카엠와세트 이야기」(데모틱 문서)",
-    exhibitId: null,
+    exhibitId: "thoth-sacred-books",
   },
   // 메소포타미아
   {
@@ -451,7 +451,7 @@ const SEEDS: RelicSeed[] = [
     power: "지닌 이에게 신들 위의 권위와 운명을 정하는 힘을 줍니다.",
     price: "마르두크는 티아마트를 쓰러뜨리고 킨구에게서 서판을 빼앗아 신들의 왕이 되었습니다.",
     source: "「에누마 엘리시」, 「안주 이야기」",
-    exhibitId: null,
+    exhibitId: "tiamat-nimrud",
   },
   {
     slug: "plant-of-youth",
@@ -652,7 +652,7 @@ const SEEDS: RelicSeed[] = [
     power: "구사나기의 검, 야타의 거울과 함께 세 가지 신기로 전합니다.",
     price: null,
     source: "「고사기」, 「일본서기」",
-    exhibitId: null,
+    exhibitId: "magatama-yato",
   },
   {
     slug: "ame-no-nuboko",
@@ -730,7 +730,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "반도원을 지키던 손오공이 몰래 따 먹고 잔치를 망쳤다가, 끝내 오행산 아래 5백 년 동안 갇혔습니다.",
     source: "「서유기」",
-    exhibitId: null,
+    exhibitId: "xiwangmu-peaches",
   },
   {
     slug: "qiankun-quan",

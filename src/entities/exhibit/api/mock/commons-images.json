@@ -2878,5 +2878,50 @@
     "licenseUrl": null,
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%A5%B3%E5%AA%A7%E6%B0%8F%E7%85%89%E7%9F%B3%E8%A3%9C%E5%A4%A9.jpg"
+  },
+  "loki-forge": {
+    "src": "/images/exhibits/loki-forge.jpg",
+    "width": 1162,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Arthur Rackham",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Once_again_the_buzzing_fly_came_in_at_the_window_(1901)_by_Arthur_Rackham.jpg"
+  },
+  "perseus-nymphs": {
+    "src": "/images/exhibits/perseus-nymphs.jpg",
+    "width": 900,
+    "height": 1069,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Edward Burne-Jones",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perseus_and_the_Sea_Nymphs_-_Edward_Burne-Jones,_1877.jpg"
+  },
+  "xiwangmu-peaches": {
+    "src": "/images/exhibits/xiwangmu-peaches.jpg",
+    "width": 769,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kumashiro Yūhi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kumashiro_Yuuhi,_Xi_Wangmu%27s_Peaches_of_Immortality.jpg"
+  },
+  "magatama-yato": {
+    "src": "/images/exhibits/magatama-yato.jpg",
+    "width": 1280,
+    "height": 1182,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Saigen Jiro",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%9F%A2%E8%97%A4%E6%B2%BB%E5%B1%B1%E5%8F%A4%E5%A2%B3%E5%87%BA%E5%9C%9F_%E5%8B%BE%E7%8E%89.JPG"
+  },
+  "thoth-sacred-books": {
+    "src": "/images/exhibits/thoth-sacred-books.jpg",
+    "width": 1104,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sacred_Books_and_Early_Literature_of_the_East,_vol._2,_pg._416-417,_Thoth.jpg"
   }
 }
