@@ -5,6 +5,7 @@ import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { RELIC_KIND_LABEL } from "@/entities/relic";
 import { getRelics } from "@/entities/relic/index.server";
+import { toShown } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
@@ -37,7 +38,7 @@ export async function VaultPage() {
   const groupLabel = new Map(
     groups.flatMap((group) => group.relics.map((relic) => [relic.slug, group.label])),
   );
-  const imageOf = new Map(exhibits.map((exhibit) => [exhibit.id, exhibit.image]));
+  const imageOf = new Map(exhibits.map((exhibit) => [exhibit.id, toShown(exhibit.image)]));
 
   return (
     <div className={`theme-dark ${styles.vault}`}>

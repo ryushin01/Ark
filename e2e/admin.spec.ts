@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
+import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
 
 /** 메모리 저장소를 함께 쓰므로 어드민 테스트는 순서대로 실행합니다. */
@@ -203,7 +204,10 @@ test("자료가 연결된 신은 지울 수 없습니다", async ({ page }) => {
   await page.goto("/admin/figures/odin");
   await page.getByRole("button", { name: "삭제" }).click();
   await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "연결된 자료 3점" })).toBeVisible();
+  const odinExhibits = MOCK_EXHIBITS.filter((exhibit) => exhibit.figureSlug === "odin").length;
+  await expect(
+    page.getByRole("alert").filter({ hasText: `연결된 자료 ${odinExhibits}점` }),
+  ).toBeVisible();
 });
 
 for (const path of [

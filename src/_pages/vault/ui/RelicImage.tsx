@@ -2,11 +2,11 @@ import { RevealImage } from "@/shared/ui";
 
 import styles from "./RelicImage.module.css";
 
-import type { ArchiveImage } from "@/shared/lib";
+import type { ShownImage } from "@/shared/lib";
 import type { CSSProperties } from "react";
 
 type RelicImageProps = {
-  image: ArchiveImage | null;
+  image: ShownImage | null;
   /** 그림이 없을 때 진열장에 새길 글자 (영문 이름) */
   nameEn: string;
   sizes: string;

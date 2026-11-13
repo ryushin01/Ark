@@ -25,12 +25,6 @@ const meta = {
       width: 1600,
       height: 1600,
       alt: "가운데 전차를 모는 태양신을 두고 둘레에 도시와 사람들의 장면이 새겨진 둥근 금빛 방패",
-      credit: {
-        artist: "Daderot",
-        license: "Public domain",
-        licenseUrl: null,
-        sourceUrl: "https://commons.wikimedia.org/",
-      },
     },
   },
 } satisfies Meta<typeof RelicImage>;

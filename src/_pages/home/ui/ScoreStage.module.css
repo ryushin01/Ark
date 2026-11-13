@@ -194,6 +194,19 @@
     text-underline-offset: 0.25em;
 }
 
+.credit {
+    font-size: 0.75rem;
+    line-height: 1.35;
+}
+
+.creditLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
 .more {
     position: relative;
     align-self: end;

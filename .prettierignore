@@ -9,4 +9,5 @@ coverage
 src/entities/exhibit/api/mock/commons-images.json
 supabase/seed.sql
 .lighthouseci
+# pnpm credits가 자료 데이터에서 만드는 파일
 docs/credits.md

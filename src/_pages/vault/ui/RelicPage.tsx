@@ -5,6 +5,7 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { neighborsOf, RELIC_KIND_LABEL } from "@/entities/relic";
 import { getRelic, getRelics } from "@/entities/relic/index.server";
+import { toShown } from "@/shared/lib";
 import { SiteFooter } from "@/widgets/site-footer";
 
 import { RelicImage } from "./RelicImage";
@@ -76,7 +77,7 @@ export async function RelicPage({ slug }: { slug: string }) {
       <div className={`${styles.body} px-global`}>
         <div className={styles.visual}>
           <RelicImage
-            image={exhibit?.image ?? null}
+            image={exhibit ? toShown(exhibit.image) : null}
             nameEn={relic.nameEn}
             sizes="(min-width: 1024px) 50vw, 100vw"
             eager

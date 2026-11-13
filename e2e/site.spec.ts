@@ -94,7 +94,7 @@ test("홈 → 계열 → 신: 링크를 따라 상세 화면으로 이동합니�
   await expect(page.getByRole("navigation", { name: "현재 위치" })).toContainText("그리스 신화");
 });
 
-test("신 상세: 모든 자료 이미지에 대체 텍스트가 있고, 출처는 바닥글에서 README로 이어집니다", async ({
+test("신 상세: 모든 자료 이미지에 대체 텍스트가 있고, 출처는 바닥글의 '자료 출처'로 잇습니다", async ({
   page,
 }) => {
   await page.goto("/figures/odin");
@@ -104,13 +104,13 @@ test("신 상세: 모든 자료 이미지에 대체 텍스트가 있고, 출처�
   );
   for (const figure of await figures.all()) {
     await expect(figure.locator("img")).toHaveAttribute("alt", /.+/);
-    // 출처는 화면에 적지 않습니다(README의 출처, docs/credits.md).
+    // 그림마다의 저작자·라이선스는 화면에 적지 않고 README의 출처와 docs/credits.md에 모읍니다.
     await expect(figure.getByRole("link")).toHaveCount(0);
   }
-  // 바닥글은 main 안에 있어 contentinfo 랜드마크가 아니므로 링크 이름으로 찾습니다.
-  await expect(
-    page.getByRole("link", { name: "README의 출처" }).filter({ visible: true }),
-  ).toHaveAttribute("href", "https://github.com/ryushin01/Ark#출처");
+  await expect(page.getByRole("link", { name: "자료 출처" })).toHaveAttribute(
+    "href",
+    "https://github.com/ryushin01/Ark#출처",
+  );
 });
 
 test("분류: 신 상세에 분류를 보여 주고, 신 찾기에서 분류로 거릅니다", async ({ page }) => {

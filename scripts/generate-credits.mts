@@ -1,7 +1,10 @@
-/** 실행: pnpm credits → docs/credits.md */
+/**
+ * 자료 그림 출처 전체 목록(docs/credits.md)을 다시 만듭니다.
+ * 실행: pnpm credits (자료를 더하거나 출처를 고친 뒤, pnpm images:resolve 다음에)
+ */
 import { writeFile } from "node:fs/promises";
 
-import { renderCredits } from "./credits";
+import { CREDITS_PATH, renderCredits } from "./credits";
 
-await writeFile(new URL("../docs/credits.md", import.meta.url), renderCredits());
-console.log("docs/credits.md를 만들었습니다.");
+await writeFile(CREDITS_PATH, renderCredits());
+console.log(`${CREDITS_PATH}를 만들었습니다.`);

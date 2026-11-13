@@ -3,12 +3,12 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-import { type ArchiveImage, useInView } from "@/shared/lib";
+import { type ShownImage, useInView } from "@/shared/lib";
 
 import styles from "./RevealImage.module.css";
 
 type RevealImageProps = {
-  image: ArchiveImage;
+  image: ShownImage;
   /** next/image sizes. 레이아웃 폭에 맞게 지정합니다. */
   sizes: string;
   /**
@@ -26,7 +26,7 @@ type RevealImageProps = {
 
 /**
  * 화면에 들어오고 이미지가 다 받아지면 위에서 아래로 드러나는 자료 이미지입니다.
- * 이미지의 출처(저작자·라이선스·원본)는 화면이 아니라 README의 출처와 docs/credits.md에 밝힙니다.
+ * 그림마다의 저작자·라이선스는 화면 대신 README의 출처에 모읍니다(바닥글의 '자료 출처').
  */
 export function RevealImage({
   image,
