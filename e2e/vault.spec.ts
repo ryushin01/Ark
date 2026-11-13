@@ -44,7 +44,9 @@ test("진열장 상세에서 기원·힘·대가·문헌을 읽고, 지닌 이�
 });
 
 test("그림이 전하지 않는 유물은 빈 진열장으로 보입니다", async ({ page }) => {
-  await page.goto("/vault/draupnir");
+  const empty = MOCK_RELICS.find((relic) => relic.exhibitId === null);
+  expect(empty, "그림이 없는 유물이 하나는 있어야 이 화면을 검사할 수 있습니다").toBeDefined();
+  await page.goto(`/vault/${empty!.slug}`);
   await expect(page.getByText("전하는 그림이 없는 유물")).toBeVisible();
 });
 
