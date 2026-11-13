@@ -6,6 +6,7 @@ import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import { getGenealogy } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
+import { toThumb } from "@/shared/lib";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
@@ -59,7 +60,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
       nameEn: figure.nameEn,
       epithet: figure.epithet,
       kindLabel: kindLabel(figure),
-      image: own[0]?.image ?? null,
+      image: own[0] ? toThumb(own[0].image) : null,
       exhibitCount: own.length,
     };
   });

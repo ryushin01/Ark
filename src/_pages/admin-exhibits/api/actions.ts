@@ -15,7 +15,7 @@ import { getFigure } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { checkImageFile, removeStoredImage, uploadImage } from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import { type FormState, readForm, SLUG_PATTERN, toFieldErrors, withValues } from "@/shared/lib";
 
 const FIELDS = [
   "id",
@@ -31,8 +31,6 @@ const FIELDS = [
   "licenseUrl",
   "sourceUrl",
 ] as const;
-
-const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 /**
  * 자료 저장. originalId가 있으면 고치고(이미지 파일은 고를 때만 바꿈), 없으면 이미지와 함께 새로 만듭니다.
@@ -51,7 +49,7 @@ export async function saveExhibitAction(
   const hasFile = file instanceof File && file.size > 0;
   const fieldErrors: Record<string, string[]> = {};
 
-  if (!originalId && !ID_PATTERN.test(id)) {
+  if (!originalId && !SLUG_PATTERN.test(id)) {
     fieldErrors.id = [
       "자료 id는 영문 소문자, 숫자, 하이픈(-)으로 입력해 주세요. 예) hermes-statue",
     ];

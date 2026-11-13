@@ -13,8 +13,6 @@ const image = (name: string, width: number, height: number) => ({
   src: `/images/exhibits/${name}.jpg`,
   width,
   height,
-  alt: "",
-  credit,
 });
 
 const meta = {
@@ -29,6 +27,7 @@ const meta = {
         nameEn: "Egyptian",
         eraLabel: "기원전 24세기경",
         images: [image("weighing-heart", 1600, 824), image("isis-horus", 1200, 1600)],
+        coverCredit: credit,
       },
       {
         slug: "greek",
@@ -36,6 +35,7 @@ const meta = {
         nameEn: "Greek",
         eraLabel: "기원전 8세기경",
         images: [image("zeus-otricoli", 1200, 1600)],
+        coverCredit: credit,
       },
     ],
   },

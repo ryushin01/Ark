@@ -62,6 +62,7 @@
 - 이미지는 긴 변 1600px 이하 JPEG로 `public/images/exhibits/`에 저장합니다. Wikimedia 원본을 화면에서 직접 불러오면 요청 제한(429)에 걸리기 때문입니다.
 - 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장되고, 화면의 이미지마다 표기됩니다.
 - 대체 텍스트는 실제 이미지를 보고 `exhibit/api/mock-data.ts`에 직접 씁니다.
+- 클라이언트 컴포넌트에 넘기는 데이터는 HTML에 그대로 실립니다(RSC 페이로드). 출처를 표시하지 않고 그림만 그리는 곳(홈의 콜라주·필름·인덱스 미리보기, 신 카드)은 `toThumb`로 주소와 가로세로(`ThumbImage`)만 넘기고, 출처는 표시하는 자료 하나만 따로 넘깁니다.
 - 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 `pnpm images:resolve --fresh`를 씁니다.
 
 ### 소개 글의 출처
@@ -104,13 +105,14 @@
 | 데모   | 버튼 하나                 | 모든 화면 보기. 저장은 서버에서 막습니다. 배포본에서 방문자가 공개 데이터를 바꾸지 못하게 하려는 것입니다. |
 
 - 비밀번호 로그인은 같은 곳에서 15분 안에 5번 틀리면 잠깁니다. 실패 기록은 `admin_login_attempts` 테이블(IP는 SHA-256 해시만)에 남고, 성공하면 지웁니다. 하루 지난 기록은 크론이 지웁니다. 데모 로그인은 제한하지 않습니다.
-- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
-- 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
+- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1). `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
+- 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 주소 이름과 비워 둘 수 있는 칸은 `shared/lib`의 `slugField`·`SLUG_PATTERN`·`optionalText`를 씁니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
 - 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
 - 저장하면 `updateTag`로 캐시를 갱신합니다. 미리 그린 공개 페이지는 저장 뒤 첫 요청에 이전 내용을 보여 주고, 곧바로 새 내용으로 다시 그립니다.
 - 로그인하지 않고 어드민 주소로 오면, 로그인한 뒤 그 화면으로 돌아갑니다. 돌아갈 주소는 `/admin` 아래 경로만 받습니다.
 - 계열은 만들고 고치고 지울 수 있습니다. 신이 속한 계열은 지울 수 없습니다.
 - 다른 데이터가 가리키는 항목은 지우지 않습니다. 자료나 작품이 연결된 신, 계열의 대표 자료로 쓰는 자료가 그렇습니다.
+- 목록 표의 '고치기' 칸은 `shared/ui/admin`의 `EditLinkCell`을 씁니다. 링크 이름에 대상 이름을 넣어 줄마다 구별합니다.
 - Radix Themes 기본 색 중 명도 대비가 모자란 조합은 `shared/ui/admin/admin-theme.css`에서 보정합니다(진한 바탕 버튼, Select 자리표시). 주황 배지·안내는 `highContrast`를 씁니다.
 
 ## 데이터: Supabase

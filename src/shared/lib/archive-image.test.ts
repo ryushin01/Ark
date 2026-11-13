@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { formatCredit } from "./archive-image";
+import { formatCredit, toThumb } from "./archive-image";
 
 const base = { licenseUrl: null, sourceUrl: "https://commons.wikimedia.org/wiki/File:A.jpg" };
 
@@ -16,5 +16,18 @@ describe("formatCredit", () => {
       "Public domain",
     );
     expect(formatCredit({ ...base, artist: null, license: "CC0" })).toBe("CC0");
+  });
+});
+
+describe("toThumb", () => {
+  it("그림을 그리는 데 필요한 주소와 크기만 남깁니다", () => {
+    const image = {
+      src: "/images/exhibits/zeus.jpg",
+      width: 1200,
+      height: 1600,
+      alt: "제우스 흉상",
+      credit: { ...base, artist: null, license: "Public domain" },
+    };
+    expect(toThumb(image)).toEqual({ src: "/images/exhibits/zeus.jpg", width: 1200, height: 1600 });
   });
 });
