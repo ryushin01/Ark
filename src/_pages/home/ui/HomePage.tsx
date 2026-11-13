@@ -1,4 +1,4 @@
-import { getExhibits } from "@/entities/exhibit/index.server";
+import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { toThumb } from "@/shared/lib";
@@ -46,12 +46,16 @@ export async function HomePage() {
 
   const movements: ScoreMovement[] = pantheons.map((pantheon) => {
     const images = imagesBySlug.get(pantheon.slug) ?? [];
+    const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
+    // 출처는 README의 출처 전체 목록에 모읍니다. 목록에 없는 대표 자료만 무대에 출처를 함께 넘깁니다.
+    const coverCredit = cover ? unlistedCredit(cover) : null;
     return {
       slug: pantheon.slug,
       name: pantheon.name,
       nameEn: pantheon.nameEn,
       eraLabel: pantheon.eraLabel,
       images: images.map(toThumb),
+      ...(coverCredit ? { coverCredit } : {}),
     };
   });
 

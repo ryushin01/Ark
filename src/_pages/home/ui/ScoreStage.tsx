@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useMotionOff } from "@/shared/lib";
-import { HandArrow, HandCircle, HandNote } from "@/shared/ui";
+import { CreditLine, HandArrow, HandCircle, HandNote } from "@/shared/ui";
 
 import styles from "./ScoreStage.module.css";
 
-import type { ThumbImage } from "@/shared/lib";
+import type { ImageCredit, ThumbImage } from "@/shared/lib";
 
 export type ScoreMovement = {
   slug: string;
@@ -18,6 +18,8 @@ export type ScoreMovement = {
   eraLabel: string;
   /** 첫 장이 대표 자료입니다. 나머지는 저작자 표기 의무가 없는 자료만 넣습니다. */
   images: ThumbImage[];
+  /** 대표 자료(첫 장)가 출처 전체 목록(README)에 없을 때만(어드민에서 더하거나 고친 자료) 화면에 함께 보여 줄 출처 */
+  coverCredit?: ImageCredit;
 };
 
 /** 콜라주 자리(무대 폭·높이에 대한 %). 재생선 둘레에 모입니다. */
@@ -194,6 +196,11 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
               <span aria-hidden="true">▸ </span>
               {current.name}
             </p>
+            {current.coverCredit && (
+              <p className={styles.credit}>
+                <CreditLine credit={current.coverCredit} linkClassName={styles.creditLink} />
+              </p>
+            )}
           </div>
           <div className={styles.more}>
             <HandNote className={styles.moreNote}>

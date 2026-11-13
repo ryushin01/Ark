@@ -1,6 +1,6 @@
 import { type Exhibit, EXHIBIT_KIND_LABEL } from "@/entities/exhibit";
-import { toShown } from "@/shared/lib";
-import { RevealImage } from "@/shared/ui";
+import { type ImageCredit, toShown } from "@/shared/lib";
+import { CreditLine, RevealImage } from "@/shared/ui";
 
 import styles from "./ExhibitGallery.module.css";
 
@@ -8,7 +8,17 @@ import styles from "./ExhibitGallery.module.css";
  * 한 신의 소장 자료 목록
  * 자료마다 번호, 이미지, 분류·시기·소장처를 보여 줍니다. 넓은 화면에서는 이미지와 설명이 좌우로 번갈아 놓입니다.
  */
-export function ExhibitGallery({ exhibits }: { exhibits: Exhibit[] }) {
+export function ExhibitGallery({
+  exhibits,
+  credits = {},
+}: {
+  exhibits: Exhibit[];
+  /**
+   * 화면에 보여 줄 출처(자료 id별). 출처는 README의 출처 전체 목록에 모으지만, 목록에 없는 자료
+   * (어드민에서 더하거나 고친 자료)는 여기에 넘겨 정보 목록에 함께 보여 줍니다.
+   */
+  credits?: Record<string, ImageCredit>;
+}) {
   if (exhibits.length === 0) {
     return <p className={styles.empty}>아직 등록된 자료가 없습니다.</p>;
   }
@@ -43,6 +53,14 @@ export function ExhibitGallery({ exhibits }: { exhibits: Exhibit[] }) {
                 <div>
                   <dt>소장</dt>
                   <dd>{exhibit.holder}</dd>
+                </div>
+              )}
+              {credits[exhibit.id] && (
+                <div>
+                  <dt>출처</dt>
+                  <dd>
+                    <CreditLine credit={credits[exhibit.id]} />
+                  </dd>
                 </div>
               )}
             </dl>
