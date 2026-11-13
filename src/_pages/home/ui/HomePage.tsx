@@ -12,7 +12,7 @@ import { type ScoreMovement, ScoreStage } from "./ScoreStage";
 
 import type { ArchiveImage } from "@/shared/lib";
 
-/** 저작자 표기 의무가 없는 자료. 작은 필름과 콜라주에는 이런 자료만 씁니다. */
+/** 퍼블릭 도메인·CC0 자료. 작은 필름과 콜라주에는 이런 자료만 씁니다. */
 const isAttributionFree = (image: ArchiveImage) =>
   /^(public domain|cc0|no restrictions)/i.test(image.credit.license);
 
@@ -27,7 +27,7 @@ export async function HomePage() {
     return exhibit ? toThumb(exhibit.image) : null;
   };
 
-  /** 대표 자료(출처는 화면에 함께 표기)를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
+  /** 대표 자료를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
   const imagesOf = (pantheon: (typeof pantheons)[number]) => {
     const slugs = new Set(
       figures
@@ -52,7 +52,6 @@ export async function HomePage() {
       nameEn: pantheon.nameEn,
       eraLabel: pantheon.eraLabel,
       images: images.map(toThumb),
-      coverCredit: images[0]?.credit ?? null,
     };
   });
 
@@ -96,7 +95,7 @@ export async function HomePage() {
         />
         <RevealText
           className={styles.introNote}
-          text="모든 자료는 박물관과 기록 보관소가 공개한 퍼블릭 도메인·CC 라이선스 이미지이며, 각 이미지에 저작자와 라이선스를 밝혔습니다."
+          text="모든 자료는 박물관과 기록 보관소가 공개한 퍼블릭 도메인·CC 라이선스 이미지이며, 저작자와 라이선스는 README의 출처에 모아 밝혔습니다."
         />
       </section>
 

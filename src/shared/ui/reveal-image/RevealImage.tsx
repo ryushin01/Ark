@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { type ArchiveImage, useInView } from "@/shared/lib";
 
-import { CreditLine } from "../credit-line";
 import styles from "./RevealImage.module.css";
 
 type RevealImageProps = {
@@ -22,21 +21,18 @@ type RevealImageProps = {
    * 지연 로딩을 끄고 먼저 받습니다. (Next.js 16에서 priority는 deprecated)
    */
   eager?: boolean;
-  /** 출처 표기를 숨길지. 같은 이미지를 바로 옆에서 이미 표기했을 때만 씁니다. */
-  hideCredit?: boolean;
   className?: string;
 };
 
 /**
  * 화면에 들어오고 이미지가 다 받아지면 위에서 아래로 드러나는 자료 이미지입니다.
- * 이미지 오른쪽 아래에 저작자·라이선스를 표기하고, 원본 파일 정보로 연결합니다.
+ * 이미지의 출처(저작자·라이선스·원본)는 화면이 아니라 README의 출처와 docs/credits.md에 밝힙니다.
  */
 export function RevealImage({
   image,
   sizes,
   fit = "natural",
   eager = false,
-  hideCredit = false,
   className,
 }: RevealImageProps) {
   const ref = useRef<HTMLElement>(null);
@@ -76,11 +72,6 @@ export function RevealImage({
           onLoad={() => setIsLoaded(true)}
           onError={() => setIsLoaded(true)}
         />
-      )}
-      {!hideCredit && (
-        <figcaption className={styles.credit}>
-          <CreditLine credit={image.credit} linkClassName={styles.creditLink} />
-        </figcaption>
       )}
     </figure>
   );

@@ -8,7 +8,7 @@
 
 **[데모 바로 보기](https://ark-ryushin01.vercel.app/)** · 어드민은 [/admin](https://ark-ryushin01.vercel.app/admin)에서 **데모 계정으로 둘러보기**를 누르면 됩니다. · **[디자인 시스템(Storybook)](https://ark-ryushin01.vercel.app/storybook/index.html)**
 
-> **프로젝트 상태:** 개발 중인 **포트폴리오 프로젝트**입니다. 데이터와 업로드 이미지는 Supabase(Postgres, Storage)에 저장하고, 환경 변수가 없으면 메모리 목업으로 동작합니다. 자료 이미지는 모두 Wikimedia Commons의 퍼블릭 도메인·CC 라이선스 자료이며, 이미지마다 저작자와 라이선스를 표기했습니다.
+> **프로젝트 상태:** 개발 중인 **포트폴리오 프로젝트**입니다. 데이터와 업로드 이미지는 Supabase(Postgres, Storage)에 저장하고, 환경 변수가 없으면 메모리 목업으로 동작합니다. 자료 이미지는 모두 Wikimedia Commons의 퍼블릭 도메인·CC 라이선스 자료이며, 저작자와 라이선스는 아래 [출처](#출처)에 밝혔습니다.
 
 ## 화면
 
@@ -32,9 +32,9 @@
 | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | ![토르의 소장 자료 1점. 거인과 싸우는 토르 그림과 분류·시기 정보](docs/images/figure.jpg) | ![바다로 찾은 신 6명. 대륙과 분류(신·영웅·몬스터·그 밖의 존재) 거르기 버튼과 신 카드 목록](docs/images/search.jpg) |
 
-| 모바일 홈                                                                                                  | 모바일 신 상세                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| <img src="docs/images/mobile-home.jpg" alt="모바일 첫 화면의 재생선과 자료 콜라주, 자료 필름" width="240"> | <img src="docs/images/mobile-figure.jpg" alt="모바일에서 본 아마테라스의 소장 자료 목판화와 출처 표기" width="240"> |
+| 모바일 홈                                                                                                  | 모바일 신 상세                                                                                          |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| <img src="docs/images/mobile-home.jpg" alt="모바일 첫 화면의 재생선과 자료 콜라주, 자료 필름" width="240"> | <img src="docs/images/mobile-figure.jpg" alt="모바일에서 본 아마테라스의 소장 자료 목판화" width="240"> |
 
 ## 주요 기능
 
@@ -121,3 +121,14 @@ src/
 | [개발 가이드](docs/development.md)             | FSD 구조, 디자인 토큰, 데이터와 이미지, 어드민, 환경 변수, 접근성, 테스트 |
 | [시퀀스 다이어그램](docs/sequence-diagrams.md) | 공개 화면 조회, 어드민 로그인, 저장과 캐시 갱신, 이미지 업로드            |
 | [버전 기록](CHANGELOG.md)                      | 버전별 변경 내용                                                          |
+
+## 출처
+
+| 자료                                                  | 저작자                           | 사용 허락                                   | 원본                                                               |
+| ----------------------------------------------------- | -------------------------------- | ------------------------------------------- | ------------------------------------------------------------------ |
+| 소장 자료 이미지 305점 ([전체 목록](docs/credits.md)) | 자료마다 다름                    | 퍼블릭 도메인·CC0·CC BY·CC BY-SA            | [Wikimedia Commons](https://commons.wikimedia.org/)                |
+| Cinzel (제목 영문)                                    | Natanael Gama                    | [SIL OFL 1.1](https://openfontlicense.org/) | [Fontsource](https://fontsource.org/fonts/cinzel)                  |
+| Hahmlet (제목 한글)                                   | Hypertype                        | [SIL OFL 1.1](https://openfontlicense.org/) | [Fontsource](https://fontsource.org/fonts/hahmlet)                 |
+| Courier Prime (본문·표기)                             | Alan Dague-Greene                | [SIL OFL 1.1](https://openfontlicense.org/) | [Fontsource](https://fontsource.org/fonts/courier-prime)           |
+| 나눔손글씨 펜 (손글씨 주석, 쓰는 글자만 담은 서브셋)  | NAVER (디자인: 산돌커뮤니케이션) | [SIL OFL 1.1](https://openfontlicense.org/) | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script) |
+| Pretendard (어드민)                                   | Kil Hyung-jin                    | [SIL OFL 1.1](https://openfontlicense.org/) | [GitHub](https://github.com/orioncactus/pretendard)                |

@@ -41,7 +41,8 @@
 
 - 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
-- 필름과 콜라주의 작은 이미지에는 저작자를 표기할 자리가 없어 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 쓰되 무대 아래쪽에 출처를 표기합니다.
+- 필름과 콜라주의 작은 이미지에는 퍼블릭 도메인·CC0 자료만 씁니다.
+- 이미지와 글꼴의 출처(저작자·라이선스·원본)는 화면에 적지 않고 README의 `## 출처`와 `docs/credits.md`에 모읍니다. `docs/credits.md`는 `pnpm credits`로 소장 자료 데이터에서 만들고, 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다. 바닥글에는 README의 출처로 가는 링크만 둡니다. (영향 아카이브의 작품 이미지는 저장소가 아닌 업로드 데이터라 지금처럼 그 화면에 출처를 적습니다. 기능 플래그로 숨겨 둔 상태입니다.)
 - 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스와 저장된 설정(`data-annotations`, `data-motion`)을 붙입니다.
 - `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis, 화면 전환을 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
 - 화면 전환은 SSGOI가 맡습니다. 규칙은 `_app/transitions/config.ts`, 제공자는 `PageTransitions`이고, 라우트 경계(`SsgoiRouteBoundary`)는 `SiteLayout`의 `main`(relative, z-index 0, overflow-x: clip) 안에 둡니다. 설정 객체는 컴포넌트 밖에 둡니다(렌더마다 새로 만들면 엔진이 다시 만들어져 스크롤 위치를 잃습니다).

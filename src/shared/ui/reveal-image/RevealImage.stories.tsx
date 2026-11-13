@@ -27,7 +27,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** 원본 비율. 오른쪽 아래에 저작자·라이선스를 표기합니다. */
+/** 원본 비율 */
 export const Natural: Story = {};
 
 /** 부모를 가득 채우는 이미지 */

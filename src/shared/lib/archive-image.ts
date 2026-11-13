@@ -1,4 +1,4 @@
-/** 자료 이미지의 출처 정보. 퍼블릭 도메인이 아니면 저작자와 라이선스를 반드시 표기합니다. */
+/** 자료 이미지의 출처 정보. 화면에는 적지 않고 README의 출처와 docs/credits.md(pnpm credits)에 밝힙니다. */
 export type ImageCredit = {
   artist: string | null;
   license: string;

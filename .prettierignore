@@ -9,3 +9,4 @@ coverage
 src/entities/exhibit/api/mock/commons-images.json
 supabase/seed.sql
 .lighthouseci
+docs/credits.md
