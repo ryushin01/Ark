@@ -115,7 +115,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "빼앗긴 안드바리가 반지와 황금에 저주를 걸어, 흐레이드마르와 아들 파프니르, 그리고 시구르드까지 이 황금을 가진 이들이 차례로 죽었습니다.",
     source: "「레긴의 노래」, 「스노리 에다」, 「뵐숭 일족의 사가」",
-    exhibitId: null,
+    exhibitId: "alberich-ring-stassen",
   },
   {
     slug: "sword-of-freyr",
@@ -358,7 +358,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "대대로 지닌 이들에게 불행을 불러와, 목걸이를 받고 남편을 전쟁터로 보낸 에리필레를 비롯해 테바이 왕가가 차례로 파멸했습니다.",
     source: "아폴로도로스 「비블리오테케」, 스타티우스 「테바이스」",
-    exhibitId: null,
+    exhibitId: "harmonia-necklace-eriphyle",
   },
   {
     slug: "bow-of-odysseus",
@@ -465,7 +465,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "길가메시가 샘에서 몸을 씻는 사이 뱀이 풀을 물고 가 허물을 벗었고, 길가메시는 빈손으로 우루크에 돌아왔습니다.",
     source: "「길가메시 서사시」 11서판",
-    exhibitId: null,
+    exhibitId: "gilgamesh-flood-tablet",
   },
   {
     slug: "seven-ornaments-of-ishtar",
@@ -542,9 +542,9 @@ const SEEDS: RelicSeed[] = [
     origin: "태양신 수리야의 아들 카르나가 태어날 때부터 몸에 붙어 있던 갑옷과 귀걸이입니다.",
     power: "지니고 있는 한 카르나는 어떤 무기에도 다치지 않습니다.",
     price:
-      "아들 아르주나를 지키려는 인드라가 사제로 꾸며 이것을 청하자, 카르나는 살을 베어 내어 주었고 끝내 전장에서 쓰러졌습니다.",
+      "아들 아르주나를 지키려는 인드라가 사제로 꾸며 이것을 청하자, 카르나는 살을 베어 내어 주었습니다. 대신 받은 인드라의 창은 한 번밖에 쓸 수 없었는데, 이 창을 가토트카차에게 써 버려 아르주나와 맞설 때는 쓰지 못했고 끝내 전장에서 쓰러졌습니다.",
     source: "「마하바라타」",
-    exhibitId: null,
+    exhibitId: "karna-shakti",
   },
   {
     slug: "parashu",
@@ -759,7 +759,7 @@ const SEEDS: RelicSeed[] = [
       "환웅은 이것을 지니고 무리 삼천과 함께 태백산 신단수 아래로 내려왔습니다. 무엇이었는지는 전하지 않아 거울·칼·방울로 보는 견해가 있습니다.",
     price: null,
     source: "「삼국유사」 고조선 조",
-    exhibitId: null,
+    exhibitId: "korean-bronze-daggers",
   },
   {
     slug: "flowers-of-life",
