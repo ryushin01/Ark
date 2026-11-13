@@ -58,6 +58,7 @@ const cleanArtist = (value) => {
 const ARTIST_OVERRIDES = {
   "euryale-commons": "Arthur Rackham",
   "fereydun-commons": "Unknown artist",
+  "gilgamesh-flood-tablet": "BabelStone",
   "hermes-caduceus": "Unknown artist",
   "roland-durendal": "Louis Félix Guesnet",
   "siegfried-tarnkappe": "Julius Schnorr von Carolsfeld",
