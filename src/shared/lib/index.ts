@@ -13,5 +13,5 @@ export { initMonitoring, reportError } from "./monitoring";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";
-export { useMotionOff } from "./use-motion-off";
+export { isMotionOff, useMotionOff } from "./use-motion-off";
 export { useScrollProgress } from "./use-scroll-progress";
