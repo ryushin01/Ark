@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
+import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
 
 const PAGES = ["/", "/figures", "/pantheons/greek", "/figures/odin", "/figures/loki"];
@@ -98,7 +99,9 @@ test("신 상세: 모든 자료 이미지에 대체 텍스트가 있고, 출처�
 }) => {
   await page.goto("/figures/odin");
   const figures = page.locator("#exhibits-title ~ ol figure");
-  await expect(figures).toHaveCount(3);
+  await expect(figures).toHaveCount(
+    MOCK_EXHIBITS.filter((item) => item.figureSlug === "odin").length,
+  );
   for (const figure of await figures.all()) {
     await expect(figure.locator("img")).toHaveAttribute("alt", /.+/);
     // 그림마다의 저작자·라이선스는 화면에 적지 않고 README의 출처와 docs/credits.md에 모읍니다.
