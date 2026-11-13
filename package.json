@@ -1,6 +1,6 @@
 {
   "name": "ark",
-  "version": "0.19.6",
+  "version": "0.19.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,6 +20,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o public/storybook --quiet",
     "images:resolve": "node scripts/resolve-commons.mjs",
+    "credits": "tsx scripts/generate-credits.mts",
     "prepare": "husky || true",
     "db:seed:generate": "tsx scripts/generate-seed.mts",
     "db:push": "sh -c 'set -a && . ./.env.prod-secrets && supabase db push --remote -p \"$SUPABASE_DB_PASSWORD\" \"$@\"' db-push",

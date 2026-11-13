@@ -1,4 +1,4 @@
-import { getExhibits } from "@/entities/exhibit/index.server";
+import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { toThumb } from "@/shared/lib";
@@ -27,7 +27,7 @@ export async function HomePage() {
     return exhibit ? toThumb(exhibit.image) : null;
   };
 
-  /** 대표 자료(출처는 화면에 함께 표기)를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
+  /** 대표 자료를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
   const imagesOf = (pantheon: (typeof pantheons)[number]) => {
     const slugs = new Set(
       figures
@@ -46,13 +46,16 @@ export async function HomePage() {
 
   const movements: ScoreMovement[] = pantheons.map((pantheon) => {
     const images = imagesBySlug.get(pantheon.slug) ?? [];
+    const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
+    // 출처는 README의 출처 전체 목록에 모읍니다. 목록에 없는 대표 자료만 무대에 출처를 함께 넘깁니다.
+    const coverCredit = cover ? unlistedCredit(cover) : null;
     return {
       slug: pantheon.slug,
       name: pantheon.name,
       nameEn: pantheon.nameEn,
       eraLabel: pantheon.eraLabel,
       images: images.map(toThumb),
-      coverCredit: images[0]?.credit ?? null,
+      ...(coverCredit ? { coverCredit } : {}),
     };
   });
 
@@ -96,7 +99,7 @@ export async function HomePage() {
         />
         <RevealText
           className={styles.introNote}
-          text="모든 자료는 박물관과 기록 보관소가 공개한 퍼블릭 도메인·CC 라이선스 이미지이며, 각 이미지에 저작자와 라이선스를 밝혔습니다."
+          text="모든 자료는 박물관과 기록 보관소가 공개한 퍼블릭 도메인·CC 라이선스 이미지입니다. 저작자와 라이선스는 맨 아래 '자료 출처'에 모았습니다."
         />
       </section>
 
