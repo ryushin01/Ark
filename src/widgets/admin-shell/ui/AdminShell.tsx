@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Badge, Box, Container, Flex, Link as RadixLink, Text } from "@radix-ui/themes";
 
 import { LogoutButton } from "@/features/admin-auth";
+import { SITE } from "@/shared/config";
 
 import { AdminNav } from "./AdminNav";
 import styles from "./AdminShell.module.css";
@@ -21,8 +23,11 @@ export function AdminShell({ role, children }: { role: AdminRole; children: Reac
           <Container size="4" px="4">
             <Flex justify="between" align="center" gap="3" py="3" wrap="wrap">
               <Flex align="center" gap="2">
-                <Text weight="bold" size="4">
-                  Ark 관리자
+                <Text weight="bold" size="4" asChild>
+                  <p className={styles.brand}>
+                    <Image src={SITE.logo} alt={SITE.name} width={28} height={28} />
+                    관리자
+                  </p>
                 </Text>
                 <Badge color={role === "admin" ? "green" : "orange"} highContrast>
                   {role === "admin" ? "관리자" : "데모 · 읽기 전용"}

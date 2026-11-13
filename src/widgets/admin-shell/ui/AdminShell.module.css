@@ -21,3 +21,10 @@
 .skipLink:focus {
     transform: none;
 }
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
