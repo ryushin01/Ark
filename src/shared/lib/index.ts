@@ -1,5 +1,5 @@
-export type { ArchiveImage, ImageCredit, ThumbImage } from "./archive-image";
-export { formatCredit, toThumb } from "./archive-image";
+export type { ArchiveImage, ImageCredit, ShownImage, ThumbImage } from "./archive-image";
+export { formatCredit, toShown, toThumb } from "./archive-image";
 export { optionalText, SLUG_PATTERN, slugField } from "./form-fields";
 export {
   type FormState,

@@ -1,14 +1,14 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.19.6-8a4a1f)
+![version](https://img.shields.io/badge/version-0.19.7-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 49개 신화·전설 계열의 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 293점으로 살펴보는 세계 신화 도서관입니다.
 
 **[데모 바로 보기](https://ark-ryushin01.vercel.app/)** · 어드민은 [/admin](https://ark-ryushin01.vercel.app/admin)에서 **데모 계정으로 둘러보기**를 누르면 됩니다. · **[디자인 시스템(Storybook)](https://ark-ryushin01.vercel.app/storybook/index.html)**
 
-> **프로젝트 상태:** 개발 중인 **포트폴리오 프로젝트**입니다. 데이터와 업로드 이미지는 Supabase(Postgres, Storage)에 저장하고, 환경 변수가 없으면 메모리 목업으로 동작합니다. 자료 이미지는 모두 Wikimedia Commons의 퍼블릭 도메인·CC 라이선스 자료이며, 이미지마다 저작자와 라이선스를 표기했습니다.
+> **프로젝트 상태:** 개발 중인 **포트폴리오 프로젝트**입니다. 데이터와 업로드 이미지는 Supabase(Postgres, Storage)에 저장하고, 환경 변수가 없으면 메모리 목업으로 동작합니다. 자료 이미지는 모두 Wikimedia Commons의 퍼블릭 도메인·CC 라이선스 자료이며, 저작자와 라이선스는 아래 [출처](#출처)에 모았습니다.
 
 ## 화면
 
@@ -75,19 +75,20 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 
 `pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다. `.env.local`에 로컬 Supabase를 적었다면 `pnpm build` 전에도 `pnpm db:start`가 필요합니다.
 
-| 명령                                     | 설명                                                           |
-| ---------------------------------------- | -------------------------------------------------------------- |
-| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                           |
-| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                  |
-| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                |
-| `pnpm typecheck`                         | 타입 검사                                                      |
-| `pnpm test`                              | 단위 테스트                                                    |
-| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                               |
-| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)             |
-| `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요) |
-| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                         |
-| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                   |
-| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기  |
+| 명령                                     | 설명                                                               |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                               |
+| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                      |
+| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                    |
+| `pnpm typecheck`                         | 타입 검사                                                          |
+| `pnpm test`                              | 단위 테스트                                                        |
+| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                   |
+| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                 |
+| `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)     |
+| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                             |
+| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                       |
+| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기      |
+| `pnpm credits`                           | 자료 데이터에서 그림 출처 전체 목록(`docs/credits.md`) 다시 만들기 |
 
 환경 변수와 전체 규칙은 [개발 가이드](docs/development.md)를 참고하세요.
 
@@ -115,4 +116,21 @@ src/
 | ---------------------------------------------- | ------------------------------------------------------------------------- |
 | [개발 가이드](docs/development.md)             | FSD 구조, 디자인 토큰, 데이터와 이미지, 어드민, 환경 변수, 접근성, 테스트 |
 | [시퀀스 다이어그램](docs/sequence-diagrams.md) | 공개 화면 조회, 어드민 로그인, 저장과 캐시 갱신, 이미지 업로드            |
+| [출처 전체 목록](docs/credits.md)              | 자료 그림 293점의 저작자·사용 허락·원본                                   |
 | [버전 기록](CHANGELOG.md)                      | 버전별 변경 내용                                                          |
+
+## 출처
+
+화면에는 그림마다의 출처를 적지 않고 여기에 모읍니다. 공개 화면의 바닥글에 있는 '자료 출처'가 이곳으로 잇습니다.
+
+| 자료                                                                            | 저작자                                                          | 사용 허락                                                                       | 원본                                                                              |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| 자료 그림 293점 (조각상·회화·유물)                                              | 그림마다 다름                                                   | 퍼블릭 도메인 219점, CC0 40점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                  |
+| 작품 일러스트 (어드민에서 올림)                                                 | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                | 작품 갤러리의 이미지마다 권리 표기와 원본                                         |
+| Cinzel 글꼴 (영문 제목)                                                         | The Cinzel Project Authors                                      | SIL OFL 1.1                                                                     | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
+| Hahmlet 글꼴 (한글 제목)                                                        | The Hahmlet Project Authors                                     | SIL OFL 1.1                                                                     | [hyper-type/hahmlet](https://github.com/hyper-type/hahmlet)                       |
+| Courier Prime 글꼴 (영문·숫자)                                                  | The Courier Prime Project Authors                               | SIL OFL 1.1                                                                     | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
+| Nanum Pen Script(나눔손글씨 펜) 글꼴 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션              | SIL OFL 1.1                                                                     | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
+| 신·계열 소개 글                                                                 | 직접 쓴 글 (나무위키 등으로 사실을 확인하고 문장은 옮기지 않음) | —                                                                               | —                                                                                 |
+
+작품 일러스트와, 어드민에서 더하거나 이미지·출처를 고친 자료 그림은 데이터베이스에만 있어 이 표와 전체 목록에 둘 수 없습니다. 그래서 그런 이미지만 화면에 권리 표기·출처와 원본을 함께 보여 줍니다. 공유 이미지에 보이는 조각상·그림도 위 자료 그림입니다.

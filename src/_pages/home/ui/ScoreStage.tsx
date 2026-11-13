@@ -18,8 +18,8 @@ export type ScoreMovement = {
   eraLabel: string;
   /** 첫 장이 대표 자료입니다. 나머지는 저작자 표기 의무가 없는 자료만 넣습니다. */
   images: ThumbImage[];
-  /** 대표 자료(첫 장)의 출처. 화면에 함께 표기합니다. */
-  coverCredit: ImageCredit | null;
+  /** 대표 자료(첫 장)가 출처 전체 목록(README)에 없을 때만(어드민에서 더하거나 고친 자료) 화면에 함께 보여 줄 출처 */
+  coverCredit?: ImageCredit;
 };
 
 /** 콜라주 자리(무대 폭·높이에 대한 %). 재생선 둘레에 모입니다. */

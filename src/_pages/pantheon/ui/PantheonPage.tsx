@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getExhibits } from "@/entities/exhibit/index.server";
+import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import { getGenealogy } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
-import { toThumb } from "@/shared/lib";
-import { Divider, RevealImage, RevealText } from "@/shared/ui";
+import { toShown, toThumb } from "@/shared/lib";
+import { CreditLine, Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
 
@@ -49,6 +49,8 @@ export async function PantheonPage({ slug }: { slug: string }) {
   if (!pantheon) notFound();
 
   const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
+  // 출처는 README의 출처 전체 목록에 모읍니다. 목록에 없는 자료(어드민에서 더하거나 고친 자료)만 화면에 함께 보여 줍니다.
+  const coverCredit = cover ? unlistedCredit(cover) : null;
   const index = pantheons.findIndex((item) => item.slug === slug);
   const next = pantheons[(index + 1) % pantheons.length];
 
@@ -84,8 +86,13 @@ export async function PantheonPage({ slug }: { slug: string }) {
 
       {cover && (
         <div className={`${styles.cover} px-global`}>
-          <RevealImage image={cover.image} fit="cover" sizes="100vw" eager />
+          <RevealImage image={toShown(cover.image)} fit="cover" sizes="100vw" eager />
         </div>
+      )}
+      {coverCredit && (
+        <p className={`${styles.coverCredit} px-global`}>
+          <CreditLine credit={coverCredit} />
+        </p>
       )}
 
       <section className="px-global" aria-labelledby="about-title">

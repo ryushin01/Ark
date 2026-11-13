@@ -12,13 +12,6 @@ const meta = {
       width: 1051,
       height: 1600,
       alt: "곱슬거리는 긴 머리와 풍성한 수염을 한 제우스의 대리석 두상",
-      credit: {
-        artist: "Unknown artist",
-        license: "Public domain",
-        licenseUrl: null,
-        sourceUrl:
-          "https://commons.wikimedia.org/wiki/File:Zeus_Otricoli_Pio-Clementino_Inv257.jpg",
-      },
     },
   },
   decorators: [(Story) => <div style={{ width: 320 }}>{Story()}</div>],
@@ -27,7 +20,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** 원본 비율. 오른쪽 아래에 저작자·라이선스를 표기합니다. */
+/** 원본 비율. 그림마다의 출처는 화면 대신 README의 출처에 모읍니다. */
 export const Natural: Story = {};
 
 /** 부모를 가득 채우는 이미지 */

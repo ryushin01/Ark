@@ -41,7 +41,7 @@
 
 - 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
-- 필름과 콜라주의 작은 이미지에는 저작자를 표기할 자리가 없어 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 쓰되 무대 아래쪽에 출처를 표기합니다.
+- 필름과 콜라주의 작은 이미지에는 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 씁니다(출처는 아래 '출처 표기').
 - 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스와 저장된 설정(`data-annotations`, `data-motion`)을 붙입니다.
 - `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis, 화면 전환을 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
 - 화면 전환은 SSGOI가 맡습니다. 규칙은 `_app/transitions/config.ts`, 제공자는 `PageTransitions`이고, 라우트 경계(`SsgoiRouteBoundary`)는 `SiteLayout`의 `main`(relative, z-index 0, overflow-x: clip) 안에 둡니다. 설정 객체는 컴포넌트 밖에 둡니다(렌더마다 새로 만들면 엔진이 다시 만들어져 스크롤 위치를 잃습니다).
@@ -60,10 +60,21 @@
 
 - 라이선스가 퍼블릭 도메인·CC0·CC BY·CC BY-SA가 아니면 실패합니다.
 - 이미지는 긴 변 1600px 이하 JPEG로 `public/images/exhibits/`에 저장합니다. Wikimedia 원본을 화면에서 직접 불러오면 요청 제한(429)에 걸리기 때문입니다.
-- 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장되고, 화면의 이미지마다 표기됩니다.
+- 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장됩니다. 화면에는 적지 않고 README의 출처와 `docs/credits.md`에 모읍니다(아래 '출처 표기').
 - 대체 텍스트는 실제 이미지를 보고 `exhibit/api/mock-data.ts`에 직접 씁니다.
-- 클라이언트 컴포넌트에 넘기는 데이터는 HTML에 그대로 실립니다(RSC 페이로드). 출처를 표시하지 않고 그림만 그리는 곳(홈의 콜라주·필름·인덱스 미리보기, 신 카드)은 `toThumb`로 주소와 가로세로(`ThumbImage`)만 넘기고, 출처는 표시하는 자료 하나만 따로 넘깁니다.
+- 클라이언트 컴포넌트에 넘기는 데이터는 HTML에 그대로 실립니다(RSC 페이로드). 그림만 그리는 곳(홈의 콜라주·필름·인덱스 미리보기, 신 카드)은 `toThumb`로 주소와 가로세로(`ThumbImage`)만, 대체 텍스트와 함께 보여 주는 자료 이미지(`RevealImage`)는 `toShown`으로 출처를 뺀 값(`ShownImage`)만 넘깁니다.
 - 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 `pnpm images:resolve --fresh`를 씁니다.
+
+### 출처 표기
+
+그림·글꼴 같은 외부 자료의 출처는 화면이 아니라 README에 밝힙니다(모든 프로젝트 공통 규칙).
+
+- README의 `## 출처`: 자료 묶음과 글꼴의 저작자·사용 허락·원본을 한 표로 적습니다. 공개 화면의 바닥글에 있는 '자료 출처' 링크가 이 표로 잇습니다.
+- `docs/credits.md`: 자료 그림 한 점마다의 저작자·사용 허락·원본입니다. `pnpm credits`가 자료 데이터(`exhibit/api/mock-data.ts`, `mock/commons-images.json`)에서 만들고, 직접 고치지 않으며 Prettier에서도 뺍니다.
+- 자료를 더하거나 출처를 고쳤으면(`pnpm images:resolve` 다음) `pnpm credits`로 목록을 다시 만듭니다. 목록이 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
+- 예외: 데이터베이스에만 있는 이미지는 README에 목록을 둘 수 없어 화면에 출처(`CreditLine`)를 함께 보여 줍니다.
+  - 작품 일러스트: 작품 갤러리(`SwipeGallery`)에서 이미지마다 권리 표기와 원본을 보여 주고, 올릴 때 권리 표기와 출처 주소를 반드시 받습니다.
+  - 어드민에서 더하거나 이미지·출처를 고친 자료 그림: `unlistedCredit`(`entities/exhibit`)이 시드 데이터와 id·이미지 주소·출처를 비교해 목록에 없는 자료를 찾고, 신 화면의 자료 정보·계열 대표 그림·홈 무대에 그 자료의 출처만 보여 줍니다. 저장소 데이터에 옮겨 `pnpm credits`로 목록을 다시 만들면 화면에서도 빠집니다.
 
 ### 소개 글의 출처
 
