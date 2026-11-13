@@ -3,6 +3,7 @@ import { expect, type Page, test } from "@playwright/test";
 
 import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+import { MOCK_RELICS } from "../src/entities/relic/api/mock-data";
 
 /** 메모리 저장소를 함께 쓰므로 어드민 테스트는 순서대로 실행합니다. */
 test.describe.configure({ mode: "serial" });
@@ -56,6 +57,25 @@ test("데모 계정은 둘러볼 수 있지만 저장은 막힙니다", async ({
 
   await page.goto("/figures/zeus");
   await expect(page.getByText("하늘과 번개의 신")).toBeVisible();
+});
+
+test("대시보드는 관리 메뉴의 항목을 같은 순서로 세어 보여 줍니다", async ({ page }) => {
+  await login(page, "demo");
+  const sections = ["신화 계열", "신·인물", "계보", "소장 자료", "유물", "영향 작품"];
+  const menu = page.getByRole("navigation", { name: "관리 메뉴" }).getByRole("link");
+  const cards = page.getByRole("main").getByRole("listitem");
+  await expect(menu).toHaveCount(sections.length + 1);
+  await expect(cards).toHaveCount(sections.length);
+  for (const [index, label] of sections.entries()) {
+    // 메뉴의 첫 칸은 대시보드입니다.
+    await expect(menu.nth(index + 1)).toHaveAccessibleName(label);
+    await expect(cards.nth(index)).toHaveText(new RegExp(`^${label}`));
+  }
+
+  const relicCard = cards.filter({ hasText: /^유물/ });
+  const withoutImage = MOCK_RELICS.filter((relic) => relic.exhibitId === null).length;
+  await expect(relicCard).toContainText(String(MOCK_RELICS.length));
+  await expect(relicCard).toContainText(`그림 없는 유물 ${withoutImage}점`);
 });
 
 test("관리자는 신을 만들고, 공개 사이트에서 확인한 뒤 지울 수 있습니다", async ({ page }) => {
