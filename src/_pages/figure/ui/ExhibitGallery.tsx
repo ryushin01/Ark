@@ -1,4 +1,5 @@
 import { type Exhibit, EXHIBIT_KIND_LABEL } from "@/entities/exhibit";
+import { toShown } from "@/shared/lib";
 import { RevealImage } from "@/shared/ui";
 
 import styles from "./ExhibitGallery.module.css";
@@ -17,7 +18,7 @@ export function ExhibitGallery({ exhibits }: { exhibits: Exhibit[] }) {
       {exhibits.map((exhibit, index) => (
         <li key={exhibit.id} className={styles.item} data-side={index % 2 ? "right" : "left"}>
           <RevealImage
-            image={exhibit.image}
+            image={toShown(exhibit.image)}
             sizes="(min-width: 768px) 58vw, 100vw"
             eager={index === 0}
             className={styles.image}

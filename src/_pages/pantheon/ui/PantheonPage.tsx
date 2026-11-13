@@ -6,7 +6,7 @@ import { kindLabel } from "@/entities/figure";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import { getGenealogy } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
-import { toThumb } from "@/shared/lib";
+import { toShown, toThumb } from "@/shared/lib";
 import { Divider, RevealImage, RevealText } from "@/shared/ui";
 import { type FigureCard, FigureGrid } from "@/widgets/figure-grid";
 import { SiteFooter } from "@/widgets/site-footer";
@@ -84,7 +84,7 @@ export async function PantheonPage({ slug }: { slug: string }) {
 
       {cover && (
         <div className={`${styles.cover} px-global`}>
-          <RevealImage image={cover.image} fit="cover" sizes="100vw" eager />
+          <RevealImage image={toShown(cover.image)} fit="cover" sizes="100vw" eager />
         </div>
       )}
 

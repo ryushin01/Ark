@@ -2,13 +2,6 @@ import { ScoreStage } from "./ScoreStage";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-const credit = {
-  artist: null,
-  license: "Public domain",
-  licenseUrl: null,
-  sourceUrl: "https://commons.wikimedia.org/",
-};
-
 const image = (name: string, width: number, height: number) => ({
   src: `/images/exhibits/${name}.jpg`,
   width,
@@ -27,7 +20,6 @@ const meta = {
         nameEn: "Egyptian",
         eraLabel: "기원전 24세기경",
         images: [image("weighing-heart", 1600, 824), image("isis-horus", 1200, 1600)],
-        coverCredit: credit,
       },
       {
         slug: "greek",
@@ -35,7 +27,6 @@ const meta = {
         nameEn: "Greek",
         eraLabel: "기원전 8세기경",
         images: [image("zeus-otricoli", 1200, 1600)],
-        coverCredit: credit,
       },
     ],
   },
