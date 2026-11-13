@@ -10,6 +10,8 @@ import { isBackForwardLoad, loadScroll, saveScroll, scrollKey } from "./scroll-m
 const SETTLE_MS = 600;
 /** 이 시간이 지나면(내용이 끝내 짧으면) 붙잡기를 그만둡니다. */
 const GIVE_UP_MS = 3000;
+/** popstate 뒤 경로가 바뀌기까지(다시 그리기) 걸리는 시간을 넉넉히 잡은 값 */
+const TRAVERSAL_WINDOW_MS = 1500;
 
 const storage = () => {
   try {
@@ -56,6 +58,8 @@ export function ScrollRestoration() {
 
   /** 자리 붙잡기를 시작하는 함수 (아래 effect가 채움) */
   const holdRef = useRef<((target: () => number | undefined) => void) | null>(null);
+  /** 마지막 뒤로·앞으로 이동 시각. 그 직후의 경로 변화는 저장된 자리로 돌아가는 중이라 # 이동을 하지 않습니다. */
+  const traversedAt = useRef(Number.NEGATIVE_INFINITY);
 
   useEffect(() => {
     let holding: { target: () => number | undefined; start: number; idleSince: number } | null =
@@ -102,6 +106,7 @@ export function ScrollRestoration() {
     const onPopState = (event: PopStateEvent) => {
       // 앞서 붙잡던 자리(이전 화면의 위치)는 언제나 놓습니다.
       stopHold();
+      traversedAt.current = performance.now();
       // 같은 화면 안의 # 이동이거나 그 기록으로 돌아온 경우는 브라우저가 맡습니다.
       if (isAppHistoryEntry(event.state)) restoreSaved();
     };
@@ -139,6 +144,8 @@ export function ScrollRestoration() {
   const pathname = usePathname();
   useEffect(() => {
     if (!window.location.hash || isBackForwardLoad()) return;
+    // 뒤로·앞으로 이동으로 이 화면에 돌아왔으면 저장된 자리를 지킵니다.
+    if (performance.now() - traversedAt.current < TRAVERSAL_WINDOW_MS) return;
     holdRef.current?.(() => {
       const element = hashTarget();
       return element ? topOf(element) : undefined;

@@ -62,3 +62,23 @@ test("주소에 #이 붙은 채 열면 그 진열장으로 갑니다", async ({ 
   await page.goto("/vault#golden-bride");
   await expect(page.getByRole("article", { name: "황금 신부" })).toBeInViewport();
 });
+
+test("#이 붙은 전시실에서 더 내려가 신 화면에 갔다가 뒤로 오면, # 대상이 아니라 보던 자리로 돌아옵니다", async ({
+  page,
+}) => {
+  await page.goto("/vault#kusanagi");
+  await expect(page.getByRole("article", { name: "구사나기의 검" })).toBeInViewport();
+  // 누를 링크를 먼저 화면에 들인 뒤 위치를 잽니다(클릭이 스스로 더 스크롤하지 않게).
+  const owner = page
+    .getByRole("article", { name: "여의금고봉" })
+    .getByRole("link", { name: "손오공" });
+  await owner.scrollIntoViewIfNeeded();
+  const y = await page.evaluate(() => Math.round(window.scrollY));
+  await owner.click();
+  await expect(page).toHaveURL("/figures/sun-wukong");
+  await page.goBack();
+  await expect(page).toHaveURL("/vault#kusanagi");
+  await expect
+    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - y))
+    .toBeLessThan(5);
+});
