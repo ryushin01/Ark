@@ -7,7 +7,7 @@ import { WORK_MEDIUM_LABEL, WORK_STATUS_LABEL } from "@/entities/work";
 import { getWork, getWorks } from "@/entities/work/index.server";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
-import { Notice, PageHeader } from "@/shared/ui/admin";
+import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
 
 import { WorkForm } from "./WorkForm";
 import { WorkImages } from "./WorkImages";
@@ -66,13 +66,7 @@ export async function AdminWorksPage({ saved, deleted }: { saved?: string; delet
                   {WORK_STATUS_LABEL[work.status]}
                 </Badge>
               </Table.Cell>
-              <Table.Cell justify="end">
-                <Button asChild size="1" variant="soft">
-                  <Link href={`/admin/works/${work.slug}`} aria-label={`${work.title} 고치기`}>
-                    고치기
-                  </Link>
-                </Button>
-              </Table.Cell>
+              <EditLinkCell href={`/admin/works/${work.slug}`} name={work.title} />
             </Table.Row>
           ))}
         </Table.Body>

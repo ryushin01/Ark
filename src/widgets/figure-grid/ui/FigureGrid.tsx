@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import styles from "./FigureGrid.module.css";
 
-import type { ArchiveImage } from "@/shared/lib";
+import type { ThumbImage } from "@/shared/lib";
 
 export type FigureCard = {
   slug: string;
@@ -12,7 +12,7 @@ export type FigureCard = {
   epithet: string;
   /** 분류 이름 (예: 신, 영웅, 몬스터 · 신수) */
   kindLabel: string;
-  image: ArchiveImage | null;
+  image: ThumbImage | null;
   exhibitCount: number;
 };
 

@@ -1,6 +1,7 @@
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
+import { toThumb } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
@@ -9,7 +10,6 @@ import styles from "./HomePage.module.css";
 import { type ScoreRow, ScoreRows } from "./ScoreRows";
 import { type ScoreMovement, ScoreStage } from "./ScoreStage";
 
-import type { Exhibit } from "@/entities/exhibit";
 import type { ArchiveImage } from "@/shared/lib";
 
 /** 저작자 표기 의무가 없는 자료. 작은 필름과 콜라주에는 이런 자료만 씁니다. */
@@ -22,8 +22,10 @@ export async function HomePage() {
     getFigures(),
     getExhibits(),
   ]);
-  const firstExhibitOf = (figureSlug: string): Exhibit | null =>
-    exhibits.find((exhibit) => exhibit.figureSlug === figureSlug) ?? null;
+  const thumbOf = (figureSlug: string) => {
+    const exhibit = exhibits.find((item) => item.figureSlug === figureSlug);
+    return exhibit ? toThumb(exhibit.image) : null;
+  };
 
   /** 대표 자료(출처는 화면에 함께 표기)를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
   const imagesOf = (pantheon: (typeof pantheons)[number]) => {
@@ -42,13 +44,17 @@ export async function HomePage() {
 
   const imagesBySlug = new Map(pantheons.map((pantheon) => [pantheon.slug, imagesOf(pantheon)]));
 
-  const movements: ScoreMovement[] = pantheons.map((pantheon) => ({
-    slug: pantheon.slug,
-    name: pantheon.name,
-    nameEn: pantheon.nameEn,
-    eraLabel: pantheon.eraLabel,
-    images: imagesBySlug.get(pantheon.slug) ?? [],
-  }));
+  const movements: ScoreMovement[] = pantheons.map((pantheon) => {
+    const images = imagesBySlug.get(pantheon.slug) ?? [];
+    return {
+      slug: pantheon.slug,
+      name: pantheon.name,
+      nameEn: pantheon.nameEn,
+      eraLabel: pantheon.eraLabel,
+      images: images.map(toThumb),
+      coverCredit: images[0]?.credit ?? null,
+    };
+  });
 
   const rows: ScoreRow[] = pantheons.map((pantheon) => ({
     slug: pantheon.slug,
@@ -58,7 +64,7 @@ export async function HomePage() {
     continent: pantheon.continent,
     earliestSource: pantheon.earliestSource,
     figureCount: figures.filter((figure) => figure.pantheonSlug === pantheon.slug).length,
-    images: imagesBySlug.get(pantheon.slug)?.slice(0, 5) ?? [],
+    images: (imagesBySlug.get(pantheon.slug) ?? []).slice(0, 5).map(toThumb),
   }));
 
   const indexGroups: FigureIndexGroup[] = pantheons.map((pantheon) => ({
@@ -72,7 +78,7 @@ export async function HomePage() {
         name: figure.name,
         nameEn: figure.nameEn,
         epithet: figure.epithet,
-        image: firstExhibitOf(figure.slug)?.image ?? null,
+        image: thumbOf(figure.slug),
       })),
   }));
 

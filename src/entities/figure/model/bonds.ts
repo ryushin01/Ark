@@ -3,7 +3,7 @@
  * 신 상세에 보여 주고, ZERO가 카드 장착 결속에 씁니다(sync:ark로 이 파일을 읽음). 모양을 바꾸면 ZERO에도 알립니다.
  * rider·partner는 Ark에 있는 신·인물의 slug입니다.
  */
-export const BOND_RELATIONS = ["mount", "companion"] as const;
+const BOND_RELATIONS = ["mount", "companion"] as const;
 export type BondRelation = (typeof BOND_RELATIONS)[number];
 
 export type Bond = {
@@ -29,7 +29,7 @@ export const BONDS: Bond[] = [
 ];
 
 /** 신 상세에 쓰는 이름: 이 신의 탈것·동반자, 이 존재를 타거나 곁에 둔 신 */
-export const BOND_LABEL: Record<BondRelation, { own: string; of: string }> = {
+const BOND_LABEL: Record<BondRelation, { own: string; of: string }> = {
   mount: { own: "탈것", of: "타는 이" },
   companion: { own: "동반자", of: "함께하는 이" },
 };

@@ -1,13 +1,4 @@
-export {
-  type Bond,
-  BOND_LABEL,
-  BOND_RELATIONS,
-  type BondRelation,
-  type BondRow,
-  BONDS,
-  findBonds,
-} from "./model/bonds";
-export { SLUG_PATTERN } from "./model/schema";
+export { type Bond, type BondRelation, type BondRow, findBonds } from "./model/bonds";
 export {
   type Figure,
   FIGURE_KIND_LABEL,

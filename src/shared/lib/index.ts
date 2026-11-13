@@ -1,5 +1,6 @@
-export type { ArchiveImage, ImageCredit } from "./archive-image";
-export { formatCredit } from "./archive-image";
+export type { ArchiveImage, ImageCredit, ThumbImage } from "./archive-image";
+export { formatCredit, toThumb } from "./archive-image";
+export { optionalText, SLUG_PATTERN, slugField } from "./form-fields";
 export {
   type FormState,
   INITIAL_FORM_STATE,
@@ -14,4 +15,3 @@ export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";
 export { isMotionOff, useMotionOff } from "./use-motion-off";
-export { useScrollProgress } from "./use-scroll-progress";
