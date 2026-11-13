@@ -61,3 +61,13 @@
     font-family: var(--font-body);
     font-size: var(--text-sm);
 }
+
+.kind {
+    font-size: var(--text-sm);
+    line-height: 2;
+}
+
+.relicName {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+}

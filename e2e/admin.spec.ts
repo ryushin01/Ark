@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 
+import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
 
 /** 메모리 저장소를 함께 쓰므로 어드민 테스트는 순서대로 실행합니다. */
@@ -149,6 +150,28 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
   ).toBeVisible();
 });
 
+test("관리자는 유물을 고치고, 지닌 이를 비우면 안내를 받습니다", async ({ page }) => {
+  await login(page, "admin");
+  await page.goto("/admin/relics/gram");
+
+  const sigurd = page.getByRole("checkbox", { name: "시구르드" });
+  await expect(sigurd).toBeChecked();
+  await sigurd.uncheck();
+  await expect(page.getByRole("checkbox", { checked: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page.getByText("지닌 이나 관련 인물을 하나 이상 골라 주세요.")).toBeVisible();
+
+  await page.getByRole("checkbox", { name: "시구르드" }).check();
+  await page.getByLabel(/^힘/).fill("E2E: 모루를 둘로 가른 칼");
+  await page.getByRole("button", { name: "저장" }).click();
+  await expect(page).toHaveURL(/\/admin\/relics\?saved=gram/);
+
+  await expect(async () => {
+    await page.goto("/vault/gram");
+    await expect(page.getByText("E2E: 모루를 둘로 가른 칼")).toBeVisible({ timeout: 1000 });
+  }).toPass();
+});
+
 test("관리자는 계보를 고치고, 형식이나 주소가 틀리면 안내를 받습니다", async ({ page }) => {
   await login(page, "admin");
   await page.goto("/admin/genealogies/norse");
@@ -181,7 +204,10 @@ test("자료가 연결된 신은 지울 수 없습니다", async ({ page }) => {
   await page.goto("/admin/figures/odin");
   await page.getByRole("button", { name: "삭제" }).click();
   await page.getByRole("alertdialog").getByRole("button", { name: "삭제" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "연결된 자료 3점" })).toBeVisible();
+  const odinExhibits = MOCK_EXHIBITS.filter((exhibit) => exhibit.figureSlug === "odin").length;
+  await expect(
+    page.getByRole("alert").filter({ hasText: `연결된 자료 ${odinExhibits}점` }),
+  ).toBeVisible();
 });
 
 for (const path of [
@@ -192,6 +218,8 @@ for (const path of [
   "/admin/works/new",
   "/admin/genealogies",
   "/admin/genealogies/greek",
+  "/admin/relics",
+  "/admin/relics/mjolnir",
 ]) {
   test(`${path}: 접근성 위반이 없습니다 (axe)`, async ({ page }) => {
     if (path !== "/admin/login") await login(page, "demo");

@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import Link from "next/link";
 
+import { reportError } from "@/shared/lib";
+
 import styles from "./SiteErrorPage.module.css";
 
 type ErrorPageProps = { error: unknown; retry: () => void };
@@ -16,6 +18,7 @@ export function SiteErrorPage({ error, retry }: ErrorPageProps) {
 
   useEffect(() => {
     console.error(error);
+    reportError(error);
   }, [error]);
 
   return (

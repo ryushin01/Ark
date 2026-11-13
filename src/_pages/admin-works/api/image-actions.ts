@@ -6,17 +6,14 @@ import { z } from "zod";
 import { getWork, setWorkImages, WORK_TAG } from "@/entities/work/index.server";
 import { checkImageFile, removeStoredImage, uploadImage } from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import { type FormState, optionalText, readForm, toFieldErrors, withValues } from "@/shared/lib";
 
 const imageInfoSchema = z.object({
   alt: z
     .string()
     .trim()
     .min(5, "대체 텍스트는 이미지가 무엇을 보여 주는지 5자 이상으로 설명해 주세요."),
-  artist: z
-    .string()
-    .trim()
-    .transform((value) => value || null),
+  artist: optionalText(),
   license: z.string().trim().min(1, "권리 표기를 입력해 주세요. 예) © 2004 TYPE-MOON"),
   sourceUrl: z.url("출처 주소를 https://로 시작하는 주소로 입력해 주세요."),
 });

@@ -1,8 +1,6 @@
 export type { Json } from "./database.types";
 export {
   checkImageFile,
-  IMAGE_BUCKET,
-  MAX_IMAGE_BYTES,
   removeStoredImage,
   type StoredImage,
   uploadImage,

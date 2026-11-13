@@ -9,7 +9,7 @@ import { CreditLine, HandArrow, HandCircle, HandNote } from "@/shared/ui";
 
 import styles from "./ScoreStage.module.css";
 
-import type { ArchiveImage } from "@/shared/lib";
+import type { ImageCredit, ThumbImage } from "@/shared/lib";
 
 export type ScoreMovement = {
   slug: string;
@@ -17,7 +17,9 @@ export type ScoreMovement = {
   nameEn: string;
   eraLabel: string;
   /** 첫 장이 대표 자료입니다. 나머지는 저작자 표기 의무가 없는 자료만 넣습니다. */
-  images: ArchiveImage[];
+  images: ThumbImage[];
+  /** 대표 자료(첫 장)가 출처 전체 목록(README)에 없을 때만(어드민에서 더하거나 고친 자료) 화면에 함께 보여 줄 출처 */
+  coverCredit?: ImageCredit;
 };
 
 /** 콜라주 자리(무대 폭·높이에 대한 %). 재생선 둘레에 모입니다. */
@@ -30,8 +32,7 @@ const SLOTS = [
 ];
 
 const pad = (value: number) => String(value).padStart(2, "0");
-const thumbRatio = ({ width, height }: ArchiveImage) =>
-  Math.min(1.7, Math.max(0.6, width / height));
+const thumbRatio = ({ width, height }: ThumbImage) => Math.min(1.7, Math.max(0.6, width / height));
 
 /**
  * 첫 화면: 악보
@@ -98,7 +99,6 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
   };
 
   if (!current) return null;
-  const cover = current.images[0];
 
   return (
     <section
@@ -196,9 +196,9 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
               <span aria-hidden="true">▸ </span>
               {current.name}
             </p>
-            {cover && (
+            {current.coverCredit && (
               <p className={styles.credit}>
-                <CreditLine credit={cover.credit} linkClassName={styles.creditLink} />
+                <CreditLine credit={current.coverCredit} linkClassName={styles.creditLink} />
               </p>
             )}
           </div>

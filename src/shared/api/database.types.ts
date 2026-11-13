@@ -208,6 +208,60 @@ export type Database = {
           },
         ];
       };
+      relics: {
+        Row: {
+          exhibit_id: string | null;
+          figure_slugs: string[];
+          kind: string;
+          name: string;
+          name_en: string;
+          origin: string;
+          power: string;
+          price: string | null;
+          slug: string;
+          sort_order: number;
+          source: string;
+          updated_at: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          exhibit_id?: string | null;
+          figure_slugs?: string[];
+          kind: string;
+          name: string;
+          name_en: string;
+          origin: string;
+          power: string;
+          price?: string | null;
+          slug: string;
+          sort_order?: number;
+          source: string;
+          updated_at?: string;
+        };
+        Update: {
+          exhibit_id?: string | null;
+          figure_slugs?: string[];
+          kind?: string;
+          name?: string;
+          name_en?: string;
+          origin?: string;
+          power?: string;
+          price?: string | null;
+          slug?: string;
+          sort_order?: number;
+          source?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "relics_exhibit_id_fkey";
+            columns: ["exhibit_id"];
+            isOneToOne: false;
+            referencedRelation: "exhibits";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       works: {
         Row: {
           created_at: string;
