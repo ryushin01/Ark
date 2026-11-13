@@ -10,14 +10,14 @@
 - Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
 - 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                                                                                                          |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                         |
-| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
-| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                       |
-| `features` | `admin-auth`                                                                                                                                                                                      |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                                             |
-| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                |
+| 계층       | 슬라이스                                                                                                                                                                                                                          |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                                                         |
+| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `vault`(비밀 전시실·유물 상세), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                                                       |
+| `features` | `admin-auth`                                                                                                                                                                                                                      |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품), `relic`(신화 속 유물)                                                                                                                      |
+| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                                |
 
 ## 디자인
 
