@@ -1,13 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Button, Flex, Table, Text } from "@radix-ui/themes";
+import { Flex, Table, Text } from "@radix-ui/themes";
 
 import { EXHIBIT_KIND_LABEL } from "@/entities/exhibit";
 import { getExhibit, getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
-import { Notice, PageHeader } from "@/shared/ui/admin";
+import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
 
 import { ExhibitForm } from "./ExhibitForm";
 
@@ -60,16 +59,7 @@ export async function AdminExhibitsPage({ saved, deleted }: { saved?: string; de
               </Table.RowHeaderCell>
               <Table.Cell>{figureName(exhibit.figureSlug)}</Table.Cell>
               <Table.Cell>{exhibit.image.credit.license}</Table.Cell>
-              <Table.Cell justify="end">
-                <Button asChild size="1" variant="soft">
-                  <Link
-                    href={`/admin/exhibits/${exhibit.id}`}
-                    aria-label={`${exhibit.title} 고치기`}
-                  >
-                    고치기
-                  </Link>
-                </Button>
-              </Table.Cell>
+              <EditLinkCell href={`/admin/exhibits/${exhibit.id}`} name={exhibit.title} />
             </Table.Row>
           ))}
         </Table.Body>

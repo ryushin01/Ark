@@ -1,5 +1,5 @@
 export { ConfirmDeleteButton } from "./ConfirmDeleteButton";
-export { FormField } from "./FormField";
+export { EditLinkCell } from "./EditLinkCell";
 export { FormStatus } from "./FormStatus";
 export { FileInput, SelectInput, TextAreaInput, TextInput } from "./inputs";
 export { Notice } from "./Notice";

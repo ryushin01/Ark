@@ -1,12 +1,11 @@
 import sharp, { type OutputInfo } from "sharp";
 
-import { describeUploadProblem, UPLOAD } from "../config";
+import { describeUploadProblem } from "../config";
 import { getSupabase } from "./supabase.server";
 
 import "server-only";
 
-export const IMAGE_BUCKET = "images";
-export const MAX_IMAGE_BYTES = UPLOAD.maxBytes;
+const IMAGE_BUCKET = "images";
 
 export type StoredImage = { src: string; width: number; height: number };
 
