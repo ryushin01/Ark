@@ -2,26 +2,41 @@ import Link from "next/link";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
+import { getPantheons } from "@/entities/pantheon/index.server";
 import { RELIC_KIND_LABEL } from "@/entities/relic";
 import { getRelics } from "@/entities/relic/index.server";
 import { RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
+import { groupByPantheon } from "../model/group";
 import { RelicImage } from "./RelicImage";
 import styles from "./VaultPage.module.css";
 
 export const vaultMetadata = {
   title: "비밀 전시실",
   description:
-    "묠니르, 아이기스, 구사나기의 검, 천부인처럼 신과 영웅이 쥐었던 신화 속 유물을, 그 힘과 그 힘이 치르게 한 대가와 함께 전시합니다.",
+    "묠니르, 아이기스, 구사나기의 검, 천부인, 성배처럼 신과 영웅이 쥐었던 신화 속 유물을, 그 힘과 그 힘이 치르게 한 대가와 함께 전시합니다.",
 };
 
 const pad = (order: number) => String(order).padStart(2, "0");
 
 /** 비밀 전시실: 신화 속 유물을 한 점씩 진열장에 놓고, 기원·힘·대가를 함께 보여 줍니다. */
 export async function VaultPage() {
-  const [relics, figures, exhibits] = await Promise.all([getRelics(), getFigures(), getExhibits()]);
+  const [relics, figures, exhibits, pantheons] = await Promise.all([
+    getRelics(),
+    getFigures(),
+    getExhibits(),
+    getPantheons(),
+  ]);
   const figureName = new Map(figures.map((figure) => [figure.slug, figure.name]));
+  const pantheonBySlug = new Map(pantheons.map((pantheon) => [pantheon.slug, pantheon]));
+  const figurePantheon = new Map(
+    figures.map((figure) => [figure.slug, pantheonBySlug.get(figure.pantheonSlug)]),
+  );
+  const groups = groupByPantheon(relics, (slug) => figurePantheon.get(slug));
+  const groupLabel = new Map(
+    groups.flatMap((group) => group.relics.map((relic) => [relic.slug, group.label])),
+  );
   const imageOf = new Map(exhibits.map((exhibit) => [exhibit.id, exhibit.image]));
 
   return (
@@ -44,16 +59,25 @@ export async function VaultPage() {
         <h2 id="vault-index-title" className={styles.indexTitle}>
           전시 목록
         </h2>
-        <ol className={styles.indexList}>
-          {relics.map((relic) => (
-            <li key={relic.slug}>
-              <a href={`#${relic.slug}`} className={styles.indexLink}>
-                <span className={styles.indexNo}>{pad(relic.order)}</span>
-                {relic.name}
-              </a>
-            </li>
+        <div className={styles.indexGroups}>
+          {groups.map((group) => (
+            <section key={group.key} aria-labelledby={`vault-group-${group.key}`}>
+              <h3 id={`vault-group-${group.key}`} className={styles.groupTitle}>
+                {group.label} <span className={styles.groupCount}>{group.relics.length}</span>
+              </h3>
+              <ol className={styles.indexList}>
+                {group.relics.map((relic) => (
+                  <li key={relic.slug}>
+                    <a href={`#${relic.slug}`} className={styles.indexLink}>
+                      <span className={styles.indexNo}>{pad(relic.order)}</span>
+                      {relic.name}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </section>
           ))}
-        </ol>
+        </div>
       </nav>
 
       <ol className={styles.halls}>
@@ -78,7 +102,8 @@ export async function VaultPage() {
                 </div>
                 <div className={styles.label}>
                   <p className={styles.no}>
-                    <span lang="en">No. {pad(relic.order)}</span> · {RELIC_KIND_LABEL[relic.kind]}
+                    <span lang="en">No. {pad(relic.order)}</span> · {RELIC_KIND_LABEL[relic.kind]} ·{" "}
+                    {groupLabel.get(relic.slug)}
                   </p>
                   <h2 id={`${relic.slug}-name`} className={styles.name}>
                     {relic.name}

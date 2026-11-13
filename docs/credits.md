@@ -2,7 +2,7 @@
 
 > 자동 생성 파일입니다. 고치지 말고 `pnpm credits`로 다시 만듭니다. (데이터: `src/entities/exhibit/api/mock-data.ts`, `mock/commons-images.json`)
 
-Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 도메인·CC0·CC BY·CC BY-SA 자료입니다. 화면 크기에 맞게 줄여(긴 변 1,600px, JPEG) 씁니다.
+Ark의 소장 자료 이미지 320점은 모두 Wikimedia Commons의 퍼블릭 도메인·CC0·CC BY·CC BY-SA 자료입니다. 화면 크기에 맞게 줄여(긴 변 1,600px, JPEG) 씁니다.
 
 | 자료 | 저작자 | 사용 허락 | 원본 |
 | ---- | ------ | --------- | ---- |
@@ -38,6 +38,7 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 번개를 든 바알 석비 (`baal-ugarit`) | Jastrow | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Baal_thunderbolt_Louvre_AO15775.jpg) |
 | 바바 야가 (`baba-yaga-bilibin`) | Ivan Bilibin | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bilibin._Baba_Yaga.jpg) |
 | 발드르의 죽음 (`baldr-eckersberg`) | Christoffer Wilhelm Eckersberg | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Baldr_dead_by_Eckersberg.jpg) |
+| 발드르의 장례 (`baldr-hringhorni`) | Louis Moe | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Balders_B%C3%A5lf%C3%A6rd_-_Louis_Moe_(17005-1)_-_cropped.png) |
 | 귀부인 신령과 시녀 (바리공주로 추정) (`bari-lacma`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spirit_of_a_Noble_Woman_(Probably_Princess_Pari)_and_Attendant_LACMA_M.2000.15.11.jpg) |
 | 바롱 켓 (`barong-bali`) | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Barong_Ket,_Bali,_undated_-_Spurlock_Museum,_UIUC_-_DSC05997.jpg) |
 | 바스테트 소상 (`bastet-met`) | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bastet_MET_DP310891.jpg) |
@@ -105,6 +106,7 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 풍신뇌신도 (오른쪽 병풍, 후진) (`fujin-sotatsu`) | Tawara Sōtatsu | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tawaraya_S%C5%8Dtatsu_-_The_Gods_of_Wind_and_Thunder_(right_screen).jpg) |
 | 복희와 여와 (`fuxi-nuwa`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Anonymous-Fuxi_and_N%C3%BCwa.jpg) |
 | 갤러해드 경 (`galahad-commons`) | Joseph Noel Paton | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Joseph_Noel_Paton_Sir_Galahad_JKAM.jpg) |
+| 원탁에 나타난 성배 (`galahad-grail`) | Évrard d'Espinques | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Holy-grail-round-table-bnf-ms_fr-116F-f610v-15th-detail.jpg) |
 | 피그말리온과 갈라테이아 (`galatea-commons`) | Jean-Léon Gérôme | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pygmalion_and_Galatea_MET_DT1969.jpg) |
 | 가네샤 (`ganesha-rijks`) | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ganesha,_AK-MAK-237.jpg) |
 | 오크니의 가레스 경 (`gareth-commons`) | Howard Pyle | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sir_Gareth_of_Orkney.png) |
@@ -118,11 +120,15 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 하토르 얼굴 기둥머리 (`hathor-capital`) | Rama | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Capital_depicting_Hathor-MAHG_027868-P6130434-white.jpg) |
 | 헥토르와 카산드라 (`hector-commons`) | Jastrow | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hector_Cassandra_Pomarici_Santomasi.jpg) |
 | 무지개다리의 헤임달 (`heimdall-doepler`) | Emil Doepler | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heimdall_an_der_Himmelsbr%C3%BCcke.jpg) |
+| 불카누스에게 들킨 마르스와 베누스 (`hephaestus-net`) | Alexandre-Charles Guillemot | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Guillemot,_Alexandre_Charles_-_Mars_and_Venus_Surprised_by_Vulcan_-_Google_Art_Project.jpg) |
 | 불카누스의 대장간 (`hephaestus-velazquez`) | Diego Velázquez | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_La_Fragua_de_Vulcano_(Museo_del_Prado,_1630).jpg) |
 | 헤라 흉상 (`hera-barberini`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hera_Barberini_Chiaramonti_Inv1210.jpg) |
+| 베누스의 띠를 빌리는 유노 (`hera-cestus`) | Élisabeth Louise Vigée Le Brun | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Elisabeth_Louise_Vig%C3%A9e-Le_Brun_-_Juno_Borrowing_the_Belt_of_Venus,_1781.jpg) |
 | 파르네세의 헤라클레스 (`heracles-farnese`) | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Giorgio_Sommer_(Italian,_1834-1914)_-_Farnese_Hercules,_Museum_of_Naples,_Italy_-_2018.436_-_Cleveland_Museum_of_Art.jpg) |
+| 히폴리테의 허리띠를 얻는 헤라클레스 (`heracles-girdle`) | Nikolaus Knüpfer | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nicolaes_Kn%C3%BCpfer_-_Hercules_Obtaining_the_Girdle_of_Hyppolita_-_WGA12217.jpg) |
 | 케리케이온을 든 헤르메스 (`hermes-caduceus`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Medallion_from_the_atrium_of_the_House_of_the_Greek_Epigrams_Pompeii_depicting_Hermes_(Mercury)_with_petasus_and_caduceus_1877.jpg) |
 | 헤르메스 잉게누이 (`hermes-ingenui`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hermes_Ingenui_Pio-Clementino_Inv544.jpg) |
+| 날개 달린 샌들을 신는 메르쿠리우스 (`hermes-talaria`) | Jean-Baptiste Pigalle | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mercury_Pigalle_Louvre_RF3023.jpg) |
 | 사자를 제압하는 영웅 (`hero-lion`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hero_lion_Dur-Sharrukin_Louvre_AO19862.jpg) |
 | 기비히 왕과 싸우는 힐데브란트 (`hildebrand-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:HILDEBRANT_ROSENGARTEN.png) |
 | 히폴리테 (`hippolyta-commons`) | Galle, Philips | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portret_van_Hippolyta_Thesei_of_Theseus._NL-HlmNHA_1477_53008292.JPG) |
@@ -168,6 +174,7 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 죽지 않는 코셰이 (`koschei-commons`) | Ivan Bilibin | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ivan_Bilibin_Koshchey.jpg) |
 | 지크프리트와 크림힐트 (`kriemhild-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Siegfried_and_Kriemhild.jpg) |
 | 고바르다나산을 들어 올린 크리슈나 (`krishna-govardhan`) | Miskin | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Krishna_Holds_Up_Mount_Govardhan_to_Shelter_the_Villagers_of_Braj,_ca.1590%E2%80%9395,_The_Met.jpg) |
+| 시야만타카를 찬 프라세나 (`krishna-syamantaka`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Satrajit_Prasena_Syamantaka.jpg) |
 | 깃털로 만든 쿠의 신상 (`ku-hawaii`) | Lebrac | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kuka%27ilimoku.jpg) |
 | 치첸이차의 엘 카스티요 (쿠쿨칸 신전) (`kukulkan-castillo`) | Arian Zwegers from Brussels, Belgium | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Chichen_Itza,_El_Castillo_(14180679857).jpg) |
 | 락롱꾸언 목조 부조 (`lac-long-quan-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ph%C3%B9_%C4%91i%C3%AAu_Qu%E1%BB%91c_t%E1%BB%95_L%E1%BA%A1c_Long_Qu%C3%A2n_t%E1%BA%A1i_%C4%90%E1%BB%81n_N%E1%BB%99i_B%C3%ACnh_%C4%90%C3%A0.jpg) |
@@ -202,9 +209,12 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 까마귀 (「전투하는 쿠 훌린」 부분) (`morrigan`) | Joseph Christian Leyendecker | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Morrigan.jpg) |
 | 이그드라실 (`nidhogg-yggdrasil`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:AM_738_4to_Yggdrasill.png) |
 | 도곤 인물 조각 (`nommo-dogon`) | Rama | [CC BY-SA 3.0 fr](https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dogon_sculpture-73.1977.6.1-DSC00255-58-black.jpg) |
+| 돌을 녹여 하늘을 깁는 여와 (`nuwa-stones`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:%E5%A5%B3%E5%AA%A7%E6%B0%8F%E7%85%89%E7%9F%B3%E8%A3%9C%E5%A4%A9.jpg) |
 | 티타니아와 오베론의 화해 (`oberon-commons`) | Joseph Noel Paton | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Joseph_Noel_Paton_-_The_Reconciliation_of_Titania_and_Oberon.jpg) |
+| 오딘과 군로드 (`odin-gunnlod`) | Lorenz Frølich | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Odin_and_Gunnl%C3%B6%C3%B0_by_Fr%C3%B8lich.jpg) |
 | 궁니르를 들고 슬레이프니르를 탄 오딘 (`odin-sleipnir`) | Lorenz Frølich | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Odin_holding_Gungnir_atop_Sleipnir_by_Fr%C3%B8lich.jpg) |
 | 방랑자 오딘 (`odin-wanderer`) | Georg von Rosen | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Georg_von_Rosen_-_Oden_som_vandringsman,_1886_(Odin,_the_Wanderer).jpg) |
+| 오디세우스의 활을 든 페넬로페 (`odysseus-bow`) | Robert Cromek / After Henry Fuseli | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Robert_Hartley_Cromek_-_Penelope_Holding_the_Bow_of_Odysseus,_1806.jpg) |
 | 오디세우스와 개 아르고스 (`odysseus-commons`) | Frederick Stacpoole / After Briton Rivière | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ulysses_and_Argo_(cropped).png) |
 | 오지에 르 다누아 (`ogier-commons`) | Saddhiyama | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Holger_Danske_i_Sk%C3%A6vinge_kirke.jpg) |
 | 오신과 니아브 (`oisin-commons`) | Beatrice Elvery | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_230.png) |
@@ -235,10 +245,12 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 라-호라크티 앞의 공양 석비 (`ra-horakhty-stela`) | Photograph by Oriental Institute, the University of Chicago; painter unknown | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Re-Horakhty_Stela.jpg) |
 | 뇌신 (`raijin-hokusai`) | Katsushika Hokusai | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Katsushika_Hokusai_-_Thunder_God_-_Google_Art_Project.jpg) |
 | 활과 화살을 든 라마 (`rama-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lord_Rama_with_arrows.jpg) |
+| 시바의 활을 부러뜨리는 라마 (`rama-pinaka`) | Raja Ravi Varma | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ravi_Varma-Rama-breaking-bow.jpg) |
 | 랑다 가면 (`rangda-bali`) | Silar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:02021_0109_(1)_Rangda_mask.jpg) |
 | 까마귀를 새긴 기둥 조각 (`raven-haida`) | Hiart | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Totemic_raven_carving_(fragment)_in_the_Visitor_Center,_Sitka_National_Historical_Park,.jpg) |
 | 르노 드 몽토방의 죽음 (`renaud-commons`) | Louis Petit de Julleville | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:HLLF-T1-d264-265_Les_quatre_fils_Aimon.png) |
 | 로빈 후드와 메이드 메리언 (`robin-hood-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Robin-hood-and-maid-marion-01.png) |
+| 롱스보의 롤랑 (`roland-durendal`) | Louis Félix Guesnet | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RolandACloss.jpg) |
 | 론세스바예스의 롤랑 (`roland-roncevaux-dore`) | Gustave Doré | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Roland_%C3%A0_Roncevaux.jpg) |
 | 로물루스와 레무스 (`romulus-remus-rubens`) | Peter Paul Rubens | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Romulus_and_Remus_-_Google_Art_Project.jpg) |
 | 흰 악마를 무찌르는 루스탐 (`rostam-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rostam_killing_the_White_Demon.jpg) |
@@ -256,6 +268,7 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 칼라를 물리치는 시바 (`shiva-trishula`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kalantaka_-_Shiva_killed_Kala.jpg) |
 | 여인들에 둘러싸인 슈텐도지 (`shuten-doji-commons`) | Tsukioka Yoshitoshi | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Shutendoji_Surrounded_by_Women_LACMA_M.84.31.32.jpg) |
 | 레긴의 대장간의 지크프리트 (`siegfried-forge-hauschild`) | Wilhelm Ernst Ferdinand Franz Hauschild | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Siegfried_dans_la_forge_de_Regin.jpg) |
+| 타른카페를 쓴 지크프리트 (`siegfried-tarnkappe`) | Julius Schnorr von Carolsfeld | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pfizer_(1843)-ed-Nibelungen_Not-p124-sigfrid-in-tarnkappen.jpg) |
 | 명검 그람을 시험하는 시구르드 (`sigurd-commons`) | Johannes Gehrts | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sigurd_pr%C3%BCft_das_Schwert_Gram.png) |
 | 로크의 알을 깨는 상인들 (`sinbad-commons`) | Gustave Doré | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sinbad_the_Sailor_(5th_Voyage).jpg) |
 | 오디세우스와 세이렌 (`sirens-waterhouse`) | John William Waterhouse | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_-_Google_Art_Project.jpg) |
@@ -299,6 +312,7 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 티와나쿠의 태양의 문 (`viracocha-tiwanaku`) | Bgabel | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bol-tihuanaco-sonnentor.jpg) |
 | 아난타 위에 누운 비슈누 (`vishnu-anantashayana`) | Rainer Halama | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mattancherry_Palace-16-17th_Century_mural_paintings-Vishnu_Anantashayana-WUS09329.jpg) |
 | 비슈누상의 원반(차크라) (`vishnu-chakra`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:The_Hindu_God_Vishnu_LACMA_M.70.5.1_Chakra_(cropped).jpg) |
+| 우유 바다 휘젓기 (`vishnu-churning`) | Fattu | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Churning_of_the_ocean_-_Manthan.jpg) |
 | 도망치는 발터와 힐트군트 (`walter-of-aquitaine-commons`) | Johannes Gehrts | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Walther_und_Hildgund_auf_de_Flucht.png) |
 | 라쇼몬에서 오니와 싸우는 와타나베노 쓰나 (`watanabe-no-tsuna-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Watanabe_Tsuna_fighting_the_demond_at_the_Rashomon.jpg) |
 | 심장의 무게 달기 (후네페르의 「사자의 서」) (`weighing-heart`) | Photographed by the British Museum; original artist unknown | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BD_Weighing_of_the_Heart.jpg) |
@@ -309,5 +323,6 @@ Ark의 소장 자료 이미지 305점은 모두 Wikimedia Commons의 퍼블릭 �
 | 적의 소굴에 뜬 달, 야마토타케루 (`yamato-takeru-commons`) | Tsukioka Yoshitoshi | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Yamato_Takeru_at_16-crop.jpg) |
 | 황제 초상 (`yellow-emperor-commons`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Portraits_of_Famous_Men_-_Yellow_Emperor_(Huangdi).jpg) |
 | 유화를 찾은 금와왕 (`yuhwa-commons`) | Sadahide Utagawa | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lady_Yuhwa_and_King_Geumwa.png) |
+| 벼락을 던지는 제우스 (`zeus-dodona`) | Gary Todd | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Greek_Bronze_Statuette_of_Zeus_Casting_Thunderbolt,_from_Sanctuary_of_Zeus_at_Dodona,_c._470_BC_(28119982014).jpg) |
 | 오트리콜리의 제우스 (`zeus-otricoli`) | 작자 미상 | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Zeus_Otricoli_Pio-Clementino_Inv257.jpg) |
 | 주슈-너톨 코덱스 75쪽 (`zouche-nuttall-75`) | Zelia Nuttall | Public domain | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Codex_Zouche-Nuttall_Page_75.png) |

@@ -15,6 +15,8 @@ describe("신화 속 유물", () => {
     expect(relicsOf(MOCK_RELICS, "odin").map((relic) => relic.slug)).toEqual([
       "gungnir",
       "draupnir",
+      "hringhorni",
+      "mead-of-poetry",
     ]);
     expect(relicsOf(MOCK_RELICS, "laima")).toEqual([]);
   });

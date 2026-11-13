@@ -103,6 +103,61 @@ const SEEDS: RelicSeed[] = [
     source: "「뵐숭 일족의 사가」",
     exhibitId: "sigurd-commons",
   },
+  {
+    slug: "andvaranaut",
+    name: "안드바라나우트",
+    nameEn: "Andvaranaut",
+    kind: "ornament",
+    figureSlugs: ["loki", "sigurd"],
+    origin:
+      "로키가 수달로 변해 있던 오트르를 죽인 몸값을 채우려고, 강꼬치고기로 숨어 살던 드베르그 안드바리를 붙잡아 황금과 함께 빼앗은 금반지입니다.",
+    power: "지닌 이에게 금을 불려 줍니다.",
+    price:
+      "빼앗긴 안드바리가 반지와 황금에 저주를 걸어, 흐레이드마르와 아들 파프니르, 그리고 시구르드까지 이 황금을 가진 이들이 차례로 죽었습니다.",
+    source: "「레긴의 노래」, 「스노리 에다」, 「뵐숭 일족의 사가」",
+    exhibitId: null,
+  },
+  {
+    slug: "sword-of-freyr",
+    name: "프레이르의 칼",
+    nameEn: "Sword of Freyr",
+    kind: "weapon",
+    figureSlugs: ["skirnir"],
+    origin:
+      "풍요의 신 프레이르의 칼입니다. 거인 여인 게르드에게 반한 프레이르가 사자 스키르니르에게 구혼을 맡기며 그 값으로 내주었습니다.",
+    power: "지혜로운 이가 쥐면 스스로 거인들과 싸웁니다.",
+    price: "칼을 내준 프레이르는 라그나로크 때 사슴뿔 하나로 불의 거인 수르트와 맞서다 쓰러집니다.",
+    source: "「스키르니르의 여행」, 「스노리 에다」",
+    exhibitId: "skirnir-commons",
+  },
+  {
+    slug: "hringhorni",
+    name: "흐링호르니",
+    nameEn: "Hringhorni",
+    kind: "treasure",
+    figureSlugs: ["baldr", "odin"],
+    origin: "빛의 신 발드르의 배로, 모든 배 가운데 가장 크다고 합니다.",
+    power:
+      "발드르가 죽자 신들은 이 배에서 그를 화장하려 했지만 배가 꿈쩍하지 않아, 거인 여인 히로킨을 불러 겨우 바다로 밀어 띄웠습니다.",
+    price:
+      "발드르의 몸과 함께 슬픔에 죽은 아내 난나, 그의 말, 오딘이 올린 반지 드라우프니르까지 이 배 위에서 불탔습니다.",
+    source: "「스노리 에다」",
+    exhibitId: "baldr-hringhorni",
+  },
+  {
+    slug: "mead-of-poetry",
+    name: "시의 꿀술",
+    nameEn: "Mead of Poetry",
+    kind: "treasure",
+    figureSlugs: ["odin"],
+    origin:
+      "가장 지혜로운 이 크바시르를 죽인 드베르그들이 그의 피에 꿀을 섞어 빚은 술로, 뒤에 거인 수퉁이 산속에 감추고 딸 군로드에게 지키게 했습니다.",
+    power: "마시면 누구든 시인이나 학자가 됩니다.",
+    price:
+      "오딘은 군로드와 사흘 밤을 지낸 대가로 세 모금을 얻어 술을 모두 마셔 버렸고, 독수리로 변해 아스가르드로 달아났습니다.",
+    source: "「스노리 에다」 시어법, 「높은 이의 말」",
+    exhibitId: "odin-gunnlod",
+  },
   // 그리스
   {
     slug: "aegis",
@@ -236,6 +291,116 @@ const SEEDS: RelicSeed[] = [
     source: "아폴로도로스 「비블리오테케」",
     exhibitId: "heracles-farnese",
   },
+  {
+    slug: "apple-of-discord",
+    name: "불화의 황금 사과",
+    nameEn: "Apple of Discord",
+    kind: "treasure",
+    figureSlugs: ["paris", "aphrodite", "hera", "athena"],
+    origin:
+      "펠레우스와 테티스의 결혼식에 초대받지 못한 불화의 여신 에리스가 '가장 아름다운 이에게'라고 적어 던져 넣은 사과입니다.",
+    power:
+      "헤라와 아테나, 아프로디테가 서로 제 것이라 다투었고, 제우스는 판정을 트로이의 왕자 파리스에게 맡겼습니다.",
+    price:
+      "아프로디테를 고른 파리스는 헬레네를 얻었지만, 그 일로 트로이 전쟁이 일어나 트로이가 무너졌습니다.",
+    source: "「키프리아」 요약, 히기누스 「이야기」",
+    exhibitId: "paris-commons",
+  },
+  {
+    slug: "keraunos",
+    name: "케라우노스",
+    nameEn: "Thunderbolt of Zeus",
+    kind: "weapon",
+    figureSlugs: ["zeus"],
+    origin: "제우스가 타르타로스에서 풀어 준 키클롭스들이 고마움의 뜻으로 만들어 준 벼락입니다.",
+    power: "이 벼락으로 제우스는 티탄들과 괴물 티폰을 쓰러뜨리고 신들의 왕이 되었습니다.",
+    price:
+      "아스클레피오스가 죽은 이를 되살리자 제우스는 벼락으로 그를 죽였고, 분노한 아폴론은 벼락을 만든 키클롭스들을 죽였습니다.",
+    source: "헤시오도스 「신들의 계보」, 아폴로도로스 「비블리오테케」",
+    exhibitId: "zeus-dodona",
+  },
+  {
+    slug: "talaria",
+    name: "날개 달린 샌들",
+    nameEn: "Talaria",
+    kind: "tool",
+    figureSlugs: ["hermes", "perseus"],
+    origin: "신들의 전령 헤르메스가 신는 황금 샌들입니다.",
+    power:
+      "신으면 바다와 땅 위를 바람처럼 날 수 있습니다. 페르세우스는 님프들에게서 이 샌들을 받아 메두사가 사는 곳까지 날아갔습니다.",
+    price: null,
+    source: "「오디세이아」 5권, 아폴로도로스 「비블리오테케」",
+    exhibitId: "hermes-talaria",
+  },
+  {
+    slug: "girdle-of-hippolyta",
+    name: "히폴리테의 허리띠",
+    nameEn: "Girdle of Hippolyta",
+    kind: "ornament",
+    figureSlugs: ["hippolyta", "heracles"],
+    origin:
+      "아마조네스의 여왕 히폴리테가 군신 아레스에게 받은 허리띠로, 헤라클레스의 아홉째 과업이 이것을 가져오는 일이었습니다.",
+    power: "아마조네스를 다스리는 여왕의 권위를 나타냅니다.",
+    price:
+      "히폴리테는 띠를 내주려 했지만 헤라가 아마조네스를 부추겨 싸움이 났고, 헤라클레스는 히폴리테를 죽이고 띠를 빼앗았습니다.",
+    source: "아폴로도로스 「비블리오테케」",
+    exhibitId: "heracles-girdle",
+  },
+  {
+    slug: "necklace-of-harmonia",
+    name: "하르모니아의 목걸이",
+    nameEn: "Necklace of Harmonia",
+    kind: "ornament",
+    figureSlugs: ["cadmus", "hephaestus"],
+    origin:
+      "테바이를 세운 카드모스가 하르모니아와 혼인할 때 준 목걸이입니다. 아내의 바람을 원망한 헤파이스토스가 만들었다고도 합니다.",
+    power: "지닌 여인을 영원히 젊고 아름답게 한다고 합니다.",
+    price:
+      "대대로 지닌 이들에게 불행을 불러와, 목걸이를 받고 남편을 전쟁터로 보낸 에리필레를 비롯해 테바이 왕가가 차례로 파멸했습니다.",
+    source: "아폴로도로스 「비블리오테케」, 스타티우스 「테바이스」",
+    exhibitId: null,
+  },
+  {
+    slug: "bow-of-odysseus",
+    name: "오디세우스의 활",
+    nameEn: "Bow of Odysseus",
+    kind: "weapon",
+    figureSlugs: ["odysseus"],
+    origin:
+      "오이칼리아의 이피토스가 우정의 표시로 준 활로, 오디세우스는 트로이로 떠날 때 집에 두고 갔습니다.",
+    power: "오디세우스 말고는 누구도 시위를 걸지 못했습니다.",
+    price:
+      "스무 해 만에 거지 차림으로 돌아온 오디세우스는 이 활로 열두 도끼 구멍을 꿰뚫은 뒤, 아내에게 구혼하던 이들을 모두 쏘아 죽였습니다.",
+    source: "「오디세이아」 21~22권",
+    exhibitId: "odysseus-bow",
+  },
+  {
+    slug: "cestus",
+    name: "아프로디테의 띠",
+    nameEn: "Cestus of Aphrodite",
+    kind: "ornament",
+    figureSlugs: ["aphrodite", "hera"],
+    origin: "사랑의 여신 아프로디테가 가슴에 두르는 수놓은 띠입니다.",
+    power: "사랑과 그리움, 마음을 빼앗는 달콤한 말이 수놓여 있어 누구든 사로잡습니다.",
+    price:
+      "헤라는 이 띠를 빌려 제우스를 홀린 뒤 잠들게 했고, 그사이 포세이돈이 트로이 전쟁에서 그리스군을 도왔습니다.",
+    source: "「일리아스」 14권",
+    exhibitId: "hera-cestus",
+  },
+  {
+    slug: "net-of-hephaestus",
+    name: "헤파이스토스의 그물",
+    nameEn: "Net of Hephaestus",
+    kind: "tool",
+    figureSlugs: ["hephaestus", "aphrodite"],
+    origin:
+      "아내 아프로디테가 아레스와 몰래 만난다는 것을 태양신 헬리오스에게 전해 들은 헤파이스토스가 만든 사슬 그물입니다.",
+    power: "거미줄처럼 가늘어 눈에 보이지 않지만, 신도 빠져나갈 수 없습니다.",
+    price:
+      "그물에 걸린 두 신을 본 신들은 크게 웃었고, 헤파이스토스는 자기 집안의 부끄러움을 모두에게 드러낸 셈이 되었습니다.",
+    source: "「오디세이아」 8권",
+    exhibitId: "hephaestus-net",
+  },
   // 이집트
   {
     slug: "wedjat",
@@ -262,6 +427,19 @@ const SEEDS: RelicSeed[] = [
     source: "「사자의 서」 125장",
     exhibitId: "weighing-heart",
   },
+  {
+    slug: "book-of-thoth",
+    name: "토트의 책",
+    nameEn: "Book of Thoth",
+    kind: "treasure",
+    figureSlugs: ["thoth"],
+    origin: "지혜의 신 토트가 손수 쓴 마법서로, 강물 속 상자 안의 상자에 겹겹이 감춰져 있었습니다.",
+    power: "읽으면 하늘과 땅, 바다의 비밀과 새와 짐승의 말을 알게 됩니다.",
+    price:
+      "책을 찾아낸 왕자 네페르카프타는 아내와 아들을 잃고 스스로 목숨을 끊었고, 뒤에 그 무덤에서 책을 가져간 왕자 세트네도 화를 당한 끝에 책을 돌려놓았습니다.",
+    source: "「세트네 카엠와세트 이야기」(데모틱 문서)",
+    exhibitId: null,
+  },
   // 메소포타미아
   {
     slug: "tablet-of-destinies",
@@ -273,6 +451,34 @@ const SEEDS: RelicSeed[] = [
     power: "지닌 이에게 신들 위의 권위와 운명을 정하는 힘을 줍니다.",
     price: "마르두크는 티아마트를 쓰러뜨리고 킨구에게서 서판을 빼앗아 신들의 왕이 되었습니다.",
     source: "「에누마 엘리시」, 「안주 이야기」",
+    exhibitId: null,
+  },
+  {
+    slug: "plant-of-youth",
+    name: "젊음의 풀",
+    nameEn: "Plant of Rejuvenation",
+    kind: "treasure",
+    figureSlugs: ["gilgamesh"],
+    origin:
+      "홍수에서 살아남아 영생을 얻은 우트나피쉬팀이 길가메시에게 알려 준, 바다 밑에 자라는 가시 돋친 풀입니다.",
+    power: "먹으면 늙은이가 다시 젊어집니다.",
+    price:
+      "길가메시가 샘에서 몸을 씻는 사이 뱀이 풀을 물고 가 허물을 벗었고, 길가메시는 빈손으로 우루크에 돌아왔습니다.",
+    source: "「길가메시 서사시」 11서판",
+    exhibitId: null,
+  },
+  {
+    slug: "seven-ornaments-of-ishtar",
+    name: "이슈타르의 일곱 장신구",
+    nameEn: "Seven Ornaments of Ishtar",
+    kind: "ornament",
+    figureSlugs: ["ishtar", "ereshkigal"],
+    origin:
+      "저승으로 내려가는 이슈타르가 몸에 걸친 관, 귀걸이, 목걸이, 가슴 장식, 허리띠, 팔찌와 발찌, 옷입니다.",
+    power: "하늘의 여신이 지닌 권능을 나타냅니다.",
+    price:
+      "저승의 일곱 문을 지날 때마다 하나씩 벗겨져, 이슈타르는 알몸으로 언니 에레쉬키갈 앞에 섰다가 죽임을 당했습니다.",
+    source: "「이슈타르의 저승 하강」, 수메르 「인안나의 저승 하강」",
     exhibitId: null,
   },
   // 인도
@@ -353,6 +559,60 @@ const SEEDS: RelicSeed[] = [
     source: "「마하바라타」, 「바가바타 푸라나」",
     exhibitId: "parashurama-commons",
   },
+  {
+    slug: "brahmastra",
+    name: "브라마스트라",
+    nameEn: "Brahmastra",
+    kind: "weapon",
+    figureSlugs: ["ashwatthama", "arjuna", "krishna"],
+    origin: "창조신 브라마의 힘을 담은 무기로, 주문을 외워 불러냅니다.",
+    power: "세상을 태울 만큼 강해, 같은 브라마스트라로만 맞설 수 있습니다.",
+    price:
+      "쿠루크셰트라 전쟁 끝에 아르주나는 무기를 거두었지만 아슈바타만은 거두지 못해 판다바 가문의 태아에게 돌렸고, 크리슈나의 저주로 3천 년 동안 떠돌게 되었습니다.",
+    source: "「마하바라타」",
+    exhibitId: null,
+  },
+  {
+    slug: "pinaka",
+    name: "피나카",
+    nameEn: "Pinaka",
+    kind: "weapon",
+    figureSlugs: ["shiva", "rama"],
+    origin: "시바의 활로, 미틸라의 자나카 왕 집안에 대대로 맡겨져 있었습니다.",
+    power: "수백 명이 끌어야 움직일 만큼 무거워 누구도 시위를 걸지 못했습니다.",
+    price:
+      "시타의 신랑을 고르는 자리에서 라마가 활을 들어 시위를 당기다 둘로 부러뜨려 시타와 혼인했지만, 이 일로 시바를 따르는 파라슈라마의 노여움을 샀습니다.",
+    source: "「라마야나」",
+    exhibitId: "rama-pinaka",
+  },
+  {
+    slug: "amrita",
+    name: "암리타",
+    nameEn: "Amrita",
+    kind: "treasure",
+    figureSlugs: ["vishnu", "indra", "shiva"],
+    origin:
+      "신들과 아수라가 만다라산을 막대로, 뱀 바수키를 줄로 삼아 우유 바다를 휘저어 얻은 불사의 감로입니다.",
+    power:
+      "마시면 죽지 않습니다. 비슈누가 아름다운 여인 모히니로 변해 아수라를 속이고 신들에게만 나누어 주었습니다.",
+    price:
+      "휘젓는 동안 독 할라할라가 솟자 시바가 삼켜 목이 푸르게 되었고, 감로를 몰래 마시던 아수라 라후는 비슈누에게 목이 베였습니다.",
+    source: "「마하바라타」, 「바가바타 푸라나」",
+    exhibitId: "vishnu-churning",
+  },
+  {
+    slug: "syamantaka",
+    name: "시야만타카",
+    nameEn: "Syamantaka",
+    kind: "ornament",
+    figureSlugs: ["krishna"],
+    origin: "태양신 수리야가 사트라지트에게 준 보석입니다.",
+    power: "날마다 금을 낳고, 지닌 나라에는 가뭄과 재앙이 들지 않는다고 합니다.",
+    price:
+      "보석을 차고 사냥 나간 프라세나가 사자에게 죽자 사람들은 크리슈나가 훔쳤다고 의심했고, 크리슈나는 곰의 왕 잠바반과 싸워 보석을 되찾은 뒤에야 누명을 벗었습니다.",
+    source: "「비슈누 푸라나」, 「바가바타 푸라나」",
+    exhibitId: "krishna-syamantaka",
+  },
   // 일본
   {
     slug: "kusanagi",
@@ -380,6 +640,32 @@ const SEEDS: RelicSeed[] = [
     price: null,
     source: "「고사기」, 「일본서기」",
     exhibitId: "amaterasu-iwato",
+  },
+  {
+    slug: "yasakani-no-magatama",
+    name: "야사카니의 곡옥",
+    nameEn: "Yasakani no Magatama",
+    kind: "ornament",
+    figureSlugs: ["amaterasu"],
+    origin:
+      "아마테라스를 동굴에서 꾀어내려고 신들이 야타의 거울과 함께 비쭈기나무에 걸어 둔 굽은 구슬 꾸러미입니다.",
+    power: "구사나기의 검, 야타의 거울과 함께 세 가지 신기로 전합니다.",
+    price: null,
+    source: "「고사기」, 「일본서기」",
+    exhibitId: null,
+  },
+  {
+    slug: "ame-no-nuboko",
+    name: "아메노누보코",
+    nameEn: "Ame-no-Nuboko",
+    kind: "weapon",
+    figureSlugs: ["izanagi-izanami"],
+    origin: "하늘의 신들이 땅을 만들라며 이자나기와 이자나미에게 내린 구슬 장식 창입니다.",
+    power:
+      "두 신이 하늘에 걸린 다리에 서서 이 창으로 바다를 휘저었고, 창끝에서 떨어진 소금물이 굳어 첫 섬 오노고로가 되었습니다.",
+    price: null,
+    source: "「고사기」",
+    exhibitId: "izanagi-izanami",
   },
   // 중국
   {
@@ -419,6 +705,48 @@ const SEEDS: RelicSeed[] = [
     source: "「회남자」",
     exhibitId: "change-moon",
   },
+  {
+    slug: "five-colored-stones",
+    name: "오색석",
+    nameEn: "Five-colored Stones",
+    kind: "treasure",
+    figureSlugs: ["nuwa"],
+    origin:
+      "하늘을 받치던 기둥이 무너져 하늘에 구멍이 나자, 여와가 다섯 빛깔 돌을 녹여 만든 돌입니다.",
+    power: "구멍 난 하늘을 메웠고, 여와는 큰 거북의 다리를 잘라 네 기둥으로 세웠습니다.",
+    price: null,
+    source: "「회남자」",
+    exhibitId: "nuwa-stones",
+  },
+  {
+    slug: "peaches-of-immortality",
+    name: "반도",
+    nameEn: "Peaches of Immortality",
+    kind: "treasure",
+    figureSlugs: ["xiwangmu", "sun-wukong"],
+    origin:
+      "서왕모의 정원 반도원에 자라는 복숭아로, 가장 오래된 나무는 9천 년에 한 번 열매가 익습니다.",
+    power: "먹으면 하늘과 땅만큼 오래 삽니다.",
+    price:
+      "반도원을 지키던 손오공이 몰래 따 먹고 잔치를 망쳤다가, 끝내 오행산 아래 5백 년 동안 갇혔습니다.",
+    source: "「서유기」",
+    exhibitId: null,
+  },
+  {
+    slug: "qiankun-quan",
+    name: "건곤권과 혼천릉",
+    nameEn: "Qiankun Quan and Huntian Ling",
+    kind: "weapon",
+    figureSlugs: ["nezha"],
+    origin:
+      "나타가 태어날 때부터 지니고 나온 금 고리와 붉은 비단띠로, 스승 태을진인이 내렸다고 합니다.",
+    power:
+      "혼천릉을 바다에 담가 흔들자 동해 용궁이 흔들렸고, 건곤권을 던져 용왕의 셋째 아들을 쓰러뜨렸습니다.",
+    price:
+      "용왕이 부모를 벌하려 하자 나타는 살을 베어 어머니에게, 뼈를 발라 아버지에게 돌려준 뒤 연꽃 몸으로 다시 태어났습니다.",
+    source: "「봉신연의」",
+    exhibitId: null,
+  },
   // 한국
   {
     slug: "cheonbuin",
@@ -431,6 +759,46 @@ const SEEDS: RelicSeed[] = [
       "환웅은 이것을 지니고 무리 삼천과 함께 태백산 신단수 아래로 내려왔습니다. 무엇이었는지는 전하지 않아 거울·칼·방울로 보는 견해가 있습니다.",
     price: null,
     source: "「삼국유사」 고조선 조",
+    exhibitId: null,
+  },
+  {
+    slug: "flowers-of-life",
+    name: "바리공주의 약수와 꽃",
+    nameEn: "Water and Flowers of Life",
+    kind: "treasure",
+    figureSlugs: ["bari"],
+    origin:
+      "버려진 일곱째 공주 바리가 병든 부모를 살리려고 저승 너머 서천 서역국에서 구해 온 약수와 꽃입니다.",
+    power: "뼈살이꽃, 살살이꽃 같은 꽃과 약수로 이미 숨이 끊어진 부모를 되살렸습니다.",
+    price:
+      "바리는 약수를 지키는 이에게 물 긷기, 나무하기, 불 때기를 아홉 해 동안 하고 그와 혼인해 아들 일곱을 낳은 뒤에야 약수를 얻었습니다.",
+    source: "무가 「바리공주」",
+    exhibitId: "bari-lacma",
+  },
+  {
+    slug: "oryongeo",
+    name: "오룡거",
+    nameEn: "Five-Dragon Chariot",
+    kind: "treasure",
+    figureSlugs: ["haemosu", "yuhwa"],
+    origin: "천제의 아들 해모수가 하늘에서 타고 내려온, 다섯 마리 용이 끄는 수레입니다.",
+    power: "해모수는 아침에 내려와 인간 세상을 다스리고 저녁이면 하늘로 올라갔습니다.",
+    price:
+      "해모수는 유화를 데려가려다 그 아버지 하백과 재주를 겨루었고, 끝내 유화를 두고 홀로 하늘로 돌아갔습니다.",
+    source: "이규보 「동명왕편」",
+    exhibitId: null,
+  },
+  {
+    slug: "gold-box-of-gujibong",
+    name: "구지봉의 금합",
+    nameEn: "Golden Box of Gujibong",
+    kind: "treasure",
+    figureSlugs: ["suro"],
+    origin:
+      "구지봉에서 아홉 촌장과 사람들이 「구지가」를 부르자, 하늘에서 자줏빛 줄에 매달려 내려온 붉은 보자기 속 금빛 상자입니다.",
+    power: "상자 안의 황금 알 여섯 개에서 수로왕과 다섯 가야의 왕이 태어났습니다.",
+    price: null,
+    source: "「삼국유사」 가락국기",
     exhibitId: null,
   },
   // 켈트
@@ -446,6 +814,19 @@ const SEEDS: RelicSeed[] = [
     source: "「쿨리의 소 습격」, 「아이페의 외아들의 죽음」",
     exhibitId: "cuchulainn-leyendecker",
   },
+  {
+    slug: "fragarach",
+    name: "프라가라흐",
+    nameEn: "Fragarach",
+    kind: "weapon",
+    figureSlugs: ["manannan"],
+    origin:
+      "바다의 신 마난난 막 리르의 칼로, 이름은 '답하는 자'라는 뜻입니다. 빛의 신 루에게 건넸다고도 합니다.",
+    power: "겨누어진 이는 움직이지 못하고 진실만 말하게 되며, 어떤 갑옷도 벤다고 전합니다.",
+    price: null,
+    source: "후대 아일랜드 전승",
+    exhibitId: null,
+  },
   // 아서왕 전설
   {
     slug: "excalibur",
@@ -459,6 +840,20 @@ const SEEDS: RelicSeed[] = [
       "모건 르 페이가 칼집을 훔쳐 버렸고, 마지막 싸움에서 크게 다친 아서는 베디비어에게 칼을 호수로 돌려보내게 했습니다.",
     source: "토머스 맬러리 「아서의 죽음」",
     exhibitId: "bedivere-commons",
+  },
+  {
+    slug: "holy-grail",
+    name: "성배",
+    nameEn: "Holy Grail",
+    kind: "treasure",
+    figureSlugs: ["galahad", "percival", "lancelot", "king-arthur"],
+    origin:
+      "맬러리의 이야기에서 성배는 오순절에 원탁 위로 빛과 함께 나타나, 기사들을 탐색의 길로 떠나게 했습니다.",
+    power: "병을 고치고 은총을 내리며, 마음이 깨끗한 기사만 가까이 갈 수 있습니다.",
+    price:
+      "탐색에 나선 많은 기사가 돌아오지 못해 원탁이 흩어지기 시작했고, 성배를 본 갤러해드는 그대로 세상을 떠났습니다.",
+    source: "토머스 맬러리 「아서의 죽음」",
+    exhibitId: "galahad-grail",
   },
   // 핀란드
   {
@@ -487,6 +882,128 @@ const SEEDS: RelicSeed[] = [
       "삼포를 두고 싸우는 동안 바다에 잃어버려, 자작나무로 새 칸텔레를 다시 만들어야 했습니다.",
     source: "「칼레발라」",
     exhibitId: "vainamoinen-kantele",
+  },
+  {
+    slug: "golden-bride",
+    name: "황금 신부",
+    nameEn: "Golden Bride",
+    kind: "treasure",
+    figureSlugs: ["ilmarinen", "vainamoinen"],
+    origin: "아내를 잃은 대장장이 일마리넨이 금과 은을 불에 넣어 벼려 낸 신부입니다.",
+    power: "눈부시게 아름답지만, 곁에 누우면 닿은 쪽 몸이 얼어붙을 만큼 차갑습니다.",
+    price:
+      "일마리넨이 신부를 베이네뫼이넨에게 주려 하자, 베이네뫼이넨은 금으로 만든 아내를 찾지 말라며 물리쳤습니다.",
+    source: "「칼레발라」",
+    exhibitId: null,
+  },
+  // 슬라브
+  {
+    slug: "needle-of-koschei",
+    name: "코셰이의 바늘",
+    nameEn: "Needle of Koschei",
+    kind: "treasure",
+    figureSlugs: ["koschei"],
+    origin: "죽지 않는 코셰이가 자기 죽음을 숨겨 둔 바늘입니다.",
+    power:
+      "바늘은 알 속에, 알은 오리 속에, 오리는 토끼 속에, 토끼는 쇠 상자 속에 들어 참나무 아래 묻혀 있어 아무도 코셰이를 죽이지 못했습니다.",
+    price: "짐승들의 도움으로 알을 찾아낸 이반 왕자가 바늘을 부러뜨리자 코셰이는 죽었습니다.",
+    source: "러시아 민담 「마리야 모레브나」",
+    exhibitId: "koschei-commons",
+  },
+  {
+    slug: "mortar-of-baba-yaga",
+    name: "바바 야가의 절구",
+    nameEn: "Mortar of Baba Yaga",
+    kind: "tool",
+    figureSlugs: ["baba-yaga"],
+    origin: "숲속 닭다리 오두막에 사는 마녀 바바 야가가 타고 다니는 절구입니다.",
+    power: "절구를 타고 절굿공이로 노를 저으며 숲 위를 날고, 빗자루로 지나간 자취를 쓸어 지웁니다.",
+    price: null,
+    source: "러시아 민담 「아름다운 바실리사」",
+    exhibitId: "baba-yaga-bilibin",
+  },
+  // 폴리네시아
+  {
+    slug: "jawbone-of-maui",
+    name: "마우이의 턱뼈",
+    nameEn: "Jawbone of Muri-ranga-whenua",
+    kind: "weapon",
+    figureSlugs: ["maui"],
+    origin: "마우이가 할머니 무리랑아훼누아에게서 얻은 마법의 턱뼈입니다.",
+    power:
+      "마우이는 밧줄로 해를 붙잡고 이 턱뼈로 때려 해가 천천히 지나가게 했고, 턱뼈로 만든 낚싯바늘로 바다에서 땅을 낚아 올렸습니다.",
+    price: null,
+    source: "마오리 전승",
+    exhibitId: "maui-polynesian",
+  },
+  // 메소아메리카
+  {
+    slug: "smoking-mirror",
+    name: "연기 나는 거울",
+    nameEn: "Smoking Mirror",
+    kind: "tool",
+    figureSlugs: ["tezcatlipoca", "quetzalcoatl"],
+    origin: "밤의 신 테스카틀리포카의 이름('연기 나는 거울')이 된 흑요석 거울입니다.",
+    power: "세상과 사람의 마음을 비춰 봅니다.",
+    price:
+      "대지의 괴물과 싸우다 발 하나를 잃어 그 자리에 거울을 달았다고 하며, 이 거울에 늙은 모습을 비춰 보인 꾀로 케찰코아틀을 톨란에서 떠나게 했습니다.",
+    source: "나우아 전승(「피렌체 코덱스」 등)",
+    exhibitId: "tezcatlipoca-borgia",
+  },
+  {
+    slug: "xiuhcoatl",
+    name: "시우코아틀",
+    nameEn: "Xiuhcoatl",
+    kind: "weapon",
+    figureSlugs: ["huitzilopochtli"],
+    origin: "전쟁과 태양의 신 우이칠로포치틀리가 태어나자마자 쥔 불의 뱀입니다.",
+    power:
+      "어머니 코아틀리쿠에를 죽이려던 누이 코욜샤우키를 이 무기로 베고, 사백 형제를 물리쳤습니다.",
+    price: "코욜샤우키의 몸은 코아테펙산 아래로 굴러떨어져 산산조각 났습니다.",
+    source: "「피렌체 코덱스」 3권",
+    exhibitId: "huitzilopochtli-wdl",
+  },
+  // 이란
+  {
+    slug: "derafsh-kaviani",
+    name: "카베의 깃발",
+    nameEn: "Derafsh Kaviani",
+    kind: "treasure",
+    figureSlugs: ["kaveh", "fereydun"],
+    origin: "대장장이 카베가 폭군 자하크에 맞서 일어서며 가죽 앞치마를 창끝에 달아 든 깃발입니다.",
+    power:
+      "사람들이 이 깃발 아래 모여 페레이둔을 왕으로 세웠고, 뒤에 보석으로 꾸며져 이란 왕들의 깃발이 되었습니다.",
+    price:
+      "카베는 아들 열여덟 가운데 열일곱을 자하크의 어깨에 돋은 뱀의 먹이로 잃은 뒤에 일어섰습니다.",
+    source: "페르도우시 「샤나메」",
+    exhibitId: "kaveh-commons",
+  },
+  // 중세 유럽 서사시
+  {
+    slug: "durendal",
+    name: "뒤랑달",
+    nameEn: "Durendal",
+    kind: "weapon",
+    figureSlugs: ["roland", "charlemagne"],
+    origin: "롤랑이 샤를마뉴에게서 받은 칼로, 황금 손잡이 안에 성유물이 들어 있었다고 합니다.",
+    power: "무엇이든 벨 만큼 날카롭습니다.",
+    price:
+      "롱스보 고개에서 홀로 남은 롤랑은 칼이 적의 손에 들어가지 않게 바위에 내리쳤지만 바위만 갈라졌고, 너무 늦게 뿔피리 올리판트를 불어 숨을 거두었습니다.",
+    source: "「롤랑의 노래」",
+    exhibitId: "roland-durendal",
+  },
+  {
+    slug: "tarnkappe",
+    name: "타른카페",
+    nameEn: "Tarnkappe",
+    kind: "armor",
+    figureSlugs: ["siegfried"],
+    origin: "지크프리트가 난쟁이 알베리히에게서 빼앗은 망토입니다.",
+    power: "걸치면 모습이 보이지 않고 힘이 열두 사람만큼 세집니다.",
+    price:
+      "지크프리트는 이 망토를 쓰고 몰래 군터를 도와 브륀힐트를 이기게 했는데, 이 속임수가 드러나 하겐에게 죽임을 당했습니다.",
+    source: "「니벨룽의 노래」",
+    exhibitId: "siegfried-tarnkappe",
   },
 ];
 

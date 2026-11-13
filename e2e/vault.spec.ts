@@ -16,6 +16,8 @@ test("메뉴의 '유물'로 비밀 전시실에 들어가 전시 목록에서 �
   await index.getByRole("link", { name: /구사나기의 검/ }).click();
   await expect(page).toHaveURL("/vault#kusanagi");
   const vitrine = page.getByRole("article", { name: "구사나기의 검" });
+  // 같은 화면 안의 # 이동을 스크롤 되돌리기가 맨 위로 되돌리지 않습니다.
+  await expect(vitrine).toBeInViewport();
   await expect(vitrine.getByText("힘", { exact: true })).toBeVisible();
   await expect(vitrine.getByRole("link", { name: "스사노오" })).toHaveAttribute(
     "href",
@@ -54,4 +56,9 @@ test("신 상세의 '지닌 유물'에서 진열장으로 갑니다", async ({ p
   await expect(
     page.getByRole("heading", { level: 1, name: "묠니르" }).filter({ visible: true }),
   ).toBeVisible();
+});
+
+test("주소에 #이 붙은 채 열면 그 진열장으로 갑니다", async ({ page }) => {
+  await page.goto("/vault#golden-bride");
+  await expect(page.getByRole("article", { name: "황금 신부" })).toBeInViewport();
 });

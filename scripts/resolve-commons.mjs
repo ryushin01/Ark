@@ -59,6 +59,9 @@ const ARTIST_OVERRIDES = {
   "euryale-commons": "Arthur Rackham",
   "fereydun-commons": "Unknown artist",
   "hermes-caduceus": "Unknown artist",
+  "roland-durendal": "Louis Félix Guesnet",
+  "siegfried-tarnkappe": "Julius Schnorr von Carolsfeld",
+  "zeus-dodona": "Gary Todd",
 };
 
 const imageDir = new URL("public/images/exhibits/", root);

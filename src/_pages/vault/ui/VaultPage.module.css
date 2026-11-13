@@ -66,9 +66,24 @@
     letter-spacing: 0.08em;
 }
 
-.indexList {
-    columns: 2 11rem;
-    column-gap: var(--grid-gap);
+.indexGroups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+    gap: 2.5rem var(--grid-gap);
+}
+
+.groupTitle {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+}
+
+.groupCount {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    opacity: 0.6;
 }
 
 .indexLink {
@@ -97,8 +112,7 @@
     padding-block: clamp(4rem, 12vh, 8rem);
     border-top: 1px solid var(--rule);
     scroll-margin-top: var(--header-height);
-    content-visibility: auto;
-    contain-intrinsic-block-size: auto 60rem;
+    /* content-visibility는 쓰지 않습니다. 그리기를 미룬 진열장의 높이가 추정값이라 전시 목록의 # 이동이 엉뚱한 곳에 멈춥니다. */
 }
 
 .vitrine {
