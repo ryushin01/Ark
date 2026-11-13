@@ -119,7 +119,9 @@ export function RelicForm({ relic, nextOrder, figures, exhibits }: RelicFormProp
             style={{ border: 0, margin: 0, padding: 0 }}
             aria-describedby={figureError ? "figureSlugs-error" : undefined}
           >
-            <legend style={LEGEND_STYLE}>지닌 이·관련 인물 (첫 번째가 대표 주인)</legend>
+            <legend style={LEGEND_STYLE}>
+              지닌 이·관련 인물 (고칠 때는 원래 대표 주인이 그대로 첫 번째에 남습니다)
+            </legend>
             <CheckboxGroup.Root name="figureSlugs" defaultValue={checked}>
               <Grid columns={{ initial: "2", sm: "4" }} gap="2">
                 {figures.map((figure) => (

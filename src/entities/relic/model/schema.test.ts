@@ -24,6 +24,10 @@ describe("유물 입력값", () => {
     expect(parsed.order).toBe(1);
   });
 
+  it("전시 순서는 DB 정수 범위 안이어야 한다", () => {
+    expect(relicInputSchema.safeParse({ ...valid, order: "2147483648" }).success).toBe(false);
+  });
+
   it("지닌 이가 없거나 갈래가 잘못되면 거부한다", () => {
     const result = relicInputSchema.safeParse({ ...valid, figureSlugs: [], kind: "spaceship" });
     expect(result.success).toBe(false);

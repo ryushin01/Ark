@@ -30,7 +30,8 @@ export const relicInputSchema = z.object({
   order: z.coerce
     .number({ error: "전시 순서를 숫자로 입력해 주세요." })
     .int("전시 순서는 정수로 입력해 주세요.")
-    .min(1, "전시 순서는 1 이상입니다."),
+    .min(1, "전시 순서는 1 이상입니다.")
+    .max(2_147_483_647, "전시 순서가 너무 큽니다."),
 });
 
 export type RelicInput = z.infer<typeof relicInputSchema>;
