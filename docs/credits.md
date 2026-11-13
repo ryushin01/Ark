@@ -1,12 +1,12 @@
 # 자료 그림 출처
 
-Ark가 보여 주는 자료 그림 325점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
+Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
 
 > 이 파일은 `pnpm credits`가 자료 데이터(`src/entities/exhibit/api/mock-data.ts`와 `mock/commons-images.json`, 시드와 같은 데이터)에서 만듭니다. 직접 고치지 말고 데이터를 고친 뒤 다시 만드세요. 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
 
 | 사용 허락 | 점 |
 | --- | ---: |
-| Public domain | 246 |
+| Public domain | 247 |
 | CC0 | 45 |
 | CC BY-SA 4.0 | 11 |
 | No restrictions | 5 |
@@ -82,6 +82,7 @@ Ark가 보여 주는 자료 그림 325점의 저작자·사용 허락·원본입
 | 우유 바다 휘젓기 | 비슈누 | Fattu | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Churning_of_the_ocean_-_Manthan.jpg) |
 | 시바의 활을 부러뜨리는 라마 | 라마 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ravi_Varma-Rama-breaking-bow.jpg) |
 | 시야만타카를 찬 프라세나 | 크리슈나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Satrajit_Prasena_Syamantaka.jpg) |
+| 인드라의 창으로 가토트카차를 쓰러뜨리는 카르나 | 카르나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Karna,_one_of_the_Kauravas,_slays_the_Pandavas%27_nephew_Ghatotkacha_with_a_weapon_given_to_him_by_Indra,_the_king_of_the_gods,_from_a_manuscript_of_the_Razmnama.jpg) |
 
 ## 그리스 신화
 

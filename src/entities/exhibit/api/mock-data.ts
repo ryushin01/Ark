@@ -3273,6 +3273,16 @@ const SEEDS: ExhibitSeed[] = [
     note: "「동양의 경전과 초기 문헌」 2권에 실린 도판입니다.",
     alt: "따오기 머리에 높은 관을 쓴 토트가 긴 지팡이를 짚고 옥좌에 앉아 있는 채색 그림",
   },
+  {
+    id: "karna-shakti",
+    figureSlug: "karna",
+    title: "인드라의 창으로 가토트카차를 쓰러뜨리는 카르나",
+    kind: "manuscript",
+    dateLabel: "1616~1617년",
+    holder: null,
+    note: "「라즘나마」 필사본의 한 장입니다. 카르나가 갑옷과 귀걸이를 내준 대가로 인드라에게서 받은 창을 쓰는 장면입니다.",
+    alt: "전차 위에 선 카르나가 긴 창을 던지자 코끼리 등에 탄 가토트카차가 거꾸로 떨어지는 장면. 위아래로 페르시아어 글이 적힌 무굴 세밀화",
+  },
 ];
 
 export const MOCK_EXHIBITS: Exhibit[] = SEEDS.map(({ alt, ...seed }) => ({

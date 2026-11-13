@@ -1,10 +1,10 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.20.2-8a4a1f)
+![version](https://img.shields.io/badge/version-0.20.3-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
-다섯 대륙 여러 문명권의 49개 신화·전설 계열에서 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 325점으로 살펴보고, 신화 속 유물 74점을 비밀 전시실에 모은 세계 신화 도서관입니다.
+다섯 대륙 여러 문명권의 49개 신화·전설 계열에서 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 326점으로 살펴보고, 신화 속 유물 74점을 비밀 전시실에 모은 세계 신화 도서관입니다.
 
 **[데모 바로 보기](https://ark-ryushin01.vercel.app/)** · 어드민은 [/admin](https://ark-ryushin01.vercel.app/admin)에서 **데모 계정으로 둘러보기**를 누르면 됩니다. · **[디자인 시스템(Storybook)](https://ark-ryushin01.vercel.app/storybook/index.html)**
 
@@ -121,7 +121,7 @@ src/
 | ---------------------------------------------- | ------------------------------------------------------------------------- |
 | [개발 가이드](docs/development.md)             | FSD 구조, 디자인 토큰, 데이터와 이미지, 어드민, 환경 변수, 접근성, 테스트 |
 | [시퀀스 다이어그램](docs/sequence-diagrams.md) | 공개 화면 조회, 어드민 로그인, 저장과 캐시 갱신, 이미지 업로드            |
-| [출처 전체 목록](docs/credits.md)              | 자료 그림 325점의 저작자·사용 허락·원본                                   |
+| [출처 전체 목록](docs/credits.md)              | 자료 그림 326점의 저작자·사용 허락·원본                                   |
 | [버전 기록](CHANGELOG.md)                      | 버전별 변경 내용                                                          |
 
 ## 출처
@@ -130,7 +130,7 @@ src/
 
 | 자료                                                                            | 저작자                                                          | 사용 허락                                                                       | 원본                                                                              |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| 자료 그림 325점 (조각상·회화·유물)                                              | 그림마다 다름                                                   | 퍼블릭 도메인 246점, CC0 45점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                  |
+| 자료 그림 326점 (조각상·회화·유물)                                              | 그림마다 다름                                                   | 퍼블릭 도메인 247점, CC0 45점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                  |
 | 작품 일러스트 (어드민에서 올림)                                                 | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                | 작품 갤러리의 이미지마다 권리 표기와 원본                                         |
 | Cinzel 글꼴 (영문 제목)                                                         | The Cinzel Project Authors                                      | SIL OFL 1.1                                                                     | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
 | Hahmlet 글꼴 (한글 제목)                                                        | The Hahmlet Project Authors                                     | SIL OFL 1.1                                                                     | [hyper-type/hahmlet](https://github.com/hyper-type/hahmlet)                       |

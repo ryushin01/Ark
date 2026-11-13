@@ -2923,5 +2923,14 @@
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sacred_Books_and_Early_Literature_of_the_East,_vol._2,_pg._416-417,_Thoth.jpg"
+  },
+  "karna-shakti": {
+    "src": "/images/exhibits/karna-shakti.jpg",
+    "width": 1072,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karna,_one_of_the_Kauravas,_slays_the_Pandavas%27_nephew_Ghatotkacha_with_a_weapon_given_to_him_by_Indra,_the_king_of_the_gods,_from_a_manuscript_of_the_Razmnama.jpg"
   }
 }
