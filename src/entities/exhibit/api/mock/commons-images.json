@@ -2932,5 +2932,41 @@
     "licenseUrl": null,
     "artist": null,
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karna,_one_of_the_Kauravas,_slays_the_Pandavas%27_nephew_Ghatotkacha_with_a_weapon_given_to_him_by_Indra,_the_king_of_the_gods,_from_a_manuscript_of_the_Razmnama.jpg"
+  },
+  "harmonia-necklace-eriphyle": {
+    "src": "/images/exhibits/harmonia-necklace-eriphyle.jpg",
+    "width": 1280,
+    "height": 1536,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Marie-Lan Nguyen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Polynices_Eriphyle_Louvre_G442.jpg"
+  },
+  "gilgamesh-flood-tablet": {
+    "src": "/images/exhibits/gilgamesh-flood-tablet.jpg",
+    "width": 1005,
+    "height": 1137,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "BabelStone",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:British_Museum_Flood_Tablet.jpg"
+  },
+  "korean-bronze-daggers": {
+    "src": "/images/exhibits/korean-bronze-daggers.jpg",
+    "width": 852,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "AsPJT",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Slender_bronze_dagger_in_Korea_in_1978.jpg"
+  },
+  "alberich-ring-stassen": {
+    "src": "/images/exhibits/alberich-ring-stassen.jpg",
+    "width": 834,
+    "height": 1139,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Franz Stassen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Andvari_by_Franz_Stassen.jpg"
   }
 }

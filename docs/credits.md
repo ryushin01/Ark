@@ -1,13 +1,13 @@
 # 자료 그림 출처
 
-Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
+Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
 
 > 이 파일은 `pnpm credits`가 자료 데이터(`src/entities/exhibit/api/mock-data.ts`와 `mock/commons-images.json`, 시드와 같은 데이터)에서 만듭니다. 직접 고치지 말고 데이터를 고친 뒤 다시 만드세요. 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
 
 | 사용 허락 | 점 |
 | --- | ---: |
-| Public domain | 247 |
-| CC0 | 45 |
+| Public domain | 249 |
+| CC0 | 47 |
 | CC BY-SA 4.0 | 11 |
 | No restrictions | 5 |
 | CC BY-SA 3.0 | 4 |
@@ -53,6 +53,7 @@ Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입
 | 하늘의 황소를 제압하는 엔키두 원통 인장 | 엔키두 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Near_Eastern_-_Cylinder_Seal_with_Enkidu_Vanquishing_the_Bull_of_Heaven_-_Walters_42786_-_Side_B.jpg) |
 | 세미라미스 의상 도안 | 세미라미스 | Hippolyte Lecomte | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Rossini_-_Semiramide_-_Paris_1825_-_Hippolyte_Lecomte_-_Semiramis_1er_Costume_(Mdme_Fodor)_(cropped).jpg) |
 | 밤의 여왕(버니 부조) | 에레쉬키갈 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:British_Museum_Queen_of_the_Night.jpg) |
+| 「길가메시 서사시」 11서판(홍수 서판) | 길가메시 | BabelStone | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:British_Museum_Flood_Tablet.jpg) |
 
 ## 인도 신화
 
@@ -159,6 +160,7 @@ Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입
 | 베누스의 띠를 빌리는 유노 | 헤라 | Élisabeth Louise Vigée Le Brun | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Elisabeth_Louise_Vig%C3%A9e-Le_Brun_-_Juno_Borrowing_the_Belt_of_Venus,_1781.jpg) |
 | 오디세우스의 활을 든 페넬로페 | 오디세우스 | Robert Cromek / After Henry Fuseli | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Robert_Hartley_Cromek_-_Penelope_Holding_the_Bow_of_Odysseus,_1806.jpg) |
 | 페르세우스와 바다 님프 | 페르세우스 | Edward Burne-Jones | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Perseus_and_the_Sea_Nymphs_-_Edward_Burne-Jones,_1877.jpg) |
+| 하르모니아의 목걸이를 에리필레에게 내미는 폴리네이케스 | 카드모스 | Marie-Lan Nguyen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Polynices_Eriphyle_Louvre_G442.jpg) |
 
 ## 일본 신화
 
@@ -213,6 +215,7 @@ Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입
 | 발드르의 장례 | 발드르 | Louis Moe | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Balders_B%C3%A5lf%C3%A6rd_-_Louis_Moe_(17005-1)_-_cropped.png) |
 | 오딘과 군로드 | 오딘 | Lorenz Frølich | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Odin_and_Gunnl%C3%B6%C3%B0_by_Fr%C3%B8lich.jpg) |
 | 파리로 변한 로키와 드베르그의 대장간 | 로키 | Arthur Rackham | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Once_again_the_buzzing_fly_came_in_at_the_window_(1901)_by_Arthur_Rackham.jpg) |
+| 보탄과 로게에게 반지를 빼앗기는 알베리히 | 로키 | Franz Stassen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Andvari_by_Franz_Stassen.jpg) |
 
 ## 중국 신화
 
@@ -276,6 +279,7 @@ Ark가 보여 주는 자료 그림 326점의 저작자·사용 허락·원본입
 | 유화를 찾은 금와왕 | 유화 | Sadahide Utagawa | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lady_Yuhwa_and_King_Geumwa.png) |
 | 「전우치전」 | 전우치 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Jeon_Woo-chi_Story.png) |
 | 「홍길동전」 첫 장 | 홍길동 | Heo Gyun | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Honggildongjeon.jpg) |
+| 한반도의 세형동검 | 환웅 | AsPJT | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Slender_bronze_dagger_in_Korea_in_1978.jpg) |
 
 ## 핀란드 신화
 
