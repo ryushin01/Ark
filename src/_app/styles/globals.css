@@ -1,16 +1,15 @@
 /*
  * 글꼴 (모두 SIL OFL, 글자 묶음별 조각 파일이라 화면에 쓰인 글자가 든 조각만 받습니다)
- * - 제목: Cinzel(영문, 석비의 로마 대문자), Hahmlet(한글, 현대 명조).
- *   h1~h3은 600으로 석비 같은 무게를 주고, 소개 문장 같은 나머지 제목 글꼴은 400입니다.
+ * - 제목: Cinzel 600(영문, 석비의 로마 대문자), 나눔명조 800(한글, 획 대비가 분명한 정통 명조).
+ *   한 굵기씩만 받습니다. 두 굵기를 받으면 한글 조각이 두 벌이 되어 전송량이 크게 늘어납니다.
+ *   굵기를 400으로 지정한 소개 문장 등도 이 글꼴로 보입니다. (함렛은 한글이 고딕에 가까워 바꿨습니다)
  * - 본문·표기: Courier Prime(영문·숫자), 한글은 운영체제의 명조 글꼴
  *   (한글 웹 글꼴은 글이 많은 화면에서 수백 KB를 받아 모바일 첫 화면을 늦추므로 본문에는 쓰지 않습니다)
  * - 손글씨 주석: Nanum Pen Script. 주석에 쓰는 글자만 담은 작은 파일입니다.
  *   주석 문구에 새 글자가 들어가면 파일을 다시 만듭니다. (docs/development.md)
  */
-@import "@fontsource/cinzel/400.css";
 @import "@fontsource/cinzel/600.css";
-@import "@fontsource/hahmlet/400.css";
-@import "@fontsource/hahmlet/600.css";
+@import "@fontsource/nanum-myeongjo/800.css";
 @import "@fontsource/courier-prime/400.css";
 
 @font-face {
@@ -61,8 +60,8 @@
      * - 손글씨 주석은 운영체제 손글씨(맥 Nanum Pen Script·Apple Chancery)
      */
     --font-display:
-        "Cinzel", "Hahmlet", "Trajan Pro", "Times New Roman", "AppleMyungjo", "Noto Serif CJK KR",
-        "Noto Serif KR", "Batang", "바탕", serif;
+        "Cinzel", "Nanum Myeongjo", "Trajan Pro", "Times New Roman", "AppleMyungjo",
+        "Noto Serif CJK KR", "Noto Serif KR", "Batang", "바탕", serif;
     --font-sans:
         "Courier Prime", "Courier New", "AppleMyungjo", "Noto Serif CJK KR", "Noto Serif KR",
         "Batang", "바탕", serif;

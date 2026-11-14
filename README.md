@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.20.4-8a4a1f)
+![version](https://img.shields.io/badge/version-0.20.5-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 49개 신화·전설 계열에서 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 330점으로 살펴보고, 신화 속 유물 74점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -58,7 +58,7 @@
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                                                                            |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                                                                                 |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Hahmlet·Courier Prime(한글 본문은 운영체제 명조)                                                                                                             |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Nanum Myeongjo·Courier Prime(한글 본문은 운영체제 명조)                                                                                                      |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                                                                    |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe), eslint-plugin-jsx-a11y, size-limit, Lighthouse CI |
 | 모니터링    | Sentry(DSN이 있을 때만), web-vitals                                                                                                                                                                                        |
@@ -133,7 +133,7 @@ src/
 | 자료 그림 330점 (조각상·회화·유물)                                              | 그림마다 다름                                                   | 퍼블릭 도메인 249점, CC0 47점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                  |
 | 작품 일러스트 (어드민에서 올림)                                                 | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                | 작품 갤러리의 이미지마다 권리 표기와 원본                                         |
 | Cinzel 글꼴 (영문 제목)                                                         | The Cinzel Project Authors                                      | SIL OFL 1.1                                                                     | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
-| Hahmlet 글꼴 (한글 제목)                                                        | The Hahmlet Project Authors                                     | SIL OFL 1.1                                                                     | [hyper-type/hahmlet](https://github.com/hyper-type/hahmlet)                       |
+| Nanum Myeongjo(나눔명조) 글꼴 (한글 제목)                                       | NHN Corporation(현 NAVER), 디자인 폰트릭스(FONTRIX)             | SIL OFL 1.1                                                                     | [Google Fonts](https://fonts.google.com/specimen/Nanum+Myeongjo)                  |
 | Courier Prime 글꼴 (영문·숫자)                                                  | The Courier Prime Project Authors                               | SIL OFL 1.1                                                                     | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
 | Nanum Pen Script(나눔손글씨 펜) 글꼴 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션              | SIL OFL 1.1                                                                     | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
 | 신·계열 소개 글                                                                 | 직접 쓴 글 (나무위키 등으로 사실을 확인하고 문장은 옮기지 않음) | —                                                                               | —                                                                                 |
