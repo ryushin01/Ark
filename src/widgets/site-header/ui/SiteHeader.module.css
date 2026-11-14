@@ -67,6 +67,18 @@
     cursor: pointer;
 }
 
+.railBrand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
 .railLink:hover {
     text-decoration: underline;
     text-underline-offset: 0.3em;

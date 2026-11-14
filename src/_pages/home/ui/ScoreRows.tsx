@@ -9,7 +9,7 @@ import { FilterGroup, HandNote, RevealText } from "@/shared/ui";
 
 import styles from "./ScoreRows.module.css";
 
-import type { ArchiveImage } from "@/shared/lib";
+import type { ThumbImage } from "@/shared/lib";
 
 export type ScoreRow = {
   slug: string;
@@ -19,7 +19,7 @@ export type ScoreRow = {
   continent: Continent;
   earliestSource: string;
   figureCount: number;
-  images: ArchiveImage[];
+  images: ThumbImage[];
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");

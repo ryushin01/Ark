@@ -2635,5 +2635,338 @@
     "licenseUrl": null,
     "artist": "Unknown artist",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portraits_of_Famous_Men_-_Yellow_Emperor_(Huangdi).jpg"
+  },
+  "athena-aegis": {
+    "src": "/images/exhibits/athena-aegis.jpg",
+    "width": 848,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Giovanni Jacopo Caraglio / After Rosso Fiorentino",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plate_20-_Pallas_Athena_holding_a_shield_with_Medusa%27s_head_in_her_right_hand_and_a_lance_in_her_left_hand,_from_a_series_of_mythological_gods_and_goddesses_MET_DP830882.jpg"
+  },
+  "poseidon-trident": {
+    "src": "/images/exhibits/poseidon-trident.jpg",
+    "width": 732,
+    "height": 1411,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poseidon_MKL1888.png"
+  },
+  "hermes-caduceus": {
+    "src": "/images/exhibits/hermes-caduceus.jpg",
+    "width": 853,
+    "height": 843,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Medallion_from_the_atrium_of_the_House_of_the_Greek_Epigrams_Pompeii_depicting_Hermes_(Mercury)_with_petasus_and_caduceus_1877.jpg"
+  },
+  "perseus-cellini": {
+    "src": "/images/exhibits/perseus-cellini.jpg",
+    "width": 1280,
+    "height": 1593,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jrousso at English Wikipedia",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perseo_Perseus_%CE%A0%CE%B5%CF%81%CF%83%CE%B5%CE%B1%CF%82.jpg"
+  },
+  "jason-fleece": {
+    "src": "/images/exhibits/jason-fleece.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jason_with_the_Golden_Fleece_-_Thorvaldsens_Museum_-_DSC08681.JPG"
+  },
+  "achilles-shield": {
+    "src": "/images/exhibits/achilles-shield.jpg",
+    "width": 1280,
+    "height": 1294,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shield_of_Achilles_by_John_Flaxman,_made_by_Rundell,_Bridge,_and_Rundell,_London,_1821,_silver-gilt_-_Huntington_Art_Museum_-_San_Marino,_CA_-_DSC01883.jpg"
+  },
+  "theseus-thread": {
+    "src": "/images/exhibits/theseus-thread.jpg",
+    "width": 876,
+    "height": 1024,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Johann Heinrich Tischbein",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johann_Heinrich_Tischbein_-_Ariadne_Helping_Theseus_by_Giving_him_a_Ball_of_Thread,_1779.jpg"
+  },
+  "horus-wedjat": {
+    "src": "/images/exhibits/horus-wedjat.jpg",
+    "width": 1280,
+    "height": 1049,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wedjat_Eye_Amulet_MET_11.215.128.jpg"
+  },
+  "indra-vajra": {
+    "src": "/images/exhibits/indra-vajra.jpg",
+    "width": 750,
+    "height": 998,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "company school",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Indra_with_thunder_olt.jpg"
+  },
+  "vishnu-chakra": {
+    "src": "/images/exhibits/vishnu-chakra.jpg",
+    "width": 404,
+    "height": 565,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Hindu_God_Vishnu_LACMA_M.70.5.1_Chakra_(cropped).jpg"
+  },
+  "shiva-trishula": {
+    "src": "/images/exhibits/shiva-trishula.jpg",
+    "width": 1280,
+    "height": 1423,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kalantaka_-_Shiva_killed_Kala.jpg"
+  },
+  "vainamoinen-kantele": {
+    "src": "/images/exhibits/vainamoinen-kantele.jpg",
+    "width": 1267,
+    "height": 1578,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Anders Ekman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anders_Ekman_-_V%C3%A4in%C3%A4m%C3%B6inen_stringing_his_kantele_-_A_II_985-138_-_Finnish_National_Gallery.jpg"
+  },
+  "baldr-hringhorni": {
+    "src": "/images/exhibits/baldr-hringhorni.jpg",
+    "width": 1280,
+    "height": 987,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Louis Moe",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balders_B%C3%A5lf%C3%A6rd_-_Louis_Moe_(17005-1)_-_cropped.png"
+  },
+  "odin-gunnlod": {
+    "src": "/images/exhibits/odin-gunnlod.jpg",
+    "width": 964,
+    "height": 1095,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Lorenz Frølich",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Odin_and_Gunnl%C3%B6%C3%B0_by_Fr%C3%B8lich.jpg"
+  },
+  "zeus-dodona": {
+    "src": "/images/exhibits/zeus-dodona.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greek_Bronze_Statuette_of_Zeus_Casting_Thunderbolt,_from_Sanctuary_of_Zeus_at_Dodona,_c._470_BC_(28119982014).jpg"
+  },
+  "hermes-talaria": {
+    "src": "/images/exhibits/hermes-talaria.jpg",
+    "width": 1056,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jean-Baptiste Pigalle",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mercury_Pigalle_Louvre_RF3023.jpg"
+  },
+  "heracles-girdle": {
+    "src": "/images/exhibits/heracles-girdle.jpg",
+    "width": 957,
+    "height": 1250,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Nikolaus Knüpfer",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nicolaes_Kn%C3%BCpfer_-_Hercules_Obtaining_the_Girdle_of_Hyppolita_-_WGA12217.jpg"
+  },
+  "hephaestus-net": {
+    "src": "/images/exhibits/hephaestus-net.jpg",
+    "width": 1251,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Alexandre-Charles Guillemot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guillemot,_Alexandre_Charles_-_Mars_and_Venus_Surprised_by_Vulcan_-_Google_Art_Project.jpg"
+  },
+  "hera-cestus": {
+    "src": "/images/exhibits/hera-cestus.jpg",
+    "width": 1197,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Élisabeth Louise Vigée Le Brun",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elisabeth_Louise_Vig%C3%A9e-Le_Brun_-_Juno_Borrowing_the_Belt_of_Venus,_1781.jpg"
+  },
+  "odysseus-bow": {
+    "src": "/images/exhibits/odysseus-bow.jpg",
+    "width": 557,
+    "height": 736,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Robert Cromek / After Henry Fuseli",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Robert_Hartley_Cromek_-_Penelope_Holding_the_Bow_of_Odysseus,_1806.jpg"
+  },
+  "vishnu-churning": {
+    "src": "/images/exhibits/vishnu-churning.jpg",
+    "width": 1213,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Fattu",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Churning_of_the_ocean_-_Manthan.jpg"
+  },
+  "rama-pinaka": {
+    "src": "/images/exhibits/rama-pinaka.jpg",
+    "width": 1043,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravi_Varma-Rama-breaking-bow.jpg"
+  },
+  "roland-durendal": {
+    "src": "/images/exhibits/roland-durendal.jpg",
+    "width": 997,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Louis Félix Guesnet",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:RolandACloss.jpg"
+  },
+  "siegfried-tarnkappe": {
+    "src": "/images/exhibits/siegfried-tarnkappe.jpg",
+    "width": 515,
+    "height": 679,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Julius Schnorr von Carolsfeld",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pfizer_(1843)-ed-Nibelungen_Not-p124-sigfrid-in-tarnkappen.jpg"
+  },
+  "galahad-grail": {
+    "src": "/images/exhibits/galahad-grail.jpg",
+    "width": 1260,
+    "height": 1285,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Évrard d'Espinques",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Holy-grail-round-table-bnf-ms_fr-116F-f610v-15th-detail.jpg"
+  },
+  "krishna-syamantaka": {
+    "src": "/images/exhibits/krishna-syamantaka.jpg",
+    "width": 1026,
+    "height": 1186,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Satrajit_Prasena_Syamantaka.jpg"
+  },
+  "nuwa-stones": {
+    "src": "/images/exhibits/nuwa-stones.jpg",
+    "width": 1097,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%A5%B3%E5%AA%A7%E6%B0%8F%E7%85%89%E7%9F%B3%E8%A3%9C%E5%A4%A9.jpg"
+  },
+  "loki-forge": {
+    "src": "/images/exhibits/loki-forge.jpg",
+    "width": 1162,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Arthur Rackham",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Once_again_the_buzzing_fly_came_in_at_the_window_(1901)_by_Arthur_Rackham.jpg"
+  },
+  "perseus-nymphs": {
+    "src": "/images/exhibits/perseus-nymphs.jpg",
+    "width": 900,
+    "height": 1069,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Edward Burne-Jones",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Perseus_and_the_Sea_Nymphs_-_Edward_Burne-Jones,_1877.jpg"
+  },
+  "xiwangmu-peaches": {
+    "src": "/images/exhibits/xiwangmu-peaches.jpg",
+    "width": 769,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kumashiro Yūhi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kumashiro_Yuuhi,_Xi_Wangmu%27s_Peaches_of_Immortality.jpg"
+  },
+  "magatama-yato": {
+    "src": "/images/exhibits/magatama-yato.jpg",
+    "width": 1280,
+    "height": 1182,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Saigen Jiro",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%9F%A2%E8%97%A4%E6%B2%BB%E5%B1%B1%E5%8F%A4%E5%A2%B3%E5%87%BA%E5%9C%9F_%E5%8B%BE%E7%8E%89.JPG"
+  },
+  "thoth-sacred-books": {
+    "src": "/images/exhibits/thoth-sacred-books.jpg",
+    "width": 1104,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Sacred_Books_and_Early_Literature_of_the_East,_vol._2,_pg._416-417,_Thoth.jpg"
+  },
+  "karna-shakti": {
+    "src": "/images/exhibits/karna-shakti.jpg",
+    "width": 1072,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karna,_one_of_the_Kauravas,_slays_the_Pandavas%27_nephew_Ghatotkacha_with_a_weapon_given_to_him_by_Indra,_the_king_of_the_gods,_from_a_manuscript_of_the_Razmnama.jpg"
+  },
+  "harmonia-necklace-eriphyle": {
+    "src": "/images/exhibits/harmonia-necklace-eriphyle.jpg",
+    "width": 1280,
+    "height": 1536,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Marie-Lan Nguyen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Polynices_Eriphyle_Louvre_G442.jpg"
+  },
+  "gilgamesh-flood-tablet": {
+    "src": "/images/exhibits/gilgamesh-flood-tablet.jpg",
+    "width": 1005,
+    "height": 1137,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "BabelStone",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:British_Museum_Flood_Tablet.jpg"
+  },
+  "korean-bronze-daggers": {
+    "src": "/images/exhibits/korean-bronze-daggers.jpg",
+    "width": 852,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "AsPJT",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Slender_bronze_dagger_in_Korea_in_1978.jpg"
+  },
+  "alberich-ring-stassen": {
+    "src": "/images/exhibits/alberich-ring-stassen.jpg",
+    "width": 834,
+    "height": 1139,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Franz Stassen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Andvari_by_Franz_Stassen.jpg"
   }
 }

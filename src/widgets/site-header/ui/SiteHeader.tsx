@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -13,7 +14,7 @@ import styles from "./SiteHeader.module.css";
 
 /**
  * 사이트 머리글
- * - 넓은 화면: 양옆의 검은 세로 띠. 왼쪽은 사이트 이름, 오른쪽은 메뉴와 화면 설정입니다.
+ * - 넓은 화면: 양옆의 검은 세로 띠. 왼쪽은 로고(왕관 아이콘, 대체 텍스트는 사이트 이름)와 소개, 오른쪽은 메뉴와 화면 설정입니다.
  * - 작은 화면: 위쪽의 검은 띠
  * - 메뉴 버튼은 전체 화면 메뉴(모달 dialog)를 엽니다. dialog가 초점 가두기와 Esc 닫기를 처리합니다.
  */
@@ -32,8 +33,7 @@ export function SiteHeader() {
     <header>
       <div className={styles.topBar}>
         <Link href="/" className={styles.topBrand}>
-          <span aria-hidden="true">▸ </span>
-          {SITE.name}
+          <Image src={SITE.logo} alt={SITE.name} width={32} height={32} className={styles.logo} />
         </Link>
         <button type="button" className={styles.menuButton} aria-haspopup="dialog" onClick={open}>
           메뉴
@@ -41,9 +41,8 @@ export function SiteHeader() {
       </div>
 
       <div className={`${styles.rail} ${styles.left}`}>
-        <Link href="/" className={`${styles.vertical} ${styles.flip} ${styles.railLink}`}>
-          <span aria-hidden="true">▸ </span>
-          {SITE.name}
+        <Link href="/" className={`${styles.railLink} ${styles.railBrand}`}>
+          <Image src={SITE.logo} alt={SITE.name} width={32} height={32} className={styles.logo} />
         </Link>
         <p className={`${styles.vertical} ${styles.flip}`}>세계 신화 도서관</p>
       </div>

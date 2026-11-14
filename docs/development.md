@@ -10,14 +10,14 @@
 - Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
 - 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                                                                                                          |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                         |
-| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
-| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                       |
-| `features` | `admin-auth`                                                                                                                                                                                      |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품)                                                                                                             |
-| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                |
+| 계층       | 슬라이스                                                                                                                                                                                                                          |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                                                         |
+| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `vault`(비밀 전시실·유물 상세), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                                                       |
+| `features` | `admin-auth`                                                                                                                                                                                                                      |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품), `relic`(신화 속 유물)                                                                                                                      |
+| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                                |
 
 ## 디자인
 
@@ -41,7 +41,7 @@
 
 - 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
-- 필름과 콜라주의 작은 이미지에는 저작자를 표기할 자리가 없어 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 쓰되 무대 아래쪽에 출처를 표기합니다.
+- 필름과 콜라주의 작은 이미지에는 퍼블릭 도메인·CC0 자료만 씁니다. 대표 자료는 라이선스와 관계없이 씁니다(출처는 아래 '출처 표기').
 - 등장 애니메이션의 시작 상태(숨김)는 `html.js`일 때만 적용합니다. 루트 레이아웃의 인라인 스크립트가 첫 페인트 전에 `js` 클래스와 저장된 설정(`data-annotations`, `data-motion`)을 붙입니다.
 - `prefers-reduced-motion: reduce`이거나 움직임 설정을 끄면 등장 애니메이션, 악보 무대의 스크롤 연출, Lenis, 화면 전환을 모두 끕니다(`useMotionOff`). 이때 필름은 직접 가로 스크롤합니다.
 - 화면 전환은 SSGOI가 맡습니다. 규칙은 `_app/transitions/config.ts`, 제공자는 `PageTransitions`이고, 라우트 경계(`SsgoiRouteBoundary`)는 `SiteLayout`의 `main`(relative, z-index 0, overflow-x: clip) 안에 둡니다. 설정 객체는 컴포넌트 밖에 둡니다(렌더마다 새로 만들면 엔진이 다시 만들어져 스크롤 위치를 잃습니다).
@@ -60,9 +60,21 @@
 
 - 라이선스가 퍼블릭 도메인·CC0·CC BY·CC BY-SA가 아니면 실패합니다.
 - 이미지는 긴 변 1600px 이하 JPEG로 `public/images/exhibits/`에 저장합니다. Wikimedia 원본을 화면에서 직접 불러오면 요청 제한(429)에 걸리기 때문입니다.
-- 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장되고, 화면의 이미지마다 표기됩니다.
+- 저작자·라이선스·원본 주소는 `src/entities/exhibit/api/mock/commons-images.json`에 저장됩니다. 화면에는 적지 않고 README의 출처와 `docs/credits.md`에 모읍니다(아래 '출처 표기').
 - 대체 텍스트는 실제 이미지를 보고 `exhibit/api/mock-data.ts`에 직접 씁니다.
+- 클라이언트 컴포넌트에 넘기는 데이터는 HTML에 그대로 실립니다(RSC 페이로드). 그림만 그리는 곳(홈의 콜라주·필름·인덱스 미리보기, 신 카드)은 `toThumb`로 주소와 가로세로(`ThumbImage`)만, 대체 텍스트와 함께 보여 주는 자료 이미지(`RevealImage`)는 `toShown`으로 출처를 뺀 값(`ShownImage`)만 넘깁니다.
 - 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 `pnpm images:resolve --fresh`를 씁니다.
+
+### 출처 표기
+
+그림·글꼴 같은 외부 자료의 출처는 화면이 아니라 README에 밝힙니다(모든 프로젝트 공통 규칙).
+
+- README의 `## 출처`: 자료 묶음과 글꼴의 저작자·사용 허락·원본을 한 표로 적습니다. 공개 화면의 바닥글에 있는 '자료 출처' 링크가 이 표로 잇습니다.
+- `docs/credits.md`: 자료 그림 한 점마다의 저작자·사용 허락·원본입니다. `pnpm credits`가 자료 데이터(`exhibit/api/mock-data.ts`, `mock/commons-images.json`)에서 만들고, 직접 고치지 않으며 Prettier에서도 뺍니다.
+- 자료를 더하거나 출처를 고쳤으면(`pnpm images:resolve` 다음) `pnpm credits`로 목록을 다시 만듭니다. 목록이 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
+- 예외: 데이터베이스에만 있는 이미지는 README에 목록을 둘 수 없어 화면에 출처(`CreditLine`)를 함께 보여 줍니다.
+  - 작품 일러스트: 작품 갤러리(`SwipeGallery`)에서 이미지마다 권리 표기와 원본을 보여 주고, 올릴 때 권리 표기와 출처 주소를 반드시 받습니다.
+  - 어드민에서 더하거나 이미지·출처를 고친 자료 그림: `unlistedCredit`(`entities/exhibit`)이 시드 데이터와 id·이미지 주소·출처를 비교해 목록에 없는 자료를 찾고, 신 화면의 자료 정보·계열 대표 그림·홈 무대에 그 자료의 출처만 보여 줍니다. 저장소 데이터에 옮겨 `pnpm credits`로 목록을 다시 만들면 화면에서도 빠집니다.
 
 ### 소개 글의 출처
 
@@ -104,13 +116,14 @@
 | 데모   | 버튼 하나                 | 모든 화면 보기. 저장은 서버에서 막습니다. 배포본에서 방문자가 공개 데이터를 바꾸지 못하게 하려는 것입니다. |
 
 - 비밀번호 로그인은 같은 곳에서 15분 안에 5번 틀리면 잠깁니다. 실패 기록은 `admin_login_attempts` 테이블(IP는 SHA-256 해시만)에 남고, 성공하면 지웁니다. 하루 지난 기록은 크론이 지웁니다. 데모 로그인은 제한하지 않습니다.
-- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1. `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
-- 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
+- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1). `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
+- 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 주소 이름과 비워 둘 수 있는 칸은 `shared/lib`의 `slugField`·`SLUG_PATTERN`·`optionalText`를 씁니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
 - 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
 - 저장하면 `updateTag`로 캐시를 갱신합니다. 미리 그린 공개 페이지는 저장 뒤 첫 요청에 이전 내용을 보여 주고, 곧바로 새 내용으로 다시 그립니다.
 - 로그인하지 않고 어드민 주소로 오면, 로그인한 뒤 그 화면으로 돌아갑니다. 돌아갈 주소는 `/admin` 아래 경로만 받습니다.
 - 계열은 만들고 고치고 지울 수 있습니다. 신이 속한 계열은 지울 수 없습니다.
 - 다른 데이터가 가리키는 항목은 지우지 않습니다. 자료나 작품이 연결된 신, 계열의 대표 자료로 쓰는 자료가 그렇습니다.
+- 목록 표의 '고치기' 칸은 `shared/ui/admin`의 `EditLinkCell`을 씁니다. 링크 이름에 대상 이름을 넣어 줄마다 구별합니다.
 - Radix Themes 기본 색 중 명도 대비가 모자란 조합은 `shared/ui/admin/admin-theme.css`에서 보정합니다(진한 바탕 버튼, Select 자리표시). 주황 배지·안내는 `highContrast`를 씁니다.
 
 ## 데이터: Supabase
@@ -227,3 +240,27 @@ axe 검사는 스토리 테스트와 E2E에서 실행합니다. 스토리 테스
 | README 스크린샷 | `e2e/readme.screenshots.ts` | `pnpm build && pnpm screenshots` |
 
 E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2 AA), 본문 바로가기, 메뉴 키보드 동작, 아카이브 플래그를 검사합니다. 어드민 E2E는 로그인, 데모 저장 차단, 만들기→공개 화면 반영→삭제 흐름을 검사합니다. 메모리 저장소를 바꾸므로 공개 사이트 검사가 끝난 뒤 순서대로 실행합니다(`admin` 프로젝트). 테스트용 비밀번호는 `playwright.config.ts`의 `webServer.env`에 있습니다.
+
+## 품질 예산
+
+- **번들 크기:** `pnpm size`가 전체 JS 400 kB, CSS 145 kB(gzip)를 넘으면 실패합니다. 기준은 `.size-limit.json`에 있습니다.
+- **Lighthouse:** `pnpm lhci`가 첫 화면·인물 목록·인물 상세·신화권이 데스크톱 기준 성능 90·접근성 100·권장 사항 95·SEO 90점, LCP 2.5초·TBT 200ms·CLS 0.1 이하인지 3번씩 재서 확인합니다. 기준은 `lighthouserc.json`에 있습니다.
+- **접근성 린트:** `eslint-config-next`는 jsx-a11y 규칙을 몇 개만 켭니다. 플러그인은 이미 등록되어 있어 `eslint.config`에서 recommended 규칙만 더해 모두 켭니다.
+
+두 검사 모두 프로덕션 빌드가 먼저 있어야 하며, CI는 빌드 뒤에 돌립니다.
+
+## 모니터링
+
+브라우저에서 화면을 그리기 전에 모니터링을 켜고, Sentry와 web-vitals는 나중에 따로 받습니다. Sentry는 페이지를 다 받은 뒤(load) 브라우저가 한가할 때 받고, load가 10초 안에 오지 않으면 그때 바로 받습니다.
+
+| 환경 변수                | 내용                                                                                                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SENTRY_DSN` | 있으면 처리하지 못한 오류와 나쁜(poor) Web Vitals를 Sentry로 보냅니다. 없으면 Sentry를 번들에 넣지 않고, 개발 모드에서 Web Vitals를 콘솔에만 찍습니다 |
+
+- Sentry에는 오류 내용만 보내고 사용자 정보·쿠키·헤더·쿼리 문자열, 방문 기록(세션), 이동·클릭 기록(브레드크럼), 콘솔 기록은 모으지 않습니다. 오류에 붙는 콜백 인수, Error가 아닌 일반 객체로 거부된 Promise의 필드 값(`extra.__serialized__`), 주소의 `#` 뒤도 보내기 전에 지웁니다. Sentry를 받기 전에 난 오류는 모아 두었다가 처리되지 않은 오류로 보냅니다.
+- 쓰는 함수만 `sentry.ts`에서 다시 내보내 약 31 kB(gzip)로 받습니다. 오류 화면(`_pages/error`, `_pages/admin-error`)에서 잡은 오류도 `reportError`로 보냅니다. 모듈 전체를 불러오면 리플레이·피드백까지 들어가 140 kB가 됩니다.
+- 브라우저 오류만 모읍니다. 서버에서 난 오류는 호스팅(Vercel 등)의 로그로 확인합니다.
+
+## PR 미리보기 배포
+
+Vercel의 하루 배포 한도를 아끼려고 PR 미리보기 배포를 껐습니다(`vercel.json`의 `git.deploymentEnabled`). `main`에 머지할 때만 운영으로 배포하고, PR에서는 CI 검사만 돕니다. 미리보기가 꼭 필요하면 그 브랜치를 `deploymentEnabled`에 잠시 넣습니다.

@@ -1,14 +1,17 @@
 import { z } from "zod";
 
-import type { GenealogyNode, GenealogyUnion } from "./types";
+import { SLUG_PATTERN } from "@/shared/lib";
 
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+import type { GenealogyNode, GenealogyUnion } from "./types";
 
 const nodeSchema: z.ZodType<GenealogyNode> = z.lazy(() =>
   z.strictObject({
     name: z.string().trim().min(1, "이름(name)이 비어 있습니다."),
     nameEn: z.string().trim().min(1, "영문 이름(nameEn)이 비어 있습니다."),
-    slug: z.string().regex(SLUG, "주소(slug)는 영문 소문자, 숫자, 하이픈만 씁니다.").optional(),
+    slug: z
+      .string()
+      .regex(SLUG_PATTERN, "주소(slug)는 영문 소문자, 숫자, 하이픈만 씁니다.")
+      .optional(),
     note: z.string().trim().min(1).optional(),
     unions: z.array(unionSchema).optional(),
   }),

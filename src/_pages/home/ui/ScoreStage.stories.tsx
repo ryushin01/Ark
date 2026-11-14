@@ -2,19 +2,10 @@ import { ScoreStage } from "./ScoreStage";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-const credit = {
-  artist: null,
-  license: "Public domain",
-  licenseUrl: null,
-  sourceUrl: "https://commons.wikimedia.org/",
-};
-
 const image = (name: string, width: number, height: number) => ({
   src: `/images/exhibits/${name}.jpg`,
   width,
   height,
-  alt: "",
-  credit,
 });
 
 const meta = {

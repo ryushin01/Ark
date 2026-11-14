@@ -5,7 +5,7 @@ import { Button, Flex, Link as RadixLink, Table, Text } from "@radix-ui/themes";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
-import { Notice, PageHeader } from "@/shared/ui/admin";
+import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
 
 import { FigureForm } from "./FigureForm";
 
@@ -92,13 +92,7 @@ export async function AdminFiguresPage({ pantheon, saved, deleted }: ListProps) 
               <Table.Cell>
                 {exhibits.filter((exhibit) => exhibit.figureSlug === figure.slug).length}점
               </Table.Cell>
-              <Table.Cell justify="end">
-                <Button asChild size="1" variant="soft">
-                  <Link href={`/admin/figures/${figure.slug}`} aria-label={`${figure.name} 고치기`}>
-                    고치기
-                  </Link>
-                </Button>
-              </Table.Cell>
+              <EditLinkCell href={`/admin/figures/${figure.slug}`} name={figure.name} />
             </Table.Row>
           ))}
         </Table.Body>

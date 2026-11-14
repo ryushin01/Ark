@@ -8,7 +8,7 @@ import { RevealText } from "@/shared/ui";
 
 import styles from "./FigureIndex.module.css";
 
-import type { ArchiveImage } from "@/shared/lib";
+import type { ThumbImage } from "@/shared/lib";
 
 export type FigureIndexGroup = {
   pantheonSlug: string;
@@ -18,7 +18,7 @@ export type FigureIndexGroup = {
     name: string;
     nameEn: string;
     epithet: string;
-    image: ArchiveImage | null;
+    image: ThumbImage | null;
   }[];
 };
 
@@ -29,7 +29,7 @@ export type FigureIndexGroup = {
  */
 export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
   const previewRef = useRef<HTMLDivElement>(null);
-  const [preview, setPreview] = useState<ArchiveImage | null>(null);
+  const [preview, setPreview] = useState<ThumbImage | null>(null);
 
   const movePreview = (event: React.PointerEvent) => {
     const element = previewRef.current;

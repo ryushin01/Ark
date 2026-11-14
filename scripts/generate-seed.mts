@@ -9,6 +9,7 @@ import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
 import { MOCK_GENEALOGIES } from "../src/entities/genealogy/api/mock-data";
 import { MOCK_PANTHEONS } from "../src/entities/pantheon/api/mock-data";
+import { MOCK_RELICS } from "../src/entities/relic/api/mock-data";
 import { MOCK_WORKS } from "../src/entities/work/api/mock-data";
 
 const rows = {
@@ -65,6 +66,19 @@ const rows = {
     source: genealogy.source,
     roots: genealogy.roots,
   })),
+  relics: MOCK_RELICS.map((relic) => ({
+    slug: relic.slug,
+    name: relic.name,
+    name_en: relic.nameEn,
+    kind: relic.kind,
+    figure_slugs: relic.figureSlugs,
+    origin: relic.origin,
+    power: relic.power,
+    price: relic.price,
+    source: relic.source,
+    exhibit_id: relic.exhibitId,
+    sort_order: relic.order,
+  })),
 };
 
 /** 테이블 하나를 JSON 배열에서 한 번에 넣는 SQL. 이미 있는 행은 건너뜁니다. */
@@ -87,10 +101,11 @@ ${insert("figures", "slug")}
 ${insert("exhibits", "id")}
 ${insert("works", "slug")}
 ${insert("genealogies", "pantheon_slug")}
+${insert("relics", "slug")}
 commit;
 `;
 
 await writeFile(new URL("../supabase/seed.sql", import.meta.url), sql);
 console.log(
-  `supabase/seed.sql: 계열 ${rows.pantheons.length}, 신 ${rows.figures.length}, 자료 ${rows.exhibits.length}, 작품 ${rows.works.length}, 계보 ${rows.genealogies.length}`,
+  `supabase/seed.sql: 계열 ${rows.pantheons.length}, 신 ${rows.figures.length}, 자료 ${rows.exhibits.length}, 작품 ${rows.works.length}, 계보 ${rows.genealogies.length}, 유물 ${rows.relics.length}`,
 );
