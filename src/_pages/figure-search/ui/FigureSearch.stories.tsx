@@ -4,13 +4,6 @@ import { FigureSearch } from "./FigureSearch";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-const credit = {
-  artist: null,
-  license: "Public domain",
-  licenseUrl: null,
-  sourceUrl: "https://commons.wikimedia.org/",
-};
-
 const meta = {
   title: "Pages/FigureSearch/FigureSearch",
   component: FigureSearch,
@@ -39,8 +32,6 @@ const meta = {
           src: "/images/exhibits/zeus-otricoli.jpg",
           width: 1200,
           height: 1600,
-          alt: "",
-          credit,
         },
       },
       {

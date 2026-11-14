@@ -3,22 +3,27 @@ import { Callout, Card, Flex, Grid, Heading, Link as RadixLink, Text } from "@ra
 
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
+import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
+import { getRelics } from "@/entities/relic/index.server";
 import { getWorks } from "@/entities/work/index.server";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
 import { PageHeader } from "@/shared/ui/admin";
 
-/** 대시보드: 항목별 개수, 데이터 저장 방식 안내 */
+/** 대시보드: 항목별 개수(어드민 메뉴 순서), 데이터 저장 방식 안내 */
 export async function AdminDashboardPage() {
-  const [pantheons, figures, exhibits, works] = await Promise.all([
+  const [pantheons, figures, genealogies, exhibits, relics, works] = await Promise.all([
     getPantheons(),
     getFigures(),
+    getGenealogies(),
     getExhibits(),
+    getRelics(),
     getWorks(),
   ]);
   const draftCount = works.filter((work) => work.status === "draft").length;
   const missingAlt = exhibits.filter((exhibit) => exhibit.image.alt.trim().length < 5).length;
+  const relicsWithoutImage = relics.filter((relic) => relic.exhibitId === null).length;
 
   const cards = [
     {
@@ -34,10 +39,22 @@ export async function AdminDashboardPage() {
       note: "이름, 별칭, 영역, 소개",
     },
     {
+      href: "/admin/genealogies",
+      label: "계보",
+      count: genealogies.length,
+      note: "가계도가 있는 신화 계열",
+    },
+    {
       href: "/admin/exhibits",
       label: "소장 자료",
       count: exhibits.length,
       note: `대체 텍스트 확인 필요 ${missingAlt}점`,
+    },
+    {
+      href: "/admin/relics",
+      label: "유물",
+      count: relics.length,
+      note: `그림 없는 유물 ${relicsWithoutImage}점`,
     },
     {
       href: "/admin/works",
@@ -70,7 +87,7 @@ export async function AdminDashboardPage() {
       <Heading as="h2" size="4" mb="3">
         항목
       </Heading>
-      <Grid columns={{ initial: "1", sm: "2", md: "4" }} gap="4" asChild>
+      <Grid columns={{ initial: "1", sm: "2", md: "3" }} gap="4" asChild>
         <ul>
           {cards.map((card) => (
             <li key={card.href}>

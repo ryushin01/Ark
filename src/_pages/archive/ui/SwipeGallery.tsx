@@ -3,11 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+import { type ArchiveImage, isMotionOff } from "@/shared/lib";
 import { CreditLine } from "@/shared/ui";
 
 import styles from "./SwipeGallery.module.css";
-
-import type { ArchiveImage } from "@/shared/lib";
 
 type SwipeGalleryProps = {
   /** 갤러리 이름. 화면 낭독기가 "○○ 이미지, 캐러셀"로 읽습니다. */
@@ -39,8 +38,10 @@ export function SwipeGallery({ label, images }: SwipeGalleryProps) {
   const goTo = (index: number) => {
     const track = trackRef.current;
     if (!track) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    track.scrollTo({ left: index * track.clientWidth, behavior: reduce ? "auto" : "smooth" });
+    track.scrollTo({
+      left: index * track.clientWidth,
+      behavior: isMotionOff() ? "auto" : "smooth",
+    });
   };
 
   return (

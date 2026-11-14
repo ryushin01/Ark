@@ -15,10 +15,14 @@ describe("화면 전환 설정", () => {
     expect(selectConfig(false)).toBe(selectConfig(false));
   });
 
-  it("신 화면으로 들어가는 길과 신화 계열로 들어가는 길에 drill을 쓰고, 나머지는 fade", () => {
+  it("신화 계열·신·유물 화면으로 들어가는 길에 drill을 쓰고, 나머지는 fade", () => {
     const rules = motionConfig.transitions as unknown as Rule[];
     expect(rules[0]).toMatchObject({ on: "/**", priority: -100 });
-    expect(rules.map((r) => r.to).filter(Boolean)).toEqual(["/pantheons/*", "/figures/*"]);
+    expect(rules.map((r) => r.to).filter(Boolean)).toEqual([
+      "/pantheons/*",
+      "/figures/*",
+      "/vault/*",
+    ]);
   });
 
   it("스크롤 잠금은 Lenis가 맡는다", () => {

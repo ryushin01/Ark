@@ -35,8 +35,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** 번호, 이미지(출처 표기), 분류·시기·소장처 */
+/** 번호, 이미지, 분류·시기·소장처. 출처는 README의 출처 전체 목록에 모읍니다. */
 export const Default: Story = {};
+
+/** 어드민에서 더하거나 고쳐 출처 전체 목록에 없는 자료는 정보 목록에 출처를 함께 보여 줍니다. */
+export const UnlistedCredit: Story = {
+  args: {
+    credits: {
+      "thor-jotnar": {
+        artist: "Mårten Eskil Winge",
+        license: "Public domain",
+        licenseUrl: null,
+        sourceUrl: "https://commons.wikimedia.org/",
+      },
+    },
+  },
+};
 
 /** 등록된 자료가 없을 때 */
 export const Empty: Story = { args: { exhibits: [] } };

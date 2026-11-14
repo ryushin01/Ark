@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getExhibits } from "@/entities/exhibit/index.server";
+import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { findBonds, kindLabel } from "@/entities/figure";
 import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { findRelatives } from "@/entities/genealogy";
 import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheon } from "@/entities/pantheon/index.server";
+import { relicsOf } from "@/entities/relic";
+import { getRelics } from "@/entities/relic/index.server";
 import { WORK_MEDIUM_LABEL } from "@/entities/work";
 import { getWorksByFigure } from "@/entities/work/index.server";
 import { features } from "@/shared/config";
@@ -17,6 +19,19 @@ import { BondSection } from "./BondSection";
 import { ExhibitGallery } from "./ExhibitGallery";
 import { FamilySection } from "./FamilySection";
 import styles from "./FigurePage.module.css";
+import { RelicSection } from "./RelicSection";
+
+import type { Exhibit } from "@/entities/exhibit";
+import type { ImageCredit } from "@/shared/lib";
+
+/** 출처 전체 목록(README)에 없는 자료(어드민에서 더하거나 고친 자료)의 출처. 이런 자료만 화면에 출처를 보여 줍니다. */
+const unlistedCredits = (exhibits: Exhibit[]) =>
+  Object.fromEntries(
+    exhibits.flatMap((exhibit) => {
+      const credit = unlistedCredit(exhibit);
+      return credit ? [[exhibit.id, credit] as const] : [];
+    }),
+  ) as Record<string, ImageCredit>;
 
 export async function generateFigureParams() {
   const figures = await getFigures();
@@ -50,10 +65,11 @@ export async function FigurePage({ slug }: { slug: string }) {
   ]);
   if (!figure) notFound();
 
-  const [pantheon, works, genealogies] = await Promise.all([
+  const [pantheon, works, genealogies, relics] = await Promise.all([
     getPantheon(figure.pantheonSlug),
     features.archive ? getWorksByFigure(slug) : Promise.resolve([]),
     getGenealogies(),
+    getRelics(),
   ]);
   const own = exhibits.filter((exhibit) => exhibit.figureSlug === slug);
   const siblings = figures
@@ -117,12 +133,14 @@ export async function FigurePage({ slug }: { slug: string }) {
 
       <BondSection rows={findBonds(slug)} figures={figures} />
 
+      <RelicSection relics={relicsOf(relics, slug)} />
+
       <section className={`${styles.section} px-global`} aria-labelledby="exhibits-title">
         <Divider />
         <h2 id="exhibits-title" className={styles.sectionTitle}>
           소장 자료 <span className={styles.count}>{own.length}점</span>
         </h2>
-        <ExhibitGallery exhibits={own} />
+        <ExhibitGallery exhibits={own} credits={unlistedCredits(own)} />
       </section>
 
       {works.length > 0 && (

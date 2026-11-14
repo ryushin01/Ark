@@ -5,7 +5,7 @@ import { Button, Link as RadixLink, Table } from "@radix-ui/themes";
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
-import { Notice, PageHeader } from "@/shared/ui/admin";
+import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
 
 import { PantheonForm } from "./PantheonForm";
 
@@ -50,16 +50,7 @@ export async function AdminPantheonsPage({ saved, deleted }: { saved?: string; d
                   </Link>
                 </RadixLink>
               </Table.Cell>
-              <Table.Cell justify="end">
-                <Button asChild size="1" variant="soft">
-                  <Link
-                    href={`/admin/pantheons/${pantheon.slug}`}
-                    aria-label={`${pantheon.name} 고치기`}
-                  >
-                    고치기
-                  </Link>
-                </Button>
-              </Table.Cell>
+              <EditLinkCell href={`/admin/pantheons/${pantheon.slug}`} name={pantheon.name} />
             </Table.Row>
           ))}
         </Table.Body>

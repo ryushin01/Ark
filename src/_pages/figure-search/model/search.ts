@@ -11,7 +11,7 @@ export type SearchItem = FigureCard & {
 };
 
 /** 대소문자, 띄어쓰기, 유니코드 조합 차이를 없앱니다. ("Odin"과 "odin", "바바 야가"와 "바바야가") */
-export function normalize(text: string) {
+function normalize(text: string) {
   return text.normalize("NFC").toLowerCase().replace(/\s+/g, "");
 }
 

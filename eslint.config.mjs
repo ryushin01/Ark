@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettier from "eslint-config-prettier";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 /**
@@ -59,6 +60,15 @@ const eslintConfig = defineConfig([
         },
       ],
       "simple-import-sort/exports": "error",
+    },
+  },
+  {
+    // eslint-config-next는 jsx-a11y 규칙을 몇 개만 켭니다. 플러그인은 이미 등록되어 있으니 recommended 규칙만 더합니다.
+    files: ["**/*.{jsx,tsx}"],
+    rules: {
+      ...jsxA11y.flatConfigs.recommended.rules,
+      // 가로로 스크롤되는 영역은 키보드로 스크롤할 수 있게 이름을 가진 region에 tabIndex={0}을 줍니다.
+      "jsx-a11y/no-noninteractive-tabindex": ["error", { tags: [], roles: ["tabpanel", "region"] }],
     },
   },
   globalIgnores([

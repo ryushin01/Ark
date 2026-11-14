@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   check:
-    name: Lint · Typecheck · Test · Storybook test · Build · E2E
+    name: Lint · Typecheck · Test · Storybook test · Build · Size · E2E · Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,14 +35,19 @@ jobs:
       - run: pnpm test:storybook
       - run: pnpm build
       # 프로덕션 빌드에서 화면 폭별 넘침, 접근성(axe), 키보드 동작을 검사
+      - run: pnpm size
       - run: pnpm test:e2e
+      - run: pnpm lhci
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: playwright-report
+          name: reports
+          # .lighthouseci는 숨김 폴더라 따로 켜야 올라갑니다.
+          include-hidden-files: true
           path: |
             playwright-report/
             test-results/
+            .lighthouseci/
           retention-days: 7
 
   upload:

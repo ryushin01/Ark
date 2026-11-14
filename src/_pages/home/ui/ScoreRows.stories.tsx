@@ -2,13 +2,6 @@ import { ScoreRows } from "./ScoreRows";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-const credit = {
-  artist: null,
-  license: "Public domain",
-  licenseUrl: null,
-  sourceUrl: "https://commons.wikimedia.org/",
-};
-
 const meta = {
   title: "Pages/Home/ScoreRows",
   component: ScoreRows,
@@ -28,8 +21,6 @@ const meta = {
             src: "/images/exhibits/weighing-heart.jpg",
             width: 1600,
             height: 824,
-            alt: "",
-            credit,
           },
         ],
       },

@@ -2,6 +2,7 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
+import { toThumb } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
 
@@ -36,7 +37,7 @@ export async function FigureSearchPage() {
           epithet: figure.epithet,
           kind: figure.kind,
           kindLabel: kindLabel(figure),
-          image: own[0]?.image ?? null,
+          image: own[0] ? toThumb(own[0].image) : null,
           exhibitCount: own.length,
           domains: figure.domains,
           pantheonName: pantheon.name,

@@ -10,6 +10,7 @@ const ITEMS = [
   { href: "/admin/figures", label: "신·인물" },
   { href: "/admin/genealogies", label: "계보" },
   { href: "/admin/exhibits", label: "소장 자료" },
+  { href: "/admin/relics", label: "유물" },
   { href: "/admin/works", label: "영향 작품" },
 ];
 

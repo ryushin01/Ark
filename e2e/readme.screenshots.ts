@@ -53,6 +53,19 @@ test.describe("데스크톱", () => {
   });
 });
 
+test.describe("비밀 전시실", () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+
+  test("진열장과 유물 상세", async ({ page }) => {
+    await page.goto("/vault", { waitUntil: "networkidle" });
+    await scrollTo(page, "#shield-of-achilles", 40);
+    await shoot(page, "vault");
+    await page.goto("/vault/mjolnir", { waitUntil: "networkidle" });
+    await page.waitForTimeout(2000);
+    await shoot(page, "relic");
+  });
+});
+
 test.describe("어드민", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 

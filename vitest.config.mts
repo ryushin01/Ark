@@ -20,7 +20,7 @@ export default defineConfig({
           // .env.local의 Supabase 접속 정보를 비워, 테스트가 실제 데이터베이스를 건드리지 않게 합니다.
           env: { SUPABASE_URL: "", SUPABASE_SECRET_KEY: "" },
           setupFiles: ["./vitest.setup.ts"],
-          include: ["src/**/*.test.{ts,tsx}"],
+          include: ["src/**/*.test.{ts,tsx}", "scripts/**/*.test.ts"],
           restoreMocks: true,
         },
       },
