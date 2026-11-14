@@ -2,3 +2,5 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+patchedDependencies:
+  "@ssgoi/core@7.5.0": patches/@ssgoi__core@7.5.0.patch

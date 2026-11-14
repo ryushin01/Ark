@@ -349,4 +349,59 @@ test.describe("화면 전환", () => {
     // 화면이 겹치지 않고, 라우트 경계에 애니메이션(투명도·이동)도 걸리지 않습니다.
     expect(await tracked(page)).toEqual({ pages: 1, animations: 0 });
   });
+
+  test("동작 줄이기를 켜도 신 화면에서 뒤로 가면 목록의 보던 자리로 돌아온다", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/figures");
+    const listScroll = await openFigureLink(page, 20);
+    expect(listScroll).toBeGreaterThan(0);
+    await page.goBack();
+    await expectBackTo(page, "/figures", listScroll);
+  });
+
+  /**
+   * 스크롤 위치가 30프레임 동안 그대로일 때까지 기다린 뒤 그 위치를 돌려줍니다(부드러운 스크롤이 끝날 때까지).
+   * SSGOI는 화면이 열린 직후 10프레임 동안의 스크롤을 기록하지 않으므로, 그 뒤에 스크롤합니다.
+   */
+  const settledScrollY = (page: Page) =>
+    page.evaluate(
+      () =>
+        new Promise<number>((resolve) => {
+          let last = window.scrollY;
+          let same = 0;
+          const tick = () => {
+            if (window.scrollY !== last) {
+              last = window.scrollY;
+              same = 0;
+            } else if (++same >= 30) return resolve(Math.round(last));
+            requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }),
+    );
+
+  // SSGOI 7.5.0은 문서의 첫 화면을 맨 위로 보내 브라우저가 되살린 위치를 지웠습니다(실측 2390 → 0).
+  // patches/@ssgoi__core@7.5.0.patch로 첫 화면은 스크롤을 옮기지 않고 위치만 기록합니다.
+  for (const reducedMotion of ["no-preference", "reduce"] as const) {
+    test(`새로고침해도 보던 자리를 지킨다(동작 줄이기: ${reducedMotion})`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion });
+      await page.goto("/figures");
+      await expect(boundary(page)).toHaveCount(1);
+      await settledScrollY(page);
+      await page.mouse.wheel(0, 2400);
+      const listScroll = await settledScrollY(page);
+      expect(listScroll).toBeGreaterThan(1000);
+      // 내용이 늦게 오는 화면(cacheComponents)에서도 결과가 매번 같도록 화면 스크립트를 1초 늦춥니다.
+      await page.route("**/_next/static/chunks/**", async (route) => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await route.continue();
+      });
+      await page.reload();
+      await expect(boundary(page)).toHaveCount(1);
+      await expect
+        .poll(async () => Math.abs((await settledScrollY(page)) - listScroll), { timeout: 15_000 })
+        .toBeLessThan(5);
+      await page.unroute("**/_next/static/chunks/**");
+    });
+  }
 });
