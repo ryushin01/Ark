@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/nextjs-vite";
 
 import "../src/_app/styles/globals.css";
+import "../public/fonts/bookk-myungjo.css";
 
 const preview: Preview = {
   parameters: {
