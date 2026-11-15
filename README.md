@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-0.20.6-8a4a1f)
+![version](https://img.shields.io/badge/version-0.21.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 49개 신화·전설 계열에서 신과 영웅, 몬스터 322명을 조각상, 회화, 유물 자료 330점으로 살펴보고, 신화 속 유물 74점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -58,7 +58,7 @@
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                                                                            |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                                                                                 |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), Cinzel·Nanum Myeongjo·Courier Prime(한글 본문은 운영체제 명조)                                                                                                      |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), 웹 폰트 Cinzel·Courier Prime(영문)·부크크 명조(한글 제목·본문)                                                                                                      |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                                                                    |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe), eslint-plugin-jsx-a11y, size-limit, Lighthouse CI |
 | 모니터링    | Sentry(DSN이 있을 때만), web-vitals                                                                                                                                                                                        |
@@ -124,19 +124,26 @@ src/
 | [출처 전체 목록](docs/credits.md)              | 자료 그림 330점의 저작자·사용 허락·원본                                   |
 | [버전 기록](CHANGELOG.md)                      | 버전별 변경 내용                                                          |
 
+## 웹 폰트
+
+| 글꼴             | 쓰는 곳                                                | 굵기    | 저작자                                             | 라이선스                                         | 원본                                                                              |
+| ---------------- | ------------------------------------------------------ | ------- | -------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------- |
+| Cinzel           | 영문 제목                                              | 600     | The Cinzel Project Authors                         | SIL OFL 1.1                                      | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
+| Courier Prime    | 영문·숫자 (본문·표기)                                  | 400     | The Courier Prime Project Authors                  | SIL OFL 1.1                                      | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
+| 부크크 명조      | 한글 (제목·본문)                                       | 400·700 | (주)부크크                                         | 무료(상업 사용·웹 임베딩 가능, 수정·재배포 금지) | [눈누](https://noonnu.cc/font_page/1084)                                          |
+| Nanum Pen Script | 손글씨 주석 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | 400     | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션 | SIL OFL 1.1                                      | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
+
+모두 같은 사이트에서 제공합니다(외부 글꼴 CDN 없음). 부크크 명조는 수정할 수 없는 글꼴이라 원본 파일을 그대로 쓰고(`public/fonts/bookk-myungjo`, 굵기마다 0.8~1MB), 첫 화면을 막지 않게 페이지를 다 받은 뒤 붙입니다. 라이선스 요지는 `public/fonts/bookk-myungjo/LICENSE.txt`에 있습니다.
+
 ## 출처
 
 화면에는 그림마다의 출처를 적지 않고 여기에 모읍니다. 공개 화면의 바닥글에 있는 '자료 출처'가 이곳으로 잇습니다.
 
-| 자료                                                                            | 저작자                                                          | 사용 허락                                                                       | 원본                                                                                                                                                   |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 자료 그림 330점 (조각상·회화·유물)                                              | 그림마다 다름                                                   | 퍼블릭 도메인 249점, CC0 47점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                                                                                       |
-| 작품 일러스트 (어드민에서 올림)                                                 | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                | 작품 갤러리의 이미지마다 권리 표기와 원본                                                                                                              |
-| Cinzel 글꼴 (영문 제목)                                                         | The Cinzel Project Authors                                      | SIL OFL 1.1                                                                     | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                                                                                                |
-| Nanum Myeongjo(나눔명조) 글꼴 (한글 제목)                                       | NHN Corporation(현 NAVER), 디자인 폰트릭스(FONTRIX)             | SIL OFL 1.1                                                                     | [Google Fonts](https://fonts.google.com/specimen/Nanum+Myeongjo)                                                                                       |
-| Courier Prime 글꼴 (영문·숫자)                                                  | The Courier Prime Project Authors                               | SIL OFL 1.1                                                                     | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime)                                                                      |
-| Nanum Pen Script(나눔손글씨 펜) 글꼴 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션              | SIL OFL 1.1                                                                     | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                                                                                     |
-| Ark 금화 아이콘 (파비콘·홈 화면 아이콘·머리글 로고)                             | Magnific                                                        | Flaticon 무료 라이선스(저작자 표기 조건)                                        | [Flaticon "Ark"](https://www.flaticon.com/free-icon/ark_1747319) — [Ark icons created by Magnific - Flaticon](https://www.flaticon.com/free-icons/ark) |
-| 신·계열 소개 글                                                                 | 직접 쓴 글 (나무위키 등으로 사실을 확인하고 문장은 옮기지 않음) | —                                                                               | —                                                                                                                                                      |
+| 자료                                                | 저작자                                                          | 사용 허락                                                                       | 원본                                                                                                                                                   |
+| --------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 자료 그림 330점 (조각상·회화·유물)                  | 그림마다 다름                                                   | 퍼블릭 도메인 249점, CC0 47점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 6점 | Wikimedia Commons ([전체 목록](docs/credits.md))                                                                                                       |
+| 작품 일러스트 (어드민에서 올림)                     | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                | 작품 갤러리의 이미지마다 권리 표기와 원본                                                                                                              |
+| Ark 금화 아이콘 (파비콘·홈 화면 아이콘·머리글 로고) | Magnific                                                        | Flaticon 무료 라이선스(저작자 표기 조건)                                        | [Flaticon "Ark"](https://www.flaticon.com/free-icon/ark_1747319) — [Ark icons created by Magnific - Flaticon](https://www.flaticon.com/free-icons/ark) |
+| 신·계열 소개 글                                     | 직접 쓴 글 (나무위키 등으로 사실을 확인하고 문장은 옮기지 않음) | —                                                                               | —                                                                                                                                                      |
 
 작품 일러스트와, 어드민에서 더하거나 이미지·출처를 고친 자료 그림은 데이터베이스에만 있어 이 표와 전체 목록에 둘 수 없습니다. 그래서 그런 이미지만 화면에 권리 표기·출처와 원본을 함께 보여 줍니다. 공유 이미지에 보이는 조각상·그림도 위 자료 그림입니다.
