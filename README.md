@@ -58,7 +58,7 @@
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                                                                            |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                                                                                 |
-| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), 웹 폰트 Cinzel·Courier Prime(영문)·부크크 명조(한글 제목·본문)                                                                                                      |
+| 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), 웹 폰트 Cinzel·Courier Prime(영문)·바탕(한글 제목·본문)                                                                                                             |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                                                                    |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe), eslint-plugin-jsx-a11y, size-limit, Lighthouse CI |
 | 모니터링    | Sentry(DSN이 있을 때만), web-vitals                                                                                                                                                                                        |
@@ -80,20 +80,21 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 
 `pnpm db:start`가 출력하는 `API_URL`과 `SECRET_KEY`를 `.env.local`의 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`에 넣고 `ADMIN_PASSWORD`를 정합니다. 비워 두면 메모리 목업으로 동작하고, 어드민은 **데모 계정으로 둘러보기**로 들어갈 수 있습니다. 로컬 개발은 운영 데이터베이스를 쓰지 않습니다. `.env.local`에 로컬 Supabase를 적었다면 `pnpm build` 전에도 `pnpm db:start`가 필요합니다.
 
-| 명령                                     | 설명                                                               |
-| ---------------------------------------- | ------------------------------------------------------------------ |
-| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                               |
-| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                      |
-| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                    |
-| `pnpm typecheck`                         | 타입 검사                                                          |
-| `pnpm test`                              | 단위 테스트                                                        |
-| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                   |
-| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                 |
-| `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)     |
-| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                             |
-| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                       |
-| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기      |
-| `pnpm credits`                           | 자료 데이터에서 그림 출처 전체 목록(`docs/credits.md`) 다시 만들기 |
+| 명령                                     | 설명                                                                       |
+| ---------------------------------------- | -------------------------------------------------------------------------- |
+| `pnpm build` / `pnpm start`              | 프로덕션 빌드 / 실행                                                       |
+| `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                              |
+| `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                            |
+| `pnpm typecheck`                         | 타입 검사                                                                  |
+| `pnpm test`                              | 단위 테스트                                                                |
+| `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                           |
+| `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                         |
+| `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)             |
+| `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                                     |
+| `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                               |
+| `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기              |
+| `pnpm credits`                           | 자료 데이터에서 그림 출처 전체 목록(`docs/credits.md`) 다시 만들기         |
+| `pnpm fonts`                             | 한글 웹 폰트(바탕) 화면 글자 파일과 조각 다시 만들기 (화면 글자를 바꾼 뒤) |
 
 환경 변수와 전체 규칙은 [개발 가이드](docs/development.md)를 참고하세요.
 
@@ -126,14 +127,14 @@ src/
 
 ## 웹 폰트
 
-| 글꼴             | 쓰는 곳                                                | 굵기    | 저작자                                             | 라이선스                                         | 원본                                                                              |
-| ---------------- | ------------------------------------------------------ | ------- | -------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------- |
-| Cinzel           | 영문 제목                                              | 600     | The Cinzel Project Authors                         | SIL OFL 1.1                                      | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
-| Courier Prime    | 영문·숫자 (본문·표기)                                  | 400     | The Courier Prime Project Authors                  | SIL OFL 1.1                                      | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
-| 부크크 명조      | 한글 (제목·본문)                                       | 400·700 | (주)부크크                                         | 무료(상업 사용·웹 임베딩 가능, 수정·재배포 금지) | [눈누](https://noonnu.cc/font_page/1084)                                          |
-| Nanum Pen Script | 손글씨 주석 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | 400     | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션 | SIL OFL 1.1                                      | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
+| 글꼴             | 쓰는 곳                                                | 굵기 | 저작자                                               | 라이선스    | 원본                                                                              |
+| ---------------- | ------------------------------------------------------ | ---- | ---------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| Cinzel           | 영문 제목                                              | 600  | The Cinzel Project Authors                           | SIL OFL 1.1 | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
+| Courier Prime    | 영문·숫자 (본문·표기)                                  | 400  | The Courier Prime Project Authors                    | SIL OFL 1.1 | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
+| 바탕             | 한글 (제목·본문)                                       | 400  | HanYang I&C (The Batang and Gungsuh Project Authors) | SIL OFL 1.1 | [google/fonts](https://github.com/google/fonts/tree/main/ofl/batang)              |
+| Nanum Pen Script | 손글씨 주석 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | 400  | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션   | SIL OFL 1.1 | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
 
-모두 같은 사이트에서 제공합니다(외부 글꼴 CDN 없음). 부크크 명조는 수정할 수 없는 글꼴이라 원본 파일을 그대로 쓰고(`public/fonts/bookk-myungjo`, 굵기마다 0.8~1MB), 첫 화면을 막지 않게 페이지를 다 받은 뒤 붙입니다. 라이선스 요지는 `public/fonts/bookk-myungjo/LICENSE.txt`에 있습니다.
+모두 같은 사이트에서 제공합니다(외부 글꼴 CDN 없음). 바탕은 화면에 쓰는 한글만 담은 파일(`src/_app/styles/fonts/batang`, 약 200KB)을 첫 화면 CSS와 함께 받고, 나머지 한글은 글자 묶음별 조각(`public/fonts/batang`)으로 나눠 페이지를 다 받은 뒤 붙입니다. 화면 글자가 바뀌면 `pnpm fonts`로 다시 만듭니다. 바탕은 굵기가 하나뿐이라 한글 제목도 400으로 보입니다(브라우저가 가짜 굵게를 만들지 않음). 라이선스 원문은 `public/fonts/batang/OFL.txt`에 있습니다.
 
 ## 출처
 

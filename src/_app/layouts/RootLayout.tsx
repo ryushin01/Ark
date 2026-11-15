@@ -1,6 +1,6 @@
 import { SITE } from "@/shared/config";
 
-import { FONT_FACE_CSS, FontLoader } from "./FontLoader";
+import { RestFonts } from "./RestFonts";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -31,26 +31,11 @@ export function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ko" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: INITIAL_SCRIPT }} />
-        {/* 한글 부크크 명조(통파일): 바로 받기 시작하고, 다 받을 때까지 FontLoader가 로딩 화면을 보여 줌 */}
-        <link
-          rel="preload"
-          href="/fonts/bookk-myungjo/BookkMyungjo-Lt.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/bookk-myungjo/BookkMyungjo-Bd.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin=""
-        />
-        <style id="font-faces" dangerouslySetInnerHTML={{ __html: FONT_FACE_CSS }} />
       </head>
       <body>
-        <FontLoader />
         {children}
+        {/* 한글 바탕: 화면 글자 파일은 globals.css와 함께 받고, 나머지 글자 조각은 페이지를 다 받은 뒤 붙임 */}
+        <RestFonts href="/fonts/batang-rest.css" />
       </body>
     </html>
   );
