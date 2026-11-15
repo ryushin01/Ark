@@ -21,6 +21,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import subsetFont from "subset-font";
 
+import { sourceStrings } from "./fonts/screen-text.mjs";
+
 // TypeScript 파서가 있으면 문자열·JSX 글자만, 없으면(TypeScript 7 등) 주석까지 원문 전체를 셈(빠지는 글자가 없게)
 const ts = await import("typescript").then((m) => m.default ?? m).catch(() => null);
 const AST = typeof ts?.createSourceFile === "function";
@@ -102,20 +104,7 @@ async function screenText() {
           parts.push(text);
           continue;
         }
-        const kind = file.endsWith("x") ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
-        const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, false, kind);
-        const visit = (node) => {
-          if (
-            ts.isStringLiteralLike(node) ||
-            ts.isTemplateHead(node) ||
-            ts.isTemplateMiddle(node) ||
-            ts.isTemplateTail(node) ||
-            ts.isJsxText(node)
-          )
-            parts.push(node.text);
-          ts.forEachChild(node, visit);
-        };
-        visit(source);
+        parts.push(...sourceStrings(ts, file, text));
       } else if (file.endsWith(".json")) {
         // 이스케이프된 글자(\ud7a3 등)도 풀어서 세도록 문자열 값을 모음
         const text = await readFile(file, "utf8");
