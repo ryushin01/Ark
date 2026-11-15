@@ -1,6 +1,6 @@
 import { SITE } from "@/shared/config";
 
-import { DeferredFonts } from "./DeferredFonts";
+import { FONT_FACE_CSS, FontLoader } from "./FontLoader";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -31,11 +31,26 @@ export function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ko" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: INITIAL_SCRIPT }} />
+        {/* 한글 부크크 명조(통파일): 바로 받기 시작하고, 다 받을 때까지 FontLoader가 로딩 화면을 보여 줌 */}
+        <link
+          rel="preload"
+          href="/fonts/bookk-myungjo/BookkMyungjo-Lt.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/bookk-myungjo/BookkMyungjo-Bd.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+        <style id="font-faces" dangerouslySetInnerHTML={{ __html: FONT_FACE_CSS }} />
       </head>
       <body>
+        <FontLoader />
         {children}
-        {/* 한글 부크크 명조(통파일)는 첫 화면 뒤에 받음 */}
-        <DeferredFonts href="/fonts/bookk-myungjo.css" />
       </body>
     </html>
   );
