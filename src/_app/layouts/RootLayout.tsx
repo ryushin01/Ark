@@ -1,5 +1,7 @@
 import { SITE } from "@/shared/config";
 
+import { DeferredFonts } from "./DeferredFonts";
+
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -30,7 +32,11 @@ export function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: INITIAL_SCRIPT }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* 한글 부크크 명조(통파일)는 첫 화면 뒤에 받음 */}
+        <DeferredFonts href="/fonts/bookk-myungjo.css" />
+      </body>
     </html>
   );
 }

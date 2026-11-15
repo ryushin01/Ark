@@ -37,7 +37,7 @@
 | `--rail`                                          | `2.75rem`             | 세로 띠 폭(터치 44px) |
 | `--ease-magic`, `--ease-out-expo`, `--ease-quart` | cubic-bezier          | 등장·전환 애니메이션  |
 
-글꼴은 모두 SIL OFL입니다. 제목은 Cinzel 600(영문)과 나눔명조 800(한글)을 한 굵기씩만 받고(두 굵기를 받으면 한글 조각이 두 벌이 됨. 함렛은 한글이 고딕에 가까워 바꿈), 본문과 표기는 Courier Prime을 쓰고, 본문 한글은 운영체제의 명조 글꼴(AppleMyungjo, Noto Serif CJK KR, 바탕)을 씁니다. 한글 웹 글꼴은 글이 많은 화면에서 수백 KB를 받아 모바일 첫 화면을 늦추기 때문입니다(본문 글꼴을 빼서 홈 전송량 1,034KB → 773KB). 제목 글꼴은 `@fontsource`의 글자 묶음별 조각이라 화면에 쓰인 글자가 든 조각만 받습니다.
+제목 영문은 Cinzel 600, 본문과 표기의 영문·숫자는 Courier Prime(`@fontsource`, SIL OFL, 글자 묶음별 조각)을 씁니다. 한글은 제목·본문 모두 부크크 명조(400·700)입니다. 부크크 명조는 수정할 수 없는 글꼴이라 글자를 골라 담지 못하고 원본 파일을 그대로 씁니다(`public/fonts/bookk-myungjo`, 굵기마다 0.8~1MB). 첫 화면을 막지 않도록 `DeferredFonts`가 페이지를 다 받고 1초 뒤 한가할 때 `public/fonts/bookk-myungjo.css`를 낮은 우선순위로 붙이고, 그 전에는 운영체제 명조(AppleMyungjo, Noto Serif CJK KR, 바탕)로 보입니다. 이전의 나눔명조 800(제목)은 뺐습니다. 이 글꼴 파일(1.7MB)을 받는 시간이 측정에 들어가 Lighthouse 데스크톱 성능이 약 0.85, 홈 LCP가 약 2.7초가 되므로, 성능 기준을 0.9 → 0.8, LCP 기준을 2.5초 → 3초로 조정했습니다(`lighthouserc.json`).
 
 - 손글씨(Nanum Pen Script)는 주석에 쓰는 글자만 담은 `src/_app/styles/fonts/nanum-pen-notes.woff2`(8KB)입니다. 주석에 새 글자를 쓰면 `pyftsubset NanumPenScript-Regular.ttf --text="…" --flavor=woff2`로 다시 만듭니다.
 - 첫 화면 밖의 목록은 `content-visibility: auto`로 화면 가까이 올 때만 그립니다. 그려지지 않은 글자의 글꼴 조각은 받지 않습니다.
