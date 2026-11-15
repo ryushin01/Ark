@@ -44,7 +44,8 @@ describe("FontLoader", () => {
     faces.id = "font-faces";
     document.head.append(faces);
     let finish: (value: unknown) => void = () => {};
-    stubFonts(() => new Promise((resolve) => (finish = resolve)));
+    const late = new Promise((resolve) => (finish = resolve));
+    stubFonts(() => late);
     run();
     vi.advanceTimersByTime(FONT_LOADER_TIMEOUT_MS);
     expect(fonts()).toBe("ready");
