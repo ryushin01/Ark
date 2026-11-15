@@ -127,14 +127,15 @@ src/
 
 ## 웹 폰트
 
-| 글꼴             | 쓰는 곳                                                | 굵기 | 저작자                                               | 라이선스    | 원본                                                                              |
-| ---------------- | ------------------------------------------------------ | ---- | ---------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
-| Cinzel           | 영문 제목                                              | 600  | The Cinzel Project Authors                           | SIL OFL 1.1 | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
-| Courier Prime    | 영문·숫자 (본문·표기)                                  | 400  | The Courier Prime Project Authors                    | SIL OFL 1.1 | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
-| 바탕             | 한글 (제목·본문)                                       | 400  | HanYang I&C (The Batang and Gungsuh Project Authors) | SIL OFL 1.1 | [google/fonts](https://github.com/google/fonts/tree/main/ofl/batang)              |
-| Nanum Pen Script | 손글씨 주석 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | 400  | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션   | SIL OFL 1.1 | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
+| 글꼴             | 쓰는 곳                                                | 굵기        | 저작자                                               | 라이선스    | 원본                                                                              |
+| ---------------- | ------------------------------------------------------ | ----------- | ---------------------------------------------------- | ----------- | --------------------------------------------------------------------------------- |
+| Cinzel           | 영문 제목                                              | 600         | The Cinzel Project Authors                           | SIL OFL 1.1 | [NDISCOVER/Cinzel](https://github.com/NDISCOVER/Cinzel)                           |
+| Courier Prime    | 영문·숫자 (본문·표기)                                  | 400         | The Courier Prime Project Authors                    | SIL OFL 1.1 | [quoteunquoteapps/CourierPrime](https://github.com/quoteunquoteapps/CourierPrime) |
+| 바탕             | 한글 (제목·본문)                                       | 400         | HanYang I&C (The Batang and Gungsuh Project Authors) | SIL OFL 1.1 | [google/fonts](https://github.com/google/fonts/tree/main/ofl/batang)              |
+| Nanum Pen Script | 손글씨 주석 (주석 글자만 남긴 `nanum-pen-notes.woff2`) | 400         | NHN Corporation(현 NAVER), 디자인 산돌커뮤니케이션   | SIL OFL 1.1 | [Google Fonts](https://fonts.google.com/specimen/Nanum+Pen+Script)                |
+| Pretendard       | 어드민 (한글·영문)                                     | 45~920 가변 | 길형진(Kil Hyung-jin)                                | SIL OFL 1.1 | [orioncactus/pretendard](https://github.com/orioncactus/pretendard)               |
 
-모두 같은 사이트에서 제공합니다(외부 글꼴 CDN 없음). 바탕은 화면에 쓰는 한글만 담은 파일(`src/_app/styles/fonts/batang`, 약 200KB)을 첫 화면 CSS와 함께 받고, 나머지 한글은 글자 묶음별 조각(`public/fonts/batang`)으로 나눠 페이지를 다 받은 뒤 붙입니다. 화면 글자가 바뀌면 `pnpm fonts`로 다시 만듭니다. 바탕은 굵기가 하나뿐이라 한글 제목도 400으로 보입니다(브라우저가 가짜 굵게를 만들지 않음). 라이선스 원문은 `public/fonts/batang/OFL.txt`에 있습니다.
+모두 같은 사이트에서 제공합니다(외부 글꼴 CDN 없음). 바탕은 화면에 쓰는 한글만 담은 파일(`src/_app/styles/fonts/batang`, 약 200KB)을 첫 화면 CSS와 함께 받고, 나머지 한글은 글자 묶음별 조각(`public/fonts/batang`)으로 나눠 페이지를 다 받은 뒤 붙입니다. 화면 글자가 바뀌면 `pnpm fonts`로 다시 만듭니다. 바탕은 굵기가 하나뿐이라 한글 제목도 400으로 보입니다(브라우저가 가짜 굵게를 만들지 않음). 라이선스 원문은 `public/fonts/batang/OFL.txt`에 있습니다. Pretendard는 어드민에서만 npm `pretendard`의 가변 동적 서브셋 CSS로 받아, 글자 묶음별 조각 가운데 화면에 쓰인 것만 받습니다.
 
 ## 출처
 
