@@ -207,3 +207,106 @@ html.lenis body {
     white-space: nowrap;
     border: 0;
 }
+
+/*
+ * 글꼴 로딩 화면: 부크크 명조를 다 받을 때까지 오선 위로 음표가 지나갑니다.
+ * html.js(자바스크립트 동작)에서만 보이고, html[data-fonts="ready"]가 되면 걷힙니다.
+ */
+.font-loader {
+    display: none;
+}
+.js .font-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1.5rem;
+    background: var(--paper);
+    color: var(--ink);
+    transition:
+        opacity 0.5s var(--ease-magic),
+        visibility 0s linear 0.5s;
+}
+.js[data-fonts="ready"] .font-loader {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+/* 받는 동안 뒤의 내용은 숨겨 초점이 들어가지 않게 함 */
+.js:not([data-fonts="ready"]) body > :not(.font-loader) {
+    visibility: hidden;
+}
+.font-loader__staff {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+    width: min(16rem, 70vw);
+}
+.font-loader__staff span {
+    display: block;
+    height: 1px;
+    background: var(--ink);
+    transform-origin: left;
+    animation: font-loader-rule 0.9s var(--ease-out-expo) both;
+}
+.font-loader__staff span:nth-child(2) {
+    animation-delay: 0.08s;
+}
+.font-loader__staff span:nth-child(3) {
+    animation-delay: 0.16s;
+}
+.font-loader__staff span:nth-child(4) {
+    animation-delay: 0.24s;
+}
+.font-loader__staff span:nth-child(5) {
+    animation-delay: 0.32s;
+}
+.font-loader__note {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-style: normal;
+    font-size: 1.75rem;
+    line-height: 1;
+    translate: 0 -55%;
+    animation: font-loader-note 2.4s var(--ease-quart) infinite;
+}
+.font-loader__text {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+}
+@keyframes font-loader-rule {
+    from {
+        transform: scaleX(0);
+    }
+}
+@keyframes font-loader-note {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    15%,
+    85% {
+        opacity: 1;
+    }
+    100% {
+        left: calc(100% - 1rem);
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .js .font-loader {
+        transition: none;
+    }
+    .font-loader__staff span,
+    .font-loader__note {
+        animation: none;
+    }
+    .font-loader__note {
+        left: calc(50% - 0.5rem);
+    }
+}
