@@ -11,3 +11,6 @@ supabase/seed.sql
 .lighthouseci
 # pnpm credits가 자료 데이터에서 만드는 파일
 docs/credits.md
+# pnpm fonts가 만드는 글꼴 CSS(한 줄에 한 글꼴 정의, --check가 줄 단위로 읽음)
+src/_app/styles/fonts/batang.css
+public/fonts/batang-rest.css
