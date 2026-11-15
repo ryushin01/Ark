@@ -1,6 +1,6 @@
 import { SITE } from "@/shared/config";
 
-import { FontLoader } from "./FontLoader";
+import { FONT_FACE_CSS, FontLoader } from "./FontLoader";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -46,9 +46,7 @@ export function RootLayout({ children }: { children: ReactNode }) {
           type="font/woff2"
           crossOrigin=""
         />
-        {/* 원본 파일 그대로 public에 두는 글꼴이라 번들 CSS 대신 직접 연결 */}
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="/fonts/bookk-myungjo.css" />
+        <style dangerouslySetInnerHTML={{ __html: FONT_FACE_CSS }} />
       </head>
       <body>
         <FontLoader />
