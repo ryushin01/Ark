@@ -1,0 +1,16 @@
+{
+  "outDir": "src/_app/styles/fonts",
+  "restDir": "public/fonts",
+  "scan": ["src"],
+  "dataExtensions": ["json"],
+  "extra": "",
+  "fonts": [
+    {
+      "family": "Ark Batang",
+      "slug": "batang",
+      "weights": {
+        "400": "scripts/fonts/batang/Batang-Regular.woff2"
+      }
+    }
+  ]
+}
