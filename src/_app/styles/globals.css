@@ -225,14 +225,9 @@ html.lenis body {
     gap: 1.5rem;
     background: var(--paper);
     color: var(--ink);
-    transition:
-        opacity 0.5s var(--ease-magic),
-        visibility 0s linear 0.5s;
 }
 .js[data-fonts="ready"] .font-loader {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    display: none;
 }
 /* 받는 동안 뒤의 내용은 숨겨 초점이 들어가지 않게 함 */
 .js:not([data-fonts="ready"]) body > :not(.font-loader) {
@@ -299,9 +294,6 @@ html.lenis body {
     }
 }
 @media (prefers-reduced-motion: reduce) {
-    .js .font-loader {
-        transition: none;
-    }
     .font-loader__staff span,
     .font-loader__note {
         animation: none;
@@ -309,9 +301,4 @@ html.lenis body {
     .font-loader__note {
         left: calc(50% - 0.5rem);
     }
-}
-
-/* 걷힐 때 글자는 바로 숨기고 배경만 서서히 사라지게 함(반투명한 글자가 명도 대비를 해치지 않게) */
-.js[data-fonts="ready"] .font-loader > * {
-    visibility: hidden;
 }
