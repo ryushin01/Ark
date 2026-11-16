@@ -72,6 +72,14 @@ jobs:
           supabase status -o env > /tmp/supabase.env
           echo "SUPABASE_URL=$(grep '^API_URL=' /tmp/supabase.env | cut -d= -f2- | tr -d '\"')" >> "$GITHUB_ENV"
           echo "SUPABASE_SECRET_KEY=$(grep '^SECRET_KEY=' /tmp/supabase.env | cut -d= -f2- | tr -d '\"')" >> "$GITHUB_ENV"
+      # 운영 배포(release.yml)가 쓰는 콘텐츠 반영 SQL(반영 기록 포함)이 실제 DB에서 도는지 확인합니다. 두 번 넣어도 같아야 합니다.
+      - name: Content sync SQL (local DB)
+        run: |
+          # supabase db query는 여러 문장을 한 번에 실행하지 못해 러너에 있는 psql을 씁니다.
+          DB_URL=$(grep '^DB_URL=' /tmp/supabase.env | cut -d= -f2- | tr -d '"')
+          pnpm exec tsx scripts/seed-sync.mts --all --record "$(git rev-parse HEAD)" > /tmp/sync.sql
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -q -f /tmp/sync.sql
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -q -f /tmp/sync.sql
       # 로컬 Supabase 주소로 빌드해야 업로드한 이미지(127.0.0.1)를 최적화할 수 있습니다.
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
