@@ -1,0 +1,118 @@
+name: Release
+
+# main의 CI가 통과하면 운영 DB를 먼저 맞추고 나서 Vercel 운영 배포를 부릅니다.
+# 순서: 마이그레이션 → 코드에서 바뀐 콘텐츠 반영(+반영 기록, 한 트랜잭션) → Vercel 배포 훅
+# 새 테이블·새 데이터를 쓰는 화면을 미리 그리는 빌드가 빈 DB를 읽어 실패하지 않게 합니다.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+# 운영 반영은 한 번에 하나씩, 진행 중인 것은 취소하지 않습니다.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  release:
+    name: Migrate · Sync content · Deploy
+    # 손으로 돌릴 때(workflow_dispatch)도 main에서만 운영에 반영합니다.
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+
+      # 손으로 돌릴 때는 그 커밋의 CI(main 푸시)가 통과했을 때만 진행합니다.
+      - name: CI gate (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          SHA=$(git rev-parse HEAD)
+          PASSED=$(gh run list --workflow ci.yml --commit "$SHA" --event push --status success --json databaseId -q 'length')
+          if [ "$PASSED" -eq 0 ]; then
+            echo "커밋 $SHA의 CI가 아직 통과하지 않아 멈춥니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+      # 운영 DB의 반영 기록(release_state)보다 오래된 커밋이면(CI가 늦게 끝난 실행) 운영을 되돌리지 않도록 아무것도 하지 않습니다.
+      # 기록 표가 아직 없을 때(첫 실행)만 기준 없이 진행하고, 마이그레이션이 표와 첫 기준을 만듭니다.
+      # 연결·권한 같은 다른 조회 실패는 멈춥니다(기준 없이 진행해 오래된 값을 덮어쓰지 않게).
+      - name: Stale check
+        id: stale
+        run: |
+          HAS_TABLE=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select to_regclass('public.release_state') is not null")
+          RECORDED=""
+          if [ "$HAS_TABLE" = "t" ]; then
+            RECORDED=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select sha from public.release_state where key = 'content'")
+          fi
+          if [ -n "$RECORDED" ] && ! git merge-base --is-ancestor "$RECORDED" HEAD; then
+            echo "이번 커밋이 이미 반영한 커밋($RECORDED)보다 오래되어 건너뜁니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: pnpm/action-setup@v4
+        if: steps.stale.outputs.skip == 'false'
+      - uses: actions/setup-node@v4
+        if: steps.stale.outputs.skip == 'false'
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: supabase/setup-cli@v1
+        if: steps.stale.outputs.skip == 'false'
+        with:
+          version: latest
+      - run: pnpm install --frozen-lockfile
+        if: steps.stale.outputs.skip == 'false'
+
+      - name: Migrations
+        if: steps.stale.outputs.skip == 'false'
+        run: supabase db push --remote="$SUPABASE_DB_URL" --yes
+
+      # 기준은 운영 DB의 반영 기록(첫 실행이면 마이그레이션이 넣은 첫 기준, 그것도 없으면 바로 앞 커밋)입니다.
+      # 바뀐 행과 반영 기록을 한 트랜잭션으로 넣어, 둘이 어긋나지 않게 합니다.
+      - name: Content sync
+        if: steps.stale.outputs.skip == 'false'
+        run: |
+          BASE=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select sha from public.release_state where key = 'content'")
+          [ -n "$BASE" ] || BASE=$(git rev-parse HEAD~1)
+          echo "기준 커밋: $BASE" | tee -a "$GITHUB_STEP_SUMMARY"
+          # 위 검사 뒤에 기록이 바뀌었더라도 오래된 값으로 덮어쓰지 않도록 한 번 더 확인합니다.
+          if ! git merge-base --is-ancestor "$BASE" HEAD; then
+            echo "기준 커밋이 이번 커밋의 조상이 아니라 멈춥니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          git worktree add --detach /tmp/base "$BASE"
+          if ! pnpm exec tsx scripts/seed-sync.mts /tmp/base --record "$(git rev-parse HEAD)" > /tmp/sync.sql 2> /tmp/sync.log; then
+            cat /tmp/sync.log >&2
+            exit 1
+          fi
+          tee -a "$GITHUB_STEP_SUMMARY" < /tmp/sync.log
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -q -f /tmp/sync.sql
+
+      # 배포 훅은 커밋이 아니라 main 브랜치에 묶여 있어 main의 최신 커밋을 배포합니다.
+      # main이 이미 다음 커밋으로 넘어갔으면, 그 커밋은 아직 마이그레이션 전일 수 있으므로 배포를 그 커밋의 실행에 맡깁니다.
+      - name: Deploy (Vercel deploy hook)
+        if: steps.stale.outputs.skip == 'false'
+        run: |
+          MAIN=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$MAIN" != "$(git rev-parse HEAD)" ]; then
+            echo "main이 이미 $MAIN으로 넘어가 배포는 그 커밋의 실행에 맡깁니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" > /dev/null
+          echo "Vercel 배포 접수: $MAIN" | tee -a "$GITHUB_STEP_SUMMARY"

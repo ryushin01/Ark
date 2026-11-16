@@ -106,7 +106,7 @@
 - 이미지가 신과 무관하거나(축제 사진, 풍경), 현대 창작물만 있는 경우. 이런 신은 자료 없이 소개만 둡니다 (예: 라이마, 바하근, 암마, 마우-리사, 락롱꾸언).
 - 현대 종교의 신앙 대상이나, 공동체가 외부 공개를 원하지 않는 전승
 
-목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`, 운영은 `pnpm db:seed:prod`로 넣습니다. Supabase CLI는 이미 한 번 넣은 시드 파일을 `db push --include-seed`로 다시 실행하지 않으므로, 운영에는 SQL을 직접 실행합니다. 시드는 이미 있는 행을 건너뛰므로(`on conflict do nothing`) 어드민에서 고친 내용은 그대로 남습니다.
+목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`으로 넣습니다. 운영은 main에 합치면 배포 워크플로가 코드에서 바뀐 행만 넣습니다(아래 "운영 배포"). 빈 운영 DB를 처음 채울 때만 `psql`로 `supabase/seed.sql`을 실행합니다. 시드는 이미 있는 행을 건너뜁니다(`on conflict do nothing`).
 
 ## 어드민
 
@@ -154,7 +154,7 @@
 
 로컬에서 저장하거나 업로드해도 운영 데이터는 바뀌지 않습니다. 운영 비밀 값은 Next.js가 읽지 않는 `.env.prod-secrets`에만 두고, `pnpm db:push`만 이 파일을 읽습니다. 두 파일 모두 커밋하지 않습니다.
 
-마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 `pnpm db:push`로 적용합니다. 새 테이블을 쓰는 코드를 배포하기 전에 운영 마이그레이션을 먼저 적용합니다.
+마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 main에 합치면 배포 워크플로가 적용합니다(아래 "운영 배포"). 급할 때만 `pnpm db:push`로 직접 적용합니다.
 
 단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써 목업을 씁니다. README 스크린샷(`pnpm screenshots`)만 로컬 Supabase를 씁니다.
 
@@ -266,6 +266,24 @@ E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2
 - 서버 오류(서버 컴포넌트, Route Handler, Server Action, proxy)는 `src/instrumentation.ts`의 `onRequestError`가 envelope을 직접 만들어 보냅니다(`@sentry/nextjs` 없이 fetch 한 번). 경로(쿼리 문자열 제외), 메서드, 라우트 파일, 오류 이름·메시지·스택, `digest`만 보내고 요청 헤더·쿠키는 보내지 않습니다.
 - Sentry 무료(Developer) 플랜으로 충분합니다. 운영에서 켜려면 Sentry 프로젝트(플랫폼 Next.js)를 만들고 DSN을 Vercel 운영 환경 변수 `NEXT_PUBLIC_SENTRY_DSN`에 넣은 뒤 다시 배포합니다(`NEXT_PUBLIC_`은 빌드 때 들어감).
 
-## PR 미리보기 배포
+## 운영 배포
 
-Vercel의 하루 배포 한도를 아끼려고 PR 미리보기 배포를 껐습니다(`vercel.json`의 `git.deploymentEnabled`). `main`에 머지할 때만 운영으로 배포하고, PR에서는 CI 검사만 돕니다. 미리보기가 꼭 필요하면 그 브랜치를 `deploymentEnabled`에 잠시 넣습니다.
+main에 푸시해도 Vercel이 바로 배포하지 않습니다(`vercel.json`의 `git.deploymentEnabled`에서 main도 끔). 대신 main의 CI가 통과하면 `.github/workflows/release.yml`이 다음 순서로 운영에 반영합니다. 새 테이블·새 데이터를 미리 그리는 빌드가 빈 DB를 읽어 실패하던 문제(`generateStaticParams`가 빈 목록)와, 합친 직후 손으로 시드를 넣어야 하던 일을 없앴습니다.
+
+1. **오래된 실행 거르기:** 운영 DB의 반영 기록(`release_state`)이 이번 커밋의 조상이 아니면(CI가 늦게 끝난 오래된 커밋) 운영을 되돌리지 않도록 아무것도 하지 않습니다.
+2. **마이그레이션:** `supabase db push --remote=<운영 DB 주소>`
+3. **콘텐츠 반영:** `scripts/seed-sync.mts`가 반영 기록의 커밋과 이번 커밋의 목업 데이터를 비교해, 새로 생겼거나 값이 바뀐 행만 upsert하고 **같은 트랜잭션에서** 반영 기록을 이번 커밋으로 고칩니다. 반영과 기록이 함께 성공하거나 함께 실패하므로 둘이 어긋나지 않습니다. 바뀌지 않은 행은 건드리지 않아 어드민에서 고친 행은 남습니다. 단, 어드민에서 고친 행을 코드에서도 고치면 코드 값으로 바뀝니다. 코드에서 사라진 행은 지우지 않고 작업 요약에 적기만 합니다.
+4. **배포:** Vercel 배포 훅을 부릅니다. 훅은 커밋이 아니라 main 브랜치에 묶여 있어 main의 최신 커밋을 배포하므로, main이 이미 다음 커밋으로 넘어갔으면 배포는 그 커밋의 실행에 맡깁니다(그 커밋은 아직 마이그레이션 전일 수 있음). 그 커밋의 CI가 실패하면 고친 커밋이 합쳐질 때 함께 배포됩니다. 훅은 배포를 접수만 하므로 빌드 결과는 Vercel에서 확인합니다.
+
+배포가 실패했으면 Actions에서 Release를 손으로 다시 실행합니다(`workflow_dispatch`, main에서만). 그 커밋의 CI(main 푸시)가 통과했을 때만 진행하고, DB는 이미 반영되어 바뀌는 행이 없으므로 배포만 다시 합니다. 이전 커밋의 목업 파일이 있는데 읽지 못하면 실패로 끝내, 모든 행을 새 행으로 잘못 보고 덮어쓰지 않게 합니다.
+
+반영 기록 표(`supabase/migrations/20261116120000_release_state.sql`)는 RLS만 켜고 정책을 두지 않아 공개 키로는 읽거나 쓸 수 없습니다. 첫 기준은 0.7.0(a9347f7)입니다. 0.8.0에서 고친 자료 4점의 저작자 표기가 운영 DB에 들어가지 않았던 것(시드가 이미 있는 행을 건너뜀)을 첫 반영에서 바로잡습니다. 나머지 행은 2026-11-16에 운영 DB와 코드를 읽기 전용으로 비교해 같음을 확인했습니다. 코드와 다르게 어드민에서 고친 행이나 손으로 넣은 값은 비교 대상이 아니므로, 다시 맞추고 싶으면 운영 DB를 읽기 전용으로 내려받아 비교합니다.
+
+| GitHub 비밀 값           | 내용                                                                          |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `SUPABASE_DB_URL`        | 운영 DB 주소(세션 풀러, 비밀번호 포함). `.env.prod-secrets`의 비밀번호로 만듦 |
+| `VERCEL_DEPLOY_HOOK_URL` | `vercel deploy-hooks create github-release --git-branch main`으로 만든 주소   |
+
+CI의 `upload` 작업은 로컬 DB에 모든 행을 덮어쓰는 SQL(`seed-sync.mts --all --record`)을 두 번 넣어 반영 SQL과 기록이 실제로 도는지 확인합니다.
+
+PR 미리보기 배포는 Vercel의 하루 배포 한도를 아끼려고 꺼 두었습니다. 미리보기가 꼭 필요하면 그 브랜치를 `deploymentEnabled`에 잠시 넣습니다.

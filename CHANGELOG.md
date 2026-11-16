@@ -1,8 +1,17 @@
 # 버전 기록
 
+## 0.25.0 - 2026-11-16
+
+- 운영 반영 자동화(`.github/workflows/release.yml`): main의 CI가 통과하면 마이그레이션 → 코드에서 바뀐 콘텐츠 반영 → Vercel 배포 훅 순서로 운영에 내보냄. main 푸시의 Vercel 자동 배포는 끔. 합친 직후 seed.sql과 유물 upsert를 손으로 넣던 일, 새 데이터를 미리 그리는 빌드가 빈 DB를 읽어 실패하던 일을 없앰
+- `scripts/seed-sync.mts`: 운영 DB의 반영 기록(`release_state`, 새 마이그레이션)과 비교해 새로 생겼거나 바뀐 행만 upsert하고, 같은 트랜잭션에서 기록을 이번 커밋으로 고침. 바뀌지 않은 행(어드민에서 고친 행)은 그대로 둠. 시드 행 만들기는 `scripts/seed/`로 나눠 `generate-seed.mts`와 함께 씀(seed.sql 결과는 같음)
+- 안전장치: 손으로 돌리기는 main에서 그 커밋의 CI가 통과했을 때만, CI가 늦게 끝난 오래된 커밋은 모두 건너뜀, main이 이미 다음 커밋으로 넘어갔으면 배포는 그 커밋의 실행에 맡김(배포 훅은 브랜치에 묶여 있어서), 이전 커밋의 목업 파일이 있는데 읽지 못하면 실패로 처리
+- 운영 DB 비교: 자료 4점(복희와 여와, 상아, 테스카틀리포카, 틀랄록)의 저작자 표기가 0.8.0에서 고친 값으로 들어가지 않았던 것을 첫 반영에서 바로잡음(첫 기준 0.7.0). 나머지 행은 코드와 같음
+- CI `upload` 작업이 반영 SQL(기록 포함)을 로컬 DB에 두 번 넣어 확인. +단위 테스트: 바뀐 행 고르기, upsert·기록 SQL
+- `pnpm db:seed:prod`는 지움(Supabase CLI 3의 `db query`는 여러 문장을 한 번에 실행하지 못함)
+
 ## 0.24.0 - 2026-11-16
 
-- 오류 모니터링을 실제로 켤 수 있게 고침: 브라우저 Sentry가 같은 출처의 터널 `/api/monitoring`으로 보내고, 서버가 Sentry로 넘김. 이전에는 CSP(`connect-src 'self'`)가 Sentry로 가는 요청을 막아 DSN을 넣어도 오류가 모이지 않았음. 터널은 우리 DSN의 envelope만 넘김(다른 DSN 400, 200KB 넘으면 413)
+- 오류 모니터링을 실제로 켤 수 있게 고침: 브라우저 Sentry가 같은 출처의 터널 `/api/monitoring`으로 보내고, 서버가 Sentry로 넘김. 이전에는 CSP(`connect-src 'self'`)가 Sentry로 가는 요청을 막아 DSN을 넣어도 오류가 모이지 않았음. 터널은 브라우저 DSN의 envelope만 넘기고(다른 DSN 400), 본문을 바이트 상한으로 조금씩 읽어 200KB를 넘으면 바로 멈춤(413). Sentry의 요청 제한 헤더(`Retry-After`, `X-Sentry-Rate-Limits`)를 그대로 돌려줘 SDK가 보내는 빈도를 조절함
 - 서버 오류 수집: `src/instrumentation.ts`의 `onRequestError`가 서버 컴포넌트·Route Handler·Server Action·proxy에서 난 오류를 Sentry로 보냄. 쿼리 문자열·헤더·쿠키는 보내지 않음
 - +단위 테스트: DSN 풀기, 터널의 DSN 확인·크기 제한·Sentry 응답 전달, 서버 오류 envelope
 
