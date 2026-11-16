@@ -19,6 +19,12 @@ describe("검색 상태와 주소", () => {
     );
   });
 
+  it("검색어의 띄어쓰기를 지우지 않습니다 (입력창이 주소를 다시 읽음)", () => {
+    for (const query of ["Baba ", "Baba Yaga", " 천둥"]) {
+      expect(parseSearch(toSearch({ ...INITIAL_SEARCH, query })).query).toBe(query);
+    }
+  });
+
   it("기본값만 있으면 주소에 아무것도 붙이지 않습니다", () => {
     expect(toSearch(INITIAL_SEARCH)).toBe("");
     expect(toSearch({ ...INITIAL_SEARCH, query: "  " })).toBe("");

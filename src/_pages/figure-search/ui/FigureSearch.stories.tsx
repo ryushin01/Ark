@@ -28,6 +28,7 @@ const meta = {
         kind: "god",
         kindLabel: "신",
         exhibitCount: 1,
+        relics: ["아이기스", "Aegis"],
         image: {
           src: "/images/exhibits/zeus-otricoli.jpg",
           width: 1200,
@@ -45,6 +46,7 @@ const meta = {
         kind: "god",
         kindLabel: "신",
         exhibitCount: 0,
+        relics: [],
         image: null,
       },
       {
@@ -58,6 +60,7 @@ const meta = {
         kind: "god",
         kindLabel: "신",
         exhibitCount: 0,
+        relics: [],
         image: null,
       },
       {
@@ -71,6 +74,7 @@ const meta = {
         kind: "hero",
         kindLabel: "영웅",
         exhibitCount: 0,
+        relics: [],
         image: null,
       },
     ],
@@ -88,13 +92,39 @@ export const SearchByDomain: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.type(
-      canvas.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" }),
+      canvas.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" }),
       "천둥",
     );
     await expect(canvas.getByText("신과 인물 2명")).toBeVisible();
     await userEvent.click(canvas.getByRole("button", { name: /^아프리카/ }));
     await expect(canvas.getByText("신과 인물 1명")).toBeVisible();
     await expect(canvas.getByRole("link", { name: /^샹고/ })).toBeVisible();
+  },
+};
+
+/** 초성이나 지닌 유물 이름으로도 찾습니다. */
+export const SearchByChoseongAndRelic: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" });
+    await userEvent.type(input, "ㅎㄹㅋ");
+    await expect(canvas.getByText("신과 인물 1명")).toBeVisible();
+    await expect(canvas.getByRole("link", { name: /^헤라클레스/ })).toBeVisible();
+    await userEvent.clear(input);
+    await userEvent.type(input, "아이기스");
+    await expect(canvas.getByRole("link", { name: /^제우스/ })).toBeVisible();
+    await expect(canvas.getByText("신과 인물 1명")).toBeVisible();
+  },
+};
+
+/** 띄어쓰기를 지우지 않습니다. (검색어는 주소에 그대로 남고, 입력창이 주소를 다시 읽음) */
+export const KeepsSpaces: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("searchbox");
+    await userEvent.type(input, "신들의 왕");
+    await expect(input).toHaveValue("신들의 왕");
+    await expect(canvas.getByRole("link", { name: /^제우스/ })).toBeVisible();
   },
 };
 
