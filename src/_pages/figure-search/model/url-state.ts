@@ -29,11 +29,12 @@ const KEYS = ["q", "continent", "kind"];
 /**
  * 기본값은 빼고 주소 뒤에 붙일 문자열을 만듭니다. (예: "?q=천둥&kind=monster")
  * current를 주면 검색과 상관없는 다른 값은 그대로 둡니다.
+ * 검색어는 입력한 그대로(공백만 있어도) 둡니다. 입력창이 주소의 값을 다시 읽으므로, 공백을 지우면 띄어쓰기를 칠 수 없습니다.
  */
 export function toSearch({ query, continent, kind }: SearchState, current = "") {
   const params = new URLSearchParams(current);
   KEYS.forEach((key) => params.delete(key));
-  if (query.trim()) params.set("q", query.trim());
+  if (query) params.set("q", query);
   if (continent !== "all") params.set("continent", continent);
   if (kind !== "all") params.set("kind", kind);
   const text = params.toString();

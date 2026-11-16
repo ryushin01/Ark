@@ -2,6 +2,7 @@ import { getExhibits } from "@/entities/exhibit/index.server";
 import { kindLabel } from "@/entities/figure";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
+import { getRelics } from "@/entities/relic/index.server";
 import { toThumb } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 import { SiteFooter } from "@/widgets/site-footer";
@@ -14,16 +15,25 @@ import type { Metadata } from "next";
 
 export const figureSearchMetadata: Metadata = {
   title: "신 찾기",
-  description: "세계 신화의 신과 영웅을 이름, 별칭, 관장 영역, 대륙, 분류로 찾습니다.",
+  description:
+    "세계 신화의 신과 영웅을 이름, 별칭, 관장 영역, 지닌 유물, 대륙, 분류로 찾습니다. 초성으로도 찾을 수 있습니다.",
 };
 
-/** 모든 신·인물을 이름·영역·대륙으로 찾는 화면. 순서는 계열 연대기 순서를 따릅니다. */
+/** 모든 신·인물을 이름·영역·유물·대륙으로 찾는 화면. 순서는 계열 연대기 순서를 따릅니다. */
 export async function FigureSearchPage() {
-  const [pantheons, figures, exhibits] = await Promise.all([
+  const [pantheons, figures, exhibits, relics] = await Promise.all([
     getPantheons(),
     getFigures(),
     getExhibits(),
+    getRelics(),
   ]);
+  /** 신·인물마다 지니거나 관련된 유물 이름(한글·영문) */
+  const relicNames = new Map<string, string[]>();
+  for (const relic of relics) {
+    for (const slug of relic.figureSlugs) {
+      relicNames.set(slug, [...(relicNames.get(slug) ?? []), relic.name, relic.nameEn]);
+    }
+  }
 
   const items: SearchItem[] = pantheons.flatMap((pantheon) =>
     figures
@@ -42,6 +52,7 @@ export async function FigureSearchPage() {
           domains: figure.domains,
           pantheonName: pantheon.name,
           continent: pantheon.continent,
+          relics: relicNames.get(figure.slug) ?? [],
         };
       }),
   );
