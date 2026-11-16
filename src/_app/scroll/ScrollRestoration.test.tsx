@@ -55,6 +55,18 @@ describe("ScrollRestoration", () => {
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 4254, left: 0, behavior: "instant" });
   });
 
+  it("넘겨받기 전에 #이 붙은 주소로 뒤로 갔어도 # 대상이 아니라 저장된 자리로 되돌린다", () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ "/vault": 4254 }));
+    document.body.innerHTML = '<section id="kusanagi"></section>';
+    stubNavigation("/figures/odin", "reload");
+    window.history.replaceState({ __NA: true }, "", "/vault#kusanagi");
+    scrollY = 100;
+    render(<ScrollRestoration />);
+    vi.advanceTimersToNextFrame();
+    expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 4254, left: 0, behavior: "instant" });
+    document.body.innerHTML = "";
+  });
+
   it("같은 문서에서 #만 바뀐 이동(Next 기록 항목이 아님)은 되돌리지 않는다", () => {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ "/figures": 4254 }));
     stubNavigation("/figures/odin");

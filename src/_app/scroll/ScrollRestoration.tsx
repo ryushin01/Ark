@@ -134,6 +134,8 @@ export function ScrollRestoration() {
       loaded !== undefined &&
       loaded !== scrollKey(window.location) &&
       isAppHistoryEntry(window.history.state);
+    // popstate 처리기처럼 이동 시각을 먼저 남겨, 아래 # 처리가 저장된 자리 대신 # 대상을 붙잡지 않게 합니다.
+    if (traversedBeforeMount) traversedAt.current = performance.now();
     if (isBackForwardLoad() || traversedBeforeMount) restoreSaved();
     // React가 화면을 넘겨받기 전에 한 스크롤은 위 처리기가 듣지 못했으므로 지금 자리를 한 번 기록합니다.
     // (느린 기기에서 넘겨받기 전에 스크롤하고 바로 링크를 누르면 목록의 자리가 남지 않아, 새로고침한 뒤 뒤로 가면 맨 위로 갔음)
