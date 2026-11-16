@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import { getExhibit } from "@/entities/exhibit/index.server";
 import { getFiguresByPantheon } from "@/entities/figure/index.server";
 import {
@@ -14,7 +11,16 @@ import {
   updatePantheon,
 } from "@/entities/pantheon/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  duplicateKeyError,
+  fieldError,
+  formError,
+  type FormState,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 const FIELDS = [
   "slug",
@@ -29,6 +35,8 @@ const FIELDS = [
   "description",
   "coverExhibitId",
 ] as const;
+
+const LIST = "/admin/pantheons";
 
 /** 신화 계열 저장. originalSlug가 있으면 고치고, 없으면 새로 만듭니다. */
 export async function savePantheonAction(
@@ -46,38 +54,26 @@ export async function savePantheonAction(
   if (!parsed.success) return withValues(toFieldErrors(parsed.error), values);
 
   if (!(await getExhibit(parsed.data.coverExhibitId))) {
-    return withValues(
-      {
-        status: "error",
-        message: "없는 자료입니다.",
-        fieldErrors: { coverExhibitId: ["대표 자료를 다시 골라 주세요."] },
-      },
+    return fieldError(
       values,
+      "없는 자료입니다.",
+      "coverExhibitId",
+      "대표 자료를 다시 골라 주세요.",
     );
   }
 
-  let slug = originalSlug;
   if (originalSlug) {
     if (!(await updatePantheon(originalSlug, parsed.data))) {
-      return withValues({ status: "error", message: "없는 신화 계열입니다." }, values);
+      return formError(values, "없는 신화 계열입니다.");
     }
-  } else {
-    const input = newPantheonInputSchema.parse(values);
-    if ((await createPantheon(input)) === "duplicate") {
-      return withValues(
-        {
-          status: "error",
-          message: "같은 주소 이름을 쓰는 계열이 이미 있습니다.",
-          fieldErrors: { slug: [`'${input.slug}'은(는) 이미 쓰고 있습니다.`] },
-        },
-        values,
-      );
-    }
-    slug = input.slug;
+    finishAdminAction(PANTHEON_TAG, LIST, "saved", originalSlug);
   }
 
-  updateTag(PANTHEON_TAG);
-  redirect(`/admin/pantheons?saved=${encodeURIComponent(slug ?? "")}`);
+  const input = newPantheonInputSchema.parse(values);
+  if ((await createPantheon(input)) === "duplicate") {
+    return duplicateKeyError(values, "같은 주소 이름을 쓰는 계열이 이미 있습니다.", input.slug);
+  }
+  finishAdminAction(PANTHEON_TAG, LIST, "saved", input.slug);
 }
 
 /** 신화 계열 삭제. 속한 신이 있으면 먼저 옮기거나 지워야 합니다. */
@@ -94,6 +90,5 @@ export async function deletePantheonAction(slug: string): Promise<FormState> {
   }
 
   await deletePantheon(slug);
-  updateTag(PANTHEON_TAG);
-  redirect(`/admin/pantheons?deleted=${encodeURIComponent(slug)}`);
+  finishAdminAction(PANTHEON_TAG, LIST, "deleted", slug);
 }

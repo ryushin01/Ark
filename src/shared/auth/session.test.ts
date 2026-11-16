@@ -38,6 +38,17 @@ describe("admin session", () => {
     expect(getSessionSecret({ NODE_ENV: "production", ADMIN_SESSION_SECRET: "x" })).toBe("x");
   });
 
+  it("관리자 비밀번호를 바꾸면 이전에 발급한 세션이 끊깁니다", async () => {
+    const before = getSessionSecret({ ADMIN_SESSION_SECRET: "x", ADMIN_PASSWORD: "old" });
+    const after = getSessionSecret({ ADMIN_SESSION_SECRET: "x", ADMIN_PASSWORD: "new" });
+    expect(before).not.toBe(after);
+    const token = await createSessionToken("admin", before as string, 1000);
+    expect(await verifySessionToken(token, before, 2000)).toMatchObject({ role: "admin" });
+    expect(await verifySessionToken(token, after, 2000)).toBeNull();
+    // 비밀번호를 그대로 두면 다시 배포해도 세션이 유지됩니다.
+    expect(getSessionSecret({ ADMIN_SESSION_SECRET: "x", ADMIN_PASSWORD: "old" })).toBe(before);
+  });
+
   it("비밀번호가 같을 때만 통과합니다", async () => {
     expect(await isPasswordCorrect("open-sesame", "open-sesame", SECRET)).toBe(true);
     expect(await isPasswordCorrect("open", "open-sesame", SECRET)).toBe(false);

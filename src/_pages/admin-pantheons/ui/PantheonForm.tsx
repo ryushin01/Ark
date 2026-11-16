@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button, Flex, Grid } from "@radix-ui/themes";
 
 import { CONTINENT_LABEL, CONTINENTS, type Pantheon } from "@/entities/pantheon";
-import { INITIAL_FORM_STATE } from "@/shared/lib";
+import { INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FormStatus,
@@ -29,6 +29,7 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
     savePantheonAction.bind(null, pantheon?.slug ?? null),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values: Record<string, string | string[]> = state.values ?? {
     slug: pantheon?.slug ?? "",
     name: pantheon?.name ?? "",
@@ -51,7 +52,7 @@ export function PantheonForm({ pantheon, exhibits }: PantheonFormProps) {
   return (
     <Flex direction="column" gap="5">
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">
             <TextInput {...field("name")} label="이름" required />

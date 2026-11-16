@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button, CheckboxGroup, Flex, Grid } from "@radix-ui/themes";
 
 import { NO_IMAGE, type Relic, RELIC_KIND_LABEL, RELIC_KINDS } from "@/entities/relic";
-import { INITIAL_FORM_STATE } from "@/shared/lib";
+import { INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FormStatus,
@@ -36,6 +36,7 @@ export function RelicForm({ relic, nextOrder, figures, exhibits }: RelicFormProp
     saveRelicAction.bind(null, relic?.slug ?? null),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values: Record<string, string | string[]> = state.values ?? {
     slug: relic?.slug ?? "",
     name: relic?.name ?? "",
@@ -60,7 +61,7 @@ export function RelicForm({ relic, nextOrder, figures, exhibits }: RelicFormProp
   return (
     <Flex direction="column" gap="5">
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">
             <TextInput {...field("name")} label="유물 이름" required />

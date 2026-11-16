@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button, CheckboxGroup, Flex, Grid, RadioGroup } from "@radix-ui/themes";
 
 import { type Work, WORK_MEDIUM_LABEL, WORK_MEDIUMS, WORK_STATUS_LABEL } from "@/entities/work";
-import { INITIAL_FORM_STATE } from "@/shared/lib";
+import { INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FormStatus,
@@ -34,6 +34,7 @@ export function WorkForm({ work, figures }: WorkFormProps) {
     saveWorkAction.bind(null, work?.slug ?? null),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values: Record<string, string | string[]> = state.values ?? {
     slug: work?.slug ?? "",
     title: work?.title ?? "",
@@ -55,7 +56,7 @@ export function WorkForm({ work, figures }: WorkFormProps) {
   return (
     <Flex direction="column" gap="5">
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">
             <TextInput {...field("title")} label="작품 이름" required />

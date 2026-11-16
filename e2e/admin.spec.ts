@@ -97,9 +97,16 @@ test("관리자는 신을 만들고, 공개 사이트에서 확인한 뒤 지울
   await page.getByLabel(/^관장하는 영역/).fill("전령, 여행, 상업");
   await page.getByLabel(/^한 줄 소개/).fill("날개 달린 신발을 신은 신들의 전령입니다.");
   await page.getByLabel(/^소개/).fill("헤르메스는 제우스와 마이아의 아들입니다.");
-  await page.getByRole("button", { name: "만들기" }).click();
+
+  // 빠르게 두 번 눌러도 저장 요청(Server Action)은 한 번만 보냅니다.
+  const saves: string[] = [];
+  page.on("request", (request) => {
+    if (request.method() === "POST" && request.headers()["next-action"]) saves.push(request.url());
+  });
+  await page.getByRole("button", { name: "만들기" }).dblclick();
 
   await expect(page).toHaveURL(/\/admin\/figures\?saved=hermes-e2e/);
+  expect(saves).toHaveLength(1);
   await expect(page.getByRole("status").filter({ hasText: "저장했습니다" })).toBeVisible();
 
   // 공개 페이지는 미리 그려 둔 페이지라, 저장 뒤 첫 요청은 이전 내용이고 곧 새 내용으로 바뀝니다.

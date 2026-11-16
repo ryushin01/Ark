@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Button, Flex } from "@radix-ui/themes";
 
-import { INITIAL_FORM_STATE } from "@/shared/lib";
+import { INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import { FormStatus, TextAreaInput, TextInput } from "@/shared/ui/admin";
 
 import { saveGenealogyAction } from "../api/actions";
@@ -25,6 +25,7 @@ export function GenealogyForm({
     saveGenealogyAction.bind(null, pantheonSlug),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values: Record<string, string | string[]> = state.values ?? {
     source: genealogy?.source ?? "",
     roots: JSON.stringify(genealogy?.roots ?? [], null, 2),
@@ -38,7 +39,7 @@ export function GenealogyForm({
   return (
     <Flex direction="column" gap="5">
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <TextInput
             {...field("source")}

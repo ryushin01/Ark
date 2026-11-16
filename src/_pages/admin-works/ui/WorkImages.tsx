@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import Image from "next/image";
 import { Button, Callout, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 
-import { type ArchiveImage, formatCredit, INITIAL_FORM_STATE } from "@/shared/lib";
+import { type ArchiveImage, formatCredit, INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FileInput,
@@ -28,6 +28,7 @@ export function WorkImages({ slug, title, images, canUpload }: WorkImagesProps) 
     addWorkImageAction.bind(null, slug),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state, { releaseOnSuccess: true });
   const values = state.status === "success" ? {} : (state.values ?? {});
   const field = (name: string) => ({
     name,
@@ -79,7 +80,7 @@ export function WorkImages({ slug, title, images, canUpload }: WorkImagesProps) 
         )}
 
         <FormStatus state={state} />
-        <form action={action} noValidate>
+        <form action={action} onSubmit={lock} noValidate>
           <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
             <FileInput
               name="image"

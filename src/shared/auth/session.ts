@@ -14,10 +14,15 @@ export type AdminSession = { role: AdminRole; expiresAt: number };
 
 const DEV_SECRET = "ark-dev-only-secret-change-me";
 
-/** 서명 키. 운영 환경에서 설정하지 않았으면 null이고, 로그인을 막습니다. */
+/**
+ * 서명 키. 운영 환경에서 ADMIN_SESSION_SECRET을 설정하지 않았으면 null이고, 로그인을 막습니다.
+ * 관리자 비밀번호(ADMIN_PASSWORD)를 함께 섞어, 비밀번호를 바꾸면 이전에 발급한 세션이 모두 끊깁니다.
+ * (세션을 서버에 저장하지 않으므로 로그아웃만으로는 이미 나간 토큰을 거둘 수 없습니다. 의심되면 비밀번호를 바꿉니다)
+ */
 export function getSessionSecret(env: Record<string, string | undefined> = process.env) {
-  if (env.ADMIN_SESSION_SECRET) return env.ADMIN_SESSION_SECRET;
-  return env.NODE_ENV === "production" ? null : DEV_SECRET;
+  const base = env.ADMIN_SESSION_SECRET || (env.NODE_ENV === "production" ? null : DEV_SECRET);
+  if (!base) return null;
+  return env.ADMIN_PASSWORD ? `${base}\u0000${env.ADMIN_PASSWORD}` : base;
 }
 
 const encoder = new TextEncoder();
