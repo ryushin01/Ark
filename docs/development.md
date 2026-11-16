@@ -106,7 +106,7 @@
 - 이미지가 신과 무관하거나(축제 사진, 풍경), 현대 창작물만 있는 경우. 이런 신은 자료 없이 소개만 둡니다 (예: 라이마, 바하근, 암마, 마우-리사, 락롱꾸언).
 - 현대 종교의 신앙 대상이나, 공동체가 외부 공개를 원하지 않는 전승
 
-목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`, 운영은 `pnpm db:seed:prod`로 넣습니다. Supabase CLI는 이미 한 번 넣은 시드 파일을 `db push --include-seed`로 다시 실행하지 않으므로, 운영에는 SQL을 직접 실행합니다. 시드는 이미 있는 행을 건너뛰므로(`on conflict do nothing`) 어드민에서 고친 내용은 그대로 남습니다.
+목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`으로 넣습니다. 운영은 main에 합치면 배포 워크플로가 코드에서 바뀐 행만 넣습니다(아래 "운영 배포"). 빈 운영 DB를 처음 채울 때만 `psql`로 `supabase/seed.sql`을 실행합니다. 시드는 이미 있는 행을 건너뜁니다(`on conflict do nothing`).
 
 ## 어드민
 

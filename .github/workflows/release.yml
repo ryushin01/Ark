@@ -60,7 +60,7 @@ jobs:
           pnpm exec tsx scripts/seed-sync.mts /tmp/base > /tmp/sync.sql 2> /tmp/sync.log
           cat /tmp/sync.log | tee -a "$GITHUB_STEP_SUMMARY"
           if [ -s /tmp/sync.sql ]; then
-            supabase db query --remote="$SUPABASE_DB_URL" --file /tmp/sync.sql --yes > /dev/null
+            psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -q -f /tmp/sync.sql
           else
             echo "바뀐 콘텐츠 없음" | tee -a "$GITHUB_STEP_SUMMARY"
           fi
