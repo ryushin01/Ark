@@ -25,7 +25,7 @@ function subscribe(onChange: () => void) {
 
 /**
  * 신·인물 찾기
- * 입력하는 대로 목록을 거르고, 결과 개수를 화면 낭독기에 알립니다.
+ * 입력하는 대로 목록을 거르고, 결과 개수를 화면 낭독기에 알립니다. 초성(ㅈㅇㅅ)과 입력하는 중인 글자(오디 → 오딘)로도 찾습니다.
  * 검색어와 거르기는 주소(?q=&continent=&kind=)에 남겨, 결과를 공유하거나 뒤로 가기로 돌아올 수 있습니다.
  * 자바스크립트가 없으면 거르지 않은 전체 목록이 보입니다.
  */
@@ -77,7 +77,7 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
       <search className={styles.search}>
         <form onSubmit={(event) => event.preventDefault()}>
           <label htmlFor={inputId} className={styles.label}>
-            이름·별칭·영역으로 찾기
+            이름·별칭·영역·유물로 찾기
           </label>
           <input
             id={inputId}
@@ -89,7 +89,7 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
             className={styles.input}
           />
           <p id={hintId} className={styles.hint}>
-            예: 천둥, 바다, 지혜, Odin, 그리스, 영웅
+            예: 천둥, 바다, Odin, 그리스, 영웅, 묠니르. 초성(ㅈㅇㅅ)으로도 찾습니다.
           </p>
         </form>
         <FilterGroup

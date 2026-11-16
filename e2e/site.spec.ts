@@ -68,7 +68,7 @@ test("신 찾기: 영역으로 찾고 대륙으로 거른 뒤 신 화면으로 �
   // 앞 화면(홈)의 신 색인은 Next.js가 숨긴 채 남겨 두므로 보이는 링크만 셉니다.
   const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
   await expect(cards).toHaveCount(MOCK_FIGURES.length);
-  await page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" }).fill("천둥");
+  await page.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" }).fill("천둥");
   await expect(page.getByText(/^신과 인물 \d+명$/)).toBeVisible();
   await page.getByRole("button", { name: /^아프리카/ }).click();
   await expect(cards).toHaveCount(1);
@@ -122,16 +122,33 @@ test("분류: 신 상세에 분류를 보여 주고, 신 찾기에서 분류로 
   await page.goto("/figures");
   const kinds = page.getByRole("group", { name: "분류로 거르기" });
   await kinds.getByRole("button", { name: /^영웅/ }).click();
-  await page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" }).fill("고구려");
+  await page.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" }).fill("고구려");
   const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
   await expect(cards).toHaveCount(2);
   await expect(cards.filter({ hasText: "동명성왕" })).toHaveCount(1);
   await expect(cards.filter({ hasText: "유화" })).toHaveCount(1);
 });
 
+test("신 찾기: 띄어쓰기·초성·유물 이름으로 찾습니다", async ({ page }) => {
+  await page.goto("/figures");
+  const input = page.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" });
+  const card = (name: string) =>
+    page.getByRole("link", { name: new RegExp(`^${name}`) }).filter({ visible: true });
+  // 한 글자씩 입력해도 띄어쓰기가 지워지지 않습니다.
+  await input.pressSequentially(" Baba Yaga");
+  await expect(input).toHaveValue(" Baba Yaga");
+  await expect(card("바바 야가")).toBeVisible();
+  // 지닌 유물 이름으로 찾습니다.
+  await input.fill("묠니르");
+  await expect(card("토르")).toBeVisible();
+  // 초성으로 찾습니다.
+  await input.fill("ㅇㄷ");
+  await expect(card("오딘")).toBeVisible();
+});
+
 test("신 찾기: 검색 상태를 주소로 공유하고 다시 엽니다", async ({ page }) => {
   await page.goto("/figures?q=%EC%B2%9C%EB%91%A5&continent=africa");
-  await expect(page.getByRole("searchbox", { name: "이름·별칭·영역으로 찾기" })).toHaveValue(
+  await expect(page.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" })).toHaveValue(
     "천둥",
   );
   const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
