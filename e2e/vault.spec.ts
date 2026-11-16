@@ -70,6 +70,11 @@ test("#이 붙은 전시실에서 더 내려가 신 화면에 갔다가 뒤로 �
 }) => {
   await page.goto("/vault#kusanagi");
   await expect(page.getByRole("article", { name: "구사나기의 검" })).toBeInViewport();
+  // 화면을 넘겨받으면 # 대상 자리를 잠시 붙잡습니다. 스크롤 명령은 사용자 입력이 아니라 붙잡기를 멈추지 않으므로,
+  // 넘겨받기를 기다린 뒤(EarlyRevealHandoff가 관찰자를 지움) 사용자가 직접 움직인 것처럼 휠로 붙잡기를 멈춥니다.
+  // (그러지 않으면 넘겨받는 시점에 따라 # 대상으로 되돌아가 가끔 실패했음)
+  await expect.poll(() => page.evaluate(() => "__arkEarlyReveal" in window)).toBe(false);
+  await page.mouse.wheel(0, 1);
   // 누를 링크를 먼저 화면에 들인 뒤 위치를 잽니다(클릭이 스스로 더 스크롤하지 않게).
   const owner = page
     .getByRole("article", { name: "여의금고봉" })

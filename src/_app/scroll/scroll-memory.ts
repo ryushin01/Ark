@@ -41,6 +41,17 @@ export function saveScroll(storage: Storage | undefined, key: string, y: number)
   }
 }
 
+/**
+ * 이 문서를 처음 불러온 주소(경로+검색어). 화면을 넘겨받기 전에 뒤로·앞으로 가면 지금 주소와 달라집니다.
+ * (넘겨받기 전에는 링크가 문서를 새로 불러오므로, 같은 문서에서 주소가 바뀌는 것은 기록 이동뿐입니다)
+ */
+export function loadedKey(perf: Performance | undefined = globalThis.performance) {
+  const entry = perf?.getEntriesByType?.("navigation")[0];
+  if (!entry?.name) return undefined;
+  const url = new URL(entry.name);
+  return scrollKey(url);
+}
+
 /** 뒤로·앞으로 가기로 문서를 새로 불러왔는지(새로고침 뒤 뒤로 가기 등) */
 export function isBackForwardLoad(perf: Performance | undefined = globalThis.performance) {
   const entry = perf?.getEntriesByType?.("navigation")[0] as
