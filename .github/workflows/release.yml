@@ -48,11 +48,16 @@ jobs:
           fi
 
       # 운영 DB의 반영 기록(release_state)보다 오래된 커밋이면(CI가 늦게 끝난 실행) 운영을 되돌리지 않도록 아무것도 하지 않습니다.
-      # 기록 표가 아직 없으면(첫 실행) 건너뛰지 않고, 마이그레이션이 표와 첫 기준을 만듭니다.
+      # 기록 표가 아직 없을 때(첫 실행)만 기준 없이 진행하고, 마이그레이션이 표와 첫 기준을 만듭니다.
+      # 연결·권한 같은 다른 조회 실패는 멈춥니다(기준 없이 진행해 오래된 값을 덮어쓰지 않게).
       - name: Stale check
         id: stale
         run: |
-          RECORDED=$(psql "$SUPABASE_DB_URL" -Atc "select sha from public.release_state where key = 'content'" 2>/dev/null || true)
+          HAS_TABLE=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select to_regclass('public.release_state') is not null")
+          RECORDED=""
+          if [ "$HAS_TABLE" = "t" ]; then
+            RECORDED=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select sha from public.release_state where key = 'content'")
+          fi
           if [ -n "$RECORDED" ] && ! git merge-base --is-ancestor "$RECORDED" HEAD; then
             echo "이번 커밋이 이미 반영한 커밋($RECORDED)보다 오래되어 건너뜁니다." | tee -a "$GITHUB_STEP_SUMMARY"
             echo "skip=true" >> "$GITHUB_OUTPUT"
@@ -83,9 +88,14 @@ jobs:
       - name: Content sync
         if: steps.stale.outputs.skip == 'false'
         run: |
-          BASE=$(psql "$SUPABASE_DB_URL" -Atc "select sha from public.release_state where key = 'content'")
+          BASE=$(psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -Atc "select sha from public.release_state where key = 'content'")
           [ -n "$BASE" ] || BASE=$(git rev-parse HEAD~1)
           echo "기준 커밋: $BASE" | tee -a "$GITHUB_STEP_SUMMARY"
+          # 위 검사 뒤에 기록이 바뀌었더라도 오래된 값으로 덮어쓰지 않도록 한 번 더 확인합니다.
+          if ! git merge-base --is-ancestor "$BASE" HEAD; then
+            echo "기준 커밋이 이번 커밋의 조상이 아니라 멈춥니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
           git worktree add --detach /tmp/base "$BASE"
           if ! pnpm exec tsx scripts/seed-sync.mts /tmp/base --record "$(git rev-parse HEAD)" > /tmp/sync.sql 2> /tmp/sync.log; then
             cat /tmp/sync.log >&2
