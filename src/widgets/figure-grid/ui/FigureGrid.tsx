@@ -16,11 +16,21 @@ export type FigureCard = {
   exhibitCount: number;
 };
 
-/** 신·인물 카드 목록. 카드 전체가 신 페이지로 가는 링크입니다. */
-export function FigureGrid({ figures }: { figures: FigureCard[] }) {
+/**
+ * 신·인물 카드 목록. 카드 전체가 신 페이지로 가는 링크입니다.
+ * eagerCount: 첫 화면에 보이는 카드 수(목록이 화면 맨 위 가까이 있을 때). 이 카드들의 이미지는 지연 로딩하지 않고,
+ * 첫 카드는 가장 큰 요소(LCP)라 먼저 받습니다.
+ */
+export function FigureGrid({
+  figures,
+  eagerCount = 0,
+}: {
+  figures: FigureCard[];
+  eagerCount?: number;
+}) {
   return (
     <ul className={styles.grid}>
-      {figures.map((figure) => (
+      {figures.map((figure, index) => (
         <li key={figure.slug}>
           <Link href={`/figures/${figure.slug}`} className={styles.card}>
             <span className={styles.media}>
@@ -30,6 +40,8 @@ export function FigureGrid({ figures }: { figures: FigureCard[] }) {
                   alt=""
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
+                  loading={index < eagerCount ? "eager" : "lazy"}
+                  fetchPriority={index === 0 && eagerCount > 0 ? "high" : "auto"}
                   className={styles.image}
                 />
               ) : (

@@ -96,7 +96,7 @@ export function SwipeGallery({ label, images }: SwipeGalleryProps) {
         >
           <span aria-hidden="true">←</span> 이전 이미지
         </button>
-        <p className={styles.counter} aria-live="polite">
+        <p className={styles.counter} role="status">
           {current + 1} / {total}
         </p>
         <button

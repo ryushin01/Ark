@@ -15,6 +15,8 @@ import type { Metadata } from "next";
 
 export const figureSearchMetadata: Metadata = {
   title: "신 찾기",
+  // 검색 주소(?q=…)는 같은 화면이므로 기본 주소로 모읍니다.
+  alternates: { canonical: "/figures" },
   description:
     "세계 신화의 신과 영웅을 이름, 별칭, 관장 영역, 지닌 유물, 대륙, 분류로 찾습니다. 초성으로도 찾을 수 있습니다.",
 };
