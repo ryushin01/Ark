@@ -24,11 +24,12 @@
  * 시작 상태는 투명도로만 숨깁니다. clip-path로 완전히 잘라 두면
  * 브라우저가 지연 로딩(loading="lazy") 이미지를 화면 밖으로 보고 불러오지 않습니다.
  */
-:global(html.js) .figure:not(.shown) .image {
+:global(html.js) .figure:not(.shown):not([data-revealed]) .image {
     opacity: 0;
 }
 
-.shown .image {
+.shown .image,
+[data-revealed] .image {
     animation: reveal-clip 1.2s var(--ease-quart) both;
 }
 
@@ -42,20 +43,22 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    :global(html.js) .figure:not(.shown) .image {
+    :global(html.js) .figure:not(.shown):not([data-revealed]) .image {
         opacity: 1;
     }
 
-    .shown .image {
+    .shown .image,
+    [data-revealed] .image {
         animation: none;
     }
 }
 
 /* 움직임 끔(세로 띠의 설정) */
-:global(html.js[data-motion="off"]) .figure:not(.shown) .image {
+:global(html.js[data-motion="off"]) .figure:not(.shown):not([data-revealed]) .image {
     opacity: 1;
 }
 
-:global(html[data-motion="off"]) .shown .image {
+:global(html[data-motion="off"]) .shown .image,
+:global(html[data-motion="off"]) [data-revealed] .image {
     animation: none;
 }

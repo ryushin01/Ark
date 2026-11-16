@@ -422,3 +422,50 @@ test.describe("화면 전환", () => {
     });
   }
 });
+
+test.describe("등장 효과 앞당기기", () => {
+  // 이 파일은 기본으로 동작 줄이기를 켜 두어(위 test.use) 처음부터 다 보이므로, 끄고 확인합니다.
+  test.use({ reducedMotion: "no-preference" });
+
+  const odin = MOCK_FIGURES.find((figure) => figure.slug === "odin");
+  const opacity = (page: Page, text: string) =>
+    page.getByText(text, { exact: true }).evaluate((element) => getComputedStyle(element).opacity);
+
+  test("자바스크립트 번들을 받지 못해도 첫 화면의 글과 스크롤해 들어간 글이 드러납니다", async ({
+    page,
+  }) => {
+    await page.route(/\/_next\/static\/.*\.js$/, (route) => route.abort());
+    await page.goto("/figures/odin");
+    await expect.poll(() => opacity(page, odin?.summary ?? "")).toBe("1");
+
+    const quote = page.getByText("이 일들은 한 번도 일어난 적이 없지만, 언제나 존재한다.");
+    await quote.scrollIntoViewIfNeeded();
+    await expect(quote).toHaveAttribute("data-revealed", "");
+  });
+
+  test("React가 넘겨받으면 앞당기기 관찰을 끝내고, 그 뒤는 React가 드러냅니다", async ({
+    page,
+  }) => {
+    await page.goto("/figures/odin");
+    await expect.poll(() => opacity(page, odin?.summary ?? "")).toBe("1");
+    await expect.poll(() => page.evaluate(() => "__arkEarlyReveal" in window)).toBe(false);
+  });
+});
+
+test("검색 주소와 상세 화면은 canonical 주소를 밝힙니다", async ({ page }) => {
+  const canonical = page.locator('link[rel="canonical"]');
+  await page.goto("/figures?q=%EC%B2%9C%EB%91%A5");
+  await expect(canonical).toHaveAttribute("href", /\/figures$/);
+  await page.goto("/figures/odin");
+  await expect(canonical).toHaveAttribute("href", /\/figures\/odin$/);
+  await page.goto("/");
+  await expect(canonical).toHaveAttribute("href", /^https:\/\/[^/]+\/?$/);
+});
+
+test("신 찾기의 첫 줄 카드 이미지는 지연 로딩하지 않습니다 (LCP)", async ({ page }) => {
+  await page.goto("/figures");
+  const images = page.locator('a[href^="/figures/"] img').filter({ visible: true });
+  await expect(images.first()).toHaveAttribute("loading", "eager");
+  await expect(images.first()).toHaveAttribute("fetchpriority", "high");
+  await expect(images.nth(3)).toHaveAttribute("loading", "lazy");
+});

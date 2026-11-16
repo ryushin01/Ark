@@ -15,43 +15,45 @@
     display: inline-block;
 }
 
-.inView .word {
+.inView .word,
+[data-revealed] .word {
     transition: transform 1.6s var(--ease-out-expo);
     transition-delay: calc(var(--i, 0) * 60ms);
 }
 
-.inView.block {
+.inView.block,
+[data-revealed].block {
     transition:
         opacity 1.4s var(--ease-magic),
         translate 1.4s var(--ease-magic);
 }
 
-:global(html.js) .words:not(.inView) .word {
+:global(html.js) .words:not(.inView):not([data-revealed]) .word {
     transform: translateY(110%);
 }
 
-:global(html.js) .block:not(.inView) {
+:global(html.js) .block:not(.inView):not([data-revealed]) {
     opacity: 0;
     translate: 0 1em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    :global(html.js) .words:not(.inView) .word {
+    :global(html.js) .words:not(.inView):not([data-revealed]) .word {
         transform: none;
     }
 
-    :global(html.js) .block:not(.inView) {
+    :global(html.js) .block:not(.inView):not([data-revealed]) {
         opacity: 1;
         translate: none;
     }
 }
 
 /* 움직임 끔(세로 띠의 설정) */
-:global(html.js[data-motion="off"]) .words:not(.inView) .word {
+:global(html.js[data-motion="off"]) .words:not(.inView):not([data-revealed]) .word {
     transform: none;
 }
 
-:global(html.js[data-motion="off"]) .block:not(.inView) {
+:global(html.js[data-motion="off"]) .block:not(.inView):not([data-revealed]) {
     opacity: 1;
     translate: none;
 }

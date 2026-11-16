@@ -11,6 +11,13 @@ import { type ScoreRow, ScoreRows } from "./ScoreRows";
 import { type ScoreMovement, ScoreStage } from "./ScoreStage";
 
 import type { ArchiveImage } from "@/shared/lib";
+import type { Metadata } from "next";
+
+/** 홈은 제목·설명을 루트 레이아웃의 기본값으로 쓰고 canonical만 정합니다. */
+export const homeMetadata: Metadata = { alternates: { canonical: "/" } };
+
+/** 첫 화면 무대의 콜라주 자리 수(ScoreStage의 SLOTS) */
+const STAGE_IMAGES = 5;
 
 /** 저작자 표기 의무가 없는 자료. 작은 필름과 콜라주에는 이런 자료만 씁니다. */
 const isAttributionFree = (image: ArchiveImage) =>
@@ -54,7 +61,8 @@ export async function HomePage() {
       name: pantheon.name,
       nameEn: pantheon.nameEn,
       eraLabel: pantheon.eraLabel,
-      images: images.map(toThumb),
+      // 무대는 콜라주 5장(필름은 그중 3장)만 쓰므로 그만큼만 브라우저로 넘깁니다.
+      images: images.slice(0, STAGE_IMAGES).map(toThumb),
       ...(coverCredit ? { coverCredit } : {}),
     };
   });

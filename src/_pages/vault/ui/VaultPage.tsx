@@ -15,6 +15,7 @@ import styles from "./VaultPage.module.css";
 
 export const vaultMetadata = {
   title: "비밀 전시실",
+  alternates: { canonical: "/vault" },
   description:
     "묠니르, 아이기스, 구사나기의 검, 천부인, 성배처럼 신과 영웅이 쥐었던 신화 속 유물을, 그 힘과 그 힘이 치르게 한 대가와 함께 전시합니다.",
 };

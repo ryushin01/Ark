@@ -1,3 +1,5 @@
+import { expect, within } from "storybook/test";
+
 import { FigureGrid } from "./FigureGrid";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
@@ -38,3 +40,25 @@ type Story = StoryObj<typeof meta>;
 
 /** 자료가 없는 신은 "자료 준비 중" 자리표시를 보여 줍니다. */
 export const Default: Story = {};
+
+/** 화면 맨 위 가까이 놓인 목록(신 찾기)은 첫 줄 이미지를 지연 로딩하지 않고, 첫 장은 먼저 받습니다(LCP). */
+export const FirstRowEager: Story = {
+  args: { eagerCount: 3 },
+  play: async ({ canvasElement }) => {
+    const image = within(canvasElement)
+      .getByRole("link", { name: /^제우스/ })
+      .querySelector("img");
+    await expect(image).toHaveAttribute("loading", "eager");
+    await expect(image).toHaveAttribute("fetchpriority", "high");
+  },
+};
+
+/** 기본(계열 화면처럼 대표 이미지 아래의 목록)은 모두 지연 로딩합니다. */
+export const LazyByDefault: Story = {
+  play: async ({ canvasElement }) => {
+    const image = within(canvasElement)
+      .getByRole("link", { name: /^제우스/ })
+      .querySelector("img");
+    await expect(image).toHaveAttribute("loading", "lazy");
+  },
+};

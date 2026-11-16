@@ -101,12 +101,13 @@ export function FigureSearch({ items }: { items: SearchItem[] }) {
         <FilterGroup label="분류로 거르기" options={kindOptions} value={kind} onChange={setKind} />
       </search>
 
-      <p className={styles.count} aria-live="polite">
+      <p className={styles.count} role="status">
         {shown.length > 0
           ? `신과 인물 ${shown.length}명`
           : "찾는 신이 없습니다. 다른 이름이나 영역으로 찾아 보세요."}
       </p>
-      <FigureGrid figures={shown} />
+      {/* 넓은 화면은 한 줄에 3장이라 첫 줄을 바로 받습니다. */}
+      <FigureGrid figures={shown} eagerCount={3} />
     </>
   );
 }

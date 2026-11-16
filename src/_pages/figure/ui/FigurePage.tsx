@@ -46,6 +46,7 @@ export async function generateFigureMetadata(slug: string) {
   return {
     title: figure.name,
     description: figure.summary,
+    alternates: { canonical: `/figures/${slug}` },
     openGraph: {
       title: `${figure.name} — ${figure.epithet}`,
       description: figure.summary,
