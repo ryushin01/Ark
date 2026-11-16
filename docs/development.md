@@ -142,6 +142,10 @@
 | 시드           | `pnpm db:seed:generate`가 목업 데이터로 `supabase/seed.sql`을 만들고, `supabase db push --remote --include-seed`로 넣습니다. 시드 이미지는 앱의 `/images/exhibits/`에 있습니다.                      |
 | 일시 정지 방지 | 무료 프로젝트는 7일 동안 요청이 없으면 멈춥니다. Vercel Cron(`vercel.json`)이 매일 `/api/keep-alive`를 부릅니다.                                                                                     |
 
+### 이미지 변환
+
+`next/image`의 너비는 `imageSizes` 160·320, `deviceSizes` 640·828·1080·1600만 씁니다(`next.config.ts`). 원본이 긴 변 1600px 이하라 그보다 큰 너비는 만들지 않습니다. 너비 종류가 적을수록 Vercel이 변환하는 횟수(무료 플랜 한도)와 목록 화면 HTML의 `srcset`이 줄어듭니다(0.26.0에서 신 찾기 596KB → 470KB). 변환한 그림은 31일 동안 캐시하므로(`minimumCacheTTL`), 같은 파일 이름으로 그림만 바꾸면 최대 31일 동안 이전 그림이 보입니다. 시드 그림을 바꿀 때는 파일 이름도 바꿉니다.
+
 ### DB 타입
 
 `pnpm db:types`가 로컬 DB 스키마로 `src/shared/api/database.types.ts`를 만듭니다. 각 엔티티의 `api/table.ts`는 이 타입으로 행↔모델 변환(`toRow`, `fromRow`)을 검사하므로, 컬럼 이름이 틀리거나 필수 컬럼을 빠뜨리면 타입 검사에서 걸립니다. 마이그레이션을 바꾸면 `pnpm db:types`를 다시 실행합니다.
