@@ -2,7 +2,7 @@
 
 ## 0.25.0 - 2026-11-16
 
-- 운영 반영 자동화(`.github/workflows/release.yml`): main의 CI가 통과하면 마이그레이션 → 코드에서 바뀐 콘텐츠 반영 → Vercel 배포 훅 순서로 운영에 내보냄. main 푸시의 Vercel 자동 배포는 끔. 합친 직후 seed.sql과 유물 upsert를 손으로 넣던 일, 새 데이터를 미리 그리는 빌드가 빈 DB를 읽어 실패하던 일을 없앰
+- 운영 반영 자동화(`.github/workflows/release.yml`): main의 CI가 통과하면 마이그레이션 → 코드에서 바뀐 콘텐츠 반영 → 반영한 커밋 기록 → Vercel 배포 훅 순서로 운영에 내보냄. 기록(`release/db-synced`)은 운영 DB에 반영한 커밋이라 배포 전에 옮기고, 배포가 실패하면 Release를 다시 돌려 배포만 다시 함. main 푸시의 Vercel 자동 배포는 끔. 합친 직후 seed.sql과 유물 upsert를 손으로 넣던 일, 새 데이터를 미리 그리는 빌드가 빈 DB를 읽어 실패하던 일을 없앰
 - `scripts/seed-sync.mts`: 지난번에 반영한 커밋(`release/db-synced`)과 비교해 새로 생겼거나 바뀐 행만 upsert. 바뀌지 않은 행(어드민에서 고친 행)은 그대로 둠. 시드 행 만들기는 `scripts/seed/`로 나눠 `generate-seed.mts`와 함께 씀(seed.sql 결과는 같음)
 - CI `upload` 작업이 반영 SQL을 로컬 DB에 두 번 넣어 확인. +단위 테스트: 바뀐 행 고르기, upsert SQL
 - 안전장치: 손으로 돌리기(`workflow_dispatch`)는 main에서만, CI가 늦게 끝난 오래된 커밋(이미 반영한 커밋의 조상)이면 마이그레이션·반영·배포를 모두 건너뜀. 이전 커밋의 목업 파일이 있는데 읽지 못하면 실패로 처리(모든 행을 새 행으로 잘못 보고 덮어쓰지 않게)
