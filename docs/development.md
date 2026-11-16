@@ -154,7 +154,7 @@
 
 로컬에서 저장하거나 업로드해도 운영 데이터는 바뀌지 않습니다. 운영 비밀 값은 Next.js가 읽지 않는 `.env.prod-secrets`에만 두고, `pnpm db:push`만 이 파일을 읽습니다. 두 파일 모두 커밋하지 않습니다.
 
-마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 `pnpm db:push`로 적용합니다. 새 테이블을 쓰는 코드를 배포하기 전에 운영 마이그레이션을 먼저 적용합니다.
+마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 main에 합치면 배포 워크플로가 적용합니다(아래 "운영 배포"). 급할 때만 `pnpm db:push`로 직접 적용합니다.
 
 단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써 목업을 씁니다. README 스크린샷(`pnpm screenshots`)만 로컬 Supabase를 씁니다.
 
@@ -266,6 +266,20 @@ E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2
 - 서버 오류(서버 컴포넌트, Route Handler, Server Action, proxy)는 `src/instrumentation.ts`의 `onRequestError`가 envelope을 직접 만들어 보냅니다(`@sentry/nextjs` 없이 fetch 한 번). 경로(쿼리 문자열 제외), 메서드, 라우트 파일, 오류 이름·메시지·스택, `digest`만 보내고 요청 헤더·쿠키는 보내지 않습니다.
 - Sentry 무료(Developer) 플랜으로 충분합니다. 운영에서 켜려면 Sentry 프로젝트(플랫폼 Next.js)를 만들고 DSN을 Vercel 운영 환경 변수 `NEXT_PUBLIC_SENTRY_DSN`에 넣은 뒤 다시 배포합니다(`NEXT_PUBLIC_`은 빌드 때 들어감).
 
-## PR 미리보기 배포
+## 운영 배포
 
-Vercel의 하루 배포 한도를 아끼려고 PR 미리보기 배포를 껐습니다(`vercel.json`의 `git.deploymentEnabled`). `main`에 머지할 때만 운영으로 배포하고, PR에서는 CI 검사만 돕니다. 미리보기가 꼭 필요하면 그 브랜치를 `deploymentEnabled`에 잠시 넣습니다.
+main에 푸시해도 Vercel이 바로 배포하지 않습니다(`vercel.json`의 `git.deploymentEnabled`에서 main도 끔). 대신 main의 CI가 통과하면 `.github/workflows/release.yml`이 다음 순서로 운영에 반영합니다. 새 테이블·새 데이터를 미리 그리는 빌드가 빈 DB를 읽어 실패하던 문제(`generateStaticParams`가 빈 목록)와, 합친 직후 손으로 시드를 넣어야 하던 일을 없앴습니다.
+
+1. **마이그레이션:** `supabase db push --remote=<운영 DB 주소>`
+2. **콘텐츠 반영:** `scripts/seed-sync.mts`가 지난번에 반영한 커밋(`release/db-synced` 브랜치)과 이번 커밋의 목업 데이터를 비교해, 새로 생겼거나 값이 바뀐 행만 upsert합니다. 바뀌지 않은 행은 건드리지 않으므로 어드민에서 고친 행은 남습니다. 단, 어드민에서 고친 행을 코드에서도 고치면 코드 값으로 바뀝니다. 코드에서 사라진 행은 지우지 않고 작업 요약에 적기만 합니다.
+3. **배포:** Vercel 배포 훅(main)을 부릅니다.
+4. **기록:** 반영한 커밋을 `release/db-synced`로 옮깁니다. 중간에 실패하면 옮기지 않으므로, 다음 실행이 그 사이의 변경을 모두 반영합니다.
+
+| GitHub 비밀 값           | 내용                                                                          |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `SUPABASE_DB_URL`        | 운영 DB 주소(세션 풀러, 비밀번호 포함). `.env.prod-secrets`의 비밀번호로 만듦 |
+| `VERCEL_DEPLOY_HOOK_URL` | `vercel deploy-hooks create github-release --git-branch main`으로 만든 주소   |
+
+CI의 `upload` 작업은 로컬 DB에 모든 행을 덮어쓰는 SQL(`seed-sync.mts --all`)을 두 번 넣어 반영 SQL이 실제로 도는지 확인합니다. 손으로 다시 돌릴 때는 Actions에서 Release를 실행합니다(`workflow_dispatch`).
+
+PR 미리보기 배포는 Vercel의 하루 배포 한도를 아끼려고 꺼 두었습니다. 미리보기가 꼭 필요하면 그 브랜치를 `deploymentEnabled`에 잠시 넣습니다.

@@ -1,0 +1,72 @@
+name: Release
+
+# main의 CI가 통과하면 운영 DB를 먼저 맞추고 나서 Vercel 운영 배포를 부릅니다.
+# 순서: 마이그레이션 → 코드에서 바뀐 콘텐츠 반영 → Vercel 배포 훅 → 반영한 커밋 기록
+# 새 테이블·새 데이터를 쓰는 화면을 미리 그리는 빌드가 빈 DB를 읽어 실패하지 않게 합니다.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+# 운영 반영은 한 번에 하나씩, 진행 중인 것은 취소하지 않습니다.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Migrate · Sync content · Deploy
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      # 마지막으로 운영 DB에 반영한 커밋을 가리키는 브랜치
+      SYNCED_REF: release/db-synced
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: pnpm install --frozen-lockfile
+
+      - name: Migrations
+        run: supabase db push --remote="$SUPABASE_DB_URL" --yes
+
+      - name: Content sync
+        run: |
+          # 기준: 지난번에 반영한 커밋. 처음이면 바로 앞 커밋.
+          if git rev-parse --verify -q "origin/$SYNCED_REF" > /dev/null; then
+            BASE=$(git rev-parse "origin/$SYNCED_REF")
+          else
+            BASE=$(git rev-parse HEAD~1)
+          fi
+          echo "기준 커밋: $BASE" | tee -a "$GITHUB_STEP_SUMMARY"
+          git worktree add --detach /tmp/base "$BASE"
+          pnpm exec tsx scripts/seed-sync.mts /tmp/base > /tmp/sync.sql 2> /tmp/sync.log
+          cat /tmp/sync.log | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ -s /tmp/sync.sql ]; then
+            supabase db query --remote="$SUPABASE_DB_URL" --file /tmp/sync.sql --yes > /dev/null
+          else
+            echo "바뀐 콘텐츠 없음" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Deploy (Vercel deploy hook)
+        run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" > /dev/null
+
+      - name: Record synced commit
+        run: git push --force origin "HEAD:refs/heads/$SYNCED_REF"
