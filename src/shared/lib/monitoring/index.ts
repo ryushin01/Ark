@@ -42,6 +42,8 @@ export function initMonitoring() {
       .then((Sentry) => {
         Sentry.init({
           dsn,
+          // 같은 출처로 보내 서버가 Sentry로 넘깁니다(src/app/api/monitoring). CSP는 connect-src 'self' 그대로입니다.
+          tunnel: "/api/monitoring",
           environment: process.env.NODE_ENV,
           release: process.env.NEXT_PUBLIC_RELEASE,
           // 오류 내용만 남깁니다. 사용자 정보·쿠키·헤더·쿼리 문자열은 모으지 않습니다.
