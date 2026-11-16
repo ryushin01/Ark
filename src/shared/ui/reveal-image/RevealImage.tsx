@@ -46,6 +46,9 @@ export function RevealImage({
       className={[styles.figure, styles[fit], isShown && styles.shown, className]
         .filter(Boolean)
         .join(" ")}
+      // 첫 화면의 그림은 React가 넘겨받기 전에 EarlyReveal 스크립트가 다 받는 대로 드러냅니다(data-revealed).
+      data-reveal="image"
+      suppressHydrationWarning
     >
       {fit === "cover" ? (
         <Image

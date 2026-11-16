@@ -62,7 +62,7 @@ export function ScoreRows({ items }: { items: ScoreRow[] }) {
         value={continent}
         onChange={setContinent}
       />
-      <p className="sr-only" aria-live="polite">
+      <p className="sr-only" role="status">
         {continent === "all" ? "전체" : CONTINENT_LABEL[continent]} {shown.length}개 계열
       </p>
 

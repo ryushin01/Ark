@@ -27,6 +27,7 @@ export async function generatePantheonMetadata(slug: string) {
   return {
     title: pantheon.name,
     description: pantheon.summary,
+    alternates: { canonical: `/pantheons/${slug}` },
     openGraph: {
       title: pantheon.name,
       description: pantheon.summary,

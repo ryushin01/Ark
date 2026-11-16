@@ -24,6 +24,7 @@ export async function generateRelicMetadata(slug: string) {
   return {
     title: `${relic.name} — 비밀 전시실`,
     description: relic.power,
+    alternates: { canonical: `/vault/${slug}` },
     openGraph: {
       title: `${relic.name} (${relic.nameEn})`,
       description: relic.power,

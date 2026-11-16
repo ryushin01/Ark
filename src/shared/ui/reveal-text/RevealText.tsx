@@ -24,6 +24,7 @@ type RevealTextProps = {
  * 화면에 들어오면 글자가 떠오르는 텍스트입니다.
  * - 자바스크립트가 없거나 사용자가 동작 줄이기를 켰으면 처음부터 그대로 보입니다.
  * - 단어를 span으로 나눠도 공백을 남기므로 화면 낭독기는 문장을 그대로 읽습니다.
+ * - 처음 열 때 화면에 보이는 글은 `EarlyReveal` 스크립트가 자바스크립트 번들을 기다리지 않고 바로 떠오르게 합니다.
  */
 export function RevealText({
   as: Tag = "p",
@@ -38,16 +39,18 @@ export function RevealText({
     .filter(Boolean)
     .join(" ");
 
+  // data-reveal: 첫 화면의 글은 React가 넘겨받기 전에 페이지 끝의 스크립트가 먼저 보이게 합니다(data-revealed).
+  // 그 속성은 서버 HTML에 없으므로 hydration 경고를 끕니다.
   if (mode === "block") {
     return (
-      <Tag ref={ref} id={id} className={classNames}>
+      <Tag ref={ref} id={id} className={classNames} data-reveal="" suppressHydrationWarning>
         {text}
       </Tag>
     );
   }
 
   return (
-    <Tag ref={ref} id={id} className={classNames}>
+    <Tag ref={ref} id={id} className={classNames} data-reveal="" suppressHydrationWarning>
       {splitWords(text).map((word, index) => (
         // 공백을 inline-block 밖에 두어야 접근 가능한 이름에서 단어가 붙지 않습니다.
         <Fragment key={`${word}-${index}`}>

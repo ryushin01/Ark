@@ -66,6 +66,15 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
+    // 원본이 긴 변 1600px 이하라 1920·2048·3840px 너비는 만들지 않습니다. 큰 화면도 1600(원본과 같은 크기)을 받습니다.
+    // 그보다 작은 너비는 실제로 고르는 것만 남겨, 어떤 화면도 이전보다 큰 그림을 받지 않게 합니다.
+    // 32·64: 머리글 로고(32px)의 1x·2x, 256·384: 160~240px 미리보기. 쓰지 않는 48·96·128은 뺍니다.
+    // 너비 종류가 줄면 Vercel 이미지 변환 횟수(무료 플랜 한도)와 목록 화면 HTML의 srcset이 줄어듭니다.
+    imageSizes: [32, 64, 256, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1600],
+    // 같은 그림을 다시 변환하지 않도록 31일 동안 캐시합니다.
+    // 새 그림은 새 파일 이름으로 올라가므로(시드 이미지 id, 업로드는 매번 새 경로) 오래된 캐시가 남지 않습니다.
+    minimumCacheTTL: 2678400,
     // 어드민에서 올린 이미지 (Supabase Storage 공개 버킷)
     remotePatterns: [
       { protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/**" },
