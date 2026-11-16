@@ -1,5 +1,11 @@
 # 버전 기록
 
+## 0.24.0 - 2026-11-16
+
+- 오류 모니터링을 실제로 켤 수 있게 고침: 브라우저 Sentry가 같은 출처의 터널 `/api/monitoring`으로 보내고, 서버가 Sentry로 넘김. 이전에는 CSP(`connect-src 'self'`)가 Sentry로 가는 요청을 막아 DSN을 넣어도 오류가 모이지 않았음. 터널은 우리 DSN의 envelope만 넘김(다른 DSN 400, 200KB 넘으면 413)
+- 서버 오류 수집: `src/instrumentation.ts`의 `onRequestError`가 서버 컴포넌트·Route Handler·Server Action·proxy에서 난 오류를 Sentry로 보냄. 쿼리 문자열·헤더·쿠키는 보내지 않음
+- +단위 테스트: DSN 풀기, 터널의 DSN 확인·크기 제한·Sentry 응답 전달, 서버 오류 envelope
+
 ## 0.23.0 - 2026-11-15
 
 - 한글 글꼴 교체: 부크크 명조 → 바탕(Batang, HanYang I&C, google/fonts의 SIL OFL 1.1판). 부크크 명조는 원문에 재배포를 허락하는 문구가 없어, 공개 저장소에 원본 파일을 두지 않도록 바꿈
