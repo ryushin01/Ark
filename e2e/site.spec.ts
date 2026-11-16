@@ -135,8 +135,8 @@ test("신 찾기: 띄어쓰기·초성·유물 이름으로 찾습니다", async
   const card = (name: string) =>
     page.getByRole("link", { name: new RegExp(`^${name}`) }).filter({ visible: true });
   // 한 글자씩 입력해도 띄어쓰기가 지워지지 않습니다.
-  await input.pressSequentially("Baba Yaga");
-  await expect(input).toHaveValue("Baba Yaga");
+  await input.pressSequentially(" Baba Yaga");
+  await expect(input).toHaveValue(" Baba Yaga");
   await expect(card("바바 야가")).toBeVisible();
   // 지닌 유물 이름으로 찾습니다.
   await input.fill("묠니르");
