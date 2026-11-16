@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useSsgoiTransition } from "@ssgoi/react";
 
-import { isBackForwardLoad, loadScroll, saveScroll, scrollKey } from "./scroll-memory";
+import { isBackForwardLoad, loadedKey, loadScroll, saveScroll, scrollKey } from "./scroll-memory";
 
 /** 화면 전환이 끝난 뒤에도 이 시간은 자리를 붙잡아 둡니다(늦게 그려지는 내용이 높이를 바꿀 수 있음). */
 const SETTLE_MS = 600;
@@ -127,10 +127,17 @@ export function ScrollRestoration() {
     const userInput = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
     for (const type of userInput) window.addEventListener(type, stopHold, { passive: true });
 
-    if (isBackForwardLoad()) restoreSaved();
+    // 넘겨받기 전에 뒤로·앞으로 갔으면(새로고침 직후 바로 뒤로 가기 등) popstate를 듣지 못했으므로, 지금 주소가 문서를 연 주소와
+    // 다르고 Next의 기록 항목이면 그 이동으로 보고 저장된 자리로 되돌립니다.
+    const loaded = loadedKey();
+    const traversedBeforeMount =
+      loaded !== undefined &&
+      loaded !== scrollKey(window.location) &&
+      isAppHistoryEntry(window.history.state);
+    if (isBackForwardLoad() || traversedBeforeMount) restoreSaved();
     // React가 화면을 넘겨받기 전에 한 스크롤은 위 처리기가 듣지 못했으므로 지금 자리를 한 번 기록합니다.
     // (느린 기기에서 넘겨받기 전에 스크롤하고 바로 링크를 누르면 목록의 자리가 남지 않아, 새로고침한 뒤 뒤로 가면 맨 위로 갔음)
-    // 자리를 되돌리는 중이면 save가 건너뜁니다.
+    // 위에서 되돌리기를 시작했으면 save가 건너뛰어, 브라우저가 잘라 되살린 자리로 저장값을 덮지 않습니다.
     save();
 
     return () => {
