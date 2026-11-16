@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button, Callout, Flex, Grid } from "@radix-ui/themes";
 
 import { type Exhibit, EXHIBIT_KIND_LABEL, EXHIBIT_KINDS } from "@/entities/exhibit";
-import { INITIAL_FORM_STATE } from "@/shared/lib";
+import { INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FileInput,
@@ -31,6 +31,7 @@ export function ExhibitForm({ exhibit, figures, canUpload }: ExhibitFormProps) {
     saveExhibitAction.bind(null, exhibit?.id ?? null),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values: Record<string, string | string[]> = state.values ?? {
     id: exhibit?.id ?? "",
     figureSlug: exhibit?.figureSlug ?? "",
@@ -62,7 +63,7 @@ export function ExhibitForm({ exhibit, figures, canUpload }: ExhibitFormProps) {
         </Callout.Root>
       )}
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <FileInput
             name="image"

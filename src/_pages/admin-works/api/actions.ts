@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import { getFigures } from "@/entities/figure/index.server";
 import {
   createWork,
@@ -12,7 +9,16 @@ import {
   workInputSchema,
 } from "@/entities/work/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  duplicateKeyError,
+  fieldError,
+  formError,
+  type FormState,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 const FIELDS = [
   "slug",
@@ -24,6 +30,8 @@ const FIELDS = [
   "summary",
   "status",
 ] as const;
+
+const LIST = "/admin/works";
 
 /** 영향받은 작품 저장. originalSlug가 있으면 수정, 없으면 새로 만듭니다. */
 export async function saveWorkAction(
@@ -43,41 +51,28 @@ export async function saveWorkAction(
   input.figureSlugs = input.figureSlugs.filter((slug) => known.has(slug));
 
   if (input.status === "published" && !input.summary) {
-    return withValues(
-      {
-        status: "error",
-        message: "공개하려면 신화와의 관계를 설명하는 소개가 필요합니다.",
-        fieldErrors: {
-          summary: ["공개할 작품은 소개를 입력해 주세요. 확인 중이면 비공개로 두세요."],
-        },
-      },
+    return fieldError(
       values,
+      "공개하려면 신화와의 관계를 설명하는 소개가 필요합니다.",
+      "summary",
+      "공개할 작품은 소개를 입력해 주세요. 확인 중이면 비공개로 두세요.",
     );
   }
 
   if (originalSlug) {
     if (!(await updateWork(originalSlug, input))) {
-      return withValues({ status: "error", message: "이미 삭제된 작품입니다." }, values);
+      return formError(values, "이미 삭제된 작품입니다.");
     }
   } else if ((await createWork(input)) === "duplicate") {
-    return withValues(
-      {
-        status: "error",
-        message: "같은 주소 이름을 쓰는 작품이 이미 있습니다.",
-        fieldErrors: { slug: [`'${input.slug}'은(는) 이미 쓰고 있습니다.`] },
-      },
-      values,
-    );
+    return duplicateKeyError(values, "같은 주소 이름을 쓰는 작품이 이미 있습니다.", input.slug);
   }
 
-  updateTag(WORK_TAG);
-  redirect(`/admin/works?saved=${encodeURIComponent(input.slug)}`);
+  finishAdminAction(WORK_TAG, LIST, "saved", input.slug);
 }
 
 export async function deleteWorkAction(slug: string): Promise<FormState> {
   const denied = await checkWritePermission();
   if (denied) return denied;
   await deleteWork(slug);
-  updateTag(WORK_TAG);
-  redirect(`/admin/works?deleted=${encodeURIComponent(slug)}`);
+  finishAdminAction(WORK_TAG, LIST, "deleted", slug);
 }

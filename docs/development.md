@@ -118,9 +118,11 @@
 | 데모   | 버튼 하나                 | 모든 화면 보기. 저장은 서버에서 막습니다. 배포본에서 방문자가 공개 데이터를 바꾸지 못하게 하려는 것입니다. |
 
 - 비밀번호 로그인은 같은 곳에서 15분 안에 5번 틀리면 잠깁니다. 실패 기록은 `admin_login_attempts` 테이블(IP는 SHA-256 해시만)에 남고, 성공하면 지웁니다. 하루 지난 기록은 크론이 지웁니다. 데모 로그인은 제한하지 않습니다.
-- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1). `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다.
+- 세션은 HMAC 서명 쿠키(`ark_admin`, path `/admin`, httpOnly, 24시간)입니다. 24시간은 시간 제한 안내가 필요 없는 길이입니다(KWCAG 6.2.1). `src/proxy.ts`가 로그인하지 않은 요청을 로그인 화면으로 보내고, 저장하는 Server Action은 `checkWritePermission()`으로 권한을 다시 확인합니다. 서명 키에는 `ADMIN_SESSION_SECRET`과 함께 관리자 비밀번호를 섞습니다. 세션을 서버에 저장하지 않아 로그아웃만으로는 이미 나간 토큰을 거둘 수 없으므로, 의심되면 Vercel의 `ADMIN_PASSWORD`를 바꿔 다시 배포하면 이전 세션이 모두 끊깁니다.
 - 입력값은 엔티티의 zod 스키마(`model/schema.ts`)로 검사합니다. 주소 이름과 비워 둘 수 있는 칸은 `shared/lib`의 `slugField`·`SLUG_PATTERN`·`optionalText`를 씁니다. 오류가 나면 칸마다 `aria-invalid`와 오류 메시지를 연결하고, 오류 요약으로 초점을 옮깁니다. 입력한 값은 그대로 남깁니다.
 - 미리보기 배포에는 `ADMIN_PASSWORD`를 두지 않아 저장할 수 없습니다. 운영과 같은 데이터베이스를 읽기 때문입니다.
+- 모든 저장·삭제·로그인 폼은 두 번 보내지 않습니다. `isPending`은 다음 렌더에야 바뀌어 빠른 연속 클릭을 막지 못하므로, `shared/lib`의 `useSubmitLock`이 보내는 순간 `useRef`로 잠그고(`<form action={action} onSubmit={lock}>`, 잠겨 있으면 submit 기본 동작을 막아 React가 액션을 부르지 않음) 실패했을 때만 풉니다. 같은 화면에 머무는 작품 이미지 추가는 성공해도 풉니다. 삭제 확인 버튼(`ConfirmDeleteButton`)도 같은 방식입니다. 단위 테스트(더블 클릭)와 어드민 E2E(신 만들기를 더블 클릭해도 Server Action 요청 1번)가 지킵니다.
+- 저장 액션의 오류 상태와 마무리는 공통 도우미를 씁니다. `formError`(폼 전체), `fieldError`(한 칸), `fieldErrorsState`(여러 칸, 고칠 칸 수 요약), `duplicateKeyError`(주소 이름·id 중복과 고치는 방법), `finishAdminAction`(캐시 갱신과 목록 이동, `shared/lib/index.server`)
 - 저장하면 `updateTag`로 캐시를 갱신합니다. 미리 그린 공개 페이지는 저장 뒤 첫 요청에 이전 내용을 보여 주고, 곧바로 새 내용으로 다시 그립니다.
 - 로그인하지 않고 어드민 주소로 오면, 로그인한 뒤 그 화면으로 돌아갑니다. 돌아갈 주소는 `/admin` 아래 경로만 받습니다.
 - 계열은 만들고 고치고 지울 수 있습니다. 신이 속한 계열은 지울 수 없습니다.

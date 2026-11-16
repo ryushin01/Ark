@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import { getExhibitsByFigure } from "@/entities/exhibit/index.server";
 import {
   createFigure,
@@ -14,7 +11,16 @@ import {
 import { getPantheon } from "@/entities/pantheon/index.server";
 import { getWorks } from "@/entities/work/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  duplicateKeyError,
+  fieldError,
+  formError,
+  type FormState,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 const FIELDS = [
   "slug",
@@ -29,6 +35,8 @@ const FIELDS = [
   "description",
   "order",
 ] as const;
+
+const LIST = "/admin/figures";
 
 /**
  * 신·인물 저장. originalSlug가 있으면 수정, 없으면 새로 만듭니다.
@@ -48,35 +56,23 @@ export async function saveFigureAction(
   const input = parsed.data;
 
   if (!(await getPantheon(input.pantheonSlug))) {
-    return withValues(
-      {
-        status: "error",
-        message: "없는 신화 계열입니다.",
-        fieldErrors: { pantheonSlug: ["신화 계열을 다시 골라 주세요."] },
-      },
+    return fieldError(
       values,
+      "없는 신화 계열입니다.",
+      "pantheonSlug",
+      "신화 계열을 다시 골라 주세요.",
     );
   }
 
   if (originalSlug) {
     if (!(await updateFigure(originalSlug, input))) {
-      return withValues({ status: "error", message: "이미 삭제된 신입니다." }, values);
+      return formError(values, "이미 삭제된 신입니다.");
     }
   } else if ((await createFigure(input)) === "duplicate") {
-    return withValues(
-      {
-        status: "error",
-        message: "같은 주소 이름을 쓰는 신이 이미 있습니다.",
-        fieldErrors: {
-          slug: [`'${input.slug}'은(는) 이미 쓰고 있습니다. 다른 주소 이름을 입력해 주세요.`],
-        },
-      },
-      values,
-    );
+    return duplicateKeyError(values, "같은 주소 이름을 쓰는 신이 이미 있습니다.", input.slug);
   }
 
-  updateTag(FIGURE_TAG);
-  redirect(`/admin/figures?saved=${encodeURIComponent(input.slug)}`);
+  finishAdminAction(FIGURE_TAG, LIST, "saved", input.slug);
 }
 
 /** 신·인물 삭제. 연결된 자료나 작품이 있으면 먼저 정리해야 합니다. */
@@ -94,6 +90,5 @@ export async function deleteFigureAction(slug: string): Promise<FormState> {
   }
 
   await deleteFigure(slug);
-  updateTag(FIGURE_TAG);
-  redirect(`/admin/figures?deleted=${encodeURIComponent(slug)}`);
+  finishAdminAction(FIGURE_TAG, LIST, "deleted", slug);
 }
