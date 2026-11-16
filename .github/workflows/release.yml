@@ -21,8 +21,9 @@ permissions:
 jobs:
   release:
     name: Migrate · Sync content · Deploy
+    # 손으로 돌릴 때(workflow_dispatch)도 main에서만 운영에 반영합니다.
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
     env:
@@ -44,21 +45,40 @@ jobs:
           version: latest
       - run: pnpm install --frozen-lockfile
 
-      - name: Migrations
-        run: supabase db push --remote="$SUPABASE_DB_URL" --yes
-
-      - name: Content sync
+      # 기준: 지난번에 반영한 커밋. 처음이면 바로 앞 커밋.
+      # CI가 늦게 끝난 오래된 커밋(이미 반영한 커밋의 조상)이면 운영을 되돌리지 않도록 아무것도 하지 않습니다.
+      - name: Base commit
+        id: base
         run: |
-          # 기준: 지난번에 반영한 커밋. 처음이면 바로 앞 커밋.
           if git rev-parse --verify -q "origin/$SYNCED_REF" > /dev/null; then
             BASE=$(git rev-parse "origin/$SYNCED_REF")
           else
             BASE=$(git rev-parse HEAD~1)
           fi
           echo "기준 커밋: $BASE" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "sha=$BASE" >> "$GITHUB_OUTPUT"
+          if git merge-base --is-ancestor "$BASE" HEAD; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "이번 커밋이 이미 반영한 커밋보다 오래되어 건너뜁니다." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Migrations
+        if: steps.base.outputs.skip == 'false'
+        run: supabase db push --remote="$SUPABASE_DB_URL" --yes
+
+      - name: Content sync
+        if: steps.base.outputs.skip == 'false'
+        env:
+          BASE: ${{ steps.base.outputs.sha }}
+        run: |
           git worktree add --detach /tmp/base "$BASE"
-          pnpm exec tsx scripts/seed-sync.mts /tmp/base > /tmp/sync.sql 2> /tmp/sync.log
-          cat /tmp/sync.log | tee -a "$GITHUB_STEP_SUMMARY"
+          if ! pnpm exec tsx scripts/seed-sync.mts /tmp/base > /tmp/sync.sql 2> /tmp/sync.log; then
+            cat /tmp/sync.log >&2
+            exit 1
+          fi
+          tee -a "$GITHUB_STEP_SUMMARY" < /tmp/sync.log
           if [ -s /tmp/sync.sql ]; then
             psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -q -f /tmp/sync.sql
           else
@@ -66,7 +86,9 @@ jobs:
           fi
 
       - name: Deploy (Vercel deploy hook)
+        if: steps.base.outputs.skip == 'false'
         run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" > /dev/null
 
       - name: Record synced commit
+        if: steps.base.outputs.skip == 'false'
         run: git push --force origin "HEAD:refs/heads/$SYNCED_REF"

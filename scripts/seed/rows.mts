@@ -2,6 +2,9 @@
  * 목업 데이터(코드에 있는 콘텐츠)를 DB 행으로 바꿉니다.
  * root를 주면 그 폴더(다른 커밋의 작업 트리)의 목업 데이터를 읽습니다. (scripts/seed-sync.mts)
  */
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
 import type * as Exhibit from "../../src/entities/exhibit/api/mock-data";
 import type * as Figure from "../../src/entities/figure/api/mock-data";
 import type * as Genealogy from "../../src/entities/genealogy/api/mock-data";
@@ -23,13 +26,11 @@ export type TableName = keyof typeof TABLES;
 export type SeedRows = Record<TableName, Record<string, unknown>[]>;
 
 const load = async <T,>(root: URL, entity: string): Promise<T | undefined> => {
-  try {
-    return (await import(new URL(`src/entities/${entity}/api/mock-data.ts`, root).href)) as T;
-  } catch (error) {
-    // 아직 없던 엔티티(이전 커밋)는 빈 테이블로 봅니다.
-    if ((error as { code?: string }).code === "ERR_MODULE_NOT_FOUND") return undefined;
-    throw error;
-  }
+  const url = new URL(`src/entities/${entity}/api/mock-data.ts`, root);
+  // 아직 없던 엔티티(이전 커밋)만 빈 테이블로 봅니다. 파일이 있는데 읽지 못하면(import 실패 등) 그대로 던져,
+  // 이전 행을 빈 목록으로 잘못 보고 모든 행을 덮어쓰지 않게 합니다.
+  if (!existsSync(fileURLToPath(url))) return undefined;
+  return (await import(url.href)) as T;
 };
 
 export async function buildRows(root = new URL("../../", import.meta.url)): Promise<SeedRows> {
