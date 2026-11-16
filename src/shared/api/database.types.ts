@@ -208,6 +208,25 @@ export type Database = {
           },
         ];
       };
+      release_state: {
+        Row: {
+          key: string;
+          sha: string;
+          updated_at: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          key: string;
+          sha: string;
+          updated_at?: string;
+        };
+        Update: {
+          key?: string;
+          sha?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       relics: {
         Row: {
           exhibit_id: string | null;

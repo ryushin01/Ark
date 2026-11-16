@@ -29,11 +29,30 @@ select ${list} from jsonb_populate_recordset(null::public.${table}, $seed$${json
 on conflict (${key}) ${conflict};`;
 }
 
-/** 여러 테이블을 한 트랜잭션으로. 계열과 자료가 서로를 가리키므로 외래 키 검사는 커밋 때 합니다. */
-export function transactionSql(rows: Partial<SeedRows>, mode: "skip" | "update") {
-  const statements = (Object.keys(TABLES) as TableName[])
-    .map((table) => upsertSql(table, rows[table] ?? [], mode))
-    .filter(Boolean);
+/**
+ * 콘텐츠를 어느 커밋까지 반영했는지 적는 SQL(`release_state`). 반영 SQL과 같은 트랜잭션에 넣어 함께 성공·실패하게 합니다.
+ */
+export function recordSql(sha: string) {
+  if (!/^[0-9a-f]{40}$/.test(sha)) throw new Error(`커밋 해시가 아닙니다: ${sha}`);
+  return `insert into public.release_state (key, sha) values ('content', '${sha}')
+on conflict (key) do update set sha = excluded.sha, updated_at = now();`;
+}
+
+/**
+ * 여러 테이블을 한 트랜잭션으로. 계열과 자료가 서로를 가리키므로 외래 키 검사는 커밋 때 합니다.
+ * extra(반영 기록 등)는 같은 트랜잭션의 끝에 붙입니다. 넣을 것이 하나도 없으면 빈 문자열입니다.
+ */
+export function transactionSql(
+  rows: Partial<SeedRows>,
+  mode: "skip" | "update",
+  extra: string[] = [],
+) {
+  const statements = [
+    ...(Object.keys(TABLES) as TableName[]).map((table) =>
+      upsertSql(table, rows[table] ?? [], mode),
+    ),
+    ...extra,
+  ].filter(Boolean);
   if (statements.length === 0) return "";
   return `begin;
 set constraints all deferred;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { diffRows, transactionSql, upsertSql } from "./seed/sql.mjs";
+import { diffRows, recordSql, transactionSql, upsertSql } from "./seed/sql.mjs";
 
 import type { SeedRows } from "./seed/rows.mjs";
 
@@ -63,5 +63,20 @@ describe("seed SQL", () => {
     });
     expect(removed).toEqual({ figures: ["loki"] });
     expect(diffRows(head, head)).toEqual({ changed: {}, removed: {} });
+  });
+
+  it("반영 기록은 같은 트랜잭션 끝에 붙고, 바뀐 행이 없어도 기록만 옮긴다", () => {
+    const sha = "a".repeat(40);
+    const withRows = transactionSql({ figures: [{ slug: "odin" }] }, "update", [recordSql(sha)]);
+    expect(withRows.indexOf("public.figures")).toBeLessThan(withRows.indexOf("release_state"));
+    expect(withRows.trimEnd().endsWith("commit;")).toBe(true);
+    expect(transactionSql({}, "update", [recordSql(sha)])).toContain(
+      `values ('content', '${sha}')`,
+    );
+  });
+
+  it("커밋 해시가 아니면 기록하지 않는다 (SQL에 그대로 넣으므로)", () => {
+    expect(() => recordSql("main'; drop table x; --")).toThrow();
+    expect(() => recordSql("abc")).toThrow();
   });
 });
