@@ -258,10 +258,13 @@ E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2
 | 환경 변수                | 내용                                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SENTRY_DSN` | 있으면 처리하지 못한 오류와 나쁜(poor) Web Vitals를 Sentry로 보냅니다. 없으면 Sentry를 번들에 넣지 않고, 개발 모드에서 Web Vitals를 콘솔에만 찍습니다 |
+| `SENTRY_DSN`             | (선택) 서버 오류를 다른 Sentry 프로젝트로 보낼 때만 씁니다. 없으면 `NEXT_PUBLIC_SENTRY_DSN`으로 보냅니다                                              |
 
 - Sentry에는 오류 내용만 보내고 사용자 정보·쿠키·헤더·쿼리 문자열, 방문 기록(세션), 이동·클릭 기록(브레드크럼), 콘솔 기록은 모으지 않습니다. 오류에 붙는 콜백 인수, Error가 아닌 일반 객체로 거부된 Promise의 필드 값(`extra.__serialized__`), 주소의 `#` 뒤도 보내기 전에 지웁니다. Sentry를 받기 전에 난 오류는 모아 두었다가 처리되지 않은 오류로 보냅니다.
 - 쓰는 함수만 `sentry.ts`에서 다시 내보내 약 31 kB(gzip)로 받습니다. 오류 화면(`_pages/error`, `_pages/admin-error`)에서 잡은 오류도 `reportError`로 보냅니다. 모듈 전체를 불러오면 리플레이·피드백까지 들어가 140 kB가 됩니다.
-- 브라우저 오류만 모읍니다. 서버에서 난 오류는 호스팅(Vercel 등)의 로그로 확인합니다.
+- 브라우저는 Sentry로 바로 보내지 않고 같은 출처의 터널 `/api/monitoring`으로 보냅니다(`tunnel`). 서버가 받아 Sentry로 넘기므로 CSP는 `connect-src 'self'` 그대로이고, 광고 차단기에도 덜 막힙니다. 터널은 우리 DSN으로 가는 envelope(200KB 이하)만 넘기고, 다른 DSN이면 400으로 거절해 아무 프로젝트로나 보내 주는 중계기가 되지 않습니다. DSN이 없으면 404입니다.
+- 서버 오류(서버 컴포넌트, Route Handler, Server Action, proxy)는 `src/instrumentation.ts`의 `onRequestError`가 envelope을 직접 만들어 보냅니다(`@sentry/nextjs` 없이 fetch 한 번). 경로(쿼리 문자열 제외), 메서드, 라우트 파일, 오류 이름·메시지·스택, `digest`만 보내고 요청 헤더·쿠키는 보내지 않습니다.
+- Sentry 무료(Developer) 플랜으로 충분합니다. 운영에서 켜려면 Sentry 프로젝트(플랫폼 Next.js)를 만들고 DSN을 Vercel 운영 환경 변수 `NEXT_PUBLIC_SENTRY_DSN`에 넣은 뒤 다시 배포합니다(`NEXT_PUBLIC_`은 빌드 때 들어감).
 
 ## PR 미리보기 배포
 
