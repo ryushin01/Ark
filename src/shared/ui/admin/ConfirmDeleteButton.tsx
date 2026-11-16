@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { AlertDialog, Button, Callout, Flex } from "@radix-ui/themes";
 
 import type { FormState } from "@/shared/lib";
@@ -12,10 +12,27 @@ type ConfirmDeleteButtonProps = {
   onDelete: () => Promise<FormState | void>;
 };
 
-/** 확인 대화상자를 거쳐 삭제합니다. 삭제 중에는 버튼을 막아 두 번 보내지 않습니다. */
+/**
+ * 확인 대화상자를 거쳐 삭제합니다.
+ * 두 번 보내지 않도록 누르는 순간 `useRef`로 잠급니다(`isPending`은 다음 렌더에야 바뀜).
+ * 성공하면 목록으로 떠나므로 실패했을 때만 풉니다.
+ */
 export function ConfirmDeleteButton({ name, onDelete }: ConfirmDeleteButtonProps) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const locked = useRef(false);
+
+  const remove = () => {
+    if (locked.current) return;
+    locked.current = true;
+    startTransition(async () => {
+      const result = await onDelete();
+      if (result?.status === "error") {
+        locked.current = false;
+        setError(result.message ?? "삭제하지 못했습니다.");
+      } else setError(null);
+    });
+  };
 
   return (
     <Flex direction="column" gap="2" align="start">
@@ -37,20 +54,7 @@ export function ConfirmDeleteButton({ name, onDelete }: ConfirmDeleteButtonProps
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
-              <Button
-                color="red"
-                disabled={isPending}
-                onClick={() =>
-                  startTransition(async () => {
-                    const result = await onDelete();
-                    setError(
-                      result?.status === "error"
-                        ? (result.message ?? "삭제하지 못했습니다.")
-                        : null,
-                    );
-                  })
-                }
-              >
+              <Button color="red" disabled={isPending} onClick={remove}>
                 삭제
               </Button>
             </AlertDialog.Action>

@@ -11,7 +11,7 @@ import {
   MONSTER_GRADE_LABEL,
   MONSTER_GRADES,
 } from "@/entities/figure";
-import { type FormState, INITIAL_FORM_STATE } from "@/shared/lib";
+import { type FormState, INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
 import {
   ConfirmDeleteButton,
   FormStatus,
@@ -48,6 +48,7 @@ export function FigureForm({ figure, pantheons }: FigureFormProps) {
     saveFigureAction.bind(null, figure?.slug ?? null),
     INITIAL_FORM_STATE,
   );
+  const lock = useSubmitLock(state);
   const values = state.values ?? toValues(figure);
   const field = (name: string) => ({
     name,
@@ -58,7 +59,7 @@ export function FigureForm({ figure, pantheons }: FigureFormProps) {
   return (
     <Flex direction="column" gap="5">
       <FormStatus state={state} />
-      <form action={action} noValidate>
+      <form action={action} onSubmit={lock} noValidate>
         {/* 제출할 때마다 다시 그려, 돌려받은 값을 기본값으로 다시 채웁니다. */}
         <Flex key={state.submittedAt ?? "initial"} direction="column" gap="4">
           <Grid columns={{ initial: "1", sm: "2" }} gap="4">

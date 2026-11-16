@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import {
@@ -14,7 +11,17 @@ import {
   updateRelic,
 } from "@/entities/relic/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  duplicateKeyError,
+  fieldError,
+  fieldErrorsState,
+  formError,
+  type FormState,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 /** 원래 순서에 있던 것은 그 순서대로, 없던 것은 뒤에 고른 순서대로 */
 function orderLike(selected: string[], original: string[]): string[] {
@@ -37,6 +44,8 @@ const FIELDS = [
   "exhibitId",
   "order",
 ] as const;
+
+const LIST = "/admin/relics";
 
 /** 유물 저장. originalSlug가 있으면 수정, 없으면 새로 만듭니다. */
 export async function saveRelicAction(
@@ -65,48 +74,33 @@ export async function saveRelicAction(
   );
   if (input.figureSlugs.length === 0) {
     return withValues(
-      {
-        status: "error",
-        message: "입력값을 확인해 주세요. 고칠 칸이 1개 있습니다.",
-        fieldErrors: { figureSlugs: ["지닌 이나 관련 인물을 하나 이상 골라 주세요."] },
-      },
+      fieldErrorsState({ figureSlugs: ["지닌 이나 관련 인물을 하나 이상 골라 주세요."] }),
       values,
     );
   }
   if (input.exhibitId && !exhibits.some((exhibit) => exhibit.id === input.exhibitId)) {
-    return withValues(
-      {
-        status: "error",
-        message: "그림으로 쓸 소장 자료를 찾지 못했습니다.",
-        fieldErrors: { exhibitId: ["목록에 있는 소장 자료를 고르거나 비워 두세요."] },
-      },
+    return fieldError(
       values,
+      "그림으로 쓸 소장 자료를 찾지 못했습니다.",
+      "exhibitId",
+      "목록에 있는 소장 자료를 고르거나 비워 두세요.",
     );
   }
 
   if (originalSlug) {
     if (!(await updateRelic(originalSlug, input))) {
-      return withValues({ status: "error", message: "이미 삭제된 유물입니다." }, values);
+      return formError(values, "이미 삭제된 유물입니다.");
     }
   } else if ((await createRelic(input)) === "duplicate") {
-    return withValues(
-      {
-        status: "error",
-        message: "같은 주소 이름을 쓰는 유물이 이미 있습니다.",
-        fieldErrors: { slug: [`'${input.slug}'은(는) 이미 쓰고 있습니다.`] },
-      },
-      values,
-    );
+    return duplicateKeyError(values, "같은 주소 이름을 쓰는 유물이 이미 있습니다.", input.slug);
   }
 
-  updateTag(RELIC_TAG);
-  redirect(`/admin/relics?saved=${encodeURIComponent(input.slug)}`);
+  finishAdminAction(RELIC_TAG, LIST, "saved", input.slug);
 }
 
 export async function deleteRelicAction(slug: string): Promise<FormState> {
   const denied = await checkWritePermission();
   if (denied) return denied;
   await deleteRelic(slug);
-  updateTag(RELIC_TAG);
-  redirect(`/admin/relics?deleted=${encodeURIComponent(slug)}`);
+  finishAdminAction(RELIC_TAG, LIST, "deleted", slug);
 }

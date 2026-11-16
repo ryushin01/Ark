@@ -15,6 +15,15 @@ export type FormState = {
 
 export const INITIAL_FORM_STATE: FormState = { status: "idle" };
 
+/** 칸별 오류를 폼 오류 상태로 만듭니다. 요약에는 고칠 칸 수를 적습니다. */
+export function fieldErrorsState(fieldErrors: Record<string, string[]>): FormState {
+  return {
+    status: "error",
+    message: `입력값을 확인해 주세요. 고칠 칸이 ${Object.keys(fieldErrors).length}개 있습니다.`,
+    fieldErrors,
+  };
+}
+
 /** zod 검사 결과를 폼 오류 상태로 바꿉니다. */
 export function toFieldErrors(error: z.ZodError): FormState {
   const fieldErrors: Record<string, string[]> = {};
@@ -22,11 +31,30 @@ export function toFieldErrors(error: z.ZodError): FormState {
     const key = String(issue.path[0] ?? "form");
     (fieldErrors[key] ??= []).push(issue.message);
   }
-  return {
-    status: "error",
-    message: `입력값을 확인해 주세요. 고칠 칸이 ${Object.keys(fieldErrors).length}개 있습니다.`,
-    fieldErrors,
-  };
+  return fieldErrorsState(fieldErrors);
+}
+
+type Values = Record<string, string | string[]>;
+
+/** 폼 전체에 대한 오류(제출한 값 유지) */
+export function formError(values: Values, message: string): FormState {
+  return withValues({ status: "error", message }, values);
+}
+
+/** 한 칸에 대한 오류(요약과 칸 메시지, 제출한 값 유지) */
+export function fieldError(values: Values, message: string, field: string, detail: string) {
+  return withValues({ status: "error", message, fieldErrors: { [field]: [detail] } }, values);
+}
+
+/** 주소 이름(slug)이나 id가 이미 쓰이고 있을 때의 오류. 칸 메시지에 고치는 방법을 함께 적습니다. */
+export function duplicateKeyError(
+  values: Values,
+  message: string,
+  key: string,
+  field: "slug" | "id" = "slug",
+) {
+  const fix = field === "id" ? "다른 id를 입력해 주세요." : "다른 주소 이름을 입력해 주세요.";
+  return fieldError(values, message, field, `'${key}'은(는) 이미 쓰고 있습니다. ${fix}`);
 }
 
 /** FormData에서 필요한 칸만 꺼냅니다. 여러 값을 고르는 칸(체크박스)은 listKeys에 적습니다. */

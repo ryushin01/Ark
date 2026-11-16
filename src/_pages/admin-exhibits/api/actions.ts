@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import {
   createExhibit,
   deleteExhibit,
@@ -15,7 +12,18 @@ import { getFigure } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { checkImageFile, removeStoredImage, uploadImage } from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, SLUG_PATTERN, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  duplicateKeyError,
+  fieldError,
+  fieldErrorsState,
+  formError,
+  type FormState,
+  readForm,
+  SLUG_PATTERN,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 const FIELDS = [
   "id",
@@ -31,6 +39,8 @@ const FIELDS = [
   "licenseUrl",
   "sourceUrl",
 ] as const;
+
+const LIST = "/admin/exhibits";
 
 /**
  * 자료 저장. originalId가 있으면 고치고(이미지 파일은 고를 때만 바꿈), 없으면 이미지와 함께 새로 만듭니다.
@@ -64,46 +74,18 @@ export async function saveExhibitAction(
     const state = toFieldErrors(parsed.error);
     return withValues({ ...state, fieldErrors: { ...fieldErrors, ...state.fieldErrors } }, values);
   }
-  if (Object.keys(fieldErrors).length > 0) {
-    return withValues(
-      {
-        status: "error",
-        message: `입력값을 확인해 주세요. 고칠 칸이 ${Object.keys(fieldErrors).length}개 있습니다.`,
-        fieldErrors,
-      },
-      values,
-    );
-  }
+  if (Object.keys(fieldErrors).length > 0) return withValues(fieldErrorsState(fieldErrors), values);
   if (!(await getFigure(parsed.data.figureSlug))) {
-    return withValues(
-      {
-        status: "error",
-        message: "없는 신입니다.",
-        fieldErrors: { figureSlug: ["신을 다시 골라 주세요."] },
-      },
-      values,
-    );
+    return fieldError(values, "없는 신입니다.", "figureSlug", "신을 다시 골라 주세요.");
   }
   if (!originalId && (await getExhibit(id))) {
-    return withValues(
-      {
-        status: "error",
-        message: "같은 id의 자료가 이미 있습니다.",
-        fieldErrors: { id: [`'${id}'은(는) 이미 쓰고 있습니다.`] },
-      },
-      values,
-    );
+    return duplicateKeyError(values, "같은 id의 자료가 이미 있습니다.", id, "id");
   }
 
   let uploaded: Awaited<ReturnType<typeof uploadImage>> | null = null;
   if (hasFile) {
     uploaded = await uploadImage(file as File, `exhibits/${id}-${Date.now()}.jpg`);
-    if (!uploaded.ok) {
-      return withValues(
-        { status: "error", message: uploaded.message, fieldErrors: { image: [uploaded.message] } },
-        values,
-      );
-    }
+    if (!uploaded.ok) return fieldError(values, uploaded.message, "image", uploaded.message);
   }
 
   if (originalId) {
@@ -113,17 +95,16 @@ export async function saveExhibitAction(
       parsed.data,
       uploaded?.ok ? uploaded.image : undefined,
     );
-    if (!saved) return withValues({ status: "error", message: "이미 삭제된 자료입니다." }, values);
+    if (!saved) return formError(values, "이미 삭제된 자료입니다.");
     if (uploaded?.ok && before) await removeStoredImage(before.image.src);
   } else if (uploaded?.ok) {
     if ((await createExhibit(id, parsed.data, uploaded.image)) === "duplicate") {
       await removeStoredImage(uploaded.image.src);
-      return withValues({ status: "error", message: "같은 id의 자료가 이미 있습니다." }, values);
+      return duplicateKeyError(values, "같은 id의 자료가 이미 있습니다.", id, "id");
     }
   }
 
-  updateTag(EXHIBIT_TAG);
-  redirect(`/admin/exhibits?saved=${encodeURIComponent(id)}`);
+  finishAdminAction(EXHIBIT_TAG, LIST, "saved", id);
 }
 
 /** 자료 삭제. 계열의 대표 자료로 쓰고 있으면 먼저 바꿔야 합니다. */
@@ -142,6 +123,5 @@ export async function deleteExhibitAction(id: string): Promise<FormState> {
   const exhibit = await getExhibit(id);
   await deleteExhibit(id);
   if (exhibit) await removeStoredImage(exhibit.image.src);
-  updateTag(EXHIBIT_TAG);
-  redirect(`/admin/exhibits?deleted=${encodeURIComponent(id)}`);
+  finishAdminAction(EXHIBIT_TAG, LIST, "deleted", id);
 }

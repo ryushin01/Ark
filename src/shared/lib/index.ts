@@ -1,7 +1,11 @@
 export type { ArchiveImage, ImageCredit, ShownImage, ThumbImage } from "./archive-image";
 export { formatCredit, toShown, toThumb } from "./archive-image";
-export { optionalText, SLUG_PATTERN, slugField } from "./form-fields";
+export { optionalText, SLUG_PATTERN, slugField } from "./form/form-fields";
 export {
+  duplicateKeyError,
+  fieldError,
+  fieldErrorsState,
+  formError,
   type FormState,
   INITIAL_FORM_STATE,
   readForm,
@@ -9,7 +13,8 @@ export {
   splitParagraphs,
   toFieldErrors,
   withValues,
-} from "./form-state";
+} from "./form/form-state";
+export { useSubmitLock } from "./form/use-submit-lock";
 export { initMonitoring, reportError } from "./monitoring";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";

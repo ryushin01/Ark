@@ -1,8 +1,5 @@
 "use server";
 
-import { updateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
 import { getFigures } from "@/entities/figure/index.server";
 import {
   GENEALOGY_TAG,
@@ -12,7 +9,15 @@ import {
 } from "@/entities/genealogy/index.server";
 import { getPantheon } from "@/entities/pantheon/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  fieldError,
+  formError,
+  type FormState,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
+import { finishAdminAction } from "@/shared/lib/index.server";
 
 const FIELDS = ["source", "roots"] as const;
 
@@ -26,9 +31,7 @@ export async function saveGenealogyAction(
   const denied = await checkWritePermission();
   if (denied) return withValues(denied, values);
 
-  if (!(await getPantheon(pantheonSlug))) {
-    return withValues({ status: "error", message: "없는 신화 계열입니다." }, values);
-  }
+  if (!(await getPantheon(pantheonSlug))) return formError(values, "없는 신화 계열입니다.");
 
   const parsed = genealogyInputSchema.safeParse(values);
   if (!parsed.success) return withValues(toFieldErrors(parsed.error), values);
@@ -36,17 +39,14 @@ export async function saveGenealogyAction(
   const known = new Set((await getFigures()).map((figure) => figure.slug));
   const unknown = [...new Set(slugsIn(parsed.data.roots))].filter((slug) => !known.has(slug));
   if (unknown.length > 0) {
-    return withValues(
-      {
-        status: "error",
-        message: "Ark에 없는 신·인물 주소가 있습니다.",
-        fieldErrors: { roots: [`없는 주소: ${unknown.join(", ")}`] },
-      },
+    return fieldError(
       values,
+      "Ark에 없는 신·인물 주소가 있습니다.",
+      "roots",
+      `없는 주소: ${unknown.join(", ")}`,
     );
   }
 
   await saveGenealogy({ pantheonSlug, ...parsed.data });
-  updateTag(GENEALOGY_TAG);
-  redirect(`/admin/genealogies?saved=${encodeURIComponent(pantheonSlug)}`);
+  finishAdminAction(GENEALOGY_TAG, "/admin/genealogies", "saved", pantheonSlug);
 }

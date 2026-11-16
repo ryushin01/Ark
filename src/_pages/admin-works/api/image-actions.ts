@@ -6,7 +6,15 @@ import { z } from "zod";
 import { getWork, setWorkImages, WORK_TAG } from "@/entities/work/index.server";
 import { checkImageFile, removeStoredImage, uploadImage } from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
-import { type FormState, optionalText, readForm, toFieldErrors, withValues } from "@/shared/lib";
+import {
+  fieldError,
+  fieldErrorsState,
+  type FormState,
+  optionalText,
+  readForm,
+  toFieldErrors,
+  withValues,
+} from "@/shared/lib";
 
 const imageInfoSchema = z.object({
   alt: z
@@ -36,30 +44,18 @@ export async function addWorkImageAction(
   const fileProblem = checkImageFile(file);
   const parsed = imageInfoSchema.safeParse(values);
   if (!parsed.success || fileProblem) {
-    const state = parsed.success
-      ? { status: "error" as const, fieldErrors: {} }
-      : toFieldErrors(parsed.error);
-    const fieldErrors = { ...state.fieldErrors, ...(fileProblem ? { image: [fileProblem] } : {}) };
-    return withValues(
-      {
-        status: "error",
-        message: `입력값을 확인해 주세요. 고칠 칸이 ${Object.keys(fieldErrors).length}개 있습니다.`,
-        fieldErrors,
-      },
-      values,
-    );
+    const fieldErrors = {
+      ...(parsed.success ? {} : toFieldErrors(parsed.error).fieldErrors),
+      ...(fileProblem ? { image: [fileProblem] } : {}),
+    } as Record<string, string[]>;
+    return withValues(fieldErrorsState(fieldErrors), values);
   }
 
   const work = await getWork(slug);
   if (!work) return { status: "error", message: "이미 삭제된 작품입니다." };
 
   const uploaded = await uploadImage(file as File, `works/${slug}-${Date.now()}.jpg`);
-  if (!uploaded.ok) {
-    return withValues(
-      { status: "error", message: uploaded.message, fieldErrors: { image: [uploaded.message] } },
-      values,
-    );
-  }
+  if (!uploaded.ok) return fieldError(values, uploaded.message, "image", uploaded.message);
 
   const { alt, artist, license, sourceUrl } = parsed.data;
   await setWorkImages(slug, [
