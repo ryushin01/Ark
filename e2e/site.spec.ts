@@ -359,6 +359,36 @@ test.describe("화면 전환", () => {
     await expectBackTo(page, "/figures", listScroll);
   });
 
+  test("React가 넘겨받기 전에 스크롤해도, 새로고침한 뒤 뒤로 가면 보던 자리로 돌아온다", async ({
+    page,
+  }) => {
+    // 화면 스크립트를 늦춰, 넘겨받기 전에 목록을 스크롤합니다(느린 기기).
+    await page.route("**/_next/static/chunks/**", async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await route.continue();
+    });
+    await page.goto("/figures", { waitUntil: "domcontentloaded" });
+    const link = page.locator('main a[href^="/figures/"]').filter({ visible: true }).nth(20);
+    await link.scrollIntoViewIfNeeded();
+    const listScroll = await scrollY(page);
+    expect(listScroll).toBeGreaterThan(0);
+    // 늦춘 요청이 끝날 때까지 기다렸다가 가로채기를 풉니다.
+    await page.unrouteAll({ behavior: "wait" });
+    // 넘겨받으면 EarlyRevealHandoff가 앞당기기 관찰자를 지웁니다. 그 뒤 더 스크롤하지 않고 바로 옮깁니다.
+    await expect.poll(() => page.evaluate(() => "__arkEarlyReveal" in window)).toBe(false);
+    await link.click();
+    await expect(page).toHaveURL(/\/figures\/.+/);
+    await expect(
+      page
+        .getByRole("heading", { level: 1 })
+        .filter({ visible: true })
+        .filter({ hasNotText: "신 찾기" }),
+    ).toBeVisible();
+    await page.reload();
+    await page.goBack();
+    await expectBackTo(page, "/figures", listScroll);
+  });
+
   test("동작 줄이기를 켜면 화면 전환 없이 바로 바뀐다", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/figures");
