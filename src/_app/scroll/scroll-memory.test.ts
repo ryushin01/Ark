@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 
 import {
   isBackForwardLoad,
+  loadedKey,
   loadScroll,
   MAX_ENTRIES,
   saveScroll,
@@ -49,5 +50,13 @@ describe("스크롤 위치 기억", () => {
     expect(isBackForwardLoad(perf("back_forward"))).toBe(true);
     expect(isBackForwardLoad(perf("reload"))).toBe(false);
     expect(isBackForwardLoad(undefined)).toBe(false);
+  });
+
+  it("문서를 처음 불러온 주소를 경로와 검색어로 돌려준다", () => {
+    const perf = (name: string) =>
+      ({ getEntriesByType: () => [{ name }] }) as unknown as Performance;
+    expect(loadedKey(perf("https://ark.test/figures/odin?x=1#top"))).toBe("/figures/odin?x=1");
+    expect(loadedKey({ getEntriesByType: () => [] } as unknown as Performance)).toBeUndefined();
+    expect(loadedKey(undefined)).toBeUndefined();
   });
 });
