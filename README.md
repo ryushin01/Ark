@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-1.4.1-8a4a1f)
+![version](https://img.shields.io/badge/version-1.4.2-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 51개 신화·전설 계열에서 신과 영웅, 몬스터 475명을 조각상, 회화, 유물, 사진 자료 561점으로 살펴보고, 신화 속 유물 152점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -143,7 +143,7 @@ src/
 
 | 자료                                                     | 저작자                                                          | 사용 허락                                                                        | 원본                                                                     |
 | -------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| 자료 그림 561점 (조각상·회화·유물·사진)                  | 그림마다 다름                                                   | 퍼블릭 도메인 403점, CC0 125점, CC BY 10점, CC BY-SA 18점, 그 밖의 자유 이용 5점 | Wikimedia Commons ([전체 목록](docs/credits.md))                         |
+| 자료 그림 561점 (조각상·회화·유물·사진)                  | 그림마다 다름                                                   | 퍼블릭 도메인 402점, CC0 125점, CC BY 10점, CC BY-SA 19점, 그 밖의 자유 이용 5점 | Wikimedia Commons ([전체 목록](docs/credits.md))                         |
 | 작품 일러스트 (어드민에서 올림)                          | 각 작품의 저작권자                                              | 허락을 받아 실음                                                                 | 작품 갤러리의 이미지마다 권리 표기와 원본                                |
 | Ark 로고 (파비콘·홈 화면 아이콘·머리글 로고·공유 이미지) | ethanlgraphics (@ethanlgraphics)                                | 저작자의 허락을 받아 실음                                                        | 디자이너의 AV 로고에서 A만 떼어 냄(가로획 끝은 원본처럼 뾰족하게 다듬음) |
 | 신·계열 소개 글                                          | 직접 쓴 글 (나무위키 등으로 사실을 확인하고 문장은 옮기지 않음) | —                                                                                | —                                                                        |
