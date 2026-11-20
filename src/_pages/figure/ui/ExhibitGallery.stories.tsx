@@ -1,3 +1,5 @@
+import { expect, within } from "storybook/test";
+
 import { ExhibitGallery } from "./ExhibitGallery";
 
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
@@ -52,5 +54,12 @@ export const UnlistedCredit: Story = {
   },
 };
 
-/** 등록된 자료가 없을 때 */
-export const Empty: Story = { args: { exhibits: [] } };
+/** 등록된 자료가 없을 때 (어드민에서 자료 없이 신을 만든 경우 등) */
+export const Empty: Story = {
+  args: { exhibits: [] },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("아직 등록된 자료가 없습니다.")).toBeVisible();
+    await expect(canvas.queryByRole("list")).toBeNull();
+  },
+};
