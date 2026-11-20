@@ -1,3 +1,4 @@
+import { monogram } from "@/shared/lib";
 import { RevealImage } from "@/shared/ui";
 
 import styles from "./RelicImage.module.css";
@@ -27,7 +28,7 @@ export function RelicImage({ image, nameEn, sizes, eager }: RelicImageProps) {
       ) : (
         <div className={styles.empty}>
           <span aria-hidden="true" className={styles.glyph} lang="en">
-            {nameEn.charAt(0)}
+            {monogram(nameEn)}
           </span>
           <figcaption className={styles.emptyNote}>전하는 그림이 없는 유물</figcaption>
         </div>
