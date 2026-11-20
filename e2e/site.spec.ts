@@ -127,9 +127,10 @@ test("분류: 신 상세에 분류를 보여 주고, 신 찾기에서 분류로 
   await kinds.getByRole("button", { name: /^영웅/ }).click();
   await page.getByRole("searchbox", { name: "이름·별칭·영역·유물로 찾기" }).fill("고구려");
   const cards = page.locator('a[href^="/figures/"]').filter({ visible: true });
-  await expect(cards).toHaveCount(2);
+  await expect(cards).toHaveCount(3);
   await expect(cards.filter({ hasText: "동명성왕" })).toHaveCount(1);
   await expect(cards.filter({ hasText: "유화" })).toHaveCount(1);
+  await expect(cards.filter({ hasText: "호동왕자" })).toHaveCount(1);
 });
 
 test("신 찾기: 띄어쓰기·초성·유물 이름으로 찾습니다", async ({ page }) => {

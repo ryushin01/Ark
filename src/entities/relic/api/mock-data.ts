@@ -1831,6 +1831,192 @@ const SEEDS: RelicSeed[] = [
     source: "하와이 전승",
     exhibitId: "maui-dittmer",
   },
+  // 켈트 신화
+  {
+    slug: "cauldron-of-the-dagda",
+    name: "다그다의 가마솥",
+    nameEn: "The Dagda's Cauldron",
+    kind: "treasure",
+    figureSlugs: ["dagda"],
+    origin:
+      "투어허 데 다넌이 아일랜드로 오기 전 북쪽 섬들의 네 도시에서 지식을 배우고 가져온 네 보물 가운데 하나로, 무리아스에서 온 가마솥입니다.",
+    power: "아무리 많은 무리가 먹어도 배부르지 않은 채 떠나는 이가 없었다고 합니다.",
+    price: null,
+    source: "「마그 투이레드의 둘째 전투」",
+    exhibitId: null,
+  },
+  {
+    slug: "harp-of-the-dagda",
+    name: "다그다의 하프",
+    nameEn: "The Dagda's Harp",
+    kind: "tool",
+    figureSlugs: ["dagda", "lugh"],
+    origin:
+      "다그다가 지닌 하프로, 그가 부르면 스스로 날아왔다고 합니다. 포모르족과의 싸움 뒤 포모르족이 이 하프를 가지고 달아났습니다.",
+    power:
+      "다그다와 루, 오그마가 포모르족의 연회장을 찾아가자 벽에 걸려 있던 하프가 다그다의 부름에 날아오며 그 자리의 아홉 사람을 쓰러뜨렸습니다. 다그다는 이 하프로 슬픔의 노래와 웃음의 노래, 잠의 노래를 차례로 연주해 포모르족을 잠재우고 빠져나왔습니다.",
+    price: null,
+    source: "「마그 투이레드의 둘째 전투」",
+    exhibitId: null,
+  },
+  {
+    slug: "sword-of-nuada",
+    name: "누아다의 칼",
+    nameEn: "Sword of Nuada",
+    kind: "weapon",
+    figureSlugs: ["nuada"],
+    origin:
+      "투어허 데 다넌의 네 보물 가운데 하나로, 핀디아스에서 가져온 칼입니다. 후대 민담의 '빛의 칼'(클라우 솔러시)과 이어 보기도 합니다.",
+    power:
+      "칼집에서 뽑히면 그 칼을 피해 달아난 이가 없었고, 맞서 견딜 수 있는 이도 없었다고 합니다.",
+    price: null,
+    source: "「마그 투이레드의 둘째 전투」",
+    exhibitId: null,
+  },
+  {
+    slug: "lia-fail",
+    name: "리아 팔 (운명의 돌)",
+    nameEn: "Lia Fáil",
+    kind: "treasure",
+    figureSlugs: ["lugh", "cuchulainn"],
+    origin:
+      "투어허 데 다넌의 네 보물 가운데 하나로, 팔리아스에서 가져온 돌입니다. 아일랜드 왕들이 즉위하던 타라 언덕에 놓였다고 하며, 지금도 타라에는 이 이름으로 불리는 선돌이 서 있습니다.",
+    power:
+      "참된 왕이 위에 서면 돌이 소리를 질러 그를 알렸다고 합니다. 「환영의 예언」에서는 콘 왕이 이 돌을 밟자 돌이 외쳤고, 안개 속에서 나타난 루가 그 뒤를 이을 왕들을 일러 주었습니다.",
+    price:
+      "한 전승에서는 쿠 훌린이 자신이 아끼던 루가이드가 위에 섰는데도 돌이 외치지 않자 화가 나 칼로 쪼개 버렸고, 그 뒤로 돌은 콘 왕 때 말고는 다시 외치지 않았다고 합니다.",
+    source: "「마그 투이레드의 둘째 전투」, 「환영의 예언」",
+    exhibitId: null,
+  },
+  // 북유럽 신화
+  {
+    slug: "golden-hair-of-sif",
+    name: "시프의 황금 머리카락",
+    nameEn: "Sif's Golden Hair",
+    kind: "ornament",
+    figureSlugs: ["sif", "loki"],
+    origin:
+      "로키가 시프의 머리카락을 모두 잘라 버린 뒤, 토르의 노여움을 피하려고 이발디의 아들들인 드베르그에게 만들게 한 황금 머리카락입니다.",
+    power: "머리에 대기만 하면 뿌리를 내려 진짜 머리카락처럼 자랐다고 합니다.",
+    price:
+      "이 일로 시작된 보물 내기에서 로키는 드베르그 브로크에게 자기 머리를 걸었다가 졌고, 목까지는 내줄 수 없다고 버틴 끝에 입술을 꿰매이고 말았습니다.",
+    source: "「스노리 에다」 시어법",
+    exhibitId: null,
+  },
+  {
+    slug: "skidbladnir",
+    name: "스키드블라드니르",
+    nameEn: "Skíðblaðnir",
+    kind: "tool",
+    figureSlugs: ["freyr", "loki"],
+    origin: "시프의 머리카락을 만든 이발디의 아들들이 함께 만들어 프레이르에게 준 배입니다.",
+    power:
+      "모든 신이 무기와 갑옷을 갖추고 타도 될 만큼 크지만, 쓰지 않을 때는 천처럼 접어 주머니에 넣을 수 있고, 돛을 올리면 어디로 가든 늘 순풍이 붑니다.",
+    price: null,
+    source: "「스노리 에다」 길피의 속임, 시어법",
+    exhibitId: null,
+  },
+  {
+    slug: "megingjord",
+    name: "메긴교르드와 야른그레이프르",
+    nameEn: "Megingjörð and Járngreipr",
+    kind: "ornament",
+    figureSlugs: ["thor"],
+    origin: "토르가 지닌 힘의 허리띠와 쇠장갑으로, 망치 묠니르와 함께 그의 세 보물로 꼽힙니다.",
+    power:
+      "허리띠를 매면 신의 힘이 두 배가 되고, 쇠장갑을 껴야 손잡이가 짧은 묠니르를 쥘 수 있었다고 합니다.",
+    price:
+      "거인 게이르뢰드에게 갈 때 토르는 망치도 허리띠도 없이 떠났다가, 여자 거인 그리드에게서 다른 힘의 허리띠와 쇠장갑, 지팡이를 빌려야 했습니다.",
+    source: "「스노리 에다」 길피의 속임, 시어법",
+    exhibitId: null,
+  },
+  // 메소포타미아 신화
+  {
+    slug: "sharur",
+    name: "샤루르",
+    nameEn: "Sharur",
+    kind: "weapon",
+    figureSlugs: ["ninurta"],
+    origin: "닌우르타가 지닌 철퇴로, 이름은 '수많은 것을 쳐부수는 것'이라는 뜻으로 풉니다.",
+    power:
+      "스스로 말을 하고 날아다니며, 적의 동태를 살펴 닌우르타에게 알리고 싸울 방법을 일러 주었습니다. 「루갈에」에서는 돌 괴물 아사그가 일어났다는 소식을 닌우르타에게 전하고 맞서 싸우라고 부추깁니다.",
+    price: null,
+    source: "수메르 시 「루갈에」, 「안주 이야기」",
+    exhibitId: null,
+  },
+  // 베트남 신화
+  {
+    slug: "divine-crossbow",
+    name: "신기 쇠뇌",
+    nameEn: "Divine Crossbow of Âu Lạc",
+    kind: "weapon",
+    figureSlugs: ["an-duong-vuong", "kim-quy"],
+    origin:
+      "금거북 낌꾸이가 꼬로아 성이 완성된 뒤 남긴 발톱을 신하 까오로가 방아쇠로 삼아 만든 쇠뇌입니다.",
+    power: "한 번 쏘면 수많은 적군이 쓰러졌고, 남월의 조타는 이 쇠뇌 앞에서 번번이 물러났습니다.",
+    price:
+      "조타의 아들 쫑투이가 왕의 딸 미쩌우와 혼인한 뒤 몰래 발톱을 바꿔치기해 쇠뇌는 힘을 잃었고, 어울락은 무너졌습니다. 안즈엉 왕은 딸을 벤 뒤 바다로 걸어 들어갔다고 합니다.",
+    source: "「영남척괴」, 「대월사기전서」",
+    exhibitId: null,
+  },
+  // 마야 신화
+  {
+    slug: "blowgun-of-the-hero-twins",
+    name: "쌍둥이 영웅의 바람총",
+    nameEn: "Blowgun of the Hero Twins",
+    kind: "weapon",
+    figureSlugs: ["hero-twins", "vucub-caquix"],
+    origin: "「포폴 부」의 쌍둥이 영웅 우나푸와 슈발랑케가 사냥에 쓰던 바람총입니다.",
+    power: "쌍둥이는 이 바람총으로 나무 위에서 열매를 먹던 부쿱 카킥스의 턱을 맞혀 떨어뜨렸습니다.",
+    price:
+      "저승 시발바의 박쥐의 집에서 쌍둥이는 바람총 속에 숨어 밤을 났는데, 날이 밝았는지 보려고 고개를 내민 우나푸의 머리를 박쥐 카마소츠가 베어 갔습니다.",
+    source: "「포폴 부」",
+    exhibitId: null,
+  },
+  // 한국 신화
+  {
+    slug: "manpasikjeok",
+    name: "만파식적",
+    nameEn: "Manpasikjeok",
+    kind: "tool",
+    figureSlugs: ["munmu"],
+    origin:
+      "「삼국유사」에 따르면 682년 신문왕이 동해에 떠 온 작은 산에서 얻은 대나무로 만든 피리입니다. 바다의 용이 된 문무왕과 하늘의 신이 된 김유신이 함께 보낸 것이라고 했습니다.",
+    power:
+      "불면 적군이 물러가고 병이 나으며, 가뭄에는 비가 오고 장마에는 날이 개며, 바람이 자고 물결이 잔잔해졌다고 합니다. 그래서 '온갖 물결을 잠재우는 피리'라는 이름이 붙었습니다.",
+    price: null,
+    source: "「삼국유사」 만파식적 조",
+    exhibitId: null,
+  },
+  {
+    slug: "jamyeonggo",
+    name: "자명고",
+    nameEn: "Jamyeonggo",
+    kind: "tool",
+    figureSlugs: ["nangnang-princess", "hodong"],
+    origin: "낙랑에 있었다는 북과 나팔로, 「삼국사기」는 적병이 오면 저절로 울렸다고만 적었습니다.",
+    power: "적이 쳐들어오면 저절로 울려 나라에 알렸기에, 고구려는 낙랑을 쉽게 치지 못했습니다.",
+    price:
+      "고구려 왕자 호동의 부탁으로 낙랑공주가 북을 찢고 나팔을 부수자 고구려 군대가 성 밑까지 들이닥쳤고, 낙랑의 왕 최리는 딸을 죽인 뒤 항복했습니다.",
+    source: "「삼국사기」 고구려본기 대무신왕 15년",
+    exhibitId: null,
+  },
+  // 유럽 민담
+  {
+    slug: "tizona-and-colada",
+    name: "티소나와 콜라다",
+    nameEn: "Tizona and Colada",
+    kind: "weapon",
+    figureSlugs: ["el-cid"],
+    origin:
+      "「엘 시드의 노래」에서 엘 시드가 싸움에서 얻은 두 칼로, 콜라다는 바르셀로나 백작에게서, 티소나는 발렌시아를 치러 온 모로코의 왕 부카르에게서 얻었습니다.",
+    power:
+      "두 칼은 엘 시드의 손에서 수많은 적을 쓰러뜨려, 그 이름만으로도 적이 두려워했다고 합니다.",
+    price:
+      "엘 시드는 두 칼을 사위가 된 카리온의 왕자들에게 주었지만, 그들은 겁쟁이라는 놀림을 받자 앙심을 품고 엘 시드의 딸들을 숲에 버렸습니다. 엘 시드는 왕의 재판에서 두 칼을 돌려받고 결투로 명예를 되찾았습니다.",
+    source: "「엘 시드의 노래」",
+    exhibitId: null,
+  },
 ];
 
 export const MOCK_RELICS: Relic[] = SEEDS.map((seed, index) => ({ ...seed, order: index + 1 }));

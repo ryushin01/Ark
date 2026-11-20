@@ -195,7 +195,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
                 u(p("요르드", "Jörð", undefined, "대지의 여신"), [
                   withUnions(
                     p("토르", "Thor", "thor"),
-                    u(p("시프", "Sif"), [p("스루드", "Þrúðr")]),
+                    u(p("시프", "Sif", "sif"), [p("스루드", "Þrúðr")]),
                   ),
                 ]),
                 u(p("아홉 어머니", "Nine Mothers", undefined, "바다의 파도 처녀들"), [
@@ -377,7 +377,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
                 ),
               ]),
             ),
-            p("쓰쿠요미", "Tsukuyomi"),
+            p("쓰쿠요미", "Tsukuyomi", "tsukuyomi"),
             withUnions(
               p("스사노오", "Susanoo", "susanoo"),
               u(p("구시나다히메", "Kushinadahime"), [], "야마타노오로치에게서 구한 아내"),
@@ -462,7 +462,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         u(null, [
           withUnions(
             p("인티", "Inti", "inti"),
-            u(p("마마 킬랴", "Mama Quilla", undefined, "달의 여신"), [
+            u(p("마마 킬랴", "Mama Quilla", "mama-quilla", "달의 여신"), [
               p("망코 카팍", "Manco Cápac", "manco-capac", "쿠스코를 세운 첫 잉카"),
               p("마마 오클료", "Mama Ocllo", "mama-ocllo"),
             ]),
@@ -504,7 +504,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
             p("훈 우나푸", "Hun Hunahpu", "maize-god", "옥수수 신으로 보는 해석이 있습니다"),
             u(
               p("슈킥", "Xquic", undefined, "저승 지배자의 딸"),
-              [p("우나푸", "Hunahpu"), p("슈발랑케", "Xbalanque")],
+              [p("우나푸", "Hunahpu", "hero-twins"), p("슈발랑케", "Xbalanque", "hero-twins")],
               "영웅 쌍둥이",
             ),
           ),
@@ -518,7 +518,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     source: "아일랜드의 「침략의 책」과 얼스터·핀 이야기",
     roots: [
       withUnions(
-        p("다그다", "The Dagda", undefined, "투어허 데 다넌의 아버지 신"),
+        p("다그다", "The Dagda", "dagda", "투어허 데 다넌의 아버지 신"),
         u(null, [p("브리지트", "Brigid", "brigid")]),
         u(p("보안", "Boann", undefined, "보인강의 여신"), [p("앵거스", "Aengus", "aengus")]),
       ),
@@ -587,7 +587,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         u(null, [
           withUnions(
             p("바알", "Baal", "baal"),
-            u(p("아낫", "Anat", undefined, "바알의 누이이자 짝으로 그려집니다"), []),
+            u(p("아낫", "Anat", "anat", "바알의 누이이자 짝으로 그려집니다"), []),
           ),
         ]),
       ),
@@ -599,7 +599,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     roots: [
       withUnions(
         p("알랄루", "Alalu", undefined, "하늘의 첫 왕"),
-        u(null, [p("쿠마르비", "Kumarbi", undefined, "아누를 몰아낸 신들의 아버지")]),
+        u(null, [p("쿠마르비", "Kumarbi", "kumarbi", "아누를 몰아낸 신들의 아버지")]),
       ),
       withUnions(
         p("아누", "Anu"),

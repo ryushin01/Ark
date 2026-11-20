@@ -45,9 +45,14 @@ export function FigureGrid({
                   className={styles.image}
                 />
               ) : (
-                // "자료 0점"과 같은 내용이라 화면 낭독기에는 숨깁니다. (링크 이름이 신 이름으로 시작하게)
+                // 퍼블릭 도메인 그림을 찾지 못한 신의 기본 그림: 오선 위에 영문 이름 첫 글자를 새깁니다
+                // (비밀 전시실의 빈 진열장과 같은 방식). "자료 0점"과 같은 내용이라 화면 낭독기에는 숨깁니다.
+                // (링크 이름이 신 이름으로 시작하게)
                 <span className={styles.empty} aria-hidden="true">
-                  자료 준비 중
+                  <span className={styles.glyph} lang="en">
+                    {figure.nameEn.charAt(0)}
+                  </span>
+                  <span className={styles.emptyNote}>자료 준비 중</span>
                 </span>
               )}
             </span>

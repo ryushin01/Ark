@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { SITE } from "@/shared/config";
-import { HandNote, HandScribble } from "@/shared/ui";
+import { HandNote, HandScribble, Logo } from "@/shared/ui";
 
 import { getNavItems } from "../model/nav";
 import { PreferenceToggle } from "./PreferenceToggle";
@@ -33,7 +32,7 @@ export function SiteHeader() {
     <header>
       <div className={styles.topBar}>
         <Link href="/" className={styles.topBrand}>
-          <Image src={SITE.logo} alt={SITE.name} width={32} height={32} className={styles.logo} />
+          <Logo label={SITE.name} className={styles.logo} />
         </Link>
         <button type="button" className={styles.menuButton} aria-haspopup="dialog" onClick={open}>
           메뉴
@@ -42,7 +41,7 @@ export function SiteHeader() {
 
       <div className={`${styles.rail} ${styles.left}`}>
         <Link href="/" className={`${styles.railLink} ${styles.railBrand}`}>
-          <Image src={SITE.logo} alt={SITE.name} width={32} height={32} className={styles.logo} />
+          <Logo label={SITE.name} className={styles.logo} />
         </Link>
         <p className={`${styles.vertical} ${styles.flip}`}>세계 신화 도서관</p>
       </div>
