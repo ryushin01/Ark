@@ -16,6 +16,7 @@ export {
 } from "./form/form-state";
 export { useSubmitLock } from "./form/use-submit-lock";
 export { initMonitoring, reportError } from "./monitoring";
+export { monogram } from "./monogram";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";
