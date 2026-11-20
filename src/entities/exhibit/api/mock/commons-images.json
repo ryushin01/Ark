@@ -4274,6 +4274,24 @@
     "artist": "Wilhelm Dittmer",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Te_Tohunga_-_p11.png"
   },
+  "was-scepter-met": {
+    "src": "/images/exhibits/was-scepter-met.jpg",
+    "width": 1280,
+    "height": 720,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Was_scepter_MET_LC-12_182_64_EGDP026979.jpg"
+  },
+  "ankh-model-met": {
+    "src": "/images/exhibits/ankh-model-met.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Model_ankh_MET_LC-12_182_66_EGDP028760.jpg"
+  },
   "pele-hitchcock": {
     "src": "/images/exhibits/pele-hitchcock.jpg",
     "width": 819,
