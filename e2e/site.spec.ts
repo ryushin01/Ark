@@ -166,7 +166,14 @@ test("신 찾기: 검색 상태를 주소로 공유하고 다시 엽니다", asy
 });
 
 test("자료가 없는 신은 안내 문구를 보여 줍니다", async ({ page }) => {
-  await page.goto("/figures/laima");
+  // 특정 신을 정해 두면 그 신에 자료가 생기는 순간 깨지므로, 목업 데이터에서 자료가 없는 신을 찾습니다.
+  const withExhibits = new Set(MOCK_EXHIBITS.map((exhibit) => exhibit.figureSlug));
+  const empty = MOCK_FIGURES.find((figure) => !withExhibits.has(figure.slug));
+  test.skip(
+    !empty,
+    "지금은 모든 신에 자료가 있습니다. 안내 문구는 ExhibitGallery의 Empty 스토리가 검사합니다.",
+  );
+  await page.goto(`/figures/${empty!.slug}`);
   await expect(page.getByText("아직 등록된 자료가 없습니다.")).toBeVisible();
 });
 
