@@ -66,10 +66,6 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    // Vercel 무료 플랜의 이미지 최적화 한도에 닿아 새 그림이 402로 막혀서(1.4.0), 최적화 없이 원본을 그대로 보냅니다.
-    // 자료 그림은 scripts/resolve-commons.mjs가 긴 변 1280px JPEG로 미리 줄여 두므로 원본도 무겁지 않습니다.
-    // 아래 너비 설정은 다시 최적화를 켤 때를 위해 남겨 둡니다.
-    unoptimized: true,
     // 원본이 긴 변 1600px 이하라 1920·2048·3840px 너비는 만들지 않습니다. 큰 화면도 1600(원본과 같은 크기)을 받습니다.
     // 그보다 작은 너비는 실제로 고르는 것만 남겨, 어떤 화면도 이전보다 큰 그림을 받지 않게 합니다.
     // 32·64: 머리글 로고(32px)의 1x·2x, 256·384: 160~240px 미리보기. 쓰지 않는 48·96·128은 뺍니다.

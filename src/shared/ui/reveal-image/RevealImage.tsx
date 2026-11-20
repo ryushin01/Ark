@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 
 import { type ShownImage, useInView } from "@/shared/lib";
+import { skipsOptimization } from "@/shared/lib/original-images";
 
 import styles from "./RevealImage.module.css";
 
@@ -53,6 +54,7 @@ export function RevealImage({
       {fit === "cover" ? (
         <Image
           src={image.src}
+          unoptimized={skipsOptimization(image.src)}
           alt={image.alt}
           fill
           sizes={sizes}
@@ -65,6 +67,7 @@ export function RevealImage({
       ) : (
         <Image
           src={image.src}
+          unoptimized={skipsOptimization(image.src)}
           alt={image.alt}
           width={image.width}
           height={image.height}
