@@ -1502,15 +1502,6 @@
     "artist": "Kristjan Raud",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:TKM_2797B_Kristjan_Raud_-_Kalevipoeg_ja_Vanapagan.tif"
   },
-  "vahagn-commons": {
-    "src": "/images/exhibits/vahagn-commons.jpg",
-    "width": 720,
-    "height": 524,
-    "license": "Public domain",
-    "licenseUrl": null,
-    "artist": "Zabelle C. Boyajian",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Birth_of_Vahagn_Zabelle_Boyajian.jpg"
-  },
   "lac-long-quan-commons": {
     "src": "/images/exhibits/lac-long-quan-commons.jpg",
     "width": 480,
@@ -1691,24 +1682,6 @@
     "artist": "Louis Petit de Julleville",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:HLLF-T1-d264-265_Les_quatre_fils_Aimon.png"
   },
-  "scathach-commons": {
-    "src": "/images/exhibits/scathach-commons.jpg",
-    "width": 1081,
-    "height": 1600,
-    "license": "Public domain",
-    "licenseUrl": null,
-    "artist": "Beatrice Elvery",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_066.png"
-  },
-  "diarmuid-commons": {
-    "src": "/images/exhibits/diarmuid-commons.jpg",
-    "width": 1068,
-    "height": 1600,
-    "license": "No restrictions",
-    "licenseUrl": "https://www.flickr.com/commons/usage/",
-    "artist": "Unknown artist",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_(1914)_(14772697833).jpg"
-  },
   "fergus-commons": {
     "src": "/images/exhibits/fergus-commons.jpg",
     "width": 1122,
@@ -1718,15 +1691,6 @@
     "artist": "George Denham",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fergus_mac_R%C3%B3ich_carrying_S%C3%A9tanta_on_his_shoulder.png"
   },
-  "fionn-commons": {
-    "src": "/images/exhibits/fionn-commons.jpg",
-    "width": 1071,
-    "height": 1600,
-    "license": "Public domain",
-    "licenseUrl": null,
-    "artist": "Beatrice Elvery",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_200.png"
-  },
   "medb-commons": {
     "src": "/images/exhibits/medb-commons.jpg",
     "width": 1099,
@@ -1735,15 +1699,6 @@
     "licenseUrl": null,
     "artist": "Seóirse Ua Fágáin",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Queen_Medb_(Se%C3%B3irse_Ua_F%C3%A1g%C3%A1in,_1904).jpg"
-  },
-  "oisin-commons": {
-    "src": "/images/exhibits/oisin-commons.jpg",
-    "width": 1075,
-    "height": 1600,
-    "license": "Public domain",
-    "licenseUrl": null,
-    "artist": "Beatrice Elvery",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_230.png"
   },
   "huyan-zhuo-commons": {
     "src": "/images/exhibits/huyan-zhuo-commons.jpg",
@@ -2375,15 +2330,6 @@
     "artist": "François Boucher",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Venus_and_Aeneas_MET_DP825477.jpg"
   },
-  "dobrynya-commons": {
-    "src": "/images/exhibits/dobrynya-commons.jpg",
-    "width": 788,
-    "height": 1181,
-    "license": "Public domain",
-    "licenseUrl": null,
-    "artist": "Robert Steele",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:A_Russian_Garland_of_Fairy_Tales_DJVU_pg_085.jpg"
-  },
   "ilya-muromets-commons": {
     "src": "/images/exhibits/ilya-muromets-commons.jpg",
     "width": 760,
@@ -2968,5 +2914,1364 @@
     "licenseUrl": null,
     "artist": "Franz Stassen",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Andvari_by_Franz_Stassen.jpg"
+  },
+  "ares-ludovisi": {
+    "src": "/images/exhibits/ares-ludovisi.jpg",
+    "width": 1000,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ares_Ludovisi_Altemps_Inv8602_n2.jpg"
+  },
+  "hestia-giustiniani": {
+    "src": "/images/exhibits/hestia-giustiniani.jpg",
+    "width": 913,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tangopaso",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hestia_Giustiniani_(Louvre).jpg"
+  },
+  "persephone-rossetti": {
+    "src": "/images/exhibits/persephone-rossetti.jpg",
+    "width": 724,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Dante Gabriel Rossetti",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dante_Gabriel_Rossetti_-_Proserpine_-_Google_Art_Project.jpg"
+  },
+  "prometheus-fuger": {
+    "src": "/images/exhibits/prometheus-fuger.jpg",
+    "width": 1123,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Heinrich Füger",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heinrich_fueger_1817_prometheus_brings_fire_to_mankind.jpg"
+  },
+  "pandora-waterhouse": {
+    "src": "/images/exhibits/pandora-waterhouse.jpg",
+    "width": 937,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John William Waterhouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Pandora,_1896.jpg"
+  },
+  "pan-vrubel": {
+    "src": "/images/exhibits/pan-vrubel.jpg",
+    "width": 1280,
+    "height": 1429,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Mikhail Vrubel",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:1899_Vrubel_Pan_anagoria.JPG"
+  },
+  "eros-sleeping-met": {
+    "src": "/images/exhibits/eros-sleeping-met.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bronze_statue_of_Eros_sleeping_MET_DP123903.jpg"
+  },
+  "helios-phaethon-palace": {
+    "src": "/images/exhibits/helios-phaethon-palace.jpg",
+    "width": 1280,
+    "height": 879,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pha%C3%ABton_in_het_paleis_van_Helios_Ovidius%27_Metamorfosen_(serietitel),_RP-P-1882-A-6363.jpg"
+  },
+  "hecate-blake": {
+    "src": "/images/exhibits/hecate-blake.jpg",
+    "width": 1280,
+    "height": 947,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "William Blake",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:William_Blake_006.jpg"
+  },
+  "freyr-gehrts": {
+    "src": "/images/exhibits/freyr-gehrts.jpg",
+    "width": 1227,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Johannes Gehrts",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Freyr_(Walhall).png"
+  },
+  "hel-gehrts": {
+    "src": "/images/exhibits/hel-gehrts.jpg",
+    "width": 1039,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Johannes Gehrts",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hel_(the_personification_of_Hel).png"
+  },
+  "ymir-abildgaard": {
+    "src": "/images/exhibits/ymir-abildgaard.jpg",
+    "width": 1280,
+    "height": 1047,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Nicolai Abildgaard",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nicolai_Abildgaard,_Ymer_dier_koen_%C3%98dhumbla,_KMS3397,_Statens_Museum_for_Kunst.jpg"
+  },
+  "idun-penrose": {
+    "src": "/images/exhibits/idun-penrose.jpg",
+    "width": 1280,
+    "height": 802,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "James Doyle Penrose",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Idun_and_the_Apples_by_James_Doyle_Penrose,_1890.jpg"
+  },
+  "surtr-dollman": {
+    "src": "/images/exhibits/surtr-dollman.jpg",
+    "width": 1089,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Charles Dollman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_giant_with_the_flaming_sword_by_Dollman.jpg"
+  },
+  "lugh-millar": {
+    "src": "/images/exhibits/lugh-millar.jpg",
+    "width": 991,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Harold Robert Millar",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lugh_spear_Millar.jpg"
+  },
+  "rhiannon-batten": {
+    "src": "/images/exhibits/rhiannon-batten.jpg",
+    "width": 1280,
+    "height": 1264,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John D. Batten",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Page_30_illustration_in_More_Celtic_Fairy_Tales.png"
+  },
+  "ceridwen-williams": {
+    "src": "/images/exhibits/ceridwen-williams.jpg",
+    "width": 1093,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Christopher Williams",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ceridwen.jpg"
+  },
+  "guinevere-collier": {
+    "src": "/images/exhibits/guinevere-collier.jpg",
+    "width": 1069,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Collier",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Collier_Queen_Guinevre%27s_Maying.jpg"
+  },
+  "isolde-morris": {
+    "src": "/images/exhibits/isolde-morris.jpg",
+    "width": 1090,
+    "height": 1536,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "William Morris",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Belle_Iseult_-_Willam_Morris_(1858).jpg"
+  },
+  "green-knight-cotton-nero": {
+    "src": "/images/exhibits/green-knight-cotton-nero.jpg",
+    "width": 1263,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gawain_and_the_Green_Knight.jpg"
+  },
+  "firebird-bilibin": {
+    "src": "/images/exhibits/firebird-bilibin.jpg",
+    "width": 819,
+    "height": 1172,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ivan Bilibin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Firebird.jpg"
+  },
+  "zmey-gorynych-vasnetsov": {
+    "src": "/images/exhibits/zmey-gorynych-vasnetsov.jpg",
+    "width": 862,
+    "height": 1200,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Viktor Vasnetsov",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%BC%D0%B5%D0%B9-%D0%93%D0%BE%D1%80%D1%8B%D0%BD%D1%8B%D1%87,_%D0%B8%D0%BB%D0%B8_%D0%91%D0%BE%D0%B9_%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%BD%D0%B8_%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B8%D1%87%D0%B0_%D1%81_%D1%81%D0%B5%D0%BC%D0%B8%D0%B3%D0%BB%D0%B0%D0%B2%D1%8B%D0%BC_%D0%97%D0%BC%D0%B5%D0%B5%D0%BC-%D0%93%D0%BE%D1%80%D1%8B%D0%BD%D1%8B%D1%87%D0%B5%D0%BC.jpg"
+  },
+  "sadko-repin": {
+    "src": "/images/exhibits/sadko-repin.jpg",
+    "width": 1137,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ilya Repin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ilya_Repin_-_Sadko_-_Google_Art_Project.jpg"
+  },
+  "kullervo-gallen-kallela": {
+    "src": "/images/exhibits/kullervo-gallen-kallela.jpg",
+    "width": 885,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Kullervon_kirous_-_A_II_765_-_Finnish_National_Gallery.jpg"
+  },
+  "hayk-zasso": {
+    "src": "/images/exhibits/hayk-zasso.jpg",
+    "width": 1280,
+    "height": 989,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Juliano Zasso",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hayk_defeats_Bel_-_Guiliano_Zasso.jpg"
+  },
+  "grendel-skelton": {
+    "src": "/images/exhibits/grendel-skelton.jpg",
+    "width": 1059,
+    "height": 1371,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Joseph Ratcliffe Skelton",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_head_of_grendel.jpg"
+  },
+  "hagen-nibelung-hoard": {
+    "src": "/images/exhibits/hagen-nibelung-hoard.jpg",
+    "width": 1051,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Julius Schnorr von Carolsfeld",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pfizer_(1843)-ed-Nibelungen_Not-p211-Hagen%26merminnen.jpg"
+  },
+  "hippogriff-dore": {
+    "src": "/images/exhibits/hippogriff-dore.jpg",
+    "width": 1280,
+    "height": 1590,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Gustave Doré",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orlando_Furioso_9.jpg"
+  },
+  "roland-olifant-fouquet": {
+    "src": "/images/exhibits/roland-olifant-fouquet.jpg",
+    "width": 1280,
+    "height": 1042,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jean Fouquet",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mort_de_Roland.jpg"
+  },
+  "joyeuse-louvre": {
+    "src": "/images/exhibits/joyeuse-louvre.jpg",
+    "width": 1280,
+    "height": 849,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shonagon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C3%89p%C3%A9e_du_sacre_des_rois_de_France,_dite_Joyeuse_-_Mus%C3%A9e_du_Louvre_Objets_d%27art_MS_84.jpg"
+  },
+  "beowulf-dragon-skelton": {
+    "src": "/images/exhibits/beowulf-dragon-skelton.jpg",
+    "width": 1045,
+    "height": 1335,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "J. R. Skelton",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_fighting_the_dragon.jpg"
+  },
+  "tristan-isolde-potion": {
+    "src": "/images/exhibits/tristan-isolde-potion.jpg",
+    "width": 1174,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John William Waterhouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_william_waterhouse_tristan_and_isolde_with_the_potion.jpg"
+  },
+  "gawain-lady-cotton-nero": {
+    "src": "/images/exhibits/gawain-lady-cotton-nero.jpg",
+    "width": 1146,
+    "height": 1539,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Green_Knight%27s_wife_and_Gawain_-_Sir_Gawain_and_the_Green_Knight_(c.1400-1410),_f.129_-_BL_Cotton_MS_Nero_A_X.jpg"
+  },
+  "round-table-winchester": {
+    "src": "/images/exhibits/round-table-winchester.jpg",
+    "width": 1205,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Andy Li",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Round_Table_of_Winchester_2026-07-12.jpg"
+  },
+  "daedalus-icarus-leighton": {
+    "src": "/images/exhibits/daedalus-icarus-leighton.jpg",
+    "width": 1127,
+    "height": 1534,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Frederic Leighton",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lord_Frederick_Leighton_FLL006.jpg"
+  },
+  "psyche-box-waterhouse": {
+    "src": "/images/exhibits/psyche-box-waterhouse.jpg",
+    "width": 1023,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John William Waterhouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Psyche-Waterhouse.jpg"
+  },
+  "meleager-althaea-print": {
+    "src": "/images/exhibits/meleager-althaea-print.jpg",
+    "width": 1280,
+    "height": 855,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Althaea_doodt_Meleager_Metamorfosen_van_Ovidius_(serietitel),_RP-P-OB-15.950.jpg"
+  },
+  "astolfo-moon-dore": {
+    "src": "/images/exhibits/astolfo-moon-dore.jpg",
+    "width": 1010,
+    "height": 1283,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Gustave Doré",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_In_Elijah%27s_chariot,_St._John_and_Astolfo_travel_to_the_moon.jpg"
+  },
+  "astraea-rosa": {
+    "src": "/images/exhibits/astraea-rosa.jpg",
+    "width": 1002,
+    "height": 1579,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Salvator Rosa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salvator_Rosa_-_Astraea_verl%C3%A4%C3%9Ft_die_Erde_-_GG_9823_-_Kunsthistorisches_Museum.jpg"
+  },
+  "habetrot-torrance": {
+    "src": "/images/exhibits/habetrot-torrance.jpg",
+    "width": 1046,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "James Torrance",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Douglas-Scottish_FFT(1901)-p109-Habitrot-illustr-J_Torrance.jpg"
+  },
+  "icarus-van-dyck": {
+    "src": "/images/exhibits/icarus-van-dyck.jpg",
+    "width": 1191,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Anthony van Dyck",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anthony_van_Dyck_-_Daedalus_and_Icarus_-_Google_Art_Project.jpg"
+  },
+  "cronus-met-pelike": {
+    "src": "/images/exhibits/cronus-met-pelike.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Nausicaä Painter",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhea_handing_a_swaddled_stone_to_Cronus,_Attic_terracotta_pelike,_c._460%E2%80%93450_BC,_Met_06.1021.144.jpg"
+  },
+  "helen-de-morgan": {
+    "src": "/images/exhibits/helen-de-morgan.jpg",
+    "width": 781,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Evelyn De Morgan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Helen_of_Troy.jpg"
+  },
+  "ariadne-titian": {
+    "src": "/images/exhibits/ariadne-titian.jpg",
+    "width": 1280,
+    "height": 1158,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Titian",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Titian_-_Bacchus_and_Ariadne_-_Google_Art_Project.jpg"
+  },
+  "midas-crane": {
+    "src": "/images/exhibits/midas-crane.jpg",
+    "width": 1076,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Walter Crane",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Midas_gold2.jpg"
+  },
+  "bragi-blommer": {
+    "src": "/images/exhibits/bragi-blommer.jpg",
+    "width": 1098,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Nils Blommér",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Idunn_and_Bragi_by_Blommer.jpg"
+  },
+  "njord-collingwood": {
+    "src": "/images/exhibits/njord-collingwood.jpg",
+    "width": 1280,
+    "height": 712,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "W.G. Collingwood",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nj%C3%B6rd%27s_desire_of_the_Sea.jpg"
+  },
+  "aengus-duncan": {
+    "src": "/images/exhibits/aengus-duncan.jpg",
+    "width": 1051,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Duncan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Duncan_-_Angus_Og,_God_of_Love_and_Courtesy,_Putting_a_Spell_of_Summer_Calm_on_the_Sea_-_NG_2033_-_National_Galleries_Scotland.jpg"
+  },
+  "deirdre-russell": {
+    "src": "/images/exhibits/deirdre-russell.jpg",
+    "width": 1200,
+    "height": 970,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "George William Russell",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deirdre_at_her_Dun_-_George_William_Russell.jpg"
+  },
+  "lady-of-the-lake-crane": {
+    "src": "/images/exhibits/lady-of-the-lake-crane.jpg",
+    "width": 900,
+    "height": 1355,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Walter Crane",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:CRANE_King_Arthur_asks_the_lady_of_the_lake_for_the_sword_Excalibur.jpg"
+  },
+  "uther-pendragon-pyle": {
+    "src": "/images/exhibits/uther-pendragon-pyle.jpg",
+    "width": 1165,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Howard Pyle",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyle_Uther_Pendragon.jpg"
+  },
+  "vasilisa-bilibin": {
+    "src": "/images/exhibits/vasilisa-bilibin.jpg",
+    "width": 1264,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ivan Bilibin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Russian_Wonder_Tales_081.jpg"
+  },
+  "sirin-alkonost-vasnetsov": {
+    "src": "/images/exhibits/sirin-alkonost-vasnetsov.jpg",
+    "width": 1280,
+    "height": 726,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Viktor Vasnetsov",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vasnetsov_Sirin_Alkonost.jpg"
+  },
+  "rusalka-kramskoi": {
+    "src": "/images/exhibits/rusalka-kramskoi.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ivan Kramskoi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Iwan_Nikolajewitsch_Kramskoj_002.jpg"
+  },
+  "alyosha-popovich-vasnetsov": {
+    "src": "/images/exhibits/alyosha-popovich-vasnetsov.jpg",
+    "width": 1280,
+    "height": 823,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Viktor Vasnetsov",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:1898_Vasnetsov_Bogatyrs_anagoria.JPG"
+  },
+  "aino-keinanen": {
+    "src": "/images/exhibits/aino-keinanen.jpg",
+    "width": 1051,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Sigfrid Keinänen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kein%C3%A4nen,_Aino_meren_rannalla.jpg"
+  },
+  "joukahainen-gallen-kallela": {
+    "src": "/images/exhibits/joukahainen-gallen-kallela.jpg",
+    "width": 1280,
+    "height": 1250,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Akseli Gallen-Kallela",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gallen-Kallela_Joukahainen%27s_revenge.jpg"
+  },
+  "ara-sureniants": {
+    "src": "/images/exhibits/ara-sureniants.jpg",
+    "width": 460,
+    "height": 981,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Vardges Sureniants",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shamiram_ara.jpeg"
+  },
+  "angelica-tiepolo": {
+    "src": "/images/exhibits/angelica-tiepolo.jpg",
+    "width": 1013,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Giovanni Battista Tiepolo",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Tiepolo_-_Ang%C3%A9lique_grave_le_nom_de_M%C3%A9dor.jpg"
+  },
+  "ruggiero-fragonard": {
+    "src": "/images/exhibits/ruggiero-fragonard.jpg",
+    "width": 618,
+    "height": 1000,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jean-Honoré Fragonard",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean-Honor%C3%A9_Fragonard_-_Ruggiero,_Troubled_in_Mind,_Prepares_to_Write_to_Bradamante_-_NMH_236-1975_-_Nationalmuseum.jpg"
+  },
+  "diarmuid-reid": {
+    "src": "/images/exhibits/diarmuid-reid.jpg",
+    "width": 817,
+    "height": 1200,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Stephen Reid",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:13_Dermot_took_the_horn_and_would_have_filled_it.jpg"
+  },
+  "fionn-reid": {
+    "src": "/images/exhibits/fionn-reid.jpg",
+    "width": 829,
+    "height": 1200,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Stephen Reid",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:1_Finn_heard_far_off_the_first_notes_of_the_fairy_harp.jpg"
+  },
+  "oisin-reid": {
+    "src": "/images/exhibits/oisin-reid.jpg",
+    "width": 826,
+    "height": 1200,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Stephen Reid",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:16_The_white_steed_had_vanished_from_their_eyes_like_a_wreath_of_mist.jpg"
+  },
+  "dobrynya-bilibin": {
+    "src": "/images/exhibits/dobrynya-bilibin.jpg",
+    "width": 841,
+    "height": 1136,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ivan Bilibin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dobrynya_Nikitich_rescues_Zabava_from_the_Gorynych,_1941.jpg"
+  },
+  "amun-gold-met": {
+    "src": "/images/exhibits/amun-gold-met.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statuette_of_Amun_MET_DT553.jpg"
+  },
+  "ptah-lapis-met": {
+    "src": "/images/exhibits/ptah-lapis-met.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cult_Image_of_the_God_Ptah_MET_DP142956.jpg"
+  },
+  "sekhmet-met": {
+    "src": "/images/exhibits/sekhmet-met.jpg",
+    "width": 965,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statue_of_the_Goddess_Sakhmet_MET_DP112606.jpg"
+  },
+  "nephthys-mourning-met": {
+    "src": "/images/exhibits/nephthys-mourning-met.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mourning_Nephthys_MET_LC-12_182_23a_EGDP023822.jpg"
+  },
+  "nut-greenfield": {
+    "src": "/images/exhibits/nut-greenfield.jpg",
+    "width": 1280,
+    "height": 863,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Photographed by the British Museum; original artist unknown",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geb,_Nut,_Shu.jpg"
+  },
+  "bes-amulet-met": {
+    "src": "/images/exhibits/bes-amulet-met.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bes_Amulet_MET_DP112571.jpg"
+  },
+  "sobek-walters-chest": {
+    "src": "/images/exhibits/sobek-walters-chest.jpg",
+    "width": 1280,
+    "height": 1305,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_-_Chest_with_Writing_-_Walters_61271_-_Detail.jpg"
+  },
+  "taweret-amulet-met": {
+    "src": "/images/exhibits/taweret-amulet-met.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taweret_Amulet_MET_DP109372.jpg"
+  },
+  "neith-bronze-met": {
+    "src": "/images/exhibits/neith-bronze-met.jpg",
+    "width": 1271,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statuette_of_the_goddess_Neith_MET_DP311635.jpg"
+  },
+  "shamash-tablet-cast": {
+    "src": "/images/exhibits/shamash-tablet-cast.jpg",
+    "width": 1019,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shamash,_the_Sun_God,_Sippar,_Early_Iron_Age,_870_BC,_plaster_cast_of_limestone_original_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07413.JPG"
+  },
+  "humbaba-louvre-mask": {
+    "src": "/images/exhibits/humbaba-louvre-mask.jpg",
+    "width": 1028,
+    "height": 1120,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shonagon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Masque_du_d%C3%A9mon_Humbaba_-_Mus%C3%A9e_du_Louvre_Antiquit%C3%A9s_orientales_SB_6567.jpg"
+  },
+  "anzu-imdugud": {
+    "src": "/images/exhibits/anzu-imdugud.jpg",
+    "width": 1280,
+    "height": 669,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Vassil",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:British_Museum_Middle_east_14022019_Panel_Imdugud_2500_BC_3640.jpg"
+  },
+  "pazuzu-oi": {
+    "src": "/images/exhibits/pazuzu-oi.jpg",
+    "width": 1256,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pazuzu_demon_figurine,_Iraq,_Neo-Assyrian_period,_900-612_BC,_bronze_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07291.JPG"
+  },
+  "pazuzu-lamashtu-plaque": {
+    "src": "/images/exhibits/pazuzu-lamashtu-plaque.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tangopaso",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plaque_de_conjuration_contre_la_Lamashtu_(Louvre,_AO_22205)_avec_annotations.jpg"
+  },
+  "lamassu-met": {
+    "src": "/images/exhibits/lamassu-met.jpg",
+    "width": 1280,
+    "height": 1017,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Human-headed_winged_bull_(lamassu)_MET_DT879.jpg"
+  },
+  "el-megiddo": {
+    "src": "/images/exhibits/el-megiddo.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:El,_the_Canaanite_creator_deity,_Megiddo,_Stratum_VII,_Late_Bronze_II,_1400-1200_BC,_bronze_with_gold_leaf_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07734.JPG"
+  },
+  "simurgh-rostam-birth": {
+    "src": "/images/exhibits/simurgh-rostam-birth.jpg",
+    "width": 1021,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Mohammad Zaman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_simurgh_arrives_to_assist_with_the_birth_of_Rustam.jpg"
+  },
+  "zal-simurgh": {
+    "src": "/images/exhibits/zal-simurgh.jpg",
+    "width": 837,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Sadiqi Beg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zal_returned_to_Sam_by_the_Simurgh.jpg"
+  },
+  "zahhak-damavand": {
+    "src": "/images/exhibits/zahhak-damavand.jpg",
+    "width": 1106,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Attributed to Sultan Muhammad",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sultan_Muhammad_Tiran_Zahhak.jpg"
+  },
+  "jamshid-freer": {
+    "src": "/images/exhibits/jamshid-freer.jpg",
+    "width": 1004,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Abd al-Samad",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Abd_as-Samad_Shirin_Qalam_-_Jamshid_Writing_on_a_Rock_-_Google_Art_Project.jpg"
+  },
+  "sohrab-princeton": {
+    "src": "/images/exhibits/sohrab-princeton.jpg",
+    "width": 891,
+    "height": 1536,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:RostamMournsSohrab.jpg"
+  },
+  "siavash-fire-bl": {
+    "src": "/images/exhibits/siavash-fire-bl.jpg",
+    "width": 1234,
+    "height": 1536,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_fire_ordeal_of_Siyavush_(37b)._Shahnama_of_Firdawsi_(1486)_British_Library_Add._18188.jpg"
+  },
+  "esfandiyar-dragon-met": {
+    "src": "/images/exhibits/esfandiyar-dragon-met.jpg",
+    "width": 1086,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Attributed to Qasim ibn 'Ali",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%22Isfandiyar%27s_Third_Course-_He_Slays_a_Dragon%22,_Folio_434v_from_the_Shahnama_(Book_of_Kings)_of_Shah_Tahmasp_MET_DP107166.jpg"
+  },
+  "rakhsh-lion": {
+    "src": "/images/exhibits/rakhsh-lion.jpg",
+    "width": 1037,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rakhsh_Kills_a_Lion_while_Rustam_Sleeps.jpg"
+  },
+  "saraswati-varma": {
+    "src": "/images/exhibits/saraswati-varma.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saraswati_by_Raja_Ravi_Varma.jpg"
+  },
+  "kali-bhadrakali": {
+    "src": "/images/exhibits/kali-bhadrakali.jpg",
+    "width": 1280,
+    "height": 1289,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Goddess_Bhadrakali_Worshipped_by_the_Gods-_from_a_tantric_Devi_series_-_Google_Art_Project.jpg"
+  },
+  "yama-buffalo": {
+    "src": "/images/exhibits/yama-buffalo.jpg",
+    "width": 1280,
+    "height": 1377,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yama_on_buffalo.jpg"
+  },
+  "garuda-bundi": {
+    "src": "/images/exhibits/garuda-bundi.jpg",
+    "width": 1146,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Garuda_Vishnu_Laxmi.jpg"
+  },
+  "ravana-bm": {
+    "src": "/images/exhibits/ravana-bm.jpg",
+    "width": 1156,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravana_water_painting.jpg"
+  },
+  "sita-jatayu-varma": {
+    "src": "/images/exhibits/sita-jatayu-varma.jpg",
+    "width": 1111,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravi_Varma-Ravana_Sita_Jathayu.jpg"
+  },
+  "agni-ram": {
+    "src": "/images/exhibits/agni-ram.jpg",
+    "width": 1234,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Agni_god_of_fire.jpg"
+  },
+  "surya-kashmir-cleveland": {
+    "src": "/images/exhibits/surya-kashmir-cleveland.jpg",
+    "width": 881,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:India,_Kashmir,_early_8th_Century_-_Surya,_the_Sun_God_-_1965.557_-_Cleveland_Museum_of_Art.tif"
+  },
+  "kartikeya-varma": {
+    "src": "/images/exhibits/kartikeya-varma.jpg",
+    "width": 1172,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Murugan_by_Raja_Ravi_Varma.jpg"
+  },
+  "draupadi-sairandhri-varma": {
+    "src": "/images/exhibits/draupadi-sairandhri-varma.jpg",
+    "width": 1139,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma,_Keechaka_and_Sairandhri,_1890.jpg"
+  },
+  "bhishma-resolve-varma": {
+    "src": "/images/exhibits/bhishma-resolve-varma.jpg",
+    "width": 1127,
+    "height": 1509,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Raja Ravi Varma",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bhishma%27s_Resolve_-_Raja_Ravi_Varma.jpg"
+  },
+  "roc-dulac": {
+    "src": "/images/exhibits/roc-dulac.jpg",
+    "width": 1258,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Edmund Dulac",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sinbad_the_sailor_%26_other_stories_from_the_Arabian_nights_-_Dulac_color_plate_facing_page_024.jpg"
+  },
+  "osiris-crook-flail": {
+    "src": "/images/exhibits/osiris-crook-flail.jpg",
+    "width": 1049,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_-_Osiris,_Lord_of_the_Dead_-_Walters_22207.jpg"
+  },
+  "hathor-sistrum": {
+    "src": "/images/exhibits/hathor-sistrum.jpg",
+    "width": 1280,
+    "height": 1505,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bat_-_Hathor_emblem_from_a_sistrum_MET_DP318530.jpg"
+  },
+  "isis-tyet": {
+    "src": "/images/exhibits/isis-tyet.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_jasper_amulet_of_tyet_MET_DP121806.jpg"
+  },
+  "fereydun-gavsar": {
+    "src": "/images/exhibits/fereydun-gavsar.jpg",
+    "width": 1092,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Attributed to Sultan Muhammad",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Faridun_strikes_Zahhak_with_the_ox-headed_mace.jpg"
+  },
+  "vishnu-garuda-met": {
+    "src": "/images/exhibits/vishnu-garuda-met.jpg",
+    "width": 1137,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Attributed to Sajnu of Mandi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vishnu_on_Garuda_MET_DP-18171-001.jpg"
+  },
+  "ravana-pushpaka": {
+    "src": "/images/exhibits/ravana-pushpaka.jpg",
+    "width": 481,
+    "height": 923,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Qasim",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ravana_seizes_the_chariot_Puspaka_from_Kuvera.jpg"
+  },
+  "arjuna-kirata": {
+    "src": "/images/exhibits/arjuna-kirata.jpg",
+    "width": 1280,
+    "height": 1343,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Company School artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arjuna,_perched_on_a_high_platform,_aims_his_arrow_at_a_large_boar_which_rushes_towards_him.jpg"
+  },
+  "hanuman-gada": {
+    "src": "/images/exhibits/hanuman-gada.jpg",
+    "width": 1252,
+    "height": 1592,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hanuman_striking_a_demon.jpg"
+  },
+  "ali-baba-cave-batten": {
+    "src": "/images/exhibits/ali-baba-cave-batten.jpg",
+    "width": 1280,
+    "height": 1085,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John D. Batten",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fairy_tales_from_the_Arabian_nights_-_Batten_illustration_at_page_306.png"
+  },
+  "fuxi-ma-lin": {
+    "src": "/images/exhibits/fuxi-ma-lin.jpg",
+    "width": 739,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ma Lin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ma-Lin-Fuxi-and-turtle.jpg"
+  },
+  "shennong-shoryo": {
+    "src": "/images/exhibits/shennong-shoryo.jpg",
+    "width": 1280,
+    "height": 1501,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shoryo",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shoryo_-_Portrait_of_Shinno_-_1986.48_-_Cleveland_Museum_of_Art.jpg"
+  },
+  "yu-ma-lin": {
+    "src": "/images/exhibits/yu-ma-lin.jpg",
+    "width": 739,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Ma Lin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_Yu_of_Xia.jpg"
+  },
+  "zhong-kui-ren-yi": {
+    "src": "/images/exhibits/zhong-kui-ren-yi.jpg",
+    "width": 894,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Ren Yi 任頤",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B8%85_%E4%BB%BB%E9%A0%A4_%E9%8D%BE%E9%A6%97_%E8%BB%B8-Zhong_Kui_MET_2002_208_2_O.jpg"
+  },
+  "erlang-shen-opera": {
+    "src": "/images/exhibits/erlang-shen-opera.jpg",
+    "width": 1157,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%84%A1%E6%AC%BE_%E6%B8%85%E6%9C%AB_%E4%BA%AC%E5%8A%87%E4%B8%80%E7%99%BE%E4%BA%BA%E7%89%A9%E5%83%8F_%E5%86%8A_%E7%B5%B9%E6%9C%AC-One_hundred_portraits_of_Peking_opera_characters_MET_DP280075.jpg"
+  },
+  "erlang-shen-soushenji": {
+    "src": "/images/exhibits/erlang-shen-soushenji.jpg",
+    "width": 1013,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%81%8C%E5%8F%A3%E4%BA%8C%E9%83%8E%E7%A5%9E%EF%BC%88%E6%96%B0%E5%88%BB%E5%87%BA%E5%83%8F%E5%A2%9E%E8%A3%9C%E6%90%9C%E7%A5%9E%E8%A8%98%EF%BC%89.jpg"
+  },
+  "jade-emperor-ming": {
+    "src": "/images/exhibits/jade-emperor-ming.jpg",
+    "width": 1080,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jade_Emperor._Ming_Dynasty.jpg"
+  },
+  "zhu-bajie-xiyouji": {
+    "src": "/images/exhibits/zhu-bajie-xiyouji.jpg",
+    "width": 1093,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Xiyou2.PNG"
+  },
+  "okuninushi-gakutei": {
+    "src": "/images/exhibits/okuninushi-gakutei.jpg",
+    "width": 1280,
+    "height": 1411,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Yashima Gakutei",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MET_DP137830.jpg"
+  },
+  "orochi-kiyomasu": {
+    "src": "/images/exhibits/orochi-kiyomasu.jpg",
+    "width": 765,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Torii Kiyomasu II",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Susano-o_no_Mikoto_Killing_the_Eight-headed_Dragon.jpg"
+  },
+  "momotaro-toyoharu": {
+    "src": "/images/exhibits/momotaro-toyoharu.jpg",
+    "width": 1280,
+    "height": 879,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Utagawa Toyoharu",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Utagawa_Toyoharu_-_Momotar%C5%8D_and_His_Animal_Friends_Conquer_the_Demons.jpg"
+  },
+  "urashima-yoshitoshi": {
+    "src": "/images/exhibits/urashima-yoshitoshi.jpg",
+    "width": 1280,
+    "height": 964,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tsukioka Yoshitoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urashima_Taro_Returning_on_the_Turtle_LACMA_M.84.31.349.jpg"
+  },
+  "kaguya-yoshitoshi": {
+    "src": "/images/exhibits/kaguya-yoshitoshi.jpg",
+    "width": 915,
+    "height": 1330,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tsukioka Yoshitoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gekkyu_no_mukae.jpg"
+  },
+  "kaguya-taketori-met": {
+    "src": "/images/exhibits/kaguya-taketori-met.jpg",
+    "width": 1203,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taketori_monogatari-Tale_of_the_Shining_Princess_MET_DP137389.jpg"
+  },
+  "tsuchigumo-emaki": {
+    "src": "/images/exhibits/tsuchigumo-emaki.jpg",
+    "width": 1280,
+    "height": 985,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tsuchigumo_no_soshi_emaki_-_Kamakura_-_part_14_-_Yorimitsu_killing_Tsuchigumo.jpg"
+  },
+  "tengu-hiroshige": {
+    "src": "/images/exhibits/tengu-hiroshige.jpg",
+    "width": 1260,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Utagawa Hiroshige",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_of_the_tengu_with_Ushiwakamaru.jpg"
+  },
+  "benzaiten-keisei": {
+    "src": "/images/exhibits/benzaiten-keisei.jpg",
+    "width": 1280,
+    "height": 1470,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Aoigaoka Keisei",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E9%A8%8E%E9%BE%8D%E5%BC%81%E8%B2%A1%E5%A4%A9-Benzaiten_(Goddess_of_Music_and_Good_Fortune)_Seated_on_a_White_Dragon_MET_DP135895.jpg"
+  },
+  "hyeonmu-gangseo": {
+    "src": "/images/exhibits/hyeonmu-gangseo.jpg",
+    "width": 1280,
+    "height": 1022,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "朝鮮總督府",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%98%84%EB%AC%B4_%EC%A1%B0%EC%84%A0%EA%B3%A0%EC%A0%81%EB%8F%84%EB%B3%B4.jpg"
+  },
+  "semar-mask": {
+    "src": "/images/exhibits/semar-mask.jpg",
+    "width": 1280,
+    "height": 1437,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rijksmuseum",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Masker_van_de_ponokawan_Semar,_AK-RAK-1998-3.jpg"
+  },
+  "mictlantecuhtli-borgia": {
+    "src": "/images/exhibits/mictlantecuhtli-borgia.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Codex_Borgia_page_56.jpg"
+  },
+  "coatlicue-statue": {
+    "src": "/images/exhibits/coatlicue-statue.jpg",
+    "width": 1067,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd from Xinzheng, China",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aztec_Stone_Coatlique_(Cihuacoatl)_Earth_Goddess_(9754610555).jpg"
+  },
+  "chalchiuhtlicue-met": {
+    "src": "/images/exhibits/chalchiuhtlicue-met.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Water_Deity_(Chalchiuhtlicue)_MET_DT1257.jpg"
+  },
+  "coyolxauhqui-head": {
+    "src": "/images/exhibits/coyolxauhqui-head.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aztec_Coyolxauhqui,_Moon_Goddess.jpg"
+  },
+  "ix-chel-dresden": {
+    "src": "/images/exhibits/ix-chel-dresden.jpg",
+    "width": 711,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dresden_p_74_large.jpg"
+  },
+  "manco-capac-murua": {
+    "src": "/images/exhibits/manco-capac-murua.jpg",
+    "width": 1061,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Fray Martín de Murúa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_adoraci%C3%B3n_de_Manco_C%C3%A1pac.jpg"
+  },
+  "manco-capac-brooklyn": {
+    "src": "/images/exhibits/manco-capac-brooklyn.jpg",
+    "width": 1280,
+    "height": 1374,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_Manco_Capac,_First_Inca,_1_of_14_Portraits_of_Inca_Kings.jpg"
+  },
+  "mama-ocllo-fogg": {
+    "src": "/images/exhibits/mama-ocllo-fogg.jpg",
+    "width": 1164,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mama_Ocllo,_artist_unknown,_Cuzco,_Peru,_c._1835-1845,_oil_on_canvas_-_Fogg_Art_Museum,_Harvard_University_-_DSC02018.jpg"
+  },
+  "hina-gauguin": {
+    "src": "/images/exhibits/hina-gauguin.jpg",
+    "width": 857,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Paul Gauguin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_Hina_Tefatou_-_Google_Art_Project.jpg"
+  },
+  "yucahu-trigonolito": {
+    "src": "/images/exhibits/yucahu-trigonolito.jpg",
+    "width": 1279,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Three-Cornered_Stone_(Trigonolito)_MET_DT4135.jpg"
+  },
+  "zemi-met": {
+    "src": "/images/exhibits/zemi-met.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deity_Figure_(Zem%C3%AD)_MET_DT1258.jpg"
+  },
+  "ai-apaec-plaque": {
+    "src": "/images/exhibits/ai-apaec-plaque.jpg",
+    "width": 1280,
+    "height": 1024,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Decapitator_Plaque_MET_DT11614.jpg"
+  },
+  "nezha-opera": {
+    "src": "/images/exhibits/nezha-opera.jpg",
+    "width": 1169,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E7%84%A1%E6%AC%BE_%E6%B8%85%E6%9C%AB_%E4%BA%AC%E5%8A%87%E4%B8%80%E7%99%BE%E4%BA%BA%E7%89%A9%E5%83%8F_%E5%86%8A_%E7%B5%B9%E6%9C%AC-One_hundred_portraits_of_Peking_opera_characters_MET_DP280080.jpg"
+  },
+  "tawara-toda-ryugu": {
+    "src": "/images/exhibits/tawara-toda-ryugu.jpg",
+    "width": 1094,
+    "height": 1570,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Utagawa Kuniyoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ryugujo_%E9%BE%8D%E5%AE%AE%E5%9F%8E_(The_Palace_of_the_Dragon_King)_(BM_2008,3037.19301_1).jpg"
+  },
+  "daikokuten-mallet": {
+    "src": "/images/exhibits/daikokuten-mallet.jpg",
+    "width": 1280,
+    "height": 1435,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Yashima Gakutei",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MET_DP138468.jpg"
+  },
+  "chariot-nordenskiold": {
+    "src": "/images/exhibits/chariot-nordenskiold.jpg",
+    "width": 1154,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Adolf Erik Nordenskiöld",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nordenski%C3%B6ld_1897_Figure_15_Magnetic_car_Page058.jpg"
+  },
+  "maui-dittmer": {
+    "src": "/images/exhibits/maui-dittmer.jpg",
+    "width": 1187,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Wilhelm Dittmer",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Te_Tohunga_-_p49.png"
+  },
+  "qilin-sancai": {
+    "src": "/images/exhibits/qilin-sancai.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Qilin_in_sancai_tuhui.jpg"
+  },
+  "fenghuang-shen-nanpin": {
+    "src": "/images/exhibits/fenghuang-shen-nanpin.jpg",
+    "width": 780,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Shen Nanpin",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%B2%88%E5%8D%97%E8%98%8B_%E4%B8%B9%E9%B3%B3%E6%9C%9D%E9%99%BD%E5%9B%B3_%E9%9B%8D%E6%AD%A313(1735)_Shen_Nanpi_Pair_of_Phoenixes_in_the_Morning_Glow_A_Hanging_scroll_Color_on_sil_a_dynasty.jpg"
+  },
+  "nue-kuniyoshi": {
+    "src": "/images/exhibits/nue-kuniyoshi.jpg",
+    "width": 1074,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Li_Hayata_Hironao_grappling_with_the_monstruos_nue.jpg"
+  },
+  "ebisu-hokusai": {
+    "src": "/images/exhibits/ebisu-hokusai.jpg",
+    "width": 1120,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Katsushika Hokusai",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MET_56_121_33_162323.jpg"
+  },
+  "xipe-totec-gardiner": {
+    "src": "/images/exhibits/xipe-totec-gardiner.jpg",
+    "width": 1257,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Head_of_Xipe_Totec,_1428-1521_AD,_Aztec_style,_Mexico,_earthenware_-_Gardiner_Museum,_Toronto_-_DSC01124.JPG"
+  },
+  "tane-dittmer": {
+    "src": "/images/exhibits/tane-dittmer.jpg",
+    "width": 1268,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Wilhelm Dittmer",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Te_Tohunga_-_p11.png"
   }
 }

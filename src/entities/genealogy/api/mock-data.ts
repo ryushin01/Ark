@@ -36,7 +36,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
             p("히페리온", "Hyperion"),
             u(p("테이아", "Theia"), [
               withUnions(
-                p("헬리오스", "Helios"),
+                p("헬리오스", "Helios", "helios"),
                 u(p("페르세", "Perse"), [p("키르케", "Circe", "circe")]),
               ),
               p("셀레네", "Selene"),
@@ -57,22 +57,28 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
           ),
           withUnions(
             p("이아페토스", "Iapetus"),
-            u(p("클리메네", "Clymene"), [p("아틀라스", "Atlas"), p("프로메테우스", "Prometheus")]),
+            u(p("클리메네", "Clymene"), [
+              p("아틀라스", "Atlas"),
+              p("프로메테우스", "Prometheus", "prometheus"),
+            ]),
           ),
           withUnions(
-            p("크로노스", "Cronus"),
+            p("크로노스", "Cronus", "cronus"),
             u(p("레아", "Rhea"), [
-              p("헤스티아", "Hestia"),
+              p("헤스티아", "Hestia", "hestia"),
               withUnions(
                 p("데메테르", "Demeter", "demeter"),
                 u(p("제우스", "Zeus", "zeus"), [
-                  withUnions(p("페르세포네", "Persephone"), u(p("하데스", "Hades", "hades"), [])),
+                  withUnions(
+                    p("페르세포네", "Persephone", "persephone"),
+                    u(p("하데스", "Hades", "hades"), []),
+                  ),
                 ]),
               ),
               withUnions(
                 p("헤라", "Hera", "hera"),
                 u(p("제우스", "Zeus", "zeus"), [
-                  p("아레스", "Ares"),
+                  p("아레스", "Ares", "ares"),
                   p("헤베", "Hebe"),
                   p(
                     "헤파이스토스",
@@ -113,7 +119,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
                     "dioscuri",
                     "폴리데우케스는 제우스의, 카스토르는 틴다레오스의 아들이라는 전승도 있습니다",
                   ),
-                  p("헬레네", "Helen"),
+                  p("헬레네", "Helen", "helen"),
                 ]),
               ),
             ]),
@@ -211,10 +217,10 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         ]),
       ),
       withUnions(
-        p("뇨르드", "Njörðr", undefined, "바다의 신. 바니르 신족"),
+        p("뇨르드", "Njörðr", "njord", "바다의 신. 바니르 신족"),
         u(
           null,
-          [p("프레이르", "Freyr"), p("프레이야", "Freyja", "freyja")],
+          [p("프레이르", "Freyr", "freyr"), p("프레이야", "Freyja", "freyja")],
           "어머니는 뇨르드의 누이라고 전합니다",
         ),
       ),
@@ -223,7 +229,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         u(p("앙그르보다", "Angrboða", undefined, "거인"), [
           p("펜리르", "Fenrir", "fenrir"),
           p("요르문간드", "Jörmungandr", "jormungandr"),
-          p("헬", "Hel"),
+          p("헬", "Hel", "hel"),
         ]),
         u(
           p("스바딜파리", "Svaðilfari", undefined, "거인의 말"),
@@ -246,7 +252,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
             u(p("테프누트", "Tefnut", undefined, "습기"), [
               withUnions(
                 p("게브", "Geb", undefined, "땅"),
-                u(p("누트", "Nut", undefined, "하늘"), [
+                u(p("누트", "Nut", "nut", "하늘"), [
                   withUnions(
                     p("오시리스", "Osiris", "osiris"),
                     u(p("이시스", "Isis", "isis"), [p("호루스", "Horus", "horus")]),
@@ -254,7 +260,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
                   p("이시스", "Isis", "isis"),
                   p("세트", "Set", "set"),
                   withUnions(
-                    p("네프티스", "Nephthys"),
+                    p("네프티스", "Nephthys", "nephthys"),
                     u(
                       p("오시리스", "Osiris", "osiris"),
                       [p("아누비스", "Anubis", "anubis")],
@@ -327,7 +333,10 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     pantheonSlug: "hindu",
     source: "푸라나 문헌, 「라마야나」",
     roots: [
-      withUnions(p("브라흐마", "Brahma", "brahma"), u(p("사라스바티", "Saraswati"), [])),
+      withUnions(
+        p("브라흐마", "Brahma", "brahma"),
+        u(p("사라스바티", "Saraswati", "saraswati"), []),
+      ),
       withUnions(
         p("비슈누", "Vishnu", "vishnu"),
         u(p("락슈미", "Lakshmi", "lakshmi"), [], "크리슈나와 라마는 비슈누의 화신입니다"),
@@ -336,7 +345,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         p("시바", "Shiva", "shiva"),
         u(p("파르바티", "Parvati", undefined, "두르가는 파르바티의 무서운 모습으로도 섬깁니다"), [
           p("가네샤", "Ganesha", "ganesha"),
-          p("카르티케야", "Kartikeya"),
+          p("카르티케야", "Kartikeya", "kartikeya"),
         ]),
       ),
       withUnions(
@@ -431,7 +440,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
       withUnions(
         p("오메테쿠틀리", "Ometecuhtli", undefined, "두 겹의 주인"),
         u(p("오메시우아틀", "Omecihuatl"), [
-          p("붉은 테스카틀리포카(시페 토텍)", "Red Tezcatlipoca (Xipe Totec)"),
+          p("붉은 테스카틀리포카(시페 토텍)", "Red Tezcatlipoca (Xipe Totec)", "xipe-totec"),
           p("검은 테스카틀리포카", "Black Tezcatlipoca", "tezcatlipoca"),
           p("케찰코아틀", "Quetzalcoatl", "quetzalcoatl"),
           p(
@@ -454,8 +463,8 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
           withUnions(
             p("인티", "Inti", "inti"),
             u(p("마마 킬랴", "Mama Quilla", undefined, "달의 여신"), [
-              p("망코 카팍", "Manco Cápac", undefined, "쿠스코를 세운 첫 잉카"),
-              p("마마 오클료", "Mama Ocllo"),
+              p("망코 카팍", "Manco Cápac", "manco-capac", "쿠스코를 세운 첫 잉카"),
+              p("마마 오클료", "Mama Ocllo", "mama-ocllo"),
             ]),
           ),
         ]),
@@ -467,10 +476,10 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     source: "마오리 전승",
     roots: [
       withUnions(
-        p("랑기누이", "Ranginui", undefined, "하늘의 아버지"),
-        u(p("파파투아누쿠", "Papatūānuku", undefined, "땅의 어머니"), [
+        p("랑기누이", "Ranginui", "rangi-and-papa", "하늘의 아버지"),
+        u(p("파파투아누쿠", "Papatūānuku", "rangi-and-papa", "땅의 어머니"), [
           p("탕가로아", "Tangaroa", "tangaroa"),
-          p("타네", "Tāne", undefined, "숲의 신. 부모를 떼어 놓았습니다"),
+          p("타네", "Tāne", "tane", "숲의 신. 부모를 떼어 놓았습니다"),
           p("투마타우엥가", "Tūmatauenga", undefined, "전쟁의 신. 하와이의 쿠에 해당합니다"),
           p("롱고", "Rongo"),
           p("타휘리마테아", "Tāwhirimātea", undefined, "바람의 신"),
@@ -511,10 +520,10 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
       withUnions(
         p("다그다", "The Dagda", undefined, "투어허 데 다넌의 아버지 신"),
         u(null, [p("브리지트", "Brigid", "brigid")]),
-        u(p("보안", "Boann", undefined, "보인강의 여신"), [p("앵거스", "Aengus")]),
+        u(p("보안", "Boann", undefined, "보인강의 여신"), [p("앵거스", "Aengus", "aengus")]),
       ),
       withUnions(
-        p("루", "Lugh"),
+        p("루", "Lugh", "lugh"),
         u(p("데크티네", "Deichtine"), [
           p("쿠 훌린", "Cú Chulainn", "cuchulainn", "사람인 아버지 수알탐의 아들이라고도 합니다"),
         ]),
@@ -551,7 +560,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     roots: [
       p("반고", "Pangu", "pangu", "알 같은 혼돈에서 깨어나 하늘과 땅을 갈랐습니다"),
       withUnions(
-        p("복희", "Fuxi", undefined, "여와의 오빠"),
+        p("복희", "Fuxi", "fuxi", "여와의 오빠"),
         u(
           p("여와", "Nüwa", "nuwa"),
           [p("사람들", "humankind")],
@@ -566,7 +575,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     source: "우가리트 점토판",
     roots: [
       withUnions(
-        p("엘", "El", undefined, "신들의 아버지"),
+        p("엘", "El", "el", "신들의 아버지"),
         u(
           p("아세라", "Asherah"),
           [p("얌", "Yam", undefined, "바다의 신"), p("모트", "Mot", undefined, "죽음의 신")],
@@ -616,8 +625,11 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
     roots: [
       withUnions(
         p("이그레인", "Igraine"),
-        u(p("우서 펜드래건", "Uther Pendragon"), [
-          withUnions(p("아서 왕", "King Arthur", "king-arthur"), u(p("귀네비어", "Guinevere"), [])),
+        u(p("우서 펜드래건", "Uther Pendragon", "uther-pendragon"), [
+          withUnions(
+            p("아서 왕", "King Arthur", "king-arthur"),
+            u(p("귀네비어", "Guinevere", "guinevere"), []),
+          ),
         ]),
         u(p("콘월 공작 고를루아", "Gorlois"), [
           p("모르간 르 페이", "Morgan le Fay", "morgan-le-fay"),
@@ -701,12 +713,12 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
         ),
       ),
       withUnions(
-        p("잘", "Zal"),
+        p("잘", "Zal", "zal"),
         u(p("루다베", "Rudaba"), [
           withUnions(
             p("루스탐", "Rostam", "rostam"),
             u(p("타흐미네", "Tahmineh"), [
-              p("소흐랍", "Sohrab", undefined, "아버지인 줄 모른 채 루스탐과 싸워 죽었습니다"),
+              p("소흐랍", "Sohrab", "sohrab", "아버지인 줄 모른 채 루스탐과 싸워 죽었습니다"),
             ]),
           ),
         ]),

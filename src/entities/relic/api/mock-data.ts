@@ -745,7 +745,7 @@ const SEEDS: RelicSeed[] = [
     price:
       "용왕이 부모를 벌하려 하자 나타는 살을 베어 어머니에게, 뼈를 발라 아버지에게 돌려준 뒤 연꽃 몸으로 다시 태어났습니다.",
     source: "「봉신연의」",
-    exhibitId: null,
+    exhibitId: "nezha-opera",
   },
   // 한국
   {
@@ -1004,6 +1004,832 @@ const SEEDS: RelicSeed[] = [
       "지크프리트는 이 망토를 쓰고 몰래 군터를 도와 브륀힐트를 이기게 했는데, 이 속임수가 드러나 하겐에게 죽임을 당했습니다.",
     source: "「니벨룽의 노래」",
     exhibitId: "siegfried-tarnkappe",
+  },
+  // 샤를마뉴 전설
+  {
+    slug: "olifant",
+    name: "올리판트",
+    nameEn: "Olifant",
+    kind: "tool",
+    figureSlugs: ["roland", "charlemagne"],
+    origin: "롤랑이 지니고 다닌 상아 뿔나팔로, 이름부터 코끼리를 뜻하는 옛 프랑스어에서 왔습니다.",
+    power:
+      "론세스바예스에서 롤랑이 마지막으로 불자 그 소리가 30리그 떨어진 샤를마뉴의 군대까지 들렸습니다.",
+    price:
+      "올리비에가 처음부터 불자고 했지만 롤랑은 체면 때문에 거절했고, 너무 늦게 힘껏 부느라 관자놀이가 터져 죽음을 맞았습니다.",
+    source: "「롤랑의 노래」",
+    exhibitId: "roland-olifant-fouquet",
+  },
+  {
+    slug: "joyeuse",
+    name: "주아이외즈",
+    nameEn: "Joyeuse",
+    kind: "weapon",
+    figureSlugs: ["charlemagne"],
+    origin:
+      "샤를마뉴의 칼로, 황금 칼자루 끝에 그리스도를 찌른 창의 끝이 박혀 있어 그 영광을 기려 '기쁨'이라는 이름이 붙었다고 합니다.",
+    power:
+      "하루에 서른 번 빛깔이 바뀌었다고 하며, 프랑크군의 함성 '몽주아'도 이 칼에서 나왔다고 전합니다.",
+    price: null,
+    source: "「롤랑의 노래」",
+    exhibitId: "joyeuse-louvre",
+  },
+  {
+    slug: "wits-of-orlando",
+    name: "롤랑의 정신이 든 병",
+    nameEn: "Orlando's Wits",
+    kind: "treasure",
+    figureSlugs: ["astolfo", "roland"],
+    origin:
+      "「광란의 오를란도」에서 안젤리카를 잃고 미쳐 버린 롤랑(오를란도)의 정신은, 땅에서 잃어버린 모든 것이 모인다는 달의 골짜기에 병에 담겨 있었습니다. 아스톨포가 성 요한과 함께 엘리야의 불 수레를 타고 달에 올라 '오를란도의 정신'이라고 적힌 병을 찾아왔습니다.",
+    power:
+      "병에 담긴 것을 코로 들이마시게 하자 롤랑은 제정신을 되찾았습니다. 아스톨포는 그곳에서 자기가 잃었던 정신도 조금 되찾아 왔습니다.",
+    price: "제정신을 찾은 롤랑은 안젤리카를 향한 사랑도 함께 잊어버렸습니다.",
+    source: "아리오스토 「광란의 오를란도」",
+    exhibitId: "astolfo-moon-dore",
+  },
+  // 앵글로색슨 신화
+  {
+    slug: "hrunting-and-naegling",
+    name: "흐룬팅과 내글링",
+    nameEn: "Hrunting and Nægling",
+    kind: "weapon",
+    figureSlugs: ["beowulf"],
+    origin:
+      "흐룬팅은 덴마크 궁정의 운페르스가 그렌델의 어미와 싸우러 가는 베오울프에게 빌려준 칼이고, 내글링은 늙은 베오울프가 용과 싸울 때 든 오래된 칼입니다.",
+    power:
+      "흐룬팅은 독이 밴 무늬를 새기고 싸움의 피로 단련해 한 번도 주인을 저버린 적이 없었고, 내글링은 회색 무늬가 빛나는 이름난 옛 칼이었습니다.",
+    price:
+      "흐룬팅은 그렌델 어미의 몸에 먹히지 않아 베오울프가 내던졌고, 내글링은 용의 머리를 내리치다 부러졌습니다. 베오울프는 단검으로 용을 쓰러뜨렸지만 그 독에 목숨을 잃었습니다.",
+    source: "「베오울프」",
+    exhibitId: "beowulf-dragon-skelton",
+  },
+  // 게르만 영웅 전설
+  {
+    slug: "nibelung-hoard",
+    name: "니벨룽의 보물",
+    nameEn: "Nibelung Hoard",
+    kind: "treasure",
+    figureSlugs: ["siegfried", "hagen", "kriemhild"],
+    origin:
+      "지크프리트가 니벨룽 왕자들을 쓰러뜨리고 난쟁이 알베리히를 굴복시켜 얻은 보물로, 크림힐트가 남편에게 혼인 선물로 받았다가 그가 죽은 뒤 보름스로 가져왔습니다.",
+    power:
+      "열두 대의 수레가 나흘 밤낮을 날라야 할 만큼 많은 금과 보석이었고, 그 안에는 온 세상 사람을 다스릴 수 있다는 금 막대도 있었다고 합니다.",
+    price:
+      "하겐은 크림힐트가 보물로 세력을 모을까 두려워 라인강에 가라앉히고 그 자리를 끝내 말하지 않았고, 이 보물을 둘러싼 원한이 부르군트족의 멸망으로 이어졌습니다.",
+    source: "「니벨룽의 노래」",
+    exhibitId: "hagen-nibelung-hoard",
+  },
+  {
+    slug: "balmung",
+    name: "발뭉",
+    nameEn: "Balmung",
+    kind: "weapon",
+    figureSlugs: ["siegfried", "hagen", "kriemhild"],
+    origin:
+      "니벨룽 왕자들이 보물을 나누어 달라며 지크프리트에게 품삯으로 준 칼입니다. 나눔이 끝나기 전에 다툼이 일자 지크프리트는 바로 이 칼로 그들을 쓰러뜨렸습니다.",
+    power: "투구와 갑옷을 쉽게 가르는 명검입니다.",
+    price:
+      "지크프리트가 죽은 뒤 하겐이 이 칼을 차지했고, 마지막에 크림힐트는 이 칼로 하겐의 목을 베었습니다. 크림힐트도 곧 힐데브란트의 칼에 쓰러졌습니다.",
+    source: "「니벨룽의 노래」",
+    exhibitId: null,
+  },
+  // 아서왕 전설
+  {
+    slug: "love-potion",
+    name: "사랑의 묘약",
+    nameEn: "Love Potion",
+    kind: "treasure",
+    figureSlugs: ["tristan", "isolde"],
+    origin:
+      "이졸데의 어머니인 아일랜드 왕비가 딸과 마크 왕이 서로 사랑하도록 지어 시녀 브랑지앵에게 맡긴 약입니다.",
+    power:
+      "함께 마신 두 사람은 서로 떨어질 수 없을 만큼 사랑하게 됩니다. 베룰의 판본에서는 약효가 3년 동안 간다고 합니다.",
+    price:
+      "콘월로 가는 배에서 트리스탄과 이졸데가 이 약을 포도주로 알고 마셔 버렸고, 두 사람은 평생 금지된 사랑에 매여 죽음에 이르렀습니다.",
+    source: "베룰과 토마의 「트리스탄 이야기」, 고트프리트 폰 슈트라스부르크 「트리스탄」",
+    exhibitId: "tristan-isolde-potion",
+  },
+  {
+    slug: "green-girdle",
+    name: "녹색 띠",
+    nameEn: "Green Girdle",
+    kind: "ornament",
+    figureSlugs: ["gawain", "green-knight"],
+    origin:
+      "녹색 기사와의 약속을 지키러 가던 가웨인이 머문 성에서, 성주의 아내가 건넨 금실로 수놓은 초록 비단 띠입니다.",
+    power: "이 띠를 두른 사람은 누구도 해칠 수 없다고 했습니다.",
+    price:
+      "가웨인은 목숨이 아까워 띠를 성주에게 숨겼고, 그 대가로 녹색 기사의 세 번째 일격에 목에 작은 상처를 입었습니다. 그는 부끄러움을 잊지 않으려 띠를 두르고 돌아왔고, 원탁의 기사들은 모두 같은 띠를 매어 그를 위로했습니다.",
+    source: "「가웨인 경과 녹색 기사」",
+    exhibitId: "gawain-lady-cotton-nero",
+  },
+  {
+    slug: "round-table",
+    name: "원탁",
+    nameEn: "Round Table",
+    kind: "treasure",
+    figureSlugs: ["king-arthur", "merlin", "galahad", "guinevere"],
+    origin:
+      "바스의 「브뤼 이야기」(1155)에서 아서가 기사들의 자리다툼을 막으려고 만든 둥근 탁자입니다. 다른 전승에서는 멀린이 우서 펜드래건을 위해 만들었고, 귀네비어의 아버지가 혼인 선물로 아서에게 보냈다고 합니다.",
+    power:
+      "윗자리와 아랫자리가 없어 모든 기사가 같은 자격으로 앉았습니다. 한 자리는 '위험한 자리'라 하여 성배를 찾을 기사만이 앉을 수 있었고, 갤러해드가 그 주인이 되었습니다.",
+    price:
+      "랜슬롯과 귀네비어의 일, 모드레드의 반란으로 기사들이 갈라져 서로 싸우면서 원탁의 기사단은 무너졌습니다.",
+    source: "바스 「브뤼 이야기」, 로베르 드 보롱 「멀린」, 토머스 맬러리 「아서의 죽음」",
+    exhibitId: "round-table-winchester",
+  },
+  // 그리스 신화
+  {
+    slug: "wings-of-daedalus",
+    name: "다이달로스의 날개",
+    nameEn: "Wings of Daedalus",
+    kind: "tool",
+    figureSlugs: ["daedalus"],
+    origin:
+      "미노스 왕이 크레타를 떠나지 못하게 하자, 다이달로스가 새 깃털을 길이대로 늘어놓고 가운데는 실로, 끝은 밀랍으로 붙여 만든 날개입니다.",
+    power:
+      "새처럼 바다를 건너 날 수 있게 해 주었고, 다이달로스는 이 날개로 시칠리아까지 날아갔습니다.",
+    price:
+      "아들 이카로스가 너무 높이 날아오르자 태양열에 밀랍이 녹아 바다에 떨어져 죽었습니다. 다이달로스는 자신의 재주를 저주하며 아들을 묻었습니다.",
+    source: "오비디우스 「변신 이야기」, 아폴로도로스 「비블리오테케」",
+    exhibitId: "daedalus-icarus-leighton",
+  },
+  {
+    slug: "pandoras-jar",
+    name: "판도라의 항아리",
+    nameEn: "Pandora's Jar",
+    kind: "treasure",
+    figureSlugs: ["pandora", "zeus"],
+    origin:
+      "헤시오도스의 「일과 날」에서 판도라가 연 큰 항아리(피토스)입니다. 누가 그 안에 재앙을 넣었는지는 밝히지 않으며, 후대에는 신들이 판도라에게 들려 보낸 상자로 전해졌습니다.",
+    power: "그 안에는 그때까지 인간이 몰랐던 고된 노동과 질병 같은 온갖 재앙이 갇혀 있었습니다.",
+    price:
+      "판도라가 뚜껑을 열자 재앙이 세상에 퍼졌고, 서둘러 닫았을 때는 희망만이 항아리 속에 남았습니다.",
+    source: "헤시오도스 「일과 날」",
+    exhibitId: "pandora-waterhouse",
+  },
+  {
+    slug: "psyches-box",
+    name: "프시케의 상자",
+    nameEn: "Psyche's Box",
+    kind: "treasure",
+    figureSlugs: ["psyche", "aphrodite", "persephone"],
+    origin:
+      "아프로디테가 마지막 시련으로 프시케를 저승에 보내며, 페르세포네의 아름다움을 조금 담아 오라고 들려 보낸 상자입니다.",
+    power: "페르세포네가 담아 준 것은 아름다움이 아니라 저승의 깊은 잠이었습니다.",
+    price:
+      "열지 말라는 당부를 어기고 아름다움을 조금 덜어 쓰려 상자를 연 프시케는 그 자리에서 잠에 빠졌고, 에로스가 잠을 다시 상자에 거두어 그녀를 깨웠습니다.",
+    source: "아풀레이우스 「황금 당나귀」",
+    exhibitId: "psyche-box-waterhouse",
+  },
+  {
+    slug: "brand-of-meleager",
+    name: "멜레아그로스의 장작",
+    nameEn: "Brand of Meleager",
+    kind: "treasure",
+    figureSlugs: ["meleager"],
+    origin:
+      "멜레아그로스가 태어났을 때 운명의 여신들이 화로의 장작이 다 타면 아이가 죽는다고 예언했고, 어머니 알타이아가 곧바로 불을 꺼 숨겨 둔 장작입니다.",
+    power: "장작이 남아 있는 동안 멜레아그로스의 목숨도 이어졌습니다.",
+    price:
+      "칼리돈의 멧돼지 사냥 뒤 멜레아그로스가 상을 두고 다투다 외삼촌들을 죽이자, 알타이아는 장작을 불에 던졌고 멜레아그로스는 멀리서 불에 타는 듯한 고통 속에 숨졌습니다. 알타이아도 뒤에 스스로 목숨을 끊었습니다.",
+    source: "오비디우스 「변신 이야기」, 아폴로도로스 「비블리오테케」",
+    exhibitId: "meleager-althaea-print",
+  },
+  {
+    slug: "chariot-of-helios",
+    name: "헬리오스의 태양 수레",
+    nameEn: "Chariot of the Sun",
+    kind: "tool",
+    figureSlugs: ["helios"],
+    origin:
+      "헤파이스토스가 만든 황금 수레로, 굴대와 채와 바퀴 테는 금, 바큇살은 은이며 불을 내뿜는 네 마리 말이 끌었다고 합니다(오비디우스).",
+    power:
+      "헬리오스는 날마다 이 수레를 몰아 동쪽에서 서쪽으로 하늘을 가로지르며 세상에 빛을 비춥니다.",
+    price:
+      "아들 파에톤이 하루만 몰게 해 달라고 졸라 수레를 맡았다가 말을 다루지 못해 땅과 하늘을 불태웠고, 제우스의 번개에 맞아 에리다노스강에 떨어져 죽었습니다.",
+    source: "오비디우스 「변신 이야기」",
+    exhibitId: "helios-phaethon-palace",
+  },
+  // 북유럽 신화
+  {
+    slug: "apples-of-idunn",
+    name: "이둔의 사과",
+    nameEn: "Apples of Iðunn",
+    kind: "treasure",
+    figureSlugs: ["idun", "loki"],
+    origin: "젊음의 여신 이둔이 물푸레나무 상자에 담아 지키는 사과입니다.",
+    power: "신들은 늙어 갈 때마다 이 사과를 먹고 다시 젊어져, 라그나로크 때까지 젊음을 지킵니다.",
+    price:
+      "로키가 이둔과 사과를 거인 티아지에게 넘기자 신들은 순식간에 늙어 버렸고, 로키는 매로 변해 이둔을 되찾아 와야 했습니다. 뒤쫓던 티아지는 신들이 피운 불에 타 죽었고, 이 일로 그의 딸 스카디가 복수하러 왔습니다.",
+    source: "「스노리 에다」",
+    exhibitId: "idun-penrose",
+  },
+  // 켈트 신화
+  {
+    slug: "spear-of-lugh",
+    name: "루의 창",
+    nameEn: "Spear of Lugh",
+    kind: "weapon",
+    figureSlugs: ["lugh"],
+    origin:
+      "투어허 데 다넌이 북쪽 섬들의 네 도시에서 가져온 네 보물 가운데 하나로, 고리아스에서 온 창입니다.",
+    power:
+      "이 창을 든 이에게 맞서 이긴 싸움은 없었다고 합니다. 후대 이야기에서는 끝이 너무 뜨거워 늘 물을 채운 가마솥에 담가 두어야 하는 창으로도 그려집니다.",
+    price:
+      "후대의 「투렌의 아들들의 운명」에서 루는 아버지 키안을 죽인 투렌의 세 아들에게 보상으로 이런 불타는 창과 여러 보물을 구해 오게 했고, 세 형제는 그 일을 해내다 입은 상처로 모두 목숨을 잃었습니다.",
+    source: "「마그 투이레드의 둘째 전투」, 「투렌의 아들들의 운명」",
+    exhibitId: "lugh-millar",
+  },
+  // 핀란드 신화
+  {
+    slug: "rake-of-lemminkainens-mother",
+    name: "레민케이넨 어머니의 갈퀴",
+    nameEn: "Rake of Lemminkäinen's Mother",
+    kind: "tool",
+    figureSlugs: ["lemminkainen", "ilmarinen"],
+    origin:
+      "아들이 저승 투오넬라의 강에서 죽었다는 것을 안 레민케이넨의 어머니가 대장장이 일마리넨에게 부탁해 만든 구리 갈퀴로, 쇠로 된 이가 백 길이나 되었다고 합니다.",
+    power:
+      "어머니는 이 갈퀴로 투오넬라의 강바닥을 훑어 갈가리 찢긴 아들의 몸을 건져 냈고, 조각을 이어 붙인 뒤 꿀벌이 날라 온 연고로 아들을 되살렸습니다.",
+    price: null,
+    source: "「칼레발라」 15장",
+    exhibitId: "lemminkainen-mother",
+  },
+  // 슬라브 신화
+  {
+    slug: "gusli-of-sadko",
+    name: "사드코의 구슬리",
+    nameEn: "Sadko's Gusli",
+    kind: "tool",
+    figureSlugs: ["sadko"],
+    origin:
+      "노브고로드의 가난한 악사 사드코가 연회에서 켜던 현악기로, 무릎에 올려놓고 줄을 뜯는 러시아의 옛 악기입니다.",
+    power:
+      "일멘 호숫가에서 그가 구슬리를 켜자 바다 왕이 나타나 부자가 될 길을 알려 주었고, 바닷속 궁전에서 켰을 때는 바다 왕이 춤을 추어 바다에 폭풍이 일었습니다.",
+    price:
+      "춤이 그치지 않아 배들이 가라앉자, 사드코는 성 니콜라이의 말대로 구슬리 줄을 끊고 나서야 바다 왕의 궁전을 떠날 수 있었습니다.",
+    source: "노브고로드 브일리나 「사드코」",
+    exhibitId: "sadko-repin",
+  },
+  // 유럽 민담
+  {
+    slug: "crossbow-of-william-tell",
+    name: "빌헬름 텔의 석궁",
+    nameEn: "William Tell's Crossbow",
+    kind: "weapon",
+    figureSlugs: ["william-tell"],
+    origin: "스위스 우리주의 명사수 빌헬름 텔이 지니던 석궁입니다.",
+    power:
+      "합스부르크의 대관 게슬러가 장대에 건 모자에 절하지 않은 벌로 아들의 머리에 얹은 사과를 쏘게 하자, 텔은 화살 한 발로 사과를 꿰뚫었습니다.",
+    price:
+      "두 번째 화살은 무엇에 쓰려 했느냐는 물음에 첫 화살이 빗나가면 게슬러를 쏘려 했다고 답했다가 붙잡혔고, 배에 실려 끌려가다 폭풍 속에서 탈출한 뒤 퀴스나흐트의 좁은 길에서 이 석궁으로 게슬러를 쏘아 죽였습니다.",
+    source: "「자르넨의 백서」(1470년경), 프리드리히 실러 「빌헬름 텔」",
+    exhibitId: "william-tell-commons",
+  },
+  // 이집트 신화
+  {
+    slug: "crook-and-flail",
+    name: "오시리스의 왕홀과 도리깨",
+    nameEn: "Crook and Flail",
+    kind: "treasure",
+    figureSlugs: ["osiris"],
+    origin:
+      "양치기의 갈고리 지팡이(헤카)와 도리깨(네하하)에서 나온 왕권의 상징으로, 저승의 왕 오시리스는 늘 이 둘을 가슴 앞에 엇갈려 쥔 모습으로 그려집니다. 도리깨는 곡식을 터는 도구라는 설과 파리채라는 설이 함께 있습니다.",
+    power:
+      "갈고리는 백성을 양 떼처럼 이끄는 왕의 돌봄을, 도리깨는 땅의 풍요와 왕의 권위를 나타낸다고 풉니다. 파라오들도 오시리스를 잇는 왕임을 보이려고 이 둘을 들었고, 투탕카멘의 무덤에서도 실물이 나왔습니다.",
+    price: null,
+    source: "「사자의 서」의 오시리스 그림, 투탕카멘 무덤 출토품",
+    exhibitId: "osiris-crook-flail",
+  },
+  {
+    slug: "sistrum-of-hathor",
+    name: "하토르의 시스트럼",
+    nameEn: "Sistrum of Hathor",
+    kind: "tool",
+    figureSlugs: ["hathor", "bastet"],
+    origin:
+      "손잡이 위에 암소 귀를 단 하토르의 얼굴을 새기고, 쇠막대에 금속 고리를 꿴 딸랑이 악기입니다. 사제와 여사제들이 하토르를 섬기는 의식에서 흔들었습니다.",
+    power:
+      "흔들 때 나는 찰랑이는 소리가 하토르를 기쁘게 하고, 플루타르코스에 따르면 세트 같은 악한 힘을 쫓아낸다고 믿었습니다. 고양이 여신 바스테트도 이 악기를 든 모습으로 자주 그려집니다.",
+    price: null,
+    source: "플루타르코스 「이시스와 오시리스」, 덴데라 신전 부조",
+    exhibitId: "hathor-sistrum",
+  },
+  {
+    slug: "tyet",
+    name: "티엣 (이시스의 매듭)",
+    nameEn: "Tyet (Knot of Isis)",
+    kind: "ornament",
+    figureSlugs: ["isis"],
+    origin:
+      "옷의 띠를 묶은 매듭처럼 생긴 부적으로, 앙크와 닮았지만 양팔이 아래로 처져 있습니다. 이시스의 피를 뜻한다고 여겨 붉은 벽옥이나 붉은 유리로 많이 만들었습니다.",
+    power:
+      "「사자의 서」 156장은 붉은 벽옥 티엣을 죽은 이의 목에 걸면 이시스의 피와 힘, 마법이 그를 지켜 준다고 적고 있습니다.",
+    price: null,
+    source: "「사자의 서」 156장",
+    exhibitId: "isis-tyet",
+  },
+  // 메소포타미아 신화
+  {
+    slug: "saw-of-shamash",
+    name: "샤마시의 톱니 칼",
+    nameEn: "Saw of Shamash",
+    kind: "weapon",
+    figureSlugs: ["shamash"],
+    origin:
+      "날이 톱니처럼 깔쭉깔쭉한 칼로, 아카드 시대 원통 인장에는 샤마시가 두 산 사이로 솟아오르며 이 칼을 든 모습이 새겨졌습니다.",
+    power:
+      "아침마다 산을 갈라 해가 나올 길을 내는 도구라고도 하고, 옳고 그름을 갈라 판결하는 재판관의 상징이라고도 풉니다.",
+    price: null,
+    source: "아카드 시대 원통 인장",
+    exhibitId: "enki-adda-seal",
+  },
+  // 가나안 신화
+  {
+    slug: "yagrush-and-ayamur",
+    name: "야그루시와 아이아무르",
+    nameEn: "Yagrush and Ayamur",
+    kind: "weapon",
+    figureSlugs: ["baal"],
+    origin:
+      "장인의 신 코타르와하시스가 바다의 신 얌과 싸우는 바알을 위해 만들어 준 두 철퇴로, 이름은 각각 '쫓는 자', '모는 자'라는 뜻입니다.",
+    power:
+      "독수리처럼 바알의 손에서 날아가, 첫째는 얌의 어깨를 쳤지만 쓰러뜨리지 못했고 둘째가 얌의 이마를 쳐서 무너뜨렸습니다.",
+    price: null,
+    source: "우가리트 「바알 신화」 점토판",
+    exhibitId: "baal-ugarit",
+  },
+  // 이란 신화
+  {
+    slug: "simurgh-feather",
+    name: "시무르그의 깃털",
+    nameEn: "Feather of the Simurgh",
+    kind: "treasure",
+    figureSlugs: ["simurgh", "zal", "rostam"],
+    origin:
+      "시무르그가 길러 낸 잘을 아버지에게 돌려보내며 건넨 깃털로, 위급할 때 불에 태우면 곧바로 날아오겠다고 약속했습니다.",
+    power:
+      "잘이 깃털을 태우자 시무르그가 나타나 난산에 빠진 루다베의 배를 갈라 루스탐을 꺼내고 깃털로 상처를 쓰다듬어 낫게 하는 법을 일러 주었습니다. 뒤에 에스판디야르와 싸워 다친 루스탐과 락시도 이 깃털로 불러낸 시무르그가 고쳤습니다.",
+    price:
+      "시무르그는 에스판디야르를 쓰러뜨릴 위성류 화살을 알려 주면서, 그를 죽인 이는 이승과 저승에서 불행을 겪으리라고 경고했습니다.",
+    source: "페르도우시 「샤나메」",
+    exhibitId: "simurgh-rostam-birth",
+  },
+  {
+    slug: "gavsar-mace",
+    name: "페레이둔의 소머리 철퇴",
+    nameEn: "Ox-headed Mace of Fereydun",
+    kind: "weapon",
+    figureSlugs: ["fereydun", "zahhak"],
+    origin:
+      "페레이둔이 자하크를 치러 나서기 전, 대장장이들에게 손가락으로 땅에 모양을 그려 보이며 만들게 한 쇠철퇴로, 머리가 소머리 모양입니다.",
+    power:
+      "페레이둔은 자하크의 궁전에 들어가 이 철퇴로 그를 내리쳤습니다. 그러나 천사 소루시가 나타나 아직 죽일 때가 아니라며 다마반드산에 묶어 두라고 일렀습니다.",
+    price: null,
+    source: "페르도우시 「샤나메」",
+    exhibitId: "fereydun-gavsar",
+  },
+  {
+    slug: "babr-e-bayan",
+    name: "바브레 바얀 (루스탐의 호피 갑옷)",
+    nameEn: "Babr-e Bayan",
+    kind: "armor",
+    figureSlugs: ["rostam"],
+    origin:
+      "루스탐이 싸움터에 나설 때 갑옷 위에 걸친 짐승 가죽 겉옷으로, 호랑이나 표범 가죽으로 그려집니다. 「샤나메」는 어떻게 얻었는지 밝히지 않으며, 뒤의 민간 서사에서는 루스탐이 바얀이라는 괴물을 잡아 그 가죽으로 지었다고도 합니다.",
+    power:
+      "불에 타지 않고 물에 젖지 않으며 어떤 무기도 뚫지 못한다고 전해, 루스탐은 이 옷을 입고 일곱 시련과 수많은 싸움을 치렀습니다.",
+    price: null,
+    source: "페르도우시 「샤나메」, 민간 서사 「바브레 바얀」",
+    exhibitId: "rostam-commons",
+  },
+  // 인도 신화
+  {
+    slug: "kaumodaki",
+    name: "카우모다키",
+    nameEn: "Kaumodaki",
+    kind: "weapon",
+    figureSlugs: ["vishnu", "krishna"],
+    origin:
+      "비슈누가 네 손 가운데 하나에 든 철퇴입니다. 「마하바라타」에서는 칸다바 숲을 태우려는 불의 신 아그니가 도움을 청하며 크리슈나에게 원반 수다르샤나와 함께 이 철퇴를 주었고, 같은 때 아르주나는 활 간디바를 받았습니다.",
+    power:
+      "던지면 벼락 같은 소리를 내며 악마들을 쳐부순다고 하며, 「비슈누 푸라나」는 이 철퇴가 지성의 힘을 나타낸다고 풉니다. 조각에서는 가다데비라는 여신의 모습으로 비슈누 곁에 서 있기도 합니다.",
+    price: null,
+    source: "「마하바라타」, 「비슈누 푸라나」",
+    exhibitId: "vishnu-garuda-met",
+  },
+  {
+    slug: "panchajanya",
+    name: "판차잔야",
+    nameEn: "Panchajanya",
+    kind: "tool",
+    figureSlugs: ["krishna", "vishnu"],
+    origin:
+      "크리슈나가 물에 빠져 죽은 스승 산디파니의 아들을 찾아 바다에 들어가, 소라고둥 속에 살던 악마 판차자나를 무찌르고 얻은 소라고둥입니다.",
+    power:
+      "「바가바드 기타」 첫머리에서 크리슈나가 쿠루크셰트라 싸움의 시작을 알리며 이 고둥을 불었고, 그 소리가 적들의 마음을 찢었다고 합니다. 비슈누의 조각과 그림에서는 손에 든 흰 소라고둥으로 나타납니다.",
+    price: null,
+    source: "「바가바타 푸라나」, 「바가바드 기타」",
+    exhibitId: "vishnu-garuda-met",
+  },
+  {
+    slug: "vasavi-shakti",
+    name: "바사비 샤크티",
+    nameEn: "Vasavi Shakti",
+    kind: "weapon",
+    figureSlugs: ["karna", "indra"],
+    origin:
+      "인드라가 브라만으로 꾸며 카르나에게서 타고난 갑옷과 귀걸이를 얻어 간 뒤, 그 대가로 내준 창입니다.",
+    power:
+      "단 한 번 던지면 누구든 반드시 죽이지만 그 뒤에는 인드라에게 돌아갑니다. 카르나는 아르주나에게 쓰려고 이 창을 아껴 두었습니다.",
+    price:
+      "쿠루크셰트라 싸움의 어느 밤, 비마의 아들 가토트카차가 카우라바 군을 휩쓸자 카르나는 이 창을 그에게 쓸 수밖에 없었고, 아르주나를 쓰러뜨릴 마지막 수단을 잃었습니다.",
+    source: "「마하바라타」",
+    exhibitId: "karna-shakti",
+  },
+  {
+    slug: "pushpaka-vimana",
+    name: "푸시파카 비마나",
+    nameEn: "Pushpaka Vimana",
+    kind: "tool",
+    figureSlugs: ["ravana", "rama"],
+    origin:
+      "신들의 장인 비슈바카르마가 브라흐마를 위해 만든 하늘을 나는 수레로, 브라흐마가 재물의 신 쿠베라에게 주었으나 라바나가 쿠베라를 무찌르고 빼앗았습니다.",
+    power:
+      "주인의 뜻대로 하늘을 날며, 아무리 많은 사람이 타도 늘 한 자리가 남는다고 합니다. 라바나를 무찌른 라마는 이 수레를 타고 시타와 함께 아요디야로 돌아온 뒤 쿠베라에게 돌려주었습니다.",
+    price: null,
+    source: "발미키 「라마야나」",
+    exhibitId: "ravana-pushpaka",
+  },
+  {
+    slug: "pashupatastra",
+    name: "파슈파타스트라",
+    nameEn: "Pashupatastra",
+    kind: "weapon",
+    figureSlugs: ["arjuna", "shiva"],
+    origin:
+      "아르주나가 히말라야에서 고행할 때, 사냥꾼 모습으로 나타난 시바와 멧돼지 한 마리를 두고 다투어 싸운 뒤 그 용기를 높이 산 시바가 준 무기입니다.",
+    power:
+      "시바의 가장 무서운 무기로 온 세상을 멸할 수 있으며, 마음이나 눈길, 말, 활로 쏠 수 있다고 합니다. 자기보다 약한 적에게 쓰면 세상이 무너진다는 경고와 함께 주어졌습니다.",
+    price:
+      "아르주나는 사냥꾼과 맞서다 화살이 다 떨어지고 활 간디바까지 빼앗긴 채 쓰러지고 나서야 상대가 시바임을 알아보았습니다.",
+    source: "「마하바라타」 숲의 책, 바라비 「키라타르주니야」",
+    exhibitId: "arjuna-kirata",
+  },
+  {
+    slug: "noose-of-yama",
+    name: "야마의 올가미",
+    nameEn: "Noose of Yama",
+    kind: "tool",
+    figureSlugs: ["yama"],
+    origin: "죽음의 신 야마가 수명이 다한 이의 넋을 묶어 끌고 가는 올가미(파샤)입니다.",
+    power:
+      "「마하바라타」에서 야마는 이 올가미로 사티아반의 몸에서 엄지만 한 넋을 끌어냈습니다. 어린 성자 마르칸데야가 시바의 링가를 끌어안자 야마가 링가째 올가미를 던졌다가, 노한 시바에게 걷어차였다는 이야기도 전합니다.",
+    price: null,
+    source: "「마하바라타」, 푸라나 문헌",
+    exhibitId: "yama-buffalo",
+  },
+  {
+    slug: "gada-of-hanuman",
+    name: "하누만의 철퇴",
+    nameEn: "Gada of Hanuman",
+    kind: "weapon",
+    figureSlugs: ["hanuman"],
+    origin:
+      "하누만이 늘 들고 다니는 철퇴(가다)로, 많은 그림과 조각에서 한 손에 이 철퇴를 든 모습으로 나옵니다. 「라마야나」 본문보다는 뒤의 전승과 신앙에서 그의 상징으로 자리 잡았습니다.",
+    power:
+      "힘과 용기, 악을 물리치는 헌신을 나타냅니다. 인도의 전통 씨름 도장(아카라)은 하누만을 수호신으로 모시고, 무거운 철퇴를 휘두르며 몸을 단련합니다.",
+    price: null,
+    source: "「라마야나」 뒤의 전승, 하누만 신앙",
+    exhibitId: "hanuman-gada",
+  },
+  // 천일야화
+  {
+    slug: "aladdin-lamp",
+    name: "알라딘의 램프",
+    nameEn: "Aladdin's Lamp",
+    kind: "treasure",
+    figureSlugs: ["aladdin"],
+    origin:
+      "아프리카에서 온 마법사가 알라딘을 시켜 땅속 보물 동굴에서 꺼내 오게 한 낡은 놋쇠 램프입니다. 마법사는 동굴에 들어가는 알라딘에게 반지도 끼워 주었는데, 이 반지에도 정령이 깃들어 있었습니다.",
+    power:
+      "문지르면 거대한 정령이 나타나 주인의 소원을 들어줍니다. 알라딘은 이 힘으로 궁전을 짓고 술탄의 딸 바드르 알부두르와 혼인했으며, 동굴에 갇혔을 때는 반지의 정령에게 도움을 받았습니다.",
+    price:
+      "마법사가 '헌 램프를 새 램프로 바꿔 준다'며 공주에게서 램프를 가로채, 알라딘은 궁전과 아내를 한꺼번에 잃을 뻔했습니다.",
+    source: "「천일야화」 (앙투안 갈랑의 프랑스어 번역본)",
+    exhibitId: "aladdin-commons",
+  },
+  {
+    slug: "forty-thieves-treasure",
+    name: "도둑 소굴의 보물",
+    nameEn: "Treasure of the Forty Thieves",
+    kind: "treasure",
+    figureSlugs: ["ali-baba"],
+    origin:
+      "마흔 명의 도둑이 바위 동굴에 모아 둔 금은과 비단으로, '열려라 참깨'라는 주문을 외워야 바위 문이 열립니다.",
+    power: "나무꾼 알리바바는 몰래 엿들은 주문으로 동굴에 들어가 금을 가져와 부자가 되었습니다.",
+    price:
+      "욕심 많은 형 카심은 동굴에 들어갔다가 주문을 잊어 갇힌 채 도둑들에게 죽임을 당했고, 알리바바의 집도 도둑들의 노림을 받았지만 하녀 모르지아나가 지혜로 막아 냈습니다.",
+    source: "「천일야화」 (앙투안 갈랑의 프랑스어 번역본)",
+    exhibitId: "ali-baba-cave-batten",
+  },
+  // 요루바 신화
+  {
+    slug: "oshe-shango",
+    name: "오셰 샹고",
+    nameEn: "Oshe Shango",
+    kind: "weapon",
+    figureSlugs: ["shango"],
+    origin:
+      "샹고를 섬기는 이들이 의식에서 드는 나무 지팡이로, 머리에 양날 도끼 모양이 달려 있습니다. 이 도끼는 샹고가 하늘에서 던진다는 벼락돌(에둔 아라)을 나타냅니다.",
+    power:
+      "샹고는 이 도끼로 벼락을 내려 거짓말쟁이와 도둑을 벌한다고 여기며, 사제들은 이 지팡이를 들고 춤추며 샹고의 힘을 불러옵니다.",
+    price:
+      "오요의 왕이던 샹고가 번개를 부르는 힘을 시험하다 자기 궁전을 불태우고 가족을 잃었다는 전승도 있습니다.",
+    source: "요루바 구전 전승",
+    exhibitId: "shango-yoruba",
+  },
+  {
+    slug: "opon-ifa",
+    name: "오폰 이파 (이파 점판)",
+    nameEn: "Opon Ifa",
+    kind: "tool",
+    figureSlugs: ["orunmila", "eshu"],
+    origin:
+      "이파 점술사(바발라워)가 점을 칠 때 쓰는 둥근 나무 쟁반으로, 가장자리 위쪽에는 늘 전령의 신 에슈의 얼굴을 새깁니다.",
+    power:
+      "쟁반에 나무 가루를 뿌리고 야자 열매를 던져 나온 표시를 그어, 지혜의 신 오룬밀라가 전한 256가지 시가(오두) 가운데 하나를 찾아 신들의 뜻을 읽습니다.",
+    price: null,
+    source: "요루바 이파 점술 시가",
+    exhibitId: "orunmila-ifa",
+  },
+  // 중국 신화
+  {
+    slug: "jingu-er",
+    name: "긴고아",
+    nameEn: "Golden Headband",
+    kind: "ornament",
+    figureSlugs: ["sun-wukong"],
+    origin:
+      "석가여래가 관음보살에게 준 세 개의 테 가운데 하나로, 관음보살은 이것을 꽃 모자 속에 감춰 삼장법사에게 주었습니다. 손오공이 모자를 쓰자 테가 머리에 뿌리내리듯 박혀 빠지지 않았습니다.",
+    power:
+      "삼장법사가 긴고아주를 외면 테가 조여 손오공이 땅을 구를 만큼 머리가 아팠습니다. 성미 급한 손오공을 다스리는 고삐 구실을 했으며, 나머지 두 테는 홍해아와 흑풍산의 곰 요괴에게 씌워졌습니다.",
+    price:
+      "손오공은 삼장법사를 떠나고 싶어도 떠날 수 없었습니다. 여정을 마치고 투전승불이 된 뒤에야 테는 저절로 사라졌습니다.",
+    source: "「서유기」",
+    exhibitId: "sun-wukong-commons",
+  },
+  {
+    slug: "nine-toothed-rake",
+    name: "구치정파",
+    nameEn: "Nine-toothed Rake",
+    kind: "weapon",
+    figureSlugs: ["zhu-bajie"],
+    origin:
+      "저팔계의 말에 따르면 태상노군이 직접 망치를 들고 신령한 쇠를 두드려 만든 쇠스랑으로, 옥황상제가 그를 천봉원수로 삼으며 손수 내려 주었습니다.",
+    power:
+      "쇠 이빨 아홉 개가 달려 한 번 내려치면 구멍 아홉 개가 났고, 저팔계는 이것으로 서천 길의 수많은 요괴와 싸웠습니다. 가시덤불을 걷어 내 막힌 길을 트는 데도 썼습니다.",
+    price: null,
+    source: "「서유기」",
+    exhibitId: "zhu-bajie-xiyouji",
+  },
+  {
+    slug: "south-pointing-chariot",
+    name: "지남거",
+    nameEn: "South-pointing Chariot",
+    kind: "tool",
+    figureSlugs: ["yellow-emperor", "chiyou"],
+    origin:
+      "진나라 최표의 「고금주」에 따르면 황제가 탁록 들판에서 치우와 싸울 때 만들었습니다. 역사 속의 지남거는 자석이 아니라 톱니바퀴로 방향을 지키는 수레로, 삼국 시대 위나라의 마균 등이 다시 만들었습니다.",
+    power:
+      "수레가 어느 쪽으로 돌든 수레 위 나무 인형의 손이 늘 남쪽을 가리켰습니다. 치우가 일으킨 짙은 안개 속에서 길을 잃은 황제의 군사들은 이 수레를 따라 방향을 찾았습니다.",
+    price: null,
+    source: "「고금주」, 「송서」",
+    exhibitId: "chariot-nordenskiold",
+  },
+  {
+    slug: "xirang",
+    name: "식양",
+    nameEn: "Xirang",
+    kind: "treasure",
+    figureSlugs: ["yu-the-great"],
+    origin:
+      "천제가 간직한 흙으로, 스스로 끝없이 불어나는 성질이 있었습니다. 우의 아버지 곤이 천제의 허락 없이 이 흙을 훔쳐 홍수를 막으려 했습니다.",
+    power:
+      "조금만 뿌려도 저절로 자라나 둑과 산이 되어 물을 막았습니다. 「회남자」에는 우가 이 흙으로 홍수를 메워 이름난 산들을 만들었다고 합니다.",
+    price:
+      "명을 기다리지 않고 흙을 훔친 곤은 천제의 명을 받은 불의 신 축융에게 우산(羽山) 들판에서 죽임을 당했습니다.",
+    source: "「산해경」, 「회남자」",
+    exhibitId: "yu-ma-lin",
+  },
+  {
+    slug: "nine-tripods",
+    name: "구정",
+    nameEn: "Nine Tripod Cauldrons",
+    kind: "treasure",
+    figureSlugs: ["yu-the-great"],
+    origin:
+      "「춘추좌씨전」에 따르면 하나라가 덕이 있을 때 아홉 주의 우두머리들이 바친 쇠로 아홉 개의 솥을 부어 만들고, 먼 곳의 온갖 사물을 새겼습니다. 후대에는 우 임금이 만들었다고 이야기합니다.",
+    power:
+      "솥에 새긴 그림으로 백성이 산과 물에서 만나는 요괴들을 미리 알아 피할 수 있었습니다. 솥은 하늘의 뜻을 받은 왕조를 따라 하나라에서 상나라, 주나라로 옮겨 가며 천하를 다스리는 권리의 상징이 되었습니다.",
+    price:
+      "초나라 장왕이 솥의 크기와 무게를 묻자 주나라의 왕손만은 천하는 덕에 달렸지 솥에 달리지 않았다고 답했습니다. 진시황은 사수에 가라앉은 솥을 건지려고 천 명을 물에 들여보냈으나 찾지 못했다고 「사기」에 전합니다.",
+    source: "「춘추좌씨전」, 「사기」",
+    exhibitId: "yu-ma-lin",
+  },
+  {
+    slug: "three-pointed-blade",
+    name: "삼첨양인도",
+    nameEn: "Three-pointed Double-edged Blade",
+    kind: "weapon",
+    figureSlugs: ["erlang-shen"],
+    origin:
+      "이랑신이 쓰는 긴 자루의 칼로, 끝이 세 갈래로 갈라지고 양쪽에 날이 서 있습니다. 「봉신연의」의 양전도 같은 칼을 듭니다.",
+    power:
+      "「서유기」에서 이랑신은 이 칼로 여의봉을 휘두르는 손오공과 300합 넘게 맞붙어 승부를 가리지 못할 만큼 팽팽히 싸웠습니다.",
+    price: null,
+    source: "「서유기」, 「봉신연의」",
+    exhibitId: "erlang-shen-opera",
+  },
+  {
+    slug: "ochre-whip",
+    name: "자편",
+    nameEn: "Ochre Whip of Shennong",
+    kind: "tool",
+    figureSlugs: ["shennong"],
+    origin: "신농이 지녔다는 붉은 갈색의 채찍입니다.",
+    power:
+      "동진의 간보가 엮은 「수신기」에 따르면 신농은 이 채찍으로 온갖 풀을 쳐서 독이 있는지 없는지, 성질이 찬지 더운지를 모두 알아냈고, 이를 바탕으로 백성에게 곡식을 심게 했습니다.",
+    price:
+      "민간에서는 풀을 직접 맛보던 신농이 끝내 단장초를 먹고 목숨을 잃었다는 이야기도 전합니다.",
+    source: "「수신기」",
+    exhibitId: "shennong-shoryo",
+  },
+  {
+    slug: "dashen-bian",
+    name: "타신편",
+    nameEn: "Dashen Bian",
+    kind: "weapon",
+    figureSlugs: ["jiang-ziya"],
+    origin:
+      "원시천존이 제자 강태공에게 내린 채찍으로, 길이는 석 자 여섯 치 다섯 푼이고 스물한 마디마다 부적이 넷씩, 모두 여든네 개 새겨져 있습니다.",
+    power:
+      "봉신방에 이름이 오를 신들만 칠 수 있었고, 신선이나 사람에게는 쓸 수 없었습니다. 강태공은 이 채찍으로 상나라 편에 선 장수들을 쓰러뜨렸습니다.",
+    price: null,
+    source: "「봉신연의」",
+    exhibitId: "jiang-ziya-commons",
+  },
+  // 일본 신화
+  {
+    slug: "totsuka-no-tsurugi",
+    name: "도쓰카노쓰루기",
+    nameEn: "Totsuka no Tsurugi",
+    kind: "weapon",
+    figureSlugs: ["susanoo", "yamata-no-orochi"],
+    origin:
+      "'주먹 열 개 길이의 칼'이라는 뜻의 긴 칼로, 「고사기」에서 스사노오가 야마타노오로치를 벨 때 쓴 칼입니다. 이자나기가 불의 신 가구쓰치를 벤 칼도 같은 이름으로 불립니다.",
+    power:
+      "스사노오는 술에 취해 잠든 오로치를 이 칼로 토막 내어 물리쳤습니다. 「일본서기」에서는 이 칼을 오로치노아라마사라고도 부르며, 이소노카미에 모셨다고 전합니다.",
+    price:
+      "가운데 꼬리를 벨 때 칼날이 이가 빠졌는데, 그 속에서 더 단단한 구사나기의 검이 나왔습니다.",
+    source: "「고사기」, 「일본서기」",
+    exhibitId: "orochi-kiyomasu",
+  },
+  {
+    slug: "higekiri",
+    name: "히게키리",
+    nameEn: "Higekiri",
+    kind: "weapon",
+    figureSlugs: ["watanabe-no-tsuna", "minamoto-no-raiko", "ibaraki-doji"],
+    origin:
+      "「헤이케 이야기」 「검의 권」에 따르면 미나모토노 미쓰나카가 만들게 한 두 자루 칼 가운데 하나로, 죄인을 시험 삼아 베었을 때 수염까지 잘렸다 하여 히게키리(수염 베기)라 불렸습니다. 다른 한 자루는 무릎까지 잘렸다 하여 히자마루라 했습니다.",
+    power:
+      "미나모토노 라이코가 물려받은 뒤 와타나베노 쓰나가 이 칼로 오니의 팔을 베어 떨어뜨렸고, 그 뒤 오니키리마루(오니 베기)로 이름을 바꿨습니다. 교토 기타노텐만구에 이 칼로 전하는 칼이 있습니다.",
+    price:
+      "팔을 잃은 오니는 쓰나의 양어머니로 꾸며 찾아와 팔을 되찾아 날아갔다고 합니다. 훗날 이 오니를 이바라키도지로 보는 이야기가 퍼졌습니다.",
+    source: "「헤이케 이야기」 「검의 권」, 노 「라쇼몬」",
+    exhibitId: "watanabe-no-tsuna-commons",
+  },
+  {
+    slug: "dojigiri-yasutsuna",
+    name: "도지기리 야스쓰나",
+    nameEn: "Dōjigiri Yasutsuna",
+    kind: "weapon",
+    figureSlugs: ["minamoto-no-raiko", "shuten-doji"],
+    origin:
+      "헤이안 시대 호키국의 도공 야스쓰나가 만든 칼로, 일본의 이름난 칼 다섯 자루를 이르는 '천하오검'의 하나입니다. 지금은 도쿄 국립박물관에 국보로 전합니다.",
+    power:
+      "미나모토노 라이코가 오에산에서 술에 취한 슈텐도지의 목을 이 칼로 베었다고 하여 '동자 베기(도지기리)'라는 이름이 붙었습니다.",
+    price:
+      "라이코 일행은 산속 수행자로 꾸미고 신들이 내린 독주를 먹여 슈텐도지를 속였는데, 잘린 슈텐도지의 머리가 날아올라 라이코의 투구를 물었다고 합니다.",
+    source: "「오토기조시」 「슈텐도지」",
+    exhibitId: "minamoto-no-raiko-commons",
+  },
+  {
+    slug: "ryugu-rice-bale-and-bell",
+    name: "용궁의 쌀가마와 종",
+    nameEn: "Rice Bale and Bell of the Dragon Palace",
+    kind: "treasure",
+    figureSlugs: ["tawara-toda"],
+    origin:
+      "다와라 도타가 비와호 용신의 부탁을 받고 미카미산의 큰 지네를 활로 쏘아 죽이자, 용신이 답례로 준 보물들입니다.",
+    power:
+      "아무리 퍼내도 쌀이 줄지 않는 쌀가마와 끊임없이 풀려 나오는 비단 두루마리 같은 보물이 있었고, 쌀가마 덕분에 그를 다와라(쌀가마) 도타라고 불렀다는 이야기도 있습니다. 용궁에 초대받아 받은 구리 종은 미이데라(온조지)에 바쳤습니다.",
+    price: null,
+    source: "「태평기」, 「다와라 도타 이야기」",
+    exhibitId: "tawara-toda-ryugu",
+  },
+  {
+    slug: "tamatebako",
+    name: "다마테바코",
+    nameEn: "Tamatebako",
+    kind: "treasure",
+    figureSlugs: ["urashima-taro"],
+    origin:
+      "용궁의 오토히메가 고향으로 돌아가는 우라시마 다로에게 절대 열지 말라며 건넨 보석 상자입니다. 8세기의 「단고국 풍토기」 일문과 「만엽집」의 노래에도 같은 상자가 나옵니다.",
+    power:
+      "상자를 여는 순간 흰 연기가 피어올라, 용궁에서 멈춰 있던 세월이 한꺼번에 그를 덮쳤습니다.",
+    price:
+      "고향에 아는 사람이 아무도 없자 상자를 열어 버린 우라시마는 한순간에 백발노인이 되었습니다. 학이 되어 날아갔다는 판본도 있습니다.",
+    source: "「단고국 풍토기」 일문, 「만엽집」, 「오토기조시」",
+    exhibitId: "urashima-yoshitoshi",
+  },
+  {
+    slug: "hanasaka-ashes",
+    name: "꽃 피우는 재",
+    nameEn: "Ashes of Hanasaka Jiisan",
+    kind: "treasure",
+    figureSlugs: ["hanasaka-jiisan"],
+    origin:
+      "착한 할아버지의 개 시로가 묻힌 자리에서 자란 나무로 절구를 만들었는데, 욕심 많은 이웃 노인이 그 절구를 태워 버리고 남은 재입니다.",
+    power:
+      "할아버지가 이 재를 마른 나무에 뿌리자 순식간에 꽃이 활짝 피었고, 지나가던 영주가 크게 기뻐하며 상을 내렸습니다.",
+    price:
+      "흉내를 내어 재를 뿌린 이웃 노인은 꽃을 피우지 못하고 재가 영주의 눈에 들어가 벌을 받았습니다.",
+    source: "일본 옛이야기 「꽃 피우는 할아버지」",
+    exhibitId: "hanasaka-jiisan-commons",
+  },
+  {
+    slug: "uchide-no-kozuchi",
+    name: "우치데노코즈치",
+    nameEn: "Uchide no Kozuchi",
+    kind: "tool",
+    figureSlugs: ["daikokuten"],
+    origin:
+      "흔들면 바라는 것이 무엇이든 나온다는 요술 망치로, 다이코쿠텐이 늘 손에 들고 있습니다. 옛이야기 「잇슨보시」에서는 오니가 떨어뜨리고 달아난 보물로 나옵니다.",
+    power:
+      "잇슨보시는 이 망치를 흔들어 엄지만 하던 몸을 보통 사람만큼 키웠습니다. 다이코쿠텐의 망치는 복과 재물을 두드려 내는 상징으로 여겨집니다.",
+    price: null,
+    source: "「오토기조시」 「잇슨보시」",
+    exhibitId: "daikokuten-mallet",
+  },
+  {
+    slug: "ikutachi-ikuyumiya",
+    name: "이쿠타치와 이쿠유미야",
+    nameEn: "Ikutachi and Ikuyumiya",
+    kind: "weapon",
+    figureSlugs: ["okuninushi", "susanoo"],
+    origin:
+      "네노쿠니를 다스리던 스사노오의 칼과 활, 화살로, 오나무지가 스사노오의 딸 스세리비메를 업고 달아날 때 거문고 아메노노리고토와 함께 가지고 나왔습니다.",
+    power:
+      "'살아 있는 칼, 살아 있는 활'이라는 이름처럼 생명의 힘이 깃든 무기로 여겨집니다. 뒤쫓던 스사노오는 저승 비탈에서 이 칼과 활로 형제들을 쫓아내고 오쿠니누시가 되라고 외쳤고, 그는 그 말대로 나라의 주인이 되었습니다.",
+    price:
+      "달아날 때 거문고가 나무에 스쳐 땅이 울리는 바람에 잠든 스사노오가 깨어났고, 서까래에 머리카락이 묶여 있던 스사노오는 집을 무너뜨리며 뒤쫓아왔습니다.",
+    source: "「고사기」",
+    exhibitId: "okuninushi-gakutei",
+  },
+  // 잉카 신화
+  {
+    slug: "golden-staff-of-manco-capac",
+    name: "망코 카팍의 황금 지팡이",
+    nameEn: "Golden Staff of Manco Cápac",
+    kind: "tool",
+    figureSlugs: ["manco-capac", "mama-ocllo"],
+    origin:
+      "해의 신이 아들 망코 카팍과 딸 마마 오클료를 티티카카호로 내려보내며 준, 손가락 두 개 굵기의 황금 막대입니다.",
+    power:
+      "두 사람은 가는 곳마다 막대를 땅에 꽂아 보고, 단번에 땅속 깊이 들어가는 곳에 도읍을 세우라는 명을 받았습니다. 막대가 우아나카우리 언덕에서 땅속으로 사라지자 그 아래 골짜기에 쿠스코를 세웠습니다.",
+    price: null,
+    source: "잉카 가르실라소 데 라 베가 「잉카 왕실사」",
+    exhibitId: "manco-capac-murua",
+  },
+  // 폴리네시아 신화
+  {
+    slug: "manaiakalani",
+    name: "마나이아칼라니",
+    nameEn: "Mānaiakalani",
+    kind: "tool",
+    figureSlugs: ["maui", "hina"],
+    origin:
+      "하와이 전승에서 마우이가 지닌 요술 낚싯바늘의 이름으로, 어머니 히나가 아끼던 새 알라에의 날개를 미끼로 꿰었다고 합니다. 마오리 전승에서는 할머니의 턱뼈로 만든 낚싯바늘로 바다에서 땅을 낚았다고 합니다.",
+    power:
+      "마우이는 이 바늘을 바다 밑에 걸고 형들에게 큰 물고기가 걸렸다며 힘껏 노를 젓게 해 하와이의 섬들을 끌어 올렸습니다.",
+    price:
+      "섬들을 하나로 이으려던 마지막 낚시에서 형들이 뒤돌아보지 말라는 당부를 어기자 낚싯줄이 끊어져, 섬들은 지금처럼 떨어진 채로 남았습니다.",
+    source: "하와이 전승",
+    exhibitId: "maui-dittmer",
   },
 ];
 

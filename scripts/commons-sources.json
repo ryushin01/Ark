@@ -668,10 +668,6 @@
     "file": "TKM 2797B Kristjan Raud - Kalevipoeg ja Vanapagan.tif"
   },
   {
-    "id": "vahagn-commons",
-    "file": "Birth of Vahagn Zabelle Boyajian.jpg"
-  },
-  {
     "id": "lac-long-quan-commons",
     "file": "Phù điêu Quốc tổ Lạc Long Quân tại Đền Nội Bình Đà.jpg"
   },
@@ -752,28 +748,12 @@
     "file": "HLLF-T1-d264-265 Les quatre fils Aimon.png"
   },
   {
-    "id": "scathach-commons",
-    "file": "Heroes of the dawn - illustration to face page 066.png"
-  },
-  {
-    "id": "diarmuid-commons",
-    "file": "Heroes of the dawn (1914) (14772697833).jpg"
-  },
-  {
     "id": "fergus-commons",
     "file": "Fergus mac Róich carrying Sétanta on his shoulder.png"
   },
   {
-    "id": "fionn-commons",
-    "file": "Heroes of the dawn - illustration to face page 200.png"
-  },
-  {
     "id": "medb-commons",
     "file": "Queen Medb (Seóirse Ua Fágáin, 1904).jpg"
-  },
-  {
-    "id": "oisin-commons",
-    "file": "Heroes of the dawn - illustration to face page 230.png"
   },
   {
     "id": "huyan-zhuo-commons",
@@ -1056,10 +1036,6 @@
     "file": "Venus and Aeneas MET DP825477.jpg"
   },
   {
-    "id": "dobrynya-commons",
-    "file": "A Russian Garland of Fairy Tales DJVU pg 085.jpg"
-  },
-  {
     "id": "ilya-muromets-commons",
     "file": "Sil'nyi khrabryi bogatyr' Il'ia Muromets.jpg"
   },
@@ -1318,5 +1294,609 @@
   {
     "id": "alberich-ring-stassen",
     "file": "Andvari by Franz Stassen.jpg"
+  },
+  {
+    "id": "ares-ludovisi",
+    "file": "Ares Ludovisi Altemps Inv8602 n2.jpg"
+  },
+  {
+    "id": "hestia-giustiniani",
+    "file": "Hestia Giustiniani (Louvre).jpg"
+  },
+  {
+    "id": "persephone-rossetti",
+    "file": "Dante Gabriel Rossetti - Proserpine - Google Art Project.jpg"
+  },
+  {
+    "id": "prometheus-fuger",
+    "file": "Heinrich fueger 1817 prometheus brings fire to mankind.jpg"
+  },
+  {
+    "id": "pandora-waterhouse",
+    "file": "John William Waterhouse - Pandora, 1896.jpg"
+  },
+  {
+    "id": "pan-vrubel",
+    "file": "1899 Vrubel Pan anagoria.JPG"
+  },
+  {
+    "id": "eros-sleeping-met",
+    "file": "Bronze statue of Eros sleeping MET DP123903.jpg"
+  },
+  {
+    "id": "helios-phaethon-palace",
+    "file": "Phaëton in het paleis van Helios Ovidius' Metamorfosen (serietitel), RP-P-1882-A-6363.jpg"
+  },
+  {
+    "id": "hecate-blake",
+    "file": "William Blake 006.jpg"
+  },
+  {
+    "id": "freyr-gehrts",
+    "file": "Freyr (Walhall).png"
+  },
+  {
+    "id": "hel-gehrts",
+    "file": "Hel (the personification of Hel).png"
+  },
+  {
+    "id": "ymir-abildgaard",
+    "file": "Nicolai Abildgaard, Ymer dier koen Ødhumbla, KMS3397, Statens Museum for Kunst.jpg"
+  },
+  {
+    "id": "idun-penrose",
+    "file": "Idun and the Apples by James Doyle Penrose, 1890.jpg"
+  },
+  {
+    "id": "surtr-dollman",
+    "file": "The giant with the flaming sword by Dollman.jpg"
+  },
+  {
+    "id": "lugh-millar",
+    "file": "Lugh spear Millar.jpg"
+  },
+  {
+    "id": "rhiannon-batten",
+    "file": "Page 30 illustration in More Celtic Fairy Tales.png"
+  },
+  {
+    "id": "ceridwen-williams",
+    "file": "Ceridwen.jpg"
+  },
+  {
+    "id": "guinevere-collier",
+    "file": "John Collier Queen Guinevre's Maying.jpg"
+  },
+  {
+    "id": "isolde-morris",
+    "file": "La Belle Iseult - Willam Morris (1858).jpg"
+  },
+  {
+    "id": "green-knight-cotton-nero",
+    "file": "Gawain and the Green Knight.jpg"
+  },
+  {
+    "id": "firebird-bilibin",
+    "file": "Firebird.jpg"
+  },
+  {
+    "id": "zmey-gorynych-vasnetsov",
+    "file": "Змей-Горыныч, или Бой Добрыни Никитича с семиглавым Змеем-Горынычем.jpg"
+  },
+  {
+    "id": "sadko-repin",
+    "file": "Ilya Repin - Sadko - Google Art Project.jpg"
+  },
+  {
+    "id": "kullervo-gallen-kallela",
+    "file": "Akseli Gallen-Kallela - Kullervon kirous - A II 765 - Finnish National Gallery.jpg"
+  },
+  {
+    "id": "hayk-zasso",
+    "file": "Hayk defeats Bel - Guiliano Zasso.jpg"
+  },
+  {
+    "id": "grendel-skelton",
+    "file": "Stories of beowulf head of grendel.jpg"
+  },
+  {
+    "id": "hagen-nibelung-hoard",
+    "file": "Pfizer (1843)-ed-Nibelungen Not-p211-Hagen&merminnen.jpg"
+  },
+  {
+    "id": "hippogriff-dore",
+    "file": "Orlando Furioso 9.jpg"
+  },
+  {
+    "id": "roland-olifant-fouquet",
+    "file": "Mort de Roland.jpg"
+  },
+  {
+    "id": "joyeuse-louvre",
+    "file": "Épée du sacre des rois de France, dite Joyeuse - Musée du Louvre Objets d'art MS 84.jpg"
+  },
+  {
+    "id": "beowulf-dragon-skelton",
+    "file": "Stories of beowulf fighting the dragon.jpg"
+  },
+  {
+    "id": "tristan-isolde-potion",
+    "file": "John william waterhouse tristan and isolde with the potion.jpg"
+  },
+  {
+    "id": "gawain-lady-cotton-nero",
+    "file": "Green Knight's wife and Gawain - Sir Gawain and the Green Knight (c.1400-1410), f.129 - BL Cotton MS Nero A X.jpg"
+  },
+  {
+    "id": "round-table-winchester",
+    "file": "Round Table of Winchester 2026-07-12.jpg"
+  },
+  {
+    "id": "daedalus-icarus-leighton",
+    "file": "Lord Frederick Leighton FLL006.jpg"
+  },
+  {
+    "id": "psyche-box-waterhouse",
+    "file": "Psyche-Waterhouse.jpg"
+  },
+  {
+    "id": "meleager-althaea-print",
+    "file": "Althaea doodt Meleager Metamorfosen van Ovidius (serietitel), RP-P-OB-15.950.jpg"
+  },
+  {
+    "id": "astolfo-moon-dore",
+    "file": "Gustave Doré - In Elijah's chariot, St. John and Astolfo travel to the moon.jpg"
+  },
+  {
+    "id": "astraea-rosa",
+    "file": "Salvator Rosa - Astraea verläßt die Erde - GG 9823 - Kunsthistorisches Museum.jpg"
+  },
+  {
+    "id": "habetrot-torrance",
+    "file": "Douglas-Scottish FFT(1901)-p109-Habitrot-illustr-J Torrance.jpg"
+  },
+  {
+    "id": "icarus-van-dyck",
+    "file": "Anthony van Dyck - Daedalus and Icarus - Google Art Project.jpg"
+  },
+  {
+    "id": "cronus-met-pelike",
+    "file": "Rhea handing a swaddled stone to Cronus, Attic terracotta pelike, c. 460–450 BC, Met 06.1021.144.jpg"
+  },
+  {
+    "id": "helen-de-morgan",
+    "file": "Helen of Troy.jpg"
+  },
+  {
+    "id": "ariadne-titian",
+    "file": "Titian - Bacchus and Ariadne - Google Art Project.jpg"
+  },
+  {
+    "id": "midas-crane",
+    "file": "Midas gold2.jpg"
+  },
+  {
+    "id": "bragi-blommer",
+    "file": "Idunn and Bragi by Blommer.jpg"
+  },
+  {
+    "id": "njord-collingwood",
+    "file": "Njörd's desire of the Sea.jpg"
+  },
+  {
+    "id": "aengus-duncan",
+    "file": "John Duncan - Angus Og, God of Love and Courtesy, Putting a Spell of Summer Calm on the Sea - NG 2033 - National Galleries Scotland.jpg"
+  },
+  {
+    "id": "deirdre-russell",
+    "file": "Deirdre at her Dun - George William Russell.jpg"
+  },
+  {
+    "id": "lady-of-the-lake-crane",
+    "file": "CRANE King Arthur asks the lady of the lake for the sword Excalibur.jpg"
+  },
+  {
+    "id": "uther-pendragon-pyle",
+    "file": "Pyle Uther Pendragon.jpg"
+  },
+  {
+    "id": "vasilisa-bilibin",
+    "file": "Russian Wonder Tales 081.jpg"
+  },
+  {
+    "id": "sirin-alkonost-vasnetsov",
+    "file": "Vasnetsov Sirin Alkonost.jpg"
+  },
+  {
+    "id": "rusalka-kramskoi",
+    "file": "Iwan Nikolajewitsch Kramskoj 002.jpg"
+  },
+  {
+    "id": "alyosha-popovich-vasnetsov",
+    "file": "1898 Vasnetsov Bogatyrs anagoria.JPG"
+  },
+  {
+    "id": "aino-keinanen",
+    "file": "Keinänen, Aino meren rannalla.jpg"
+  },
+  {
+    "id": "joukahainen-gallen-kallela",
+    "file": "Gallen-Kallela Joukahainen's revenge.jpg"
+  },
+  {
+    "id": "ara-sureniants",
+    "file": "Shamiram ara.jpeg"
+  },
+  {
+    "id": "angelica-tiepolo",
+    "file": "Giovanni Battista Tiepolo - Angélique grave le nom de Médor.jpg"
+  },
+  {
+    "id": "ruggiero-fragonard",
+    "file": "Jean-Honoré Fragonard - Ruggiero, Troubled in Mind, Prepares to Write to Bradamante - NMH 236-1975 - Nationalmuseum.jpg"
+  },
+  {
+    "id": "diarmuid-reid",
+    "file": "13 Dermot took the horn and would have filled it.jpg"
+  },
+  {
+    "id": "fionn-reid",
+    "file": "1 Finn heard far off the first notes of the fairy harp.jpg"
+  },
+  {
+    "id": "oisin-reid",
+    "file": "16 The white steed had vanished from their eyes like a wreath of mist.jpg"
+  },
+  {
+    "id": "dobrynya-bilibin",
+    "file": "Dobrynya Nikitich rescues Zabava from the Gorynych, 1941.jpg"
+  },
+  {
+    "id": "amun-gold-met",
+    "file": "Statuette of Amun MET DT553.jpg"
+  },
+  {
+    "id": "ptah-lapis-met",
+    "file": "Cult Image of the God Ptah MET DP142956.jpg"
+  },
+  {
+    "id": "sekhmet-met",
+    "file": "Statue of the Goddess Sakhmet MET DP112606.jpg"
+  },
+  {
+    "id": "nephthys-mourning-met",
+    "file": "Mourning Nephthys MET LC-12 182 23a EGDP023822.jpg"
+  },
+  {
+    "id": "nut-greenfield",
+    "file": "Geb, Nut, Shu.jpg"
+  },
+  {
+    "id": "bes-amulet-met",
+    "file": "Bes Amulet MET DP112571.jpg"
+  },
+  {
+    "id": "sobek-walters-chest",
+    "file": "Egyptian - Chest with Writing - Walters 61271 - Detail.jpg"
+  },
+  {
+    "id": "taweret-amulet-met",
+    "file": "Taweret Amulet MET DP109372.jpg"
+  },
+  {
+    "id": "neith-bronze-met",
+    "file": "Statuette of the goddess Neith MET DP311635.jpg"
+  },
+  {
+    "id": "shamash-tablet-cast",
+    "file": "Shamash, the Sun God, Sippar, Early Iron Age, 870 BC, plaster cast of limestone original - Oriental Institute Museum, University of Chicago - DSC07413.JPG"
+  },
+  {
+    "id": "humbaba-louvre-mask",
+    "file": "Masque du démon Humbaba - Musée du Louvre Antiquités orientales SB 6567.jpg"
+  },
+  {
+    "id": "anzu-imdugud",
+    "file": "British Museum Middle east 14022019 Panel Imdugud 2500 BC 3640.jpg"
+  },
+  {
+    "id": "pazuzu-oi",
+    "file": "Pazuzu demon figurine, Iraq, Neo-Assyrian period, 900-612 BC, bronze - Oriental Institute Museum, University of Chicago - DSC07291.JPG"
+  },
+  {
+    "id": "pazuzu-lamashtu-plaque",
+    "file": "Plaque de conjuration contre la Lamashtu (Louvre, AO 22205) avec annotations.jpg"
+  },
+  {
+    "id": "lamassu-met",
+    "file": "Human-headed winged bull (lamassu) MET DT879.jpg"
+  },
+  {
+    "id": "el-megiddo",
+    "file": "El, the Canaanite creator deity, Megiddo, Stratum VII, Late Bronze II, 1400-1200 BC, bronze with gold leaf - Oriental Institute Museum, University of Chicago - DSC07734.JPG"
+  },
+  {
+    "id": "simurgh-rostam-birth",
+    "file": "The simurgh arrives to assist with the birth of Rustam.jpg"
+  },
+  {
+    "id": "zal-simurgh",
+    "file": "Zal returned to Sam by the Simurgh.jpg"
+  },
+  {
+    "id": "zahhak-damavand",
+    "file": "Sultan Muhammad Tiran Zahhak.jpg"
+  },
+  {
+    "id": "jamshid-freer",
+    "file": "Abd as-Samad Shirin Qalam - Jamshid Writing on a Rock - Google Art Project.jpg"
+  },
+  {
+    "id": "sohrab-princeton",
+    "file": "RostamMournsSohrab.jpg"
+  },
+  {
+    "id": "siavash-fire-bl",
+    "file": "The fire ordeal of Siyavush (37b). Shahnama of Firdawsi (1486) British Library Add. 18188.jpg"
+  },
+  {
+    "id": "esfandiyar-dragon-met",
+    "file": "\"Isfandiyar's Third Course- He Slays a Dragon\", Folio 434v from the Shahnama (Book of Kings) of Shah Tahmasp MET DP107166.jpg"
+  },
+  {
+    "id": "rakhsh-lion",
+    "file": "Rakhsh Kills a Lion while Rustam Sleeps.jpg"
+  },
+  {
+    "id": "saraswati-varma",
+    "file": "Saraswati by Raja Ravi Varma.jpg"
+  },
+  {
+    "id": "kali-bhadrakali",
+    "file": "Goddess Bhadrakali Worshipped by the Gods- from a tantric Devi series - Google Art Project.jpg"
+  },
+  {
+    "id": "yama-buffalo",
+    "file": "Yama on buffalo.jpg"
+  },
+  {
+    "id": "garuda-bundi",
+    "file": "Garuda Vishnu Laxmi.jpg"
+  },
+  {
+    "id": "ravana-bm",
+    "file": "Ravana water painting.jpg"
+  },
+  {
+    "id": "sita-jatayu-varma",
+    "file": "Ravi Varma-Ravana Sita Jathayu.jpg"
+  },
+  {
+    "id": "agni-ram",
+    "file": "Agni god of fire.jpg"
+  },
+  {
+    "id": "surya-kashmir-cleveland",
+    "file": "India, Kashmir, early 8th Century - Surya, the Sun God - 1965.557 - Cleveland Museum of Art.tif"
+  },
+  {
+    "id": "kartikeya-varma",
+    "file": "Murugan by Raja Ravi Varma.jpg"
+  },
+  {
+    "id": "draupadi-sairandhri-varma",
+    "file": "Raja Ravi Varma, Keechaka and Sairandhri, 1890.jpg"
+  },
+  {
+    "id": "bhishma-resolve-varma",
+    "file": "Bhishma's Resolve - Raja Ravi Varma.jpg"
+  },
+  {
+    "id": "roc-dulac",
+    "file": "Sinbad the sailor & other stories from the Arabian nights - Dulac color plate facing page 024.jpg"
+  },
+  {
+    "id": "osiris-crook-flail",
+    "file": "Egyptian - Osiris, Lord of the Dead - Walters 22207.jpg"
+  },
+  {
+    "id": "hathor-sistrum",
+    "file": "Bat - Hathor emblem from a sistrum MET DP318530.jpg"
+  },
+  {
+    "id": "isis-tyet",
+    "file": "Red jasper amulet of tyet MET DP121806.jpg"
+  },
+  {
+    "id": "fereydun-gavsar",
+    "file": "Faridun strikes Zahhak with the ox-headed mace.jpg"
+  },
+  {
+    "id": "vishnu-garuda-met",
+    "file": "Vishnu on Garuda MET DP-18171-001.jpg"
+  },
+  {
+    "id": "ravana-pushpaka",
+    "file": "Ravana seizes the chariot Puspaka from Kuvera.jpg"
+  },
+  {
+    "id": "arjuna-kirata",
+    "file": "Arjuna, perched on a high platform, aims his arrow at a large boar which rushes towards him.jpg"
+  },
+  {
+    "id": "hanuman-gada",
+    "file": "Hanuman striking a demon.jpg"
+  },
+  {
+    "id": "ali-baba-cave-batten",
+    "file": "Fairy tales from the Arabian nights - Batten illustration at page 306.png"
+  },
+  {
+    "id": "fuxi-ma-lin",
+    "file": "Ma-Lin-Fuxi-and-turtle.jpg"
+  },
+  {
+    "id": "shennong-shoryo",
+    "file": "Shoryo - Portrait of Shinno - 1986.48 - Cleveland Museum of Art.jpg"
+  },
+  {
+    "id": "yu-ma-lin",
+    "file": "King Yu of Xia.jpg"
+  },
+  {
+    "id": "zhong-kui-ren-yi",
+    "file": "清 任頤 鍾馗 軸-Zhong Kui MET 2002 208 2 O.jpg"
+  },
+  {
+    "id": "erlang-shen-opera",
+    "file": "無款 清末 京劇一百人物像 冊 絹本-One hundred portraits of Peking opera characters MET DP280075.jpg"
+  },
+  {
+    "id": "erlang-shen-soushenji",
+    "file": "灌口二郎神（新刻出像增補搜神記）.jpg"
+  },
+  {
+    "id": "jade-emperor-ming",
+    "file": "Jade Emperor. Ming Dynasty.jpg"
+  },
+  {
+    "id": "zhu-bajie-xiyouji",
+    "file": "Xiyou2.PNG"
+  },
+  {
+    "id": "okuninushi-gakutei",
+    "file": "MET DP137830.jpg"
+  },
+  {
+    "id": "orochi-kiyomasu",
+    "file": "Susano-o no Mikoto Killing the Eight-headed Dragon.jpg"
+  },
+  {
+    "id": "momotaro-toyoharu",
+    "file": "Utagawa Toyoharu - Momotarō and His Animal Friends Conquer the Demons.jpg"
+  },
+  {
+    "id": "urashima-yoshitoshi",
+    "file": "Urashima Taro Returning on the Turtle LACMA M.84.31.349.jpg"
+  },
+  {
+    "id": "kaguya-yoshitoshi",
+    "file": "Gekkyu no mukae.jpg"
+  },
+  {
+    "id": "kaguya-taketori-met",
+    "file": "Taketori monogatari-Tale of the Shining Princess MET DP137389.jpg"
+  },
+  {
+    "id": "tsuchigumo-emaki",
+    "file": "Tsuchigumo no soshi emaki - Kamakura - part 14 - Yorimitsu killing Tsuchigumo.jpg"
+  },
+  {
+    "id": "tengu-hiroshige",
+    "file": "King of the tengu with Ushiwakamaru.jpg"
+  },
+  {
+    "id": "benzaiten-keisei",
+    "file": "騎龍弁財天-Benzaiten (Goddess of Music and Good Fortune) Seated on a White Dragon MET DP135895.jpg"
+  },
+  {
+    "id": "hyeonmu-gangseo",
+    "file": "현무 조선고적도보.jpg"
+  },
+  {
+    "id": "semar-mask",
+    "file": "Masker van de ponokawan Semar, AK-RAK-1998-3.jpg"
+  },
+  {
+    "id": "mictlantecuhtli-borgia",
+    "file": "Codex Borgia page 56.jpg"
+  },
+  {
+    "id": "coatlicue-statue",
+    "file": "Aztec Stone Coatlique (Cihuacoatl) Earth Goddess (9754610555).jpg"
+  },
+  {
+    "id": "chalchiuhtlicue-met",
+    "file": "Water Deity (Chalchiuhtlicue) MET DT1257.jpg"
+  },
+  {
+    "id": "coyolxauhqui-head",
+    "file": "Aztec Coyolxauhqui, Moon Goddess.jpg"
+  },
+  {
+    "id": "ix-chel-dresden",
+    "file": "Dresden p 74 large.jpg"
+  },
+  {
+    "id": "manco-capac-murua",
+    "file": "La adoración de Manco Cápac.jpg"
+  },
+  {
+    "id": "manco-capac-brooklyn",
+    "file": "Brooklyn Museum - Manco Capac, First Inca, 1 of 14 Portraits of Inca Kings.jpg"
+  },
+  {
+    "id": "mama-ocllo-fogg",
+    "file": "Mama Ocllo, artist unknown, Cuzco, Peru, c. 1835-1845, oil on canvas - Fogg Art Museum, Harvard University - DSC02018.jpg"
+  },
+  {
+    "id": "hina-gauguin",
+    "file": "Paul Gauguin - Hina Tefatou - Google Art Project.jpg"
+  },
+  {
+    "id": "yucahu-trigonolito",
+    "file": "Three-Cornered Stone (Trigonolito) MET DT4135.jpg"
+  },
+  {
+    "id": "zemi-met",
+    "file": "Deity Figure (Zemí) MET DT1258.jpg"
+  },
+  {
+    "id": "ai-apaec-plaque",
+    "file": "Decapitator Plaque MET DT11614.jpg"
+  },
+  {
+    "id": "nezha-opera",
+    "file": "無款 清末 京劇一百人物像 冊 絹本-One hundred portraits of Peking opera characters MET DP280080.jpg"
+  },
+  {
+    "id": "tawara-toda-ryugu",
+    "file": "Ryugujo 龍宮城 (The Palace of the Dragon King) (BM 2008,3037.19301 1).jpg"
+  },
+  {
+    "id": "daikokuten-mallet",
+    "file": "MET DP138468.jpg"
+  },
+  {
+    "id": "chariot-nordenskiold",
+    "file": "Nordenskiöld 1897 Figure 15 Magnetic car Page058.jpg"
+  },
+  {
+    "id": "maui-dittmer",
+    "file": "Te Tohunga - p49.png"
+  },
+  {
+    "id": "qilin-sancai",
+    "file": "Qilin in sancai tuhui.jpg"
+  },
+  {
+    "id": "fenghuang-shen-nanpin",
+    "file": "沈南蘋 丹鳳朝陽図 雍正13(1735) Shen Nanpi Pair of Phoenixes in the Morning Glow A Hanging scroll Color on sil a dynasty.jpg"
+  },
+  {
+    "id": "nue-kuniyoshi",
+    "file": "Li Hayata Hironao grappling with the monstruos nue.jpg"
+  },
+  {
+    "id": "ebisu-hokusai",
+    "file": "MET 56 121 33 162323.jpg"
+  },
+  {
+    "id": "xipe-totec-gardiner",
+    "file": "Head of Xipe Totec, 1428-1521 AD, Aztec style, Mexico, earthenware - Gardiner Museum, Toronto - DSC01124.JPG"
+  },
+  {
+    "id": "tane-dittmer",
+    "file": "Te Tohunga - p11.png"
   }
 ]
