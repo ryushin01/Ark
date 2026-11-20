@@ -11,47 +11,119 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # 바뀐 파일이 Markdown(README·CHANGELOG·docs 등)뿐이면 E2E·Lighthouse 같은 무거운 검사를 건너뜁니다.
+  # 코드·설정·데이터·이미지가 하나라도 바뀌면 모든 검사를 돕니다.
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    outputs:
+      docs_only: ${{ steps.diff.outputs.docs_only }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: diff
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -z "$BASE" ] || ! git cat-file -e "$BASE" 2>/dev/null; then echo "docs_only=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          files=$(git diff --name-only "$BASE" HEAD)
+          echo "$files"
+          if [ -n "$files" ] && ! echo "$files" | grep -qv '\.md$'; then echo "docs_only=true" >> "$GITHUB_OUTPUT"; else echo "docs_only=false" >> "$GITHUB_OUTPUT"; fi
+
+  # 서로 기다릴 필요 없는 검사를 작업으로 나눠 동시에 돌립니다. (검사 범위는 하나로 돌릴 때와 같음)
   check:
-    name: Lint · Typecheck · Test · Storybook test · Build · Size · E2E · Lighthouse
+    name: Lint · Format · Typecheck · Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       # pnpm 버전은 package.json의 packageManager를 따름
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
-
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm lint:fsd
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm test
+
+  build:
+    name: Storybook test · Build · Size
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # pnpm 버전은 package.json의 packageManager를 따름
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:storybook
       - run: pnpm build
-      # 프로덕션 빌드에서 화면 폭별 넘침, 접근성(axe), 키보드 동작을 검사
       - run: pnpm size
+
+  # 프로덕션 빌드에서 화면 폭별 넘침, 접근성(axe), 키보드 동작을 검사
+  e2e:
+    name: E2E
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # pnpm 버전은 package.json의 packageManager를 따름
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
       - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # pnpm 버전은 package.json의 packageManager를 따름
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
       - run: pnpm lhci
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: reports
+          name: lighthouse
           # .lighthouseci는 숨김 폴더라 따로 켜야 올라갑니다.
           include-hidden-files: true
-          path: |
-            playwright-report/
-            test-results/
-            .lighthouseci/
+          path: .lighthouseci/
           retention-days: 7
 
   upload:
     name: Upload E2E (local Supabase)
+    needs: changes
+    if: needs.changes.outputs.docs_only != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
