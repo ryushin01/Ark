@@ -56,14 +56,48 @@ const cleanArtist = (value) => {
  * 다시 받을 때 손으로 고친 값이 되돌아가지 않게 여기서 고정합니다.
  */
 const ARTIST_OVERRIDES = {
+  "chariot-nordenskiold": "Adolf Erik Nordenskiöld",
+  "cronus-met-pelike": "Nausicaä Painter",
+  "deirdre-russell": "George William Russell",
+  "diarmuid-reid": "Stephen Reid",
   "euryale-commons": "Arthur Rackham",
+  "fenghuang-shen-nanpin": "Shen Nanpin",
   "fereydun-commons": "Unknown artist",
+  "fionn-reid": "Stephen Reid",
   "gilgamesh-flood-tablet": "BabelStone",
+  "habetrot-torrance": "James Torrance",
+  "hagen-nibelung-hoard": "Julius Schnorr von Carolsfeld",
   "hermes-caduceus": "Unknown artist",
+  "kaguya-yoshitoshi": "Tsukioka Yoshitoshi",
+  "oisin-reid": "Stephen Reid",
+  "ravana-bm": "Unknown artist",
+  "ravana-pushpaka": "Qasim",
   "roland-durendal": "Louis Félix Guesnet",
+  "siavash-fire-bl": "Unknown artist",
   "siegfried-tarnkappe": "Julius Schnorr von Carolsfeld",
+  "tawara-toda-ryugu": "Utagawa Kuniyoshi",
+  "tengu-hiroshige": "Utagawa Hiroshige",
   "zeus-dodona": "Gary Todd",
 };
+
+/** 아래쪽에 촬영용 색 띠가 함께 찍힌 사진은 받을 때 그 비율만큼 아래를 잘라 냅니다. (대영 박물관 판화 사진) */
+const TRIM_BOTTOM = {
+  "tawara-toda-ryugu": 0.019,
+};
+
+/**
+ * 요청 제한(429)이나 서버 오류(5xx)면 Retry-After만큼(없으면 점점 길게) 기다렸다 다시 요청합니다.
+ * 자료가 수백 점이라 한 번 실행에 요청이 많고, 중간에 멈추면 처음부터 다시 돌려야 하기 때문입니다.
+ */
+async function fetchWithRetry(url, tries = 6) {
+  for (let attempt = 1; ; attempt++) {
+    const response = await fetch(url, { headers: { "User-Agent": UA } });
+    if ((response.status !== 429 && response.status < 500) || attempt === tries) return response;
+    const wait = Number(response.headers.get("retry-after")) || 5 * attempt;
+    console.warn(`${response.status}: ${wait}초 뒤 다시 요청합니다 (${attempt}/${tries - 1})`);
+    await new Promise((resolve) => setTimeout(resolve, wait * 1000));
+  }
+}
 
 const imageDir = new URL("public/images/exhibits/", root);
 // 이미 받은 이미지는 다시 받지 않습니다. 모두 다시 받으려면 --fresh를 붙입니다.
@@ -82,7 +116,8 @@ for (const { id, file } of sources) {
     iiurlwidth: String(THUMB_WIDTH),
     titles: `File:${file}`,
   }).toString();
-  const response = await fetch(url, { headers: { "User-Agent": UA } });
+  const response = await fetchWithRetry(url);
+  if (!response.ok) throw new Error(`Commons 응답 ${response.status}: ${file}`);
   const page = Object.values((await response.json()).query.pages)[0];
   const info = page.imageinfo?.[0];
   if (!info) throw new Error(`Commons에서 찾지 못했습니다: ${file}`);
@@ -95,11 +130,17 @@ for (const { id, file } of sources) {
     output = { info: await sharp(fileURLToPath(target)).metadata() };
   } else {
     const remote = (info.width > THUMB_WIDTH ? info.thumburl : info.url).split("?")[0];
-    const imageResponse = await fetch(remote, { headers: { "User-Agent": UA } });
+    const imageResponse = await fetchWithRetry(remote);
     if (!imageResponse.ok) {
       throw new Error(`이미지를 받지 못했습니다(${imageResponse.status}): ${remote}`);
     }
-    output = await sharp(Buffer.from(await imageResponse.arrayBuffer()))
+    let buffer = Buffer.from(await imageResponse.arrayBuffer());
+    if (TRIM_BOTTOM[id]) {
+      const { width, height } = await sharp(buffer).metadata();
+      const kept = Math.round(height * (1 - TRIM_BOTTOM[id]));
+      buffer = await sharp(buffer).extract({ left: 0, top: 0, width, height: kept }).toBuffer();
+    }
+    output = await sharp(buffer)
       .resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true })
       .jpeg({ quality: 78, mozjpeg: true })
       .toBuffer({ resolveWithObject: true });

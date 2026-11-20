@@ -1,16 +1,16 @@
 # 자료 그림 출처
 
-Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
+Ark가 보여 주는 자료 그림 475점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
 
 > 이 파일은 `pnpm credits`가 자료 데이터(`src/entities/exhibit/api/mock-data.ts`와 `mock/commons-images.json`, 시드와 같은 데이터)에서 만듭니다. 직접 고치지 말고 데이터를 고친 뒤 다시 만드세요. 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
 
 | 사용 허락 | 점 |
 | --- | ---: |
-| Public domain | 249 |
-| CC0 | 47 |
+| Public domain | 351 |
+| CC0 | 91 |
 | CC BY-SA 4.0 | 11 |
-| No restrictions | 5 |
 | CC BY-SA 3.0 | 4 |
+| No restrictions | 4 |
 | CC BY 3.0 | 3 |
 | CC BY 4.0 | 3 |
 | CC BY 2.0 | 2 |
@@ -24,7 +24,9 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
 | 오시리스 청동 소상 | 오시리스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Osiris_statuette,_bronze_-_Museo_Egizio,_Turin_S_17631_p01.jpg) |
+| 오시리스 좌상 | 오시리스 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Egyptian_-_Osiris,_Lord_of_the_Dead_-_Walters_22207.jpg) |
 | 호루스에게 젖을 먹이는 이시스 | 이시스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Isis_nursing_Horus_MET_17.190.1641_front.jpg) |
+| 티엣 부적 | 이시스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Red_jasper_amulet_of_tyet_MET_DP121806.jpg) |
 | 투탕카멘 무덤의 아누비스 신당 | 아누비스 | Harry Burton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Anubis-shrine_(cropped).jpg) |
 | 심장의 무게 달기 (후네페르의 「사자의 서」) | 아누비스 | Photographed by the British Museum; original artist unknown | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:BD_Weighing_of_the_Heart.jpg) |
 | 라-호라크티 앞의 공양 석비 | 라 | Photograph by Oriental Institute, the University of Chicago; painter unknown | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Re-Horakhty_Stela.jpg) |
@@ -32,6 +34,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 따오기 모습의 토트 | 토트 | Tangopaso | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ibis_couch%C3%A9,_le_dieu_Thot_(Louvre,_E_17380).jpg) |
 | 람세스 3세에게 관을 씌우는 세트 (부분) | 세트 | A. Parrot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Horus_and_Seth_crowning_Ramesses_III,_detail_of_Seth.JPG) |
 | 하토르 얼굴 기둥머리 | 하토르 | Rama | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Capital_depicting_Hathor-MAHG_027868-P6130434-white.jpg) |
+| 시스트럼의 하토르 장식 | 하토르 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Bat_-_Hathor_emblem_from_a_sistrum_MET_DP318530.jpg) |
 | 바스테트 소상 | 바스테트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Bastet_MET_DP310891.jpg) |
 | 후네페르의 「사자의 서」 심판 장면 | 암미트 | Hunefer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:BD_Hunefer_cropped_1.jpg) |
 | 기자의 대스핑크스 | 스핑크스 | Maison Bonfils | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sphinx_partially_excavated2.jpg) |
@@ -39,6 +42,15 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 아펩을 찌르는 세트 | 아펩 | An unknown workman | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Set_speared_Apep.jpg) |
 | 우제트 눈 부적 | 호루스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Wedjat_Eye_Amulet_MET_11.215.128.jpg) |
 | 책과 글의 신 토트 | 토트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:The_Sacred_Books_and_Early_Literature_of_the_East,_vol._2,_pg._416-417,_Thoth.jpg) |
+| 아문 금 소상 | 아문 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Statuette_of_Amun_MET_DT553.jpg) |
+| 프타 신상 | 프타 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Cult_Image_of_the_God_Ptah_MET_DP142956.jpg) |
+| 세크메트 좌상 | 세크메트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Statue_of_the_Goddess_Sakhmet_MET_DP112606.jpg) |
+| 애도하는 네프티스 | 네프티스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Mourning_Nephthys_MET_LC-12_182_23a_EGDP023822.jpg) |
+| 그린필드 파피루스의 누트와 게브, 슈 | 누트 | Photographed by the British Museum; original artist unknown | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Geb,_Nut,_Shu.jpg) |
+| 베스 부적 | 베스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Bes_Amulet_MET_DP112571.jpg) |
+| 소베크에게 제물을 바치는 왕 | 소베크 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Egyptian_-_Chest_with_Writing_-_Walters_61271_-_Detail.jpg) |
+| 타웨레트 부적 | 타웨레트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Taweret_Amulet_MET_DP109372.jpg) |
+| 네이트 청동 소상 | 네이트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Statuette_of_the_goddess_Neith_MET_DP311635.jpg) |
 
 ## 메소포타미아 신화
 
@@ -54,6 +66,12 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 세미라미스 의상 도안 | 세미라미스 | Hippolyte Lecomte | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Rossini_-_Semiramide_-_Paris_1825_-_Hippolyte_Lecomte_-_Semiramis_1er_Costume_(Mdme_Fodor)_(cropped).jpg) |
 | 밤의 여왕(버니 부조) | 에레쉬키갈 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:British_Museum_Queen_of_the_Night.jpg) |
 | 「길가메시 서사시」 11서판(홍수 서판) | 길가메시 | BabelStone | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:British_Museum_Flood_Tablet.jpg) |
+| 샤마시 서판 (석고 복제품) | 샤마시 | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Shamash,_the_Sun_God,_Sippar,_Early_Iron_Age,_870_BC,_plaster_cast_of_limestone_original_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07413.JPG) |
+| 훔바바 가면 | 훔바바 | Shonagon | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Masque_du_d%C3%A9mon_Humbaba_-_Mus%C3%A9e_du_Louvre_Antiquit%C3%A9s_orientales_SB_6567.jpg) |
+| 텔 알우바이드의 임두구드 부조 | 안주 | Vassil | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:British_Museum_Middle_east_14022019_Panel_Imdugud_2500_BC_3640.jpg) |
+| 파주주 청동상 | 파주주 | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Pazuzu_demon_figurine,_Iraq,_Neo-Assyrian_period,_900-612_BC,_bronze_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07291.JPG) |
+| 라마슈투를 쫓는 부적 판 | 파주주 | Tangopaso | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Plaque_de_conjuration_contre_la_Lamashtu_(Louvre,_AO_22205)_avec_annotations.jpg) |
+| 님루드 궁전의 라마수 | 라마수 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Human-headed_winged_bull_(lamassu)_MET_DT879.jpg) |
 
 ## 인도 신화
 
@@ -66,8 +84,10 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 고바르다나산을 들어 올린 크리슈나 | 크리슈나 | Miskin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Krishna_Holds_Up_Mount_Govardhan_to_Shelter_the_Villagers_of_Braj,_ca.1590%E2%80%9395,_The_Met.jpg) |
 | 락슈미 | 락슈미 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma,_Goddess_Lakshmi,_1896.jpg) |
 | 하누만 | 하누만 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Clevelandart_1980.26.jpg) |
+| 악마를 치는 하누만 | 하누만 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hanuman_striking_a_demon.jpg) |
 | 마히샤를 무찌르는 두르가 | 두르가 | Daderot | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Durga_Mahishasuramardini_slaying_the_Buffalo_Demon,_Bengal,_India,_or_Bangladesh,_Pala_dynasty,_1100s_AD,_phyllite_-_Dallas_Museum_of_Art_-_DSC05056.jpg) |
 | 아르주나와 강의 요정 | 아르주나 | 작자 미상 | [No restrictions](https://www.flickr.com/commons/usage/) | [Commons](https://commons.wikimedia.org/wiki/File:Arjuna_and_the_River_Nymph_by_1913.jpg) |
+| 멧돼지를 쏘는 아르주나와 사냥꾼 모습의 시바 | 아르주나 | Company School artist | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Arjuna,_perched_on_a_high_platform,_aims_his_arrow_at_a_large_boar_which_rushes_towards_him.jpg) |
 | 활과 화살을 든 라마 | 라마 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lord_Rama_with_arrows.jpg) |
 | 흰 코끼리를 탄 인드라 | 인드라 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Tiruchchirappalli_painting_Indra_(cropped).jpg) |
 | 적들을 무찌르는 비마 | 비마 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bhima_slaughtering_his_enemies.jpg) |
@@ -81,9 +101,22 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 비슈누상의 원반(차크라) | 비슈누 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_Hindu_God_Vishnu_LACMA_M.70.5.1_Chakra_(cropped).jpg) |
 | 칼라를 물리치는 시바 | 시바 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Kalantaka_-_Shiva_killed_Kala.jpg) |
 | 우유 바다 휘젓기 | 비슈누 | Fattu | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Churning_of_the_ocean_-_Manthan.jpg) |
+| 가루다를 탄 비슈누 | 비슈누 | Attributed to Sajnu of Mandi | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Vishnu_on_Garuda_MET_DP-18171-001.jpg) |
 | 시바의 활을 부러뜨리는 라마 | 라마 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ravi_Varma-Rama-breaking-bow.jpg) |
 | 시야만타카를 찬 프라세나 | 크리슈나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Satrajit_Prasena_Syamantaka.jpg) |
 | 인드라의 창으로 가토트카차를 쓰러뜨리는 카르나 | 카르나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Karna,_one_of_the_Kauravas,_slays_the_Pandavas%27_nephew_Ghatotkacha_with_a_weapon_given_to_him_by_Indra,_the_king_of_the_gods,_from_a_manuscript_of_the_Razmnama.jpg) |
+| 사라스바티 | 사라스바티 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Saraswati_by_Raja_Ravi_Varma.jpg) |
+| 신들의 경배를 받는 바드라칼리 | 칼리 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Goddess_Bhadrakali_Worshipped_by_the_Gods-_from_a_tantric_Devi_series_-_Google_Art_Project.jpg) |
+| 물소를 탄 야마 | 야마 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Yama_on_buffalo.jpg) |
+| 비슈누와 락슈미를 태운 가루다 | 가루다 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Garuda_Vishnu_Laxmi.jpg) |
+| 라바나 | 라바나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ravana_water_painting.jpg) |
+| 자타유의 날개를 베는 라바나 | 시타 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ravi_Varma-Ravana_Sita_Jathayu.jpg) |
+| 숫양을 탄 아그니 | 아그니 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Agni_god_of_fire.jpg) |
+| 수리야 입상 | 수리야 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:India,_Kashmir,_early_8th_Century_-_Surya,_the_Sun_God_-_1965.557_-_Cleveland_Museum_of_Art.tif) |
+| 무루간 (카르티케야) | 카르티케야 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Murugan_by_Raja_Ravi_Varma.jpg) |
+| 키차카와 사이란드리 | 드라우파디 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma,_Keechaka_and_Sairandhri,_1890.jpg) |
+| 비슈마의 맹세 | 비슈마 | Raja Ravi Varma | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bhishma%27s_Resolve_-_Raja_Ravi_Varma.jpg) |
+| 쿠베라에게서 푸시파카를 빼앗는 라바나 | 라바나 | Qasim | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ravana_seizes_the_chariot_Puspaka_from_Kuvera.jpg) |
 
 ## 그리스 신화
 
@@ -126,6 +159,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 안드로메다 (「아라테아」) | 안드로메다 | Aratus | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Aratea_30v.jpg) |
 | 히폴리테 | 히폴리테 | Galle, Philips | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Portret_van_Hippolyta_Thesei_of_Theseus._NL-HlmNHA_1477_53008292.JPG) |
 | 폼페이 다이달로스의 집 벽화 | 다이달로스 | Wilhelm Zahn | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Fresco_from_the_House_of_the_(Ancient)_Hunt_aka_House_of_Daedalus_and_Pasiphae_in_Pompeii_by_Wilhelm_Zahn.jpg) |
+| 이카로스와 다이달로스 | 다이달로스 | Frederic Leighton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lord_Frederick_Leighton_FLL006.jpg) |
 | 데메테르 조각상 | 데메테르 | Didier Descouens | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:(Venice)_Demeter_in_the_Museo_archeologico_nazionale.jpg) |
 | 켄타우로스와 싸우는 카이네우스 | 카이네우스 | Diosphos Painter | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Kaineus_Kentauros_Louvre_CA2494_n1.jpg) |
 | 페르세우스와 안드로메다 | 페르세우스 | Anton Raphael Mengs | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Anton_Raphael_Mengs_-_Perseus_and_Andromeda_-_WGA15037.jpg) |
@@ -133,9 +167,11 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 짐승들에 둘러싸인 오르페우스 | 오르페우스 | Giovanni Dall'Orto | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:DSC00355_-_Orfeo_(epoca_romana)_-_Foto_G._Dall%27Orto.jpg) |
 | 뮌헨의 디오메데스 | 디오메데스 | Vassil | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Glyptothek_Munich_Diomedes_17_10_2016.jpg) |
 | 멜레아그로스와 칼리돈의 멧돼지 | 멜레아그로스 | Copy after Skopas | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Meleager_Pio-Clementino_Inv490.jpg) |
+| 아들의 장작을 불에 던지는 알타이아 | 멜레아그로스 | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Althaea_doodt_Meleager_Metamorfosen_van_Ovidius_(serietitel),_RP-P-OB-15.950.jpg) |
 | 아킬레우스의 주검을 메고 가는 아이아스 | 대 아이아스 | The Antimenes Painter | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ajax_body_Achilles_Louvre_F201.jpg) |
 | 용과 싸우는 카드모스 | 카드모스 | Léon Davent / Francesco Primaticcio | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Cadmus_fighting_the_Dragon_MET_DP102232.jpg) |
 | 가족과 작별하는 프시케 | 프시케 | Marie-Guillemine Benoist | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Marie-Guillemine_Benoist_-_Les_Adieux_de_Psych%C3%A9_%C3%A0_sa_famille.jpg) |
+| 금빛 상자를 여는 프시케 | 프시케 | John William Waterhouse | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Psyche-Waterhouse.jpg) |
 | 트로이를 도우러 가는 펜테실레이아 | 펜테실레이아 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Othea%27s_Epistle_(Queen%27s_Manuscript)_15.jpg) |
 | 물에 뛰어드는 브리토마르티스 | 브리토마르티스 | Probably designed by Jean Cousin the Elder | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_Drowning_of_Britomartis,_1547%E2%80%9359.jpg) |
 | 바위를 든 탈로스 (파이스토스 은화) | 탈로스 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Didrachm_Phaistos_obverse_CdM.jpg) |
@@ -161,6 +197,21 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 오디세우스의 활을 든 페넬로페 | 오디세우스 | Robert Cromek / After Henry Fuseli | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Robert_Hartley_Cromek_-_Penelope_Holding_the_Bow_of_Odysseus,_1806.jpg) |
 | 페르세우스와 바다 님프 | 페르세우스 | Edward Burne-Jones | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Perseus_and_the_Sea_Nymphs_-_Edward_Burne-Jones,_1877.jpg) |
 | 하르모니아의 목걸이를 에리필레에게 내미는 폴리네이케스 | 카드모스 | Marie-Lan Nguyen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Polynices_Eriphyle_Louvre_G442.jpg) |
+| 루도비시의 아레스 | 아레스 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ares_Ludovisi_Altemps_Inv8602_n2.jpg) |
+| 헤스티아 주스티니아니 | 헤스티아 | Tangopaso | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hestia_Giustiniani_(Louvre).jpg) |
+| 프로세르피나 | 페르세포네 | Dante Gabriel Rossetti | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Dante_Gabriel_Rossetti_-_Proserpine_-_Google_Art_Project.jpg) |
+| 인간에게 불을 가져다주는 프로메테우스 | 프로메테우스 | Heinrich Füger | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Heinrich_fueger_1817_prometheus_brings_fire_to_mankind.jpg) |
+| 판도라 | 판도라 | John William Waterhouse | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Pandora,_1896.jpg) |
+| 판 | 판 | Mikhail Vrubel | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:1899_Vrubel_Pan_anagoria.JPG) |
+| 잠든 에로스 | 에로스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Bronze_statue_of_Eros_sleeping_MET_DP123903.jpg) |
+| 헬리오스의 궁전을 찾은 파에톤 | 헬리오스 | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Pha%C3%ABton_in_het_paleis_van_Helios_Ovidius%27_Metamorfosen_(serietitel),_RP-P-1882-A-6363.jpg) |
+| 헤카테 | 헤카테 | William Blake | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:William_Blake_006.jpg) |
+| 땅을 떠나는 아스트라이아 | 아스트라이아 | Salvator Rosa | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Salvator_Rosa_-_Astraea_verl%C3%A4%C3%9Ft_die_Erde_-_GG_9823_-_Kunsthistorisches_Museum.jpg) |
+| 다이달로스와 이카로스 | 이카로스 | Anthony van Dyck | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Anthony_van_Dyck_-_Daedalus_and_Icarus_-_Google_Art_Project.jpg) |
+| 크로노스에게 돌을 건네는 레아 | 크로노스 | Nausicaä Painter | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Rhea_handing_a_swaddled_stone_to_Cronus,_Attic_terracotta_pelike,_c._460%E2%80%93450_BC,_Met_06.1021.144.jpg) |
+| 트로이아의 헬레네 | 헬레네 | Evelyn De Morgan | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Helen_of_Troy.jpg) |
+| 바쿠스와 아리아드네 | 아리아드네 | Titian | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Titian_-_Bacchus_and_Ariadne_-_Google_Art_Project.jpg) |
+| 금으로 변한 딸과 미다스 | 미다스 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Midas_gold2.jpg) |
 
 ## 일본 신화
 
@@ -181,11 +232,24 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 폭포 아래에서 잉어와 씨름하는 사카타노 긴토키 | 사카타노 긴토키 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sakata_Kaidomaru_struggling_with_a_huge_carp_under_a_waterfall.jpg) |
 | 라쇼몬에서 오니와 싸우는 와타나베노 쓰나 | 와타나베노 쓰나 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Watanabe_Tsuna_fighting_the_demond_at_the_Rashomon.jpg) |
 | 용왕의 딸을 지네에게서 지키는 다와라 도타 | 다와라 도타 | Tsukioka Yoshitoshi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Tawara_Toda_Protecting_the_Dragon%27s_Daughter_from_the_Giant_Millipede_LACMA_M.84.31.60.jpg) |
+| 용궁에서 선물을 받고 돌아오는 다와라 도타 | 다와라 도타 | Utagawa Kuniyoshi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ryugujo_%E9%BE%8D%E5%AE%AE%E5%9F%8E_(The_Palace_of_the_Dragon_King)_(BM_2008,3037.19301_1).jpg) |
 | 사이토 무사시보 벤케이 | 벤케이 | 작자 미상 | [No restrictions](https://www.flickr.com/commons/usage/) | [Commons](https://commons.wikimedia.org/wiki/File:Saito_Musashi-bo_Benkei_-_tales_of_the_wars_of_the_Gempei,_being_the_story_of_the_lives_and_adventures_of_Iyo-no-Kami_Minamoto_Kuro_Yoshitsune_and_Saito_Musashi-bo_Benkei_the_warrior_monk_(1910)_(14596789258).jpg) |
 | 복신들의 배 (다이코쿠텐과 에비스) | 다이코쿠텐 | Author unknown / publisher: Kichibei Honya. 作者不明／出版者：本屋吉兵衛 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lucky_Gods_Fishing_Boat_Arrival_Ebisu_Daikokuten_and_Rising_Sun.png) |
+| 다이코쿠텐의 망치와 쥐 | 다이코쿠텐 | Yashima Gakutei | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:MET_DP138468.jpg) |
 | 꽃 피우는 할아버지 (일본 옛이야기 연작) | 꽃 피우는 할아버지 | Kobayashi Eitaku | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hanasaki_Jiji_(titel_op_object)_Japanse_sprookjes_reeks_(serietitel)_Japanese_fairy_tale_series_(serietitel_op_object),_RP-P-2004-503.jpg) |
 | 고가 사부로로 분한 가부키 배우 | 고가 사부로 | Katsukawa Shunshō | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E4%B9%9D%E4%BB%A3%E7%9B%AE%E5%B8%82%E6%9D%91%E7%BE%BD%E5%B7%A6%E8%A1%9B%E9%96%80%E3%83%BB%E4%B8%89%E4%BB%A3%E7%9B%AE%E5%A4%A7%E8%B0%B7%E5%BB%A3%E6%AC%A1-Kabuki_Actors_Ichimura_Uzaemon_IX_as_Ko-kakeyama_and_%C5%8Ctani_Hiroji_III_as_K%C5%8Dga_Sabur%C5%8D_MET_DP132796.jpg) |
 | 고분에서 나온 곡옥 | 아마테라스 | Saigen Jiro | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E7%9F%A2%E8%97%A4%E6%B2%BB%E5%B1%B1%E5%8F%A4%E5%A2%B3%E5%87%BA%E5%9C%9F_%E5%8B%BE%E7%8E%89.JPG) |
+| 오쿠니누시와 이나바의 흰 토끼 | 오쿠니누시 | Yashima Gakutei | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:MET_DP137830.jpg) |
+| 야마타노오로치를 베는 스사노오 | 야마타노오로치 | Torii Kiyomasu II | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Susano-o_no_Mikoto_Killing_the_Eight-headed_Dragon.jpg) |
+| 오니를 물리치는 모모타로와 동물들 | 모모타로 | Utagawa Toyoharu | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Utagawa_Toyoharu_-_Momotar%C5%8D_and_His_Animal_Friends_Conquer_the_Demons.jpg) |
+| 고향으로 돌아가는 우라시마 | 우라시마 다로 | Tsukioka Yoshitoshi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Urashima_Taro_Returning_on_the_Turtle_LACMA_M.84.31.349.jpg) |
+| 달 궁전의 마중 | 가구야 공주 | Tsukioka Yoshitoshi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gekkyu_no_mukae.jpg) |
+| 「다케토리 이야기」 화첩 | 가구야 공주 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Taketori_monogatari-Tale_of_the_Shining_Princess_MET_DP137389.jpg) |
+| 「쓰치구모 소시」 두루마리 | 쓰치구모 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Tsuchigumo_no_soshi_emaki_-_Kamakura_-_part_14_-_Yorimitsu_killing_Tsuchigumo.jpg) |
+| 구라마산에서 덴구에게 검술을 배우는 우시와카마루 | 덴구 | Utagawa Hiroshige | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:King_of_the_tengu_with_Ushiwakamaru.jpg) |
+| 흰 용을 탄 벤자이텐 | 벤자이텐 | Aoigaoka Keisei | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E9%A8%8E%E9%BE%8D%E5%BC%81%E8%B2%A1%E5%A4%A9-Benzaiten_(Goddess_of_Music_and_Good_Fortune)_Seated_on_a_White_Dragon_MET_DP135895.jpg) |
+| 누에와 맞붙은 이노 하야타 | 누에 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Li_Hayata_Hironao_grappling_with_the_monstruos_nue.jpg) |
+| 에비스 | 에비스 | Katsushika Hokusai | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:MET_56_121_33_162323.jpg) |
 
 ## 북유럽 신화
 
@@ -216,6 +280,13 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 오딘과 군로드 | 오딘 | Lorenz Frølich | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Odin_and_Gunnl%C3%B6%C3%B0_by_Fr%C3%B8lich.jpg) |
 | 파리로 변한 로키와 드베르그의 대장간 | 로키 | Arthur Rackham | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Once_again_the_buzzing_fly_came_in_at_the_window_(1901)_by_Arthur_Rackham.jpg) |
 | 보탄과 로게에게 반지를 빼앗기는 알베리히 | 로키 | Franz Stassen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Andvari_by_Franz_Stassen.jpg) |
+| 프레이르와 굴린부르스티 | 프레이르 | Johannes Gehrts | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Freyr_(Walhall).png) |
+| 헬 | 헬 | Johannes Gehrts | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hel_(the_personification_of_Hel).png) |
+| 암소 아우둠라의 젖을 먹는 이미르 | 이미르 | Nicolai Abildgaard | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Nicolai_Abildgaard,_Ymer_dier_koen_%C3%98dhumbla,_KMS3397,_Statens_Museum_for_Kunst.jpg) |
+| 이둔과 사과 | 이둔 | James Doyle Penrose | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Idun_and_the_Apples_by_James_Doyle_Penrose,_1890.jpg) |
+| 불꽃 칼을 든 거인 | 수르트 | John Charles Dollman | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_giant_with_the_flaming_sword_by_Dollman.jpg) |
+| 이둔과 브라기 | 브라기 | Nils Blommér | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Idunn_and_Bragi_by_Blommer.jpg) |
+| 바다를 그리워하는 뇨르드 | 뇨르드 | W.G. Collingwood | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Nj%C3%B6rd%27s_desire_of_the_Sea.jpg) |
 
 ## 중국 신화
 
@@ -231,9 +302,21 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 화목란 | 화목란 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Mulan,_18th_century,_ink_and_colors_on_silk.jpg) |
 | 해를 쏘는 후예 | 후예 | Xiao Yuncong | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Houyi_Shooting_an_Arrow,_Xiao_Yuncong.gif) |
 | 황제 초상 | 황제 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Portraits_of_Famous_Men_-_Yellow_Emperor_(Huangdi).jpg) |
+| 지남거 | 황제 | Adolf Erik Nordenskiöld | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Nordenski%C3%B6ld_1897_Figure_15_Magnetic_car_Page058.jpg) |
 | 태공망 | 강태공 | Soga Shōhaku | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Soga_Sh%C5%8Dhaku_-_Taigong_Wang_(center_of_a_triptych_of_Taigong_Wang,_Dragon,_and_Carp)_-_2017.145.7.2_-_Minneapolis_Institute_of_Art.jpg) |
 | 돌을 녹여 하늘을 깁는 여와 | 여와 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E5%A5%B3%E5%AA%A7%E6%B0%8F%E7%85%89%E7%9F%B3%E8%A3%9C%E5%A4%A9.jpg) |
 | 서왕모의 반도 | 서왕모 | Kumashiro Yūhi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Kumashiro_Yuuhi,_Xi_Wangmu%27s_Peaches_of_Immortality.jpg) |
+| 복희 좌상 | 복희 | Ma Lin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ma-Lin-Fuxi-and-turtle.jpg) |
+| 신농 초상 | 신농 | Shoryo | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Shoryo_-_Portrait_of_Shinno_-_1986.48_-_Cleveland_Museum_of_Art.jpg) |
+| 하우왕 입상 | 우 임금 | Ma Lin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:King_Yu_of_Xia.jpg) |
+| 종규 | 종규 | Ren Yi 任頤 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E6%B8%85_%E4%BB%BB%E9%A0%A4_%E9%8D%BE%E9%A6%97_%E8%BB%B8-Zhong_Kui_MET_2002_208_2_O.jpg) |
+| 이랑신 (경극 인물 화첩) | 이랑신 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E7%84%A1%E6%AC%BE_%E6%B8%85%E6%9C%AB_%E4%BA%AC%E5%8A%87%E4%B8%80%E7%99%BE%E4%BA%BA%E7%89%A9%E5%83%8F_%E5%86%8A_%E7%B5%B9%E6%9C%AC-One_hundred_portraits_of_Peking_opera_characters_MET_DP280075.jpg) |
+| 관구 이랑신 (「신각출상증보수신기」) | 이랑신 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E7%81%8C%E5%8F%A3%E4%BA%8C%E9%83%8E%E7%A5%9E%EF%BC%88%E6%96%B0%E5%88%BB%E5%87%BA%E5%83%8F%E5%A2%9E%E8%A3%9C%E6%90%9C%E7%A5%9E%E8%A8%98%EF%BC%89.jpg) |
+| 옥황상제 | 옥황상제 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Jade_Emperor._Ming_Dynasty.jpg) |
+| 운잔동의 저팔계 (「서유기」 삽화) | 저팔계 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Xiyou2.PNG) |
+| 나타 (경극 인물 화첩) | 나타 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%E7%84%A1%E6%AC%BE_%E6%B8%85%E6%9C%AB_%E4%BA%AC%E5%8A%87%E4%B8%80%E7%99%BE%E4%BA%BA%E7%89%A9%E5%83%8F_%E5%86%8A_%E7%B5%B9%E6%9C%AC-One_hundred_portraits_of_Peking_opera_characters_MET_DP280080.jpg) |
+| 기린 (「삼재도회」) | 기린 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Qilin_in_sancai_tuhui.jpg) |
+| 단봉조양도 | 봉황 | Shen Nanpin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%E6%B2%88%E5%8D%97%E8%98%8B_%E4%B8%B9%E9%B3%B3%E6%9C%9D%E9%99%BD%E5%9B%B3_%E9%9B%8D%E6%AD%A313(1735)_Shen_Nanpi_Pair_of_Phoenixes_in_the_Morning_Glow_A_Hanging_scroll_Color_on_sil_a_dynasty.jpg) |
 
 ## 켈트 신화
 
@@ -243,12 +326,16 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 전투하는 쿠 훌린 | 쿠 훌린 | Joseph Christian Leyendecker | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Cuchulain_in_Battle.jpg) |
 | 성녀 브리지다 | 브리지트 | John Duncan | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Duncan_(1913)_Saint_Bride.jpg) |
 | 까마귀 (「전투하는 쿠 훌린」 부분) | 모리안 | Joseph Christian Leyendecker | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Morrigan.jpg) |
-| 그림자 섬의 스카하크 | 스카하크 | Beatrice Elvery | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_066.png) |
-| 디어무드 | 디어무드 | 작자 미상 | [No restrictions](https://www.flickr.com/commons/usage/) | [Commons](https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_(1914)_(14772697833).jpg) |
 | 세탄타를 어깨에 태운 퍼거스 | 퍼거스 | George Denham | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Fergus_mac_R%C3%B3ich_carrying_S%C3%A9tanta_on_his_shoulder.png) |
-| 싸움의 붉은 빛을 두른 핀 막 쿨 | 핀 막 쿨 | Beatrice Elvery | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_200.png) |
 | 메이브 여왕 | 메이브 | Seóirse Ua Fágáin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Queen_Medb_(Se%C3%B3irse_Ua_F%C3%A1g%C3%A1in,_1904).jpg) |
-| 오신과 니아브 | 오신 | Beatrice Elvery | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Heroes_of_the_dawn_-_illustration_to_face_page_230.png) |
+| 루의 마법 창 | 루 | Harold Robert Millar | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Lugh_spear_Millar.jpg) |
+| 흰 말을 탄 리안논 | 리안논 | John D. Batten | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Page_30_illustration_in_More_Celtic_Fairy_Tales.png) |
+| 케리드웬 | 케리드웬 | Christopher Williams | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ceridwen.jpg) |
+| 여름 바다를 잠재우는 앵거스 오그 | 앵거스 오그 | John Duncan | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Duncan_-_Angus_Og,_God_of_Love_and_Courtesy,_Putting_a_Spell_of_Summer_Calm_on_the_Sea_-_NG_2033_-_National_Galleries_Scotland.jpg) |
+| 성채의 데어드레 | 데어드레 | George William Russell | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Deirdre_at_her_Dun_-_George_William_Russell.jpg) |
+| 샘가에서 뿔잔을 든 디어무드 | 디어무드 | Stephen Reid | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:13_Dermot_took_the_horn_and_would_have_filled_it.jpg) |
+| 요정의 하프 소리를 들은 핀 | 핀 막 쿨 | Stephen Reid | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:1_Finn_heard_far_off_the_first_notes_of_the_fairy_harp.jpg) |
+| 땅을 밟고 늙어 버린 오신 | 오신 | Stephen Reid | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:16_The_white_steed_had_vanished_from_their_eyes_like_a_wreath_of_mist.jpg) |
 
 ## 아즈텍 신화
 
@@ -258,6 +345,11 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 보르자 코덱스 17쪽 | 테스카틀리포카 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Codex_Borgia_page_17.jpg) |
 | 우이칠로포치틀리 (토바르 코덱스) | 우이칠로포치틀리 | Tovar, Juan de, circa 1546-circa 1626 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Huitzilopochtli,_the_Principal_Aztec_God_WDL6725.png) |
 | 틀랄록 (보르자 코덱스) | 틀랄록 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Tlaloc_Codex_Borgia.jpg) |
+| 믹틀란테쿠틀리와 케찰코아틀 (보르자 코덱스 56쪽) | 믹틀란테쿠틀리 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Codex_Borgia_page_56.jpg) |
+| 코아틀리쿠에 석상 | 코아틀리쿠에 | Gary Todd from Xinzheng, China | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Aztec_Stone_Coatlique_(Cihuacoatl)_Earth_Goddess_(9754610555).jpg) |
+| 물의 여신 찰치우틀리쿠에 | 찰치우틀리쿠에 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Water_Deity_(Chalchiuhtlicue)_MET_DT1257.jpg) |
+| 코욜사우키 두상 | 코욜사우키 | Gary Todd | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Aztec_Coyolxauhqui,_Moon_Goddess.jpg) |
+| 시페 토텍 두상 | 시페 토텍 | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Head_of_Xipe_Totec,_1428-1521_AD,_Aztec_style,_Mexico,_earthenware_-_Gardiner_Museum,_Toronto_-_DSC01124.JPG) |
 
 ## 한국 신화
 
@@ -280,6 +372,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 「전우치전」 | 전우치 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Jeon_Woo-chi_Story.png) |
 | 「홍길동전」 첫 장 | 홍길동 | Heo Gyun | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Honggildongjeon.jpg) |
 | 한반도의 세형동검 | 환웅 | AsPJT | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Slender_bronze_dagger_in_Korea_in_1978.jpg) |
+| 강서대묘 현무도 | 현무 | 朝鮮總督府 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%ED%98%84%EB%AC%B4_%EC%A1%B0%EC%84%A0%EA%B3%A0%EC%A0%81%EB%8F%84%EB%B3%B4.jpg) |
 
 ## 핀란드 신화
 
@@ -290,6 +383,9 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 삼포를 지키는 싸움 | 로우히 | Akseli Gallen-Kallela | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sammon_puolustus.jpg) |
 | 레민케이넨의 어머니 | 레민케이넨 | Akseli Gallen-Kallela | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Lemmink%C3%A4inen%27s_Mother_-_Google_Art_Project.jpg) |
 | 칸텔레에 줄을 매는 베이네뫼이넨 | 베이네뫼이넨 | Anders Ekman | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Anders_Ekman_-_V%C3%A4in%C3%A4m%C3%B6inen_stringing_his_kantele_-_A_II_985-138_-_Finnish_National_Gallery.jpg) |
+| 쿨레르보의 저주 | 쿨레르보 | Akseli Gallen-Kallela | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Akseli_Gallen-Kallela_-_Kullervon_kirous_-_A_II_765_-_Finnish_National_Gallery.jpg) |
+| 바닷가의 아이노 | 아이노 | Sigfrid Keinänen | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Kein%C3%A4nen,_Aino_meren_rannalla.jpg) |
+| 요우카하이넨의 복수 | 요우카하이넨 | Akseli Gallen-Kallela | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gallen-Kallela_Joukahainen%27s_revenge.jpg) |
 
 ## 마야 신화
 
@@ -299,6 +395,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 「드레스덴 코덱스」의 차크 | 차크 | Un scribe maya précolombien non identifié avant 1500. | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Le_dieu_Chaac,_image_12_du_codex_de_Dresde.jpg) |
 | 치첸이차의 엘 카스티요 (쿠쿨칸 신전) | 쿠쿨칸 | Arian Zwegers from Brussels, Belgium | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | [Commons](https://commons.wikimedia.org/wiki/File:Chichen_Itza,_El_Castillo_(14180679857).jpg) |
 | 코판의 옥수수 신 | 옥수수 신 | BabelStone | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Commons](https://commons.wikimedia.org/wiki/File:Maya_maize_god_statue.jpg) |
+| 드레스덴 코덱스 74쪽 | 이슈 첼 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Dresden_p_74_large.jpg) |
 
 ## 이란 신화
 
@@ -311,6 +408,15 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 페레이둔에게 묶인 자하크와 대장장이 카베 | 카베 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Zahhak_bound_by_Fereydun,_whilst_Kaveh_the_Blacksmith_is_holding_a_apron-banner._From_a_mid-17th-century_Safavid_miniature.jpg) |
 | 용 아지 스루와르를 무찌르는 케레사스파 | 케레사스파 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Garshasp_slays_the_dragon_Azi-Sruwar.jpg) |
 | 페레이둔 앞에 끌려온 자하크 | 페레이둔 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%22Zahhak_Brought_as_a_Prisoner_before_Faridun%22,_Folio_from_a_Shahnama_(Book_of_Kings)_MET_DP164678.jpg) |
+| 루스탐의 탄생을 도우러 온 시무르그 | 시무르그 | Mohammad Zaman | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_simurgh_arrives_to_assist_with_the_birth_of_Rustam.jpg) |
+| 잘을 아버지 삼에게 데려다주는 시무르그 | 잘 | Sadiqi Beg | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Zal_returned_to_Sam_by_the_Simurgh.jpg) |
+| 다마반드산에 묶이는 자하크 | 자하크 | Attributed to Sultan Muhammad | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sultan_Muhammad_Tiran_Zahhak.jpg) |
+| 바위에 글을 새기는 잠시드 | 잠시드 | Abd al-Samad | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Abd_as-Samad_Shirin_Qalam_-_Jamshid_Writing_on_a_Rock_-_Google_Art_Project.jpg) |
+| 소흐랍의 죽음을 슬퍼하는 루스탐 | 소흐랍 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:RostamMournsSohrab.jpg) |
+| 불의 시험을 치르는 시야바시 | 시야바시 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_fire_ordeal_of_Siyavush_(37b)._Shahnama_of_Firdawsi_(1486)_British_Library_Add._18188.jpg) |
+| 용을 무찌르는 에스판디야르 | 에스판디야르 | Attributed to Qasim ibn 'Ali | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%22Isfandiyar%27s_Third_Course-_He_Slays_a_Dragon%22,_Folio_434v_from_the_Shahnama_(Book_of_Kings)_of_Shah_Tahmasp_MET_DP107166.jpg) |
+| 잠든 루스탐을 지키려 사자를 죽이는 락시 | 락시 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Rakhsh_Kills_a_Lion_while_Rustam_Sleeps.jpg) |
+| 소머리 철퇴로 자하크를 치는 페레이둔 | 페레이둔 | Attributed to Sultan Muhammad | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Faridun_strikes_Zahhak_with_the_ox-headed_mace.jpg) |
 
 ## 가나안 신화
 
@@ -318,6 +424,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | --- | --- | --- | --- | --- |
 | 번개를 든 바알 석비 | 바알 | Jastrow | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Baal_thunderbolt_Louvre_AO15775.jpg) |
 | 옥좌에 앉은 여신 (아스타르테로 보는 상) | 아스타르테 | Faustyna E. | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:PhoenicianGoddess(Astarte_)onThrone_ViennaKunsthistorischesMuseum_cropped_FaustynaE.jpg) |
+| 메기도의 금박 신상 | 엘 | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:El,_the_Canaanite_creator_deity,_Megiddo,_Stratum_VII,_Late_Bronze_II,_1400-1200_BC,_bronze_with_gold_leaf_-_Oriental_Institute_Museum,_University_of_Chicago_-_DSC07734.JPG) |
 
 ## 히타이트 신화
 
@@ -340,11 +447,18 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 천둥의 신 페룬 | 페룬 | Andrey Shishkin | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0) | [Commons](https://commons.wikimedia.org/wiki/File:Perun_Gromoverzhecz_by_Andrey_Shishkin.jpg) |
 | 즈브루치의 우상 | 스뱌토비트 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Svetovid_%E2%80%93_Zbruch_Idol_(MAK-63).jpg) |
 | 바바 야가 | 바바 야가 | Ivan Bilibin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bilibin._Baba_Yaga.jpg) |
-| 일리야 무로메츠와 도브리냐 니키티치 | 도브리냐 니키티치 | Robert Steele | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:A_Russian_Garland_of_Fairy_Tales_DJVU_pg_085.jpg) |
 | 힘세고 용감한 용사 일리야 무로메츠 | 일리야 무로메츠 | Golyshev, I. -- Lithographer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sil%27nyi_khrabryi_bogatyr%27_Il%27ia_Muromets.jpg) |
 | 죽지 않는 코셰이 | 죽지 않는 코셰이 | Ivan Bilibin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ivan_Bilibin_Koshchey.jpg) |
 | 마르코 크랄례비치 | 마르코 크랄례비치 | Đura Jakšić | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%C4%90ura_Jak%C5%A1i%C4%87_-_Kraljevi%C4%87_Marko,_1856,_Narodni_muzej.jpg) |
 | 카를교의 브룬츠비크 상 | 브룬츠비크 | Čtenář | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Socha_Bruncv%C3%ADka_na_karlov%C4%9B_most%C4%9B.jpg) |
+| 이반 왕자와 불새 | 불새 | Ivan Bilibin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Firebird.jpg) |
+| 도브리냐 니키티치와 머리 일곱 달린 즈메이 고리니치의 싸움 | 즈메이 고리니치 | Viktor Vasnetsov | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:%D0%97%D0%BC%D0%B5%D0%B9-%D0%93%D0%BE%D1%80%D1%8B%D0%BD%D1%8B%D1%87,_%D0%B8%D0%BB%D0%B8_%D0%91%D0%BE%D0%B9_%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%BD%D0%B8_%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B8%D1%87%D0%B0_%D1%81_%D1%81%D0%B5%D0%BC%D0%B8%D0%B3%D0%BB%D0%B0%D0%B2%D1%8B%D0%BC_%D0%97%D0%BC%D0%B5%D0%B5%D0%BC-%D0%93%D0%BE%D1%80%D1%8B%D0%BD%D1%8B%D1%87%D0%B5%D0%BC.jpg) |
+| 바닷속 왕국의 사드코 | 사드코 | Ilya Repin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ilya_Repin_-_Sadko_-_Google_Art_Project.jpg) |
+| 바바 야가의 집 앞에 선 아름다운 바실리사 | 아름다운 바실리사 | Ivan Bilibin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Russian_Wonder_Tales_081.jpg) |
+| 시린과 알코노스트 (기쁨과 슬픔의 노래) | 시린과 알코노스트 | Viktor Vasnetsov | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Vasnetsov_Sirin_Alkonost.jpg) |
+| 루살카들 | 루살카 | Ivan Kramskoi | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Iwan_Nikolajewitsch_Kramskoj_002.jpg) |
+| 보가티르 | 알료샤 포포비치 | Viktor Vasnetsov | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:1898_Vasnetsov_Bogatyrs_anagoria.JPG) |
+| 자바바를 구해 낸 도브리냐 니키티치 | 도브리냐 니키티치 | Ivan Bilibin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Dobrynya_Nikitich_rescues_Zabava_from_the_Gorynych,_1941.jpg) |
 
 ## 발트 신화
 
@@ -379,7 +493,8 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
 | 사탈라 청동 두상 (도판) | 아나히트 | Thomas Eyre Macklin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:T.E._Macklin_Aphrodite_bronze_mask.jpg) |
-| 바하근의 탄생 | 바하근 | Zabelle C. Boyajian | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Birth_of_Vahagn_Zabelle_Boyajian.jpg) |
+| 벨을 쓰러뜨리는 하이크 | 하이크 | Juliano Zasso | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hayk_defeats_Bel_-_Guiliano_Zasso.jpg) |
+| 세미라미스와 아름다운 아라 | 아름다운 아라 | Vardges Sureniants | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Shamiram_ara.jpeg) |
 
 ## 헝가리 신화
 
@@ -393,6 +508,8 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | --- | --- | --- | --- | --- |
 | 프랭크스 상자 (도판) | 웨일랜드 | 작자 미상 | [No restrictions](https://www.flickr.com/commons/usage/) | [Commons](https://commons.wikimedia.org/wiki/File:Contributions_to_Old_English_literature_(1901)_(14597378649).jpg) |
 | 그렌델 (「베오울프 이야기」 삽화) | 베오울프 | Joseph Ratcliffe Skelton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_grendel.jpg) |
+| 그렌델의 머리를 메고 돌아오는 전사들 | 그렌델 | Joseph Ratcliffe Skelton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_head_of_grendel.jpg) |
+| 용과 싸우는 베오울프 | 베오울프 | J. R. Skelton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Stories_of_beowulf_fighting_the_dragon.jpg) |
 
 ## 트라키아 신화
 
@@ -427,6 +544,9 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 코리칸차의 잉카 우주관 금판 | 인티 | Pierre André Leclercq | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Cuzco.-_Temple_Koricancha_cosmologie_Inca,_(2).jpg) |
 | 티와나쿠의 태양의 문 | 비라코차 | Bgabel | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bol-tihuanaco-sonnentor.jpg) |
 | 포토시 산의 성모 | 파차마마 | Dan Lundberg | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) | [Commons](https://commons.wikimedia.org/wiki/File:20170808_Bolivia_1411_Potos%C3%AD_sRGB_(26204035019).jpg) |
+| 망코 카팍 (무루아 「페루 통사」) | 망코 카팍 | Fray Martín de Murúa | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:La_adoraci%C3%B3n_de_Manco_C%C3%A1pac.jpg) |
+| 첫 잉카 망코 카팍 | 망코 카팍 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_Manco_Capac,_First_Inca,_1_of_14_Portraits_of_Inca_Kings.jpg) |
+| 마마 오클료 | 마마 오클료 | Daderot | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Mama_Ocllo,_artist_unknown,_Cuzco,_Peru,_c._1835-1845,_oil_on_canvas_-_Fogg_Art_Museum,_Harvard_University_-_DSC02018.jpg) |
 
 ## 하이다 신화
 
@@ -457,8 +577,11 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
 | 해를 붙잡는 마우이 | 마우이 | Hiart | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Maui_Snaring_the_Sun_by_Arman_Tateos_Manookian,_c._1927,_drawing,_Honolulu_Museum_of_Art.jpg) |
+| 바다에서 뉴질랜드를 낚아 올리는 마우이 | 마우이 | Wilhelm Dittmer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Te_Tohunga_-_p49.png) |
 | 루루투의 신상 아아 (도판) | 탕가로아 | 작자 미상 | [No restrictions](https://www.flickr.com/commons/usage/) | [Commons](https://commons.wikimedia.org/wiki/File:Handbook_to_the_ethnographical_collections_(1910)_(14596837587).jpg) |
 | 깃털로 만든 쿠의 신상 | 쿠 | Lebrac | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Commons](https://commons.wikimedia.org/wiki/File:Kuka%27ilimoku.jpg) |
+| 히나 테파투 (달과 땅) | 히나 | Paul Gauguin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_Hina_Tefatou_-_Google_Art_Project.jpg) |
+| 숲의 신 타네 | 타네 | Wilhelm Dittmer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Te_Tohunga_-_p11.png) |
 
 ## 라파누이 신화
 
@@ -508,16 +631,20 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 바롱 켓 | 바롱 | Daderot | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Barong_Ket,_Bali,_undated_-_Spurlock_Museum,_UIUC_-_DSC05997.jpg) |
 | 랑다 가면 | 랑다 | Silar | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:02021_0109_(1)_Rangda_mask.jpg) |
 | 데위 스리로 소개된 석상 (사진) | 데위 스리 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Statue_of_Dewi_Sri,_Wanita_di_Indonesia_p4_(Lichtbeelden_Institute).jpg) |
+| 스마르 가면 | 스마르 | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Masker_van_de_ponokawan_Semar,_AK-RAK-1998-3.jpg) |
 
 ## 아서왕 전설
 
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
 | 아서 왕 | 아서 왕 | Charles Ernest Butler | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Charles_Ernest_Butler_-_King_Arthur.jpg) |
+| 윈체스터 원탁 | 아서 왕 | Andy Li | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Round_Table_of_Winchester_2026-07-12.jpg) |
 | 예언을 받아 적게 하는 멀린 | 멀린 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Merlin_(illustration_from_middle_ages).jpg) |
 | 팔라메데스와 싸우는 랜슬롯 | 랜슬롯 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Lancelot_battles_Palamedes_(5152629).jpg) |
 | 로트 왕의 아들 가웨인 경 | 가웨인 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Arthur-Pyle_Sir_Gawaine_the_Son_of_Lot,_King_of_Orkney.JPG) |
+| 가웨인을 찾아온 성주의 아내 | 가웨인 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Green_Knight%27s_wife_and_Gawain_-_Sir_Gawain_and_the_Green_Knight_(c.1400-1410),_f.129_-_BL_Cotton_MS_Nero_A_X.jpg) |
 | 트리스탄과 아내 이죄, 그 오빠 카헤댕 | 트리스탄 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Tristan,_his_wife_Yzeut_and_her_brother_Kahedin_(5152712).jpg) |
+| 묘약을 든 트리스탄과 이졸데 | 트리스탄 | John William Waterhouse | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_william_waterhouse_tristan_and_isolde_with_the_potion.jpg) |
 | 엑스칼리버를 호수에 던지는 베디비어 | 베디비어 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:King_Arthur_Sir_Bedivere_throwing_Excalibur_into_the_lake_by_Walter_Crane.jpg) |
 | 아서 왕과 모드레드의 싸움 | 모드레드 | William Hatherell | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Battle_Between_King_Arthur_and_Sir_Mordred_by_William_Hatherell.jpg) |
 | 모르간 르 페이 | 모르간 르 페이 | Frederick Sandys | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sandys,_Frederick_-_Morgan_le_Fay.JPG) |
@@ -526,6 +653,11 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 로엔그린으로 분한 하인리히 포글 | 로엔그린 | various | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Die_Gartenlaube_(1890)_b_769.jpg) |
 | 요정 비비안을 이기는 퍼시벌 경 | 퍼시벌 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sir_Percival_overcometh_ye_Enchantress_Vivien.png) |
 | 원탁에 나타난 성배 | 갤러해드 | Évrard d'Espinques | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Holy-grail-round-table-bnf-ms_fr-116F-f610v-15th-detail.jpg) |
+| 귀네비어 왕비의 5월 나들이 | 귀네비어 | John Collier | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Collier_Queen_Guinevre%27s_Maying.jpg) |
+| 아름다운 이졸데 (라 벨 이죄) | 이졸데 | William Morris | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:La_Belle_Iseult_-_Willam_Morris_(1858).jpg) |
+| 자기 머리를 든 녹색 기사 | 녹색 기사 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gawain_and_the_Green_Knight.jpg) |
+| 호수의 여인에게 엑스칼리버를 청하는 아서 왕 | 호수의 여인 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:CRANE_King_Arthur_asks_the_lady_of_the_lake_for_the_sword_Excalibur.jpg) |
+| 우서 펜드래건 | 우서 펜드래건 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pyle_Uther_Pendragon.jpg) |
 
 ## 샤를마뉴 전설
 
@@ -533,12 +665,18 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | --- | --- | --- | --- | --- |
 | 론세스바예스의 롤랑 | 롤랑 | Gustave Doré | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Roland_%C3%A0_Roncevaux.jpg) |
 | 샤를마뉴와 이탈리아 왕 피핀 | 샤를마뉴 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Karl_der_Grosse_-_Pippin_von_Italien.jpg) |
+| 주아이외즈라고 불리는 대관식 칼 | 샤를마뉴 | Shonagon | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:%C3%89p%C3%A9e_du_sacre_des_rois_de_France,_dite_Joyeuse_-_Mus%C3%A9e_du_Louvre_Objets_d%27art_MS_84.jpg) |
 | 하르피이아를 물리치는 아스톨포 | 아스톨포 | Massimo d'Azeglio | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Massimo_d%27Azeglio_-_Astolfo_debella_le_arpie.jpg) |
+| 엘리야의 수레를 타고 달로 가는 성 요한과 아스톨포 | 아스톨포 | Gustave Doré | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_In_Elijah%27s_chariot,_St._John_and_Astolfo_travel_to_the_moon.jpg) |
 | 멀린의 무덤 앞의 브라다만테 | 브라다만테 | Alexandre-Évariste Fragonard | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Bradamante_at_Merlin%27s_Tomb_by_Alexandre-Evariste_Fragonard,_High_Museum_of_Art.jpg) |
 | 만드리카르도의 흉상 | 만드리카르도 | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Buste_van_Mandricardo_Mandricardo_(titel_op_object)_Karakters_uit_%27Orlando_Furioso%27_(serietitel),_RP-P-H-H-1425.jpg) |
 | 오지에 르 다누아 | 오지에 르 다누아 | Saddhiyama | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Holger_Danske_i_Sk%C3%A6vinge_kirke.jpg) |
 | 르노 드 몽토방의 죽음 | 르노 드 몽토방 | Louis Petit de Julleville | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:HLLF-T1-d264-265_Les_quatre_fils_Aimon.png) |
 | 롱스보의 롤랑 | 롤랑 | Louis Félix Guesnet | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:RolandACloss.jpg) |
+| 히포그리프를 탄 기사 | 히포그리프 | Gustave Doré | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Orlando_Furioso_9.jpg) |
+| 롤랑의 죽음 | 롤랑 | Jean Fouquet | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Mort_de_Roland.jpg) |
+| 메도로의 이름을 나무에 새기는 안젤리카 | 안젤리카 | Giovanni Battista Tiepolo | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Giovanni_Battista_Tiepolo_-_Ang%C3%A9lique_grave_le_nom_de_M%C3%A9dor.jpg) |
+| 브라다만테에게 편지를 쓰려는 루지에로 | 루지에로 | Jean-Honoré Fragonard | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Jean-Honor%C3%A9_Fragonard_-_Ruggiero,_Troubled_in_Mind,_Prepares_to_Write_to_Bradamante_-_NMH_236-1975_-_Nationalmuseum.jpg) |
 
 ## 게르만 영웅 전설
 
@@ -550,6 +688,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 기비히 왕과 싸우는 힐데브란트 | 힐데브란트 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:HILDEBRANT_ROSENGARTEN.png) |
 | 도망치는 발터와 힐트군트 | 아키텐의 발터 | Johannes Gehrts | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Walther_und_Hildgund_auf_de_Flucht.png) |
 | 타른카페를 쓴 지크프리트 | 지크프리트 | Julius Schnorr von Carolsfeld | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pfizer_(1843)-ed-Nibelungen_Not-p124-sigfrid-in-tarnkappen.jpg) |
+| 니벨룽의 보물을 라인강에 가라앉히는 하겐 | 하겐 | Julius Schnorr von Carolsfeld | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pfizer_(1843)-ed-Nibelungen_Not-p211-Hagen%26merminnen.jpg) |
 
 ## 로마 건국 전설
 
@@ -572,6 +711,7 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 옥좌의 사제왕 요한 | 사제왕 요한 | Diogo Homem | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Prester_John.jpg) |
 | 성 마르가리타와 용 | 안티오키아의 마르가리타 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Saint_Margaret_and_the_Dragon_MET_DP801859.jpg) |
 | 아모레트를 구하는 브리토마트 | 브리토마트 | William Etty | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Etty_Britomart_1833.jpg) |
+| 개울가의 하베트롯 | 하베트롯 | James Torrance | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Douglas-Scottish_FFT(1901)-p109-Habitrot-illustr-J_Torrance.jpg) |
 
 ## 북아메리카 민담
 
@@ -592,4 +732,19 @@ Ark가 보여 주는 자료 그림 330점의 저작자·사용 허락·원본입
 | 셰에라자드 | 셰에라자드 | Sophie Gengembre Anderson | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sophie_Gengembre_Anderson_-_Scheherazade.jpg) |
 | 등잔을 찾은 알라딘 | 알라딘 | Felix Octavius Carr Darley | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:FOCDarley-Aladdin-finds-the-lamp.JPG) |
 | 숲속의 알리바바 | 알리바바 | Aubrey Beardsley | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ali_Baba_in_the_Wood.jpg) |
+| 도둑들의 보물 동굴 | 알리바바 | John D. Batten | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Fairy_tales_from_the_Arabian_nights_-_Batten_illustration_at_page_306.png) |
 | 로크의 알을 깨는 상인들 | 신드바드 | Gustave Doré | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sinbad_the_Sailor_(5th_Voyage).jpg) |
+| 로크 | 로크 | Edmund Dulac | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sinbad_the_sailor_%26_other_stories_from_the_Arabian_nights_-_Dulac_color_plate_facing_page_024.jpg) |
+
+## 타이노 신화
+
+| 자료 | 신 | 저작자 | 사용 허락 | 원본 |
+| --- | --- | --- | --- | --- |
+| 삼각석 | 유카우 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Three-Cornered_Stone_(Trigonolito)_MET_DT4135.jpg) |
+| 제미 코오바 받침 | 제미 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Deity_Figure_(Zem%C3%AD)_MET_DT1258.jpg) |
+
+## 모체 신화
+
+| 자료 | 신 | 저작자 | 사용 허락 | 원본 |
+| --- | --- | --- | --- | --- |
+| 목 베는 신 장식판 | 아이 아파엑 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Decapitator_Plaque_MET_DT11614.jpg) |
