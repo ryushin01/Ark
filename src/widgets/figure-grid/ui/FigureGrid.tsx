@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { monogram } from "@/shared/lib";
+
 import styles from "./FigureGrid.module.css";
 
 import type { ThumbImage } from "@/shared/lib";
@@ -50,7 +52,7 @@ export function FigureGrid({
                 // (링크 이름이 신 이름으로 시작하게)
                 <span className={styles.empty} aria-hidden="true">
                   <span className={styles.glyph} lang="en">
-                    {figure.nameEn.charAt(0)}
+                    {monogram(figure.nameEn)}
                   </span>
                   <span className={styles.emptyNote}>자료 준비 중</span>
                 </span>
