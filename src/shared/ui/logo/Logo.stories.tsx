@@ -30,6 +30,11 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const logos = within(canvasElement).getAllByRole("img", { name: "Ark" });
     await expect(logos).toHaveLength(2);
-    await expect(logos[0].querySelector("path")).toHaveAttribute("fill", "currentColor");
+    const path = logos[0].querySelector("path");
+    await expect(path).toHaveAttribute("fill", "currentColor");
+    // 원본처럼 A의 속(가로획 위 삼각형)은 비고, 굵은 빗금과 오른쪽 다리는 칠합니다 (경로 좌표)
+    await expect(path?.isPointInFill(new DOMPoint(760, 640))).toBe(false);
+    await expect(path?.isPointInFill(new DOMPoint(330, 900))).toBe(true);
+    await expect(path?.isPointInFill(new DOMPoint(860, 600))).toBe(true);
   },
 };

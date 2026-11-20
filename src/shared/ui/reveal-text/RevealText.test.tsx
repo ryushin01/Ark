@@ -13,4 +13,20 @@ describe("RevealText", () => {
     render(<RevealText text="신들의 기록" />);
     expect(screen.getByText("신들의 기록").tagName).toBe("P");
   });
+
+  it("block 모드는 낱말 하나에 글꼴을 따로 줄 수 있게 React 노드도 그대로 그립니다", () => {
+    render(
+      <RevealText
+        text={
+          <>
+            <span lang="en">Ark</span>는 세계 신화 도서관입니다.
+          </>
+        }
+      />,
+    );
+    const word = screen.getByText("Ark");
+    expect(word).toHaveAttribute("lang", "en");
+    expect(word.parentElement?.tagName).toBe("P");
+    expect(word.parentElement).toHaveTextContent("Ark는 세계 신화 도서관입니다.");
+  });
 });
