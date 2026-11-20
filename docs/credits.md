@@ -1,13 +1,13 @@
 # 자료 그림 출처
 
-Ark가 보여 주는 자료 그림 475점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
+Ark가 보여 주는 자료 그림 477점의 저작자·사용 허락·원본입니다. 모두 Wikimedia Commons의 파일이며, 화면에는 그림마다의 출처를 적지 않고 [README의 출처](../README.md#출처)와 이 목록에 모읍니다. 어드민에서 더하거나 이미지·출처를 고친 자료는 데이터베이스에만 있어 이 목록에 없으므로, 그런 자료만 화면에 출처를 함께 보여 줍니다.
 
 > 이 파일은 `pnpm credits`가 자료 데이터(`src/entities/exhibit/api/mock-data.ts`와 `mock/commons-images.json`, 시드와 같은 데이터)에서 만듭니다. 직접 고치지 말고 데이터를 고친 뒤 다시 만드세요. 데이터와 어긋나면 `scripts/credits.test.ts`가 실패합니다.
 
 | 사용 허락 | 점 |
 | --- | ---: |
 | Public domain | 351 |
-| CC0 | 91 |
+| CC0 | 93 |
 | CC BY-SA 4.0 | 11 |
 | CC BY-SA 3.0 | 4 |
 | No restrictions | 4 |
@@ -51,6 +51,8 @@ Ark가 보여 주는 자료 그림 475점의 저작자·사용 허락·원본입
 | 소베크에게 제물을 바치는 왕 | 소베크 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Egyptian_-_Chest_with_Writing_-_Walters_61271_-_Detail.jpg) |
 | 타웨레트 부적 | 타웨레트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Taweret_Amulet_MET_DP109372.jpg) |
 | 네이트 청동 소상 | 네이트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Statuette_of_the_goddess_Neith_MET_DP311635.jpg) |
+| 와스 홀 모형 | 세트 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Was_scepter_MET_LC-12_182_64_EGDP026979.jpg) |
+| 앙크 모형 | 호루스 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Model_ankh_MET_LC-12_182_66_EGDP028760.jpg) |
 
 ## 메소포타미아 신화
 
