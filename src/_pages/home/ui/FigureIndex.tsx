@@ -4,6 +4,7 @@ import { type CSSProperties, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { skipsOptimization } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 
 import styles from "./FigureIndex.module.css";
@@ -91,7 +92,14 @@ export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
             className={styles.previewFrame}
             style={{ aspectRatio: `${preview.width} / ${preview.height}` }}
           >
-            <Image src={preview.src} alt="" fill sizes="240px" className={styles.previewImage} />
+            <Image
+              src={preview.src}
+              unoptimized={skipsOptimization(preview.src)}
+              alt=""
+              fill
+              sizes="240px"
+              className={styles.previewImage}
+            />
           </div>
         )}
       </div>

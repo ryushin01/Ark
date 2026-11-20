@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
+import { skipsOptimization } from "@/shared/lib";
 import { FilterGroup, HandNote, RevealText } from "@/shared/ui";
 
 import styles from "./ScoreRows.module.css";
@@ -94,7 +95,14 @@ export function ScoreRows({ items }: { items: ScoreRow[] }) {
                       aspectRatio: Math.min(1.7, Math.max(0.6, image.width / image.height)),
                     }}
                   >
-                    <Image src={image.src} alt="" fill sizes="160px" className={styles.image} />
+                    <Image
+                      src={image.src}
+                      unoptimized={skipsOptimization(image.src)}
+                      alt=""
+                      fill
+                      sizes="160px"
+                      className={styles.image}
+                    />
                   </span>
                 ))}
               </span>
