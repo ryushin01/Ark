@@ -52,6 +52,18 @@ const cleanArtist = (value) => {
 };
 
 /**
+ * Commons 메타데이터의 라이선스가 맞지 않는 항목. 잘라 낸 파일에 원본의 라이선스가 아닌 값이 붙은 경우 등입니다.
+ * 원본 파일의 라이선스로 고정해 다시 받아도 되돌아가지 않게 합니다.
+ */
+const LICENSE_OVERRIDES = {
+  // 덴마크 국립박물관의 CC BY-SA 사진(Gundestrupkedlen- 00054.jpg)을 잘라 낸 파일인데 PD로 잘못 표시됨
+  "cernunnos-gundestrup": {
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+  },
+};
+
+/**
  * Commons 메타데이터의 저작자 칸이 맞지 않는 항목 (스캔 기관·파생 작업자·본문 저자가 적혀 있음).
  * 다시 받을 때 손으로 고친 값이 되돌아가지 않게 여기서 고정합니다.
  */
@@ -166,12 +178,12 @@ for (const { id, file } of sources) {
     src: `/images/exhibits/${id}.jpg`,
     width: output.info.width,
     height: output.info.height,
-    license,
-    licenseUrl: meta.LicenseUrl?.value ?? null,
+    license: LICENSE_OVERRIDES[id]?.license ?? license,
+    licenseUrl: LICENSE_OVERRIDES[id]?.licenseUrl ?? meta.LicenseUrl?.value ?? null,
     artist: ARTIST_OVERRIDES[id] ?? cleanArtist(meta.Artist?.value),
     sourceUrl: info.descriptionurl,
   };
-  console.log(`${id}: ${license} · ${result[id].artist ?? "-"}`);
+  console.log(`${id}: ${result[id].license} · ${result[id].artist ?? "-"}`);
 }
 
 await writeFile(

@@ -6,10 +6,10 @@ Ark가 보여 주는 자료 그림 561점의 저작자·사용 허락·원본입
 
 | 사용 허락 | 점 |
 | --- | ---: |
-| Public domain | 403 |
+| Public domain | 402 |
 | CC0 | 125 |
 | CC BY-SA 4.0 | 11 |
-| CC BY-SA 3.0 | 4 |
+| CC BY-SA 3.0 | 5 |
 | No restrictions | 4 |
 | CC BY 3.0 | 3 |
 | CC BY 4.0 | 3 |
@@ -347,7 +347,7 @@ Ark가 보여 주는 자료 그림 561점의 저작자·사용 허락·원본입
 
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
-| 군데스트루프 솥의 뿔 달린 신 | 케르눈노스 | Nationalmuseet, Roberto Fortuna og Kira Ursem | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gundestrupkedlen-_00054_(cropped).jpg) |
+| 군데스트루프 솥의 뿔 달린 신 | 케르눈노스 | Nationalmuseet, Roberto Fortuna og Kira Ursem | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Commons](https://commons.wikimedia.org/wiki/File:Gundestrupkedlen-_00054_(cropped).jpg) |
 | 전투하는 쿠 훌린 | 쿠 훌린 | Joseph Christian Leyendecker | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Cuchulain_in_Battle.jpg) |
 | 성녀 브리지다 | 브리지트 | John Duncan | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Duncan_(1913)_Saint_Bride.jpg) |
 | 까마귀 (「전투하는 쿠 훌린」 부분) | 모리안 | Joseph Christian Leyendecker | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Morrigan.jpg) |
