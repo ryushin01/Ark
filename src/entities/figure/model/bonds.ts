@@ -26,6 +26,26 @@ export const BONDS: Bond[] = [
   { rider: "odin", partner: "huginn-muninn", relation: "companion" },
   { rider: "hades", partner: "cerberus", relation: "companion" },
   { rider: "change", partner: "jade-rabbit", relation: "companion" },
+  {
+    rider: "astolfo",
+    partner: "hippogriff",
+    relation: "mount",
+    note: "「광란의 오를란도」에서 루지에로가 먼저 탔고, 뒤에 아스톨포가 이어받았습니다.",
+  },
+  {
+    rider: "ruggiero",
+    partner: "hippogriff",
+    relation: "mount",
+    note: "「광란의 오를란도」에서 루지에로가 이 히포그리프를 타고 알치나의 섬까지 날아갔습니다.",
+  },
+  { rider: "vishnu", partner: "garuda", relation: "mount" },
+  { rider: "rostam", partner: "rakhsh", relation: "mount" },
+  {
+    rider: "zal",
+    partner: "simurgh",
+    relation: "companion",
+    note: "잘을 길러 준 새로, 깃털을 태우면 나타나 그 집안을 도왔습니다.",
+  },
 ];
 
 /** 신 상세에 쓰는 이름: 이 신의 탈것·동반자, 이 존재를 타거나 곁에 둔 신 */

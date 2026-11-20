@@ -3,6 +3,7 @@ import { expect, type Page, test } from "@playwright/test";
 
 import { MOCK_EXHIBITS } from "../src/entities/exhibit/api/mock-data";
 import { MOCK_FIGURES } from "../src/entities/figure/api/mock-data";
+import { MOCK_PANTHEONS } from "../src/entities/pantheon/api/mock-data";
 import { MOCK_RELICS } from "../src/entities/relic/api/mock-data";
 
 /** 메모리 저장소를 함께 쓰므로 어드민 테스트는 순서대로 실행합니다. */
@@ -161,7 +162,10 @@ test("관리자는 신화 계열을 만들고 지울 수 있습니다. 신이 �
 
   await expect(async () => {
     await page.goto("/");
-    await expect(page.locator("#pantheons ol > li")).toHaveCount(50, { timeout: 1000 });
+    // 시드 계열 + 이 테스트가 만든 계열 하나
+    await expect(page.locator("#pantheons ol > li")).toHaveCount(MOCK_PANTHEONS.length + 1, {
+      timeout: 1000,
+    });
   }).toPass();
 
   await page.goto("/admin/pantheons/celtic-e2e");
