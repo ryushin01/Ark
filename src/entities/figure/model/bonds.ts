@@ -46,6 +46,19 @@ export const BONDS: Bond[] = [
     relation: "companion",
     note: "잘을 길러 준 새로, 깃털을 태우면 나타나 그 집안을 도왔습니다.",
   },
+  { rider: "shiva", partner: "nandi", relation: "mount" },
+  {
+    rider: "vishnu",
+    partner: "shesha",
+    relation: "companion",
+    note: "우주의 바다 위에서 셰샤의 몸 위에 누워 쉽니다.",
+  },
+  {
+    rider: "an-duong-vuong",
+    partner: "kim-quy",
+    relation: "companion",
+    note: "성을 쌓을 때와 나라를 잃을 때 나타나 왕을 도왔습니다.",
+  },
 ];
 
 /** 신 상세에 쓰는 이름: 이 신의 탈것·동반자, 이 존재를 타거나 곁에 둔 신 */

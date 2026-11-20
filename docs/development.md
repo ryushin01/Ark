@@ -108,7 +108,7 @@
 계열은 가장 이른 문헌의 연도(`eraYear`) 순서로 놓고, 대륙(`continent`: 아시아·유럽·아프리카·아메리카·오세아니아)으로 거를 수 있습니다. 나무위키 「신화/목록」을 바탕으로 넓혔지만, 다음은 넣지 않았습니다.
 
 - 퍼블릭 도메인·CC 라이선스의 자료 이미지를 한 점도 찾지 못한 계열 (예: 아칸 신화). 계열마다 대표 자료가 있어야 하기 때문입니다.
-- 이미지가 신과 무관하거나(축제 사진, 풍경), 현대 창작물만 있는 경우. 이런 신은 자료 없이 소개만 둡니다 (예: 라이마, 바하근, 암마, 마우-리사, 락롱꾸언).
+- 이미지가 신과 무관하거나(축제 사진, 풍경), 현대 창작물만 있는 경우. 이런 신은 자료 없이 소개만 둡니다 (예: 라이마, 바하근, 암마, 마우-리사). 신 카드(`FigureGrid`)에는 그림 대신 악보의 오선 위에 영문 이름 첫 글자를 외곽선으로 새긴 기본 그림을 보여 줍니다(비밀 전시실의 빈 진열장과 같은 방식). 기본 그림은 자료가 아니므로 자료 수와 출처 목록에 넣지 않습니다.
 - 현대 종교의 신앙 대상이나, 공동체가 외부 공개를 원하지 않는 전승
 
 목업 데이터를 바꾸면 `pnpm db:seed:generate`로 `supabase/seed.sql`을 다시 만들고, 로컬은 `pnpm db:reset`으로 넣습니다. 운영은 main에 합치면 배포 워크플로가 코드에서 바뀐 행만 넣습니다(아래 "운영 배포"). 빈 운영 DB를 처음 채울 때만 `psql`로 `supabase/seed.sql`을 실행합니다. 시드는 이미 있는 행을 건너뜁니다(`on conflict do nothing`).
@@ -198,7 +198,7 @@
 - 정적 파일이라 폴더 주소로는 열리지 않아 `/storybook`을 `/storybook/index.html`로 보냅니다(`next.config.ts`의 `redirects`).
 - 이때 `pnpm build-storybook`(앱 빌드가 먼저 부르는 스크립트)으로 빌드할 때는 `public` 폴더를 복사하지 않습니다. 같은 주소에서 열리므로 스토리의 `/images`는 앱의 파일을 그대로 씁니다(결과물 약 50MB → 20MB).
 - 개발 서버(`pnpm dev`)에는 빌드 결과물이 없어 바닥글 링크가 Storybook 개발 서버(`http://localhost:6006`)로 갑니다.
-- Paseo처럼 프로젝트 아이콘을 자동으로 찾는 도구는 `src/`를 보지 않고 `public/`을 하위 폴더까지 뒤지므로, `public/` 바로 아래에 아이콘이 없으면 `public/storybook/favicon.svg`(Storybook 로고)를 고를 수 있습니다(이름순으로 앞선 `public/brand/logo.png` 덕분에 피해 왔지만, 이 파일 이름이나 형식이 바뀌면 바로 드러남). 그래서 `public/` 바로 아래에 사이트 아이콘(`src/app/icon.png`)과 같은 `favicon.png`를 둡니다(사이트는 쓰지 않음). 아이콘을 바꾸면 함께 복사하고, `src/app/public-favicon.test.ts`가 두 파일이 같은지 확인합니다.
+- Paseo처럼 프로젝트 아이콘을 자동으로 찾는 도구는 `src/`를 보지 않고 `public/`을 하위 폴더까지 뒤지므로, `public/` 바로 아래에 아이콘이 없으면 `public/storybook/favicon.svg`(Storybook 로고)를 고를 수 있습니다(예전에는 이름순으로 앞선 `public/brand/logo.png` 덕분에 피했지만, 1.2.0에서 로고를 인라인 SVG로 바꾸며 그 파일을 지웠음). 그래서 `public/` 바로 아래에 사이트 아이콘과 같은 `favicon.png`를 둡니다(사이트는 쓰지 않음). 사이트 아이콘은 `src/app`의 `icon.svg`·`favicon.ico`·`apple-icon.png`이고, 그 가운데 PNG이면서 밝은·어두운 바탕 모두에서 보이는 `apple-icon.png`(종이색 바탕의 A)를 복사합니다. 아이콘을 바꾸면 함께 복사하고, `src/app/public-favicon.test.ts`가 두 파일이 같은지 확인합니다.
 
 ## SEO
 

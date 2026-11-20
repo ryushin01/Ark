@@ -73,10 +73,11 @@
     justify-content: center;
 }
 
+/* A 모양이 칸을 꽉 채우므로 금화 아이콘 때(2rem)보다 작게(약 23px) */
 .logo {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.44rem;
+    height: 1.44rem;
 }
 
 .railLink:hover {
