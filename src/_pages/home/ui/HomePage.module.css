@@ -16,6 +16,11 @@
     text-align: center;
 }
 
+/* 브랜드 이름: 제목 글꼴 Cinzel은 소문자 자리에 작은 대문자를 그려 'ARK'처럼 보이므로, 소문자가 있는 영문 글꼴로 'Ark'를 씀 */
+.brand {
+    font-family: var(--font-sans);
+}
+
 .introNote {
     max-width: 34em;
     margin-inline: auto;

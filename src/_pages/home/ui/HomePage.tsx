@@ -103,7 +103,15 @@ export async function HomePage() {
         </h2>
         <RevealText
           className={styles.statement}
-          text="Ark는 세계 여러 문명의 신화를 한곳에 모은 도서관입니다. 신과 영웅이 어떤 모습으로 새겨지고 그려져 왔는지, 조각상과 회화, 유물로 따라갑니다."
+          text={
+            <>
+              <span className={styles.brand} lang="en">
+                Ark
+              </span>
+              는 세계 여러 문명의 신화를 한곳에 모은 도서관입니다. 신과 영웅이 어떤 모습으로
+              새겨지고 그려져 왔는지, 조각상과 회화, 유물로 따라갑니다.
+            </>
+          }
         />
         <RevealText
           className={styles.introNote}
