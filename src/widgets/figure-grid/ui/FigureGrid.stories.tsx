@@ -38,8 +38,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** 자료가 없는 신은 "자료 준비 중" 자리표시를 보여 줍니다. */
+/** 자료가 없는 신(로키)은 오선 위에 영문 이름 첫 글자를 새긴 기본 그림을 보여 줍니다. */
 export const Default: Story = {};
+
+/** 기본 그림은 장식이라 화면 낭독기에는 숨기고, 카드 링크 이름은 신 이름으로 시작합니다("자료 0점"이 같은 내용을 알림). */
+export const DefaultImage: Story = {
+  play: async ({ canvasElement }) => {
+    const card = within(canvasElement).getByRole("link", { name: /^로키/ });
+    const placeholder = card.querySelector('[aria-hidden="true"]');
+    await expect(placeholder).not.toBeNull();
+    await expect(within(placeholder as HTMLElement).getByText("L")).toBeInTheDocument();
+    await expect(card.querySelector("img")).toBeNull();
+  },
+};
 
 /** 화면 맨 위 가까이 놓인 목록(신 찾기)은 첫 줄 이미지를 지연 로딩하지 않고, 첫 장은 먼저 받습니다(LCP). */
 export const FirstRowEager: Story = {
