@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { monogram } from "@/shared/lib";
+import { skipsOptimization } from "@/shared/lib";
 
 import styles from "./FigureGrid.module.css";
 
@@ -39,6 +40,7 @@ export function FigureGrid({
               {figure.image ? (
                 <Image
                   src={figure.image.src}
+                  unoptimized={skipsOptimization(figure.image.src)}
                   alt=""
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
