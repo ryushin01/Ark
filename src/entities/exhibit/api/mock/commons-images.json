@@ -4291,5 +4291,761 @@
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "artist": null,
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Model_ankh_MET_LC-12_182_66_EGDP028760.jpg"
+  },
+  "pele-hitchcock": {
+    "src": "/images/exhibits/pele-hitchcock.jpg",
+    "width": 819,
+    "height": 1079,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "D. Howard Hitchcock",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pele_by_D._Howard_Hitchcock_(ca.1927-1929).png"
+  },
+  "taliesin-finding": {
+    "src": "/images/exhibits/taliesin-finding.jpg",
+    "width": 1200,
+    "height": 747,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Henry Clarence Whaite",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Finding_of_Taliesin.jpg"
+  },
+  "balor-fomors-duncan": {
+    "src": "/images/exhibits/balor-fomors-duncan.jpg",
+    "width": 942,
+    "height": 624,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Duncan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Fomors_-_Duncan_1912.png"
+  },
+  "gonggong-kanghui": {
+    "src": "/images/exhibits/gonggong-kanghui.jpg",
+    "width": 1280,
+    "height": 729,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E5%BA%B7%E5%9B%98%E4%BD%9C%E4%BA%82%E8%88%88%E5%85%B5%E5%AE%B3%E6%B0%91.jpg"
+  },
+  "tsukuyomi-shinbutsu-zue": {
+    "src": "/images/exhibits/tsukuyomi-shinbutsu-zue.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Utagawa Sadahide",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tsukuyomi_shinbutsu-zue.jpg"
+  },
+  "sif-dollman": {
+    "src": "/images/exhibits/sif-dollman.jpg",
+    "width": 1085,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Charles Dollman",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sif_by_Dollman.jpg"
+  },
+  "khonsu-louvre": {
+    "src": "/images/exhibits/khonsu-louvre.jpg",
+    "width": 804,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shonagon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Khonsou_-_Mus%C3%A9e_du_Louvre_Antiquit%C3%A9s_%C3%A9gyptiennes_E_4109.jpg"
+  },
+  "vritra-indra": {
+    "src": "/images/exhibits/vritra-indra.jpg",
+    "width": 988,
+    "height": 1433,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Indra_kills_Vrttirasura_(story_from_Rik_Veda,_featured_in_Bhagavatha).jpg"
+  },
+  "pachacamac-idol": {
+    "src": "/images/exhibits/pachacamac-idol.jpg",
+    "width": 1200,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Rodrigozu",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C3%8Ddolo_tallado_en_madera_del_Dios_Pachac%C3%A1mac.jpg"
+  },
+  "gatotkaca-abimanyu": {
+    "src": "/images/exhibits/gatotkaca-abimanyu.jpg",
+    "width": 1280,
+    "height": 1061,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Abimanyu_kneels_in_front_of_Gatotkaca,_Or._3390_152.tiff"
+  },
+  "anat-ramesses": {
+    "src": "/images/exhibits/anat-ramesses.jpg",
+    "width": 899,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "A. Parrot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anat_and_Ramesses_II.JPG"
+  },
+  "nandi-chola-bronze": {
+    "src": "/images/exhibits/nandi-chola-bronze.jpg",
+    "width": 1280,
+    "height": 1162,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nandi_the_Bull,_Chola_dynasty,_12th_century_AD,_Tamil_Nadu,_India,_bronze_-_Freer_Gallery_of_Art_-_DSC04479.jpg"
+  },
+  "ninurta-nimrud-relief": {
+    "src": "/images/exhibits/ninurta-nimrud-relief.jpg",
+    "width": 944,
+    "height": 1348,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Katolophyromai",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cropped_Image_of_Carving_Showing_the_Mesopotamian_God_Ninurta.png"
+  },
+  "khnum-turin": {
+    "src": "/images/exhibits/khnum-turin.jpg",
+    "width": 1269,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Statuette_of_the_god_Khnum,_steatite_-_Museo_Egizio_Turin_C_513_p02.jpg"
+  },
+  "hero-twins-popol-vuh-vessel": {
+    "src": "/images/exhibits/hero-twins-popol-vuh-vessel.jpg",
+    "width": 947,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vessel_with_scene_from_the_Popol_Vuh,_600-850_AD,_Guatemala,_Maya,_earthenware,_stucco,_and_pigment_-_De_Young_Museum,_San_Francisco.jpg"
+  },
+  "amma-dogon-couple": {
+    "src": "/images/exhibits/amma-dogon-couple.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Figure-_Seated_Couple_MET_DT1217.jpg"
+  },
+  "hwanin-mansindo": {
+    "src": "/images/exhibits/hwanin-mansindo.jpg",
+    "width": 960,
+    "height": 660,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mansindo_(%E8%90%AC%E7%A5%9E%E5%9C%96),_early_19th-c._Korean_shamanic_painting.jpg"
+  },
+  "samsin-munyeo-sinmu": {
+    "src": "/images/exhibits/samsin-munyeo-sinmu.jpg",
+    "width": 1000,
+    "height": 791,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Shin Yun-bok",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hyewon-Munyeo.sinmu.jpg"
+  },
+  "poiyaunpe-ainu-man": {
+    "src": "/images/exhibits/poiyaunpe-ainu-man.jpg",
+    "width": 538,
+    "height": 958,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Hirasawa Byōzan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:HirasawaByozanHomme.png"
+  },
+  "geotaji-archery": {
+    "src": "/images/exhibits/geotaji-archery.jpg",
+    "width": 1280,
+    "height": 1599,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kim Hong-do",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%99%9C%EC%8F%98%EA%B8%B0.jpg"
+  },
+  "erkhii-mergen-horse-archer": {
+    "src": "/images/exhibits/erkhii-mergen-horse-archer.jpg",
+    "width": 892,
+    "height": 699,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Muhammad ibn Mahmudshah al-Khayyam",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:IlkhanidHorseArcher.jpg"
+  },
+  "obatala-ife-head": {
+    "src": "/images/exhibits/obatala-ife-head.jpg",
+    "width": 907,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Vassil",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:British_Museum_Room_25_Head_of_a_king_Ife_17022019_5147.jpg"
+  },
+  "yemoja-ekiti-vessel": {
+    "src": "/images/exhibits/yemoja-ekiti-vessel.jpg",
+    "width": 578,
+    "height": 893,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clevelandart_1994.200.1.jpg"
+  },
+  "nangnang-painted-basket": {
+    "src": "/images/exhibits/nangnang-painted-basket.jpg",
+    "width": 1280,
+    "height": 576,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Painted_figures_on_a_lacquer_basket,_Eastern_Han_Dynasty2.jpg"
+  },
+  "vahagn-vishap": {
+    "src": "/images/exhibits/vahagn-vishap.jpg",
+    "width": 1280,
+    "height": 875,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vishap06.jpg"
+  },
+  "mawu-lisa-asen": {
+    "src": "/images/exhibits/mawu-lisa-asen.jpg",
+    "width": 821,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altar_Staff_(Asen)_MET_DP-14818-003.jpg"
+  },
+  "gangnim-ten-kings": {
+    "src": "/images/exhibits/gangnim-ten-kings.jpg",
+    "width": 1176,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bodhisattva_Jijang_(Kshitigarbha)_and_the_Ten_Kings_of_Hell_LACMA_AC1994.49.1_(9_of_9).jpg"
+  },
+  "arash-nashmi": {
+    "src": "/images/exhibits/arash-nashmi.jpg",
+    "width": 942,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Reza Abbasi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aqa_Riza_(Riza_%E2%80%98Abbasi)_-_Nashmi_the_Archer_-_1960.197_-_Harvard_Art_Museums.jpg"
+  },
+  "telipinu-hittite-goddess": {
+    "src": "/images/exhibits/telipinu-hittite-goddess.jpg",
+    "width": 1203,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seated_goddess_with_a_child_MET_DT873.jpg"
+  },
+  "an-duong-vuong-co-loa-drum": {
+    "src": "/images/exhibits/an-duong-vuong-co-loa-drum.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daaé",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Co_Loa_drums.JPG"
+  },
+  "kim-quy-turtle-tower": {
+    "src": "/images/exhibits/kim-quy-turtle-tower.jpg",
+    "width": 1280,
+    "height": 958,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Lilli Ann",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turtle_Tower_c2006.jpg"
+  },
+  "dagda-cerne-giant": {
+    "src": "/images/exhibits/dagda-cerne-giant.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Qz10",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cerne_Abbas_Giant_View.jpg"
+  },
+  "enlil-ekur-tablet": {
+    "src": "/images/exhibits/enlil-ekur-tablet.jpg",
+    "width": 1280,
+    "height": 1534,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuneiform_tablet-_Sumerian_dedicatory(%3F)_inscription_from_Ekur,_the_temple_of_the_god_Enlil_MET_DP360669.jpg"
+  },
+  "shitonai-ainu-coat": {
+    "src": "/images/exhibits/shitonai-ainu-coat.jpg",
+    "width": 1266,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coat_for_small_child,_Ainu_people,_Japan,_woven_from_inner_bark_of_elm_tree,_repaired_with_cotton_-_Etnografiska_museet_-_Stockholm,_Sweden_-_DSC01166.JPG"
+  },
+  "ibuki-doji-shutendoji": {
+    "src": "/images/exhibits/ibuki-doji-shutendoji.jpg",
+    "width": 1089,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Tsukioka Yoshitoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shutendoji_Surrounded_by_Women_LACMA_M.84.31.53.jpg"
+  },
+  "kirta-baal-cycle-tablet": {
+    "src": "/images/exhibits/kirta-baal-cycle-tablet.jpg",
+    "width": 1196,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Shonagon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tablette_avec_po%C3%A8me_mythologique_du_cycle_de_Ba%27al_-_Mus%C3%A9e_du_Louvre_Antiquit%C3%A9s_orientales_AO_16636.jpg"
+  },
+  "haemosu-sun-god-mural": {
+    "src": "/images/exhibits/haemosu-sun-god-mural.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E9%AB%98%E5%8F%A5%E4%B8%BD%E5%A2%93%E8%91%AC%E5%A3%81%E7%94%BB03.jpg"
+  },
+  "hodong-muyongchong-hunting": {
+    "src": "/images/exhibits/hodong-muyongchong-hunting.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E9%AB%98%E5%8F%A5%E4%B8%BD%E5%A2%93%E8%91%AC%E5%A3%81%E7%94%BB04.jpg"
+  },
+  "ishtar-sumerian-headdress": {
+    "src": "/images/exhibits/ishtar-sumerian-headdress.jpg",
+    "width": 1280,
+    "height": 1009,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Headdress_MET_DP226592.jpg"
+  },
+  "ilmarinen-alanen-sampo": {
+    "src": "/images/exhibits/ilmarinen-alanen-sampo.jpg",
+    "width": 1280,
+    "height": 1012,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Joseph Alanen",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joseph_Alanen_-_The_Forging_of_the_Sampo.jpg"
+  },
+  "dagda-trinity-harp": {
+    "src": "/images/exhibits/dagda-trinity-harp.jpg",
+    "width": 1280,
+    "height": 975,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Robert French",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trinity_College,_Brian_Boro%27s_Harp,_Dublin_City,_Co._Dublin_(28907881440).jpg"
+  },
+  "haemosu-han-chariot-fitting": {
+    "src": "/images/exhibits/haemosu-han-chariot-fitting.jpg",
+    "width": 1280,
+    "height": 1097,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chariot_fitting_with_design_of_dragons_and_beasts_among_clouds,_China,_Shandong_province,_Han_dynasty,_2nd_century_BC_to_2nd_century_AD,_gilt_bronze_-_Portland_Art_Museum_-_Portland,_Oregon_-_DSC08643.jpg"
+  },
+  "nuada-celtic-sword": {
+    "src": "/images/exhibits/nuada-celtic-sword.jpg",
+    "width": 1280,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sword_and_Scabbard_MET_DT107.jpg"
+  },
+  "freyr-gokstad-ship": {
+    "src": "/images/exhibits/freyr-gokstad-ship.jpg",
+    "width": 1280,
+    "height": 899,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PSM_V19_D092_Ancient_scandinavian_vessel_found_in_gokstad.jpg"
+  },
+  "an-duong-vuong-crossbow-trigger": {
+    "src": "/images/exhibits/an-duong-vuong-crossbow-trigger.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eastern_Han_Bronze_Crossbow_Trigger_Mechanism_01.jpg"
+  },
+  "thor-sam66": {
+    "src": "/images/exhibits/thor-sam66.jpg",
+    "width": 928,
+    "height": 1167,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Jakob Sigurðsson",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:S%C3%81M_66,_77v,_Thor.jpg"
+  },
+  "nangnang-buk-drum": {
+    "src": "/images/exhibits/nangnang-buk-drum.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Bernard Gagnon",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bomunsa_Temple_07.jpg"
+  },
+  "el-cid-sword-hilts": {
+    "src": "/images/exhibits/el-cid-sword-hilts.jpg",
+    "width": 1141,
+    "height": 768,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Empu%C3%B1aduras.jpg"
+  },
+  "arjuna-gandiva-chariot": {
+    "src": "/images/exhibits/arjuna-gandiva-chariot.jpg",
+    "width": 1280,
+    "height": 1050,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arjuna_shoots_from_his_chariot_which_is_driven_by_Kresna._The_chariot_is_drawn_by_the_horses_S%C3%A9nya_and_Ibrapuspa,_Or._3390_174.tiff"
+  },
+  "shesha-vishnu-madhu-kaitabha": {
+    "src": "/images/exhibits/shesha-vishnu-madhu-kaitabha.jpg",
+    "width": 1280,
+    "height": 900,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Unknown_(Indian)_-_Vishnu_on_Serpent_Shesha_and_Vishnu_Battling_Demons_Madhu_and_Kaitabha_-_69.424_-_Detroit_Institute_of_Arts.jpg"
+  },
+  "kumarbi-hittite-tablet": {
+    "src": "/images/exhibits/kumarbi-hittite-tablet.jpg",
+    "width": 1280,
+    "height": 1524,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Mx. Granger",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hittite_Cuneiform_Tablet-_Cultic_Festival_Script.jpg"
+  },
+  "manannan-boat-reid": {
+    "src": "/images/exhibits/manannan-boat-reid.jpg",
+    "width": 846,
+    "height": 1200,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Stephen Reid",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:4_Bear_us_swiftly,_Boat_of_Mananan,_to_the_Garden_of_the_Hesperides.jpg"
+  },
+  "nitocris-turin-king-list": {
+    "src": "/images/exhibits/nitocris-turin-king-list.jpg",
+    "width": 1280,
+    "height": 754,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turin_King_List,_papyrus_-_Museo_Egizio_Turin_C_1874_p03.jpg"
+  },
+  "vucub-caquix-macaw": {
+    "src": "/images/exhibits/vucub-caquix-macaw.jpg",
+    "width": 1280,
+    "height": 1083,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Christopher Kuszajewski",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Macaw_parrot_sitting_on_a_tree_branch.jpg_.jpg"
+  },
+  "ashwatthama-razmnama-battle": {
+    "src": "/images/exhibits/ashwatthama-razmnama-battle.jpg",
+    "width": 661,
+    "height": 1024,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Bilal Habshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BILAL_HABASI_a_folio_from_the_1598_razmnama_the_battle_of_dhristadyumna_with_aswattama.jpg"
+  },
+  "scathach-cuchulainn-essers": {
+    "src": "/images/exhibits/scathach-cuchulainn-essers.jpg",
+    "width": 1207,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Bernard Essers",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuchulainn_vechtend_tegen_de_branding,_RP-P-2014-83-86.jpg"
+  },
+  "ogun-blacksmith": {
+    "src": "/images/exhibits/ogun-blacksmith.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Cherif sidi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cr%C3%A9ativit%C3%A9s_Africaines.jpg"
+  },
+  "suzuka-gozen-tsuchiyama": {
+    "src": "/images/exhibits/suzuka-gozen-tsuchiyama.jpg",
+    "width": 1048,
+    "height": 1600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Utagawa Kuniyoshi",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tsuchiyama_%E5%9C%9F%E5%B1%B1_(BM_2008,3037.04353).jpg"
+  },
+  "hagen-balmung-hundeshagen": {
+    "src": "/images/exhibits/hagen-balmung-hundeshagen.jpg",
+    "width": 1051,
+    "height": 1500,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kriemhild_stellt_Hagen_zur_Rede_Handschriftenabteilung_Hundeshagenscher_Kodex.jpeg"
+  },
+  "munmu-silla-dragon-head": {
+    "src": "/images/exhibits/munmu-silla-dragon-head.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Gary Todd",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gilt_Bronze_Dragon_Head,_Unified_Silla_(17666153538).jpg"
+  },
+  "munmu-danwon-mudong": {
+    "src": "/images/exhibits/munmu-danwon-mudong.jpg",
+    "width": 1280,
+    "height": 1504,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kim Hong-do",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Danwon_Mudong.jpg"
+  },
+  "laima-ciurlionis-fairy-tale": {
+    "src": "/images/exhibits/laima-ciurlionis-fairy-tale.jpg",
+    "width": 1280,
+    "height": 1201,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Mikalojus Konstantinas Čiurlionis",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikalojus_Konstantinas_Ciurlionis_-_FAIRY_TALE_(FAIRY_TALE_OF_KINGS)_-_1909.jpg"
+  },
+  "cyrene-bloemaert-lion": {
+    "src": "/images/exhibits/cyrene-bloemaert-lion.jpg",
+    "width": 1147,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Cornelis Bloemaert",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jeune_femme_caressant_un_lion_d%27apr%C3%A8s_Crescenti_(Dutuit_p._40),_GDUT708.jpg"
+  },
+  "rangi-papa-pataka-carving": {
+    "src": "/images/exhibits/rangi-papa-pataka-carving.jpg",
+    "width": 934,
+    "height": 1594,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Kahuroa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:WahineTane.jpg"
+  },
+  "emese-dream": {
+    "src": "/images/exhibits/emese-dream.jpg",
+    "width": 674,
+    "height": 600,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emese_%C3%A1lma.jpg"
+  },
+  "ungnyeo-gakjeochong": {
+    "src": "/images/exhibits/ungnyeo-gakjeochong.jpg",
+    "width": 700,
+    "height": 469,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Goguryeo-Gakjeochong-Ssireumdo-01.jpg"
+  },
+  "jacheongbi-naewatdang": {
+    "src": "/images/exhibits/jacheongbi-naewatdang.jpg",
+    "width": 473,
+    "height": 750,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EB%82%B4%EC%99%93%EB%8B%B9_%EB%AC%B4%EC%8B%A0%EB%8F%84_%EC%A4%91%EC%A0%84%EC%9C%84.jpg"
+  },
+  "utturi-red-phoenix": {
+    "src": "/images/exhibits/utturi-red-phoenix.jpg",
+    "width": 1140,
+    "height": 1445,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Government-General of Korea",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%EC%A3%BC%EC%9E%91_%EC%A1%B0%EC%84%A0%EA%B3%A0%EC%A0%81%EB%8F%84%EB%B3%B4.jpg"
+  },
+  "seolmundae-hallasan": {
+    "src": "/images/exhibits/seolmundae-hallasan.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "AndiW",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hallasan_2.jpg"
+  },
+  "daebyeol-irworobongdo": {
+    "src": "/images/exhibits/daebyeol-irworobongdo.jpg",
+    "width": 1280,
+    "height": 553,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Irworobongdo.jpg"
+  },
+  "suro-gaya-pottery-stand": {
+    "src": "/images/exhibits/suro-gaya-pottery-stand.jpg",
+    "width": 1280,
+    "height": 1484,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "14GTR",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gaya_pottery_stand,_British_Museum_02.jpg"
+  },
+  "zalmoxis-sarmizegetusa-sanctuary": {
+    "src": "/images/exhibits/zalmoxis-sarmizegetusa-sanctuary.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Oroles",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sanctuarul_mic_de_calcar.JPG"
+  },
+  "john-henry-co-tunnel-postcard": {
+    "src": "/images/exhibits/john-henry-co-tunnel-postcard.jpg",
+    "width": 1280,
+    "height": 849,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Detroit Publishing Company",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mason_Tunnel_on_the_C._%26_O._R._R.,_Virginia_(NYPL_b12647398-74287).tiff"
+  },
+  "nergal-mars-hubble": {
+    "src": "/images/exhibits/nergal-mars-hubble.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "NASA, ESA, and STScI",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mars,_image_taken_by_NASA%27s_Hubble_Space_Telescope,_July_2018.png"
+  },
+  "manannan-kirkburn-sword": {
+    "src": "/images/exhibits/manannan-kirkburn-sword.jpg",
+    "width": 1280,
+    "height": 433,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Daderot",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kirkburn_Sword,_from_Kirkburn,_East_Yorkshire,_buried_300-200_BC,_iron_sword_with_scabbard_of_decorate_bronze_and_iron_-_British_Museum_-_DSC01343.jpg"
+  },
+  "huang-feihu-dongyue": {
+    "src": "/images/exhibits/huang-feihu-dongyue.jpg",
+    "width": 782,
+    "height": 1220,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%9D%B1%E5%B6%BD%EF%BC%88%E4%B8%89%E6%95%99%E6%BA%90%E6%B5%81%E6%90%9C%E7%A5%9E%E5%A4%A7%E5%85%A8%EF%BC%89.jpg"
+  },
+  "mama-quilla-full-moon": {
+    "src": "/images/exhibits/mama-quilla-full-moon.jpg",
+    "width": 1280,
+    "height": 1280,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "NASA/JPL/USGS",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Full_moon.jpeg"
+  },
+  "ullikummi-mount-casius": {
+    "src": "/images/exhibits/ullikummi-mount-casius.jpg",
+    "width": 800,
+    "height": 608,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "John Carne",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mount_Casius_from_the_Sea_-_Carne_John_-_1836.jpg"
+  },
+  "utnapishtim-atrahasis-tablet": {
+    "src": "/images/exhibits/utnapishtim-atrahasis-tablet.jpg",
+    "width": 922,
+    "height": 1024,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cuneiform_tablet-_Atra-hasis,_Babylonian_flood_myth_MET_266810.jpg"
+  },
+  "illapa-lightning": {
+    "src": "/images/exhibits/illapa-lightning.jpg",
+    "width": 1280,
+    "height": 861,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "C. Clark",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lightning_NOAA.jpg"
+  },
+  "seol-jukhwa-joseon-armor": {
+    "src": "/images/exhibits/seol-jukhwa-joseon-armor.jpg",
+    "width": 1157,
+    "height": 1600,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fabric_Armor_and_Helmet_with_Buddhist_and_Taoist_symbols_MET_DT11934.jpg"
+  },
+  "lugh-coronation-chair": {
+    "src": "/images/exhibits/lugh-coronation-chair.jpg",
+    "width": 900,
+    "height": 1195,
+    "license": "Public domain",
+    "licenseUrl": null,
+    "artist": "Thomas Kelly",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:EnglishCoronationRegalia2.jpg"
+  },
+  "oshun-agere-ifa": {
+    "src": "/images/exhibits/oshun-agere-ifa.jpg",
+    "width": 1280,
+    "height": 1549,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": "Unknown artist",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%C3%80g%C3%A9r%C3%A9_If%C3%A1_(If%C3%A1_divination_vessel)_with_kneeling_woman_(MET_1991.17.127)_DP-31157-001.jpg"
+  },
+  "ninurta-bull-mace-head": {
+    "src": "/images/exhibits/ninurta-bull-mace-head.jpg",
+    "width": 695,
+    "height": 800,
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "artist": null,
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mace_head_with_two_bull%27s_heads_MET_ME49_23_3.jpg"
   }
 }
