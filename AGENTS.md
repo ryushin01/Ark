@@ -15,7 +15,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 1. 프로젝트 개요
 
 - 세계 신화의 신·영웅·몬스터와 자료(조각·회화·유물 사진), 신화 속 유물을 보여 주는 세계 신화 도서관입니다.
-- 화면 축: 신화 도서관(공개 웹) · 어드민(같은 웹의 `/admin`)
+- 화면 축: 신화 도서관(공개 웹, 비밀 전시실 `/vault` 포함) · 어드민(같은 웹의 `/admin`)
 - 운영: https://ark-ryushin01.vercel.app/ · 어드민: `/admin`(데모 계정으로 둘러보기) · Storybook: `/storybook/index.html`
 
 ## 2. 기술 스택과 구조
@@ -24,42 +24,44 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Feature-Sliced Design v2.1. 층 순서는 `_app → _pages → widgets → features → entities → shared`이며, 슬라이스는 자기보다 아래 층만, 다른 슬라이스는 공개 API(`index.ts`)로만 가져옵니다. `eslint.config.mjs`의 `no-restricted-imports`와 Steiger(`pnpm lint:fsd`, `steiger.config.mjs`)가 검사합니다.
 - `src/app/`의 라우트 파일은 `_pages`를 다시 내보내기만 합니다. 서버 전용 코드는 `index.server.ts`로, 어드민용 `_app`은 `index.admin.ts`로 따로 내보냅니다(공개 사이트가 Radix CSS를 받지 않게).
 - 한 페이지에서만 쓰는 UI·Server Action은 그 페이지 슬라이스의 `ui`·`api`에 두고, 두 곳 이상에서 쓰면 `widgets`·`features`로 올립니다.
+- 비밀 전시실(`_pages/vault`)은 Indrajaal의 화면 구성을 참고한 무한 캔버스(`VaultCanvas`, 배치 `model/canvas.ts`, WebGL 없이 CSS 변환 + `requestAnimationFrame`)와 흐린 배경 상세(이야기 듣기 `LorePlayer`, Web Speech API)입니다. 어두운 바탕과 전용 글꼴(`vault-theme.css`: Big Shoulders Display·도현·Pretendard)은 전시실에서만 받고, 움직임을 끄면 정적인 목록이 됩니다. 레퍼런스의 이미지·문구·코드는 쓰지 않습니다. 자세한 내용은 `docs/development.md`의 "비밀 전시실".
 - 탈것·동반자 데이터(`entities/figure/model/bonds.ts`)는 ZERO가 `sync:ark`로 직접 읽으므로 모양을 바꾸면 ZERO에도 알립니다.
 
 ## 3. 설치·개발 명령
 
 - 패키지 매니저: pnpm(`packageManager` 고정), Node.js 22(`.nvmrc`)
 - `corepack enable pnpm` → `pnpm install` → `pnpm db:start`(로컬 Supabase, Docker 필요) → `pnpm dev`(http://localhost:3000, 어드민 `/admin`)
-- 환경 변수(이름만, `.env.example` 참고): `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `NEXT_PUBLIC_FEATURE_ARCHIVE`, `CRON_SECRET`, `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_DSN`
-- Supabase 값을 비우면 메모리 목업으로 동작합니다. 로컬 개발은 운영 DB를 쓰지 않습니다. 운영 비밀 값은 `.env.prod-secrets`(Next.js가 읽지 않음, `pnpm db:push`만 읽음)에만 둡니다.
+- 환경 변수(이름만, `.env.example` 참고): `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `NEXT_PUBLIC_FEATURE_ARCHIVE`, `CRON_SECRET`, `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_DSN`(서버 오류만 따로 보낼 때, `.env.example`에는 없음)
+- 비밀 값 없이 clone → install → dev/build만으로 데모 데이터로 동작합니다. Supabase 값을 비우면 메모리 목업, 값이 있는데 닿지 않으면(요청마다 5초 제한) 읽기만 시드로 대신하고 공개 사이트·어드민에 "오프라인 데이터로 표시 중" 안내(`role="status"`)를 띄웁니다. 쓰기는 대신하지 않습니다. 로컬 개발은 운영 DB를 쓰지 않습니다. 운영 비밀 값은 `.env.prod-secrets`(Next.js가 읽지 않음, `pnpm db:push`만 읽음)에만 둡니다.
 - 그 밖의 명령: `pnpm storybook`, `pnpm db:reset`, `pnpm db:types`(마이그레이션을 바꾸면 다시 실행), `pnpm db:seed:generate`, `pnpm images:resolve`, `pnpm credits`, `pnpm fonts`(화면 글자를 바꾼 뒤), `pnpm screenshots`
 
 ## 4. 검사·테스트 명령
 
-| 명령                          | 내용                                                      |
-| ----------------------------- | --------------------------------------------------------- |
-| `pnpm lint` / `pnpm lint:fsd` | ESLint(경고 0) / FSD 구조(Steiger)                        |
-| `pnpm format:check`           | Prettier(Markdown 포함)                                   |
-| `pnpm typecheck`              | `next typegen && tsc --noEmit`                            |
-| `pnpm test`                   | 단위(Vitest)                                              |
-| `pnpm test:storybook`         | 모든 스토리 렌더링과 axe                                  |
-| `pnpm build`                  | Storybook을 `public/storybook`에 빌드한 뒤 앱 빌드        |
-| `pnpm size` / `pnpm lhci`     | 번들 크기 예산 / Lighthouse 기준 (먼저 `build`)           |
-| `pnpm test:e2e`               | 프로덕션 빌드 E2E(화면 폭별 넘침, axe, 키보드, 보안 헤더) |
-| `pnpm test:e2e:local-db`      | 이미지 업로드 E2E(로컬 Supabase 필요)                     |
+| 명령                          | 내용                                                                |
+| ----------------------------- | ------------------------------------------------------------------- |
+| `pnpm lint` / `pnpm lint:fsd` | ESLint(경고 0) / FSD 구조(Steiger)                                  |
+| `pnpm format:check`           | Prettier(Markdown 포함)                                             |
+| `pnpm typecheck`              | `next typegen && tsc --noEmit`                                      |
+| `pnpm test`                   | 단위(Vitest)                                                        |
+| `pnpm test:storybook`         | 모든 스토리 렌더링과 axe                                            |
+| `pnpm build`                  | Storybook을 `public/storybook`에 빌드한 뒤 앱 빌드                  |
+| `pnpm size` / `pnpm lhci`     | 번들 크기 예산 / Lighthouse 기준 (먼저 `build`)                     |
+| `pnpm test:e2e`               | 프로덕션 빌드 E2E(화면 폭별 넘침, axe, 키보드, 보안 헤더, 오프라인) |
+| `pnpm test:e2e:offline`       | 오프라인 E2E만(`e2e/offline.spec.ts`)                               |
+| `pnpm test:e2e:local-db`      | 이미지 업로드 E2E(로컬 Supabase 필요)                               |
 
-- CI(`.github/workflows/ci.yml`)는 작업을 나눠 동시에 돕니다: `check`(lint → lint:fsd → format:check → typecheck → test), `build`(test:storybook → build → size), `e2e`, `lighthouse`, `upload`(로컬 Supabase, 콘텐츠 반영 SQL 두 번 + 업로드 E2E). 바뀐 파일이 Markdown뿐이면 `e2e`·`lighthouse`·`upload`를 건너뜁니다.
+- 오프라인 E2E(Playwright `offline` 프로젝트)는 localhost 밖 요청을 모두 막고 공개·어드민 화면이 비지 않는지, 그리고 `SUPABASE_URL=https://supabase.invalid`로 띄운 두 번째 서버(포트 +1)에서 시드 대체가 되는지 봅니다.
+- CI(`.github/workflows/ci.yml`, push main·pull_request)는 작업을 나눠 동시에 돕니다: `check`(lint → lint:fsd → format:check → typecheck → test), `build`(test:storybook → build → size), `e2e`, `lighthouse`, `upload`(로컬 Supabase, 콘텐츠 반영 SQL 두 번 + 업로드 E2E). 바뀐 파일이 Markdown뿐이면 `e2e`·`lighthouse`·`upload`를 건너뜁니다.
 - pre-commit(husky): 스테이징 파일 lint-staged(eslint --fix, prettier) → `pnpm typecheck` → `pnpm test`
-- 품질 예산: JS 400 kB·CSS 145 kB(gzip, `.size-limit.json`), Lighthouse 데스크톱 성능 90·접근성 100·권장 95·SEO 90(`lighthouserc.json`)
+- 품질 예산: JS 400 kB·CSS 145 kB(gzip, `.size-limit.json`), Lighthouse 데스크톱 성능 90·접근성 100·권장 95·SEO 90(`lighthouserc.json`, `/vault`·`/vault/mjolnir` 포함)
 - 테스트 원칙(Testing Library): 구현 세부가 아니라 사용자가 보는 동작을 검사하고, 요소는 역할·이름(`getByRole`)으로 찾습니다. 단위·컴포넌트는 Vitest + Testing Library(jsdom), 스토리는 Vitest 브라우저 모드(`@storybook/addon-vitest`, a11y 애드온), 화면 흐름은 Playwright E2E, 접근성은 axe(`@axe-core/playwright`, Storybook a11y)로 검사합니다. 버그를 고치면 고치기 전에 실패하는 테스트를 함께 넣습니다.
 
 ## 5. 코드 스타일
 
 - Prettier(`.prettierrc`): 너비 100, 큰따옴표, 세미콜론, trailing comma all, CSS는 들여쓰기 4. ESLint는 `eslint-config-next` + jsx-a11y recommended + simple-import-sort.
 - 어드민은 Radix Themes만 쓰고 공개 사이트 디자인 토큰을 쓰지 않습니다. 입력값은 엔티티 zod 스키마(`model/schema.ts`)로 검사하고, 저장 액션은 공통 도우미(`formError`, `fieldError`, `fieldErrorsState`, `duplicateKeyError`, `finishAdminAction`)와 중복 제출 잠금(`useSubmitLock`)을 씁니다.
-- 접근성(KWCAG 2.2): 네이티브 요소 먼저(메뉴는 `<dialog>` `showModal`), 텍스트 대비 4.5:1, 모든 기능 키보드 가능·초점 항상 보임, 조작 크기 24px 이상(이 저장소는 터치 대상 44px), 입력칸 레이블과 오류의 `aria-invalid`·`aria-describedby` 연결 및 오류 요약으로 초점 이동, 바뀌는 안내는 `role="status"`, 본문 바로가기·`lang`·페이지별 제목. 장식 이미지는 `alt=""`, 자료 이미지는 내용을 설명합니다. axe를 통과해도 새 화면은 KWCAG 항목을 직접 점검합니다.
+- 접근성(WCAG 2.2·KWCAG 2.2): 네이티브 요소 먼저(메뉴는 `<dialog>` `showModal`), 텍스트 대비 4.5:1, 모든 기능 키보드 가능·초점 항상 보임, 조작 크기 24px 이상(이 저장소는 터치 대상 44px), 입력칸 레이블과 오류의 `aria-invalid`·`aria-describedby` 연결 및 오류 요약으로 초점 이동, 바뀌는 안내는 `role="status"`, 본문 바로가기·`lang`·페이지별 제목. 장식 이미지는 `alt=""`, 자료 이미지는 내용을 설명합니다. 자동 검사는 `eslint-plugin-jsx-a11y`(recommended 전부)와 axe(Storybook·Playwright)이고, axe를 통과해도 새 화면은 KWCAG 항목을 직접 점검합니다.
 - TypeScript strict(`tsconfig.json`의 `"strict": true`)를 유지하고 `any`·`as` 단언·`@ts-ignore`를 피합니다. 외부 입력은 zod 등으로 검증합니다(어드민 폼은 엔티티 `model/schema.ts`).
-- 접근성 기준은 WCAG 2.2와 KWCAG 2.2이며, 자동 검사는 `eslint-plugin-jsx-a11y`(recommended 전부)와 axe(Storybook·Playwright)로 합니다.
 
 ## 6. Git·PR
 
@@ -91,7 +93,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - 자료 이미지 저작권: 새 자료는 퍼블릭 도메인·CC0만 씁니다. 평면 작품은 작가 사망 1955년 이전(작가 불명이면 1900년 이전), 조각·유물 사진은 사진 자체의 라이선스를 확인합니다. 출처는 `commons-images.json`, README 출처, `docs/credits.md`에 모읍니다.
 - 영향 아카이브(`NEXT_PUBLIC_FEATURE_ARCHIVE`)의 작품 이미지는 저작권자가 있어 저장소에 넣지 않고, 확인하지 못한 작품은 `status: "draft"`로 둡니다.
 - 메이저 업데이트는 직접 합니다. TypeScript 6.0(typescript-eslint 지원 범위), ESLint 9, `@types/node` 22에 고정해 둡니다.
+- `next/image` 변형 폭(`next.config.ts`의 `imageSizes`·`deviceSizes`)이나 새 그림을 늘리면 Vercel 무료 플랜 이미지 최적화 한도(1.4.1의 402 문제)에 닿을 수 있으니, 배포 뒤 운영에서 그림이 나오는지 확인합니다(전시실 캔버스는 폭 384 변형을 씀).
 - 같은 파일 이름으로 그림만 바꾸면 이미지 캐시(31일) 때문에 이전 그림이 보이므로 파일 이름도 바꿉니다.
+- 상태(CI·배포·릴리스·주소)는 명령 결과(`gh run`, `curl` 등)로 확인한 것만 말합니다.
+- 먼저 묻기: 새 런타임 의존성 추가, 빌드·배포 설정(`next.config.ts`, `vercel.json`, 워크플로) 변경, 운영 DB에서 행 지우기.
+- 절대 금지: 비밀값을 `NEXT_PUBLIC_*`에 넣기, `.env*` 커밋, `eslint-disable`·`--no-verify`로 검사 우회, `main`에 직접 푸시.
 
 ## 9. 공통 규칙
 
