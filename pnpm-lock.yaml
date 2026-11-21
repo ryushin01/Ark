@@ -169,10 +169,16 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/big-shoulders-display':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource/cinzel':
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/courier-prime':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/do-hyeon':
         specifier: ^5.3.0
         version: 5.3.0
       '@radix-ui/themes':
@@ -678,11 +684,17 @@ packages:
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
 
+  '@fontsource/big-shoulders-display@5.3.0':
+    resolution: {integrity: sha512-d4+Tcsq/WfoKeqWfB6wFdeNDsSYYnilJbSNNpf5w53MlWrGHAc9YvkAjC6id6PgFDiGaFKsXfP0RFAQtpt0bog==}
+
   '@fontsource/cinzel@5.3.0':
     resolution: {integrity: sha512-KEOYTsrRppW0uRIPWBDPrQgunCS6f8u4nzZxYRBfo9SCknKojLYjK7B0ZoVmJhyVLefz271ZQRF9EOpHZlfhRw==}
 
   '@fontsource/courier-prime@5.3.0':
     resolution: {integrity: sha512-KIi1k4VG1Wv+/CGpb1AUpLkUuOAQA6zmvthqxOZGN0AV8BEgQgbK7qAtquv14zsBJAY1bb5BHIEbWVFLgENh0w==}
+
+  '@fontsource/do-hyeon@5.3.0':
+    resolution: {integrity: sha512-j3h+Y2OIhTW8Bj+WwZ6g2vFG+2vy2kBN3G93N8FEx1vE1EZkg0+wZvjSjvrPsGt70TLUcr8fflIyRJgqDnEryg==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -6004,9 +6016,13 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
+  '@fontsource/big-shoulders-display@5.3.0': {}
+
   '@fontsource/cinzel@5.3.0': {}
 
   '@fontsource/courier-prime@5.3.0': {}
+
+  '@fontsource/do-hyeon@5.3.0': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:

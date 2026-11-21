@@ -7,7 +7,9 @@
         "http://localhost:3211/",
         "http://localhost:3211/figures",
         "http://localhost:3211/figures/odin",
-        "http://localhost:3211/pantheons/greek"
+        "http://localhost:3211/pantheons/greek",
+        "http://localhost:3211/vault",
+        "http://localhost:3211/vault/mjolnir"
       ],
       "numberOfRuns": 3,
       "settings": {
