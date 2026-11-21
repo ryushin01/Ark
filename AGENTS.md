@@ -51,18 +51,26 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - CI(`.github/workflows/ci.yml`)는 작업을 나눠 동시에 돕니다: `check`(lint → lint:fsd → format:check → typecheck → test), `build`(test:storybook → build → size), `e2e`, `lighthouse`, `upload`(로컬 Supabase, 콘텐츠 반영 SQL 두 번 + 업로드 E2E). 바뀐 파일이 Markdown뿐이면 `e2e`·`lighthouse`·`upload`를 건너뜁니다.
 - pre-commit(husky): 스테이징 파일 lint-staged(eslint --fix, prettier) → `pnpm typecheck` → `pnpm test`
 - 품질 예산: JS 400 kB·CSS 145 kB(gzip, `.size-limit.json`), Lighthouse 데스크톱 성능 90·접근성 100·권장 95·SEO 90(`lighthouserc.json`)
+- 테스트 원칙(Testing Library): 구현 세부가 아니라 사용자가 보는 동작을 검사하고, 요소는 역할·이름(`getByRole`)으로 찾습니다. 단위·컴포넌트는 Vitest + Testing Library(jsdom), 스토리는 Vitest 브라우저 모드(`@storybook/addon-vitest`, a11y 애드온), 화면 흐름은 Playwright E2E, 접근성은 axe(`@axe-core/playwright`, Storybook a11y)로 검사합니다. 버그를 고치면 고치기 전에 실패하는 테스트를 함께 넣습니다.
 
 ## 5. 코드 스타일
 
 - Prettier(`.prettierrc`): 너비 100, 큰따옴표, 세미콜론, trailing comma all, CSS는 들여쓰기 4. ESLint는 `eslint-config-next` + jsx-a11y recommended + simple-import-sort.
 - 어드민은 Radix Themes만 쓰고 공개 사이트 디자인 토큰을 쓰지 않습니다. 입력값은 엔티티 zod 스키마(`model/schema.ts`)로 검사하고, 저장 액션은 공통 도우미(`formError`, `fieldError`, `fieldErrorsState`, `duplicateKeyError`, `finishAdminAction`)와 중복 제출 잠금(`useSubmitLock`)을 씁니다.
 - 접근성(KWCAG 2.2): 네이티브 요소 먼저(메뉴는 `<dialog>` `showModal`), 텍스트 대비 4.5:1, 모든 기능 키보드 가능·초점 항상 보임, 조작 크기 24px 이상(이 저장소는 터치 대상 44px), 입력칸 레이블과 오류의 `aria-invalid`·`aria-describedby` 연결 및 오류 요약으로 초점 이동, 바뀌는 안내는 `role="status"`, 본문 바로가기·`lang`·페이지별 제목. 장식 이미지는 `alt=""`, 자료 이미지는 내용을 설명합니다. axe를 통과해도 새 화면은 KWCAG 항목을 직접 점검합니다.
+- TypeScript strict(`tsconfig.json`의 `"strict": true`)를 유지하고 `any`·`as` 단언·`@ts-ignore`를 피합니다. 외부 입력은 zod 등으로 검증합니다(어드민 폼은 엔티티 `model/schema.ts`).
+- 접근성 기준은 WCAG 2.2와 KWCAG 2.2이며, 자동 검사는 `eslint-plugin-jsx-a11y`(recommended 전부)와 axe(Storybook·Playwright)로 합니다.
 
 ## 6. Git·PR
 
-- `main`에 직접 커밋·푸시하지 않습니다. 최신 `main`에서 `feat/...`, `fix/...`, `docs/...`, `chore/...`, `ci/...` 브랜치를 만듭니다.
-- 커밋·PR 제목: `<type>: <한국어 요약> <버전> (#PR)` 예) `fix: 케르눈노스 자료의 출처를 CC BY-SA 3.0으로 바로잡음 1.4.2 (#55)`. 본문은 `-` 목록으로 무엇을 왜 바꿨는지 적고, 끝에 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`를 붙입니다.
-- 기능·수정 PR은 `package.json` 버전, README 배지, `CHANGELOG.md`(`## x.y.z - YYYY-MM-DD`)를 함께 올립니다. 문서만 바뀐 PR은 버전을 올리지 않습니다.
+- 흐름: GitHub Flow. `main`에 직접 커밋·푸시하지 않고, 최신 `main`에서 브랜치를 만들어 PR로만 병합합니다. PR은 목적 하나로 작게 만들고 본문에 무엇·왜·검사 결과를 적습니다.
+- 브랜치 이름: `feat/…`, `fix/…`, `refactor/…`, `docs/…`, `test/…`, `chore/…`, `release/…`. 이 저장소는 CI 변경에 `ci/…`도 썼습니다(예: `ci/parallel-jobs`).
+- 커밋 메시지: Conventional Commits `<타입>: <한국어 요약>`, 타입은 `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `style`, `chore`, `ci`, `build`. 호환이 깨지면 본문에 `BREAKING CHANGE:`를 적습니다.
+  - 실제 예) `fix: 케르눈노스 자료의 출처를 CC BY-SA 3.0으로 바로잡음 1.4.2 (#55)`, `ci: 검사를 작업으로 나눠 동시에 돌리고, Markdown만 바뀌면 무거운 검사를 건너뜀 1.4.3 (#56)`
+  - 표준과 다른 점: 이 저장소는 버전을 괄호 없이 요약 뒤에 `x.y.z`로 붙이고, squash 병합이 `(#PR)`을 덧붙입니다.
+  - 본문은 `-` 목록으로 무엇을 왜 바꿨는지 적고, 끝에 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`를 붙입니다.
+- 버전: Semantic Versioning(주.부.수). 기능·수정 PR은 `package.json`의 `version`과 README의 version 배지를 함께 맞춥니다. 문서만 바뀐 PR은 버전을 올리지 않습니다.
+- 변경 기록: `CHANGELOG.md`(제목 "버전 기록"), 최신 버전을 위에 두고 `## x.y.z - YYYY-MM-DD` 아래 `-` 목록으로 적습니다. 표준(Keep a Changelog)과 다른 점: `[Unreleased]` 절과 추가·변경·수정·제거 소제목 없이 버전마다 바로 적습니다.
 - 병합은 squash. CI가 통과하면 바로 병합하고 CodeRabbit 리뷰는 기다리지 않습니다(이미 달린 맞는 지적은 반영).
 
 ## 7. 배포·릴리스
