@@ -5,13 +5,14 @@ import { SiteHeader } from "@/widgets/site-header";
 import { ScrollRestoration } from "../scroll/ScrollRestoration";
 import { SmoothScroll } from "../scroll/SmoothScroll";
 import { PageTransitions } from "../transitions/PageTransitions";
+import { DataFallbackNotice } from "./DataFallbackNotice";
 import { EarlyReveal } from "./EarlyReveal";
 import { EarlyRevealHandoff } from "./EarlyRevealHandoff";
 import styles from "./SiteLayout.module.css";
 
 import type { ReactNode } from "react";
 
-/** 공개 사이트 공통 레이아웃: 본문 바로가기, 머리글, 부드러운 스크롤, 스크롤 위치 되돌리기, 화면 전환, 첫 화면 등장 효과 앞당기기 */
+/** 공개 사이트 공통 레이아웃: 본문 바로가기, 머리글, 부드러운 스크롤, 스크롤 위치 되돌리기, 화면 전환, 첫 화면 등장 효과 앞당기기, 오프라인 데이터 안내 */
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <>
@@ -23,6 +24,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <SmoothScroll />
         <ScrollRestoration />
         <main id="main" tabIndex={-1} className={styles.main}>
+          <DataFallbackNotice />
           <SsgoiRouteBoundary className={styles.page}>{children}</SsgoiRouteBoundary>
         </main>
       </PageTransitions>

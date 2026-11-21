@@ -4,6 +4,16 @@ import type { Database } from "./database.types";
 
 import "server-only";
 
+/** Supabase가 이 시간 안에 응답하지 않으면 요청을 끊습니다. 읽기는 내장 데이터로 대신합니다(repository.server.ts). */
+const REQUEST_TIMEOUT_MS = 5000;
+
+/** 시간 제한을 붙인 fetch. 호출한 쪽의 중단 신호도 그대로 따릅니다. */
+const fetchWithTimeout: typeof fetch = (input, init) => {
+  const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS);
+  const signal = init?.signal ? AbortSignal.any([init.signal, timeout]) : timeout;
+  return fetch(input, { ...init, signal });
+};
+
 let client: SupabaseClient<Database> | null | undefined;
 
 /**
@@ -16,7 +26,12 @@ export function getSupabase() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SECRET_KEY;
   client =
-    url && key ? createClient<Database>(url, key, { auth: { persistSession: false } }) : null;
+    url && key
+      ? createClient<Database>(url, key, {
+          auth: { persistSession: false },
+          global: { fetch: fetchWithTimeout },
+        })
+      : null;
   return client;
 }
 
