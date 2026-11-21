@@ -1,0 +1,9 @@
+/* 오프라인 데이터 안내. 바탕(--ink)과 글자(--paper)의 대비는 약 17:1입니다. */
+.notice {
+    margin: 0;
+    padding: 0.75rem var(--gutter);
+    background-color: var(--ink);
+    color: var(--paper);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+}
