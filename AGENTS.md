@@ -15,7 +15,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 1. 프로젝트 개요
 
 - 세계 신화의 신·영웅·몬스터와 자료(조각·회화·유물 사진), 신화 속 유물을 보여 주는 세계 신화 도서관입니다.
-- 화면 축 2개: 신화 도서관(공개 웹) · 어드민(같은 웹의 `/admin`)
+- 화면 축: 신화 도서관(공개 웹) · 어드민(같은 웹의 `/admin`)
 - 운영: https://ark-ryushin01.vercel.app/ · 어드민: `/admin`(데모 계정으로 둘러보기) · Storybook: `/storybook/index.html`
 
 ## 2. 기술 스택과 구조
