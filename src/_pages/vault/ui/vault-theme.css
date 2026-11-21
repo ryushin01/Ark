@@ -1,0 +1,48 @@
+/*
+ * 비밀 전시실 글꼴과 색 (전시실 화면에서만 받습니다)
+ * - 디스플레이: Big Shoulders Display 800·900 (SIL OFL). 굵고 좁으면서 글자가 둥근 기하학적 대문자
+ * - 한글 디스플레이: 도현 Do Hyeon (SIL OFL). 같은 결의 굵고 좁은 고딕. 글자 묶음별 조각이라 쓰는 글자만 받습니다.
+ * - 본문: Pretendard (SIL OFL). 중립적인 산세리프, 쓰는 글자만 받는 동적 조각
+ */
+@import "@fontsource/big-shoulders-display/latin-800";
+@import "@fontsource/big-shoulders-display/latin-900";
+@import "@fontsource/do-hyeon/400";
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+.vault-theme {
+    --vault-display:
+        "Big Shoulders Display", "Do Hyeon", "Pretendard Variable", "Apple SD Gothic Neo",
+        sans-serif;
+    --vault-sans:
+        "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui,
+        sans-serif;
+    --vault-bg: #0a0a0a;
+    --vault-fg: #f2f0ea;
+    --vault-muted: #aeaba3;
+    --vault-cream: #efe3c6;
+    --vault-line: rgb(255 255 255 / 0.16);
+    /* 전시 화면의 폭과 가장자리 여백. 넓은 화면은 양옆 세로 띠 안쪽을 씁니다. */
+    --vault-edge: 0px;
+    --vault-width: calc(100vw - 2 * var(--vault-edge));
+    --vault-inset: 1rem;
+    /* 화면 가장자리에서 글자까지 (세로 띠 + 여백) */
+    --vault-pad: calc(var(--vault-edge) + var(--vault-inset));
+    --vault-text: clamp(0.75rem, 1.1vw, 1.25rem);
+    --page-bg: var(--vault-bg);
+    --page-fg: var(--vault-fg);
+    background-color: var(--vault-bg);
+    color: var(--vault-fg);
+    font-family: var(--vault-sans);
+    font-synthesis: none;
+}
+
+@media (min-width: 768px) {
+    .vault-theme {
+        --vault-edge: calc(var(--rail) + var(--rail-inset) * 2);
+        --vault-inset: calc(var(--vault-width) * 0.021);
+    }
+}
+
+.vault-theme :focus-visible {
+    outline-color: var(--vault-cream);
+}

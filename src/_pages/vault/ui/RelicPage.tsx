@@ -1,15 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
+import { getPantheons } from "@/entities/pantheon/index.server";
 import { neighborsOf, RELIC_KIND_LABEL } from "@/entities/relic";
 import { getRelic, getRelics } from "@/entities/relic/index.server";
-import { toShown } from "@/shared/lib";
+import { monogram, skipsOptimization } from "@/shared/lib";
 import { SiteFooter } from "@/widgets/site-footer";
 
-import { RelicImage } from "./RelicImage";
+import { relicNo } from "../model/relic-no";
+import { LorePlayer } from "./LorePlayer";
 import styles from "./RelicPage.module.css";
+import { VaultMasthead, VaultMenu } from "./VaultChrome";
+
+import "./vault-theme.css";
 
 export async function generateRelicParams() {
   const relics = await getRelics();
@@ -35,111 +41,161 @@ export async function generateRelicMetadata(slug: string) {
   };
 }
 
-/** 유물 상세: 진열장, 기원·힘·대가·문헌, 지닌 이, 앞뒤 유물 */
+/** 이름 길이에 따라 큰 이름의 크기를 고릅니다(짧은 이름은 레퍼런스처럼 아주 크게). */
+const nameSize = (name: string) => (name.length <= 5 ? "xl" : name.length <= 9 ? "lg" : "md");
+
+/**
+ * 유물 상세: 같은 그림을 크게 흐리게 깐 배경 위에 번호와 큰 이름, 가운데 정사각형 진열 패널,
+ * 오른쪽에 '이야기 듣기'(브라우저 음성 합성)와 힘(요지)·기원·대가·지닌 이를 둡니다.
+ */
 export async function RelicPage({ slug }: { slug: string }) {
-  const [relic, relics, figures, exhibits] = await Promise.all([
+  const [relic, relics, figures, exhibits, pantheons] = await Promise.all([
     getRelic(slug),
     getRelics(),
     getFigures(),
     getExhibits(),
+    getPantheons(),
   ]);
   if (!relic) notFound();
 
   const exhibit = exhibits.find((item) => item.id === relic.exhibitId) ?? null;
+  const image = exhibit?.image ?? null;
   const owners = relic.figureSlugs
     .map((figureSlug) => figures.find((figure) => figure.slug === figureSlug))
     .filter((figure) => figure !== undefined);
+  const pantheon = pantheons.find((item) => item.slug === owners[0]?.pantheonSlug);
   const neighbors = neighborsOf(relics, slug);
+  const lore = [`${relic.name}.`, relic.origin, relic.power, relic.price].filter(Boolean).join(" ");
 
   return (
-    <div className={`theme-dark ${styles.page}`}>
-      <header className={`${styles.header} px-global`}>
-        <nav aria-label="현재 위치" className={styles.breadcrumb}>
-          <ol>
-            <li>
-              <Link href="/">홈</Link>
-            </li>
-            <li>
-              <Link href="/vault">비밀 전시실</Link>
-            </li>
-            <li aria-current="page">{relic.name}</li>
-          </ol>
-        </nav>
-        <p className={styles.no}>
-          <span lang="en">No. {String(relic.order).padStart(2, "0")}</span> ·{" "}
-          {RELIC_KIND_LABEL[relic.kind]}
-        </p>
-        <h1 className={styles.title}>{relic.name}</h1>
-        <p className={styles.nameEn} lang="en">
-          {relic.nameEn}
-        </p>
-      </header>
-
-      <div className={`${styles.body} px-global`}>
-        <div className={styles.visual}>
-          <RelicImage
-            image={exhibit ? toShown(exhibit.image) : null}
-            nameEn={relic.nameEn}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            eager
-          />
-          {exhibit && (
-            <p className={styles.caption}>
-              {exhibit.title}
-              {exhibit.dateLabel && ` · ${exhibit.dateLabel}`}
-            </p>
+    <div className={`vault-theme theme-dark ${styles.page}`}>
+      <section className={styles.hero} aria-labelledby="relic-name">
+        <div className={styles.backdrop} aria-hidden="true">
+          {image && (
+            <Image
+              src={image.src}
+              alt=""
+              fill
+              sizes="25vw"
+              unoptimized={skipsOptimization(image.src)}
+              className={styles.backdropImage}
+            />
           )}
         </div>
 
-        <dl className={styles.facts}>
-          <div>
-            <dt>기원</dt>
-            <dd>{relic.origin}</dd>
+        <header className={styles.top}>
+          <VaultMasthead count={relics.length} heading={false} />
+          <VaultMenu
+            lead={
+              <Link href="/vault" className={styles.back}>
+                캔버스로 돌아가기
+              </Link>
+            }
+          />
+        </header>
+
+        <div className={styles.grid}>
+          <div className={styles.identity}>
+            <p className={styles.no} lang="en">
+              N°{relicNo(relic.order)}
+            </p>
+            <h1 id="relic-name" className={styles.name} data-size={nameSize(relic.name)}>
+              {relic.name}
+            </h1>
+            <p className={styles.nameEn} lang="en">
+              {relic.nameEn}
+            </p>
           </div>
-          <div>
-            <dt>힘</dt>
-            <dd>{relic.power}</dd>
-          </div>
-          {relic.price && (
+
+          <dl className={styles.origins}>
             <div>
-              <dt>대가</dt>
-              <dd>{relic.price}</dd>
+              <dt>전하는 문헌</dt>
+              <dd>{relic.source}</dd>
             </div>
-          )}
-          <div>
-            <dt>전하는 문헌</dt>
-            <dd>{relic.source}</dd>
-          </div>
-          {owners.length > 0 && (
             <div>
-              <dt>지닌 이</dt>
+              <dt>계열 · 갈래</dt>
               <dd>
-                <ul className={styles.owners}>
-                  {owners.map((figure) => (
-                    <li key={figure.slug}>
-                      <Link href={`/figures/${figure.slug}`} className={styles.link}>
-                        {figure.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                {pantheon ? `${pantheon.name} · ` : ""}
+                {RELIC_KIND_LABEL[relic.kind]}
               </dd>
             </div>
-          )}
-        </dl>
-      </div>
+          </dl>
+
+          <figure className={styles.panel}>
+            {image ? (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(min-width: 1024px) 34vw, 92vw"
+                loading="eager"
+                fetchPriority="high"
+                unoptimized={skipsOptimization(image.src)}
+                className={styles.panelImage}
+              />
+            ) : (
+              <div className={styles.empty}>
+                <span aria-hidden="true" className={styles.glyph} lang="en">
+                  {monogram(relic.nameEn)}
+                </span>
+                <figcaption>전하는 그림이 없는 유물</figcaption>
+              </div>
+            )}
+          </figure>
+
+          <div className={styles.player}>
+            <LorePlayer text={lore} />
+          </div>
+
+          <div className={styles.story}>
+            <p className={styles.label}>힘</p>
+            <p className={styles.gist} data-long={relic.power.length > 70 || undefined}>
+              {relic.power}
+            </p>
+            <dl className={styles.facts}>
+              <div>
+                <dt>기원</dt>
+                <dd>{relic.origin}</dd>
+              </div>
+              {relic.price && (
+                <div>
+                  <dt>대가</dt>
+                  <dd>{relic.price}</dd>
+                </div>
+              )}
+              {owners.length > 0 && (
+                <div>
+                  <dt>지닌 이</dt>
+                  <dd>
+                    <ul className={styles.owners}>
+                      {owners.map((figure) => (
+                        <li key={figure.slug}>
+                          <Link href={`/figures/${figure.slug}`} className={styles.link}>
+                            {figure.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        </div>
+      </section>
 
       {neighbors && (
-        <nav className={`${styles.pager} px-global`} aria-label="다른 유물">
+        <nav className={styles.pager} aria-label="다른 유물">
           <Link href={`/vault/${neighbors.prev.slug}`} className={styles.pagerLink} rel="prev">
-            <span className={styles.pagerLabel}>이전 진열장</span>
+            <span className={styles.pagerLabel}>이전 유물</span>
             {neighbors.prev.name}
           </Link>
-          <Link href="/vault" className={styles.link}>
-            전시실로 돌아가기
-          </Link>
-          <Link href={`/vault/${neighbors.next.slug}`} className={styles.pagerLink} rel="next">
-            <span className={styles.pagerLabel}>다음 진열장</span>
+          <Link
+            href={`/vault/${neighbors.next.slug}`}
+            className={`${styles.pagerLink} ${styles.pagerNext}`}
+            rel="next"
+          >
+            <span className={styles.pagerLabel}>다음 유물</span>
             {neighbors.next.name}
           </Link>
         </nav>
