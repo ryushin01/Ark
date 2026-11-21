@@ -9,9 +9,12 @@ export const GENEALOGY_TAG = "genealogies";
 /** 모든 계보 */
 export async function getGenealogies(): Promise<Genealogy[]> {
   "use cache";
-  cacheLife("hours");
   cacheTag(GENEALOGY_TAG);
-  return genealogyRepository.list();
+  const rows = await genealogyRepository.list();
+  // Supabase를 읽지 못해 내장 데이터로 대신했으면 몇 분만 캐시해, 다시 연결되면 곧 실제 데이터로 돌아갑니다.
+  if (genealogyRepository.servingFallback()) cacheLife("minutes");
+  else cacheLife("hours");
+  return rows;
 }
 
 /** 계열의 계보. 없거나 비어 있으면 null */

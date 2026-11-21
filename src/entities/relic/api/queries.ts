@@ -9,9 +9,11 @@ export const RELIC_TAG = "relics";
 /** 모든 유물. 전시 순서대로 */
 export async function getRelics(): Promise<Relic[]> {
   "use cache";
-  cacheLife("hours");
   cacheTag(RELIC_TAG);
   const relics = await relicRepository.list();
+  // Supabase를 읽지 못해 내장 데이터로 대신했으면 몇 분만 캐시해, 다시 연결되면 곧 실제 데이터로 돌아갑니다.
+  if (relicRepository.servingFallback()) cacheLife("minutes");
+  else cacheLife("hours");
   return relics.sort((a, b) => a.order - b.order);
 }
 
