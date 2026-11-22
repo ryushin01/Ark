@@ -14,7 +14,7 @@ const axeViolations = async (page: Page) =>
  * 화면 가운데에 가장 가까운 타일의 id. 가장자리 타일은 조금만 움직여도 반대쪽으로 감기므로 가운데 타일로 잽니다.
  * 가운데 한 점이 타일 사이 틈에 걸릴 수 있어(CI 글꼴·배치 차이), 점 대신 가운데에서 가장 가까운 타일을 고릅니다.
  */
-const centerTileId = (page: Page) =>
+const findCenterTile = (page: Page) =>
   page.evaluate(() => {
     const cx = innerWidth / 2;
     const cy = innerHeight / 2;
@@ -27,6 +27,12 @@ const centerTileId = (page: Page) =>
     }
     return best.id;
   });
+
+/** 하이드레이션 전에는 타일이 아직 배치되지 않아 빈 값이 나올 수 있어, 잡힐 때까지 기다립니다. */
+const centerTileId = async (page: Page) => {
+  await expect.poll(() => findCenterTile(page), { timeout: 15_000 }).not.toBe("");
+  return findCenterTile(page);
+};
 
 const boxOf = async (page: Page, id: string) =>
   (await page.locator(`[id="${id}"]`).boundingBox()) ?? { x: Number.NaN, y: Number.NaN };
