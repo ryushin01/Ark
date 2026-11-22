@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-1.5.0-8a4a1f)
+![version](https://img.shields.io/badge/version-1.6.0-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 51개 신화·전설 계열에서 신과 영웅, 몬스터 475명을 조각상, 회화, 유물, 사진 자료 561점으로 살펴보고, 신화 속 유물 152점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -93,12 +93,19 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 | `pnpm test`                              | 단위 테스트                                                                |
 | `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                           |
 | `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                         |
+| `pnpm test:e2e:offline`                  | 외부 요청을 막고 비밀 값 없이 주요 화면이 뜨는지 검사 (먼저 `build` 필요)  |
 | `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)             |
 | `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                                     |
 | `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                               |
 | `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기              |
 | `pnpm credits`                           | 자료 데이터에서 그림 출처 전체 목록(`docs/credits.md`) 다시 만들기         |
 | `pnpm fonts`                             | 한글 웹 폰트(바탕) 화면 글자 파일과 조각 다시 만들기 (화면 글자를 바꾼 뒤) |
+
+### 비밀 값 없이·오프라인으로 실행
+
+`.env.local` 없이 `pnpm install` → `pnpm dev`(또는 `pnpm build` → `pnpm start`)만 해도 저장소에 든 시드 데이터(메모리 목업)와 그림(`public/images/exhibits/`), 글꼴(`src/_app/styles/fonts/`)로 모든 화면이 뜹니다. 인터넷이 끊겨도 됩니다. 어드민은 **데모 계정으로 둘러보기**로 들어갑니다.
+
+Supabase를 설정했는데 닿지 않으면(오프라인, 5초 시간 초과, 오류 응답) 읽기는 내장 시드 데이터로 대신 보여 주고, 화면 위에 "오프라인 데이터로 표시 중" 안내(`role="status"`)를 띄웁니다. 저장은 대신하지 않고 실패합니다. 오류 수집(Sentry)은 DSN이 있을 때만 켜지고, 보내지 못해도 화면에 영향을 주지 않습니다.
 
 환경 변수와 전체 규칙은 [개발 가이드](docs/development.md)를 참고하세요.
 
