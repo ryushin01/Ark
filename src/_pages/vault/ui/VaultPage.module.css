@@ -1,210 +1,92 @@
 .vault {
-    min-height: 100svh;
-    background-color: var(--page-bg);
-    color: var(--page-fg);
+    min-height: 100dvh;
 }
 
-/* 입구: 화면 하나를 채우는 어두운 문 */
-.intro {
-    display: grid;
-    align-content: center;
-    justify-items: center;
-    gap: 1.5rem;
-    min-height: 100svh;
-    padding-block: calc(var(--header-height) + 2rem) 4rem;
-    text-align: center;
-    background: radial-gradient(
-        ellipse 50% 40% at 50% 55%,
-        rgb(255 226 170 / 0.1),
-        transparent 75%
-    );
+.frame {
+    position: relative;
 }
 
-.eyebrow,
-.no {
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+@media (min-width: 768px) {
+    .frame {
+        margin-inline: var(--vault-edge);
+    }
 }
 
-.title {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 13vw, var(--text-display));
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-}
-
-.lead {
-    max-width: 34rem;
-    line-height: 1.8;
-}
-
-.cue {
-    margin-top: 2rem;
-    font-size: var(--text-sm);
-    opacity: 0.7;
-}
-
-.cue::after {
-    display: block;
-    width: 1px;
-    height: 3rem;
-    margin: 0.75rem auto 0;
-    background-color: currentColor;
-    content: "";
-}
-
-/* 전시 목록 */
-.index {
-    padding-block: 4rem;
-    border-top: 1px solid var(--rule);
-}
-
-.indexTitle {
-    margin-bottom: 1.5rem;
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
-}
-
-.indexGroups {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
-    gap: 2.5rem var(--grid-gap);
-}
-
-.groupTitle {
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-}
-
-.groupCount {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    opacity: 0.6;
-}
-
-.indexLink {
-    display: flex;
-    gap: 0.75rem;
-    align-items: baseline;
-    min-height: 2rem;
-    break-inside: avoid;
-    text-decoration: none;
-}
-
-.indexLink:hover,
-.indexLink:focus-visible {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-}
-
-.indexNo {
-    font-size: var(--text-sm);
-    font-variant-numeric: tabular-nums;
-    opacity: 0.6;
-}
-
-/* 진열장 한 칸 */
-.hall {
-    padding-block: clamp(4rem, 12vh, 8rem);
-    border-top: 1px solid var(--rule);
-    scroll-margin-top: var(--header-height);
-    /* content-visibility는 쓰지 않습니다. 그리기를 미룬 진열장의 높이가 추정값이라 전시 목록의 # 이동이 엉뚱한 곳에 멈춥니다. */
-}
-
-.vitrine {
-    display: grid;
-    gap: 2rem;
-    align-items: center;
-}
-
-.name {
-    margin-top: 0.75rem;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-    line-height: 1;
-}
-
-.nameEn {
-    margin-top: 0.5rem;
-    font-family: var(--font-display);
-    opacity: 0.7;
-}
-
-.facts {
-    display: grid;
-    gap: 1.25rem;
-    margin-top: 2rem;
-}
-
-.facts > div {
-    display: grid;
-    grid-template-columns: 5rem 1fr;
-    gap: 1rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--rule);
-}
-
-.facts dt {
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
-}
-
-.facts dd {
-    line-height: 1.75;
-}
-
-.owners {
+/* 정적 목록(움직임 끔·자바스크립트 없음): 귀퉁이 정보를 목록 위아래에 흐름대로 둡니다. */
+.top {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem var(--vault-inset);
 }
 
-.ownerLink,
-.more {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+.hint {
+    padding: 0 var(--vault-inset) 1rem;
+    font-size: var(--vault-text);
+    color: var(--vault-muted);
 }
 
-.more {
-    margin-top: 2rem;
-    font-size: var(--text-sm);
+.bottom {
+    padding: 1.5rem var(--vault-inset);
 }
 
-.ownerLink:hover,
-.more:hover {
-    text-decoration-thickness: 2px;
-}
-
-@media (min-width: 1024px) {
-    .vitrine {
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: var(--grid-gap);
+/* 무한 캔버스: 귀퉁이 정보를 캔버스 위에 고정하고, 바닥글 대신 아래쪽 정보를 둡니다. */
+@media (prefers-reduced-motion: no-preference) {
+    :global(html.js:not([data-motion="off"])) .frame::before,
+    :global(html.js:not([data-motion="off"])) .frame::after {
+        position: absolute;
+        inset-inline: 0;
+        z-index: 1;
+        height: 22%;
+        content: "";
+        pointer-events: none;
     }
 
-    .visual {
-        grid-column: 1 / span 6;
+    /* 귀퉁이 글자가 밝은 그림 위에서도 읽히도록 위아래를 살짝 가라앉힙니다. */
+    :global(html.js:not([data-motion="off"])) .frame::before {
+        top: 0;
+        background: linear-gradient(rgb(0 0 0 / 0.62), transparent);
     }
 
-    .label {
-        grid-column: 8 / span 5;
+    :global(html.js:not([data-motion="off"])) .frame::after {
+        bottom: 0;
+        background: linear-gradient(transparent, rgb(0 0 0 / 0.62));
     }
 
-    /* 진열장이 좌우로 번갈아 놓입니다. 읽는 순서(DOM)는 그대로 그림 → 설명입니다. */
-    .hall[data-side="right"] .visual {
-        grid-column: 7 / span 6;
-        grid-row: 1;
+    :global(html.js:not([data-motion="off"])) .top,
+    :global(html.js:not([data-motion="off"])) .bottom {
+        position: absolute;
+        inset-inline: 0;
+        z-index: 2;
+        padding-block: 0;
+        pointer-events: none;
     }
 
-    .hall[data-side="right"] .label {
-        grid-column: 1 / span 5;
-        grid-row: 1;
+    :global(html.js:not([data-motion="off"])) .top {
+        top: max(1rem, 2.2vw);
+    }
+
+    :global(html.js:not([data-motion="off"])) .bottom {
+        bottom: max(1rem, 1.9vw);
+    }
+
+    :global(html.js:not([data-motion="off"])) .top :is(a, button),
+    :global(html.js:not([data-motion="off"])) .bottom a {
+        pointer-events: auto;
+    }
+
+    :global(html.js:not([data-motion="off"])) .hint {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    :global(html.js:not([data-motion="off"])) .staticFooter {
+        display: none;
     }
 }
