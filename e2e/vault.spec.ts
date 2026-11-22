@@ -10,11 +10,23 @@ const axeViolations = async (page: Page) =>
     (violation) => `${violation.id}: ${violation.help}`,
   );
 
-/** 화면 가운데에 놓인 타일의 id. 가장자리 타일은 조금만 움직여도 반대쪽으로 감기므로 가운데 타일로 잽니다. */
+/**
+ * 화면 가운데에 가장 가까운 타일의 id. 가장자리 타일은 조금만 움직여도 반대쪽으로 감기므로 가운데 타일로 잽니다.
+ * 가운데 한 점이 타일 사이 틈에 걸릴 수 있어(CI 글꼴·배치 차이), 점 대신 가운데에서 가장 가까운 타일을 고릅니다.
+ */
 const centerTileId = (page: Page) =>
-  page.evaluate(
-    () => document.elementFromPoint(innerWidth / 2, innerHeight / 2)?.closest("li")?.id ?? "",
-  );
+  page.evaluate(() => {
+    const cx = innerWidth / 2;
+    const cy = innerHeight / 2;
+    let best = { id: "", distance: Number.POSITIVE_INFINITY };
+    for (const tile of document.querySelectorAll("li[id]")) {
+      const rect = tile.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) continue;
+      const distance = Math.hypot(rect.x + rect.width / 2 - cx, rect.y + rect.height / 2 - cy);
+      if (distance < best.distance) best = { id: tile.id, distance };
+    }
+    return best.id;
+  });
 
 const boxOf = async (page: Page, id: string) =>
   (await page.locator(`[id="${id}"]`).boundingBox()) ?? { x: Number.NaN, y: Number.NaN };
@@ -233,7 +245,13 @@ test.describe("무한 캔버스", () => {
     await expect(page).toHaveURL("/vault");
     await expect.poll(async () => (await boxOf(page, id)).x).toBeLessThan(start.x - 100);
 
-    const target = await centerTileId(page);
+    // 틈에 걸리지 않도록 가운데 점 아래에 타일이 있을 때까지 기다린 뒤 누릅니다.
+    const tileAtCenter = () =>
+      page.evaluate(
+        () => document.elementFromPoint(innerWidth / 2, innerHeight / 2)?.closest("li")?.id ?? "",
+      );
+    await expect.poll(tileAtCenter).not.toBe("");
+    const target = await tileAtCenter();
     await page.mouse.click(720, 450);
     await expect(page).toHaveURL(`/vault/${target}`);
   });
