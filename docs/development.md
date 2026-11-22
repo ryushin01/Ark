@@ -179,6 +179,10 @@
 
 마이그레이션은 `supabase migration new <이름>`으로 만들고, 로컬은 `supabase migration up`(또는 `pnpm db:reset`), 운영은 main에 합치면 배포 워크플로가 적용합니다(아래 "운영 배포"). 급할 때만 `pnpm db:push`로 직접 적용합니다.
 
+### Supabase에 닿지 않을 때
+
+Supabase 클라이언트는 요청마다 5초 시간 제한을 둡니다(`shared/api/supabase.server.ts`). 저장소의 읽기(`list`, `find`)가 네트워크 오류·시간 초과·오류 응답으로 실패하면 같은 테이블의 메모리 목업(시드)으로 대신 돌려주고 그 테이블을 "대체 중"으로 표시합니다(`shared/api/data-source.server.ts`). 대신한 결과는 몇 분만 캐시해(`cacheLife("minutes")`, 평소는 `"hours"`) 다시 연결되면 곧 실제 데이터로 돌아갑니다. 다음에 읽기가 성공하면 표시를 지웁니다. 공개 사이트(`_app/layouts/DataFallbackNotice`)와 어드민(`AdminPanelLayout`)은 대체 중이면 "오프라인 데이터로 표시 중" 안내를 `role="status"`로 보여 줍니다. 공개 사이트의 안내는 데이터를 직접 읽지 않고 그 서버에서 앞서 읽기가 실패했는지만 봅니다. 레이아웃이 데이터를 기다리면 저장 뒤 공개 화면을 다시 그릴 때 정적 생성이 깨지기 때문입니다(`usePathname` 오류). 쓰기는 대신하지 않고 그대로 실패합니다(목업에 쓰면 운영 데이터와 어긋나므로). 시드 그림은 앱의 `/images/exhibits/`에 있어 대체 중에도 그림이 보입니다. 어드민에서 올린 그림(Storage)은 대체 중에는 보이지 않습니다.
+
 단위 테스트(`vitest.config.mts`)와 E2E 서버(`playwright.config.ts`)는 Supabase 환경 변수를 빈 값으로 덮어써 목업을 씁니다. README 스크린샷(`pnpm screenshots`)만 로컬 Supabase를 씁니다.
 
 ## 환경 변수
@@ -260,14 +264,17 @@ axe 검사는 스토리 테스트와 E2E에서 실행합니다. 스토리 테스
 
 ## 테스트
 
-| 종류            | 위치                        | 명령                             |
-| --------------- | --------------------------- | -------------------------------- |
-| 단위            | `src/**/*.test.ts(x)`       | `pnpm test`                      |
-| 스토리          | `src/**/*.stories.tsx`      | `pnpm test:storybook`            |
-| E2E             | `e2e/site.spec.ts`          | `pnpm build && pnpm test:e2e`    |
-| README 스크린샷 | `e2e/readme.screenshots.ts` | `pnpm build && pnpm screenshots` |
+| 종류            | 위치                        | 명령                                  |
+| --------------- | --------------------------- | ------------------------------------- |
+| 단위            | `src/**/*.test.ts(x)`       | `pnpm test`                           |
+| 스토리          | `src/**/*.stories.tsx`      | `pnpm test:storybook`                 |
+| E2E             | `e2e/site.spec.ts`          | `pnpm build && pnpm test:e2e`         |
+| 오프라인 E2E    | `e2e/offline.spec.ts`       | `pnpm build && pnpm test:e2e:offline` |
+| README 스크린샷 | `e2e/readme.screenshots.ts` | `pnpm build && pnpm screenshots`      |
 
 E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2 AA), 본문 바로가기, 메뉴 키보드 동작, 아카이브 플래그를 검사합니다. 어드민 E2E는 로그인, 데모 저장 차단, 만들기→공개 화면 반영→삭제 흐름을 검사합니다. 메모리 저장소를 바꾸므로 공개 사이트 검사가 끝난 뒤 순서대로 실행합니다(`admin` 프로젝트). 테스트용 비밀번호는 `playwright.config.ts`의 `webServer.env`에 있습니다. 서버는 4100 포트에서 띄우고, 다른 작업이 그 포트를 쓰고 있으면 `E2E_PORT=4123 pnpm test:e2e`처럼 바꿉니다.
+
+오프라인 E2E(`offline` 프로젝트, `pnpm test:e2e`에 포함)는 브라우저에서 localhost 밖으로 나가는 요청을 모두 막고(`route.abort`), 비밀 값 없이 띄운 서버에서 공개 사이트 6개 화면과 어드민 5개 목록 화면이 내용과 함께 뜨는지, 깨진 그림과 외부 요청이 없는지, axe 위반이 없는지 검사합니다. 두 번째 서버(포트 `E2E_PORT + 1`)는 `SUPABASE_URL`을 닿지 않는 주소(`https://supabase.invalid`)로 두어, 공개 화면과 어드민 목록이 내용과 함께 뜨는지 확인합니다. 이 서버는 빌드 때 만든 캐시를 쓰므로 Supabase를 부르지 않을 수 있어, "오프라인 데이터로 표시 중" 안내는 단위 테스트(`DataFallbackNotice.test.tsx`, `repository.fallback.server.test.ts`)가 확인합니다.
 
 ## 첫 화면 등장 효과 앞당기기
 
