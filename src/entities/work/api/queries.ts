@@ -9,9 +9,12 @@ export const WORK_TAG = "works";
 /** 어드민용: 비공개(draft)를 포함한 모든 작품 */
 export async function getWorks(): Promise<Work[]> {
   "use cache";
-  cacheLife("hours");
   cacheTag(WORK_TAG);
-  return await workRepository.list();
+  const rows = await workRepository.list();
+  // Supabase를 읽지 못해 내장 데이터로 대신했으면 몇 분만 캐시해, 다시 연결되면 곧 실제 데이터로 돌아갑니다.
+  if (workRepository.servingFallback()) cacheLife("minutes");
+  else cacheLife("hours");
+  return rows;
 }
 
 /** 공개 화면에 보여 줄 작품만 돌려줍니다. (draft 제외) */

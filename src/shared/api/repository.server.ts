@@ -1,3 +1,4 @@
+import { isTableFallback, markFallback, markLive } from "./data-source.server";
 import { createMockTable } from "./mock-table";
 import { getSupabase } from "./supabase.server";
 
@@ -18,6 +19,8 @@ export type Repository<M> = {
   insert: (model: M) => Promise<M | "duplicate">;
   update: (key: string, model: M) => Promise<M | null>;
   remove: (key: string) => Promise<boolean>;
+  /** 마지막 읽기를 Supabase 대신 내장 데이터로 돌려줬는지. 캐시를 짧게 잡는 데 씁니다. */
+  servingFallback: () => boolean;
 };
 
 type RepositoryConfig<T extends TableName, M> = {
@@ -68,6 +71,20 @@ export function createRepository<T extends TableName, M>(
   const { table, keyColumn, keyOf, seed, toRow, fromRow } = config;
   const mock = createMockTable<M>(config.mockKey ?? table, seed);
   const is = (key: string) => (model: M) => keyOf(model) === key;
+  /**
+   * 읽기는 Supabase가 응답하지 않거나(오프라인·시간 초과) 오류를 내면 내장 시드 데이터로 대신 보여 줍니다.
+   * 공개 화면이 외부 서비스 때문에 비지 않게 하려는 것이며, 쓰기는 대신하지 않고 그대로 실패합니다.
+   */
+  const readOrFallback = async <R>(read: () => Promise<R>, fallback: () => R): Promise<R> => {
+    try {
+      const result = await read();
+      markLive(table);
+      return result;
+    } catch (error) {
+      markFallback(table, error);
+      return fallback();
+    }
+  };
   /** Supabase 쿼리. 연결하지 않았으면 null */
   const query = () => {
     const supabase = getSupabase();
@@ -75,19 +92,30 @@ export function createRepository<T extends TableName, M>(
   };
 
   return {
+    servingFallback: () => isTableFallback(table),
     async list() {
       const from = query();
       if (!from) return mock.list();
-      const { data, error } = await from.select("*");
-      if (error) throw new Error(`${table} 목록을 읽지 못했습니다: ${error.message}`);
-      return (data as TableRow<T>[]).map(fromRow);
+      return readOrFallback(
+        async () => {
+          const { data, error } = await from.select("*");
+          if (error) throw new Error(`${table} 목록을 읽지 못했습니다: ${error.message}`);
+          return (data as TableRow<T>[]).map(fromRow);
+        },
+        () => mock.list(),
+      );
     },
     async find(key) {
       const from = query();
       if (!from) return mock.find(is(key)) ?? null;
-      const { data, error } = await from.select("*").eq(keyColumn, key).maybeSingle();
-      if (error) throw new Error(`${table}에서 ${key}를 읽지 못했습니다: ${error.message}`);
-      return data ? fromRow(data as TableRow<T>) : null;
+      return readOrFallback(
+        async () => {
+          const { data, error } = await from.select("*").eq(keyColumn, key).maybeSingle();
+          if (error) throw new Error(`${table}에서 ${key}를 읽지 못했습니다: ${error.message}`);
+          return data ? fromRow(data as TableRow<T>) : null;
+        },
+        () => mock.find(is(key)) ?? null,
+      );
     },
     async insert(model) {
       const from = query();

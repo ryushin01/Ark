@@ -1,3 +1,4 @@
+export { isUsingFallbackData } from "./data-source.server";
 export type { Json } from "./database.types";
 export {
   checkImageFile,

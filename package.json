@@ -1,6 +1,6 @@
 {
   "name": "ark",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,7 +16,8 @@
     "test": "vitest run --project unit",
     "test:watch": "vitest --project unit",
     "test:storybook": "vitest run --project storybook",
-    "test:e2e": "playwright test --project=chromium --project=admin",
+    "test:e2e": "playwright test --project=chromium --project=admin --project=offline",
+    "test:e2e:offline": "playwright test --project=offline",
     "screenshots": "E2E_USE_LOCAL_SUPABASE=1 playwright test --project=screenshots",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o public/storybook --quiet",
