@@ -35,7 +35,12 @@ const centerTileId = async (page: Page) => {
 };
 
 const boxOf = async (page: Page, id: string) =>
-  (await page.locator(`[id="${id}"]`).boundingBox()) ?? { x: Number.NaN, y: Number.NaN };
+  (await page.locator(`[id="${id}"]`).boundingBox()) ?? {
+    x: Number.NaN,
+    y: Number.NaN,
+    width: Number.NaN,
+    height: Number.NaN,
+  };
 
 test.describe("움직임을 끄면 정적인 목록", () => {
   test.use({ reducedMotion: "reduce" });
@@ -251,14 +256,19 @@ test.describe("무한 캔버스", () => {
     await expect(page).toHaveURL("/vault");
     await expect.poll(async () => (await boxOf(page, id)).x).toBeLessThan(start.x - 100);
 
-    // 틈에 걸리지 않도록 가운데 점 아래에 타일이 있을 때까지 기다린 뒤 누릅니다.
-    const tileAtCenter = () =>
-      page.evaluate(
-        () => document.elementFromPoint(innerWidth / 2, innerHeight / 2)?.closest("li")?.id ?? "",
-      );
-    await expect.poll(tileAtCenter).not.toBe("");
-    const target = await tileAtCenter();
-    await page.mouse.click(720, 450);
+    // 관성이 멈춰 타일 위치가 더는 바뀌지 않을 때까지 기다린 뒤, 그 타일의 한가운데를 누릅니다.
+    let previous = "";
+    await expect
+      .poll(async () => {
+        const current = JSON.stringify(await boxOf(page, id));
+        const settled = current === previous;
+        previous = current;
+        return settled;
+      })
+      .toBe(true);
+    const target = await centerTileId(page);
+    const box = await boxOf(page, target);
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
     await expect(page).toHaveURL(`/vault/${target}`);
   });
 
