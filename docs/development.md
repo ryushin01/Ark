@@ -10,14 +10,14 @@
 - Next.js `app` 폴더와 겹치지 않게 FSD의 app·pages 계층은 `_app`, `_pages`로 씁니다. 그래서 Steiger의 `fsd/typo-in-layer-name`만 끄고, 라우트 폴더 `src/app/`은 검사에서 뺍니다.
 - 한 페이지에서만 쓰는 UI와 Server Action은 그 페이지 슬라이스의 `ui`·`api`에 둡니다(예: 홈의 연대기, 어드민 편집 폼). 두 곳 이상에서 쓰게 되면 `widgets`·`features`로 올립니다.
 
-| 계층       | 슬라이스                                                                                                                                                                                                                          |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                                                         |
-| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `vault`(비밀 전시실·유물 상세), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
-| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                                                       |
-| `features` | `admin-auth`                                                                                                                                                                                                                      |
-| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품), `relic`(신화 속 유물)                                                                                                                      |
-| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                                |
+| 계층       | 슬라이스                                                                                                                                                                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `_app`     | `layouts`(루트·사이트·어드민), `scroll`(부드러운 스크롤, 스크롤 위치 되돌리기), `transitions`(화면 전환), `seo`, `styles`                                                                                                                                 |
+| `_pages`   | `home`(악보 무대, 계열 목록, 신 색인), `pantheon`, `figure`(자료 목록), `figure-search`(신 찾기), `archive`(스와이프 갤러리), `vault`(비밀 전시실 무한 캔버스·유물 상세·이야기 듣기), `error`, `not-found`, `admin-*`(목록과 편집 폼, 저장 Server Action) |
+| `widgets`  | `site-header`, `site-footer`, `figure-grid`(신 카드 목록: 계열 상세·신 찾기), `admin-shell`                                                                                                                                                               |
+| `features` | `admin-auth`                                                                                                                                                                                                                                              |
+| `entities` | `pantheon`(신화 계열), `figure`(신·인물), `exhibit`(소장 자료), `work`(영향받은 작품), `relic`(신화 속 유물)                                                                                                                                              |
+| `shared`   | `ui`(Divider, FilterGroup, 손글씨 주석, RevealText, RevealImage, VisuallyHidden), `lib`(훅, 이미지 출처), `config`                                                                                                                                        |
 
 ## 디자인
 
@@ -36,6 +36,18 @@
 | `--rule`                                          | 잉크 14%              | 오선, 구분선          |
 | `--rail`                                          | `2.75rem`             | 세로 띠 폭(터치 44px) |
 | `--ease-magic`, `--ease-out-expo`, `--ease-quart` | cubic-bezier          | 등장·전환 애니메이션  |
+
+### 비밀 전시실
+
+비밀 전시실(`/vault`, `/vault/[slug]`)은 CSS Design Awards 2026-04-05 Website of the Day인 Indrajaal의 화면 구성(무한 캔버스, 네 귀퉁이 정보, 흐린 배경의 상세)을 참고해 다시 만들었습니다. 레퍼런스의 이미지, 문구, 로고, 코드는 가져오지 않았고, 내용은 Ark의 유물 자료입니다. 나머지 화면과 달리 어두운 바탕(`#0a0a0a`)과 전시실 전용 글꼴(`vault-theme.css`: Big Shoulders Display 800·900, 한글 도현, 본문 Pretendard)을 쓰며, 이 글꼴은 전시실 화면에서만 받습니다.
+
+- 캔버스(`VaultCanvas`, 배치 `model/canvas.ts`): 타일을 10열에 돌려 담아 열마다 높이가 다른 벽돌형으로 깔고, 길이는 모두 열 폭 단위로 셉니다. 첫 위치는 서버에서 CSS 변수(`--x`, `--y`, `--h`)로 그려 두어 자바스크립트를 받기 전에도 같은 화면이 보이고(CLS 0), 넘겨받은 뒤에는 `requestAnimationFrame`이 끌기(관성)·휠·방향키·버튼 이동을 그립니다. 가로는 세계 폭, 세로는 열 높이로 감아 끝없이 이어집니다. WebGL은 쓰지 않습니다.
+- 타일은 전시 순서대로 놓인 순서 있는 목록의 링크라 화면 낭독기와 Tab으로 모두 닿고, 초점을 받은 타일이 화면 밖이면 가운데로 옮깁니다. 끌고 난 뒤의 클릭은 링크로 가지 않습니다. `/vault#유물` 주소로 열면 그 타일을 가운데에 둡니다.
+- 캔버스는 `html.js`이고 움직임이 켜져 있을 때만 CSS가 켭니다(`prefers-reduced-motion: no-preference`와 `data-motion`). 움직임을 끄면 같은 목록이 정적인 벽돌형 목록과 바닥글이 되어 페이지를 그대로 스크롤합니다.
+- 캔버스는 화면 높이에 고정되고 휠을 직접 받으므로 `data-lenis-prevent`로 Lenis가 휠을 가져가지 않게 합니다.
+- 유물 상세의 이야기 듣기(`LorePlayer`)는 브라우저 음성 합성(Web Speech API, `ko-KR`)으로 이름·기원·힘·대가를 읽습니다. 긴 글을 한 번에 읽히면 일부 브라우저가 15초쯤에서 멈추므로 문장 단위로 나눠 차례로 넣습니다. 전체 시간은 1초에 7자로 어림하고, 진행은 읽은 글자 위치(`onboundary`)로 셉니다. 음성 합성을 지원하지 않으면 버튼 대신 안내를 보여 줍니다.
+
+### 글꼴
 
 제목 영문은 Cinzel 600, 본문과 표기의 영문·숫자는 Courier Prime(`@fontsource`, SIL OFL, 글자 묶음별 조각)을 씁니다. 한글은 제목·본문 모두 바탕(Batang, HanYang I&C, google/fonts의 SIL OFL판)입니다. `pnpm fonts`(`scripts/build-fonts.mjs`, 설정 `scripts/fonts/config.json`)가 원본(`scripts/fonts/batang/Batang-Regular.woff2`, 한글·기호 범위만 남긴 파일)에서 두 가지를 만듭니다. 하나는 소스의 문자열·JSX 글자에 쓰인 한글·기호만 담은 화면 글자 파일(`src/_app/styles/fonts/batang.css`, 약 200KB)로 `globals.css`가 첫 화면 CSS와 함께 싣고, 다른 하나는 Google Fonts와 같은 글자 묶음으로 나눈 나머지 조각(`public/fonts/batang-rest.css`)으로 `RestFonts`가 페이지를 다 받고 1초 뒤 한가할 때 붙입니다. 데이터베이스에만 있는 글자나 검색어처럼 화면 글자 파일에 없는 글자는 조각이 붙은 뒤 바탕으로 바뀝니다. 화면 글자가 바뀌면 `pnpm fonts`를 다시 실행하고, 단위 테스트(`pnpm fonts --check`)가 빠진 글자를 잡습니다. 바탕은 굵기가 400 하나뿐이라, `font-synthesis: none`으로 브라우저가 가짜 굵게를 만들지 않게 하고 한글 제목도 400으로 그립니다. 제목의 위계는 크기와 영문 Cinzel 600으로 나눕니다.
 

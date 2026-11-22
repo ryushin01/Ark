@@ -1,0 +1,228 @@
+/* 전시실의 네 귀퉁이 정보: 굵은 제목 줄과 가는 값 줄의 2단, 작은 대문자 */
+.masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem 1.6vw;
+}
+
+.wordmark {
+    margin: 0;
+    font-family: var(--vault-display);
+    font-size: clamp(2rem, calc(var(--vault-width) * 0.04), 4.75rem);
+    font-weight: 800;
+    line-height: 0.74;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: var(--vault-fg);
+}
+
+.wordmarkLink {
+    display: inline-block;
+    padding-block: 0.12em 0.02em;
+}
+
+.pair {
+    display: grid;
+    margin: 0;
+    font-size: var(--vault-text);
+    line-height: 1.18;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.75rem rgb(0 0 0 / 0.6);
+}
+
+.masthead .pair {
+    padding-block-start: 0.1em;
+}
+
+.strong {
+    font-weight: 600;
+    color: var(--vault-fg);
+}
+
+.light {
+    font-weight: 400;
+    color: var(--vault-muted);
+}
+
+.menu {
+    display: grid;
+    justify-items: end;
+    font-size: var(--vault-text);
+    line-height: 1.18;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.75rem rgb(0 0 0 / 0.6);
+}
+
+.menuLead {
+    min-height: 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--vault-fg);
+    font: inherit;
+    font-weight: 600;
+    text-transform: inherit;
+    cursor: pointer;
+}
+
+.menuLinks {
+    display: flex;
+    gap: 0.55em;
+}
+
+.menuLinks a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.underline:hover {
+    color: var(--vault-fg);
+}
+
+.menuLinks .underline {
+    color: var(--vault-fg);
+}
+
+.footerInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+
+.footerInfo .light {
+    display: flex;
+    align-items: flex-start;
+    min-height: 24px;
+}
+
+@media (max-width: 767px) {
+    .credit {
+        display: none;
+    }
+
+    .source {
+        margin-inline-start: auto;
+        text-align: end;
+    }
+}
+
+/* 무한 캔버스의 넓은 화면: 제작 정보 두 칸을 레퍼런스처럼 화면 폭의 53%와 69% 자리에 둡니다. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    :global(html.js:not([data-motion="off"])) .footerInfo {
+        position: relative;
+        margin-inline: calc(var(--vault-inset) * -1);
+    }
+
+    :global(html.js:not([data-motion="off"])) .footerInfo > :first-child {
+        margin-inline-start: var(--vault-inset);
+    }
+
+    :global(html.js:not([data-motion="off"])) .credit,
+    :global(html.js:not([data-motion="off"])) .source {
+        position: absolute;
+        bottom: 0;
+        left: 52.8%;
+    }
+
+    :global(html.js:not([data-motion="off"])) .source {
+        left: 69%;
+    }
+}
+
+/* 전시 목록 (모달) */
+.index {
+    width: min(100vw - 2rem, 72rem);
+    max-height: min(100dvh - 2rem, 56rem);
+    padding: 0;
+    border: 1px solid var(--vault-line);
+    background-color: rgb(12 12 12 / 0.96);
+    color: var(--vault-fg);
+    font-family: var(--vault-sans);
+}
+
+.index::backdrop {
+    background-color: rgb(0 0 0 / 0.7);
+    backdrop-filter: blur(6px);
+}
+
+.indexTop {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--vault-line);
+    background-color: rgb(12 12 12);
+}
+
+.indexTitle {
+    font-family: var(--vault-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.indexCount {
+    font-family: var(--vault-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--vault-muted);
+    vertical-align: super;
+}
+
+.indexClose {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--vault-line);
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.indexGroups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 1.75rem 2rem;
+    padding: 1.5rem;
+}
+
+.groupTitle {
+    margin-block-end: 0.5rem;
+    font-family: var(--vault-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.indexList li + li {
+    border-top: 1px solid var(--vault-line);
+}
+
+.indexLink {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    font-size: 0.9375rem;
+}
+
+.indexLink:hover {
+    color: var(--vault-cream);
+}
+
+.indexNo {
+    min-width: 3.2em;
+    font-size: 0.75rem;
+    color: var(--vault-muted);
+}
