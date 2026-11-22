@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { type ShownImage, skipsOptimization, useMotionOff } from "@/shared/lib";
+import { type ShownImage, skipsOptimization, smallSrc, useMotionOff } from "@/shared/lib";
 
 import { CANVAS_START_X, layoutCanvas, placeCell } from "../model/canvas";
 import styles from "./VaultCanvas.module.css";
@@ -274,7 +274,7 @@ export function VaultCanvas({ tiles }: { tiles: CanvasTile[] }) {
               <Link href={`/vault/${tile.slug}`} className={styles.link} draggable={false}>
                 {tile.image ? (
                   <Image
-                    src={tile.image.src}
+                    src={smallSrc(tile.image.src)}
                     alt={tile.image.alt}
                     fill
                     sizes="(min-width: 1024px) 23vw, (min-width: 640px) 31vw, 45vw"

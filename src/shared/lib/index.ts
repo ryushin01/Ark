@@ -17,7 +17,7 @@ export {
 export { useSubmitLock } from "./form/use-submit-lock";
 export { initMonitoring, reportError } from "./monitoring";
 export { monogram } from "./monogram";
-export { skipsOptimization } from "./original-images";
+export { skipsOptimization, smallSrc } from "./original-images";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
 export { useInView } from "./use-in-view";
