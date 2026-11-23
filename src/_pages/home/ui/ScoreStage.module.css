@@ -51,6 +51,12 @@
     animation-delay: calc(var(--i) * 45ms);
 }
 
+/* 첫 화면의 큰 그림(LCP)은 펼침을 짧고 한꺼번에 해 그려지는 시점을 앞당깁니다. */
+.tileFirst {
+    animation-duration: 0.3s;
+    animation-delay: 0s;
+}
+
 .tileImage {
     object-fit: cover;
 }

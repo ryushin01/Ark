@@ -134,7 +134,7 @@ jobs:
           cache: pnpm
       - uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 3.2.0
 
       - run: pnpm install --frozen-lockfile
       # 로컬 Supabase(DB·Storage)를 띄우고, 접속 정보를 다음 단계의 환경 변수로 넘깁니다.

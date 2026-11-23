@@ -75,7 +75,7 @@ jobs:
       - uses: supabase/setup-cli@v1
         if: steps.stale.outputs.skip == 'false'
         with:
-          version: latest
+          version: 3.2.0
       - run: pnpm install --frozen-lockfile
         if: steps.stale.outputs.skip == 'false'
 

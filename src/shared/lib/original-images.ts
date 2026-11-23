@@ -585,3 +585,13 @@ export function skipsOptimization(src: string): boolean {
 export function smallSrc(src: string): string {
   return skipsOptimization(src) ? src.replace("/images/exhibits/", "/images/exhibits-thumb/") : src;
 }
+
+/**
+ * 160px 안팎으로 작게 보이는 자리(필름·목록의 작은 그림)는 긴 변 240px의 더 작은 그림을 보냅니다.
+ * 첫 화면에 한꺼번에 받는 그림의 용량을 줄여 LCP(Lighthouse 성능)를 지킵니다.
+ */
+export function tinySrc(src: string): string {
+  return skipsOptimization(src)
+    ? src.replace("/images/exhibits/", "/images/exhibits-thumb-s/")
+    : src;
+}
