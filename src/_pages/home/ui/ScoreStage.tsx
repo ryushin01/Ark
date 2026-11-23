@@ -134,7 +134,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
               }
             >
               <Image
-                src={image.src}
+                src={smallSrc(image.src)}
                 unoptimized={skipsOptimization(image.src)}
                 alt=""
                 fill
