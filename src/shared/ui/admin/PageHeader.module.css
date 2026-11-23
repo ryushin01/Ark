@@ -1,0 +1,86 @@
+/* 어드민 화면 제목. 색·글꼴 변수(--admin-*)는 admin-theme.css에 있습니다. */
+.header {
+    display: grid;
+    gap: 1.5rem 4rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 900px) {
+    .header {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        align-items: start;
+    }
+}
+
+.titleBlock {
+    display: grid;
+    justify-items: start;
+    gap: 2rem;
+}
+
+.title {
+    overflow: hidden;
+    margin: 0;
+    padding-bottom: 0.08em;
+    font-family: var(--admin-serif);
+    font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+    font-weight: 400;
+    line-height: 1.08;
+    word-break: keep-all;
+}
+
+/* 레퍼런스의 줄 단위 등장: 줄이 아래에서 떠오릅니다. */
+.titleLine {
+    display: block;
+    animation: rise 1.1s var(--admin-ease) 0.1s both;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(105%);
+    }
+}
+
+.description {
+    max-width: 32rem;
+    margin: 0;
+    padding-top: 0.75rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    animation: fade 1.1s var(--admin-ease) 0.35s both;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* 첫 화면: 가운데 정렬, 아주 큰 제목 */
+.hero {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+    margin: 2rem auto 5rem;
+    text-align: center;
+}
+
+.hero .titleBlock {
+    justify-items: center;
+}
+
+.hero .title {
+    font-size: clamp(3.5rem, 8.4vw, 7.5rem);
+    line-height: 1.02;
+}
+
+.hero .description {
+    max-width: 40rem;
+    padding-top: 0;
+}

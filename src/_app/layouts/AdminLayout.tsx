@@ -10,10 +10,19 @@ export const adminMetadata = {
   robots: { index: false, follow: false },
 };
 
-/** 어드민 전체: Radix Themes만 씁니다. (공개 사이트의 디자인을 쓰지 않습니다) */
+/**
+ * 어드민 전체: Radix Themes만 씁니다. (공개 사이트의 디자인을 쓰지 않습니다)
+ * 색·모양은 admin-theme.css에서 먹색·밝은 회색 종이로 맞추고, 바탕은 body가 칠합니다.
+ */
 export function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <Theme accentColor="brown" grayColor="sand" radius="small" className="ark-admin">
+    <Theme
+      accentColor="gray"
+      grayColor="gray"
+      radius="none"
+      hasBackground={false}
+      className="ark-admin"
+    >
       {children}
     </Theme>
   );

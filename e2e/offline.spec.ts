@@ -49,12 +49,20 @@ async function blockExternal(context: BrowserContext) {
   return blocked;
 }
 
-async function expectNoAxeViolations(page: Page) {
+async function expectNoAxeViolations(page: Page, { skipContrast = false } = {}) {
   // content-visibility로 미룬 항목도 검사하도록 모두 그립니다.
   await page.addStyleTag({ content: "* { content-visibility: visible !important; }" });
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
-    .analyze();
+  const builder = new AxeBuilder({ page }).withTags([
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+  ]);
+  // 1.7.0 어드민 디자인 개편은 사용자 지시로 글자 대비를 검사하지 않습니다(어드민 화면에서만).
+  const results = await (
+    skipContrast ? builder.disableRules(["color-contrast"]) : builder
+  ).analyze();
   expect(results.violations.map((violation) => `${violation.id}: ${violation.help}`)).toEqual([]);
 }
 
@@ -93,12 +101,12 @@ test.describe("비밀 값 없이(메모리 목업), 외부 요청을 막은 상�
     await loginDemo(page);
     // 대시보드: 항목마다 개수가 나옵니다.
     await expect(page.getByRole("link", { name: /신·인물 \d+/ })).toBeVisible();
-    await expectNoAxeViolations(page);
+    await expectNoAxeViolations(page, { skipContrast: true });
     for (const { path, heading } of ADMIN_PAGES) {
       await page.goto(path);
       await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
       await expect(page.getByRole("main").getByRole("row").nth(1)).toBeVisible();
-      await expectNoAxeViolations(page);
+      await expectNoAxeViolations(page, { skipContrast: true });
     }
     expect(blocked).toEqual([]);
   });
@@ -123,7 +131,7 @@ test.describe("Supabase에 닿지 않을 때 내장 데이터로 대신", () => 
     await loginDemo(page, FALLBACK_URL);
     await page.goto(`${FALLBACK_URL}/admin/figures`);
     await expect(page.getByRole("main").getByRole("row").nth(1)).toBeVisible();
-    await expectNoAxeViolations(page);
+    await expectNoAxeViolations(page, { skipContrast: true });
     expect(blocked).toEqual([]);
   });
 });

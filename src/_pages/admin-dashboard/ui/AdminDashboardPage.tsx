@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Callout, Card, Flex, Grid, Heading, Link as RadixLink, Text } from "@radix-ui/themes";
+import { Callout, Flex, Heading } from "@radix-ui/themes";
 
 import { getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
@@ -11,7 +11,12 @@ import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { features } from "@/shared/config";
 import { PageHeader } from "@/shared/ui/admin";
 
-/** 대시보드: 항목별 개수(어드민 메뉴 순서), 데이터 저장 방식 안내 */
+import styles from "./AdminDashboardPage.module.css";
+
+/**
+ * 대시보드: 항목별 개수(어드민 메뉴 순서), 데이터 저장 방식 안내
+ * 항목은 번호와 사선이 붙은 큰 세리프 목록으로 보여 줍니다. 번호는 CSS 카운터라 읽는 이름에 들어가지 않습니다.
+ */
 export async function AdminDashboardPage() {
   const [pantheons, figures, genealogies, exhibits, relics, works] = await Promise.all([
     getPantheons(),
@@ -66,8 +71,11 @@ export async function AdminDashboardPage() {
 
   return (
     <>
-      <PageHeader title="대시보드" description="도서관에 등록된 항목을 한눈에 봅니다." />
-      <Flex direction="column" gap="3" mb="6">
+      <PageHeader hero title="대시보드" description="도서관에 등록된 항목을 한눈에 봅니다." />
+      <a href="#admin-items" className={styles.scrollCue}>
+        항목 보기
+      </a>
+      <Flex direction="column" gap="3" mb="9" className={styles.notices}>
         <Callout.Root color={isSupabaseEnabled() ? "green" : "gray"} highContrast>
           <Callout.Text>
             {isSupabaseEnabled()
@@ -84,35 +92,22 @@ export async function AdminDashboardPage() {
           </Callout.Root>
         )}
       </Flex>
-      <Heading as="h2" size="4" mb="3">
-        항목
-      </Heading>
-      <Grid columns={{ initial: "1", sm: "2", md: "3" }} gap="4" asChild>
-        <ul>
+      <section aria-labelledby="admin-items" className={styles.section}>
+        <Heading as="h2" id="admin-items" tabIndex={-1} className={styles.sectionTitle}>
+          항목
+        </Heading>
+        <ol className={styles.list}>
           {cards.map((card) => (
-            <li key={card.href}>
-              <Card asChild size="3">
-                <Link href={card.href}>
-                  <Flex direction="column" gap="1">
-                    <Text size="2" color="gray">
-                      {card.label}
-                    </Text>
-                    <Text size="8" weight="bold">
-                      {card.count}
-                    </Text>
-                    <Text size="2">{card.note}</Text>
-                  </Flex>
-                </Link>
-              </Card>
+            <li key={card.href} className={styles.item}>
+              <Link href={card.href} className={styles.row}>
+                <span className={styles.label}>{card.label}</span>
+                <span className={styles.count}>{card.count}</span>
+                <span className={styles.note}>{card.note}</span>
+              </Link>
             </li>
           ))}
-        </ul>
-      </Grid>
-      <Text as="p" size="2" color="gray" mt="6">
-        <RadixLink asChild>
-          <Link href="/">공개 사이트에서 확인하기</Link>
-        </RadixLink>
-      </Text>
+        </ol>
+      </section>
     </>
   );
 }

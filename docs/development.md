@@ -145,7 +145,8 @@
 - 계열은 만들고 고치고 지울 수 있습니다. 신이 속한 계열은 지울 수 없습니다.
 - 다른 데이터가 가리키는 항목은 지우지 않습니다. 자료나 작품이 연결된 신, 계열의 대표 자료로 쓰는 자료가 그렇습니다.
 - 목록 표의 '고치기' 칸은 `shared/ui/admin`의 `EditLinkCell`을 씁니다. 링크 이름에 대상 이름을 넣어 줄마다 구별합니다.
-- Radix Themes 기본 색 중 명도 대비가 모자란 조합은 `shared/ui/admin/admin-theme.css`에서 보정합니다(진한 바탕 버튼, Select 자리표시). 주황 배지·안내는 `highContrast`를 씁니다.
+- 어드민 디자인(1.7.0)은 De Gaspé Beaubien Museum 사이트의 구성을 참고합니다. 밝은 회색 종이(#ededed)·먹색 글자(#1d1d1d)·바탕 세리프 큰 제목·알약 버튼·가운데 자간 넓은 메뉴·먹색 바닥글입니다. 컴포넌트는 Radix Themes 그대로이고, 색·모양은 `shared/ui/admin/admin-theme.css`에서 Radix 변수(`--accent-*`, `--gray-11·12`, `--focus-8`)와 클래스(`.rt-Button` 등)를 덮어써 맞춥니다. 머리글·바닥글은 `widgets/admin-shell`, 제목은 `PageHeader`(`hero`는 대시보드).
+- 명도 대비: 1.7.0 어드민 개편은 사용자 지시로 레퍼런스 색을 그대로 쓰고 글자 대비(4.5:1)를 따지지 않습니다. 그래서 어드민 화면 E2E(`e2e/admin.spec.ts`, `e2e/offline.spec.ts`의 어드민 부분)만 axe `color-contrast`를 끕니다. 공개 사이트는 그대로 4.5:1을 지킵니다. 키보드·`:focus-visible`·레이블·역할과 이름 같은 다른 접근성 규칙은 모두 검사합니다.
 
 ## 데이터: Supabase
 
