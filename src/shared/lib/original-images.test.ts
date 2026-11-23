@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
-import { skipsOptimization, smallSrc } from "./original-images";
+import { skipsOptimization, smallSrc, tinySrc } from "./original-images";
 
 describe("skipsOptimization", () => {
   it("저장소에 있는 모든 전시 그림은 변환 없이 원본을 그대로 보냅니다", () => {
@@ -43,5 +43,29 @@ describe("smallSrc", () => {
     expect(smallSrc("https://x.supabase.co/storage/v1/object/public/exhibits/a.jpg")).toBe(
       "https://x.supabase.co/storage/v1/object/public/exhibits/a.jpg",
     );
+  });
+});
+
+describe("tinySrc", () => {
+  it("작게 보이는 자리는 긴 변 240px로 더 줄인 그림 주소를 줍니다", () => {
+    expect(tinySrc("/images/exhibits/athena-aegis.jpg")).toBe(
+      "/images/exhibits-thumb-s/athena-aegis.jpg",
+    );
+  });
+
+  it("저장소 밖 주소는 그대로 둡니다", () => {
+    expect(tinySrc("https://x.supabase.co/storage/v1/object/public/exhibits/a.jpg")).toBe(
+      "https://x.supabase.co/storage/v1/object/public/exhibits/a.jpg",
+    );
+  });
+
+  it("public/images/exhibits의 모든 그림이 더 작은 그림도 갖습니다", () => {
+    const dir = join(process.cwd(), "public/images/exhibits");
+    const missing = readdirSync(dir)
+      .filter((file) => file.endsWith(".jpg"))
+      .filter(
+        (file) => !existsSync(join(process.cwd(), "public", tinySrc(`/images/exhibits/${file}`))),
+      );
+    expect(missing).toEqual([]);
   });
 });

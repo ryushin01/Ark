@@ -1,5 +1,11 @@
 # 버전 기록
 
+## 1.8.1 - 2026-11-23
+
+- 수정: CI의 `supabase/setup-cli`가 `version: latest`일 때마다 GitHub API로 최신 릴리스를 조회하다 rate limit(`Failed to resolve latest Supabase CLI release: rate limit exceeded`)으로 실패하던 문제. `ci.yml`·`release.yml` 모두 CLI 버전을 3.2.0으로 고정해 조회 요청을 없앰(CI가 마지막으로 성공했을 때 쓰던 최신 정식 버전)
+- 수정: 첫 화면(`/`) Lighthouse 성능이 CI에서 0.89로 기준(0.9)에 못 미치던 문제. 원인은 첫 화면이 한꺼번에 받는 그림(31장, 1.2 MB)이 무거워 LCP 시뮬레이션(전송 용량 경쟁)이 2.2초까지 늘던 것. 160px로 작게 보이는 필름·목록 그림은 긴 변 240px로 더 줄인 그림(`public/images/exhibits-thumb-s/`, 561점, 평균 4분의 1)을 보내(`tinySrc`) 첫 화면 전송량이 1.78 MB→1.06 MB로 줄고 로컬 성능 0.96·LCP 1.4초가 됨(기준 0.9는 그대로). 곁들여 첫 계열 콜라주의 펼침을 0.3초·지연 없이 하고 앞 두 그림에 `fetchPriority="high"`를 줘 그림이 그려지는 시점도 앞당김
+- 추가: `tinySrc`와 "모든 전시 그림이 더 작은 그림도 갖는다"는 테스트
+
 ## 1.8.0 - 2026-11-23
 
 - 추가: 새 버전 소식 피드 `/feed.xml`(RSS 2.0, 한국어). 날짜가 있는 변경 기록(`CHANGELOG.md`)의 최근 30개 릴리스를 싣고, 항목마다 제목·GitHub 릴리스 링크·guid·날짜·설명(순수 텍스트)이 있음. 빌드할 때 한 번 만들어 정적으로 내보내므로(`"use cache"`, `○ /feed.xml`) 비밀 값·네트워크 없이 빌드·실행해도 같게 동작하고, `next.config.ts`의 `outputFileTracingIncludes`로 `CHANGELOG.md`를 이 경로 함수에 함께 배포함

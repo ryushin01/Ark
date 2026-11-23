@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useMotionOff } from "@/shared/lib";
-import { skipsOptimization, smallSrc } from "@/shared/lib";
+import { skipsOptimization, smallSrc, tinySrc } from "@/shared/lib";
 import { CreditLine, HandArrow, HandCircle, HandNote } from "@/shared/ui";
 
 import styles from "./ScoreStage.module.css";
@@ -122,7 +122,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
           {current.images.slice(0, SLOTS.length).map((image, index) => (
             <div
               key={image.src}
-              className={styles.tile}
+              className={active === 0 ? `${styles.tile} ${styles.tileFirst}` : styles.tile}
               style={
                 {
                   "--left": SLOTS[index]?.left,
@@ -139,6 +139,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
                 alt=""
                 fill
                 sizes="(min-width: 768px) 28vw, 50vw"
+                fetchPriority={index < 2 && active === 0 ? "high" : undefined}
                 loading={active === 0 ? "eager" : "lazy"}
                 className={styles.tileImage}
               />
@@ -170,7 +171,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
                       style={{ aspectRatio: thumbRatio(image) }}
                     >
                       <Image
-                        src={smallSrc(image.src)}
+                        src={tinySrc(image.src)}
                         unoptimized={skipsOptimization(image.src)}
                         alt=""
                         fill
