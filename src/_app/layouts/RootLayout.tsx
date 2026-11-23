@@ -31,6 +31,13 @@ export function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ko" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: INITIAL_SCRIPT }} />
+        {/* 피드 리더가 소식 피드를 자동으로 찾게 합니다. 화면마다 metadata.alternates(canonical)를 따로 두어도 빠지지 않도록 head에 직접 둡니다. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${SITE.name} 소식`}
+          href={`${SITE.url}/feed.xml`}
+        />
       </head>
       <body>
         {children}

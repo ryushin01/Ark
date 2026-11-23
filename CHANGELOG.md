@@ -1,5 +1,13 @@
 # 버전 기록
 
+## 1.8.0 - 2026-11-23
+
+- 추가: 새 버전 소식 피드 `/feed.xml`(RSS 2.0, 한국어). 날짜가 있는 변경 기록(`CHANGELOG.md`)의 최근 30개 릴리스를 싣고, 항목마다 제목·GitHub 릴리스 링크·guid·날짜·설명(순수 텍스트)이 있음. 빌드할 때 한 번 만들어 정적으로 내보내므로(`"use cache"`, `○ /feed.xml`) 비밀 값·네트워크 없이 빌드·실행해도 같게 동작하고, `next.config.ts`의 `outputFileTracingIncludes`로 `CHANGELOG.md`를 이 경로 함수에 함께 배포함
+- 추가: 모든 화면 `<head>`에 피드 자동 발견 링크(`<link rel="alternate" type="application/rss+xml">`). 화면마다 `metadata.alternates`(canonical)가 레이아웃 값을 덮어써서 metadata가 아니라 `RootLayout`의 `<head>`에 직접 넣음
+- 추가: 제너레이터 함수 도입 — `changelogEntries`(변경 기록을 절 하나씩, 필요한 만큼만 읽음)와 `rssChunks`(RSS 문서를 머리·항목·꼬리 조각으로 냄), `shared/feed` 세그먼트와 단위 테스트(RSS 필수 요소·이스케이프·절대 주소 검사, 날짜 변환, 최신 버전이 맨 위 항목)
+- 확인: 기본 공유 이미지(`og:image`)는 `/opengraph-image.jpg?<해시>`로 운영에서 200이며 `.png` 주소는 처음부터 없음(404가 정상). 홈·신 상세·`/vault`의 `og:image`가 실제 이미지로 응답하는지 E2E(`e2e/feed-og.spec.ts`)로 검사하도록 추가
+- 문서: README에 피드 주소·구조, `docs/development.md` SEO 절에 피드 구현 설명, AGENTS.md에 CHANGELOG 제목 형식 규칙
+
 ## 1.7.1 - 2026-11-23
 
 - 수정: 운영 첫 화면에서 전시 그림 일부(예: 엘 메기도, 아이 아파엑 판)가 `/_next/image` 요청 402(Vercel 무료 플랜의 이미지 변환 한도)로 막혀 깨져 보이던 문제를 고침. 처음 보는 너비로 최적화를 요청하면 예전 그림도 한도에 걸렸음 → 저장소의 모든 전시 그림 561점을 최적화 없이 원본(긴 변 1280px JPEG)으로 보내도록 `ORIGINAL_IDS`에 모두 넣고, 작게 보이는 자리(첫 화면 악보 줄·인물 목록 미리보기·악보 무대의 그림과 썸네일)는 미리 줄여 둔 작은 그림(`exhibits-thumb`, 긴 변 480px) 395점을 새로 만들어 보내 첫 화면이 무거워지지 않게 함. 어드민에서 올린 외부 주소는 그대로 최적화함. `public/images/exhibits`의 모든 그림이 목록과 작은 그림을 갖는지 `original-images.test.ts`가 검사함
