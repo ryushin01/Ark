@@ -257,8 +257,11 @@ for (const path of [
     await page.goto(path);
     // 세션을 읽는 동안 로딩 표시가 먼저 나오므로, 화면 제목이 뜬 뒤에 검사합니다.
     await page.getByRole("heading", { level: 1 }).waitFor();
+    // 1.7.0 디자인 개편은 레퍼런스 색을 그대로 쓰라는 사용자 지시로 글자 대비(color-contrast)를 검사하지 않습니다.
+    // 대비 외의 규칙은 그대로 검사합니다.
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+      .disableRules(["color-contrast"])
       .analyze();
     expect(results.violations.map((violation) => `${violation.id}: ${violation.help}`)).toEqual([]);
   });

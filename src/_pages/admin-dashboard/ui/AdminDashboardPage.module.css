@@ -1,0 +1,144 @@
+/* 대시보드. 색·글꼴 변수(--admin-*)는 shared/ui/admin/admin-theme.css에 있습니다. */
+.notices {
+    max-width: 48rem;
+    margin-inline: auto;
+}
+
+/* 레퍼런스의 오른쪽 세로 글자와 그 아래로 내려가는 선 */
+.scrollCue {
+    position: absolute;
+    right: 1.75rem;
+    top: 30rem;
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    min-width: 44px;
+    padding-block: 0.5rem;
+    color: var(--admin-ink);
+    font-size: 0.75rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+}
+
+.scrollCue::before {
+    width: 1px;
+    height: 3rem;
+    background-color: currentColor;
+    content: "";
+}
+
+@media (min-width: 1100px) {
+    .scrollCue {
+        display: inline-flex;
+    }
+}
+
+.section {
+    display: grid;
+    gap: 2rem;
+}
+
+.sectionTitle {
+    margin: 0;
+    font-family: var(--admin-serif);
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.sectionTitle:focus {
+    outline: none;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--admin-ink);
+    list-style: none;
+    counter-reset: item;
+}
+
+.item {
+    border-bottom: 1px solid var(--admin-rule);
+    counter-increment: item;
+}
+
+/* 번호 · 사선 · 큰 세리프 이름 · 개수 · 메모 */
+.row {
+    display: grid;
+    grid-template-areas:
+        "num label count"
+        "num note note";
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    padding-block: 1.5rem;
+    color: var(--admin-ink);
+    text-decoration: none;
+}
+
+@media (min-width: 900px) {
+    .row {
+        grid-template-areas: "num label note count";
+        grid-template-columns: 4.5rem 1fr minmax(0, 18rem) 7rem;
+        gap: 2rem;
+        padding-block: 1.75rem;
+    }
+}
+
+.row::before {
+    position: relative;
+    grid-area: num;
+    align-self: start;
+    padding-top: 0.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    content: counter(item, decimal-leading-zero);
+    background: linear-gradient(
+            to bottom right,
+            transparent calc(50% - 0.5px),
+            currentColor,
+            transparent calc(50% + 0.5px)
+        )
+        right 0.25rem top / 1.25rem 2rem no-repeat;
+    padding-right: 1.75rem;
+    justify-self: start;
+    min-height: 2rem;
+}
+
+.label {
+    grid-area: label;
+    font-family: var(--admin-serif);
+    font-size: clamp(2rem, 4.4vw, 4rem);
+    line-height: 1.1;
+    transition: transform 0.9s var(--admin-ease);
+}
+
+.count {
+    grid-area: count;
+    justify-self: end;
+    font-family: var(--admin-serif);
+    font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.note {
+    grid-area: note;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+}
+
+@media (hover: hover) {
+    .row:hover .label {
+        transform: translateX(1rem);
+    }
+}
+
+.row:focus-visible .label {
+    transform: translateX(1rem);
+}

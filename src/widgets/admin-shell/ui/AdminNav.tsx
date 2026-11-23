@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { TabNav } from "@radix-ui/themes";
+
+import styles from "./AdminShell.module.css";
 
 const ITEMS = [
   { href: "/admin", label: "대시보드" },
@@ -14,19 +15,40 @@ const ITEMS = [
   { href: "/admin/works", label: "영향 작품" },
 ];
 
-/** 어드민 메뉴. 현재 화면은 aria-current="page"로 알립니다. */
+/** 지금 화면 앞에 붙는 네 줄 빗금(장식) */
+function Hatch() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.hatch}>
+      <path d="M2 19 7 1M6.5 19l5-18M11 19l5-18M15.5 19l5-18" />
+    </svg>
+  );
+}
+
+/** 어드민 메뉴. 현재 화면은 aria-current="page"로 알리고 앞에 빗금을 붙입니다. */
 export function AdminNav() {
   const pathname = usePathname();
   const isActive = (href: string) =>
     href === "/admin" ? pathname === href : pathname.startsWith(href);
 
   return (
-    <TabNav.Root aria-label="관리 메뉴">
-      {ITEMS.map((item) => (
-        <TabNav.Link key={item.href} asChild active={isActive(item.href)}>
-          <Link href={item.href}>{item.label}</Link>
-        </TabNav.Link>
-      ))}
-    </TabNav.Root>
+    <nav aria-label="관리 메뉴" className={styles.nav}>
+      <ul className={styles.navList}>
+        {ITEMS.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={styles.navLink}
+                aria-current={active ? "page" : undefined}
+              >
+                {active && <Hatch />}
+                {item.label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }

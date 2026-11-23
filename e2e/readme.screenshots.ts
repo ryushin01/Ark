@@ -73,9 +73,12 @@ test.describe("어드민", () => {
     await page.goto("/admin/login");
     await page.getByRole("button", { name: "데모 계정으로 둘러보기" }).click();
     await page.getByRole("heading", { level: 1, name: "대시보드" }).waitFor();
+    // 제목·설명이 떠오르는 등장 움직임(약 1.5초)이 끝난 뒤 찍습니다.
+    await page.waitForTimeout(2500);
     await shoot(page, "admin-dashboard");
     await page.goto("/admin/figures/odin");
     await page.getByRole("heading", { level: 1 }).waitFor();
+    await page.waitForTimeout(2500);
     await shoot(page, "admin-figure");
   });
 });

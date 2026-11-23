@@ -1,26 +1,182 @@
 /* 어드민만 쓰는 글꼴. 공개 사이트의 글꼴과 나눠서 공개 화면이 받지 않게 합니다. */
 @import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 
-/* 공개 사이트의 전역 스타일(배경색, 글자 간격) 대신 Radix Themes 기본값을 씁니다. */
+/*
+ * 어드민 디자인: 박물관 전시 도록처럼 밝은 회색 종이, 먹색 글자, 큰 세리프 제목.
+ * - 글꼴: 본문·메뉴는 Pretendard, 제목은 바탕(루트 레이아웃이 이미 받는 Ark Batang, 400 하나).
+ * - 색: 바탕 #ededed, 글자 #1d1d1d. 강조색도 먹색이라 버튼·초점이 모두 같은 색입니다.
+ * - 모양: 모서리 없음(radius="none"), 버튼·배지만 알약 모양.
+ * - 움직임: cubic-bezier(0.215, 0.61, 0.355, 1). 움직임 줄이기를 켜면 끕니다.
+ * 공개 사이트의 디자인 토큰(--ink 등)은 쓰지 않고 여기서 따로 정합니다.
+ */
 .ark-admin {
+    --admin-paper: #ededed;
+    --admin-ink: #1d1d1d;
+    --admin-muted: #1d1d1d;
+    --admin-rule: rgb(29 29 29 / 0.18);
+    --admin-serif:
+        "Ark Batang", "AppleMyungjo", "Noto Serif CJK KR", "Noto Serif KR", "Batang", "바탕",
+        "Times New Roman", serif;
+    --admin-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --admin-gutter: clamp(1.25rem, 6.9vw, 6.25rem);
+
     --default-font-family: "Pretendard Variable", "Pretendard", system-ui, sans-serif;
+    --heading-font-family: var(--admin-serif);
     min-height: 100dvh;
     letter-spacing: normal;
+    color: var(--admin-ink);
 }
 
+/* body는 .ark-admin 바깥이라 변수를 받지 못하므로 값을 그대로 적습니다. */
 body:has(.ark-admin) {
-    background-color: var(--color-background);
-    color: var(--gray-12);
+    background-color: #ededed;
+    color: #1d1d1d;
+}
+
+/* 종이 위에 번지는 옅은 빛(장식). 글자 대비에는 영향이 없을 만큼 옅게 둡니다. */
+.ark-admin::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(38rem 30rem at 22% 78%, rgb(214 226 240 / 0.7), transparent 70%),
+        radial-gradient(34rem 28rem at 52% 92%, rgb(244 236 214 / 0.65), transparent 70%),
+        radial-gradient(30rem 26rem at 70% 70%, rgb(240 226 226 / 0.55), transparent 70%);
+    content: "";
+    pointer-events: none;
 }
 
 /*
- * 명도 대비 보정 (KWCAG 5.4.3, 4.5:1 이상)
- * - Radix brown 9단계(#ad7f58) 위 흰 글자는 3.5:1이라, 진한 바탕(solid)은 11·12단계로 바꿉니다. (5.9:1)
- * - Select 자리표시 글자(gray-a10, 3.9:1)는 gray-11로 진하게 합니다.
+ * Radix 색 단계를 레퍼런스에서 읽은 계산값(바탕 rgb(237 237 237), 글자 rgb(29 29 29))으로 맞춥니다.
+ * 사용자 지시로 이 개편에서는 글자 대비(4.5:1)를 따지지 않고 레퍼런스 색을 그대로 씁니다.
+ * 흐린 글자도 따로 회색을 만들지 않고 같은 먹색을 씁니다(레퍼런스는 불투명도로만 흐리게 함).
  */
-.ark-admin {
-    --accent-9: var(--brown-11);
-    --accent-10: var(--brown-12);
+.ark-admin.radix-themes {
+    --color-background: var(--admin-paper);
+    --color-panel-solid: #f5f5f5;
+    --color-surface: rgb(255 255 255 / 0.55);
+    --gray-11: var(--admin-muted);
+    --gray-12: var(--admin-ink);
+    --accent-9: var(--admin-ink);
+    --accent-10: #3a3a3a;
+    --accent-11: var(--admin-ink);
+    --accent-12: var(--admin-ink);
+    --accent-contrast: #fff;
+    --focus-8: var(--admin-ink);
+}
+
+/* 초점은 늘 먹색 선으로 보입니다. (KWCAG 6.1.3, WCAG 2.4.7) */
+.ark-admin :focus-visible {
+    outline: 2px solid var(--admin-ink);
+    outline-offset: 3px;
+}
+
+/* 제목: 세리프 400. 바탕은 굵기가 하나라 가짜 굵게를 만들지 않습니다. */
+.ark-admin .rt-Heading {
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: -0.01em;
+}
+
+/*
+ * 버튼: 레퍼런스의 테두리 알약 버튼 값을 그대로 씁니다.
+ * 투명 바탕, 1px 먹색 테두리, 반경 50px, 12px 500 자간 1.2px, 안쪽 여백 25px 32px(size 3).
+ * 마우스를 올리면 먹색으로 채웁니다. 빨간 버튼(지우기)은 같은 모양에 빨간색입니다.
+ */
+.ark-admin .rt-Button:not(.rt-variant-ghost) {
+    height: auto;
+    min-height: 2.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--accent-11);
+    color: var(--accent-11);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    transition:
+        background-color 0.45s var(--admin-ease),
+        color 0.45s var(--admin-ease),
+        box-shadow 0.45s var(--admin-ease);
+}
+
+.ark-admin .rt-Button.rt-r-size-3:not(.rt-variant-ghost) {
+    padding: 25px 32px;
+}
+
+.ark-admin .rt-Button.rt-r-size-1:not(.rt-variant-ghost) {
+    min-height: 0;
+    padding: 0.25rem 1rem;
+}
+
+@media (hover: hover) {
+    .ark-admin .rt-Button:not(.rt-variant-ghost):where(:not(:disabled, [data-disabled])):hover {
+        background-color: var(--accent-11);
+        box-shadow: inset 0 0 0 1px var(--accent-11);
+        color: var(--accent-contrast);
+    }
+}
+
+.ark-admin .rt-Button:not(.rt-variant-ghost):where(:disabled, [data-disabled]) {
+    opacity: 0.5;
+}
+
+.ark-admin .rt-Button.rt-variant-ghost {
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+/* 배지: 작은 알약 */
+.ark-admin .rt-Badge {
+    padding-inline: 0.625rem;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+}
+
+/* 카드: 그림자 상자 대신 가는 선과 반투명 바탕 */
+.ark-admin .rt-BaseCard {
+    --card-background-color: rgb(255 255 255 / 0.45);
+    --base-card-surface-box-shadow: inset 0 0 0 1px var(--admin-rule);
+    --base-card-surface-hover-box-shadow: inset 0 0 0 1px var(--admin-ink);
+}
+
+/* 표: 위쪽 먹색 선과 행마다 가는 선 */
+.ark-admin .rt-TableRoot.rt-variant-surface {
+    border: 0;
+    border-top: 1px solid var(--admin-ink);
+    border-radius: 0;
+    background-color: transparent;
+    backdrop-filter: none;
+}
+
+.ark-admin .rt-TableRoot {
+    --table-row-box-shadow: inset 0 -1px var(--admin-rule);
+}
+
+.ark-admin .rt-TableRoot .rt-TableHeader {
+    --table-row-background-color: transparent;
+}
+
+.ark-admin .rt-TableColumnHeaderCell {
+    color: var(--admin-ink);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.ark-admin .rt-TableBody .rt-TableRow {
+    transition: background-color 0.45s var(--admin-ease);
+}
+
+@media (hover: hover) {
+    .ark-admin .rt-TableBody .rt-TableRow:hover {
+        background-color: rgb(29 29 29 / 0.04);
+    }
+}
+
+/* 안내 상자: 왼쪽 굵은 선 */
+.ark-admin .rt-CalloutRoot {
+    border-left: 2px solid currentColor;
 }
 
 .ark-admin .rt-SelectTrigger[data-placeholder] .rt-SelectTriggerInner {
@@ -41,14 +197,25 @@ body:has(.ark-admin) {
 .ark-admin .ark-file-input::file-selector-button {
     margin-right: var(--space-3);
     padding: var(--space-1) var(--space-3);
-    border: 0;
-    border-radius: var(--radius-2);
-    background-color: var(--accent-3);
-    color: var(--accent-12);
+    border: 1px solid var(--admin-ink);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--admin-ink);
     font: inherit;
+    letter-spacing: 0.06em;
     cursor: pointer;
 }
 
 .ark-admin .ark-file-input:disabled {
     opacity: 0.6;
+}
+
+/* 움직임 줄이기: 어드민의 전환·등장 움직임을 모두 끕니다. */
+@media (prefers-reduced-motion: reduce) {
+    .ark-admin *,
+    .ark-admin *::before,
+    .ark-admin *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
