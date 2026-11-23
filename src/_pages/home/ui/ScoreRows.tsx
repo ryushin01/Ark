@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
-import { skipsOptimization } from "@/shared/lib";
+import { skipsOptimization, smallSrc } from "@/shared/lib";
 import { FilterGroup, HandNote, RevealText } from "@/shared/ui";
 
 import styles from "./ScoreRows.module.css";
@@ -96,7 +96,7 @@ export function ScoreRows({ items }: { items: ScoreRow[] }) {
                     }}
                   >
                     <Image
-                      src={image.src}
+                      src={smallSrc(image.src)}
                       unoptimized={skipsOptimization(image.src)}
                       alt=""
                       fill

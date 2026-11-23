@@ -4,7 +4,7 @@ import { type CSSProperties, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { skipsOptimization } from "@/shared/lib";
+import { skipsOptimization, smallSrc } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
 
 import styles from "./FigureIndex.module.css";
@@ -93,7 +93,7 @@ export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
             style={{ aspectRatio: `${preview.width} / ${preview.height}` }}
           >
             <Image
-              src={preview.src}
+              src={smallSrc(preview.src)}
               unoptimized={skipsOptimization(preview.src)}
               alt=""
               fill
