@@ -15,6 +15,7 @@
 - `src/app/`의 라우트 파일은 `_pages`를 다시 내보내기만 합니다. 서버 전용 코드는 `index.server.ts`로, 어드민용 `_app`은 `index.admin.ts`로 따로 내보냅니다(공개 사이트가 Radix CSS를 받지 않게).
 - 한 페이지에서만 쓰는 UI·Server Action은 그 페이지 슬라이스의 `ui`·`api`에 두고, 두 곳 이상에서 쓰면 `widgets`·`features`로 올립니다.
 - 비밀 전시실(`_pages/vault`)은 Indrajaal의 화면 구성을 참고한 무한 캔버스(`VaultCanvas`, 배치 `model/canvas.ts`, WebGL 없이 CSS 변환 + `requestAnimationFrame`)와 흐린 배경 상세(이야기 듣기 `LorePlayer`, Web Speech API)입니다. 어두운 바탕과 전용 글꼴(`vault-theme.css`: Big Shoulders Display·도현·Pretendard)은 전시실에서만 받고, 움직임을 끄면 정적인 목록이 됩니다. 레퍼런스의 이미지·문구·코드는 쓰지 않습니다. 자세한 내용은 `docs/development.md`의 "비밀 전시실".
+- 소식 피드(`/feed.xml`, RSS 2.0)는 `CHANGELOG.md`를 읽어 최근 30개 릴리스를 냅니다(`_app/seo/feed.ts`, 읽는 쪽 `shared/feed`의 async generator). CHANGELOG 절 제목은 `## x.y.z - YYYY-MM-DD` 형식을 지켜야 피드에 실립니다. 자세한 설명은 `docs/development.md`의 SEO 절.
 - 탈것·동반자 데이터(`entities/figure/model/bonds.ts`)는 ZERO가 `sync:ark`로 직접 읽으므로 모양을 바꾸면 ZERO에도 알립니다.
 
 ## 3. 설치·개발 명령

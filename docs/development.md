@@ -221,6 +221,14 @@ Supabase 클라이언트는 요청마다 5초 시간 제한을 둡니다(`shared
 
 `src/_app/seo/`의 `sitemap`(계열·신 주소), `robots`(어드민·API 제외)를 `src/app/sitemap.ts`, `robots.ts`가 내보냅니다. 기본 공유 이미지는 `src/app/opengraph-image.jpg`이고, 계열·신 화면은 대표 자료 이미지를 공유 이미지로 씁니다. 운영 주소는 `shared/config/site.ts`의 `SITE.url`입니다.
 
+### 소식 피드(`/feed.xml`)
+
+- `src/_app/seo/feed.ts`가 `CHANGELOG.md`(`## x.y.z - YYYY-MM-DD` 절)를 위에서부터 읽어 최근 30개 릴리스를 RSS 2.0으로 만들고, `src/app/feed.xml/route.ts`가 내보냅니다. 유물·인물 항목에는 추가 시점이 없어서 날짜가 있는 변경 기록을 소식으로 씁니다. 항목의 링크는 GitHub 릴리스(`SITE.repo`)입니다.
+- 글 만들기는 제너레이터로 나눕니다. `shared/feed/changelog.ts`의 `changelogEntries`(async generator)가 절을 하나씩 돌려주고 필요한 만큼만 읽으며, `shared/feed/rss.ts`의 `rssChunks`(async generator)가 문서를 머리 → 항목 → 꼬리 조각으로 냅니다. 날짜는 지금 시각이 아니라 변경 기록의 날짜(UTC 자정)를 써서 빌드마다 결과가 같습니다.
+- 응답은 `"use cache"`와 `cacheLife("max")`로 빌드할 때 정적으로 만들어지며(빌드 결과 `○ /feed.xml`), `next.config.ts`의 `outputFileTracingIncludes`가 `CHANGELOG.md`를 이 경로의 배포 함수에 함께 넣습니다. 새 버전을 올리면 CHANGELOG에 절을 더하는 것만으로 피드에 반영됩니다(별도 갱신 명령 없음).
+- 모든 화면 `<head>`의 `<link rel="alternate" type="application/rss+xml">`은 `RootLayout`이 직접 넣습니다. 화면마다 `metadata.alternates`(canonical)를 따로 두면 레이아웃의 `alternates`를 덮어쓰기 때문에 metadata로는 넣지 않습니다.
+- 공유 이미지 주소는 `/opengraph-image.jpg?<해시>`입니다(`.png` 주소는 없음). `e2e/feed-og.spec.ts`가 홈·신 상세·`/vault`의 `og:image`가 실제 이미지로 응답하는지, 피드가 RSS로 응답하는지 봅니다.
+
 ## CI와 의존성
 
 GitHub Actions(`.github/workflows/ci.yml`)는 두 작업을 나란히 돌립니다.

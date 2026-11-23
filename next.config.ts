@@ -66,6 +66,8 @@ const nextConfig: NextConfig = {
     ];
   },
   cacheComponents: true,
+  // 소식 피드(/feed.xml)가 변경 기록 파일을 읽으므로 배포 함수에 함께 넣습니다.
+  outputFileTracingIncludes: { "/feed.xml": ["./CHANGELOG.md"] },
   partialPrefetching: true,
   images: {
     // 원본이 긴 변 1600px 이하라 1920·2048·3840px 너비는 만들지 않습니다. 큰 화면도 1600(원본과 같은 크기)을 받습니다.
