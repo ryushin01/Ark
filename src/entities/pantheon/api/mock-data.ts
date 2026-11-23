@@ -696,7 +696,7 @@ export const MOCK_PANTHEONS: Pantheon[] = [
   // ZERO 전설 확장에서 옮긴 계열
   {
     slug: "arthurian",
-    name: "아서왕 전설",
+    name: "아더왕 전설",
     nameEn: "Arthurian",
     region: "브리튼",
     continent: "europe",
@@ -704,9 +704,9 @@ export const MOCK_PANTHEONS: Pantheon[] = [
     eraLabel: "12세기경",
     eraYear: 1136,
     summary:
-      "브리튼의 왕 아서와 원탁의 기사들, 마법사 멀린과 성배 탐색을 그린 중세 유럽의 기사 전설입니다.",
+      "브리튼의 왕 아더와 원탁의 기사들, 마법사 멀린과 성배 탐색을 그린 중세 유럽의 기사 전설입니다.",
     description: [
-      "몬머스의 제프리가 쓴 「브리튼 왕 열전」(1136년경)에서 틀을 갖추었고, 프랑스의 로망스와 토머스 맬러리의 「아서의 죽음」으로 이어지며 기사도 이야기의 중심이 되었습니다.",
+      "몬머스의 제프리가 쓴 「브리튼 왕 열전」(1136년경)에서 틀을 갖추었고, 프랑스의 로망스와 토머스 맬러리의 「아더의 죽음」으로 이어지며 기사도 이야기의 중심이 되었습니다.",
       "바위에서 뽑은 검과 호수의 여인이 준 엑스칼리버, 원탁, 성배 탐색, 캄란 전투와 아발론으로의 여행이 대표적인 이야기입니다.",
     ],
     coverExhibitId: "king-arthur-butler",

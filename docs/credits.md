@@ -715,12 +715,12 @@ Ark가 보여 주는 자료 그림 561점의 저작자·사용 허락·원본입
 | 스마르 가면 | 스마르 | Rijksmuseum | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Masker_van_de_ponokawan_Semar,_AK-RAK-1998-3.jpg) |
 | 가토트카차 앞에 무릎 꿇은 아비마뉴 | 가토트카차 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Abimanyu_kneels_in_front_of_Gatotkaca,_Or._3390_152.tiff) |
 
-## 아서왕 전설
+## 아더왕 전설
 
 | 자료 | 신 | 저작자 | 사용 허락 | 원본 |
 | --- | --- | --- | --- | --- |
-| 아서 왕 | 아서 왕 | Charles Ernest Butler | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Charles_Ernest_Butler_-_King_Arthur.jpg) |
-| 윈체스터 원탁 | 아서 왕 | Andy Li | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Round_Table_of_Winchester_2026-07-12.jpg) |
+| 아더 왕 | 아더 왕 | Charles Ernest Butler | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Charles_Ernest_Butler_-_King_Arthur.jpg) |
+| 윈체스터 원탁 | 아더 왕 | Andy Li | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Round_Table_of_Winchester_2026-07-12.jpg) |
 | 예언을 받아 적게 하는 멀린 | 멀린 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Merlin_(illustration_from_middle_ages).jpg) |
 | 팔라메데스와 싸우는 랜슬롯 | 랜슬롯 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Lancelot_battles_Palamedes_(5152629).jpg) |
 | 로트 왕의 아들 가웨인 경 | 가웨인 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Arthur-Pyle_Sir_Gawaine_the_Son_of_Lot,_King_of_Orkney.JPG) |
@@ -728,7 +728,7 @@ Ark가 보여 주는 자료 그림 561점의 저작자·사용 허락·원본입
 | 트리스탄과 아내 이죄, 그 오빠 카헤댕 | 트리스탄 | 작자 미상 | [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en) | [Commons](https://commons.wikimedia.org/wiki/File:Tristan,_his_wife_Yzeut_and_her_brother_Kahedin_(5152712).jpg) |
 | 묘약을 든 트리스탄과 이졸데 | 트리스탄 | John William Waterhouse | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_william_waterhouse_tristan_and_isolde_with_the_potion.jpg) |
 | 엑스칼리버를 호수에 던지는 베디비어 | 베디비어 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:King_Arthur_Sir_Bedivere_throwing_Excalibur_into_the_lake_by_Walter_Crane.jpg) |
-| 아서 왕과 모드레드의 싸움 | 모드레드 | William Hatherell | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Battle_Between_King_Arthur_and_Sir_Mordred_by_William_Hatherell.jpg) |
+| 아더 왕과 모드레드의 싸움 | 모드레드 | William Hatherell | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Battle_Between_King_Arthur_and_Sir_Mordred_by_William_Hatherell.jpg) |
 | 모르간 르 페이 | 모르간 르 페이 | Frederick Sandys | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sandys,_Frederick_-_Morgan_le_Fay.JPG) |
 | 오크니의 가레스 경 | 가레스 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sir_Gareth_of_Orkney.png) |
 | 갤러해드 경 | 갤러해드 | Joseph Noel Paton | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Joseph_Noel_Paton_Sir_Galahad_JKAM.jpg) |
@@ -738,7 +738,7 @@ Ark가 보여 주는 자료 그림 561점의 저작자·사용 허락·원본입
 | 귀네비어 왕비의 5월 나들이 | 귀네비어 | John Collier | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Collier_Queen_Guinevre%27s_Maying.jpg) |
 | 아름다운 이졸데 (라 벨 이죄) | 이졸데 | William Morris | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:La_Belle_Iseult_-_Willam_Morris_(1858).jpg) |
 | 자기 머리를 든 녹색 기사 | 녹색 기사 | 작자 미상 | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gawain_and_the_Green_Knight.jpg) |
-| 호수의 여인에게 엑스칼리버를 청하는 아서 왕 | 호수의 여인 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:CRANE_King_Arthur_asks_the_lady_of_the_lake_for_the_sword_Excalibur.jpg) |
+| 호수의 여인에게 엑스칼리버를 청하는 아더 왕 | 호수의 여인 | Walter Crane | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:CRANE_King_Arthur_asks_the_lady_of_the_lake_for_the_sword_Excalibur.jpg) |
 | 우서 펜드래건 | 우서 펜드래건 | Howard Pyle | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pyle_Uther_Pendragon.jpg) |
 
 ## 샤를마뉴 전설

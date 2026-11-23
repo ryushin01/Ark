@@ -621,13 +621,13 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
   },
   {
     pantheonSlug: "arthurian",
-    source: "몬머스의 제프리 「브리타니아 열왕사」, 맬러리 「아서 왕의 죽음」",
+    source: "몬머스의 제프리 「브리타니아 열왕사」, 맬러리 「아더 왕의 죽음」",
     roots: [
       withUnions(
         p("이그레인", "Igraine"),
         u(p("우서 펜드래건", "Uther Pendragon", "uther-pendragon"), [
           withUnions(
-            p("아서 왕", "King Arthur", "king-arthur"),
+            p("아더 왕", "King Arthur", "king-arthur"),
             u(p("귀네비어", "Guinevere", "guinevere"), []),
           ),
         ]),
@@ -640,7 +640,7 @@ export const MOCK_GENEALOGIES: Genealogy[] = [
               p("가레스", "Gareth", "gareth"),
             ]),
             u(
-              p("아서 왕", "King Arthur", "king-arthur"),
+              p("아더 왕", "King Arthur", "king-arthur"),
               [p("모드레드", "Mordred", "mordred")],
               "맬러리의 전승",
             ),

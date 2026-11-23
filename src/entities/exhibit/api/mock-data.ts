@@ -1906,12 +1906,12 @@ const SEEDS: ExhibitSeed[] = [
   {
     id: "king-arthur-butler",
     figureSlug: "king-arthur",
-    title: "아서 왕",
+    title: "아더 왕",
     kind: "painting",
     dateLabel: "1903년",
     holder: null,
     note: null,
-    alt: "갑옷에 붉은 망토를 두른 젊은 아서가 두 손으로 왕관을 높이 들어 올리는 모습",
+    alt: "갑옷에 붉은 망토를 두른 젊은 아더가 두 손으로 왕관을 높이 들어 올리는 모습",
   },
   {
     id: "round-table-winchester",
@@ -1920,8 +1920,8 @@ const SEEDS: ExhibitSeed[] = [
     kind: "painting",
     dateLabel: "13세기 (그림은 1516년경)",
     holder: "윈체스터 그레이트 홀",
-    note: "아서 왕 전설을 본떠 13세기에 만든 원탁으로, 16세기에 헨리 8세를 닮은 아서 왕과 기사들의 이름을 그려 넣었습니다.",
-    alt: "홀의 벽에 걸린 커다란 둥근 탁자 판. 초록과 흰색으로 나뉜 칸마다 기사의 이름이 적혀 있고 위쪽에 왕좌의 아서 왕이 그려져 있습니다.",
+    note: "아더 왕 전설을 본떠 13세기에 만든 원탁으로, 16세기에 헨리 8세를 닮은 아더 왕과 기사들의 이름을 그려 넣었습니다.",
+    alt: "홀의 벽에 걸린 커다란 둥근 탁자 판. 초록과 흰색으로 나뉜 칸마다 기사의 이름이 적혀 있고 위쪽에 왕좌의 아더 왕이 그려져 있습니다.",
   },
   {
     id: "roland-roncevaux-dore",
@@ -2340,7 +2340,7 @@ const SEEDS: ExhibitSeed[] = [
     kind: "print",
     dateLabel: "1903년",
     holder: null,
-    note: "하워드 파일이 「아서 왕 이야기」에 그린 삽화입니다.",
+    note: "하워드 파일이 「아더 왕 이야기」에 그린 삽화입니다.",
     alt: "갑옷을 입고 방패를 든 기사의 흑백 펜화",
   },
   {
@@ -2386,7 +2386,7 @@ const SEEDS: ExhibitSeed[] = [
   {
     id: "mordred-commons",
     figureSlug: "mordred",
-    title: "아서 왕과 모드레드의 싸움",
+    title: "아더 왕과 모드레드의 싸움",
     kind: "painting",
     dateLabel: "1928년",
     holder: null,
@@ -4331,7 +4331,7 @@ const SEEDS: ExhibitSeed[] = [
     dateLabel: "1475년경",
     holder: "프랑스 국립도서관",
     note: "에브라르 데스펭크가 그린 「랜슬롯 산문 연작」 필사본의 한 장면입니다.",
-    alt: "둥근 탁자에 둘러앉은 아서 왕과 기사들 한가운데로 빛을 내는 금빛 성배가 떠 있는 필사본 그림. 기사마다 이름이 적혀 있습니다.",
+    alt: "둥근 탁자에 둘러앉은 아더 왕과 기사들 한가운데로 빛을 내는 금빛 성배가 떠 있는 필사본 그림. 기사마다 이름이 적혀 있습니다.",
   },
   {
     id: "guinevere-collier",
@@ -4361,17 +4361,17 @@ const SEEDS: ExhibitSeed[] = [
     dateLabel: "1400년 무렵",
     holder: "대영도서관",
     note: "「가웨인 경과 녹색 기사」를 전하는 유일한 필사본(코튼 네로 A.x)의 그림입니다.",
-    alt: "말에 탄 녹색 기사가 잘린 자기 머리를 손에 들어 보이고, 곁에 도끼를 든 가웨인이 선 필사본 그림. 위쪽에서 왕관을 쓴 아서와 왕비가 지켜봅니다.",
+    alt: "말에 탄 녹색 기사가 잘린 자기 머리를 손에 들어 보이고, 곁에 도끼를 든 가웨인이 선 필사본 그림. 위쪽에서 왕관을 쓴 아더와 왕비가 지켜봅니다.",
   },
   {
     id: "lady-of-the-lake-crane",
     figureSlug: "lady-of-the-lake",
-    title: "호수의 여인에게 엑스칼리버를 청하는 아서 왕",
+    title: "호수의 여인에게 엑스칼리버를 청하는 아더 왕",
     kind: "print",
     dateLabel: "1911년",
     holder: null,
-    note: "헨리 길버트의 「아서 왕의 기사들」에 실린 월터 크레인의 삽화입니다.",
-    alt: "갈대 우거진 호숫가에 초록 옷의 호수의 여인이 서 있고, 말을 탄 아서와 멀린이 다가오는 삽화. 물 위에 백조가 떠 있습니다.",
+    note: "헨리 길버트의 「아더 왕의 기사들」에 실린 월터 크레인의 삽화입니다.",
+    alt: "갈대 우거진 호숫가에 초록 옷의 호수의 여인이 서 있고, 말을 탄 아더와 멀린이 다가오는 삽화. 물 위에 백조가 떠 있습니다.",
   },
   {
     id: "uther-pendragon-pyle",
@@ -4380,7 +4380,7 @@ const SEEDS: ExhibitSeed[] = [
     kind: "print",
     dateLabel: "1903년",
     holder: null,
-    note: "하워드 파일의 「아서 왕과 기사들 이야기」에 실린 삽화입니다.",
+    note: "하워드 파일의 「아더 왕과 기사들 이야기」에 실린 삽화입니다.",
     alt: "용 무늬 망토를 두르고 왕관을 쓴 수염 난 우서 펜드래건이 홀을 쥐고 정면을 노려보는 흑백 펜화",
   },
   {
