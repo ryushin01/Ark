@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useMotionOff } from "@/shared/lib";
-import { skipsOptimization } from "@/shared/lib";
+import { skipsOptimization, smallSrc } from "@/shared/lib";
 import { CreditLine, HandArrow, HandCircle, HandNote } from "@/shared/ui";
 
 import styles from "./ScoreStage.module.css";
@@ -134,7 +134,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
               }
             >
               <Image
-                src={image.src}
+                src={smallSrc(image.src)}
                 unoptimized={skipsOptimization(image.src)}
                 alt=""
                 fill
@@ -170,7 +170,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
                       style={{ aspectRatio: thumbRatio(image) }}
                     >
                       <Image
-                        src={image.src}
+                        src={smallSrc(image.src)}
                         unoptimized={skipsOptimization(image.src)}
                         alt=""
                         fill
