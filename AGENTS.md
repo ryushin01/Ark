@@ -38,7 +38,7 @@
 | `pnpm build`                  | Storybook을 `public/storybook`에 빌드한 뒤 앱 빌드                  |
 | `pnpm size` / `pnpm lhci`     | 번들 크기 예산 / Lighthouse 기준 (먼저 `build`)                     |
 | `pnpm test:e2e`               | 프로덕션 빌드 E2E(화면 폭별 넘침, axe, 키보드, 보안 헤더, 오프라인) |
-| `pnpm test:e2e:offline`       | 오프라인 E2E만(`e2e/offline.spec.ts`)                               |
+| `pnpm test:e2e:offline`       | 오프라인 E2E만(`e2e/offline.spec.ts`, 모든 화면)                    |
 | `pnpm test:e2e:local-db`      | 이미지 업로드 E2E(로컬 Supabase 필요)                               |
 
 - 오프라인 E2E(Playwright `offline` 프로젝트)는 localhost 밖 요청을 모두 막고 공개·어드민 화면이 비지 않는지, 그리고 `SUPABASE_URL=https://supabase.invalid`로 띄운 두 번째 서버(포트 +1)에서 시드 대체가 되는지 봅니다.

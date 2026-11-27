@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState } from "react";
-import Image from "next/image";
 import { Button, Callout, Card, Flex, Grid, Heading, Text } from "@radix-ui/themes";
 
 import { type ArchiveImage, formatCredit, INITIAL_FORM_STATE, useSubmitLock } from "@/shared/lib";
@@ -12,6 +11,7 @@ import {
   TextAreaInput,
   TextInput,
 } from "@/shared/ui/admin";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import { addWorkImageAction, removeWorkImageAction } from "../api/image-actions";
 
@@ -56,7 +56,7 @@ export function WorkImages({ slug, title, images, canUpload }: WorkImagesProps) 
                 <li key={image.src}>
                   <Card>
                     <Flex direction="column" gap="2">
-                      <Image
+                      <SafeImage
                         src={image.src}
                         alt={image.alt}
                         width={image.width}

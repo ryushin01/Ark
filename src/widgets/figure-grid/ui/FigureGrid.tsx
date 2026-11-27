@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { monogram } from "@/shared/lib";
 import { skipsOptimization } from "@/shared/lib";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import styles from "./FigureGrid.module.css";
 
@@ -38,7 +38,7 @@ export function FigureGrid({
           <Link href={`/figures/${figure.slug}`} className={styles.card}>
             <span className={styles.media}>
               {figure.image ? (
-                <Image
+                <SafeImage
                   src={figure.image.src}
                   unoptimized={skipsOptimization(figure.image.src)}
                   alt=""

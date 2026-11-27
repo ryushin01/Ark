@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Flex, Table, Text } from "@radix-ui/themes";
 
@@ -7,6 +6,7 @@ import { getExhibit, getExhibits } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { isSupabaseEnabled } from "@/shared/api/index.server";
 import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import { ExhibitForm } from "./ExhibitForm";
 
@@ -40,7 +40,7 @@ export async function AdminExhibitsPage({ saved, deleted }: { saved?: string; de
           {exhibits.map((exhibit) => (
             <Table.Row key={exhibit.id} align="center">
               <Table.Cell>
-                <Image
+                <SafeImage
                   src={exhibit.image.src}
                   alt=""
                   width={48}
@@ -97,7 +97,7 @@ export async function AdminExhibitEditPage({ id }: { id?: string }) {
       <PageHeader title={`${exhibit.title} 고치기`} />
       <Flex gap="6" direction={{ initial: "column", md: "row" }} align="start">
         <figure style={{ margin: 0, flex: "0 0 240px" }}>
-          <Image
+          <SafeImage
             src={exhibit.image.src}
             alt={exhibit.image.alt}
             width={exhibit.image.width}

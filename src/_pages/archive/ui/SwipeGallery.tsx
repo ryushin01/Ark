@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
 import { type ArchiveImage, isMotionOff } from "@/shared/lib";
 import { CreditLine } from "@/shared/ui";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import styles from "./SwipeGallery.module.css";
 
@@ -70,7 +70,7 @@ export function SwipeGallery({ label, images }: SwipeGalleryProps) {
             >
               <figure className={styles.figure}>
                 <div className={styles.media}>
-                  <Image
+                  <SafeImage
                     src={image.src}
                     alt={image.alt}
                     fill
