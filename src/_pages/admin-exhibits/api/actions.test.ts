@@ -24,7 +24,7 @@ vi.mock("next/navigation", async () => ({
 
 /** Supabase Storage 대신 올린 결과를 정해 줍니다. 파일 검사(checkImageFile)는 실제 것을 씁니다. */
 const uploadImage = vi.fn<UploadImage>();
-const removeStoredImage = vi.fn<(src: string) => Promise<void>>();
+const removeStoredImage = vi.fn<(src: string) => Promise<boolean>>();
 vi.mock("@/shared/api/index.server", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/shared/api/index.server")>()),
   uploadImage,
@@ -32,7 +32,7 @@ vi.mock("@/shared/api/index.server", async (importOriginal) => ({
 }));
 
 const { saveExhibitAction, deleteExhibitAction } = await import("./actions");
-const { createExhibit, getExhibit, EXHIBIT_TAG, exhibitInputSchema } =
+const { createExhibit, deleteExhibit, getExhibit, EXHIBIT_TAG, exhibitInputSchema } =
   await import("@/entities/exhibit/index.server");
 
 const STORED = "https://db.example/storage/v1/object/public/images/exhibits/new.jpg";
@@ -60,7 +60,7 @@ beforeEach(async () => {
   uploadImage.mockReset();
   uploadImage.mockResolvedValue({ ok: true, image: { src: STORED, width: 800, height: 1200 } });
   removeStoredImage.mockReset();
-  removeStoredImage.mockResolvedValue();
+  removeStoredImage.mockResolvedValue(true);
   await signInAs(jar, "admin");
 });
 
@@ -191,6 +191,22 @@ describe("saveExhibitAction (고치기)", () => {
     ).rejects.toMatchObject({ url: "/admin/exhibits?saved=weighing-heart" });
     expect((await getExhibit("weighing-heart"))?.image.src).toBe(STORED);
     expect(removeStoredImage).toHaveBeenCalledWith(before?.image.src);
+  });
+
+  it("올리는 사이 자료가 지워지면 방금 올린 이미지를 지우고 이전 이미지는 건드리지 않습니다", async () => {
+    const before = await getExhibit("zeus-otricoli");
+    uploadImage.mockImplementation(async () => {
+      await deleteExhibit("zeus-otricoli");
+      return { ok: true, image: { src: STORED, width: 800, height: 1200 } };
+    });
+    const state = await saveExhibitAction(
+      "zeus-otricoli",
+      INITIAL_FORM_STATE,
+      formDataOf({ ...fields, figureSlug: before?.figureSlug ?? "", image: jpeg() }),
+    );
+    expect(state).toMatchObject({ status: "error", message: "이미 삭제된 자료입니다." });
+    expect(removeStoredImage).toHaveBeenCalledWith(STORED);
+    expect(removeStoredImage).not.toHaveBeenCalledWith(before?.image.src);
   });
 
   it("사라진 자료를 고치면 알립니다", async () => {

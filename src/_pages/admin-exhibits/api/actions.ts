@@ -10,7 +10,12 @@ import {
 } from "@/entities/exhibit/index.server";
 import { getFigure } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
-import { checkImageFile, removeStoredImage, uploadImage } from "@/shared/api/index.server";
+import {
+  checkImageFile,
+  removeStoredImage,
+  type StoredImage,
+  uploadImage,
+} from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
 import {
   duplicateKeyError,
@@ -82,24 +87,44 @@ export async function saveExhibitAction(
     return duplicateKeyError(values, "같은 id의 자료가 이미 있습니다.", id, "id");
   }
 
-  let uploaded: Awaited<ReturnType<typeof uploadImage>> | null = null;
+  let image: StoredImage | undefined;
   if (hasFile) {
-    uploaded = await uploadImage(file as File, `exhibits/${id}-${Date.now()}.jpg`);
+    const uploaded = await uploadImage(file as File, `exhibits/${id}-${Date.now()}.jpg`);
     if (!uploaded.ok) return fieldError(values, uploaded.message, "image", uploaded.message);
+    image = uploaded.image;
   }
+  /** DB에 저장하지 못하면 방금 올린 이미지를 지웁니다(보상 삭제). 지우지 못해도 로그만 남깁니다. */
+  const discardUpload = async () => {
+    if (image) await removeStoredImage(image.src);
+  };
 
   if (originalId) {
     const before = await getExhibit(originalId);
-    const saved = await updateExhibit(
-      originalId,
-      parsed.data,
-      uploaded?.ok ? uploaded.image : undefined,
-    );
-    if (!saved) return formError(values, "이미 삭제된 자료입니다.");
-    if (uploaded?.ok && before) await removeStoredImage(before.image.src);
-  } else if (uploaded?.ok) {
-    if ((await createExhibit(id, parsed.data, uploaded.image)) === "duplicate") {
-      await removeStoredImage(uploaded.image.src);
+    let saved: Awaited<ReturnType<typeof updateExhibit>>;
+    try {
+      saved = await updateExhibit(originalId, parsed.data, image);
+    } catch (error) {
+      await discardUpload();
+      throw error;
+    }
+    if (!saved) {
+      await discardUpload();
+      return formError(values, "이미 삭제된 자료입니다.");
+    }
+    // 옛 그림은 DB가 새 그림을 가리키게 된 뒤에만 지웁니다.
+    if (image && before && before.image.src !== image.src) {
+      await removeStoredImage(before.image.src);
+    }
+  } else if (image) {
+    let created: Awaited<ReturnType<typeof createExhibit>>;
+    try {
+      created = await createExhibit(id, parsed.data, image);
+    } catch (error) {
+      await discardUpload();
+      throw error;
+    }
+    if (created === "duplicate") {
+      await discardUpload();
       return duplicateKeyError(values, "같은 id의 자료가 이미 있습니다.", id, "id");
     }
   }
