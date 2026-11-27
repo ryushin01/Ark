@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-1.8.3-8a4a1f)
+![version](https://img.shields.io/badge/version-1.8.4-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 51개 신화·전설 계열에서 신과 영웅, 몬스터 475명을 조각상, 회화, 유물, 사진 자료 561점으로 살펴보고, 신화 속 유물 152점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -96,7 +96,7 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 | `pnpm test`                              | 단위 테스트                                                                |
 | `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                           |
 | `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                         |
-| `pnpm test:e2e:offline`                  | 외부 요청을 막고 비밀 값 없이 주요 화면이 뜨는지 검사 (먼저 `build` 필요)  |
+| `pnpm test:e2e:offline`                  | 외부 요청을 막고 비밀 값 없이 모든 화면이 뜨는지 검사 (먼저 `build` 필요)  |
 | `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)             |
 | `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                                     |
 | `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                               |
@@ -109,6 +109,16 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 `.env.local` 없이 `pnpm install` → `pnpm dev`(또는 `pnpm build` → `pnpm start`)만 해도 저장소에 든 시드 데이터(메모리 목업)와 그림(`public/images/exhibits/`), 글꼴(`src/_app/styles/fonts/`)로 모든 화면이 뜹니다. 인터넷이 끊겨도 됩니다. 어드민은 **데모 계정으로 둘러보기**로 들어갑니다.
 
 Supabase를 설정했는데 닿지 않으면(오프라인, 5초 시간 초과, 오류 응답) 읽기는 내장 시드 데이터로 대신 보여 주고, 화면 위에 "오프라인 데이터로 표시 중" 안내(`role="status"`)를 띄웁니다. 저장은 대신하지 않고 실패합니다. 오류 수집(Sentry)은 DSN이 있을 때만 켜지고, 보내지 못해도 화면에 영향을 주지 않습니다.
+
+그림을 받지 못하면(어드민에서 올린 그림의 Supabase Storage가 끊기거나 이미지 최적화가 막힐 때) 깨진 그림 대신 저장소 안의 흐린 자리 표시(`public/images/placeholder.svg`, `SafeImage`)를 같은 크기로 보여 줍니다. 대체 텍스트는 그대로 둡니다. 화면은 외부 글꼴·스크립트·그림을 쓰지 않습니다(CSP가 같은 출처만 허용).
+
+`pnpm test:e2e:offline`은 브라우저의 localhost 밖 요청을 모두 막고, 메모리 목업 서버와 Supabase에 닿지 않는 서버(`SUPABASE_URL=https://supabase.invalid`) 두 곳에서 같은 검사를 합니다.
+
+- 공개 화면: 홈 악보 무대·대륙별 계열, 신 찾기(검색 결과·필터 주소 공유), 계열, 계보, 인물 상세, 비밀 전시실·유물 상세, 없는 주소(404), 작은 화면
+- 흐름: 홈 → 대륙 필터 → 계열 → 계보 → 신 상세, 신 찾기 → 주소 다시 열기 → 상세, 전시 목록 → 유물 상세
+- 어드민: 데모 계정 입장, 대시보드, 모든 목록(계열·신·계보·자료·유물·영향 작품)과 편집·새 항목 화면
+- 피드·사이트맵·robots, Storybook
+- 화면마다 내용이 있는지, 오류 화면·끝나지 않는 로딩(`aria-busy`)·깨진 그림·화면 스크립트 오류·외부 요청이 없는지, axe(WCAG 2.2 AA) 위반이 없는지 봅니다. 자료 그림을 모두 막은 상태에서는 그림이 자리 표시로 바뀌는지도 봅니다.
 
 환경 변수와 전체 규칙은 [개발 가이드](docs/development.md)를 참고하세요.
 

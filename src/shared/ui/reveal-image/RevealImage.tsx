@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 
 import { type ShownImage, useInView } from "@/shared/lib";
 import { skipsOptimization } from "@/shared/lib/original-images";
 
+import { SafeImage } from "../safe-image";
 import styles from "./RevealImage.module.css";
 
 type RevealImageProps = {
@@ -52,7 +52,7 @@ export function RevealImage({
       suppressHydrationWarning
     >
       {fit === "cover" ? (
-        <Image
+        <SafeImage
           src={image.src}
           unoptimized={skipsOptimization(image.src)}
           alt={image.alt}
@@ -65,7 +65,7 @@ export function RevealImage({
           onError={() => setIsLoaded(true)}
         />
       ) : (
-        <Image
+        <SafeImage
           src={image.src}
           unoptimized={skipsOptimization(image.src)}
           alt={image.alt}

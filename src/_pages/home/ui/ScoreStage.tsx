@@ -1,13 +1,13 @@
 "use client";
 
 import { type CSSProperties, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import throttle from "lodash-es/throttle";
 
 import { useMotionOff } from "@/shared/lib";
 import { skipsOptimization, smallSrc, tinySrc } from "@/shared/lib";
 import { CreditLine, HandArrow, HandCircle, HandNote } from "@/shared/ui";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import styles from "./ScoreStage.module.css";
 
@@ -137,7 +137,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
                 } as CSSProperties
               }
             >
-              <Image
+              <SafeImage
                 src={smallSrc(image.src)}
                 unoptimized={skipsOptimization(image.src)}
                 alt=""
@@ -174,7 +174,7 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
                       className={styles.thumb}
                       style={{ aspectRatio: thumbRatio(image) }}
                     >
-                      <Image
+                      <SafeImage
                         src={tinySrc(image.src)}
                         unoptimized={skipsOptimization(image.src)}
                         alt=""

@@ -1,12 +1,12 @@
 "use client";
 
 import { type CSSProperties, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { type Continent, CONTINENT_LABEL, CONTINENTS } from "@/entities/pantheon";
 import { skipsOptimization, tinySrc } from "@/shared/lib";
 import { FilterGroup, HandNote, RevealText } from "@/shared/ui";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import styles from "./ScoreRows.module.css";
 
@@ -95,7 +95,7 @@ export function ScoreRows({ items }: { items: ScoreRow[] }) {
                       aspectRatio: Math.min(1.7, Math.max(0.6, image.width / image.height)),
                     }}
                   >
-                    <Image
+                    <SafeImage
                       src={tinySrc(image.src)}
                       unoptimized={skipsOptimization(image.src)}
                       alt=""

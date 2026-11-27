@@ -1,11 +1,11 @@
 "use client";
 
 import { type CSSProperties, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { skipsOptimization, smallSrc } from "@/shared/lib";
 import { RevealText } from "@/shared/ui";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import styles from "./FigureIndex.module.css";
 
@@ -92,7 +92,7 @@ export function FigureIndex({ groups }: { groups: FigureIndexGroup[] }) {
             className={styles.previewFrame}
             style={{ aspectRatio: `${preview.width} / ${preview.height}` }}
           >
-            <Image
+            <SafeImage
               src={smallSrc(preview.src)}
               unoptimized={skipsOptimization(preview.src)}
               alt=""

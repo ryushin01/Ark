@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useSyncExternalStore } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { type ShownImage, skipsOptimization, smallSrc, useMotionOff } from "@/shared/lib";
+import { SafeImage } from "@/shared/ui/safe-image";
 
 import { CANVAS_START_X, layoutCanvas, placeCell } from "../model/canvas";
 import styles from "./VaultCanvas.module.css";
@@ -273,7 +273,7 @@ export function VaultCanvas({ tiles }: { tiles: CanvasTile[] }) {
             >
               <Link href={`/vault/${tile.slug}`} className={styles.link} draggable={false}>
                 {tile.image ? (
-                  <Image
+                  <SafeImage
                     src={smallSrc(tile.image.src)}
                     alt={tile.image.alt}
                     fill

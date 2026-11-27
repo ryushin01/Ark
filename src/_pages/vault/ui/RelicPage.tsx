@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,6 +7,7 @@ import { getPantheons } from "@/entities/pantheon/index.server";
 import { neighborsOf, RELIC_KIND_LABEL } from "@/entities/relic";
 import { getRelic, getRelics } from "@/entities/relic/index.server";
 import { monogram, skipsOptimization } from "@/shared/lib";
+import { SafeImage } from "@/shared/ui/safe-image";
 import { SiteFooter } from "@/widgets/site-footer";
 
 import { relicNo } from "../model/relic-no";
@@ -72,7 +72,7 @@ export async function RelicPage({ slug }: { slug: string }) {
       <section className={styles.hero} aria-labelledby="relic-name">
         <div className={styles.backdrop} aria-hidden="true">
           {image && (
-            <Image
+            <SafeImage
               src={image.src}
               alt=""
               fill
@@ -123,7 +123,7 @@ export async function RelicPage({ slug }: { slug: string }) {
 
           <figure className={styles.panel}>
             {image ? (
-              <Image
+              <SafeImage
                 src={image.src}
                 alt={image.alt}
                 fill

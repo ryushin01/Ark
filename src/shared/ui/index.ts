@@ -5,4 +5,5 @@ export { HandArrow, HandCircle, HandNote, HandScribble } from "./hand";
 export { Logo } from "./logo";
 export { RevealImage } from "./reveal-image";
 export { RevealText } from "./reveal-text";
+export { IMAGE_PLACEHOLDER_SRC, SafeImage } from "./safe-image";
 export { VisuallyHidden } from "./visually-hidden";
