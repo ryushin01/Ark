@@ -1,3 +1,5 @@
+import ky from "ky";
+
 import {
   buildServerErrorEnvelope,
   checkEnvelope,
@@ -17,6 +19,17 @@ const serverDsn = () => parseDsn(process.env.SENTRY_DSN || process.env.NEXT_PUBL
 
 /** Sentry가 느려도 응답을 오래 붙잡지 않습니다. */
 const FORWARD_TIMEOUT_MS = 3000;
+
+/**
+ * Sentry로 envelope을 보내는 ky 인스턴스. 응답 상태를 SDK에 그대로 돌려줘야 하므로
+ * HTTP 오류에서 예외를 던지지 않고(throwHttpErrors: false), 다시 시도하지 않습니다(retry: 0).
+ */
+const sentry = ky.create({
+  timeout: FORWARD_TIMEOUT_MS,
+  throwHttpErrors: false,
+  retry: 0,
+  headers: { "Content-Type": "application/x-sentry-envelope" },
+});
 
 /** SDK가 요청을 늦추는 데 쓰는 Sentry 응답 헤더. 성공(200)에도 붙을 수 있습니다. */
 const RATE_LIMIT_HEADERS = ["retry-after", "x-sentry-rate-limits"] as const;
@@ -60,12 +73,7 @@ export async function forwardEnvelope(request: Request): Promise<Response> {
   if (!checkEnvelope(body, dsn)) return new Response(null, { status: 400 });
 
   try {
-    const response = await fetch(envelopeUrl(dsn), {
-      method: "POST",
-      headers: { "Content-Type": "application/x-sentry-envelope" },
-      body,
-      signal: AbortSignal.timeout(FORWARD_TIMEOUT_MS),
-    });
+    const response = await sentry.post(envelopeUrl(dsn), { body });
     const headers = new Headers();
     for (const name of RATE_LIMIT_HEADERS) {
       const value = response.headers.get(name);
@@ -88,12 +96,7 @@ export async function reportServerError(error: unknown, context: ServerErrorCont
     release: process.env.NEXT_PUBLIC_RELEASE,
   });
   try {
-    await fetch(envelopeUrl(dsn), {
-      method: "POST",
-      headers: { "Content-Type": "application/x-sentry-envelope" },
-      body,
-      signal: AbortSignal.timeout(FORWARD_TIMEOUT_MS),
-    });
+    await sentry.post(envelopeUrl(dsn), { body });
   } catch {
     // 오류 보고가 실패해도 요청 처리에는 영향을 주지 않습니다.
   }
