@@ -34,15 +34,19 @@
 | `pnpm format:check`           | Prettier(Markdown 포함)                                             |
 | `pnpm typecheck`              | `next typegen && tsc --noEmit`                                      |
 | `pnpm test`                   | 단위(Vitest)                                                        |
+| `pnpm check`                  | CI와 같은 검사 전부(`scripts/check.mjs`, 묶음 골라 돌리기 가능)     |
+| `pnpm test:coverage`          | 커버리지(로직 계층 80%, 전체 기준선 `vitest.config.mts`)            |
 | `pnpm test:storybook`         | 모든 스토리 렌더링과 axe                                            |
 | `pnpm build`                  | Storybook을 `public/storybook`에 빌드한 뒤 앱 빌드                  |
 | `pnpm size` / `pnpm lhci`     | 번들 크기 예산 / Lighthouse 기준 (먼저 `build`)                     |
 | `pnpm test:e2e`               | 프로덕션 빌드 E2E(화면 폭별 넘침, axe, 키보드, 보안 헤더, 오프라인) |
 | `pnpm test:e2e:offline`       | 오프라인 E2E만(`e2e/offline.spec.ts`, 모든 화면)                    |
+| `pnpm test:visual`            | 시각 회귀(기준 이미지는 Linux CI 것, macOS는 건너뜀)                |
+| `pnpm test:vitals`            | 무거운 화면 LCP·CLS·INP                                             |
 | `pnpm test:e2e:local-db`      | 이미지 업로드 E2E(로컬 Supabase 필요)                               |
 
 - 오프라인 E2E(Playwright `offline` 프로젝트)는 localhost 밖 요청을 모두 막고 공개·어드민 화면이 비지 않는지, 그리고 `SUPABASE_URL=https://supabase.invalid`로 띄운 두 번째 서버(포트 +1)에서 시드 대체가 되는지 봅니다.
-- CI(`.github/workflows/ci.yml`, push main·pull_request)는 작업을 나눠 동시에 돕니다: `check`(lint → lint:fsd → format:check → typecheck → test), `build`(test:storybook → build → size), `e2e`, `lighthouse`, `upload`(로컬 Supabase, 콘텐츠 반영 SQL 두 번 + 업로드 E2E). 바뀐 파일이 Markdown뿐이면 `e2e`·`lighthouse`·`upload`를 건너뜁니다.
+- CI(`.github/workflows/ci.yml`, push main·pull_request)는 작업마다 `pnpm check <묶음>`을 부릅니다: `check`(static, 필수 검사), `build`(빌드 한 번, 결과물을 다음 작업에 넘김), `e2e`(세 조각), `visual`(Playwright Docker, 시각 회귀·Web Vitals), `lighthouse`, `upload`(로컬 Supabase, 콘텐츠 반영 SQL 두 번 + 부하 측정 + 업로드 E2E). 바뀐 파일이 Markdown뿐이면 무거운 검사를 건너뜁니다. 자세한 내용은 `docs/development.md`의 "CI와 의존성".
 - pre-commit(husky): 스테이징 파일 lint-staged(eslint --fix, prettier) → `pnpm typecheck` → `pnpm test`
 - 품질 예산: JS 400 kB·CSS 145 kB(gzip, `.size-limit.json`), Lighthouse 데스크톱 성능 90·접근성 100·권장 95·SEO 90(`lighthouserc.json`, `/vault`·`/vault/mjolnir` 포함)
 - 테스트 원칙(Testing Library): 구현 세부가 아니라 사용자가 보는 동작을 검사하고, 요소는 역할·이름(`getByRole`)으로 찾습니다. 단위·컴포넌트는 Vitest + Testing Library(jsdom), 스토리는 Vitest 브라우저 모드(`@storybook/addon-vitest`, a11y 애드온), 화면 흐름은 Playwright E2E, 접근성은 axe(`@axe-core/playwright`, Storybook a11y)로 검사합니다. 버그를 고치면 고치기 전에 실패하는 테스트를 함께 넣습니다.

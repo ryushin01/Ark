@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-1.8.4-8a4a1f)
+![version](https://img.shields.io/badge/version-1.8.5-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 51개 신화·전설 계열에서 신과 영웅, 몬스터 475명을 조각상, 회화, 유물, 사진 자료 561점으로 살펴보고, 신화 속 유물 152점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -93,16 +93,33 @@ pnpm dev                     # http://localhost:3000, 어드민은 /admin
 | `pnpm storybook`                         | Storybook 개발 서버 (`http://localhost:6006`)                              |
 | `pnpm lint` / `pnpm lint:fsd`            | ESLint / FSD 구조 검사(Steiger)                                            |
 | `pnpm typecheck`                         | 타입 검사                                                                  |
+| `pnpm check`                             | CI와 같은 검사를 한 번에 (`pnpm check static build`처럼 묶음만도 가능)     |
 | `pnpm test`                              | 단위 테스트                                                                |
+| `pnpm test:coverage`                     | 단위 테스트 커버리지 (로직 계층 80%, 전체 기준선)                          |
 | `pnpm test:storybook`                    | 모든 스토리 렌더링과 접근성 검사                                           |
 | `pnpm test:e2e`                          | 프로덕션 빌드의 실제 화면 검사 (먼저 `build` 필요)                         |
 | `pnpm test:e2e:offline`                  | 외부 요청을 막고 비밀 값 없이 모든 화면이 뜨는지 검사 (먼저 `build` 필요)  |
+| `pnpm test:visual`                       | 주요 화면·스토리 시각 회귀 (Linux 기준 이미지, 먼저 `build` 필요)          |
+| `pnpm test:vitals`                       | 무거운 화면의 LCP·CLS·INP 검사 (먼저 `build` 필요)                         |
 | `pnpm size` / `pnpm lhci`                | 번들 크기 예산 / Lighthouse 점수 기준 검사 (먼저 `build` 필요)             |
+| `pnpm load:local-db`                     | 로컬 Supabase 읽기 부하 측정 (로컬 주소에서만 돎)                          |
 | `pnpm test:e2e:local-db`                 | 이미지 업로드 E2E (로컬 Supabase 필요)                                     |
 | `pnpm db:push` / `pnpm db:seed:generate` | Supabase 마이그레이션 적용 / 시드 SQL 만들기                               |
 | `pnpm images:resolve`                    | Wikimedia Commons에서 자료 이미지와 라이선스 정보를 다시 받기              |
 | `pnpm credits`                           | 자료 데이터에서 그림 출처 전체 목록(`docs/credits.md`) 다시 만들기         |
 | `pnpm fonts`                             | 한글 웹 폰트(바탕) 화면 글자 파일과 조각 다시 만들기 (화면 글자를 바꾼 뒤) |
+
+### 품질 검사
+
+`pnpm check` 하나로 CI와 같은 검사를 로컬에서 돌립니다(유료 도구 없음). CI는 작업마다 같은 스크립트의 묶음을 부릅니다.
+
+- **커버리지:** `@vitest/coverage-v8`. 로직 계층(`shared/lib`, 슬라이스의 `model`·`api`)은 80% 이상, 전체는 기준선 아래로 내려가지 않게 막습니다. CI 작업 요약에 커버리지 표를 적습니다.
+- **시각 회귀:** Playwright `toHaveScreenshot`으로 주요 화면 9곳(데스크톱·모바일)과 모든 Storybook 스토리를 비교합니다. 움직임·화면 전환·부드러운 스크롤을 멈추고 글꼴을 다 받은 뒤 찍으며, 기준 이미지는 Playwright 공식 Docker 이미지(Linux CI)에서 만듭니다.
+- **성능:** 번들 크기(size-limit)·Lighthouse 기준은 그대로 두고, 무거운 화면 4곳은 실제 조작 뒤 LCP·CLS·INP를 잽니다. 백엔드 부하는 로컬 Supabase에서만 잽니다(`pnpm load:local-db`).
+- **접근성:** 모든 화면과 주요 상태(대화상자·필터·결과 없음·오류 안내)를 axe로 검사하고, Storybook a11y 위반은 오류로 실패합니다.
+- **CI:** 빌드를 한 번만 하고 결과물을 E2E(세 조각)·시각 회귀·Lighthouse가 받아 씁니다. pnpm·`.next/cache`·Playwright 브라우저를 캐시하고, 새 커밋이 오면 이전 실행을 취소하며, Markdown만 바뀌면 무거운 검사를 건너뜁니다. 실패할 때만 Playwright 리포트·차이 이미지를 7일 보관합니다.
+
+자세한 내용은 [개발 가이드](docs/development.md)의 "CI와 의존성"·"테스트"를 참고하세요.
 
 ### 비밀 값 없이·오프라인으로 실행
 

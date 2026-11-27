@@ -1,5 +1,15 @@
 # 버전 기록
 
+## 1.8.5 - 2026-11-27
+
+- 추가: 커버리지(`@vitest/coverage-v8`, `pnpm test:coverage`). 로직 계층(`shared/lib`, 슬라이스의 `model`·`api`)은 줄·문·함수·분기 80% 기준, 전체는 기준선(줄 56%, 문 56%, 함수 47%, 분기 45%)을 걸어 내려가지 않게 함. 엔티티 저장소·쿼리(가짜 Supabase로 행 ↔ 모델 변환까지), 어드민 저장·삭제 액션, 로그인·잠금, 이미지 저장소, 훅 테스트를 더해 222개 → 382개, 전체 줄 37% → 57%, api 계층 21% → 100%, `shared/lib` 86% → 99.5%
+- 추가: 시각 회귀(`pnpm test:visual`, `e2e/visual.spec.ts`). 주요 화면 9곳 × 데스크톱·모바일과 모든 Storybook 스토리를 `toHaveScreenshot`으로 비교. `prefers-reduced-motion`(SSGOI·Lenis·드러남 효과 끔), 애니메이션·전환 끄기, 글꼴 대기, 시계 가림. 기준 이미지는 Playwright 공식 Docker 이미지(`v1.65.0-noble`)의 CI 결과물로 만듦
+- 추가: Web Vitals 검사(`pnpm test:vitals`). 홈 악보 무대·신 찾기·비밀 전시실·인물 상세를 조작한 뒤 LCP 2.5초·CLS 0.1·INP 0.2초 안인지 봄. 로컬 Supabase 부하 측정(`pnpm load:local-db`, 로컬 주소에서만 돎)을 CI `upload` 작업에서 돌려 결과를 작업 요약에 적음
+- 추가: 상태별 접근성 E2E(`e2e/a11y-states.spec.ts`) — 대륙 필터, 메뉴 대화상자, 검색·분류 결과, 결과 없음, 전시 목록, 주석·움직임 끔, 어드민 로그인 오류, 데모 저장 차단. Storybook a11y는 이미 오류로 실패하게 되어 있음을 확인
+- 추가: `pnpm check`(`scripts/check.mjs`) — CI와 같은 검사를 묶음(static·build·e2e·vitals·visual·lighthouse)별로 돌리고 단계별 시간을 표로 냄. CI 작업이 같은 묶음을 부름
+- 변경: CI 시간 단축 — 빌드를 한 번만 하고 결과물(`build.tgz`)을 E2E·시각 회귀·Lighthouse가 받아 씀, E2E를 세 조각(공개 1/2·공개 2/2·어드민·오프라인)으로 나눔, `.next/cache`·Playwright 브라우저 캐시, 커버리지 표·단계 시간을 작업 요약에 적음, 실패할 때만 리포트·차이 이미지 7일 보관. Lighthouse·번들 예산 숫자와 Release 워크플로의 순서·조건은 그대로
+- 변경: `shared/lib`의 훅(`use-in-view`, `use-motion-off`)을 `shared/lib/hooks/`로 묶음(Steiger의 세그먼트 항목 수 기준)
+
 ## 1.8.4 - 2026-11-27
 
 - 수정: 그림을 받지 못하면 깨진 그림 아이콘이 보이던 빈틈. 어드민에서 올린 그림(Supabase Storage)이 끊기거나 이미지 최적화가 막히면 그 자리가 깨져 보였음 → 모든 `next/image`를 `SafeImage`(`shared/ui/safe-image`)로 바꿔, 받지 못한 그림을 저장소 안의 흐린 자리 표시(`public/images/placeholder.svg`)로 같은 크기에 바꿔 보여 줌. 대체 텍스트는 그대로 두고 외부 요청은 없음(홈 악보 무대·목록 미리보기, 신 목록, 자료 그림, 비밀 전시실 캔버스·유물 상세, 아카이브, 어드민 자료·작품 그림)

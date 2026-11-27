@@ -231,10 +231,23 @@ Supabase 클라이언트는 요청마다 5초 시간 제한을 둡니다(`shared
 
 ## CI와 의존성
 
-GitHub Actions(`.github/workflows/ci.yml`)는 두 작업을 나란히 돌립니다.
+검사 목록은 `scripts/check.mjs` 한 곳에 있습니다. 로컬에서 `pnpm check`를 돌리면 CI와 같은 검사를 차례로 돌리고(단계별 시간 표 포함), `pnpm check static build`처럼 묶음을 골라 돌릴 수 있습니다. CI(`.github/workflows/ci.yml`)는 작업마다 묶음 하나를 부릅니다.
 
-- `check`: 린트, FSD 구조(Steiger), 서식, 타입, 단위, 스토리, 빌드, E2E (목업 저장소. 모든 계열·신 화면의 axe와 가로 넘침 포함)
-- `upload`: 로컬 Supabase를 띄우고 업로드 E2E
+| 묶음         | 단계                                                                     | CI 작업                                   |
+| ------------ | ------------------------------------------------------------------------ | ----------------------------------------- |
+| `static`     | lint → lint:fsd → format:check → typecheck → test:coverage → 커버리지 표 | `Lint · Format · Typecheck · Test`(필수)  |
+| `build`      | test:storybook → build → size                                            | `Storybook test · Build · Size`           |
+| `e2e`        | test:e2e(CI는 Playwright 인수로 세 조각)                                 | `E2E (공개 1/2·공개 2/2·어드민·오프라인)` |
+| `visual`     | test:visual                                                              | `Visual · Web Vitals`(Playwright Docker)  |
+| `vitals`     | test:vitals                                                              | `Visual · Web Vitals`                     |
+| `lighthouse` | lhci(로컬은 `--upload.target=filesystem`)                                | `Lighthouse`                              |
+
+- **빌드 한 번:** `build` 작업이 `.next`(캐시 폴더 제외)와 `public/storybook`을 `build.tgz` 결과물(보관 1일)로 넘기고, E2E·시각 회귀·Lighthouse는 다시 빌드하지 않고 받아 씁니다. `upload` 작업만 로컬 Supabase 주소로 따로 빌드합니다.
+- **캐시:** pnpm 저장소(`setup-node`의 `cache: pnpm`), `.next/cache`(`actions/cache`, 의존성·소스 해시), Playwright 브라우저(`~/.cache/ms-playwright`, Playwright 버전별, 맞으면 시스템 의존성만 설치). 토큰이 필요한 원격 캐시는 쓰지 않습니다.
+- **실행 정리:** 같은 브랜치에 새 커밋이 오면 이전 실행을 취소합니다(`concurrency`). 바뀐 파일이 Markdown뿐이면 E2E·시각 회귀·Lighthouse·업로드를 건너뜁니다(`changes` 작업).
+- **E2E 조각:** 공개 화면 검사(`chromium`)를 `--shard`로 둘로 나누고, 어드민·오프라인은 따로 돕니다(`--no-deps`). 조각마다 자기 서버를 띄우므로 어드민이 바꾼 메모리 데이터가 공개 화면 검사에 섞이지 않습니다.
+- **리포트:** 커버리지 표와 검사 단계별 시간은 작업 요약(`$GITHUB_STEP_SUMMARY`)에 적습니다. Playwright 리포트·차이 이미지·Lighthouse 결과는 실패할 때만 올리고 7일 보관합니다.
+- Release 워크플로(Migrate · Sync content · Deploy)의 순서와 조건은 그대로입니다(main의 CI가 성공하면 돎).
 
 Dependabot(`.github/dependabot.yml`)이 같은 메이저 안의 패치·마이너 업데이트를 주 1회(npm), 월 1회(Actions) PR로 올립니다. 출시 후 14일이 지난 버전만 제안합니다.
 
@@ -279,11 +292,43 @@ axe 검사는 스토리 테스트와 E2E에서 실행합니다. 스토리 테스
 | 스토리          | `src/**/*.stories.tsx`      | `pnpm test:storybook`                 |
 | E2E             | `e2e/site.spec.ts`          | `pnpm build && pnpm test:e2e`         |
 | 오프라인 E2E    | `e2e/offline.spec.ts`       | `pnpm build && pnpm test:e2e:offline` |
+| 상태별 접근성   | `e2e/a11y-states.spec.ts`   | `pnpm build && pnpm test:e2e`         |
+| 시각 회귀       | `e2e/visual.spec.ts`        | `pnpm build && pnpm test:visual`      |
+| Web Vitals      | `e2e/vitals.spec.ts`        | `pnpm build && pnpm test:vitals`      |
+| 커버리지        | 단위 테스트                 | `pnpm test:coverage`                  |
 | README 스크린샷 | `e2e/readme.screenshots.ts` | `pnpm build && pnpm screenshots`      |
 
 E2E는 프로덕션 빌드에서 375·768·1440px의 가로 넘침, axe(WCAG 2.2 AA), 본문 바로가기, 메뉴 키보드 동작, 아카이브 플래그를 검사합니다. 어드민 E2E는 로그인, 데모 저장 차단, 만들기→공개 화면 반영→삭제 흐름을 검사합니다. 메모리 저장소를 바꾸므로 공개 사이트 검사가 끝난 뒤 순서대로 실행합니다(`admin` 프로젝트). 테스트용 비밀번호는 `playwright.config.ts`의 `webServer.env`에 있습니다. 서버는 4100 포트에서 띄우고, 다른 작업이 그 포트를 쓰고 있으면 `E2E_PORT=4123 pnpm test:e2e`처럼 바꿉니다.
 
 오프라인 E2E(`offline` 프로젝트, `pnpm test:e2e`에 포함)는 브라우저에서 localhost 밖으로 나가는 요청을 모두 막고(`route.abort`), 비밀 값 없이 띄운 메모리 목업 서버와 `SUPABASE_URL`을 닿지 않는 주소(`https://supabase.invalid`)로 둔 두 번째 서버(포트 `E2E_PORT + 1`)에서 같은 검사를 돌립니다. 공개 화면 10곳(홈·신 찾기·필터 주소 공유·계열·계보·인물 상세 둘·비밀 전시실·유물 상세·404)과 작은 화면, 흐름 3개(대륙 필터 → 계열 → 계보 → 신 상세, 검색 → 주소 다시 열기 → 상세, 전시 목록 → 유물 상세), 어드민 데모 입장·대시보드·목록 6개·편집 6개·새 항목 2개, 피드·사이트맵·robots, Storybook에서 내용이 있는지, 오류 화면·끝나지 않는 로딩(`aria-busy`)·깨진 그림·화면 스크립트 오류·외부 요청이 없는지, axe 위반이 없는지 봅니다. 자료 그림 요청을 모두 막은 상태에서는 그림이 자리 표시로 바뀌는지도 봅니다. 두 번째 서버는 빌드 때 만든 캐시를 쓰므로 공개 화면에서는 Supabase를 부르지 않을 수 있어, "오프라인 데이터로 표시 중" 안내는 단위 테스트(`DataFallbackNotice.test.tsx`, `repository.fallback.server.test.ts`)가 확인합니다.
+
+### 커버리지
+
+`pnpm test:coverage`는 단위 테스트를 `@vitest/coverage-v8`로 재고(`coverage/`, HTML 포함), `pnpm coverage:summary`가 전체와 로직 계층의 표를 냅니다. 로직 계층(`shared/lib`, 슬라이스의 `model`·`api`)은 줄·문·함수·분기 모두 80%를 넘어야 하고, 전체는 기준선(`vitest.config.mts`의 `thresholds`, 1.8.5에서 잰 값) 아래로 내려가면 실패합니다. 값이 오르면 기준선을 올리고 내리지 않습니다. 시드 데이터·생성한 DB 타입·층과 슬라이스의 공개 API(다시 내보내기만 하는 `index`)는 재지 않습니다.
+
+서버 코드 테스트는 `// @vitest-environment node`와 `vi.mock("server-only")`를 씁니다. 가짜 Supabase(`shared/api/index.test-utils.ts`)는 메모리 행으로 select·insert·update·delete를 흉내 내 엔티티 저장소의 행 ↔ 모델 변환까지 지나가게 하고, 어드민 액션 테스트는 `shared/auth/index.test-utils.ts`의 가짜 쿠키·실제 서명 세션으로 권한 흐름을 검사합니다. 도우미 파일은 `index.`로 시작해 Steiger가 공개 API로 봅니다.
+
+### 시각 회귀
+
+`pnpm test:visual`은 주요 화면 9곳(홈, 신 찾기, 신 상세, 계열, 비밀 전시실, 유물 상세, 404, 어드민 로그인, 어드민 대시보드)을 데스크톱(1280×800)·모바일(375×800)로, Storybook의 모든 스토리를 800×600으로 찍어 `e2e/__screenshots__/`의 기준 이미지와 비교합니다(`toHaveScreenshot`, 차이 0.2%까지 허용). 움직임은 `prefers-reduced-motion`(SSGOI 화면 전환·Lenis·드러남 효과가 꺼짐)과 애니메이션·전환 끄기로 멈추고, 글꼴(`document.fonts.ready`)과 그림을 다 받을 때까지 기다리며, 시계(`time`)는 가립니다.
+
+기준 이미지는 Linux CI와 같은 Playwright 공식 Docker 이미지(`mcr.microsoft.com/playwright:v1.65.0-noble`, `Visual · Web Vitals` 작업)에서 만든 것이라, macOS에서는 테스트가 스스로 건너뜁니다. 화면을 일부러 바꿨으면 CI가 실패하며 올린 결과물(`playwright-report-visual`)의 `…-actual.png`를 기준 이미지 자리에 넣어 커밋합니다. 로컬에서 Linux 브라우저로 돌리려면 Docker(예: colima)에서 Playwright 서버를 띄우고 연결합니다(Apple Silicon은 CPU 구조가 달라 아주 작은 차이가 날 수 있으니 CI를 기준으로 봅니다).
+
+```sh
+docker run --rm -d -p 3333:3333 --init mcr.microsoft.com/playwright:v1.65.0-noble \
+  npx -y playwright@1.65.0 run-server --port 3333 --host 0.0.0.0
+PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:3333/ PW_TEST_CONNECT_EXPOSE_NETWORK='<loopback>' pnpm test:visual
+```
+
+### Web Vitals와 백엔드 부하
+
+`pnpm test:vitals`는 무거운 화면 4곳(홈 악보 무대, 신 찾기, 비밀 전시실, 인물 상세)을 열고 한 번 조작한 뒤(대륙 필터, 검색 입력, 전시 목록 열기, 화면 설정) 앱이 쓰는 `web-vitals`로 LCP·CLS·INP를 재서 좋음 기준(LCP 2.5초, CLS 0.1, INP 0.2초)을 넘지 않는지 봅니다. 잰 값은 테스트 주석(`web-vitals`)으로 리포트에 남습니다. 한글은 Playwright가 키 이벤트 없이 글자만 넣어 "사용자 입력 직후" 예외가 적용되지 않으므로 검색은 영문 이름으로 입력합니다.
+
+`pnpm load:local-db`는 로컬 Supabase(`SUPABASE_URL`이 127.0.0.1·localhost일 때만, 아니면 바로 멈춤)의 공개 화면 테이블 6개를 동시 20개 × 5번 읽어 p50·p95·최대 응답 시간을 냅니다. CI는 `upload` 작업의 러너 안 로컬 Supabase에서 돌려 작업 요약에 적습니다. 운영 DB에는 부하를 주지 않습니다.
+
+### 상태별 접근성
+
+`e2e/a11y-states.spec.ts`는 처음 연 화면이 아니라 조작한 뒤의 상태(대륙 필터, 작은 화면 메뉴 대화상자, 검색·분류 필터 결과, 결과 없음, 전시 목록 대화상자, 주석·움직임 끔, 어드민 로그인 오류, 데모 저장 차단 안내)에서 axe 위반이 없는지 봅니다. Storybook 스토리는 a11y 애드온이 위반을 오류로 처리해(`.storybook/preview.tsx`의 `a11y.test: "error"`) `pnpm test:storybook`이 실패합니다.
 
 ## 첫 화면 등장 효과 앞당기기
 

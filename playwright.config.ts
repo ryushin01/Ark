@@ -13,6 +13,17 @@ process.env.OFFLINE_FALLBACK_URL = `http://localhost:${FALLBACK_PORT}`;
 export default defineConfig({
   testDir: "./e2e",
   timeout: 60_000,
+  // 시각 회귀 기준 이미지. 운영체제 이름을 붙이지 않습니다(기준은 Linux CI 하나, visual.spec.ts 참고).
+  snapshotPathTemplate: "{testDir}/__screenshots__/{testFilePath}/{arg}{ext}",
+  expect: {
+    toHaveScreenshot: {
+      animations: "disabled",
+      caret: "hide",
+      scale: "css",
+      // 같은 Docker 이미지에서도 그림 디코딩·안티에일리어싱이 아주 조금 다를 수 있어 0.2%까지 허용합니다.
+      maxDiffPixelRatio: 0.002,
+    },
+  },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
@@ -26,7 +37,14 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
-      testIgnore: [/screenshots/, /admin\.spec/, /upload\.spec/, /offline\.spec/],
+      testIgnore: [
+        /screenshots/,
+        /admin\.spec/,
+        /upload\.spec/,
+        /offline\.spec/,
+        /visual\.spec/,
+        /vitals\.spec/,
+      ],
     },
     // 어드민은 메모리 저장소의 데이터를 바꾸므로, 공개 사이트 검사가 끝난 뒤 따로 실행합니다.
     {
@@ -40,6 +58,19 @@ export default defineConfig({
       name: "offline",
       use: { ...devices["Desktop Chrome"] },
       testMatch: /offline\.spec/,
+    },
+    // 시각 회귀 (pnpm test:visual). 기준 이미지가 Linux 것이라 CI는 Playwright Docker 이미지에서 돌립니다.
+    {
+      name: "visual",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: /visual\.spec/,
+    },
+    // Web Vitals (pnpm test:vitals). 측정이 흔들리지 않게 한 번에 하나씩 돌립니다.
+    {
+      name: "vitals",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: /vitals\.spec/,
+      fullyParallel: false,
     },
     // 이미지 업로드 (pnpm test:e2e:local-db). 실제 Storage가 필요해 로컬 Supabase에서만 돌립니다.
     {
