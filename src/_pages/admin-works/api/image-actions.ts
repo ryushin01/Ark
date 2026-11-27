@@ -58,10 +58,22 @@ export async function addWorkImageAction(
   if (!uploaded.ok) return fieldError(values, uploaded.message, "image", uploaded.message);
 
   const { alt, artist, license, sourceUrl } = parsed.data;
-  await setWorkImages(slug, [
-    ...work.images,
-    { ...uploaded.image, alt, credit: { artist, license, licenseUrl: null, sourceUrl } },
-  ]);
+  let saved: Awaited<ReturnType<typeof setWorkImages>>;
+  try {
+    saved = await setWorkImages(slug, [
+      ...work.images,
+      { ...uploaded.image, alt, credit: { artist, license, licenseUrl: null, sourceUrl } },
+    ]);
+  } catch (error) {
+    // DB에 저장하지 못하면 방금 올린 이미지를 지웁니다(보상 삭제). 지우지 못해도 로그만 남깁니다.
+    await removeStoredImage(uploaded.image.src);
+    throw error;
+  }
+  if (!saved) {
+    // 올리는 사이 작품이 지워졌습니다.
+    await removeStoredImage(uploaded.image.src);
+    return { status: "error", message: "이미 삭제된 작품입니다." };
+  }
   updateTag(WORK_TAG);
   // 같은 화면에 머무르므로, 이미지 목록이 새 데이터로 다시 그려지게 합니다.
   refresh();

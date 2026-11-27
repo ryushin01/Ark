@@ -22,7 +22,7 @@ vi.mock("next/server", () => ({ connection: async () => {} }));
 
 /** Supabase Storage 대신 올린 결과를 정해 줍니다. 파일 검사(checkImageFile)는 실제 것을 씁니다. */
 const uploadImage = vi.fn<UploadImage>();
-const removeStoredImage = vi.fn<(src: string) => Promise<void>>();
+const removeStoredImage = vi.fn<(src: string) => Promise<boolean>>();
 vi.mock("@/shared/api/index.server", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/shared/api/index.server")>()),
   uploadImage,
@@ -30,7 +30,7 @@ vi.mock("@/shared/api/index.server", async (importOriginal) => ({
 }));
 
 const { addWorkImageAction, removeWorkImageAction } = await import("./image-actions");
-const { getWork, WORK_TAG } = await import("@/entities/work/index.server");
+const { deleteWork, getWork, WORK_TAG } = await import("@/entities/work/index.server");
 
 const STORED = "https://db.example/storage/v1/object/public/images/works/ff.jpg";
 const info = {
@@ -49,7 +49,7 @@ beforeEach(async () => {
   uploadImage.mockReset();
   uploadImage.mockResolvedValue({ ok: true, image: { src: STORED, width: 600, height: 900 } });
   removeStoredImage.mockReset();
-  removeStoredImage.mockResolvedValue();
+  removeStoredImage.mockResolvedValue(true);
   await signInAs(jar, "admin");
 });
 
@@ -98,6 +98,21 @@ describe("addWorkImageAction", () => {
       formDataOf({ ...info, image: jpeg() }),
     );
     expect(state).toEqual({ status: "error", message: "이미 삭제된 작품입니다." });
+  });
+
+  it("올리는 사이 작품이 지워지면 방금 올린 이미지를 지우고 삭제 안내를 보여 줍니다", async () => {
+    uploadImage.mockImplementation(async () => {
+      await deleteWork("final-fantasy");
+      return { ok: true, image: { src: STORED, width: 600, height: 900 } };
+    });
+    const state = await addWorkImageAction(
+      "final-fantasy",
+      INITIAL_FORM_STATE,
+      formDataOf({ ...info, image: jpeg() }),
+    );
+    expect(state).toEqual({ status: "error", message: "이미 삭제된 작품입니다." });
+    expect(removeStoredImage).toHaveBeenCalledWith(STORED);
+    expect(updateTag).not.toHaveBeenCalled();
   });
 
   it("올리지 못하면 파일 칸에 그 이유를 보여 줍니다", async () => {

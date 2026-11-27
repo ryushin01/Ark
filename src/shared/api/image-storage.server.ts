@@ -51,10 +51,23 @@ export async function uploadImage(file: File, path: string): Promise<UploadResul
   };
 }
 
-/** Storage에 올린 이미지면 지웁니다. 시드 이미지(/images/...)는 그대로 둡니다. */
-export async function removeStoredImage(src: string) {
+/**
+ * Storage에 올린 이미지면 지웁니다. 시드 이미지(/images/...)는 그대로 둡니다.
+ * 저장 실패를 정리하는 보상 삭제에서도 쓰므로 예외를 던지지 않습니다.
+ * 지우지 못하면 서버 로그에 남기고 false를 돌려줘, 호출한 쪽이 원래 안내를 그대로 보여 주게 합니다.
+ */
+export async function removeStoredImage(src: string): Promise<boolean> {
   const supabase = getSupabase();
   const marker = `/storage/v1/object/public/${IMAGE_BUCKET}/`;
-  if (!supabase || !src.includes(marker)) return;
-  await supabase.storage.from(IMAGE_BUCKET).remove([decodeURIComponent(src.split(marker)[1])]);
+  if (!supabase || !src.includes(marker)) return true;
+  const path = decodeURIComponent(src.split(marker)[1]);
+  try {
+    const { error } = await supabase.storage.from(IMAGE_BUCKET).remove([path]);
+    if (!error) return true;
+    console.error(`[storage] ${path} 이미지를 지우지 못했습니다: ${error.message}`);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`[storage] ${path} 이미지를 지우지 못했습니다: ${message}`);
+  }
+  return false;
 }

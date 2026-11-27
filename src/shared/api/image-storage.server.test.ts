@@ -1,6 +1,6 @@
 // @vitest-environment node
 import sharp from "sharp";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 
@@ -39,7 +39,11 @@ async function pngFile(width: number, height: number) {
 beforeEach(() => {
   upload.mockReset();
   remove.mockReset();
+  remove.mockResolvedValue({ data: [], error: null });
   getSupabase.mockReturnValue(connected());
+});
+afterEach(() => {
+  vi.restoreAllMocks();
 });
 
 describe("checkImageFile", () => {
@@ -117,10 +121,30 @@ describe("removeStoredImage", () => {
     expect(remove).toHaveBeenCalledWith(["exhibits/제우스.jpg"]);
   });
 
+  it("Storage가 거부하거나 응답하지 않아도 예외 없이 서버 로그에 남기고 false를 돌려줍니다", async () => {
+    const log = vi.spyOn(console, "error").mockImplementation(() => {});
+    const src = "https://project.supabase.test/storage/v1/object/public/images/exhibits/a.jpg";
+    remove.mockResolvedValueOnce({ data: null, error: { message: "권한 없음" } });
+    expect(await removeStoredImage(src)).toBe(false);
+    remove.mockRejectedValueOnce(new Error("fetch failed"));
+    expect(await removeStoredImage(src)).toBe(false);
+    remove.mockRejectedValueOnce("끊김");
+    expect(await removeStoredImage(src)).toBe(false);
+    expect(log.mock.calls.map(([message]) => message)).toEqual([
+      "[storage] exhibits/a.jpg 이미지를 지우지 못했습니다: 권한 없음",
+      "[storage] exhibits/a.jpg 이미지를 지우지 못했습니다: fetch failed",
+      "[storage] exhibits/a.jpg 이미지를 지우지 못했습니다: 끊김",
+    ]);
+  });
+
   it("시드 이미지나 Supabase가 없을 때는 지우지 않습니다", async () => {
-    await removeStoredImage("/images/exhibits/zeus.jpg");
+    expect(await removeStoredImage("/images/exhibits/zeus.jpg")).toBe(true);
     getSupabase.mockReturnValue(null);
-    await removeStoredImage("https://project.supabase.test/storage/v1/object/public/images/a.jpg");
+    expect(
+      await removeStoredImage(
+        "https://project.supabase.test/storage/v1/object/public/images/a.jpg",
+      ),
+    ).toBe(true);
     expect(remove).not.toHaveBeenCalled();
   });
 });

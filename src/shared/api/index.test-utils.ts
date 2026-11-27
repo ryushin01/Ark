@@ -2,18 +2,22 @@
  * 테스트용 가짜 Supabase 클라이언트
  * 테이블마다 메모리 행 배열을 두고, 저장소(repository.server.ts)가 쓰는 쿼리
  * (select·eq·maybeSingle·insert·update·delete)만 흉내 냅니다.
+ * Storage는 버킷마다 파일 경로 목록을 두고, 이미지 저장소(image-storage.server.ts)가 쓰는
+ * upload·remove·getPublicUrl만 흉내 냅니다.
  *
  * 쓰는 법) `vi.mock("@/shared/api/supabase.server", () => ({ getSupabase: () => fake.client }))`
  */
 
 type Row = Record<string, unknown>;
 type SupabaseError = { code?: string; message: string };
-type Operation = "select" | "insert" | "update" | "delete";
+type Operation = "select" | "insert" | "update" | "delete" | "upload" | "remove";
 
 export type FakeSupabase = {
-  client: { from: (table: string) => FakeQuery };
+  client: { from: (table: string) => FakeQuery; storage: { from: (bucket: string) => FakeBucket } };
   /** 테이블의 행 배열 (테스트에서 직접 넣거나 확인합니다) */
   rows: (table: string) => Row[];
+  /** 버킷에 올라 있는 파일 경로 (테스트에서 직접 넣거나 확인합니다) */
+  files: (bucket: string) => Set<string>;
   /** 이 동작을 오류로 돌려줍니다. null이면 다시 성공합니다. */
   fail: (operation: Operation, error: SupabaseError | null) => void;
   /** 모든 행과 오류 설정을 지웁니다. */
@@ -35,6 +39,19 @@ type FakeQuery = {
   };
 };
 
+type FakeBucket = {
+  upload: (
+    path: string,
+    body: unknown,
+    options?: { upsert?: boolean },
+  ) => Response<{ path: string } | null>;
+  remove: (paths: string[]) => Response<{ name: string }[] | null>;
+  getPublicUrl: (path: string) => { data: { publicUrl: string } };
+};
+
+/** 가짜 Storage 공개 주소의 앞부분 */
+export const FAKE_STORAGE_URL = "https://fake.supabase.test/storage/v1/object/public";
+
 /** Postgres 고유 키 위반 */
 const UNIQUE_VIOLATION = "23505";
 
@@ -43,6 +60,7 @@ const UNIQUE_VIOLATION = "23505";
  */
 export function createFakeSupabase(keyColumns: Record<string, string> = {}): FakeSupabase {
   const tables = new Map<string, Row[]>();
+  const buckets = new Map<string, Set<string>>();
   const failures = new Map<Operation, SupabaseError>();
 
   const rows = (table: string) => {
@@ -50,6 +68,13 @@ export function createFakeSupabase(keyColumns: Record<string, string> = {}): Fak
     if (existing) return existing;
     const created: Row[] = [];
     tables.set(table, created);
+    return created;
+  };
+  const files = (bucket: string) => {
+    const existing = buckets.get(bucket);
+    if (existing) return existing;
+    const created = new Set<string>();
+    buckets.set(bucket, created);
     return created;
   };
   const respond = <D>(operation: Operation, data: D): Response<D | null> => {
@@ -121,15 +146,36 @@ export function createFakeSupabase(keyColumns: Record<string, string> = {}): Fak
     };
   };
 
+  const storageFrom = (bucket: string): FakeBucket => ({
+    upload: (path, _body, options) => {
+      const failure = failures.get("upload");
+      if (failure) return Promise.resolve({ data: null, error: failure });
+      if (files(bucket).has(path) && !options?.upsert) {
+        return Promise.resolve({ data: null, error: { message: "The resource already exists" } });
+      }
+      files(bucket).add(path);
+      return Promise.resolve({ data: { path }, error: null });
+    },
+    remove: (paths) => {
+      const failure = failures.get("remove");
+      if (failure) return Promise.resolve({ data: null, error: failure });
+      const removed = paths.filter((path) => files(bucket).delete(path));
+      return Promise.resolve({ data: removed.map((name) => ({ name })), error: null });
+    },
+    getPublicUrl: (path) => ({ data: { publicUrl: `${FAKE_STORAGE_URL}/${bucket}/${path}` } }),
+  });
+
   return {
-    client: { from },
+    client: { from, storage: { from: storageFrom } },
     rows,
+    files,
     fail: (operation, error) => {
       if (error) failures.set(operation, error);
       else failures.delete(operation);
     },
     reset: () => {
       tables.clear();
+      buckets.clear();
       failures.clear();
     },
   };
