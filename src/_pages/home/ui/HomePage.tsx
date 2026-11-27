@@ -1,3 +1,6 @@
+import groupBy from "lodash-es/groupBy";
+import sortBy from "lodash-es/sortBy";
+
 import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
@@ -29,6 +32,9 @@ export async function HomePage() {
     getFigures(),
     getExhibits(),
   ]);
+  /** 계열마다 그 계열의 신·인물(정해 둔 순서대로) */
+  const figuresByPantheon = groupBy(sortBy(figures, "order"), "pantheonSlug");
+  const figuresOf = (pantheonSlug: string) => figuresByPantheon[pantheonSlug] ?? [];
   const thumbOf = (figureSlug: string) => {
     const exhibit = exhibits.find((item) => item.figureSlug === figureSlug);
     return exhibit ? toThumb(exhibit.image) : null;
@@ -36,11 +42,7 @@ export async function HomePage() {
 
   /** 대표 자료를 앞에 두고, 그 계열의 나머지 자료를 잇습니다. */
   const imagesOf = (pantheon: (typeof pantheons)[number]) => {
-    const slugs = new Set(
-      figures
-        .filter((figure) => figure.pantheonSlug === pantheon.slug)
-        .map((figure) => figure.slug),
-    );
+    const slugs = new Set(figuresOf(pantheon.slug).map((figure) => figure.slug));
     const cover = exhibits.find((exhibit) => exhibit.id === pantheon.coverExhibitId);
     const others = exhibits
       .filter((exhibit) => slugs.has(exhibit.figureSlug) && exhibit.id !== cover?.id)
@@ -74,23 +76,20 @@ export async function HomePage() {
     eraLabel: pantheon.eraLabel,
     continent: pantheon.continent,
     earliestSource: pantheon.earliestSource,
-    figureCount: figures.filter((figure) => figure.pantheonSlug === pantheon.slug).length,
+    figureCount: figuresOf(pantheon.slug).length,
     images: (imagesBySlug.get(pantheon.slug) ?? []).slice(0, 5).map(toThumb),
   }));
 
   const indexGroups: FigureIndexGroup[] = pantheons.map((pantheon) => ({
     pantheonSlug: pantheon.slug,
     pantheonName: pantheon.name,
-    figures: figures
-      .filter((figure) => figure.pantheonSlug === pantheon.slug)
-      .sort((a, b) => a.order - b.order)
-      .map((figure) => ({
-        slug: figure.slug,
-        name: figure.name,
-        nameEn: figure.nameEn,
-        epithet: figure.epithet,
-        image: thumbOf(figure.slug),
-      })),
+    figures: figuresOf(pantheon.slug).map((figure) => ({
+      slug: figure.slug,
+      name: figure.name,
+      nameEn: figure.nameEn,
+      epithet: figure.epithet,
+      image: thumbOf(figure.slug),
+    })),
   }));
 
   return (

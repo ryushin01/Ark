@@ -1,3 +1,6 @@
+import sumBy from "lodash-es/sumBy";
+import uniqBy from "lodash-es/uniqBy";
+
 import type { Genealogy, GenealogyNode } from "../model/types";
 
 export type Relatives = {
@@ -11,15 +14,10 @@ const keyOf = (node: GenealogyNode) => node.slug ?? node.name;
 
 /** 같은 사람이 계보 여러 곳에 나와도 한 번만 남깁니다. */
 function unique(nodes: GenealogyNode[], self: string) {
-  const seen = new Set<string>([self]);
-  return nodes
-    .filter((node) => {
-      const key = keyOf(node);
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    })
-    .map((node) => ({ name: node.name, nameEn: node.nameEn, slug: node.slug, note: node.note }));
+  return uniqBy(
+    nodes.filter((node) => keyOf(node) !== self),
+    keyOf,
+  ).map((node) => ({ name: node.name, nameEn: node.nameEn, slug: node.slug, note: node.note }));
 }
 
 /**
@@ -56,3 +54,12 @@ export function findRelatives(genealogies: Genealogy[], slug: string): Relatives
     siblings: unique(siblings, slug),
   };
 }
+
+/** 계보 속 사람 수. 맨 위 사람과 배우자, 자식을 모두 셉니다(같은 사람이 여러 번 나오면 나온 만큼). */
+export const countPeople = (nodes: GenealogyNode[]): number =>
+  sumBy(
+    nodes,
+    (node) =>
+      1 +
+      sumBy(node.unions ?? [], (union) => (union.partner ? 1 : 0) + countPeople(union.children)),
+  );

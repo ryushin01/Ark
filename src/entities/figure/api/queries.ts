@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import sortBy from "lodash-es/sortBy";
 
 import { figureRepository } from "./table";
 
@@ -19,9 +20,10 @@ export async function getFigures(): Promise<Figure[]> {
 /** 한 계열에 속한 신·인물을 정해 둔 순서대로 돌려줍니다. */
 export async function getFiguresByPantheon(pantheonSlug: string): Promise<Figure[]> {
   const figures = await getFigures();
-  return figures
-    .filter((figure) => figure.pantheonSlug === pantheonSlug)
-    .sort((a, b) => a.order - b.order);
+  return sortBy(
+    figures.filter((figure) => figure.pantheonSlug === pantheonSlug),
+    "order",
+  );
 }
 
 export async function getFigure(slug: string): Promise<Figure | null> {

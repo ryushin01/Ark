@@ -2,26 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge, Button, Table } from "@radix-ui/themes";
 
+import { countPeople } from "@/entities/genealogy";
 import { getGenealogies } from "@/entities/genealogy/index.server";
 import { getPantheon, getPantheons } from "@/entities/pantheon/index.server";
 import { Notice, PageHeader } from "@/shared/ui/admin";
 
 import { GenealogyForm } from "./GenealogyForm";
-
-import type { GenealogyNode } from "@/entities/genealogy";
-
-/** 계보 속 사람 수 */
-const countPeople = (nodes: GenealogyNode[]): number =>
-  nodes.reduce(
-    (sum, node) =>
-      sum +
-      1 +
-      (node.unions ?? []).reduce(
-        (inner, union) => inner + (union.partner ? 1 : 0) + countPeople(union.children),
-        0,
-      ),
-    0,
-  );
 
 /** 계열별 계보 목록 */
 export async function AdminGenealogiesPage({ saved }: { saved?: string }) {

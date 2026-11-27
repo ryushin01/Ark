@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import sortBy from "lodash-es/sortBy";
 
 import { getExhibits, unlistedCredit } from "@/entities/exhibit/index.server";
 import { findBonds, kindLabel } from "@/entities/figure";
@@ -73,9 +74,10 @@ export async function FigurePage({ slug }: { slug: string }) {
     getRelics(),
   ]);
   const own = exhibits.filter((exhibit) => exhibit.figureSlug === slug);
-  const siblings = figures
-    .filter((item) => item.pantheonSlug === figure.pantheonSlug && item.slug !== slug)
-    .sort((a, b) => a.order - b.order);
+  const siblings = sortBy(
+    figures.filter((item) => item.pantheonSlug === figure.pantheonSlug && item.slug !== slug),
+    "order",
+  );
 
   return (
     <>
