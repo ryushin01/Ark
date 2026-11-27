@@ -4,10 +4,12 @@ import { getFigures } from "@/entities/figure/index.server";
 import {
   createWork,
   deleteWork,
+  getWork,
   updateWork,
   WORK_TAG,
   workInputSchema,
 } from "@/entities/work/index.server";
+import { removeStoredImage } from "@/shared/api/index.server";
 import { checkWritePermission } from "@/shared/auth/index.server";
 import {
   duplicateKeyError,
@@ -73,6 +75,10 @@ export async function saveWorkAction(
 export async function deleteWorkAction(slug: string): Promise<FormState> {
   const denied = await checkWritePermission();
   if (denied) return denied;
-  await deleteWork(slug);
+  const work = await getWork(slug);
+  // 그림 파일은 DB에서 작품을 지운 뒤에 지웁니다(지우기가 실패하면 그림이 그대로 보이게).
+  if (await deleteWork(slug)) {
+    for (const image of work?.images ?? []) await removeStoredImage(image.src);
+  }
   finishAdminAction(WORK_TAG, LIST, "deleted", slug);
 }

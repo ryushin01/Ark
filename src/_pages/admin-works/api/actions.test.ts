@@ -20,8 +20,15 @@ vi.mock("next/navigation", async () => ({
   redirect: (await import("@/shared/auth/index.test-utils")).redirectTo,
 }));
 
+/** Supabase Storage 대신 지운 그림 주소를 기록합니다. */
+const removeStoredImage = vi.fn<(src: string) => Promise<boolean>>();
+vi.mock("@/shared/api/index.server", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/shared/api/index.server")>()),
+  removeStoredImage,
+}));
+
 const { saveWorkAction, deleteWorkAction } = await import("./actions");
-const { getWork, WORK_TAG } = await import("@/entities/work/index.server");
+const { getWork, setWorkImages, WORK_TAG } = await import("@/entities/work/index.server");
 
 const valid = {
   slug: "test-game",
@@ -39,6 +46,8 @@ beforeEach(async () => {
   resetMockTables();
   jar.clear();
   updateTag.mockReset();
+  removeStoredImage.mockReset();
+  removeStoredImage.mockResolvedValue(true);
   await signInAs(jar, "admin");
 });
 
@@ -126,5 +135,31 @@ describe("deleteWorkAction", () => {
       url: "/admin/works?deleted=final-fantasy",
     });
     expect(await getWork("final-fantasy")).toBeNull();
+  });
+
+  it("지운 작품에 올려 둔 그림 파일도 지웁니다", async () => {
+    const stored = "https://db.example/storage/v1/object/public/images/works/ff.jpg";
+    const work = await getWork("final-fantasy");
+    const credit = {
+      artist: null,
+      license: "© 1987 Square",
+      licenseUrl: null,
+      sourceUrl: "https://example.com/ff",
+    };
+    await setWorkImages("final-fantasy", [
+      ...(work?.images ?? []),
+      { src: stored, width: 600, height: 900, alt: "검을 든 주인공이 그려진 표지", credit },
+    ]);
+    await expect(deleteWorkAction("final-fantasy")).rejects.toMatchObject({
+      url: "/admin/works?deleted=final-fantasy",
+    });
+    expect(removeStoredImage).toHaveBeenCalledWith(stored);
+  });
+
+  it("이미 없는 작품이면 그림을 지우지 않고 목록으로 돌아갑니다", async () => {
+    await expect(deleteWorkAction("gone-work")).rejects.toMatchObject({
+      url: "/admin/works?deleted=gone-work",
+    });
+    expect(removeStoredImage).not.toHaveBeenCalled();
   });
 });
