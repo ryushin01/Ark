@@ -3,6 +3,7 @@
 import { type CSSProperties, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import throttle from "lodash-es/throttle";
 
 import { useMotionOff } from "@/shared/lib";
 import { skipsOptimization, smallSrc, tinySrc } from "@/shared/lib";
@@ -79,14 +80,17 @@ export function ScoreStage({ movements }: { movements: ScoreMovement[] }) {
     const request = () => {
       frame ||= requestAnimationFrame(update);
     };
+    // 창 크기를 끄는 동안에는 자리 재기(레이아웃 읽기)를 0.1초에 한 번만 하고, 멈춘 뒤 한 번 더 잽니다.
+    const onResize = throttle(measure, 100);
 
     measure();
     window.addEventListener("scroll", request, { passive: true });
-    window.addEventListener("resize", measure);
+    window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(frame);
+      onResize.cancel();
       window.removeEventListener("scroll", request);
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", onResize);
     };
   }, [motionOff]);
 

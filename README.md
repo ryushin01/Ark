@@ -1,7 +1,7 @@
 # Ark - 세계 신화 도서관
 
 [![CI](https://github.com/ryushin01/Ark/actions/workflows/ci.yml/badge.svg)](https://github.com/ryushin01/Ark/actions/workflows/ci.yml)
-![version](https://img.shields.io/badge/version-1.8.2-8a4a1f)
+![version](https://img.shields.io/badge/version-1.8.3-8a4a1f)
 ![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)
 
 다섯 대륙 여러 문명권의 51개 신화·전설 계열에서 신과 영웅, 몬스터 475명을 조각상, 회화, 유물, 사진 자료 561점으로 살펴보고, 신화 속 유물 152점을 비밀 전시실에 모은 세계 신화 도서관입니다.
@@ -65,6 +65,7 @@
 | 프레임워크  | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                                                                                            |
 | 구조        | Feature-Sliced Design v2.1                                                                                                                                                                                                 |
 | 스타일·연출 | CSS Modules, Lenis(부드러운 스크롤), SSGOI(화면 전환), 웹 폰트 Cinzel·Courier Prime(영문)·바탕(한글 제목·본문), 비밀 전시실은 Big Shoulders Display·도현·Pretendard                                                        |
+| 데이터 가공 | Lodash(`lodash-es`, 함수별로 가져와 트리 셰이킹)                                                                                                                                                                           |
 | 어드민      | Radix Themes, Server Actions, zod, sharp(이미지 줄이기)                                                                                                                                                                    |
 | 품질        | ESLint(import 정렬, FSD 계층 규칙), Steiger(FSD 구조), Prettier, husky + lint-staged, Vitest + React Testing Library, Storybook 스토리 테스트(axe), Playwright E2E(axe), eslint-plugin-jsx-a11y, size-limit, Lighthouse CI |
 | 모니터링    | Sentry(DSN이 있을 때만, 같은 출처 터널과 서버 오류 수집), web-vitals                                                                                                                                                       |

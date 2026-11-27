@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import sortBy from "lodash-es/sortBy";
 
 import { relicRepository } from "./table";
 
@@ -14,7 +15,7 @@ export async function getRelics(): Promise<Relic[]> {
   // Supabase를 읽지 못해 내장 데이터로 대신했으면 몇 분만 캐시해, 다시 연결되면 곧 실제 데이터로 돌아갑니다.
   if (relicRepository.servingFallback()) cacheLife("minutes");
   else cacheLife("hours");
-  return relics.sort((a, b) => a.order - b.order);
+  return sortBy(relics, "order");
 }
 
 export async function getRelic(slug: string): Promise<Relic | null> {

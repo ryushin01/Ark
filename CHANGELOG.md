@@ -1,5 +1,12 @@
 # 버전 기록
 
+## 1.8.3 - 2026-11-27
+
+- 변경: 손으로 짠 컬렉션 처리를 Lodash(`lodash-es` 4.18, 함수별 `lodash-es/<함수>` 가져오기)로 바꿈. 정렬은 `sortBy`(유물·신화 계열·신 목록 쿼리, `relicsOf`·`neighborsOf`, 신 상세의 같은 계열 신, 어드민 신·인물 목록의 계열→순서 정렬 `sortByPantheon`, 유물 주인 순서 `orderLike`), 묶기는 `groupBy`(홈의 계열별 신·인물을 한 번만 묶어 개수·목록·콜라주에 함께 씀, 비밀 전시실의 계열별 전시 목록), 가족 중복 없애기는 `uniqBy`, 계보 사람 수는 `sumBy`(`countPeople`, 계보 엔티티로 옮김). 모두 안정 정렬이라 정렬 순서·출력은 이전과 같음. 쿼리의 정렬이 저장소가 돌려준 배열을 직접 바꾸지 않고 새 배열을 돌려줌
+- 변경: 첫 화면 악보 무대의 창 크기 변경 처리(필름 자리 재기)를 `throttle`(0.1초, 멈춘 뒤 한 번 더)로 묶음. 스크롤은 그대로 `requestAnimationFrame`으로 묶음
+- 그대로 둔 곳: 신 찾기 입력은 입력하는 대로 거르고 주소에 남기는 동작을 지키려고 `debounce`를 넣지 않음. 단순 `map`·`filter`, 이미 `requestAnimationFrame`으로 묶은 스크롤 처리, `structuredClone`을 쓰는 목업 표는 바꾸지 않음
+- 추가: `orderLike`·`sortByPantheon`·`countPeople` 단위 테스트와 가족 중복 없애기(처음 나온 순서, 자기 자신 제외) 테스트
+
 ## 1.8.2 - 2026-11-27
 
 - 변경: 앱 코드의 Fetch API 직접 호출을 HTTP 클라이언트 ky(2.2)로 바꿈. Supabase 클라이언트(`shared/api/supabase.server.ts`)에는 `ky.create({ timeout: 5000, throwHttpErrors: false, retry: 0 })` 인스턴스를 fetch 호환 함수로 넘겨, Supabase가 오류 상태의 응답도 그대로 받아 해석함. ky의 timeout은 응답 머리까지만 재므로 본문을 읽는 동안에도 5초 제한이 걸리도록 중단 신호를 함께 넘김(이전과 같은 동작). Sentry 중계·서버 오류 보고(`shared/lib/monitoring/server.ts`)도 같은 설정의 ky 인스턴스(3초 제한)를 씀. 오프라인·시드 대체, 시간 제한, 오류 처리, CSP는 그대로임

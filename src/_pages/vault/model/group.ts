@@ -1,3 +1,6 @@
+import groupBy from "lodash-es/groupBy";
+import sortBy from "lodash-es/sortBy";
+
 import type { Relic } from "@/entities/relic";
 
 export type RelicGroup = { key: string; label: string; relics: Relic[] };
@@ -10,13 +13,15 @@ export function groupByPantheon(
   relics: Relic[],
   pantheonOf: (figureSlug: string) => { slug: string; name: string } | undefined,
 ): RelicGroup[] {
-  const groups = new Map<string, RelicGroup>();
-  for (const relic of [...relics].sort((a, b) => a.order - b.order)) {
-    const pantheon = relic.figureSlugs[0] ? pantheonOf(relic.figureSlugs[0]) : undefined;
-    const key = pantheon?.slug ?? "other";
-    const group = groups.get(key) ?? { key, label: pantheon?.name ?? "그 밖의 전승", relics: [] };
-    group.relics.push(relic);
-    groups.set(key, group);
-  }
-  return [...groups.values()];
+  const ownerPantheon = (relic: Relic) =>
+    relic.figureSlugs[0] ? pantheonOf(relic.figureSlugs[0]) : undefined;
+  const grouped = groupBy(
+    sortBy(relics, "order"),
+    (relic) => ownerPantheon(relic)?.slug ?? "other",
+  );
+  return Object.entries(grouped).map(([key, members]) => ({
+    key,
+    label: ownerPantheon(members[0])?.name ?? "그 밖의 전승",
+    relics: members,
+  }));
 }

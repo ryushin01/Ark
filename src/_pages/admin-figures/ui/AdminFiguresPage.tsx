@@ -7,6 +7,7 @@ import { getFigure, getFigures } from "@/entities/figure/index.server";
 import { getPantheons } from "@/entities/pantheon/index.server";
 import { EditLinkCell, Notice, PageHeader } from "@/shared/ui/admin";
 
+import { sortByPantheon } from "../model/sort";
 import { FigureForm } from "./FigureForm";
 
 type ListProps = { pantheon?: string; saved?: string; deleted?: string };
@@ -19,13 +20,10 @@ export async function AdminFiguresPage({ pantheon, saved, deleted }: ListProps) 
     getExhibits(),
   ]);
   const pantheonName = (slug: string) => pantheons.find((item) => item.slug === slug)?.name ?? slug;
-  const rows = figures
-    .filter((figure) => !pantheon || figure.pantheonSlug === pantheon)
-    .sort(
-      (a, b) =>
-        pantheons.findIndex((item) => item.slug === a.pantheonSlug) -
-          pantheons.findIndex((item) => item.slug === b.pantheonSlug) || a.order - b.order,
-    );
+  const rows = sortByPantheon(
+    figures.filter((figure) => !pantheon || figure.pantheonSlug === pantheon),
+    pantheons,
+  );
 
   return (
     <>
