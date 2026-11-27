@@ -30,7 +30,11 @@ const GROUPS = {
   e2e: (extra) => (extra.length > 0 ? [["exec", "playwright", "test", ...extra]] : [["test:e2e"]]),
   vitals: () => [["test:vitals"]],
   visual: () => [["test:visual"]],
-  lighthouse: () => [isCI ? ["lhci"] : ["lhci", "--upload.target=filesystem"]],
+  lighthouse: () => [
+    isCI
+      ? ["lhci"]
+      : ["lhci", "--upload.target=filesystem", "--upload.outputDir=.lighthouseci/reports"],
+  ],
 };
 
 const ORDER = Object.keys(GROUPS);

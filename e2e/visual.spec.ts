@@ -108,7 +108,8 @@ test.describe("Storybook 스토리", () => {
     for (const story of stories) {
       await test.step(story.id, async () => {
         await page.goto(`/storybook/iframe.html?id=${story.id}&viewMode=story`);
-        await page.locator("#storybook-root").waitFor();
+        // 빈 상태 스토리는 그릴 것이 없어 보이지 않으므로 붙었는지만 기다립니다.
+        await page.locator("#storybook-root").waitFor({ state: "attached" });
         await settle(page);
         await expect.soft(page).toHaveScreenshot(`story-${story.id}.png`, {
           mask: [page.locator("time")],
