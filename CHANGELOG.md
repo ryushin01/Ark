@@ -1,5 +1,10 @@
 # 버전 기록
 
+## 1.8.2 - 2026-11-27
+
+- 변경: 앱 코드의 Fetch API 직접 호출을 HTTP 클라이언트 ky(2.2)로 바꿈. Supabase 클라이언트(`shared/api/supabase.server.ts`)에는 `ky.create({ timeout: 5000, throwHttpErrors: false, retry: 0 })` 인스턴스를 fetch 호환 함수로 넘겨, Supabase가 오류 상태의 응답도 그대로 받아 해석함. ky의 timeout은 응답 머리까지만 재므로 본문을 읽는 동안에도 5초 제한이 걸리도록 중단 신호를 함께 넘김(이전과 같은 동작). Sentry 중계·서버 오류 보고(`shared/lib/monitoring/server.ts`)도 같은 설정의 ky 인스턴스(3초 제한)를 씀. 오프라인·시드 대체, 시간 제한, 오류 처리, CSP는 그대로임
+- 추가: Supabase 클라이언트 테스트(설정이 없으면 목업, 응답 전달, 500을 예외 없이 오류로 돌려주고 다시 시도하지 않음, 5초 시간 제한)와 Sentry 중계 테스트(오류 상태를 다시 시도하지 않고 그대로 돌려줌, 3초 안에 응답이 없으면 502)
+
 ## 1.8.1 - 2026-11-23
 
 - 수정: CI의 `supabase/setup-cli`가 `version: latest`일 때마다 GitHub API로 최신 릴리스를 조회하다 rate limit(`Failed to resolve latest Supabase CLI release: rate limit exceeded`)으로 실패하던 문제. `ci.yml`·`release.yml` 모두 CLI 버전을 3.2.0으로 고정해 조회 요청을 없앰(CI가 마지막으로 성공했을 때 쓰던 최신 정식 버전)

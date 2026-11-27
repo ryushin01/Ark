@@ -12,6 +12,12 @@ const post = (body: string) =>
 
 describe("monitoring server", () => {
   const fetchMock = vi.fn<typeof fetch>();
+  /** 마지막으로 Sentry에 보낸 요청 */
+  const lastRequest = () => {
+    const input = fetchMock.mock.lastCall?.[0];
+    if (!(input instanceof Request)) throw new Error("Sentry로 보낸 요청이 없습니다.");
+    return input;
+  };
 
   beforeEach(() => {
     fetchMock.mockReset().mockResolvedValue(new Response(null, { status: 200 }));
@@ -31,11 +37,18 @@ describe("monitoring server", () => {
 
   it("우리 DSN의 envelope만 Sentry로 넘긴다", async () => {
     vi.stubEnv("NEXT_PUBLIC_SENTRY_DSN", DSN);
+    let sentBody = "";
+    fetchMock.mockImplementation(async (input) => {
+      if (input instanceof Request) sentBody = await input.text();
+      return new Response(null, { status: 200 });
+    });
     expect((await forwardEnvelope(post(envelope(DSN)))).status).toBe(200);
-    expect(fetchMock).toHaveBeenCalledWith(
-      "https://o1.ingest.sentry.io/api/42/envelope/",
-      expect.objectContaining({ method: "POST", body: envelope(DSN) }),
-    );
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const sent = lastRequest();
+    expect(sent.url).toBe("https://o1.ingest.sentry.io/api/42/envelope/");
+    expect(sent.method).toBe("POST");
+    expect(sent.headers.get("content-type")).toBe("application/x-sentry-envelope");
+    expect(sentBody).toBe(envelope(DSN));
 
     fetchMock.mockClear();
     const other = await forwardEnvelope(post(envelope("https://k@evil.example/1")));
@@ -48,16 +61,10 @@ describe("monitoring server", () => {
     vi.stubEnv("NEXT_PUBLIC_SENTRY_DSN", DSN);
     vi.stubEnv("SENTRY_DSN", SERVER);
     expect((await forwardEnvelope(post(envelope(DSN)))).status).toBe(200);
-    expect(fetchMock).toHaveBeenLastCalledWith(
-      "https://o1.ingest.sentry.io/api/42/envelope/",
-      expect.anything(),
-    );
+    expect(lastRequest().url).toBe("https://o1.ingest.sentry.io/api/42/envelope/");
     expect((await forwardEnvelope(post(envelope(SERVER)))).status).toBe(400);
     await reportServerError(new Error("x"), { path: "/", method: "GET" });
-    expect(fetchMock).toHaveBeenLastCalledWith(
-      "https://o2.ingest.sentry.io/api/7/envelope/",
-      expect.anything(),
-    );
+    expect(lastRequest().url).toBe("https://o2.ingest.sentry.io/api/7/envelope/");
   });
 
   it("Sentry의 요청 제한 헤더를 그대로 돌려준다", async () => {
@@ -121,5 +128,25 @@ describe("monitoring server", () => {
     await expect(
       reportServerError(new Error("x"), { path: "/", method: "GET" }),
     ).resolves.toBeUndefined();
+  });
+
+  it("Sentry의 오류 상태는 다시 시도하지 않고 그대로 돌려준다", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SENTRY_DSN", DSN);
+    fetchMock.mockResolvedValue(new Response(null, { status: 503 }));
+    expect((await forwardEnvelope(post(envelope(DSN)))).status).toBe(503);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("Sentry가 3초 안에 응답하지 않으면 끊고 502", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SENTRY_DSN", DSN);
+    vi.useFakeTimers();
+    try {
+      fetchMock.mockImplementation(() => new Promise<Response>(() => {}));
+      const pending = forwardEnvelope(post(envelope(DSN)));
+      await vi.advanceTimersByTimeAsync(3000);
+      expect((await pending).status).toBe(502);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });
