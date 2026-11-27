@@ -28,3 +28,9 @@ describe("monogram (그림 대신 새길 영문 이름 첫 글자)", () => {
     expect(monogram("The")).toBe("T");
   });
 });
+
+describe("monogram (빈 이름)", () => {
+  it("빈 이름이면 빈 글자를 돌려줍니다", () => {
+    expect(monogram("")).toBe("");
+  });
+});

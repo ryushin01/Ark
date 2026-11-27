@@ -1,6 +1,6 @@
 {
   "name": "ark",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,9 +15,14 @@
     "fonts": "node scripts/build-fonts.mjs",
     "test": "vitest run --project unit",
     "test:watch": "vitest --project unit",
+    "test:coverage": "vitest run --project unit --coverage",
+    "coverage:summary": "node scripts/coverage-summary.mjs",
+    "check": "node scripts/check.mjs",
     "test:storybook": "vitest run --project storybook",
     "test:e2e": "playwright test --project=chromium --project=admin --project=offline",
     "test:e2e:offline": "playwright test --project=offline",
+    "test:visual": "playwright test --project=visual",
+    "test:vitals": "playwright test --project=vitals --workers=1",
     "screenshots": "E2E_USE_LOCAL_SUPABASE=1 playwright test --project=screenshots",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o public/storybook --quiet",
@@ -32,6 +37,7 @@
     "db:types": "supabase gen types typescript --local --schema public > src/shared/api/database.types.ts && prettier --write src/shared/api/database.types.ts",
     "test:e2e:local-db": "supabase db reset && E2E_USE_LOCAL_SUPABASE=1 playwright test --project=local-db",
     "size": "size-limit",
+    "load:local-db": "tsx scripts/load-local-db.mts",
     "lhci": "lhci autorun"
   },
   "dependencies": {
@@ -76,6 +82,7 @@
     "@vitejs/plugin-react": "^6.2.1",
     "@vitest/browser": "5.1.0",
     "@vitest/browser-playwright": "5.1.0",
+    "@vitest/coverage-v8": "5.1.0",
     "entities": "9.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.5",

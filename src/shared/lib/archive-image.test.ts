@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { formatCredit, toThumb } from "./archive-image";
+import { formatCredit, toShown, toThumb } from "./archive-image";
 
 const base = { licenseUrl: null, sourceUrl: "https://commons.wikimedia.org/wiki/File:A.jpg" };
 
@@ -29,5 +29,23 @@ describe("toThumb", () => {
       credit: { ...base, artist: null, license: "Public domain" },
     };
     expect(toThumb(image)).toEqual({ src: "/images/exhibits/zeus.jpg", width: 1200, height: 1600 });
+  });
+});
+
+describe("toShown", () => {
+  it("대체 텍스트는 남기고 출처는 뺍니다", () => {
+    const image = {
+      src: "/images/exhibits/zeus.jpg",
+      width: 1200,
+      height: 1600,
+      alt: "제우스 흉상",
+      credit: { ...base, artist: "Marie-Lan Nguyen", license: "CC BY 2.5" },
+    };
+    expect(toShown(image)).toEqual({
+      src: "/images/exhibits/zeus.jpg",
+      width: 1200,
+      height: 1600,
+      alt: "제우스 흉상",
+    });
   });
 });

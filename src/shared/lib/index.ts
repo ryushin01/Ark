@@ -15,10 +15,10 @@ export {
   withValues,
 } from "./form/form-state";
 export { useSubmitLock } from "./form/use-submit-lock";
+export { useInView } from "./hooks/use-in-view";
+export { isMotionOff, useMotionOff } from "./hooks/use-motion-off";
 export { initMonitoring, reportError } from "./monitoring";
 export { monogram } from "./monogram";
 export { skipsOptimization, smallSrc, tinySrc } from "./original-images";
 export { firstParam } from "./search-params";
 export { splitWords } from "./split-words";
-export { useInView } from "./use-in-view";
-export { isMotionOff, useMotionOff } from "./use-motion-off";
